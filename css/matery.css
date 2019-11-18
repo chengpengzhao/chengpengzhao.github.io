@@ -509,7 +509,7 @@ header .side-nav .social-link {
 .cover-social-link a {
     padding: 0 15px;
     font-size: 2.35rem;
-    color: #0101DF;
+    color: #fff;
 }
 
 header .go-back {
@@ -575,7 +575,7 @@ header .go-back i {
 }
 
 .bg-cover .title {
-    font-size: 6.0rem;
+    font-size: 4.5rem;
     line-height: 1.85em;
     margin-bottom: -20px;
     position: relative;
