@@ -343,6 +343,20 @@
 
         
     </nav>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
 </header>
 
@@ -653,7 +667,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Linux","闲谈","日本語","学习","写真（日本語）","python","爬虫","博客建立","写作"]
+                data: ["Linux","闲谈","日本語","学习","写真（日本語）","博客建立","python","爬虫","写作"]
             }
         ],
         yAxis: [
