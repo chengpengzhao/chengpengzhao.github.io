@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-19T11:02:52.280Z</updated>
+  <updated>2019-11-19T12:41:57.100Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/"/>
     <id>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</id>
     <published>2019-11-18T15:00:00.000Z</published>
-    <updated>2019-11-19T11:02:52.280Z</updated>
+    <updated>2019-11-19T12:41:57.100Z</updated>
     
     <summary type="html">
     
@@ -29,12 +29,7 @@
       
         
         
-          &lt;hr&gt;
-&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-&lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if
+          &lt;h1 id=&quot;Dakota-6-11-Installation-on-Ubuntu-18-04&quot;&gt;&lt;a href=&quot;#Dakota-6-11-Installation-on-Ubuntu-18-04&quot; class=&quot;headerlink&quot; title=&quot;Dakota 6.11
         
       
     
@@ -50,8 +45,8 @@
   
   <entry>
     <title>入坑Linux(3)——常用软件安装及配置</title>
-    <link href="https://chengpengzhao.com/2019/11/15/2019-12019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
-    <id>https://chengpengzhao.com/2019/11/15/2019-12019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
+    <link href="https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
+    <id>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
     <published>2019-11-14T15:00:00.000Z</published>
     <updated>2019-11-19T11:02:02.779Z</updated>
     
