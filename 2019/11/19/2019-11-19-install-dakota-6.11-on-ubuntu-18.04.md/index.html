@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Install Dakota 6.11 on Ubuntu 18.04, Zcp&#39;s Zone">
-    <meta name="description" content="Dakota 6.11 Installation on Ubuntu 18.04
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
- ">
+    <meta name="description" content="First I’d like to thank Chien Nguyen  for his blog, it’s very helpful for a noob to linux like me.
+Dakota released the v">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -505,14 +503,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    60
+                    458
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 				
@@ -528,7 +526,48 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Dakota-6-11-Installation-on-Ubuntu-18-04"><a href="#Dakota-6-11-Installation-on-Ubuntu-18-04" class="headerlink" title="Dakota 6.11 Installation on Ubuntu 18.04"></a>Dakota 6.11 Installation on Ubuntu 18.04</h1><script>
+                <p>First I’d like to thank <a href="https://chienfm.com/dakota/Compile-Dakota-for-Ubuntu-16.04/" target="_blank" rel="noopener">Chien Nguyen</a>  for his blog, it’s very helpful for a noob to linux like me.</p>
+<p>Dakota released the verison 6.11 on Fri 11/15/2019, and I’ll share you how I install it on Ubuntu18.04 step by step.</p>
+<h1 id="What-is-Dakota"><a href="#What-is-Dakota" class="headerlink" title="What is Dakota"></a>What is <a href="https://dakota.sandia.gov" target="_blank" rel="noopener">Dakota</a></h1><p>It’s a powerful toolkit which include:</p>
+<ul>
+<li>optimization with gradient and nongradient-based methods;</li>
+<li>uncertainty quantification with sampling, reliability, stochastic expansion, and epistemic methods;</li>
+<li>parameter estimation using nonlinear least squares (deterministic) or Bayesian inference (stochastic); and</li>
+<li>sensitivity/variance analysis with design of experiments and parameter study methods.</li>
+</ul>
+<h1 id="Before-installation"><a href="#Before-installation" class="headerlink" title="Before installation"></a>Before installation</h1><h2 id="Install-some-nessesary-packages"><a href="#Install-some-nessesary-packages" class="headerlink" title="Install some nessesary packages"></a>Install some nessesary packages</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gcc g++ gfortran cmake cmake-curses-gui libboost-dev \
+libboost-all-dev libblas-dev liblapack-dev libopenmpi-dev openmpi-bin \
+openmpi-doc xorg-dev libmotif-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>You can check the necessary packages from this <a href="https://dakota.sandia.gov/content/install-required-tools-and-libraries" target="_blank" rel="noopener">website</a>. I also installed the HDF5 here and the required version of HDF5 for Dakota 6.11 is 1.10.5.</p>
+<h2 id="Download-the-GUI-and-source-code-from-official-webiste"><a href="#Download-the-GUI-and-source-code-from-official-webiste" class="headerlink" title="Download the GUI and source code from official webiste."></a>Download the <a href="https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-6.11-release-public-linux.x86_64-GUI-only.zip" target="_blank" rel="noopener">GUI</a> and <a href="https://dakota.sandia.gov/sites/default/files/distributions/public/dakota-6.11.0-release-public.src-UI.tar.gz" target="_blank" rel="noopener">source code</a> from official webiste.</h2><p> And extract files to appropriate place.</p>
+<h1 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h1><p>I extracted the packages in <code>$HOME/DAKOTA</code> and made two directories which will be used for build and install Dakota.</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> DAKOTA
+<span class="token function">cd</span> DAKOTA
+<span class="token function">mkdir</span> dakota_build <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> dakota_installation
+<span class="token function">export</span> DAK_BUILD<span class="token operator">=</span><span class="token variable">$HOME</span>/DAKOTA/dakota_build
+<span class="token function">export</span> DAK_INSTALL<span class="token operator">=</span><span class="token variable">$HOME</span>/DAKOTA/dakota_installation
+<span class="token function">export</span> DAK_SRC<span class="token operator">=</span><span class="token variable">$HOME</span>/DAKOTA/dakota-6.11.0-release-public.src-UI
+<span class="token function">cd</span> <span class="token variable">$DAK_BUILD</span>
+<span class="token function">cp</span> <span class="token variable">$DAK_SRC</span>/cmake/BuildDakotaTemplate.cmake <span class="token variable">$DAK_SRC</span>/cmake/BuildDakotaCustom.cmake<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Then, you can begin to build the source code with several options. You may check this <a href="https://dakota.sandia.gov/content/detailed-cmake-options" target="_blank" rel="noopener">website</a> for more informations.</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> cmake <span class="token keyword">.</span> <span class="token variable">$DAK_SRC</span>/cmake/BuildDakotaCustom.cmake <span class="token variable">$DAK_SRC</span> -DCMAKE_INSTALL_PREFIX<span class="token operator">=</span><span class="token variable">$DAK_INSTALL</span> \
+ -DDAKOTA_HAVE_MPI:BOOL<span class="token operator">=</span>TRUE \
+ -DDAKOTA_HAVE_HDF5:BOOL<span class="token operator">=</span>TRUE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Run make and install:</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">make</span> -j4
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Just wait for a few minutes and at last add the environment variables to <code>.bashrc</code> :</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> gedit ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Add the following lines at the end of <em>bashrc</em>  and save</p>
+<p><code>export PATH=”$PATH:export PATH="$PATH:$HOME/DAKOTA/dakota_installation/bin"</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">source</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h1><p>Now you can just open a terminal and input <code>dakota -v</code> and if everything goes well you will see:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">Dakota version 6.11 released Nov 15 2019.
+Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<span class="token punctuation">)</span> built XXX XX XXXX XX:XX:XX<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Congratulations! Let’s enjoy dakota now~</p>
+<h1 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h1><p>You guys may meet some problems when trying to open the dakota GUI, because the dakota GUI requires JAVA 8. <a href="https://www.oracle.com/technetwork/es/java/javase/downloads/jdk8-downloads-2133151.html?printOnly=1" target="_blank" rel="noopener">jdk-8u231-linux-x64.tar.gz</a> should be a good choice for you.</p>
+<p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Dakota%20GUI%20_001.png" alt=""></p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1055,10 +1094,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Dakota 6.11 Installation on Ubuntu 18.04
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
- 
+                            First I’d like to thank Chien Nguyen  for his blog, it’s very helpful for a noob to linux like me.
+Dakota released the v
                         
                     </div>
                     <div class="publish-info">
@@ -1277,7 +1314,7 @@ OpenFOAM相关用Linux的原因就是学习OpenFOAM，所以当然要摆在第�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.6k</span>&nbsp;字
+                class="white-color">16k</span>&nbsp;字
             
             
             

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-19T12:41:57.100Z</updated>
+  <updated>2019-11-19T15:33:22.221Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/"/>
     <id>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</id>
     <published>2019-11-18T15:00:00.000Z</published>
-    <updated>2019-11-19T12:41:57.100Z</updated>
+    <updated>2019-11-19T15:33:22.221Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;Dakota-6-11-Installation-on-Ubuntu-18-04&quot;&gt;&lt;a href=&quot;#Dakota-6-11-Installation-on-Ubuntu-18-04&quot; class=&quot;headerlink&quot; title=&quot;Dakota 6.11
+          &lt;p&gt;First I’d like to thank &lt;a href=&quot;https://chienfm.com/dakota/Compile-Dakota-for-Ubuntu-16.04/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Chien
         
       
     
