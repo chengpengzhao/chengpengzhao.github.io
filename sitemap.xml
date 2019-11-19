@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengpengzhao.com/friends/index.html</loc>
+    
+    <lastmod>2019-11-19T08:32:21.270Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/404.html</loc>
+    
+    <lastmod>2019-11-19T08:23:22.808Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</loc>
     
     <lastmod>2019-11-19T00:49:26.249Z</lastmod>
@@ -96,13 +110,6 @@
     <loc>https://chengpengzhao.com/about/index.html</loc>
     
     <lastmod>2019-11-18T09:18:51.823Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/friends/index.html</loc>
-    
-    <lastmod>2019-11-18T00:30:44.959Z</lastmod>
     
   </url>
   
