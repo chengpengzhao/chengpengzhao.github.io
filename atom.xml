@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="https://www.w3.org/2005/Atom">
+  <title>Zcp&#39;s Zone</title>
+  
+  <subtitle>Cp Zhao</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://chengpengzhao.com/"/>
+  <updated>2019-11-19T11:02:52.280Z</updated>
+  <id>https://chengpengzhao.com/</id>
+  
+  <author>
+    <name>zcp</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Install Dakota 6.11 on Ubuntu 18.04</title>
+    <link href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/"/>
+    <id>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</id>
+    <published>2019-11-18T15:00:00.000Z</published>
+    <updated>2019-11-19T11:02:52.280Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>入坑Linux(3)——常用软件安装及配置</title>
+    <link href="https://chengpengzhao.com/2019/11/15/2019-12019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
+    <id>https://chengpengzhao.com/2019/11/15/2019-12019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
+    <published>2019-11-14T15:00:00.000Z</published>
+    <updated>2019-11-19T11:02:02.779Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;h1 id=&quot;OpenFOAM相关&quot;&gt;&lt;a href=&quot;#OpenFOAM相关&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>入坑Linux(2)——常用命令及快捷键</title>
+    <link href="https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/"/>
+    <id>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</id>
+    <published>2019-11-12T15:00:00.000Z</published>
+    <updated>2019-11-18T15:03:17.401Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;常用快捷键&quot;&gt;&lt;a href=&quot;#常用快捷键&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>入坑Linux(1)——双系统安装</title>
+    <link href="https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/"/>
+    <id>https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</id>
+    <published>2019-11-11T15:00:00.000Z</published>
+    <updated>2019-11-18T15:03:23.125Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;原以为自己不会接触到Linux系统，毕竟一直舒服地用着Win没什么不满。直到接触了OpenFOAM，在Win上运行实在是不方便，于是装了个虚拟机开始研究Linux，用了一段时间之后还是感觉不太舒服，毕竟是虚拟机，加上笔记本性能也一般；为了追求流畅的体验还是决定装个双系统，于
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个月浑浑噩噩过去了，下个月认真学习(10.26)</title>
+    <link href="https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/"/>
+    <id>https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/</id>
+    <published>2019-10-25T15:00:00.000Z</published>
+    <updated>2019-11-19T00:38:01.574Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;2019-10-26-一ヶ月&quot;&gt;&lt;a href=&quot;#2019-10-26-一ヶ月&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+    
+    
+      <category term="闲谈" scheme="https://chengpengzhao.com/tags/%E9%97%B2%E8%B0%88/"/>
+    
+      <category term="写真（日本語）" scheme="https://chengpengzhao.com/tags/%E5%86%99%E7%9C%9F%EF%BC%88%E6%97%A5%E6%9C%AC%E8%AA%9E%EF%BC%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>想起来还有个Blog就随便记录下(9.26-10.25)</title>
+    <link href="https://chengpengzhao.com/2019/09/28/2019-09-liu-xue-9.26-10.10/"/>
+    <id>https://chengpengzhao.com/2019/09/28/2019-09-liu-xue-9.26-10.10/</id>
+    <published>2019-09-27T15:00:00.000Z</published>
+    <updated>2019-11-19T00:36:15.297Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;2019-09-26-北京-东京&quot;&gt;&lt;a href=&quot;#2019-09-26-北京-东京&quot; class=&quot;headerlink&quot; title=&quot;2019-09-26　北京-东京&quot;&gt;&lt;/a&gt;2019-09-26　北京-东京&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+    
+    
+      <category term="闲谈" scheme="https://chengpengzhao.com/tags/%E9%97%B2%E8%B0%88/"/>
+    
+      <category term="写真（日本語）" scheme="https://chengpengzhao.com/tags/%E5%86%99%E7%9C%9F%EF%BC%88%E6%97%A5%E6%9C%AC%E8%AA%9E%EF%BC%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>本地LaTeX公式实时编辑器（个人用）</title>
+    <link href="https://chengpengzhao.com/2019/06/03/zi-ji-zuo-de-latex-gong-shi-bian-ji-qi-ge-ren-yong/"/>
+    <id>https://chengpengzhao.com/2019/06/03/zi-ji-zuo-de-latex-gong-shi-bian-ji-qi-ge-ren-yong/</id>
+    <published>2019-06-02T15:00:00.000Z</published>
+    <updated>2019-11-18T14:52:10.799Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;LaTeX-公式编辑-with-MathJax-by-zcp&quot;&gt;&lt;a href=&quot;#LaTeX-公式编辑-with-MathJax-by-zcp&quot; class=&quot;headerlink&quot; title=&quot;LaTeX 公式编辑 with MathJax by
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="学习" scheme="https://chengpengzhao.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>这个博客的建立过程</title>
+    <link href="https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/"/>
+    <id>https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/</id>
+    <published>2019-05-25T15:00:00.000Z</published>
+    <updated>2019-11-18T14:35:22.466Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前也说了，我是用的Github
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="博客建立" scheme="https://chengpengzhao.com/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日本語の方言＿方言を勉強しよう</title>
+    <link href="https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/"/>
+    <id>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</id>
+    <published>2019-05-01T15:00:00.000Z</published>
+    <updated>2019-11-18T15:22:41.327Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;関西弁講座&quot;&gt;&lt;a href=&quot;#関西弁講座&quot; class=&quot;headerlink&quot; title=&quot;関西弁講座&quot;&gt;&lt;/a&gt;関西弁&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+    
+    
+      <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日記_2019-04-03から2019-05-01まで</title>
+    <link href="https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/"/>
+    <id>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</id>
+    <published>2019-04-30T15:00:00.000Z</published>
+    <updated>2019-11-18T14:48:03.970Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;em&gt;アンダーライン ：日本人添削したこと&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&quot;四月は&quot;&gt;&lt;a href=&quot;#四月は&quot; class=&quot;headerlink&quot; title=&quot;四月は&quot;&gt;&lt;/a&gt;四月は&lt;/h1&gt;&lt;br&gt;
+
+&lt;h2 id=&quot;04-03-最初の一歩&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+    
+    
+      <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日本語で作文——文章を書こう</title>
+    <link href="https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/"/>
+    <id>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</id>
+    <published>2019-04-05T15:00:00.000Z</published>
+    <updated>2019-11-18T15:25:01.965Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;漢字と符号及び原稿用紙の使い方について&quot;&gt;&lt;a href=&quot;#漢字と符号及び原稿用紙の使い方について&quot; class=&quot;headerlink&quot; title=&quot;漢字と符号及び原稿用紙の使い方について&quot;&gt;&lt;/a&gt;漢字と符号及び原稿用紙の使い方について&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+    
+    
+      <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python爬虫入门练习——爬取北航课程中心课件资源</title>
+    <link href="https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/"/>
+    <id>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</id>
+    <published>2019-03-20T15:00:00.000Z</published>
+    <updated>2019-11-19T00:49:26.249Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;目标是课程中心7195条课程信息下的所有资源~：&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+    
+    
+      <category term="python" scheme="https://chengpengzhao.com/tags/python/"/>
+    
+      <category term="爬虫" scheme="https://chengpengzhao.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="学习" scheme="https://chengpengzhao.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Welcome to CP Zhao&#39;s Blog</title>
+    <link href="https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/"/>
+    <id>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</id>
+    <published>2019-03-17T15:00:00.000Z</published>
+    <updated>2019-11-18T14:18:30.842Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;总算把博客建的差不多了&quot;&gt;&lt;a href=&quot;#总算把博客建的差不多了&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+    
+    
+      <category term="闲谈" scheme="https://chengpengzhao.com/tags/%E9%97%B2%E8%B0%88/"/>
+    
+  </entry>
+  
+</feed>
