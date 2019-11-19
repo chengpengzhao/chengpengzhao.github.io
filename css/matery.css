@@ -303,7 +303,7 @@ header .brand-logo .logo-img {
 }
 
 header .brand-logo .logo-span {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 header .button-collapse i {
@@ -1799,7 +1799,7 @@ footer .copy-right {
 }
 
 .top-scroll .btn-floating {
-    background: linear-gradient(to bottom right, #FF5E3A 0%, #FF2A68 100%);
+    background: linear-gradient(to bottom right, #AFEEEE 0%, #99ffff 100%);
     width: 48px;
     height: 48px;
 }
