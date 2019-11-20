@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-20T06:24:40.662Z</updated>
+  <updated>2019-11-20T10:30:01.899Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/"/>
     <id>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</id>
     <published>2019-11-18T15:00:00.000Z</published>
-    <updated>2019-11-20T06:24:40.662Z</updated>
+    <updated>2019-11-20T10:30:01.899Z</updated>
     
     <summary type="html">
     
@@ -36,10 +36,12 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
+    
+      <category term="软件" scheme="https://chengpengzhao.com/categories/Linux/%E8%BD%AF%E4%BB%B6/"/>
     
     
-      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+      <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -48,7 +50,7 @@
     <link href="https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
     <id>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
     <published>2019-11-14T15:00:00.000Z</published>
-    <updated>2019-11-19T11:02:02.779Z</updated>
+    <updated>2019-11-20T10:13:23.028Z</updated>
     
     <summary type="html">
     
@@ -64,10 +66,12 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
+    
+      <category term="软件" scheme="https://chengpengzhao.com/categories/Linux/%E8%BD%AF%E4%BB%B6/"/>
     
     
-      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
     
   </entry>
   
@@ -76,7 +80,7 @@
     <link href="https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/"/>
     <id>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</id>
     <published>2019-11-12T15:00:00.000Z</published>
-    <updated>2019-11-18T15:03:17.401Z</updated>
+    <updated>2019-11-20T10:12:43.608Z</updated>
     
     <summary type="html">
     
@@ -91,10 +95,10 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
     
   </entry>
   
@@ -103,7 +107,7 @@
     <link href="https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/"/>
     <id>https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</id>
     <published>2019-11-11T15:00:00.000Z</published>
-    <updated>2019-11-20T08:38:54.919Z</updated>
+    <updated>2019-11-20T10:29:55.603Z</updated>
     
     <summary type="html">
     
@@ -118,10 +122,39 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
     
     
-      <category term="Linux" scheme="https://chengpengzhao.com/tags/Linux/"/>
+      <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>入坑Linux(1)——双系统安装</title>
+    <link href="https://chengpengzhao.com/2019/11/12/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/"/>
+    <id>https://chengpengzhao.com/2019/11/12/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</id>
+    <published>2019-11-11T15:00:00.000Z</published>
+    <updated>2019-11-20T13:24:06.475Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
+    
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
@@ -130,7 +163,7 @@
     <link href="https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/"/>
     <id>https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/</id>
     <published>2019-10-25T15:00:00.000Z</published>
-    <updated>2019-11-19T00:38:01.574Z</updated>
+    <updated>2019-11-20T10:12:29.652Z</updated>
     
     <summary type="html">
     
@@ -145,12 +178,12 @@
     </summary>
     
     
-      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="闲谈" scheme="https://chengpengzhao.com/tags/%E9%97%B2%E8%B0%88/"/>
+      <category term="相册" scheme="https://chengpengzhao.com/tags/%E7%9B%B8%E5%86%8C/"/>
     
-      <category term="写真（日本語）" scheme="https://chengpengzhao.com/tags/%E5%86%99%E7%9C%9F%EF%BC%88%E6%97%A5%E6%9C%AC%E8%AA%9E%EF%BC%89/"/>
+      <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -159,7 +192,7 @@
     <link href="https://chengpengzhao.com/2019/09/28/2019-09-liu-xue-9.26-10.10/"/>
     <id>https://chengpengzhao.com/2019/09/28/2019-09-liu-xue-9.26-10.10/</id>
     <published>2019-09-27T15:00:00.000Z</published>
-    <updated>2019-11-19T00:36:15.297Z</updated>
+    <updated>2019-11-20T10:07:45.395Z</updated>
     
     <summary type="html">
     
@@ -174,12 +207,12 @@
     </summary>
     
     
-      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="闲谈" scheme="https://chengpengzhao.com/tags/%E9%97%B2%E8%B0%88/"/>
+      <category term="相册" scheme="https://chengpengzhao.com/tags/%E7%9B%B8%E5%86%8C/"/>
     
-      <category term="写真（日本語）" scheme="https://chengpengzhao.com/tags/%E5%86%99%E7%9C%9F%EF%BC%88%E6%97%A5%E6%9C%AC%E8%AA%9E%EF%BC%89/"/>
+      <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -188,7 +221,7 @@
     <link href="https://chengpengzhao.com/2019/06/03/zi-ji-zuo-de-latex-gong-shi-bian-ji-qi-ge-ren-yong/"/>
     <id>https://chengpengzhao.com/2019/06/03/zi-ji-zuo-de-latex-gong-shi-bian-ji-qi-ge-ren-yong/</id>
     <published>2019-06-02T15:00:00.000Z</published>
-    <updated>2019-11-18T14:52:10.799Z</updated>
+    <updated>2019-11-20T10:31:01.506Z</updated>
     
     <summary type="html">
     
@@ -203,10 +236,8 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="软件" scheme="https://chengpengzhao.com/categories/%E8%BD%AF%E4%BB%B6/"/>
     
-    
-      <category term="学习" scheme="https://chengpengzhao.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
     
@@ -217,7 +248,7 @@
     <link href="https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/"/>
     <id>https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/</id>
     <published>2019-05-25T15:00:00.000Z</published>
-    <updated>2019-11-18T14:35:22.466Z</updated>
+    <updated>2019-11-20T10:04:32.006Z</updated>
     
     <summary type="html">
     
@@ -232,10 +263,10 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
     
     
-      <category term="博客建立" scheme="https://chengpengzhao.com/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
+      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
@@ -244,7 +275,7 @@
     <link href="https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/"/>
     <id>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</id>
     <published>2019-05-01T15:00:00.000Z</published>
-    <updated>2019-11-18T15:22:41.327Z</updated>
+    <updated>2019-11-20T10:06:58.356Z</updated>
     
     <summary type="html">
     
@@ -259,10 +290,12 @@
     </summary>
     
     
-      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+      <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
     
     
       <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+    
+      <category term="语法" scheme="https://chengpengzhao.com/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
@@ -271,7 +304,7 @@
     <link href="https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/"/>
     <id>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</id>
     <published>2019-04-30T15:00:00.000Z</published>
-    <updated>2019-11-18T14:48:03.970Z</updated>
+    <updated>2019-11-20T10:08:49.031Z</updated>
     
     <summary type="html">
     
@@ -289,10 +322,12 @@
     </summary>
     
     
-      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+      <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+      <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -301,7 +336,7 @@
     <link href="https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/"/>
     <id>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</id>
     <published>2019-04-05T15:00:00.000Z</published>
-    <updated>2019-11-18T15:25:01.965Z</updated>
+    <updated>2019-11-20T10:06:00.665Z</updated>
     
     <summary type="html">
     
@@ -316,10 +351,12 @@
     </summary>
     
     
-      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+      <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
     
     
       <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+    
+      <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -328,7 +365,7 @@
     <link href="https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/"/>
     <id>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</id>
     <published>2019-03-20T15:00:00.000Z</published>
-    <updated>2019-11-19T00:49:26.249Z</updated>
+    <updated>2019-11-20T10:29:05.111Z</updated>
     
     <summary type="html">
     
@@ -344,14 +381,10 @@
     </summary>
     
     
-      <category term="Tech" scheme="https://chengpengzhao.com/categories/Tech/"/>
+      <category term="程序语言" scheme="https://chengpengzhao.com/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/"/>
     
     
       <category term="python" scheme="https://chengpengzhao.com/tags/python/"/>
-    
-      <category term="爬虫" scheme="https://chengpengzhao.com/tags/%E7%88%AC%E8%99%AB/"/>
-    
-      <category term="学习" scheme="https://chengpengzhao.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -360,7 +393,7 @@
     <link href="https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/"/>
     <id>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</id>
     <published>2019-03-17T15:00:00.000Z</published>
-    <updated>2019-11-18T14:18:30.842Z</updated>
+    <updated>2019-11-20T10:09:00.659Z</updated>
     
     <summary type="html">
     
@@ -375,10 +408,12 @@
     </summary>
     
     
-      <category term="Life" scheme="https://chengpengzhao.com/categories/Life/"/>
+      <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
+    
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="闲谈" scheme="https://chengpengzhao.com/tags/%E9%97%B2%E8%B0%88/"/>
+      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
