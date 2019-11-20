@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-20T10:30:01.899Z</updated>
+  <updated>2019-11-20T13:32:39.522Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从Hugo折腾到Hexo过程记录</title>
+    <link href="https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/"/>
+    <id>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</id>
+    <published>2019-11-19T15:00:00.000Z</published>
+    <updated>2019-11-20T13:32:39.522Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
+    
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Install Dakota 6.11 on Ubuntu 18.04</title>
     <link href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/"/>
     <id>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</id>
     <published>2019-11-18T15:00:00.000Z</published>
-    <updated>2019-11-20T10:30:01.899Z</updated>
+    <updated>2019-11-20T13:33:09.826Z</updated>
     
     <summary type="html">
     
@@ -38,7 +67,7 @@
     
       <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
     
-      <category term="软件" scheme="https://chengpengzhao.com/categories/Linux/%E8%BD%AF%E4%BB%B6/"/>
+      <category term="软件" scheme="https://chengpengzhao.com/categories/%E8%BD%AF%E4%BB%B6/"/>
     
     
       <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
@@ -50,7 +79,7 @@
     <link href="https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
     <id>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
     <published>2019-11-14T15:00:00.000Z</published>
-    <updated>2019-11-20T10:13:23.028Z</updated>
+    <updated>2019-11-20T13:33:16.342Z</updated>
     
     <summary type="html">
     
@@ -68,7 +97,7 @@
     
       <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
     
-      <category term="软件" scheme="https://chengpengzhao.com/categories/Linux/%E8%BD%AF%E4%BB%B6/"/>
+      <category term="软件" scheme="https://chengpengzhao.com/categories/%E8%BD%AF%E4%BB%B6/"/>
     
     
       <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
@@ -130,40 +159,11 @@
   </entry>
   
   <entry>
-    <title>入坑Linux(1)——双系统安装</title>
-    <link href="https://chengpengzhao.com/2019/11/12/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/"/>
-    <id>https://chengpengzhao.com/2019/11/12/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</id>
-    <published>2019-11-11T15:00:00.000Z</published>
-    <updated>2019-11-20T13:24:06.475Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
-    
-      <category term="生活" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一个月浑浑噩噩过去了，下个月认真学习(10.26)</title>
     <link href="https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/"/>
     <id>https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/</id>
     <published>2019-10-25T15:00:00.000Z</published>
-    <updated>2019-11-20T10:12:29.652Z</updated>
+    <updated>2019-11-20T13:33:32.498Z</updated>
     
     <summary type="html">
     
@@ -192,7 +192,7 @@
     <link href="https://chengpengzhao.com/2019/09/28/2019-09-liu-xue-9.26-10.10/"/>
     <id>https://chengpengzhao.com/2019/09/28/2019-09-liu-xue-9.26-10.10/</id>
     <published>2019-09-27T15:00:00.000Z</published>
-    <updated>2019-11-20T10:07:45.395Z</updated>
+    <updated>2019-11-20T13:33:44.570Z</updated>
     
     <summary type="html">
     
@@ -304,7 +304,7 @@
     <link href="https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/"/>
     <id>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</id>
     <published>2019-04-30T15:00:00.000Z</published>
-    <updated>2019-11-20T10:08:49.031Z</updated>
+    <updated>2019-11-20T13:34:06.919Z</updated>
     
     <summary type="html">
     
@@ -324,7 +324,7 @@
     
       <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
     
-      <category term="生活" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
       <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
@@ -393,7 +393,7 @@
     <link href="https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/"/>
     <id>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</id>
     <published>2019-03-17T15:00:00.000Z</published>
-    <updated>2019-11-20T10:09:00.659Z</updated>
+    <updated>2019-11-20T13:34:38.995Z</updated>
     
     <summary type="html">
     
@@ -410,7 +410,7 @@
     
       <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
     
-      <category term="生活" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
       <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
