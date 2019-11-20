@@ -40,6 +40,8 @@
       
       <categories>
           
+          <category> 语言 </category>
+          
           <category> Linux </category>
           
           <category> 软件 </category>
@@ -50,6 +52,8 @@
         <tags>
             
             <tag> 安装 </tag>
+            
+            <tag> English </tag>
             
         </tags>
       
