@@ -565,7 +565,7 @@ node -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <h1 id="当前操作系统配置Key（差点忘记）"><a href="#当前操作系统配置Key（差点忘记）" class="headerlink" title="当前操作系统配置Key（差点忘记）"></a>当前操作系统配置Key（差点忘记）</h1><p>免得每次push的时候都得输入用户名密码，让更新blog变得更方便。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~/.ssh
 ssh-keygen -t rsa -C <span class="token string">"邮件地址"</span>
-<span class="token comment" spellcheck="true">#敲入代码后连续按3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容。打开你的 GitHub 主页，进入个人设置 -> SSH and GPG keys -> New SSH key，并将刚刚复制的内容填入 Key 那里。</span>
+<span class="token comment" spellcheck="true">#敲入代码后连续按3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容。打开你的 GitHub 主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key，并将刚刚复制的内容填入 Key 那里。</span>
 <span class="token function">ssh</span> -T git@github.com
 <span class="token comment" spellcheck="true">#如果提示Are you sure you want to continue connecting (yes/no)?，输入yes 并回车</span>
 <span class="token function">git</span> config --global user.name <span class="token string">"你的 GitHub 用户名"</span>
