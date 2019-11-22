@@ -387,7 +387,29 @@
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
    /* 为了给post h1~h3 加上编号，删除了前面一段 */
+#articleContent h1 {
+	counter-increment: counter_h1;
+	counter-reset: counter_h2;
+}
+#articleContent h1:before {
+	content: counter(counter_h1)"　";
+}
 
+#articleContent h2 {
+	counter-increment: counter_h2;
+	counter-reset: counter_h3;
+}
+#articleContent h2:before {
+	content: counter(counter_h1)"."counter(counter_h2)"　";
+}
+
+#articleContent h3 {
+	counter-increment: counter_h3;
+	counter-reset: counter_h4;
+}
+#articleContent h3:before {
+	content: counter(counter_h1)"."counter(counter_h2)"."counter(counter_h3)"　";
+}
 
   
 
