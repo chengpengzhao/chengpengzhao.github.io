@@ -92,9 +92,6 @@ h1 {
 	counter-increment: counter_h1;
 	counter-reset: counter_h2;
 }
-h1:before {
-	content: counter(counter_h1)"　";
-}
 
 h2 {
 	counter-increment: counter_h2;
