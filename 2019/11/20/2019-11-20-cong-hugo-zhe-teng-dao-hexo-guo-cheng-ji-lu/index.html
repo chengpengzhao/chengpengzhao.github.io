@@ -521,14 +521,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    12 分
                 </div>
                 
 				
@@ -751,6 +751,17 @@ tags:
   <span class="token list punctuation">-</span> Markdown 
 
 <span class="token hr punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<blockquote>
+<p>2019/11/22  有人说我的博客打不开，再加上我Godaddy买的域名没办法续费，干脆连着domain全部搬家</p>
+</blockquote>
+<h1 id="CDN加速，把DNS迁移到cloudflare"><a href="#CDN加速，把DNS迁移到cloudflare" class="headerlink" title="CDN加速，把DNS迁移到cloudflare"></a>CDN加速，把DNS迁移到cloudflare</h1><h2 id="注册帐号"><a href="#注册帐号" class="headerlink" title="注册帐号"></a>注册帐号</h2><p>翻了下好像中文只在帮助里有一小部分，主要还是英文。在注册之前可以先解除原来第三方的托管，我之前用的是DNSPOD，大半年没看一打开DNS怎么这么多条。<br>毫不犹豫能删的先全删了再说，然后进我买域名的Godaddy里将DNS托管改为cloudflare(按照它这里给的提示)。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122191602.png" alt=""><br>然后托管成功之后先把DNS给加上（因为之前全删了)，我是用的github平台，直接用CNAME加了@和www,指向<a href="https://chengpengzhao.github.io" target="_blank" rel="noopener">chengpengzhao.github.io</a> 。当然也可以使用A方式加ip就行了，我懒得去ping一下ip所以没用这种方法。<br>接下来的部分就难到我了，简直选择困难，这也体现了cloudflare的强大之处：这配置项也太多了吧。只能慢慢看它的说明一个个设置，先开个版块记录一下有哪些坑。<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193259.png" alt=""> </p>
+<h2 id="cloudflare设置"><a href="#cloudflare设置" class="headerlink" title="cloudflare设置"></a>cloudflare设置</h2><h3 id="Scrape-Shield"><a href="#Scrape-Shield" class="headerlink" title="Scrape Shield"></a>Scrape Shield</h3><p>这一大项是关于反爬虫的，可以适当打开几个保护措施，但其中的Hotlink Protection可以选择关闭，不然在别人blog加你友链时他那边没法显示你的头像（不要问我怎么知道的）。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193950.png" alt="">  </p>
+<h3 id="待踩坑"><a href="#待踩坑" class="headerlink" title="待踩坑"></a>待踩坑</h3><p><br><br><br><br><br><br><br><br></p>
+<h2 id="将整个域名迁移到cloudflare"><a href="#将整个域名迁移到cloudflare" class="headerlink" title="将整个域名迁移到cloudflare"></a>将整个域名迁移到cloudflare</h2><p>既然能够放在一起那我为什么还要多记一个账号的信息呢，godaddy再见了您。<br>首先在DNS管理页面能够看到当前domain所在运营商，如下图：<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122194606.png" alt="">  </p>
+<p>点击<code>Manage domain</code>就可以开始迁移流程了，不过在此之前需要在cloudflare账号中绑定<strong>支付手段</strong>，可以是VISA卡或者PayPal，不支持银联等国内的支付产品（不过可以通过Paypal绑定银联卡）。<br>然后你会收到Godaddy发来的一系列邮件，这里<strong>注意</strong>要想马上迁移完成需要登录Godaddy账号点一下Accept，中文版网站我好像没找到这个选项，切成英文就OK了：  </p>
+<p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195510.png" alt=""><br>过了15分钟左右就会收到Godaddy最后煽情的告别邮件：</p>
+<p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195930.png" alt=""><br>大功告成，接下来就可以享受cloudflare的服务了，域名的费用是8美刀一年，应该算是比较便宜的吧。我当初在Godaddy上买10年也花了580人民币，续费好像更贵。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1514,7 +1525,7 @@ Dakota released the v
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             
