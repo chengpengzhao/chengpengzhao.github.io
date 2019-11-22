@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-22T11:07:41.487Z</updated>
+  <updated>2019-11-22T15:46:45.469Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -17,11 +17,46 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux/Windows使用记录</title>
+    <link href="https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/"/>
+    <id>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</id>
+    <published>2019-11-21T15:00:00.000Z</published>
+    <updated>2019-11-22T15:46:45.469Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;先睡觉&quot;&gt;&lt;a href=&quot;#先睡觉&quot; class=&quot;headerlink&quot; title=&quot;先睡觉&quot;&gt;&lt;/a&gt;先睡觉&lt;/h1&gt;&lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+        
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
+    
+      <category term="软件" scheme="https://chengpengzhao.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
+    
+      <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从Hugo折腾到Hexo过程记录</title>
     <link href="https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/"/>
     <id>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</id>
     <published>2019-11-19T15:00:00.000Z</published>
-    <updated>2019-11-22T11:07:41.487Z</updated>
+    <updated>2019-11-22T15:39:00.453Z</updated>
     
     <summary type="html">
     
@@ -83,7 +118,7 @@
     <link href="https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
     <id>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
     <published>2019-11-14T15:00:00.000Z</published>
-    <updated>2019-11-22T10:10:10.886Z</updated>
+    <updated>2019-11-22T15:46:03.821Z</updated>
     
     <summary type="html">
     
@@ -91,8 +126,7 @@
       
         
         
-          &lt;hr&gt;
-&lt;h1 id=&quot;OpenFOAM相关&quot;&gt;&lt;a href=&quot;#OpenFOAM相关&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;OpenFOAM相关&quot;&gt;&lt;a href=&quot;#OpenFOAM相关&quot; class=&quot;headerlink&quot; title=&quot;OpenFOAM相关&quot;&gt;&lt;/a&gt;OpenFOAM相关&lt;/h1&gt;&lt;p&gt;用Linux的原因就是学习OpenFOAM，所以当然要摆在第一位！正如&lt;a
         
       
     
@@ -113,7 +147,7 @@
     <link href="https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/"/>
     <id>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</id>
     <published>2019-11-12T15:00:00.000Z</published>
-    <updated>2019-11-22T05:57:16.000Z</updated>
+    <updated>2019-11-22T15:30:00.629Z</updated>
     
     <summary type="html">
     
@@ -140,7 +174,7 @@
     <link href="https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/"/>
     <id>https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</id>
     <published>2019-11-11T15:00:00.000Z</published>
-    <updated>2019-11-22T05:44:04.000Z</updated>
+    <updated>2019-11-22T15:29:36.114Z</updated>
     
     <summary type="html">
     
@@ -253,8 +287,8 @@
   
   <entry>
     <title>这个博客的建立过程</title>
-    <link href="https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/"/>
-    <id>https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/</id>
+    <link href="https://chengpengzhao.com/2019/05/26/2019-05-26-meng-xin-jian-bo-ke-de-guo-cheng/"/>
+    <id>https://chengpengzhao.com/2019/05/26/2019-05-26-meng-xin-jian-bo-ke-de-guo-cheng/</id>
     <published>2019-05-25T15:00:00.000Z</published>
     <updated>2019-11-22T05:42:26.000Z</updated>
     
@@ -283,7 +317,7 @@
     <link href="https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/"/>
     <id>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</id>
     <published>2019-05-01T15:00:00.000Z</published>
-    <updated>2019-11-22T05:42:40.000Z</updated>
+    <updated>2019-11-22T15:27:08.307Z</updated>
     
     <summary type="html">
     
@@ -312,7 +346,7 @@
     <link href="https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/"/>
     <id>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</id>
     <published>2019-04-30T15:00:00.000Z</published>
-    <updated>2019-11-22T05:42:36.000Z</updated>
+    <updated>2019-11-22T15:26:11.246Z</updated>
     
     <summary type="html">
     
@@ -344,7 +378,7 @@
     <link href="https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/"/>
     <id>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</id>
     <published>2019-04-05T15:00:00.000Z</published>
-    <updated>2019-11-22T05:42:32.000Z</updated>
+    <updated>2019-11-22T15:25:10.732Z</updated>
     
     <summary type="html">
     
@@ -373,7 +407,7 @@
     <link href="https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/"/>
     <id>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</id>
     <published>2019-03-20T15:00:00.000Z</published>
-    <updated>2019-11-22T05:42:14.000Z</updated>
+    <updated>2019-11-22T15:21:32.104Z</updated>
     
     <summary type="html">
     

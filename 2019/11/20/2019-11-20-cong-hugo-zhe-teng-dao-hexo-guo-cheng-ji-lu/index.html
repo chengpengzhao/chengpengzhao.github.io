@@ -387,18 +387,10 @@
     
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
+   /* 为了给post h1~h3 加上编号，删除了前面一段 */
+
+
+  
 
     #articleContent :focus {
         outline: none;
@@ -751,9 +743,9 @@ tags:
   <span class="token list punctuation">-</span> Markdown 
 
 <span class="token hr punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
+<p><br><br><br></p>
 <blockquote>
-<p>2019/11/22  有人说我的博客打不开，再加上我Godaddy买的域名没办法续费，干脆连着domain全部搬家</p>
+<p> <strong>2019/11/22更新</strong>  <em>有人说我的博客打不开，再加上我Godaddy买的域名没办法续费，干脆连着domain全部搬家</em></p>
 </blockquote>
 <h1 id="CDN加速，把DNS迁移到cloudflare"><a href="#CDN加速，把DNS迁移到cloudflare" class="headerlink" title="CDN加速，把DNS迁移到cloudflare"></a>CDN加速，把DNS迁移到cloudflare</h1><h2 id="注册帐号"><a href="#注册帐号" class="headerlink" title="注册帐号"></a>注册帐号</h2><p>翻了下好像中文只在帮助里有一小部分，主要还是英文。在注册之前可以先解除原来第三方的托管，我之前用的是DNSPOD，大半年没看一打开DNS怎么这么多条。<br>毫不犹豫能删的先全删了再说，然后进我买域名的Godaddy里将DNS托管改为cloudflare(按照它这里给的提示)。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122191602.png" alt=""><br>然后托管成功之后先把DNS给加上（因为之前全删了)，我是用的github平台，直接用CNAME加了@和www,指向<a href="https://chengpengzhao.github.io" target="_blank" rel="noopener">chengpengzhao.github.io</a> 。当然也可以使用A方式加ip就行了，我懒得去ping一下ip所以没用这种方法。<br>接下来的部分就难到我了，简直选择困难，这也体现了cloudflare的强大之处：这配置项也太多了吧。只能慢慢看它的说明一个个设置，先开个版块记录一下有哪些坑。<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193259.png" alt=""> </p>
 <h2 id="cloudflare设置"><a href="#cloudflare设置" class="headerlink" title="cloudflare设置"></a>cloudflare设置</h2><h3 id="Scrape-Shield"><a href="#Scrape-Shield" class="headerlink" title="Scrape Shield"></a>Scrape Shield</h3><p>这一大项是关于反爬虫的，可以适当打开几个保护措施，但其中的Hotlink Protection可以选择关闭，不然在别人blog加你友链时他那边没法显示你的头像（不要问我怎么知道的）。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193950.png" alt="">  </p>
@@ -1273,52 +1265,60 @@ tags:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/">
+                <a href="/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191120-2.jpg" class="responsive-img" alt="从Hugo折腾到Hexo过程记录">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg" class="responsive-img" alt="Linux/Windows使用记录">
                         
-                        <span class="card-title">从Hugo折腾到Hexo过程记录</span>
+                        <span class="card-title">Linux/Windows使用记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言
-本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础开始折腾博客
+                            先睡觉
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { ret
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" class="post-category">
-                                    博客建立
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="post-category">
+                                    软件
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E6%97%A5%E5%BF%97/">
                         <span class="chip bg-color">日志</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AE%89%E8%A3%85/">
+                        <span class="chip bg-color">安装</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
                     </a>
                     
                 </div>

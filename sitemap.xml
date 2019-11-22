@@ -2,23 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
+    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
     
-    <lastmod>2019-11-22T11:07:41.487Z</lastmod>
+    <lastmod>2019-11-22T15:46:45.469Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</loc>
     
-    <lastmod>2019-11-22T10:10:10.886Z</lastmod>
+    <lastmod>2019-11-22T15:46:03.821Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
+    
+    <lastmod>2019-11-22T15:39:00.453Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</loc>
     
-    <lastmod>2019-11-22T05:57:16.000Z</lastmod>
+    <lastmod>2019-11-22T15:30:00.629Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</loc>
+    
+    <lastmod>2019-11-22T15:29:36.114Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</loc>
+    
+    <lastmod>2019-11-22T15:27:08.307Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</loc>
+    
+    <lastmod>2019-11-22T15:26:11.246Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</loc>
+    
+    <lastmod>2019-11-22T15:25:10.732Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</loc>
+    
+    <lastmod>2019-11-22T15:21:32.104Z</lastmod>
     
   </url>
   
@@ -26,13 +68,6 @@
     <loc>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</loc>
     
     <lastmod>2019-11-22T05:44:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</loc>
-    
-    <lastmod>2019-11-22T05:44:04.000Z</lastmod>
     
   </url>
   
@@ -58,37 +93,9 @@
   </url>
   
   <url>
-    <loc>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</loc>
-    
-    <lastmod>2019-11-22T05:42:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</loc>
-    
-    <lastmod>2019-11-22T05:42:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</loc>
-    
-    <lastmod>2019-11-22T05:42:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/05/26/2019-04-26-meng-xin-jian-bo-ke-de-guo-cheng/</loc>
+    <loc>https://chengpengzhao.com/2019/05/26/2019-05-26-meng-xin-jian-bo-ke-de-guo-cheng/</loc>
     
     <lastmod>2019-11-22T05:42:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</loc>
-    
-    <lastmod>2019-11-22T05:42:14.000Z</lastmod>
     
   </url>
   

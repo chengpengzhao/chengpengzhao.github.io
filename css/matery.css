@@ -33,6 +33,11 @@
     }
 }
 
+
+
+
+/* 为了给post h1~h3 加上编号，删除了前面一段 */
+
 body {
     background-color: #eaeaea;
     margin: 0;
@@ -40,6 +45,7 @@ body {
 }
 
 h1 {
+    text-align: center;             /*一级标题设置居中*/
     margin: 48px 0 22px -5px;
     font-size: 2.0rem;
     font-weight: bold;
@@ -80,15 +86,53 @@ h6 {
     line-height: 1.1rem;
 }
 
+
+
+h1 {
+	counter-increment: counter_h1;
+	counter-reset: counter_h2;
+}
+h1:before {
+	content: counter(counter_h1)"　";
+}
+
+h2 {
+	counter-increment: counter_h2;
+	counter-reset: counter_h3;
+}
+h2:before {
+	content: counter(counter_h1)"."counter(counter_h2)"　";
+}
+
+h3 {
+	counter-increment: counter_h3;
+	counter-reset: counter_h4;
+}
+h3:before {
+	content: counter(counter_h1)"."counter(counter_h2)"."counter(counter_h3)"　";
+}
+
+
 p {
     font-size: 1rem;
     line-height: 1.5rem;
 }
 
-hr {
-    margin: 20px 0;
+/*修改hr的样式*/
+hr  {
+  margin: 20px 0;
+  height: 3px;
+  border: none;
     border: 0;
     border-top: 1px solid #ccc;
+  background-color: #272822;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    white,
+    white 4px,
+    transparent 4px,
+    transparent 8px
+  );
 }
 
 blockquote {
@@ -249,6 +293,7 @@ mark {
 
 .bg-color {
     background-image: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    opacity: 0.8;
 }
 
 .text-color {
@@ -713,6 +758,7 @@ header .go-back i {
     margin: 0 auto;
     padding: 1.8rem 1.25rem;
     z-index: 2;
+
 }
 
 .recommend .post-card .post-categories {
@@ -2036,3 +2082,6 @@ footer .copy-right {
     padding: 0px;
     margin: 0px;
 }
+
+
+

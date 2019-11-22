@@ -1,3 +1,4 @@
+
 $(function () {
     /**
      * 添加文章卡片hover效果.
@@ -71,7 +72,7 @@ $(function () {
     /*文章内容详情的一些初始化特性*/
     let articleInit = function () {
         $('#articleContent a').attr('target', '_blank');
-
+	$('#articleContent h1').after('<hr>');   //一级标题后加一行分隔线
         $('#articleContent img').each(function () {
             let imgPath = $(this).attr('src');
             $(this).wrap('<div class="img-item" data-src="' + imgPath + '" data-sub-html=".caption"></div>');
@@ -167,3 +168,4 @@ $(function () {
             }
     });
 });
+
