@@ -6,7 +6,7 @@ $(function () {
     let articleCardHover = function () {
         let animateClass = 'animated pulse';
         $('article .article').hover(function () {
-            $(this).addClass(animateClass);
+          /*  $(this).addClass(animateClass);*/   去掉效果
         }, function () {
             $(this).removeClass(animateClass);
         });
@@ -65,8 +65,8 @@ $(function () {
 
     AOS.init({
         easing: 'ease-in-out-sine',
-        duration: 700,
-        delay: 100
+        duration: 0,
+        delay: 0                 /*去掉效果*/
     });
 
     /*文章内容详情的一些初始化特性*/
