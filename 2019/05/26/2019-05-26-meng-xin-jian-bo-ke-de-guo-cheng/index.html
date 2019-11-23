@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="这个博客的建立过程, Zcp&#39;s Zone">
-    <meta name="description" content="前言之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有一些途径我就不多说了。
-github pages直接托">
+    <meta name="description" content="1  前言之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有一些途径我就不多说了。
+github pages">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -387,30 +387,6 @@ github pages直接托">
     
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-   /* 为了给post h1~h3 加上编号，删除了前面一段 */
-#articleContent h1 {
-	counter-increment: counter_h1;
-	counter-reset: counter_h2;
-}
-#articleContent h1:before {
-	content: counter(counter_h1)"　";
-}
-
-#articleContent h2 {
-	counter-increment: counter_h2;
-	counter-reset: counter_h3;
-}
-#articleContent h2:before {
-	content: counter(counter_h1)"."counter(counter_h2)"　";
-}
-
-#articleContent h3 {
-	counter-increment: counter_h3;
-	counter-reset: counter_h4;
-}
-#articleContent h3:before {
-	content: counter(counter_h1)"."counter(counter_h2)"."counter(counter_h3)"　";
-}
 
   
 
@@ -531,14 +507,14 @@ github pages直接托">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 				
@@ -554,11 +530,11 @@ github pages直接托">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有<a href="https://www.jianshu.com/p/a44a6347031c" target="_blank" rel="noopener">一些途径</a>我就不多说了。</p>
+                <h1 id="前言">1  前言</h1><p>之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有<a href="https://www.jianshu.com/p/a44a6347031c" target="_blank" rel="noopener">一些途径</a>我就不多说了。</p>
 <p><a href="https://help.github.com/en/categories/github-pages-basics" target="_blank" rel="noopener">github pages</a>直接托管在github上，比较方便所以很多人都用的这种方式，不过要求至少要会一点git控制命令，git相关教程我记得放在bookmarks里了，真正常用也就那么几个语句，比较容易上手。而之所以选择<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener">hugo</a>纯粹是因为朋友推荐，我搭好了之后看有的hexo主题写的特详细，顿时有点后悔，觉得自己走了很多弯路，不过hugo也是很好用的虽然网上资料可能不是太多。</p>
 <p>接下来我就详细叙述下这个博客的建立的过程，我也是萌新有些地方具体的原理可能不太清楚，不过只要搭的像个样子不就行了。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="安装-hugo、git、nodejs"><a href="#安装-hugo、git、nodejs" class="headerlink" title="安装 hugo、git、nodejs"></a>安装 hugo、git、nodejs</h2><p>用hugo部署网站一般先是在本地调试，通过hugo server命令可以在浏览器<a href="http://localhost:1313" target="_blank" rel="noopener">http://localhost:1313</a> 查看效果，然后用git将文件传到github里；nodejs是之后给网页加一些模块脚本要用的，用的机会不是很多。具体的安装步骤我觉得就没必要讲了，百度一下一大把的东西，又不复杂。</p>
-<h3 id="常用的Git命令"><a href="#常用的Git命令" class="headerlink" title="常用的Git命令"></a>常用的Git命令</h3><ol>
+<h1 id="步骤">2  步骤</h1><h2 id="安装-hugo、git、nodejs">2.1  安装 hugo、git、nodejs</h2><p>用hugo部署网站一般先是在本地调试，通过hugo server命令可以在浏览器<a href="http://localhost:1313" target="_blank" rel="noopener">http://localhost:1313</a> 查看效果，然后用git将文件传到github里；nodejs是之后给网页加一些模块脚本要用的，用的机会不是很多。具体的安装步骤我觉得就没必要讲了，百度一下一大把的东西，又不复杂。</p>
+<h3 id="常用的Git命令">2.1.1  常用的Git命令</h3><ol>
 <li><p>克隆远程库： git clone+目标库网址\<br> （如<strong>git clone <a href="https://github.com/chengpengzhao/latex_htm_zcp" target="_blank" rel="noopener">https://github.com/chengpengzhao/latex_htm_zcp</a></strong> ）</p>
 </li>
 <li><p>添加远程库： <strong>git remote add origin</strong>+目标库网址，若提示失败在前面用 <strong>git remote rm origin</strong> 命令。</p>
@@ -569,7 +545,7 @@ github pages直接托">
 <p> <strong>git add -A</strong>  (注意下add各参数的意义)</p>
 <p> <strong>git commit -m "your message"</strong></p>
 <p> <strong>git push origin master</strong></p>
-<h2 id="hugo的文件夹结构"><a href="#hugo的文件夹结构" class="headerlink" title="hugo的文件夹结构"></a>hugo的文件夹结构</h2></li>
+<h2 id="hugo的文件夹结构">2.2  hugo的文件夹结构</h2></li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master//img/hugo%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.jpg" alt="我的hugo文件夹">如图hugo一般是这些文件夹（除了node_modules）加上一个config.toml配置文件（还有些文件是我后来写的上传东西用的脚本）。</p>
 <ul>
@@ -593,16 +569,16 @@ github pages直接托">
 </li>
 </ul>
 <p>推荐<strong>先在本地把网站安排好了再上传</strong>，不然改来改去很麻烦。</p>
-<h2 id="下载hugo主题"><a href="#下载hugo主题" class="headerlink" title="下载hugo主题"></a>下载hugo主题</h2><p><a href="https://themes.gohugo.io/" target="_blank" rel="noopener">https://themes.gohugo.io/</a>上可以找到很多好看的主题，仔细阅读所选主题的相关说明，把它下载到本地，把各个文件夹里的东西放到hugo的相应文件夹里，然后用hugo命令在本地查看效果。一般主题都会有一个exampleSite，可以看看里面config.toml设置和文章的格式。（必须先熟悉hugo文件夹结构后再进行这一步）</p>
+<h2 id="下载hugo主题">2.3  下载hugo主题</h2><p><a href="https://themes.gohugo.io/" target="_blank" rel="noopener">https://themes.gohugo.io/</a>上可以找到很多好看的主题，仔细阅读所选主题的相关说明，把它下载到本地，把各个文件夹里的东西放到hugo的相应文件夹里，然后用hugo命令在本地查看效果。一般主题都会有一个exampleSite，可以看看里面config.toml设置和文章的格式。（必须先熟悉hugo文件夹结构后再进行这一步）</p>
 <p>hugo server启动后网页(localhost1313)显示的内容会随着你的修改实时变动，所以在写博客时十分好用，这也是hugo的一大优点吧。</p>
-<h2 id="熟悉所下载主题的模块"><a href="#熟悉所下载主题的模块" class="headerlink" title="熟悉所下载主题的模块"></a>熟悉所下载主题的模块</h2><p>如果你想要自己对主题做一些修改，比如加入评论系统啊、显示来访数、动态效果、搜索功能……那就必须经过最苦逼的这一个步骤了，把主题layouts和static里的文件一个个的啃一遍，知道每个文件大概实现了什么功能。一般好一点的主题都会说明一下它有哪些模块，怎么加入一些常用模块；总之在这方面花的时间应该是最多的。</p>
+<h2 id="熟悉所下载主题的模块">2.4  熟悉所下载主题的模块</h2><p>如果你想要自己对主题做一些修改，比如加入评论系统啊、显示来访数、动态效果、搜索功能……那就必须经过最苦逼的这一个步骤了，把主题layouts和static里的文件一个个的啃一遍，知道每个文件大概实现了什么功能。一般好一点的主题都会说明一下它有哪些模块，怎么加入一些常用模块；总之在这方面花的时间应该是最多的。</p>
 <p>建议把这部分放在最后进行，或者干脆不做修改直接拿他的主题用也行。下面我简单分类介绍下我博客中这几个模块添加的艰辛历程：</p>
-<h3 id="访问计数模块"><a href="#访问计数模块" class="headerlink" title="访问计数模块"></a>访问计数模块</h3><p>我用的是<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>网页计数器，这个还比较简单，layouts文件夹里相应的html位置加入代码就行。</p>
-<h3 id="评论模块"><a href="#评论模块" class="headerlink" title="评论模块"></a>评论模块</h3><p>由于在国内，某些评论系统被墙不好用，我用的是<a href="https://valine.js.org/" target="_blank" rel="noopener">Valine</a>的评论系统，也是在相应的html中插入代码；这里要注意页面的格式设置，可能会造成字体、方框大小不太合适，这时候要在css文件中修改格式。常采用开发者工具先找到控制对应字体的文件位置，再做相应修改。</p>
-<h3 id="搜索模块"><a href="#搜索模块" class="headerlink" title="搜索模块"></a>搜索模块</h3><p>我的主题自带了对<a href="https://www.algolia.com/" target="_blank" rel="noopener">algolia</a>搜索模块的支持，所以注册、设置下来没有花太多功夫，这个好像还要装到本地，然后每次写了posts之后要用<strong>npm run algolia</strong>命令更新索引目录。</p>
-<h3 id="数学公式模块"><a href="#数学公式模块" class="headerlink" title="数学公式模块"></a>数学公式模块</h3><p><a href="https://www.mathjax.org/#gettingstarted" target="_blank" rel="noopener"><strong>Mathjax</strong></a>没得说。</p>
-<h3 id="特殊效果模块"><a href="#特殊效果模块" class="headerlink" title="特殊效果模块"></a>特殊效果模块</h3><p>可以加入一些动态背景效果（比如像我这样），或者甚至你可以加一个live2D的看板娘。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不要在意具体的细节，知道代码的作用、大体的框架、实现的方式，然后进行粗略的调整就行了。如果把这些代码看成是一个个贴了标签的黑盒，那么对于我们这些非专业人士来说，读懂标签就够用了。</p>
+<h3 id="访问计数模块">2.4.1  访问计数模块</h3><p>我用的是<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>网页计数器，这个还比较简单，layouts文件夹里相应的html位置加入代码就行。</p>
+<h3 id="评论模块">2.4.2  评论模块</h3><p>由于在国内，某些评论系统被墙不好用，我用的是<a href="https://valine.js.org/" target="_blank" rel="noopener">Valine</a>的评论系统，也是在相应的html中插入代码；这里要注意页面的格式设置，可能会造成字体、方框大小不太合适，这时候要在css文件中修改格式。常采用开发者工具先找到控制对应字体的文件位置，再做相应修改。</p>
+<h3 id="搜索模块">2.4.3  搜索模块</h3><p>我的主题自带了对<a href="https://www.algolia.com/" target="_blank" rel="noopener">algolia</a>搜索模块的支持，所以注册、设置下来没有花太多功夫，这个好像还要装到本地，然后每次写了posts之后要用<strong>npm run algolia</strong>命令更新索引目录。</p>
+<h3 id="数学公式模块">2.4.4  数学公式模块</h3><p><a href="https://www.mathjax.org/#gettingstarted" target="_blank" rel="noopener"><strong>Mathjax</strong></a>没得说。</p>
+<h3 id="特殊效果模块">2.4.5  特殊效果模块</h3><p>可以加入一些动态背景效果（比如像我这样），或者甚至你可以加一个live2D的看板娘。</p>
+<h1 id="总结">3  总结</h1><p>不要在意具体的细节，知道代码的作用、大体的框架、实现的方式，然后进行粗略的调整就行了。如果把这些代码看成是一个个贴了标签的黑盒，那么对于我们这些非专业人士来说，读懂标签就够用了。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1129,7 +1105,7 @@ github pages直接托">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            LaTeX 公式编辑 with MathJax by zcpMathJaxcodecogstablesgenerator最近在学LaTeX，自己用的是Texlive2019+Texmaker，据说CTEX很久没更新了大家都不推荐使用；编辑器
+                            1  LaTeX 公式编辑 with MathJax by zcp1.1  MathJax1.2  codecogs1.3  tablesgenerator最近在学LaTeX，自己用的是Texlive2019+Texmaker，据说CTEX
                         
                     </div>
                     <div class="publish-info">
@@ -1177,8 +1153,8 @@ github pages直接托">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            関西弁講座関西弁には、近畿方言の一つである。でも関西といっても地域によって話すことばやイントネーションがまったく異なる。だから大阪弁、京都弁、神戸弁のような言い方もある。
-「～しはる」$「～しています」→「～してはる」\\「ます形」→「～は
+                            1  関西弁講座関西弁には、近畿方言の一つである。でも関西といっても地域によって話すことばやイントネーションがまったく異なる。だから大阪弁、京都弁、神戸弁のような言い方もある。
+1.1  「～しはる」$「～しています」→「～してはる」\\「
                         
                     </div>
                     <div class="publish-info">
@@ -1351,7 +1327,7 @@ github pages直接托">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.7k</span>&nbsp;字
+                class="white-color">20k</span>&nbsp;字
             
             
             
