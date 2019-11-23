@@ -521,14 +521,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    4.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    16 分
                 </div>
                 
 				
@@ -757,6 +757,70 @@ tags:
 <p>点击<code>Manage domain</code>就可以开始迁移流程了，不过在此之前需要在cloudflare账号中绑定<strong>支付手段</strong>，可以是VISA卡或者PayPal，不支持银联等国内的支付产品（不过可以通过Paypal绑定银联卡）。<br>然后你会收到Godaddy发来的一系列邮件，这里<strong>注意</strong>要想马上迁移完成需要登录Godaddy账号点一下Accept，中文版网站我好像没找到这个选项，切成英文就OK了：  </p>
 <p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195510.png" alt><br>过了15分钟左右就会收到Godaddy最后煽情的告别邮件：</p>
 <p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195930.png" alt><br>大功告成，接下来就可以享受cloudflare的服务了，域名的费用是8美刀一年，应该算是比较便宜的吧。我当初在Godaddy上买10年也花了580人民币，续费好像更贵。</p>
+<h1 id="Post排版自定义">8&emsp;Post排版自定义</h1><p>忽然觉得Post如果有很多一二三级标题的话就有点难阅读了，有时候一眼看过去不能立即分辨出来这是第几级标题。所以感觉编号还是很重要的，但在写文章的时候还要注意编号就太不效率了，最后我选择<strong>给Post标题加入自动编号</strong>。  </p>
+<h2 id="标题自动编号">8.1&emsp;标题自动编号</h2><h3 id="先折腾一番再说">8.1.1&emsp;先折腾一番再说</h3><p>百度了一下自动编号的实现方式，根据这个主题的layout立马试了下，对<code>layout/_partial</code>文件夹下<code>post-detail-toc.ejs</code>文件的开头部分作了些修改：</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token id">#articleContent</span> h1 </span><span class="token punctuation">{</span>
+    <span class="token property">counter-increment</span><span class="token punctuation">:</span> counter_h<span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token property">counter-reset</span><span class="token punctuation">:</span> counter_h<span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector"><span class="token id">#articleContent</span> h1<span class="token pseudo-element">:before</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">1</span><span class="token punctuation">)</span><span class="token string">"　"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token id">#articleContent</span> h2 </span><span class="token punctuation">{</span>
+    <span class="token property">counter-increment</span><span class="token punctuation">:</span> counter_h<span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token property">counter-reset</span><span class="token punctuation">:</span> counter_h<span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector"><span class="token id">#articleContent</span> h2<span class="token pseudo-element">:before</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">1</span><span class="token punctuation">)</span><span class="token string">"."</span><span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">2</span><span class="token punctuation">)</span><span class="token string">"　"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token id">#articleContent</span> h3 </span><span class="token punctuation">{</span>
+    <span class="token property">counter-increment</span><span class="token punctuation">:</span> counter_h<span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token property">counter-reset</span><span class="token punctuation">:</span> counter_h<span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector"><span class="token id">#articleContent</span> h3<span class="token pseudo-element">:before</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">1</span><span class="token punctuation">)</span><span class="token string">"."</span><span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">2</span><span class="token punctuation">)</span><span class="token string">"."</span><span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">3</span><span class="token punctuation">)</span><span class="token string">"　"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这段代码利用css的counter属性实现自动编号；但编号有是有了，我发现侧边目录也就是Toc仍没有编号，并且点击右侧跳转当前标题会被上面的状态栏挡住，还是需要进一步修改。<br>在<code>matery.css</code>里改来改去，还是有点小问题，而且侧边栏的编号不知道怎么加，最后我放弃了这条思路。</p>
+<h3 id="最后采用的方法">8.1.2&emsp;最后采用的方法</h3><p>抱着一点期待在github上翻了下，还真的有相关的小工具，<a href="https://github.com/r12f/hexo-heading-index" target="_blank" rel="noopener">hexo-heading-index</a>，按照说明先用npm安装：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> hexo-heading-index --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>再在根目录的<code>_config.yml</code>中插入相关设置：</p>
+<pre class="line-numbers language-yml"><code class="language-yml">heading_index:
+  enable: true
+  index_styles: "{1} {1} {1} {1} {1} {1}"
+  connector: "."
+  global_prefix: ""
+  global_suffix: "&emsp;"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以根据个人喜好适当修改，这里我用了个<code>&amp;emsp</code>来让序号和标题隔得更开一点。再<code>hexo s</code>看看效果，恩不错，还是白嫖人家写的东西好。但仍有个小问题就是在<strong>不想要出现序号的地方也给编了号</strong>，比如说我的<a href="https://chengpengzhao.com/friends/">友情链接</a>。这里中部的文字也是Post的格式所以也给加上了编号，看起来自然不太舒服。<br>但这个插件好像没更新过了不知道怎么设置不编号的区域，所以只能自己改源码。好在代码写得还比较清楚，我通过<strong>只对前三级标题编号，在不想自动编号的地方用后三级标题</strong>的方式解决，只需要在<code>hexo-heading-index/lib/index.js</code>中稍作修改：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">updateHeadingIndexes</span><span class="token punctuation">(</span>options<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> $ <span class="token operator">=</span> cheerio<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token punctuation">{</span> decodeEntities<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> headings <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'h1, h2, h3'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment" spellcheck="true">//这里修改需要几级标题</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>headings</code>里面只保留想要自动编号的部分就行了。大功告成~ </p>
+<h2 id="一级标题下自动插入分隔线">8.2&emsp;一级标题下自动插入分隔线</h2><p>只需要在<code>hexo-theme-matery/source/js/matery.js</code>中相应部分加一行就行了：</p>
+<pre class="line-numbers language-js"><code class="language-js">    <span class="token comment" spellcheck="true">/*文章内容详情的一些初始化特性*/</span>
+    <span class="token keyword">let</span> articleInit <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#articleContent a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'target'</span><span class="token punctuation">,</span> <span class="token string">'_blank'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#articleContent h1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token string">'&lt;hr>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//一级标题后加一行分隔线</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后可以在<code>matery.css</code>里修改下分隔线的样式：</p>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*修改hr的样式*/</span>
+<span class="token selector">hr  </span><span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">20</span>px <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">3</span>px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">border-top</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid <span class="token hexcode">#ccc</span><span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#272822</span><span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">repeating-linear-gradient</span><span class="token punctuation">(</span>
+    -<span class="token number">45</span>deg,
+    white,
+    white <span class="token number">4</span>px,
+    transparent <span class="token number">4</span>px,
+    transparent <span class="token number">8</span>px
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果你也觉得再让一级标题居中会更舒服的话，只需在h1样式中加入<code>text-align: center;</code>就OK了。 </p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1528,7 +1592,7 @@ Dakota released the v
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.2k</span>&nbsp;字
+                class="white-color">21k</span>&nbsp;字
             
             
             
