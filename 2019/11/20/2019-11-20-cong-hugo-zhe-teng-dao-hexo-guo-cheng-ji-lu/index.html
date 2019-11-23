@@ -38,7 +38,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Zcp's Zone</span>
                 </a>
@@ -188,7 +188,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Zcp's Zone</div>
         <div class="logo-desc">
@@ -750,14 +750,14 @@ tags:
 <blockquote>
 <p> <strong>2019/11/22更新</strong>  <em>有人说我的博客打不开，再加上我Godaddy买的域名没办法续费，干脆连着domain全部搬家</em></p>
 </blockquote>
-<h1 id="CDN加速，把DNS迁移到cloudflare">7&emsp;CDN加速，把DNS迁移到cloudflare</h1><h2 id="注册帐号">7.1&emsp;注册帐号</h2><p>翻了下好像中文只在帮助里有一小部分，主要还是英文。在注册之前可以先解除原来第三方的托管，我之前用的是DNSPOD，大半年没看一打开DNS怎么这么多条。<br>毫不犹豫能删的先全删了再说，然后进我买域名的Godaddy里将DNS托管改为cloudflare(按照它这里给的提示)。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122191602.png" alt><br>然后托管成功之后先把DNS给加上（因为之前全删了)，我是用的github平台，直接用CNAME加了@和www,指向<a href="https://chengpengzhao.github.io" target="_blank" rel="noopener">chengpengzhao.github.io</a> 。当然也可以使用A方式加ip就行了，我懒得去ping一下ip所以没用这种方法。<br>接下来的部分就难到我了，简直选择困难，这也体现了cloudflare的强大之处：这配置项也太多了吧。只能慢慢看它的说明一个个设置，先开个版块记录一下有哪些坑。<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193259.png" alt> </p>
-<h2 id="cloudflare设置">7.2&emsp;cloudflare设置</h2><h3 id="Scrape-Shield">7.2.1&emsp;Scrape Shield</h3><p>这一大项是关于反爬虫的，可以适当打开几个保护措施，但其中的Hotlink Protection可以选择关闭，不然在别人blog加你友链时他那边没法显示你的头像（不要问我怎么知道的）。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193950.png" alt>  </p>
-<h3 id="Speeding">7.2.2&emsp;Speeding</h3><p>这个里面有很多选项可以加快博客的访问速度，我先全部打开试了试，发现在浏览博客时很多效果都没了，直接不让加载，要按F5才能刷新出来。经过排查应该是Brotli这个选项的问题，因为我只关了这个然后问题就解决了，当然也不排除是别的原因。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123160848.png" alt></p>
-<h3 id="Page-Rules">7.2.3&emsp;Page Rules</h3><p>据说这个功能挺强大的，我也不太会就按照网上别人的设置弄了一下，先看看实际效果如何吧。<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123161014.png" alt> </p>
-<h2 id="将整个域名迁移到cloudflare">7.3&emsp;将整个域名迁移到cloudflare</h2><p>既然能够放在一起那我为什么还要多记一个账号的信息呢，godaddy再见了您。<br>首先在DNS管理页面能够看到当前domain所在运营商，如下图：<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122194606.png" alt>  </p>
+<h1 id="CDN加速，把DNS迁移到cloudflare">7&emsp;CDN加速，把DNS迁移到cloudflare</h1><h2 id="注册帐号">7.1&emsp;注册帐号</h2><p>翻了下好像中文只在帮助里有一小部分，主要还是英文。在注册之前可以先解除原来第三方的托管，我之前用的是DNSPOD，大半年没看一打开DNS怎么这么多条。<br>毫不犹豫能删的先全删了再说，然后进我买域名的Godaddy里将DNS托管改为cloudflare(按照它这里给的提示)。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122191602.png" alt><br>然后托管成功之后先把DNS给加上（因为之前全删了)，我是用的github平台，直接用CNAME加了@和www,指向<a href="https://chengpengzhao.github.io" target="_blank" rel="noopener">chengpengzhao.github.io</a> 。当然也可以使用A方式加ip就行了，我懒得去ping一下ip所以没用这种方法。<br>接下来的部分就难到我了，简直选择困难，这也体现了cloudflare的强大之处：这配置项也太多了吧。只能慢慢看它的说明一个个设置，先开个版块记录一下有哪些坑。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193259.png" alt> </p>
+<h2 id="cloudflare设置">7.2&emsp;cloudflare设置</h2><h3 id="Scrape-Shield">7.2.1&emsp;Scrape Shield</h3><p>这一大项是关于反爬虫的，可以适当打开几个保护措施，但其中的Hotlink Protection可以选择关闭，不然在别人blog加你友链时他那边没法显示你的头像（不要问我怎么知道的）。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193950.png" alt>  </p>
+<h3 id="Speeding">7.2.2&emsp;Speeding</h3><p>这个里面有很多选项可以加快博客的访问速度，我先全部打开试了试，发现在浏览博客时很多效果都没了，直接不让加载，要按F5才能刷新出来。经过排查应该是Brotli这个选项的问题，因为我只关了这个然后问题就解决了，当然也不排除是别的原因。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123160848.png" alt></p>
+<h3 id="Page-Rules">7.2.3&emsp;Page Rules</h3><p>据说这个功能挺强大的，我也不太会就按照网上别人的设置弄了一下，先看看实际效果如何吧。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123161014.png" alt> </p>
+<h2 id="将整个域名迁移到cloudflare">7.3&emsp;将整个域名迁移到cloudflare</h2><p>既然能够放在一起那我为什么还要多记一个账号的信息呢，godaddy再见了您。<br>首先在DNS管理页面能够看到当前domain所在运营商，如下图：<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122194606.png" alt>  </p>
 <p>点击<code>Manage domain</code>就可以开始迁移流程了，不过在此之前需要在cloudflare账号中绑定<strong>支付手段</strong>，可以是VISA卡或者PayPal，不支持银联等国内的支付产品（不过可以通过Paypal绑定银联卡）。<br>然后你会收到Godaddy发来的一系列邮件，这里<strong>注意</strong>要想马上迁移完成需要登录Godaddy账号点一下Accept，中文版网站我好像没找到这个选项，切成英文就OK了：  </p>
-<p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195510.png" alt><br>过了15分钟左右就会收到Godaddy最后煽情的告别邮件：</p>
-<p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195930.png" alt><br>大功告成，接下来就可以享受cloudflare的服务了，域名的费用是8美刀一年，应该算是比较便宜的吧。我当初在Godaddy上买10年也花了580人民币，续费好像更贵。</p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195510.png" alt><br>过了15分钟左右就会收到Godaddy最后煽情的告别邮件：</p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122195930.png" alt><br>大功告成，接下来就可以享受cloudflare的服务了，域名的费用是8美刀一年，应该算是比较便宜的吧。我当初在Godaddy上买10年也花了580人民币，续费好像更贵。</p>
 <h1 id="Post排版自定义">8&emsp;Post排版自定义</h1><p>忽然觉得Post如果有很多一二三级标题的话就有点难阅读了，有时候一眼看过去不能立即分辨出来这是第几级标题。所以感觉编号还是很重要的，但在写文章的时候还要注意编号就太不效率了，最后我选择<strong>给Post标题加入自动编号</strong>。  </p>
 <h2 id="标题自动编号">8.1&emsp;标题自动编号</h2><h3 id="先折腾一番再说">8.1.1&emsp;先折腾一番再说</h3><p>百度了一下自动编号的实现方式，根据这个主题的layout立马试了下，对<code>layout/_partial</code>文件夹下<code>post-detail-toc.ejs</code>文件的开头部分作了些修改：</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token id">#articleContent</span> h1 </span><span class="token punctuation">{</span>
@@ -1035,10 +1035,10 @@ tags:
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1340,7 +1340,7 @@ tags:
                 <a href="/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg" class="responsive-img" alt="Linux/Windows使用记录">
+                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg" class="responsive-img" alt="Linux/Windows使用记录">
                         
                         <span class="card-title">Linux/Windows使用记录</span>
                     </div>
@@ -1401,7 +1401,7 @@ tags:
                 <a href="/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-4.jpg" class="responsive-img" alt="Install Dakota 6.11 on Ubuntu 18.04">
+                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-4.jpg" class="responsive-img" alt="Install Dakota 6.11 on Ubuntu 18.04">
                         
                         <span class="card-title">Install Dakota 6.11 on Ubuntu 18.04</span>
                     </div>
@@ -1783,6 +1783,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>
