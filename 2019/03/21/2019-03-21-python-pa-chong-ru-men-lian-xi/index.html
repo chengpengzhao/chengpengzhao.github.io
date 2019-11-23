@@ -568,22 +568,19 @@
 <li>数据储存方面，我现在还用不到MongoDB、MySQL这些东西，所以相关库就暂且不提。</li>
 </ul>
 <p>(总算快到正片了…)</p>
-<h1 id="py爬虫思路及过程—以北航课程中心为例">3&emsp;py爬虫思路及过程—以北航课程中心为例</h1><br>
-## 明确需求
-
-<ol>
+<h1 id="py爬虫思路及过程—以北航课程中心为例">3&emsp;py爬虫思路及过程—以北航课程中心为例</h1><h2 id="明确需求">3.1&emsp;明确需求</h2><ol>
 <li>获取北航课程中心的所有课程，信息（类别、名称、链接、教师）储存为一个文本文档。</li>
 <li>筛选想下载的课程（抱歉，我全都要），进入链接并判断是否有课件资源，建立文件夹储存课件以及详细的课程信息。<br>
 
 </li>
 </ol>
-<h2 id="分析网站">3.1&emsp;分析网站</h2><p>由于我不在北航，校外访问首先要登录<a href="https://e.buaa.edu.cn/users/sign_in" target="_blank" rel="noopener">北航vpn</a>，首先打开开发者工具刷新网址，可以看到有一个Name是sign_in，明显就是我们要找的；然后，点击登录后（<u>首先你得有个北航课程中心的账号</u>）发现Headers里面多了Form Data这一项，里面记录了你的账号密码和一个<strong>authenticity_token</strong>以及一些键名，发送请求时肯定是要按照这个格式来；<br></p>
+<h2 id="分析网站">3.2&emsp;分析网站</h2><p>由于我不在北航，校外访问首先要登录<a href="https://e.buaa.edu.cn/users/sign_in" target="_blank" rel="noopener">北航vpn</a>，首先打开开发者工具刷新网址，可以看到有一个Name是sign_in，明显就是我们要找的；然后，点击登录后（<u>首先你得有个北航课程中心的账号</u>）发现Headers里面多了Form Data这一项，里面记录了你的账号密码和一个<strong>authenticity_token</strong>以及一些键名，发送请求时肯定是要按照这个格式来；<br></p>
 <p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/%E8%AF%BE%E7%A8%8B%E4%B8%AD%E5%BF%83%E7%99%BB%E5%BD%95.jpg" alt></p>
 <p>不过细心的你可能发现每次authenticity_token的值都在变化，你可能会说：这要我怎么请求啊？但北航怎么会难为你呢，更加细心的你在网站的<strong>html源代码</strong>里一搜便搜到了竟然有这个值，所以你只需要先提取出来再加入你的请求中就行了，多简单。</p>
 <p>当你满怀欣喜进入一门课程的界面时，又发现右上角竟然还是没有登录的状态？？对这个设定让我当初下课件的时候特别难受，你还得再点一下登录按钮然后会自动跳转进portal界面然后你再返回课程界面按下F5！而且过了一会又会变成需要登录的状态，这个细节在写爬虫的时候也得注意一下，这里不细讲了，毕竟程序员们都在说：<br></p>
 <p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Talk%20is%20cheap.jpg" alt><br></p>
-<h2 id="请求获取解析储存数据">3.2&emsp;请求获取解析储存数据</h2><p>首先看下一共有多少条目课程：<br></p>
-<h3 id="coursesinfo-spider-py">3.2.1&emsp;coursesinfo_spider.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<h2 id="请求获取解析储存数据">3.3&emsp;请求获取解析储存数据</h2><p>首先看下一共有多少条目课程：<br></p>
+<h3 id="coursesinfo-spider-py">3.3.1&emsp;coursesinfo_spider.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> urlencode
 <span class="token keyword">from</span> requests<span class="token punctuation">.</span>exceptions <span class="token keyword">import</span> ConnectionError
 <span class="token keyword">import</span> json
@@ -651,7 +648,7 @@ s <span class="token operator">=</span> requests<span class="token punctuation">
         f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>                   <span class="token comment" spellcheck="true">#储存为字典形式运行结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行结果：<br></p>
 <p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/%E8%AF%BE%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%9C.jpg" alt><br></p>
-<h3 id="download-courses-py">3.2.2&emsp;download_courses.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<h3 id="download-courses-py">3.3.2&emsp;download_courses.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
 <span class="token keyword">import</span> re
 <span class="token keyword">import</span> os
@@ -763,7 +760,7 @@ s <span class="token operator">=</span> requests<span class="token punctuation">
     <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token comment" spellcheck="true">#起始下载项,#看你想下载多少):</span>
         get_data<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'下载完毕'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="几点说明">3.2.3&emsp;几点说明</h3><ul>
+<h3 id="几点说明">3.3.3&emsp;几点说明</h3><ul>
 <li>requests.Session()用来维持一次登录，这个很重要，不然每次都是相互独立的请求；</li>
 <li>validateTitle是我后来加的，程序各种报错发现是一些课程名竟然有些./\符号；</li>
 <li>我用的是<a href="http://www.runoob.com/regexp/regexp-syntax.html" target="_blank" rel="noopener">正则表达式</a>，强烈推荐学习，让你的搜索能力一夜猛增；</li>
@@ -1524,7 +1521,7 @@ s <span class="token operator">=</span> requests<span class="token punctuation">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">21.3k</span>&nbsp;字
+                class="white-color">21.7k</span>&nbsp;字
             
             
             

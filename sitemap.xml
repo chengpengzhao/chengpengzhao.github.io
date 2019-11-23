@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
+    
+    <lastmod>2019-11-23T07:10:47.339Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</loc>
+    
+    <lastmod>2019-11-23T07:00:39.082Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/06/03/zi-ji-zuo-de-latex-gong-shi-bian-ji-qi-ge-ren-yong/</loc>
+    
+    <lastmod>2019-11-23T06:56:49.816Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</loc>
+    
+    <lastmod>2019-11-23T06:53:49.764Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</loc>
+    
+    <lastmod>2019-11-23T06:51:26.374Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
     
-    <lastmod>2019-11-23T03:36:18.780Z</lastmod>
+    <lastmod>2019-11-23T06:46:59.524Z</lastmod>
     
   </url>
   
@@ -12,20 +47,6 @@
     <loc>https://chengpengzhao.com/404.html</loc>
     
     <lastmod>2019-11-23T02:53:31.907Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
-    
-    <lastmod>2019-11-23T02:41:57.507Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</loc>
-    
-    <lastmod>2019-11-22T15:46:03.821Z</lastmod>
     
   </url>
   
@@ -44,13 +65,6 @@
   </url>
   
   <url>
-    <loc>https://chengpengzhao.com/2019/05/02/2019-05-ri-ben-yu-nofang-yan/</loc>
-    
-    <lastmod>2019-11-22T15:27:08.307Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://chengpengzhao.com/2019/05/01/2019-04-ri-ji/</loc>
     
     <lastmod>2019-11-22T15:26:11.246Z</lastmod>
@@ -65,23 +79,9 @@
   </url>
   
   <url>
-    <loc>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</loc>
-    
-    <lastmod>2019-11-22T15:21:32.104Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</loc>
     
     <lastmod>2019-11-22T05:44:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/06/03/zi-ji-zuo-de-latex-gong-shi-bian-ji-qi-ge-ren-yong/</loc>
-    
-    <lastmod>2019-11-22T05:43:32.000Z</lastmod>
     
   </url>
   
