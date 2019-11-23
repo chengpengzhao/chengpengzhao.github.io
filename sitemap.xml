@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
+    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
     
-    <lastmod>2019-11-23T02:41:57.507Z</lastmod>
+    <lastmod>2019-11-23T03:36:18.780Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
+    <loc>https://chengpengzhao.com/404.html</loc>
     
-    <lastmod>2019-11-22T15:46:45.469Z</lastmod>
+    <lastmod>2019-11-23T02:53:31.907Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
+    
+    <lastmod>2019-11-23T02:41:57.507Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</loc>
     
     <lastmod>2019-11-20T13:34:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/404.html</loc>
-    
-    <lastmod>2019-11-20T13:18:10.000Z</lastmod>
     
   </url>
   

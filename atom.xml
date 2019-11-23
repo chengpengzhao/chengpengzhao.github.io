@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-22T15:46:45.469Z</updated>
+  <updated>2019-11-23T03:36:18.780Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/"/>
     <id>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</id>
     <published>2019-11-21T15:00:00.000Z</published>
-    <updated>2019-11-22T15:46:45.469Z</updated>
+    <updated>2019-11-23T03:36:18.780Z</updated>
     
     <summary type="html">
     
@@ -29,10 +29,8 @@
       
         
         
-          &lt;h1 id=&quot;先睡觉&quot;&gt;1&amp;emsp;先睡觉&lt;/h1&gt;&lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if
+          &lt;h1 id=&quot;Ubuntu出现U盘能识别但打不开&quot;&gt;1&amp;emsp;Ubuntu出现U盘能识别但打不开&lt;/h1&gt;&lt;p&gt;这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  &lt;/p&gt;
+&lt;h2
         
       
     

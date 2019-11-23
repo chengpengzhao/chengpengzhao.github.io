@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Linux/Windows使用记录, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;先睡觉
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src">
+    <meta name="description" content="1&amp;emsp;Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
+1.1&amp;emsp;问题描述插入U盘后在桌面不显示">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -532,7 +530,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    57
+                    355
                 </div>
                 
 
@@ -555,7 +553,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="先睡觉">1&emsp;先睡觉</h1><script>
+                <h1 id="Ubuntu出现U盘能识别但打不开">1&emsp;Ubuntu出现U盘能识别但打不开</h1><p>这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  </p>
+<h2 id="问题描述">1.1&emsp;问题描述</h2><p>插入U盘后在桌面不显示图标，打开文件管理器能在左侧菜单看到U盘名称，但在点击时会弹出:</p>
+<pre><code>Not Authorized polkit authority not available and caller is not uid 0</code></pre><h2 id="解决方案">1.2&emsp;解决方案</h2><p>不保证所有步骤都有用，但流水线走下来就能打开了</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> usbmount
+<span class="token function">sudo</span> gedit /etc/usbmount/usbmount.conf
+<span class="token comment" spellcheck="true">#到FILESYSTEM 在其中添加vfat,ntfs（对应我原来系统的原文件中FILESYSTEM选项中没有ntfs）</span>
+<span class="token comment" spellcheck="true">#FS_MOUNTOPTIONS这个选项里加入”"-fstype= vfat,iocharset=utf8,codepage=936,umask=000,users”</span>
+<span class="token function">sudo</span> /etc/init.d/udev restart <span class="token comment" spellcheck="true"># 重启udev</span>
+
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> exfat-utils
+<span class="token function">tail</span> -f /var/log/syslog <span class="token comment" spellcheck="true">#查看文件系统的动态信息</span>
+<span class="token function">df</span> -h  <span class="token comment" spellcheck="true">#确定U盘的磁盘基本情况，记住盘符</span>
+<span class="token comment" spellcheck="true">#如 我的U盘是：/dev/sdc1        29G   15G   15G   50% /media/zcp/CUSTOM LIVE</span>
+<span class="token function">sudo</span> <span class="token function">fsck</span> -C -a /dev/sdc1   <span class="token comment" spellcheck="true">#进行自动修复</span>
+
+udisksctl <span class="token function">mount</span> --block-device /dev/sdc1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&lt;++&gt;</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1090,10 +1105,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;先睡觉
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src
+                            1&emsp;Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
+1.1&emsp;问题描述插入U盘后在桌面不显示
                         
                     </div>
                     <div class="publish-info">
@@ -1327,7 +1340,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">21k</span>&nbsp;字
+                class="white-color">21.3k</span>&nbsp;字
             
             
             
