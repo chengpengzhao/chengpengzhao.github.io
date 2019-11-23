@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="从Hugo折腾到Hexo过程记录, Zcp&#39;s Zone">
-    <meta name="description" content="前言
-本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础开始折腾博客">
+    <meta name="description" content="前言本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础开始折腾博客花">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -558,8 +557,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
-<p>本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。<br>在网上搜了一下发现是有个大佬写了个基于Hexo的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">小插件</a>，顿时心灰意冷，因为当时从零基础开始折腾博客花费了太多时间，到最后也没完全弄懂。<br>一边纠结着到底要不要换成Hexo一边看着程序员大佬们的博客，忽然眼前一亮发现了一款比较好的主题<a href="https://github.com/chengpengzhao/hexo-theme-fluid" target="_blank" rel="noopener">Fluid</a> ，Material Design 风格而且功能比较多文档描述的很详细，大呼为什么没有早点发现这么好的东西，于是开始了为期3天的折腾之旅。</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。<br>在网上搜了一下发现是有个大佬写了个基于Hexo的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">小插件</a>，顿时心灰意冷，因为当时从零基础开始折腾博客花费了太多时间，到最后也没完全弄懂。<br>一边纠结着到底要不要换成Hexo一边看着程序员大佬们的博客，忽然眼前一亮发现了一款比较好的主题<a href="https://github.com/chengpengzhao/hexo-theme-fluid" target="_blank" rel="noopener">Fluid</a> ，Material Design 风格而且功能比较多文档描述的很详细，大呼为什么没有早点发现这么好的东西，于是开始了为期3天的折腾之旅。</p>
 <hr>
 <p>折腾到一半发现这个hexo-theme-fluid主题主页两边比较空，想改看了下源码却不知道从何开始下手；再加上不知道这个主题和hexo-douban是否兼容，又有点犹豫了，后悔花了时间却啥也没干成之余，无意间又发现了一款Material Design的主题 <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener"><strong>hexo-theme-matery</strong></a>！功能更加全面而且也很好看，阅读时目录、上下一篇等小细节也做的不错，于是义无反顾地选择了它。  </p>
 <hr>
@@ -575,7 +573,6 @@
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> nodejs-legacy
 node -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>安装hexo~       <code>sudo npm install -g hexo-cli</code> </p>
-<hr>
 <h1 id="当前操作系统配置Key（差点忘记）"><a href="#当前操作系统配置Key（差点忘记）" class="headerlink" title="当前操作系统配置Key（差点忘记）"></a>当前操作系统配置Key（差点忘记）</h1><p>免得每次push的时候都得输入用户名密码，让更新blog变得更方便。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~/.ssh
 ssh-keygen -t rsa -C <span class="token string">"邮件地址"</span>
@@ -584,7 +581,6 @@ ssh-keygen -t rsa -C <span class="token string">"邮件地址"</span>
 <span class="token comment" spellcheck="true">#如果提示Are you sure you want to continue connecting (yes/no)?，输入yes 并回车</span>
 <span class="token function">git</span> config --global user.name <span class="token string">"你的 GitHub 用户名"</span>
 <span class="token function">git</span> config --global user.email  <span class="token string">"你的 GitHub 注册邮箱"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
 <h1 id="建立站点下载主题"><a href="#建立站点下载主题" class="headerlink" title="建立站点下载主题"></a>建立站点下载主题</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> Hexo_site
 <span class="token function">cd</span> Hexo_site
 hexo init
@@ -594,7 +590,6 @@ hexo init
 <pre class="line-numbers language-bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo g \
 hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>就可以看到这个主题模板已经建立好了。</p>
-<hr>
 <p><br><br><br><br><br></p>
 <h1 id="具体配置过程（重中之重）"><a href="#具体配置过程（重中之重）" class="headerlink" title="具体配置过程（重中之重）"></a>具体配置过程（重中之重）</h1><p>前面的所有步骤15分钟内就可以完成，真正难在怎么去自定义这个模板，修改成自己舒服的样式才是最重要的嘛。不然大家为什么花那么多时间去折腾。<br>我这个主题的文档也说明的非常详细了，可以对照着<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">它</a>从头到尾先根据自己情况修改一遍。 </p>
 <h2 id="如何建立新页面"><a href="#如何建立新页面" class="headerlink" title="如何建立新页面"></a>如何建立新页面</h2><p>照着说明文档建立了tags、about、categories等页面之后，大概明白了怎么去配置菜单栏，首先在<code>_config.yml</code>中建立起一二级菜单，排好序、选好图标、确定url名称，下面是我主题配置文件相关部分：</p>
@@ -655,7 +650,6 @@ https://leancloud.cn/reset.html?token<span class="token operator">=</span>xxxxxx
 <h2 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h2><p>发现这个主题好像没有404页面，于是自己建了一个。步骤很简单：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">hexo new page <span class="token string">"404"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后去编辑<code>/source/404</code>下的<code>index.md</code>文件就行了，觉得不够好看的再去<code>layout</code>建立个样式文件。   </p>
-<hr>
 <h1 id="关于post"><a href="#关于post" class="headerlink" title="关于post"></a>关于post</h1><p>记住post的Front-matter选项还是很有必要的，这里把主题相关说明文档抄了一部分过来：  </p>
 <p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
 <table>
