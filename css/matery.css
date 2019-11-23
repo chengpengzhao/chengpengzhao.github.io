@@ -50,8 +50,6 @@ h1 {
     font-size: 2.0rem;
     font-weight: bold;
     line-height: 2.0rem;
-    padding-top: 80px;           /*调整右侧目录点击后跳转位置*/	
-    margin-top: -80px;
 }
 
 h2 {
@@ -59,8 +57,6 @@ h2 {
     font-size: 1.8rem;
     font-weight: bold;
     line-height: 1.8rem;
-    padding-top: 80px;           /*调整右侧目录点击后跳转位置*/	
-    margin-top: -80px;
 }
 
 h3 {
@@ -68,8 +64,6 @@ h3 {
     font-size: 1.6rem;
     font-weight: bold;
     line-height: 1.7rem;
-    padding-top: 80px;           /*调整右侧目录点击后跳转位置*/	
-    margin-top: -80px;
 }
 
 h4 {
@@ -77,8 +71,6 @@ h4 {
     font-size: 1.45rem;
     font-weight: bold;
     line-height: 1.45rem;
-    padding-top: 80px;           /*调整右侧目录点击后跳转位置*/	
-    margin-top: -80px;
 }
 
 h5 {
