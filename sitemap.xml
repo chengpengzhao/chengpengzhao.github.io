@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengpengzhao.com/friends/index.html</loc>
+    
+    <lastmod>2019-11-23T07:36:30.646Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
     
     <lastmod>2019-11-23T07:10:47.339Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>https://chengpengzhao.com/2019/05/26/2019-05-26-meng-xin-jian-bo-ke-de-guo-cheng/</loc>
     
     <lastmod>2019-11-22T05:42:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/friends/index.html</loc>
-    
-    <lastmod>2019-11-20T15:01:34.000Z</lastmod>
     
   </url>
   
