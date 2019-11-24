@@ -360,246 +360,393 @@
 
 </header>
 
-    
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/404-bg.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <div class="description center-align post-title">
-                        404 Not Found：你来到了什么都没有的三途河畔 :(
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-    .friends-container {
-        margin-top: -100px;
-        margin-bottom: 30px;
-    }
-
-    .friends-container .tag-title {
-        margin-bottom: 10px;
-        color: #3C4858;
-        font-size: 1.75rem;
-        font-weight: 400;
-    }
-
-    .frind-ship img {
-        border-radius: 50%;
-    }
-
-    /* 一下是按钮样式 */
-
-    .frind-ship {
-        padding: 10px 20px;
-    }
-
-    .frind-ship .title {
-        display: flex;
-        align-items: center;
-    }
-
-    .frind-ship .title div {
-        color: #fff;
-        padding-left: 10px;
-    }
-
-    .frind-ship .title img {
-        width: 100px;
-        height: 100px;
-        flex-shrink: 0;
-    }
-
-    .frind-ship .title h1 {
-        line-height: 0.8rem;
-        padding-bottom: 16px;
-        border-bottom: 2px solid #fff;
-        position: relative;
-        top:-15px;
-        left: 3px;
-    }
-
-    .friend-button {
-        display: flex;
-        justify-content: center;
-        margin-bottom: -27px;
-    }
-
-    .friend-button a {
-        border-radius: 40px;
-    }
-
-    .friend-all .tag-post {
-        margin-bottom: 30px;
-    }
-
-    .button-caution {
-        background-color: #FF4351;
-        border-color: #FF4351;
-        color: #FFF;
-    }
-
-    .button {
-        font-weight: 300;
-        font-size: 16px;
-        font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        text-decoration: none;
-        text-align: center;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 40px;
-        margin: 0;
-        display: inline-block;
-        appearance: none;
+    <style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
         cursor: pointer;
-        border: none;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        -webkit-transition-property: all;
-        transition-property: all;
-        -webkit-transition-duration: .3s;
-        transition-duration: .3s;
+        z-index: 100;
     }
 
-    .title {
-        margin-bottom: 0rem !important;
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
     }
 
-    .card {
-        margin: 3rem 0 1rem 0 !important;
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
     }
 
-    .button-glow.button-caution {
-        -webkit-animation-name: glowing-caution;
-        animation-name: glowing-caution;
+    #prev-cover i {
+        margin-right: 3px;
     }
 
-    @-webkit-keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
+    #next-cover i {
+        margin-left: 3px;
     }
 
-    @keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
+    .carousel-control:hover {
+        background-color:rgba(0, 0, 0, .4);
     }
 
-    .button-caution:hover {
-        background-color: #ff7680;
-        border-color: #ff7680;
-        color: #FFF;
-        text-decoration: none;
-    }
-
-    .frind-card1 {
-        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    }
-
-    .frind-card2 {
-        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .frind-card3 {
-        background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
-    }
-
-    .frind-card4 {
-        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    }
-
-    .frind-card5 {
-        background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    }
-
-    .frind-card6 {
-        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-    }
-
-    .frind-card7 {
-        background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-    }
-
-    .frind-card8 {
-        background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
-    }
-
-    .frind-card9 {
-        background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
-    }
-
-    .frind-card10 {
-        background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
     }
     
-    article .card {
-        overflow: visible !important;
+    html, body {
+        height:100%;
+    }
+
+    #page {
+        height:100%;
+        min-height: 100%;
+        width:100%;
     }
 </style>
 
 
 
-                <center><h4 id="闇に惑いし哀れな影よ"><a href="#闇に惑いし哀れな影よ" class="headerlink" title=" 闇に惑いし哀れな影よ"></a><center> 闇に惑いし哀れな影よ</center></h4><h4 id="人を傷つけ貶めて、"><a href="#人を傷つけ貶めて、" class="headerlink" title=" 人を傷つけ貶めて、"></a><center> 人を傷つけ貶めて、</center></h4><h4 id="罪に溺れし業の魂"><a href="#罪に溺れし業の魂" class="headerlink" title=" 罪に溺れし業の魂"></a><center> 罪に溺れし業の魂</center></h4><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/404-bg.jpg" alt></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script> </center>
+<div id="page" class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item white white-text bg-cover about-cover">
+        <div class="container" style="right: 0px;left: 0px;">
+
+<div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+		404
             </div>
+
+            <div class="description center-align">
+		你来到了没有知识的荒原 :(
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
+</script>
+
+ 
+
         </div>
 
     </div>
-</main>
+
+    
+    
+
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_1929.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">Welcome to CP Zhao's Blog</div>
+                    <div class="description center-align">
+                    
+                        1 总算把博客建的差不多了!  作为一个非计算机专业的萌新来说，自己搭一个博客真的是一个痛苦的过程，面对一排排的html代码还有json、css文件，简直不知道该干嘛，说实话我现在想改个字体大小都找不到地方，凑合着就这样吧。
+  我用的是G
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_0165.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">python爬虫入门练习——爬取北航课程中心课件资源</div>
+                    <div class="description center-align">
+                    
+                        目标是课程中心7195条课程信息下的所有资源~：
+1 前言首先声明我现在还只是个萌新，某一天忽然想学一下爬虫，然后去百度随便找了个教程然后看了开头一点点，于是想随便找个项目练习一下，所以就写了个简单的爬取课件资源的py程序。为什么只看了一点
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_1927.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">日本語で作文——文章を書こう</div>
+                    <div class="description center-align">
+                    
+                        1 漢字と符号及び原稿用紙の使い方について1.1 表示体系
+漢字：　　音読み、訓読み $ \begin{cases} 和語：&amp; \text{畳、下駄…}  \\ 漢語：&amp; \text{就職、拡大…} \end{cases} 
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_1912.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">日記_2019-04-03から2019-05-01まで</div>
+                    <div class="description center-align">
+                    
+                        アンダーライン ：日本人添削したこと
+1 四月は
+
+1.1 04-03　最初の一歩　日本語で日記を書こう、僕は突然にこう決めた。嬉しいことも悲しいことも、晴れ渡る日も雨の日も、全部を書き記す。最初は難しいですだろうけど、習慣となるといいなに
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_1953.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">日本語の方言＿方言を勉強しよう</div>
+                    <div class="description center-align">
+                    
+                        1 関西弁講座関西弁には、近畿方言の一つである。でも関西といっても地域によって話すことばやイントネーションがまったく異なる。だから大阪弁、京都弁、神戸弁のような言い方もある。
+1.1 「～しはる」$「～しています」→「～してはる」\\「ます
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_1938.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">这个博客的建立过程</div>
+                    <div class="description center-align">
+                    
+                        1 前言之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有一些途径我就不多说了。
+github pages直
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-2.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">想起来还有个Blog就随便记录下(9.26-10.25)</div>
+                    <div class="description center-align">
+                    
+                        1 2019-09-26　北京-东京1.1 首都国际机场出发
+1.2 羽田空港到着    ようやく留学生活が始まる。半年前から色々準備していたけど、まだまだ足りないんだ。何年も日本語を独学で学んでいたが、日本人と直接コミュニケーションをする
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">一个月浑浑噩噩过去了，下个月认真学习(10.26)</div>
+                    <div class="description center-align">
+                    
+                        1 2019-10-26　一ヶ月不知不觉已经来了整整一个月了，真的挺快的，虽然感觉啥都还没干。下个月必须抓紧了，研究课题也要赶快定下来~今天趁台风过后难得晴天，在宿舍周围随便溜达了下。
+
+        document.querySele
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Beaver_Wallpaper_Grey_4096x2304.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">入坑Linux(1)——双系统安装</div>
+                    <div class="description center-align">
+                    
+                        原以为自己不会接触到Linux系统，毕竟一直舒服地用着Win没什么不满。直到接触了OpenFOAM，在Win上运行实在是不方便，于是装了个虚拟机开始研究Linux，用了一段时间之后还是感觉不太舒服，毕竟是虚拟机，加上笔记本性能也一般；为了追
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/ef.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">入坑Linux(2)——常用命令及快捷键</div>
+                    <div class="description center-align">
+                    
+                        1 常用快捷键Linux和Windows最大的一个不同就是终端的使用，Win虽然有cmd但我们平时基本生活学习用的较少，大多靠鼠标点击完成操作；而Linux很多操作都是通过终端输入命令来完成，包括软件的安装、文本的编辑等，如何在尽量不用鼠标
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-3.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">入坑Linux(3)——常用软件安装及配置</div>
+                    <div class="description center-align">
+                    
+                        1 OpenFOAM相关用Linux的原因就是学习OpenFOAM，所以当然要摆在第一位！正如前面所说，我用的自定义镜像自带了使用OpenFOAM需要的一些工具，不用额外安装。不过后面我又下载了多个OpenFOAM版本，与其相关的内容我会单
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-4.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">Install Dakota 6.11 on Ubuntu 18.04</div>
+                    <div class="description center-align">
+                    
+                        First I'd like to thank Chien Nguyen  for his blog, it's very helpful for a noob to linux like me.
+Dakota released the v
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191120-2.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">从Hugo折腾到Hexo过程记录</div>
+                    <div class="description center-align">
+                    
+                        1 前言本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础开始折腾博
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">Linux/Windows使用记录</div>
+                    <div class="description center-align">
+                    
+                        1 Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
+1.1 问题描述插入U盘后在桌面不显示图标，打开文件管理器
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="carousel-item amber white-text carousel-post bg-cover"
+            style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/IMG_1935.jpg');">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="title center-align">本地LaTeX公式实时编辑器（个人用）</div>
+                    <div class="description center-align">
+                    
+                        1 LaTeX 公式编辑 with MathJax by zcp1.1 MathJax官网 ：MathJax
+1.2 codecogs就是从这个网站抄下来的：codecogs
+1.3 tablesgenerator还有这个：tablesge
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
 
 <script>
-    $(function () {
-        $('#friends-link').masonry({
-            itemSelector: '.friend-div'
-        });
+$(function () {
+    let coverSlider = $('.carousel');
+    coverSlider.carousel({
+        duration: Number('120'),
+        fullWidth: true,
+        indicators: 'false' === 'true'
     });
+
+
+});
 </script>
 
 
@@ -614,7 +761,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">21.7k</span>&nbsp;字
+                class="white-color">21.5k</span>&nbsp;字
             
             
             

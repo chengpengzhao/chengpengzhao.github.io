@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Linux/Windows使用记录, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
-1.1&amp;emsp;问题描述插入U盘后在桌面不显示">
+    <meta name="description" content="1 Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
+1.1 问题描述插入U盘后在桌面不显示图标，打开文件管理器">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -530,7 +530,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    488
+                    484
                 </div>
                 
 
@@ -553,10 +553,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Ubuntu出现U盘能识别但打不开">1&emsp;Ubuntu出现U盘能识别但打不开</h1><p>这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  </p>
-<h2 id="问题描述">1.1&emsp;问题描述</h2><p>插入U盘后在桌面不显示图标，打开文件管理器能在左侧菜单看到U盘名称，但在点击时会弹出:</p>
-<pre><code>Not Authorized polkit authority not available and caller is not uid 0</code></pre><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123153150.png" alt> </p>
-<h2 id="解决方案">1.2&emsp;解决方案</h2><p>不保证所有步骤都有用，但流水线走下来就能打开了</p>
+                <h1 id="Ubuntu出现U盘能识别但打不开">1 Ubuntu出现U盘能识别但打不开</h1><p>这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  </p>
+<h2 id="问题描述">1.1 问题描述</h2><p>插入U盘后在桌面不显示图标，打开文件管理器能在左侧菜单看到U盘名称，但在点击时会弹出:</p>
+<pre><code>Not Authorized polkit authority not available and caller is not uid 0</code></pre><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123153150.png" alt=""> </p>
+<h2 id="解决方案">1.2 解决方案</h2><p>不保证所有步骤都有用，但流水线走下来就能打开了</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> usbmount
 <span class="token function">sudo</span> gedit /etc/usbmount/usbmount.conf
 <span class="token comment" spellcheck="true">#到FILESYSTEM 在其中添加vfat,ntfs（对应我原来系统的原文件中FILESYSTEM选项中没有ntfs）</span>
@@ -579,7 +579,7 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
 <p>然后就可以打开U盘了，但可能还是没有权限编辑它，这好办，u盘里打开终端：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> -R 777 *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>虽说这种不安全的命令还是少用为好，但还是挺方便的。</p>
-<h1 id="问题2">2&emsp;问题2</h1><p>待续</p>
+<h1 id="问题2">2 问题2</h1><p>待续</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1115,8 +1115,8 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
-1.1&emsp;问题描述插入U盘后在桌面不显示
+                            1 Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
+1.1 问题描述插入U盘后在桌面不显示图标，打开文件管理器
                         
                     </div>
                     <div class="publish-info">
@@ -1177,7 +1177,7 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础
+                            1 前言本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础开始折腾博
                         
                     </div>
                     <div class="publish-info">
@@ -1350,7 +1350,7 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">21.7k</span>&nbsp;字
+                class="white-color">21.5k</span>&nbsp;字
             
             
             
