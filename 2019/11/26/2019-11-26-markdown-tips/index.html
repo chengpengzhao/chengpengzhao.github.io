@@ -487,12 +487,12 @@
                                 <span class="chip bg-color">写作</span>
                             </a>
                         
-                            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                                <span class="chip bg-color">使用tips</span>
-                            </a>
-                        
                             <a href="/tags/%E8%AF%AD%E6%B3%95/">
                                 <span class="chip bg-color">语法</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                                <span class="chip bg-color">使用tips</span>
                             </a>
                         
                     </div>
@@ -529,14 +529,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 				
@@ -578,24 +578,20 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
 <ul>
 <li>斜体外套粗体：<code>**a_b_c**   **a*b*c**   __a*b*c__   __a_b_c__</code><br>显示结果如下：<strong>a_b_c</strong>   <strong>a<em>b</em>c</strong>   <strong>a<em>b</em>c</strong>   <strong>a_b_c</strong>  结果倒挺让我意外的。</li>
 <li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：<em>a<strong>b</strong>c</em>  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  <em>a__b__c</em><br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>。 </li>
-<li>代码符号`的优先度又比<code>*</code>高，所以其内部的文字格式通过<code>*</code>控制不了。<h3 id="分隔线">2.2.4&emsp;分隔线</h3><pre><code></code></pre></li>
+<li>代码符号`的优先度又比<code>*</code>高，所以其内部的文字格式通过<code>*</code>控制不了。<h3 id="分隔线">2.2.4&emsp;分隔线</h3><pre class="line-numbers language-Markdown"><code class="language-Markdown">|  ***
+|  * * *
+| ******
+| - - -
+| ---
+| ___
+|   《hr》<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+忽略前面的|（分隔线在我Blog的编译器里优先度比代码快还高，不加|根本显示不出来），而hr标签则更高，不改成中文符号根本没法显示。  （别的编译器可能显示结果又不一样）</li>
 </ul>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-```
-随便用哪个都行，推荐`---`，因为不需要按Shift键，比较方便。
-### 删除、下划线
-删除：`~~delete~~`
-下划：`<u>underline</u>`这个复杂一点，是HTML标签  
-**<u>测试时间到</u>**： 
-- 与加粗的比较：
-
-
+<p>随便用哪个都行，推荐<code>---</code>，因为不需要按Shift键，比较方便。</p>
+<h3 id="删除、下划线">2.2.5&emsp;删除、下划线</h3><p>删除：<code>~~delete~~</code><br>下划：<code>&lt;u&gt;underline&lt;/u&gt;</code>这个复杂一点，是HTML标签<br><strong><u>测试时间到</u></strong>： </p>
+<ul>
+<li>与加粗的比较：</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -681,12 +677,12 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
                                     <span class="chip bg-color">写作</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                                    <span class="chip bg-color">使用tips</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%AF%AD%E6%B3%95/">
                                     <span class="chip bg-color">语法</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                                    <span class="chip bg-color">使用tips</span>
                                 </a>
                             
                         </div>
@@ -1162,12 +1158,12 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
                         <span class="chip bg-color">写作</span>
                     </a>
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
-                    </a>
-                    
                     <a href="/tags/%E8%AF%AD%E6%B3%95/">
                         <span class="chip bg-color">语法</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
                     </a>
                     
                 </div>
@@ -1374,7 +1370,7 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">22.6k</span>&nbsp;字
+                class="white-color">22.7k</span>&nbsp;字
             
             
             

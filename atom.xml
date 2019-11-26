@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-26T16:06:40.453Z</updated>
+  <updated>2019-11-26T16:21:08.775Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/"/>
     <id>https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</id>
     <published>2019-11-25T15:00:00.000Z</published>
-    <updated>2019-11-26T16:06:40.453Z</updated>
+    <updated>2019-11-26T16:21:08.775Z</updated>
     
     <summary type="html">
     
@@ -43,9 +43,9 @@
     
       <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
     
-      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
-    
       <category term="语法" scheme="https://chengpengzhao.com/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
     
   </entry>
   
@@ -249,9 +249,9 @@
       <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
+    
+      <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="相册" scheme="https://chengpengzhao.com/tags/%E7%9B%B8%E5%86%8C/"/>
     
