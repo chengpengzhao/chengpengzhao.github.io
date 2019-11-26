@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</loc>
+    
+    <lastmod>2019-11-26T16:06:40.453Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
+    
+    <lastmod>2019-11-26T11:38:31.049Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</loc>
     
     <lastmod>2019-11-24T15:38:43.288Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>https://chengpengzhao.com/friends/index.html</loc>
     
     <lastmod>2019-11-23T07:36:30.646Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
-    
-    <lastmod>2019-11-23T07:10:47.339Z</lastmod>
     
   </url>
   
@@ -89,13 +96,6 @@
     <loc>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</loc>
     
     <lastmod>2019-11-22T15:25:10.732Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</loc>
-    
-    <lastmod>2019-11-22T05:44:52.000Z</lastmod>
     
   </url>
   

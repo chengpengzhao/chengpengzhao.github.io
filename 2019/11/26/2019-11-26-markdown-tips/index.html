@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Install Dakota 6.11 on Ubuntu 18.04, Zcp&#39;s Zone">
-    <meta name="description" content="First I&#39;d like to thank Chien Nguyen  for his blog, it&#39;s very helpful for a noob to linux like me.
-Dakota released the v">
+    <meta name="keywords" content="Markdown-Tips, Zcp&#39;s Zone">
+    <meta name="description" content="很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@ Dakota released the v">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Install Dakota 6.11 on Ubuntu 18.04 | Zcp&#39;s Zone</title>
+    <title>Markdown-Tips | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -365,13 +364,13 @@ Dakota released the v">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Install Dakota 6.11 on Ubuntu 18.04
+                        Markdown-Tips
                     </div>
                 </div>
             </div>
@@ -484,12 +483,16 @@ Dakota released the v">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%89%E8%A3%85/">
-                                <span class="chip bg-color">安装</span>
+                            <a href="/tags/%E5%86%99%E4%BD%9C/">
+                                <span class="chip bg-color">写作</span>
                             </a>
                         
-                            <a href="/tags/English/">
-                                <span class="chip bg-color">English</span>
+                            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                                <span class="chip bg-color">使用tips</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                                <span class="chip bg-color">语法</span>
                             </a>
                         
                     </div>
@@ -504,12 +507,8 @@ Dakota released the v">
                                 语言
                             </a>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
-                            </a>
-                        
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                软件
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                生活
                             </a>
                         
                     </div>
@@ -521,7 +520,7 @@ Dakota released the v">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-19
+                    2019-11-26
                 </div>
                 
 
@@ -530,14 +529,14 @@ Dakota released the v">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    489
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 				
@@ -553,49 +552,50 @@ Dakota released the v">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>First I'd like to thank <a href="https://chienfm.com/dakota/Compile-Dakota-for-Ubuntu-16.04/" target="_blank" rel="noopener">Chien Nguyen</a>  for his blog, it's very helpful for a noob to linux like me.</p>
-<p>Dakota released the verison 6.11 on Fri 11/15/2019, and I'll share you how I install it on Ubuntu18.04 step by step.</p>
-<h1 id="What-is-Dakota">1&emsp;What is Dakota</h1><p>It's a powerful toolkit which include:</p>
+                <p>很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助,比如换了个环境（学校电脑，没权限安装Typora)还是得一个个查。<br>于是开始逼自己用更泛用的工具写BLog，正好前些日子在学Vim,逐渐体会到其强大之处，干脆就用它写Markdown文章好了，配合<a href="https://github.com/iamcco/markdown-preview.nvim" target="_blank" rel="noopener">MarkdownPreview</a>插件，也觉得挺方便的。下面就按照常用的程度记录下Markdown的一些语法吧，方便自己以后查询，看自己曾经写的总比看别人写的印象深~</p>
+<h1 id="最基础的语法，每篇文章都会用到">1&emsp;最基础的语法，每篇文章都会用到</h1><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>h1级标题</span>
+<span class="token title important"><span class="token punctuation">##</span>h2级标题</span>
+<span class="token title important"><span class="token punctuation">###</span>h3级标题</span>
+<span class="token title important"><span class="token punctuation">####</span>h4级标题</span>
+<span class="token title important"><span class="token punctuation">#####</span>h5级标题</span>
+<span class="token title important"><span class="token punctuation">######</span>h6级标题</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>文章的层次得要有的吧，平常写东西前三级就够用了，注意#和标题之间要有<strong>空格</strong>，而且要放在行头，像# 这种写法是不会被认作标题的。<br>这个语法太简单了怎么都不会忘的吧，但为了完整起见还是列在这。<br>但标题可以用等号和连字符表示：</p>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token title important">This is an H1
+<span class="token punctuation">=============</span></span>
+
+<span class="token title important">This is an H2
+<span class="token punctuation">-------------</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>有时候你可能只是想打一个分隔线，但由于<strong>少空了一行</strong>导致前一行成了一个二级标题。这里的=和-任意个数都可以，关键是位置；上面的范例在真正写作的时候是不应该出现的（除非你太闲了想多打几个=玩）。</p>
+<h1 id="很常用的语法（对于我来说）">2&emsp;很常用的语法（对于我来说）</h1><p>由于每个人使用Markdown的需求不同，常使用的语法可能相差很大。有的人可能主要用来写小说、日记，这时候其实用的语法并不多；有的可能写代码比较多，或者是写LaTeX的公式较多；甚至是使用表格更多（我觉得Markdown里的表格还是挺麻烦的，而且也不太好控制格式）。<br>我由于是流体力学专业，公式是肯定不会少的，但代码平常也用得很多，下面就从我的需求出发列一下我常用的语法。</p>
+<h2 id="代码">2.1&emsp;代码</h2><p>普通的行内引用： `your code`  ；代码块：```   ``` 其中三个斜点要单独占一行，第一个```后可标注该代码语言名称，一般比较常用的语言都可以识别出来。<br>好像代码块还有别的表示方式如~~~、4个空格或者1个水平制表符，但有的可能显示不出来我也不知道是不是编译器的原因。</p>
+<h2 id="一些内联元素">2.2&emsp;一些内联元素</h2><h3 id="空格">2.2.1&emsp;空格</h3><p>这应该是最让Markdown新手抓狂的一个语法了，当我想拉开两个词的距离而多次按下<code>&lt;Space&gt;</code>时却发现，只有最开始那个空格是有效的，然后你打开百度搜索发现原来Markdown里面有这么多种空格的表达方式。我觉得最多记住一个就够了,比如我偶尔用下<code>&amp;emsp;</code>，但输入太过麻烦后面一想也基本没必要用，除非你有强迫症想让每段开头都空两个字符。 </p>
+<h3 id="段落">2.2.2&emsp;段落</h3><p>毫无疑问这是第二个让新手不得不Google一下的地方，当你按下<code>&lt;Enter&gt;</code>想换个行或者多空几行时，却发现并不奏效。<br>Markdown 段落没有特殊的格式，直接编写文字就好，段落的<strong>换行</strong>是使用<strong>两个以上空格加上回车</strong>。<br><strong>空行</strong> : 也有很多种方法，推荐只记住<code>&lt;br&gt;</code>或者<code>&lt;br/&gt;</code>、<code>&lt;/br&gt;</code>这几个都行，这也是HTML的表示方法。（感觉空行还是挺常用的）  </p>
+<h3 id="字体">2.2.3&emsp;字体</h3><p>首先是斜体和粗体：</p>
+<pre><code>*斜体文本*
+_斜体文本_
+**粗体文本**
+__粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>斜体</em>的文本</strong> ，如果全部用<code>*</code>可能就容易出错，而混搭起来层次比较清晰——本来是这么想的，但好像有时候嵌套会出现问题：</p>
 <ul>
-<li>optimization with gradient and nongradient-based methods;</li>
-<li>uncertainty quantification with sampling, reliability, stochastic expansion, and epistemic methods;</li>
-<li>parameter estimation using nonlinear least squares (deterministic) or Bayesian inference (stochastic); and</li>
-<li>sensitivity/variance analysis with design of experiments and parameter study methods.</li>
+<li>斜体外套粗体：<code>**a_b_c**   **a*b*c**   __a*b*c__   __a_b_c__</code><br>显示结果如下：<strong>a_b_c</strong>   <strong>a<em>b</em>c</strong>   <strong>a<em>b</em>c</strong>   <strong>a_b_c</strong>  结果倒挺让我意外的。</li>
+<li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：<em>a<strong>b</strong>c</em>  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  <em>a__b__c</em><br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>。 </li>
+<li>代码符号`的优先度又比<code>*</code>高，所以其内部的文字格式通过<code>*</code>控制不了。<h3 id="分隔线">2.2.4&emsp;分隔线</h3><pre><code></code></pre></li>
 </ul>
-<h1 id="Before-installation">2&emsp;Before installation</h1><h2 id="Install-some-nessesary-packages">2.1&emsp;Install some nessesary packages</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gcc g++ gfortran cmake cmake-curses-gui libboost-dev \
-libboost-all-dev libblas-dev liblapack-dev libopenmpi-dev openmpi-bin \
-openmpi-doc xorg-dev libmotif-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>You can check the necessary packages from this <a href="https://dakota.sandia.gov/content/install-required-tools-and-libraries" target="_blank" rel="noopener">website</a>. I also installed the HDF5 here and the required version of HDF5 for Dakota 6.11 is 1.10.5.</p>
-<h2 id="Download-the-GUI-and-source-code-from-official-webiste">2.2&emsp;Download the GUI and source code from official webiste.</h2><p> And extract files to appropriate place.</p>
-<h1 id="Build">3&emsp;Build</h1><p>I extracted the packages in <code>$HOME/DAKOTA</code> and made two directories which will be used for build and install Dakota.</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> DAKOTA
-<span class="token function">cd</span> DAKOTA
-<span class="token function">mkdir</span> dakota_build <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> dakota_installation
-<span class="token function">export</span> DAK_BUILD<span class="token operator">=</span><span class="token variable">$HOME</span>/DAKOTA/dakota_build
-<span class="token function">export</span> DAK_INSTALL<span class="token operator">=</span><span class="token variable">$HOME</span>/DAKOTA/dakota_installation
-<span class="token function">export</span> DAK_SRC<span class="token operator">=</span><span class="token variable">$HOME</span>/DAKOTA/dakota-6.11.0-release-public.src-UI
-<span class="token function">cd</span> <span class="token variable">$DAK_BUILD</span>
-<span class="token function">cp</span> <span class="token variable">$DAK_SRC</span>/cmake/BuildDakotaTemplate.cmake <span class="token variable">$DAK_SRC</span>/cmake/BuildDakotaCustom.cmake<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Then, you can begin to build the source code with several options. You may check this <a href="https://dakota.sandia.gov/content/detailed-cmake-options" target="_blank" rel="noopener">website</a> for more informations.</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> cmake <span class="token keyword">.</span> <span class="token variable">$DAK_SRC</span>/cmake/BuildDakotaCustom.cmake <span class="token variable">$DAK_SRC</span> -DCMAKE_INSTALL_PREFIX<span class="token operator">=</span><span class="token variable">$DAK_INSTALL</span> \
- -DDAKOTA_HAVE_MPI:BOOL<span class="token operator">=</span>TRUE \
- -DDAKOTA_HAVE_HDF5:BOOL<span class="token operator">=</span>TRUE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>Run make and install:</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">make</span> -j4
-<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>Just wait for a few minutes and at last add the environment variables to <code>.bashrc</code> :</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> gedit ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Add the following lines at the end of <em>bashrc</em>  and save</p>
-<p><code>export PATH=”$PATH:export PATH="$PATH:$HOME/DAKOTA/dakota_installation/bin"</code></p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">source</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Finally, you may need this command to verify the file permissions:</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> -R 777 *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="Test">4&emsp;Test</h1><p>Now you can just open a terminal and input <code>dakota -v</code> and if everything goes well you will see:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">Dakota version 6.11 released Nov 15 2019.
-Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<span class="token punctuation">)</span> built XXX XX XXXX XX:XX:XX<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>Congratulations! Let's enjoy dakota now~</p>
-<h1 id="GUI">5&emsp;GUI</h1><p>You guys may meet some problems when trying to open the dakota GUI, because the dakota GUI requires JAVA 8. <a href="https://www.oracle.com/technetwork/es/java/javase/downloads/jdk8-downloads-2133151.html?printOnly=1" target="_blank" rel="noopener">jdk-8u231-linux-x64.tar.gz</a> should be a good choice for you.</p>
-<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Dakota%20GUI%20_001.jpg" alt></p>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+```
+随便用哪个都行，推荐`---`，因为不需要按Shift键，比较方便。
+### 删除、下划线
+删除：`~~delete~~`
+下划：`<u>underline</u>`这个复杂一点，是HTML标签  
+**<u>测试时间到</u>**： 
+- 与加粗的比较：
+
+
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -639,7 +639,7 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/">https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</a>
+                    <a href="https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/">https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -677,12 +677,16 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%89%E8%A3%85/">
-                                    <span class="chip bg-color">安装</span>
+                                <a href="/tags/%E5%86%99%E4%BD%9C/">
+                                    <span class="chip bg-color">写作</span>
                                 </a>
                             
-                                <a href="/tags/English/">
-                                    <span class="chip bg-color">English</span>
+                                <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                                    <span class="chip bg-color">使用tips</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                                    <span class="chip bg-color">语法</span>
                                 </a>
                             
                         </div>
@@ -1111,34 +1115,35 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/">
+                <a href="/2019/11/26/2019-11-26-markdown-tips/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191120-2.jpg" class="responsive-img" alt="从Hugo折腾到Hexo过程记录">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg" class="responsive-img" alt="Markdown-Tips">
                         
-                        <span class="card-title">从Hugo折腾到Hexo过程记录</span>
+                        <span class="card-title">Markdown-Tips</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。在网上搜了一下发现是有个大佬写了个基于Hexo的小插件，顿时心灰意冷，因为当时从零基础
+                            很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" class="post-category">
-                                    博客建立
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
                                 </a>
                             
                             <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
@@ -1149,11 +1154,20 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%BF%97/">
-                        <span class="chip bg-color">日志</span>
+                    <a href="/tags/%E5%86%99%E4%BD%9C/">
+                        <span class="chip bg-color">写作</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">语法</span>
                     </a>
                     
                 </div>
@@ -1167,23 +1181,24 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/">
+                <a href="/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-3.jpg" class="responsive-img" alt="入坑Linux(3)——常用软件安装及配置">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg" class="responsive-img" alt="Linux/Windows使用记录">
                         
-                        <span class="card-title">入坑Linux(3)——常用软件安装及配置</span>
+                        <span class="card-title">Linux/Windows使用记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;OpenFOAM相关用Linux的原因就是学习OpenFOAM，所以当然要摆在第一位！正如前面所说，我用的自定义镜像自带了使用OpenFOAM需要的一些工具，不用额外安装。不过后面我又下载了多个OpenFOAM版本，与其相关的
+                            1&emsp;Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
+1.1&emsp;问题描述插入U盘后在桌面不显示
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-22
                             </span>
                         <span class="publish-author">
                             
@@ -1203,6 +1218,14 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
                 </div>
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%97%A5%E5%BF%97/">
+                        <span class="chip bg-color">日志</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AE%89%E8%A3%85/">
+                        <span class="chip bg-color">安装</span>
+                    </a>
                     
                     <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
                         <span class="chip bg-color">使用tips</span>
@@ -1351,7 +1374,7 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">21.7k</span>&nbsp;字
+                class="white-color">22.6k</span>&nbsp;字
             
             
             

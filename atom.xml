@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-23T06:46:59.524Z</updated>
+  <updated>2019-11-26T16:06:40.453Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown-Tips</title>
+    <link href="https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/"/>
+    <id>https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</id>
+    <published>2019-11-25T15:00:00.000Z</published>
+    <updated>2019-11-26T16:06:40.453Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助
+        
+      
+    
+    </summary>
+    
+    
+      <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
+    
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
+    
+      <category term="语法" scheme="https://chengpengzhao.com/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux/Windows使用记录</title>
@@ -44,9 +77,9 @@
     
       <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
-      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
-    
       <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
     
   </entry>
   
@@ -55,7 +88,7 @@
     <link href="https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/"/>
     <id>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</id>
     <published>2019-11-19T15:00:00.000Z</published>
-    <updated>2019-11-23T07:10:47.339Z</updated>
+    <updated>2019-11-26T11:38:31.049Z</updated>
     
     <summary type="html">
     
@@ -76,39 +109,6 @@
     
     
       <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Install Dakota 6.11 on Ubuntu 18.04</title>
-    <link href="https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/"/>
-    <id>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04.md/</id>
-    <published>2019-11-18T15:00:00.000Z</published>
-    <updated>2019-11-22T05:44:52.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;First I&#39;d like to thank &lt;a href=&quot;https://chienfm.com/dakota/Compile-Dakota-for-Ubuntu-16.04/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Chien
-        
-      
-    
-    </summary>
-    
-    
-      <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="Linux" scheme="https://chengpengzhao.com/categories/Linux/"/>
-    
-      <category term="软件" scheme="https://chengpengzhao.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
-    
-      <category term="English" scheme="https://chengpengzhao.com/tags/English/"/>
     
   </entry>
   
@@ -249,9 +249,9 @@
       <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
-    
       <category term="随笔" scheme="https://chengpengzhao.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="日本語" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"/>
     
       <category term="相册" scheme="https://chengpengzhao.com/tags/%E7%9B%B8%E5%86%8C/"/>
     
