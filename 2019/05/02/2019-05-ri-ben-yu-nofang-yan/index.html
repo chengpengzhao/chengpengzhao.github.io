@@ -1325,9 +1325,13 @@ github p
 <script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
     MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']],
+		  processEscapes: true
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } }
     });
 </script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1341,7 +1345,7 @@ github p
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">22.7k</span>&nbsp;字
+                class="white-color">24k</span>&nbsp;字
             
             
             
