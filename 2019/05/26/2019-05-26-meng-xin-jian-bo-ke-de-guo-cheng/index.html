@@ -541,12 +541,12 @@ github p">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有<a href="https://www.jianshu.com/p/a44a6347031c" target="_blank" rel="noopener">一些途径</a>我就不多说了。</p>
-<p><a href="https://help.github.com/en/categories/github-pages-basics" target="_blank" rel="noopener">github pages</a>直接托管在github上，比较方便所以很多人都用的这种方式，不过要求至少要会一点git控制命令，git相关教程我记得放在bookmarks里了，真正常用也就那么几个语句，比较容易上手。而之所以选择<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener">hugo</a>纯粹是因为朋友推荐，我搭好了之后看有的hexo主题写的特详细，顿时有点后悔，觉得自己走了很多弯路，不过hugo也是很好用的虽然网上资料可能不是太多。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有<a href="https://www.jianshu.com/p/a44a6347031c">一些途径</a>我就不多说了。</p>
+<p><a href="https://help.github.com/en/categories/github-pages-basics">github pages</a>直接托管在github上，比较方便所以很多人都用的这种方式，不过要求至少要会一点git控制命令，git相关教程我记得放在bookmarks里了，真正常用也就那么几个语句，比较容易上手。而之所以选择<a href="https://gohugo.io/documentation/">hugo</a>纯粹是因为朋友推荐，我搭好了之后看有的hexo主题写的特详细，顿时有点后悔，觉得自己走了很多弯路，不过hugo也是很好用的虽然网上资料可能不是太多。</p>
 <p>接下来我就详细叙述下这个博客的建立的过程，我也是萌新有些地方具体的原理可能不太清楚，不过只要搭的像个样子不就行了。</p>
-<h1 id="步骤">2&emsp;步骤</h1><h2 id="安装-hugo、git、nodejs">2.1&emsp;安装 hugo、git、nodejs</h2><p>用hugo部署网站一般先是在本地调试，通过hugo server命令可以在浏览器<a href="http://localhost:1313" target="_blank" rel="noopener">http://localhost:1313</a> 查看效果，然后用git将文件传到github里；nodejs是之后给网页加一些模块脚本要用的，用的机会不是很多。具体的安装步骤我觉得就没必要讲了，百度一下一大把的东西，又不复杂。</p>
+<h1 id="步骤">2&emsp;步骤</h1><h2 id="安装-hugo、git、nodejs">2.1&emsp;安装 hugo、git、nodejs</h2><p>用hugo部署网站一般先是在本地调试，通过hugo server命令可以在浏览器<a href="http://localhost:1313">http://localhost:1313</a> 查看效果，然后用git将文件传到github里；nodejs是之后给网页加一些模块脚本要用的，用的机会不是很多。具体的安装步骤我觉得就没必要讲了，百度一下一大把的东西，又不复杂。</p>
 <h3 id="常用的Git命令">2.1.1&emsp;常用的Git命令</h3><ol>
-<li><p>克隆远程库： git clone+目标库网址\<br> （如<strong>git clone <a href="https://github.com/chengpengzhao/latex_htm_zcp" target="_blank" rel="noopener">https://github.com/chengpengzhao/latex_htm_zcp</a></strong> ）</p>
+<li><p>克隆远程库： git clone+目标库网址\<br> （如<strong>git clone <a href="https://github.com/chengpengzhao/latex_htm_zcp">https://github.com/chengpengzhao/latex_htm_zcp</a></strong> ）</p>
 </li>
 <li><p>添加远程库： <strong>git remote add origin</strong>+目标库网址，若提示失败在前面用 <strong>git remote rm origin</strong> 命令。</p>
 </li>
@@ -562,7 +562,7 @@ github p">
 <ul>
 <li><p>archetypes：放模版文件？这个我真不知道有啥用，具体看hugo文档肯定有说明</p>
 </li>
-<li><p>content：写的文章都放这里面，md格式，要写博客<a href="http://www.markdown.cn/#acknowledgement" target="_blank" rel="noopener">markdown语法</a>必须要先学一学</p>
+<li><p>content：写的文章都放这里面，md格式，要写博客<a href="http://www.markdown.cn/#acknowledgement">markdown语法</a>必须要先学一学</p>
 </li>
 <li><p>data：我的是空的，不知道干嘛的</p>
 </li>
@@ -580,14 +580,14 @@ github p">
 </li>
 </ul>
 <p>推荐<strong>先在本地把网站安排好了再上传</strong>，不然改来改去很麻烦。</p>
-<h2 id="下载hugo主题">2.3&emsp;下载hugo主题</h2><p><a href="https://themes.gohugo.io/" target="_blank" rel="noopener">https://themes.gohugo.io/</a>上可以找到很多好看的主题，仔细阅读所选主题的相关说明，把它下载到本地，把各个文件夹里的东西放到hugo的相应文件夹里，然后用hugo命令在本地查看效果。一般主题都会有一个exampleSite，可以看看里面config.toml设置和文章的格式。（必须先熟悉hugo文件夹结构后再进行这一步）</p>
+<h2 id="下载hugo主题">2.3&emsp;下载hugo主题</h2><p><a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a>上可以找到很多好看的主题，仔细阅读所选主题的相关说明，把它下载到本地，把各个文件夹里的东西放到hugo的相应文件夹里，然后用hugo命令在本地查看效果。一般主题都会有一个exampleSite，可以看看里面config.toml设置和文章的格式。（必须先熟悉hugo文件夹结构后再进行这一步）</p>
 <p>hugo server启动后网页(localhost1313)显示的内容会随着你的修改实时变动，所以在写博客时十分好用，这也是hugo的一大优点吧。</p>
 <h2 id="熟悉所下载主题的模块">2.4&emsp;熟悉所下载主题的模块</h2><p>如果你想要自己对主题做一些修改，比如加入评论系统啊、显示来访数、动态效果、搜索功能……那就必须经过最苦逼的这一个步骤了，把主题layouts和static里的文件一个个的啃一遍，知道每个文件大概实现了什么功能。一般好一点的主题都会说明一下它有哪些模块，怎么加入一些常用模块；总之在这方面花的时间应该是最多的。</p>
 <p>建议把这部分放在最后进行，或者干脆不做修改直接拿他的主题用也行。下面我简单分类介绍下我博客中这几个模块添加的艰辛历程：</p>
-<h3 id="访问计数模块">2.4.1&emsp;访问计数模块</h3><p>我用的是<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>网页计数器，这个还比较简单，layouts文件夹里相应的html位置加入代码就行。</p>
-<h3 id="评论模块">2.4.2&emsp;评论模块</h3><p>由于在国内，某些评论系统被墙不好用，我用的是<a href="https://valine.js.org/" target="_blank" rel="noopener">Valine</a>的评论系统，也是在相应的html中插入代码；这里要注意页面的格式设置，可能会造成字体、方框大小不太合适，这时候要在css文件中修改格式。常采用开发者工具先找到控制对应字体的文件位置，再做相应修改。</p>
-<h3 id="搜索模块">2.4.3&emsp;搜索模块</h3><p>我的主题自带了对<a href="https://www.algolia.com/" target="_blank" rel="noopener">algolia</a>搜索模块的支持，所以注册、设置下来没有花太多功夫，这个好像还要装到本地，然后每次写了posts之后要用<strong>npm run algolia</strong>命令更新索引目录。</p>
-<h3 id="数学公式模块">2.4.4&emsp;数学公式模块</h3><p><a href="https://www.mathjax.org/#gettingstarted" target="_blank" rel="noopener"><strong>Mathjax</strong></a>没得说。</p>
+<h3 id="访问计数模块">2.4.1&emsp;访问计数模块</h3><p>我用的是<a href="http://busuanzi.ibruce.info/">不蒜子</a>网页计数器，这个还比较简单，layouts文件夹里相应的html位置加入代码就行。</p>
+<h3 id="评论模块">2.4.2&emsp;评论模块</h3><p>由于在国内，某些评论系统被墙不好用，我用的是<a href="https://valine.js.org/">Valine</a>的评论系统，也是在相应的html中插入代码；这里要注意页面的格式设置，可能会造成字体、方框大小不太合适，这时候要在css文件中修改格式。常采用开发者工具先找到控制对应字体的文件位置，再做相应修改。</p>
+<h3 id="搜索模块">2.4.3&emsp;搜索模块</h3><p>我的主题自带了对<a href="https://www.algolia.com/">algolia</a>搜索模块的支持，所以注册、设置下来没有花太多功夫，这个好像还要装到本地，然后每次写了posts之后要用<strong>npm run algolia</strong>命令更新索引目录。</p>
+<h3 id="数学公式模块">2.4.4&emsp;数学公式模块</h3><p><a href="https://www.mathjax.org/#gettingstarted"><strong>Mathjax</strong></a>没得说。</p>
 <h3 id="特殊效果模块">2.4.5&emsp;特殊效果模块</h3><p>可以加入一些动态背景效果（比如像我这样），或者甚至你可以加一个live2D的看板娘。</p>
 <h1 id="总结">3&emsp;总结</h1><p>不要在意具体的细节，知道代码的作用、大体的框架、实现的方式，然后进行粗略的调整就行了。如果把这些代码看成是一个个贴了标签的黑盒，那么对于我们这些非专业人士来说，读懂标签就够用了。</p>
 <script>

@@ -552,7 +552,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助,比如换了个环境（学校电脑，没权限安装Typora)还是得一个个查。<br>于是开始逼自己用更泛用的工具写BLog，正好前些日子在学Vim,逐渐体会到其强大之处，干脆就用它写Markdown文章好了，配合<a href="https://github.com/iamcco/markdown-preview.nvim" target="_blank" rel="noopener">MarkdownPreview</a>插件，也觉得挺方便的。（重点是能够<strong>自定义快捷键</strong>） 下面就按照常用的程度记录下Markdown的一些语法吧，方便自己以后查询，看自己曾经写的总比看别人写的印象深~</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助,比如换了个环境（学校电脑，没权限安装Typora)还是得一个个查。<br>于是开始逼自己用更泛用的工具写BLog，正好前些日子在学Vim,逐渐体会到其强大之处，干脆就用它写Markdown文章好了，配合<a href="https://github.com/iamcco/markdown-preview.nvim">MarkdownPreview</a>插件，也觉得挺方便的。（重点是能够<strong>自定义快捷键</strong>） 下面就按照常用的程度记录下Markdown的一些语法吧，方便自己以后查询，看自己曾经写的总比看别人写的印象深~</p>
 <h1 id="最基础的语法">1&emsp;最基础的语法</h1><pre><code># h1级标题
 ## h2级标题
 ### h3级标题
@@ -601,7 +601,7 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>地址</span><span class="token punctuation">></span></span>          :直接写一个网址上去也能识别为可点击的链接
 <span class="token url">[名称][<span class="token variable">链接名称</span>]</span>
 <span class="token url-reference url"><span class="token punctuation">[</span><span class="token variable">链接名称</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>若要使用第三种方法，两行之间至少要空一行才能正常显示。注意使用链接时地址一定要<strong>写完整</strong>，前面的<code>http://</code>不要丢了，不然会按照相对地址进行跳转。<br>链接还可以加个title，在地址后用引号的形式写上就行；当把鼠标移到链接上时就会显示title了。<br>举个例子：<br><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306" target="_blank" rel="noopener" title="这是一篇文献">Airfoil optimisation for vertical‐axis wind turbines with variable pitch</a></p>
+<p>若要使用第三种方法，两行之间至少要空一行才能正常显示。注意使用链接时地址一定要<strong>写完整</strong>，前面的<code>http://</code>不要丢了，不然会按照相对地址进行跳转。<br>链接还可以加个title，在地址后用引号的形式写上就行；当把鼠标移到链接上时就会显示title了。<br>举个例子：<br><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306" title="这是一篇文献">Airfoil optimisation for vertical‐axis wind turbines with variable pitch</a></p>
 <h3 id="图片">2.7.2&emsp;图片</h3><p>和链接极为相似，只是前面多了个<code>!</code>号，注意是英文的感叹号。第一个框里面的名称基本上空着就行，或者简单写个描述，防止哪天图片挂了之后忘记当初这张图是啥样的。<br>当然也可以用HTML标签来表示图片，还能加上更多的格式控制，不过显得比较麻烦</p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>图片网址<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>说到图片肯定离不开图床，毕竟图片太多的时候总不能全往一个地方塞。这里推荐PicGo这款软件，Windows和Linux下都能用，添加图片也很方便，看看它总结的一些图床吧：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191127104125.png" alt title="PicGo真好用"><br>我还是白嫖的Github当作图床，不过缺点是有时候国内访问速度很慢甚至打不开（对我来说没影响就行）<br>同样图片也可以加一个title，鼠标移上去的时候会显示出来。像我这个Hexo主题还会在下方显示一行图注。</p>
@@ -618,7 +618,7 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
 <li>注意在<code>&gt;</code>后<strong>最好加上空格</strong>，虽然实际情况是不加空格有的编译器也能显示出来，但加空格总<strong>不会出错</strong>。 </li>
 <li>第一行用了<code>&gt;</code>相当于创了个引用块，接下来的内容都会被当作引用，直到遇见<strong>一个空行</strong>。  </li>
 </ul>
-<h3 id="脚注引用">2.9.2&emsp;脚注引用</h3><p>这又是一个让人蛋疼的地方，<br>脚注引用这部分并不在markdown的基本语法里，所以有的引擎比如我这个hexo默认的hexo-renderer-marked就没办法直接显示脚注。为了能够用脚注我折腾了一个下午，引擎换来换去，解决一个个新冒出来的问题，最后还是放弃了，换回了原来的hexo-renderer-marked。<br>好在最后找到了这个<a href="https://github.com/kchen0x/hexo-reference" target="_blank" rel="noopener">hexo-reference</a>插件，只需要一个命令：</p>
+<h3 id="脚注引用">2.9.2&emsp;脚注引用</h3><p>这又是一个让人蛋疼的地方，<br>脚注引用这部分并不在markdown的基本语法里，所以有的引擎比如我这个hexo默认的hexo-renderer-marked就没办法直接显示脚注。为了能够用脚注我折腾了一个下午，引擎换来换去，解决一个个新冒出来的问题，最后还是放弃了，换回了原来的hexo-renderer-marked。<br>好在最后找到了这个<a href="https://github.com/kchen0x/hexo-reference">hexo-reference</a>插件，只需要一个命令：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> hexo-reference --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>再在根目录的<code>_config.yml</code>中加入：</p>
 <pre class="line-numbers language-xml"><code class="language-xml">Plugins:
@@ -635,13 +635,13 @@ x^n+y^n=z^n
 \end{equation}$$</code></pre><p>显示为：</p>
 <p>$$\begin{equation}<br>x^n+y^n=z^n<br>\end{equation}$$<br>当然这些规则都可以通过Mathjax的配置进行修改，比如有的blog的mathjax配置段没有：</p>
 <pre class="line-numbers language-js"><code class="language-js">TeX<span class="token punctuation">:</span> <span class="token punctuation">{</span>equationNumbers<span class="token punctuation">:</span> <span class="token punctuation">{</span> autoNumber<span class="token punctuation">:</span> <span class="token string">"AMS"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>自然就不会显示自动编号。关于公式的具体语法，实在是太复杂了，不是一下子能说的清楚的；不过世界上也有大佬能够在课堂上用Markdown写公式做笔记，详见<a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener">How I'm able to take notes in mathematics lectures using LaTeX and Vim</a>。实在是太强了... </p>
+<p>自然就不会显示自动编号。关于公式的具体语法，实在是太复杂了，不是一下子能说的清楚的；不过世界上也有大佬能够在课堂上用Markdown写公式做笔记，详见<a href="https://castel.dev/post/lecture-notes-1/">How I'm able to take notes in mathematics lectures using LaTeX and Vim</a>。实在是太强了... </p>
 <h1 id="其他语法">3&emsp;其他语法</h1><h2 id="表格">3.1&emsp;表格</h2><p>我是不太建议用表格的，毕竟Markdown里表格的输入并不方便，特别是比较复杂的表格，光是<code>|</code>都够你输入了，当然如果是有像Typora这样的工具的话，表格输入还是方便了不少，但Markdown无法对表格进行一些比较高级的控制，如合并单元格。</p>
 <pre><code>| 左对齐 | 右对齐 | 居中对齐 |
 | :-----| ----: | :----: |
 | 单元格 | 单元格 | 单元格 |
 | 单元格 | 单元格 | 单元格 |</code></pre><h2 id="转义-HTML等">3.2&emsp;转义/ HTML等</h2><p><code>\</code>反斜线转义字符用来显示特定的符号，这个用法在一些程序语言里非常常见。<br>另外Markdown还支持许多HTML元素的显示，但不是特殊情况一般不用，毕竟是用来方便我们写作的，没必要搞些特别复杂的东西，要求太高的话出门右拐LaTeX左拐Word欢迎你。 </p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">ROGALSKY T P. Acceleration of differential evolution for aerodynamic design[M]. 2004.<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306" target="_blank" rel="noopener">DE TAVERNIER D, FERREIRA C, BUSSEL G. Airfoil optimisation for vertical‐axis wind turbines with variable pitch[J]. Wind Energy, 2019, 22(4): 547–562.</a>]<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div><script>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">ROGALSKY T P. Acceleration of differential evolution for aerodynamic design[M]. 2004.<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306">DE TAVERNIER D, FERREIRA C, BUSSEL G. Airfoil optimisation for vertical‐axis wind turbines with variable pitch[J]. Wind Energy, 2019, 22(4): 547–562.</a>]<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1268,12 +1268,12 @@ x^n+y^n=z^n
                         <span class="chip bg-color">日志</span>
                     </a>
                     
-                    <a href="/tags/%E5%AE%89%E8%A3%85/">
-                        <span class="chip bg-color">安装</span>
-                    </a>
-                    
                     <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
                         <span class="chip bg-color">使用tips</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AE%89%E8%A3%85/">
+                        <span class="chip bg-color">安装</span>
                     </a>
                     
                 </div>
