@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
+    
+    <lastmod>2019-11-28T07:23:22.148Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</loc>
     
-    <lastmod>2019-11-27T12:19:37.000Z</lastmod>
+    <lastmod>2019-11-28T04:27:20.132Z</lastmod>
     
   </url>
   
@@ -65,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
-    
-    <lastmod>2019-11-23T06:46:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</loc>
     
     <lastmod>2019-11-22T15:30:00.000Z</lastmod>
@@ -96,6 +96,13 @@
     <loc>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</loc>
     
     <lastmod>2019-11-22T15:25:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04/</loc>
+    
+    <lastmod>2019-11-22T05:44:52.000Z</lastmod>
     
   </url>
   

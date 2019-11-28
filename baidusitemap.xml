@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
+    <lastmod>2019-11-28</lastmod>
+  </url>  <url>
     <loc>https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</loc>
-    <lastmod>2019-11-27</lastmod>
+    <lastmod>2019-11-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
     <lastmod>2019-11-26</lastmod>
@@ -22,9 +25,6 @@
     <loc>https://chengpengzhao.com/2019/03/21/2019-03-21-python-pa-chong-ru-men-lian-xi/</loc>
     <lastmod>2019-11-23</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
-    <lastmod>2019-11-23</lastmod>
-  </url>  <url>
     <loc>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
@@ -35,6 +35,9 @@
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</loc>
+    <lastmod>2019-11-22</lastmod>
+  </url>  <url>
+    <loc>https://chengpengzhao.com/2019/11/19/2019-11-19-install-dakota-6.11-on-ubuntu-18.04/</loc>
     <lastmod>2019-11-22</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/10/26/2019-10-liu-xue-10.26/</loc>

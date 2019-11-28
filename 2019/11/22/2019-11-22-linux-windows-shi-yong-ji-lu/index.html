@@ -530,14 +530,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    488
+                    784
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 				
@@ -579,7 +579,27 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
 <p>然后就可以打开U盘了，但可能还是没有权限编辑它，这好办，u盘里打开终端：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> -R 777 *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>虽说这种不安全的命令还是少用为好，但还是挺方便的。</p>
-<h1 id="问题2">2&emsp;问题2</h1><p>待续</p>
+<blockquote>
+<p><em>以下内容更新于2019-11-28 16:22:19</em></p>
+</blockquote>
+<h1 id="Linux系统空间清理">2&emsp;Linux系统空间清理</h1><p>Ubuntu也用了一段时间了，不知不觉磁盘空间少了很多，想要清理清理。但又不像windows那样直观怕一不小心把不该删的东西删了就不好了。网上找了一下方案，发现还是这位大佬的总结最全面，这一节以下部分<strong>均摘自</strong><a href="https://www.linuxdashen.com/debianubuntu%E6%B8%85%E7%90%86%E7%A1%AC%E7%9B%98%E7%A9%BA%E9%97%B4%E7%9A%848%E4%B8%AA%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener">Linux大神博客</a>。  </p>
+<h2 id="删除残余的配置文件">2.1&emsp;删除残余的配置文件</h2><pre class="line-numbers language-bash"><code class="language-bash">dpkg --list <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"^rc"</span> <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">" "</span> -f 3 <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">sudo</span> dpkg --purge<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="删除没有用的deb软件安装包">2.2&emsp;删除没有用的deb软件安装包</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> clean <span class="token operator">&amp;&amp;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> autoclean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="删除孤儿软件包">2.3&emsp;删除孤儿软件包</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove  <span class="token operator">&amp;&amp;</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> deborphan <span class="token operator">&amp;&amp;</span>
+deborphan <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">sudo</span> <span class="token function">apt-get</span> purge -y<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="删除过时的软件包">2.4&emsp;删除过时的软件包</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">aptitude</span> search ?obsolete
+<span class="token function">sudo</span> <span class="token function">apt-get</span> purge <span class="token operator">&lt;</span>name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="清理日志文件">2.5&emsp;清理日志文件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> ncdu <span class="token operator">&amp;&amp;</span>
+<span class="token function">sudo</span> ncdu /var/log 
+<span class="token function">sudo</span> <span class="token function">dd</span> if<span class="token operator">=</span>/dev/null of<span class="token operator">=</span>/var/log/shadowsocks.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="baobab硬盘空间用量分析工具">2.6&emsp;baobab硬盘空间用量分析工具</h2><pre class="line-numbers language-bash"><code class="language-bash">baobab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="删除大容量软件包">2.7&emsp;删除大容量软件包</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> debian-goodies <span class="token operator">&amp;&amp;</span>
+dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="使用ubuntu-tweak来清理">2.8&emsp;使用ubuntu-tweak来清理</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gdebi <span class="token operator">&amp;&amp;</span>
+<span class="token function">sudo</span> gdebi ubuntu-tweak*.deb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id>3&emsp;?</h1><p>待续</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1140,16 +1160,16 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%86%99%E4%BD%9C/">
-                        <span class="chip bg-color">写作</span>
-                    </a>
-                    
                     <a href="/tags/%E8%AF%AD%E6%B3%95/">
                         <span class="chip bg-color">语法</span>
                     </a>
                     
                     <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
                         <span class="chip bg-color">使用tips</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%86%99%E4%BD%9C/">
+                        <span class="chip bg-color">写作</span>
                     </a>
                     
                 </div>
@@ -1185,12 +1205,12 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" class="post-category">
-                                    博客建立
-                                </a>
-                            
                             <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
                                     生活
+                                </a>
+                            
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" class="post-category">
+                                    博客建立
                                 </a>
                             
                             
@@ -1348,7 +1368,7 @@ fsck.fat 4.1 <span class="token punctuation">(</span>2017-01-24<span class="toke
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">24.5k</span>&nbsp;字
+                class="white-color">25.3k</span>&nbsp;字
             
             
             
