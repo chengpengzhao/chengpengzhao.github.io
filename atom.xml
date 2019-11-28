@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-27T12:19:37.007Z</updated>
+  <updated>2019-11-27T12:19:37.000Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/"/>
     <id>https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</id>
     <published>2019-11-25T15:00:00.000Z</published>
-    <updated>2019-11-27T12:19:37.007Z</updated>
+    <updated>2019-11-27T12:19:37.000Z</updated>
     
     <summary type="html">
     
@@ -62,7 +62,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
         
       
     
@@ -76,9 +76,9 @@
     
       <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
-      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
-    
       <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
     
   </entry>
   
@@ -95,7 +95,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
         
       
     
@@ -124,7 +124,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
         
       
     
@@ -153,7 +153,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
         
       
     
@@ -207,7 +207,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
         
       
     
@@ -236,7 +236,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;2019-09-26-北京-东京&quot;&gt;1&amp;emsp;2019-09-26　北京-东京&lt;/h1&gt;&lt;h2
         
       
     
@@ -269,7 +269,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;LaTeX-公式编辑-with-MathJax-by-zcp&quot;&gt;1&amp;emsp;LaTeX 公式编辑 with MathJax by
         
       
     
@@ -296,7 +296,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;前言&quot;&gt;1&amp;emsp;前言&lt;/h1&gt;&lt;p&gt;之前也说了，我是用的Github
         
       
     
@@ -323,7 +323,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;関西弁講座&quot;&gt;1&amp;emsp;関西弁講座&lt;/h1&gt;&lt;p&gt;&lt;a
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;関西弁講座&quot;&gt;1&amp;emsp;関西弁講座&lt;/h1&gt;&lt;p&gt;&lt;a
         
       
     
@@ -352,8 +352,10 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;&lt;em&gt;アンダーライン ：日本人添削したこと&lt;/em&gt;&lt;/p&gt;
-&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;&lt;em&gt;アンダーライン ：日本人添削したこと&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&quot;四月は&quot;&gt;1&amp;emsp;四月は&lt;/h1&gt;&lt;br&gt;
+
+&lt;h2
         
       
     
@@ -382,7 +384,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;漢字と符号及び原稿用紙の使い方について&quot;&gt;1&amp;emsp;漢字と符号及び原稿用紙の使い方について&lt;/h1&gt;&lt;h2
         
       
     
@@ -411,7 +413,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;目标是课程中心7195条课程信息下的所有资源~：&lt;/p&gt;
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;目标是课程中心7195条课程信息下的所有资源~：&lt;/p&gt;
 &lt;h1
         
       
@@ -439,7 +441,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
         
       
     

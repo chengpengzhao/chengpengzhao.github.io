@@ -544,9 +544,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。<br>在网上搜了一下发现是有个大佬写了个基于Hexo的<a href="https://github.com/mythsman/hexo-douban">小插件</a>，顿时心灰意冷，因为当时从零基础开始折腾博客花费了太多时间，到最后也没完全弄懂。<br>一边纠结着到底要不要换成Hexo一边看着程序员大佬们的博客，忽然眼前一亮发现了一款比较好的主题<a href="https://github.com/chengpengzhao/hexo-theme-fluid">Fluid</a> ，Material Design 风格而且功能比较多文档描述的很详细，大呼为什么没有早点发现这么好的东西，于是开始了为期3天的折腾之旅。</p>
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。<br>在网上搜了一下发现是有个大佬写了个基于Hexo的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">小插件</a>，顿时心灰意冷，因为当时从零基础开始折腾博客花费了太多时间，到最后也没完全弄懂。<br>一边纠结着到底要不要换成Hexo一边看着程序员大佬们的博客，忽然眼前一亮发现了一款比较好的主题<a href="https://github.com/chengpengzhao/hexo-theme-fluid" target="_blank" rel="noopener">Fluid</a> ，Material Design 风格而且功能比较多文档描述的很详细，大呼为什么没有早点发现这么好的东西，于是开始了为期3天的折腾之旅。</p>
 <hr>
-<p>折腾到一半发现这个hexo-theme-fluid主题主页两边比较空，想改看了下源码却不知道从何开始下手；再加上不知道这个主题和hexo-douban是否兼容，又有点犹豫了，后悔花了时间却啥也没干成之余，无意间又发现了一款Material Design的主题 <a href="https://github.com/blinkfox/hexo-theme-matery"><strong>hexo-theme-matery</strong></a>！功能更加全面而且也很好看，阅读时目录、上下一篇等小细节也做的不错，于是义无反顾地选择了它。  </p>
+<p>折腾到一半发现这个hexo-theme-fluid主题主页两边比较空，想改看了下源码却不知道从何开始下手；再加上不知道这个主题和hexo-douban是否兼容，又有点犹豫了，后悔花了时间却啥也没干成之余，无意间又发现了一款Material Design的主题 <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener"><strong>hexo-theme-matery</strong></a>！功能更加全面而且也很好看，阅读时目录、上下一篇等小细节也做的不错，于是义无反顾地选择了它。  </p>
 <hr>
 <p>用户体验还是很不错的，折腾完后我非常高兴。总算可以不再去弄这些华丽胡哨的，专心去读书写作了（其实都是借口）。</p>
 <p><strong>下面简单记录一下我从零开始建立这个基于Hexo的博客的过程，由于有很多这方面的文章，我只记录一些比较细节的东西，防止自己再次踩坑</strong> </p>
@@ -579,7 +579,7 @@ hexo init
 hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>就可以看到这个主题模板已经建立好了。</p>
 <p><br><br><br><br><br></p>
-<h1 id="具体配置过程（重中之重）">5&emsp;具体配置过程（重中之重）</h1><p>前面的所有步骤15分钟内就可以完成，真正难在怎么去自定义这个模板，修改成自己舒服的样式才是最重要的嘛。不然大家为什么花那么多时间去折腾。<br>我这个主题的文档也说明的非常详细了，可以对照着<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">它</a>从头到尾先根据自己情况修改一遍。 </p>
+<h1 id="具体配置过程（重中之重）">5&emsp;具体配置过程（重中之重）</h1><p>前面的所有步骤15分钟内就可以完成，真正难在怎么去自定义这个模板，修改成自己舒服的样式才是最重要的嘛。不然大家为什么花那么多时间去折腾。<br>我这个主题的文档也说明的非常详细了，可以对照着<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">它</a>从头到尾先根据自己情况修改一遍。 </p>
 <h2 id="如何建立新页面">5.1&emsp;如何建立新页面</h2><p>照着说明文档建立了tags、about、categories等页面之后，大概明白了怎么去配置菜单栏，首先在<code>_config.yml</code>中建立起一二级菜单，排好序、选好图标、确定url名称，下面是我主题配置文件相关部分：</p>
 <pre class="line-numbers language-yml"><code class="language-yml">menu:
   Index:
@@ -619,9 +619,9 @@ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
         url: /hitokoto
         icon: fas fa-comment-alt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>建好了之后去根目录<code>/source</code>文件夹下建好相应子文件夹，这里我的<code>/books /games /movies</code>是之后用hexo-douban插件生成的页面所以不需要建立文件夹。<br>然后先可以去看下效果，发现有的页面已经接近完美了，因为layout里面就有相关的样式设置。这时候需要<strong>认真阅读</strong><code>themes/hexo-theme-matery/layout</code>相关样式文件(.ejs),然后到处抄一点最后完成自定义页面的布局...<br>我是不怎么会抄所以只能做一个简单的<a href="https://chengpengzhao.com/hitokoto/">一言</a>页面。 </p>
-<h2 id="豆瓣插件的安装">5.2&emsp;豆瓣插件的安装</h2><p>终于到这部分了，害得我花了几天折腾博客的罪魁祸首。关于怎么安装，作者的<a href="https://github.com/mythsman/hexo-douban">github</a>上已经说的很清楚了，这里主要问题是适配和一些小问题的解决：</p>
-<h3 id="适配主题">5.2.1&emsp;适配主题</h3><p>我自己不太会弄，这里参考了<a href="https://licardo.cn/posts/11199/">一位医学大佬</a>的解决方案。啥都不用想，抄就完事了，多轻松。</p>
-<h3 id="关于弹窗">5.2.2&emsp;关于弹窗</h3><p>弄好之后发现每次打开豆瓣读书相关页面会弹出三个空白窗口，在网上搜了一下发现是Hexo4.0新版本的问题，详细请参考<a href="https://github.com/hexojs/hexo/issues/3796">这里</a>，我的解决方法是将根目录的配置文件中相关部分改为：</p>
+<h2 id="豆瓣插件的安装">5.2&emsp;豆瓣插件的安装</h2><p>终于到这部分了，害得我花了几天折腾博客的罪魁祸首。关于怎么安装，作者的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">github</a>上已经说的很清楚了，这里主要问题是适配和一些小问题的解决：</p>
+<h3 id="适配主题">5.2.1&emsp;适配主题</h3><p>我自己不太会弄，这里参考了<a href="https://licardo.cn/posts/11199/" target="_blank" rel="noopener">一位医学大佬</a>的解决方案。啥都不用想，抄就完事了，多轻松。</p>
+<h3 id="关于弹窗">5.2.2&emsp;关于弹窗</h3><p>弄好之后发现每次打开豆瓣读书相关页面会弹出三个空白窗口，在网上搜了一下发现是Hexo4.0新版本的问题，详细请参考<a href="https://github.com/hexojs/hexo/issues/3796" target="_blank" rel="noopener">这里</a>，我的解决方法是将根目录的配置文件中相关部分改为：</p>
 <pre class="line-numbers language-yml"><code class="language-yml">external_link:
   enable: true
   field: post<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -633,7 +633,7 @@ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <pre class="line-numbers language-bash"><code class="language-bash">您请求重设应用xxxx 的密码。点击下列链接来重设您的帐号密码（链接在 48 小时内有效）：
 
 https://leancloud.cn/reset.html?token<span class="token operator">=</span>xxxxxxxxxxxxxxxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>我刚建立好博客的时候也有这个问题，还好被别人提醒了。于是干脆部署了<a href="https://github.com/DesertsP/Valine-Admin">Valine Admin</a>，是Valine 评论系统的扩展和增强，可以确保对方收到了自己的回复，并定时检查博客的新留言情况。<br>缺点是步骤比较复杂，还得先实名认证一下（现在的实名认证越来越嚣张了，动不动就给你采集个人脸信息。没办法，有空子谁不想钻呢）。</p>
+<p>我刚建立好博客的时候也有这个问题，还好被别人提醒了。于是干脆部署了<a href="https://github.com/DesertsP/Valine-Admin" target="_blank" rel="noopener">Valine Admin</a>，是Valine 评论系统的扩展和增强，可以确保对方收到了自己的回复，并定时检查博客的新留言情况。<br>缺点是步骤比较复杂，还得先实名认证一下（现在的实名认证越来越嚣张了，动不动就给你采集个人脸信息。没办法，有空子谁不想钻呢）。</p>
 <h2 id="关于CNAME">5.5&emsp;关于CNAME</h2><p>上传到github之前记得在根目录<code>source</code>文件夹下建立一个无后缀叫做<code>CNAME</code>的文档，里面写上自己用来当博客的域名（买了域名的）。这样保证每次上传后不用重复去github设定自定义域名。  </p>
 <h2 id="404页面">5.6&emsp;404页面</h2><p>发现这个主题好像没有404页面，于是自己建了一个。步骤很简单：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">hexo new page <span class="token string">"404"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -724,7 +724,7 @@ https://leancloud.cn/reset.html?token<span class="token operator">=</span>xxxxxx
 <ol>
 <li>如果 <code>img</code> 属性不填写的话，文章特色图会根据文章标题的 <code>hashcode</code> 的值取余，然后选取主题中对应的特色图片，从而达到让所有文章都的特色图<strong>各有特色</strong>。</li>
 <li><code>date</code> 的值尽量保证每篇文章是唯一的，因为本主题中 <code>Gitalk</code> 和 <code>Gitment</code> 识别 <code>id</code> 是通过 <code>date</code> 的值来作为唯一标识的。</li>
-<li>如果要对文章设置阅读验证密码的功能，不仅要在 Front-matter 中设置采用了 SHA256 加密的 password 的值，还需要在主题的 <code>_config.yml</code> 中激活了配置。有些在线的 SHA256 加密的地址，可供你使用：<a href="http://tool.oschina.net/encrypt?type=2">开源中国在线工具</a>、<a href="http://encode.chahuo.com/">chahuo</a>、<a href="http://tool.chinaz.com/tools/hash.aspx">站长工具</a>。</li>
+<li>如果要对文章设置阅读验证密码的功能，不仅要在 Front-matter 中设置采用了 SHA256 加密的 password 的值，还需要在主题的 <code>_config.yml</code> 中激活了配置。有些在线的 SHA256 加密的地址，可供你使用：<a href="http://tool.oschina.net/encrypt?type=2" target="_blank" rel="noopener">开源中国在线工具</a>、<a href="http://encode.chahuo.com/" target="_blank" rel="noopener">chahuo</a>、<a href="http://tool.chinaz.com/tools/hash.aspx" target="_blank" rel="noopener">站长工具</a>。</li>
 <li>您可以在文章md文件的 front-matter 中指定 reprintPolicy 来给单个文章配置转载规则</li>
 </ol>
 </blockquote>
@@ -751,7 +751,7 @@ tags:
 <blockquote>
 <p> <strong>2019/11/22更新</strong>  <em>有人说我的博客打不开，再加上我Godaddy买的域名没办法续费，干脆连着domain全部搬家</em></p>
 </blockquote>
-<h1 id="CDN加速，把DNS迁移到cloudflare">7&emsp;CDN加速，把DNS迁移到cloudflare</h1><h2 id="注册帐号">7.1&emsp;注册帐号</h2><p>翻了下好像中文只在帮助里有一小部分，主要还是英文。在注册之前可以先解除原来第三方的托管，我之前用的是DNSPOD，大半年没看一打开DNS怎么这么多条。<br>毫不犹豫能删的先全删了再说，然后进我买域名的Godaddy里将DNS托管改为cloudflare(按照它这里给的提示)。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122191602.png" alt><br>然后托管成功之后先把DNS给加上（因为之前全删了)，我是用的github平台，直接用CNAME加了@和www,指向<a href="https://chengpengzhao.github.io">chengpengzhao.github.io</a> 。当然也可以使用A方式加ip就行了，我懒得去ping一下ip所以没用这种方法。<br>接下来的部分就难到我了，简直选择困难，这也体现了cloudflare的强大之处：这配置项也太多了吧。只能慢慢看它的说明一个个设置，先开个版块记录一下有哪些坑。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193259.png" alt> </p>
+<h1 id="CDN加速，把DNS迁移到cloudflare">7&emsp;CDN加速，把DNS迁移到cloudflare</h1><h2 id="注册帐号">7.1&emsp;注册帐号</h2><p>翻了下好像中文只在帮助里有一小部分，主要还是英文。在注册之前可以先解除原来第三方的托管，我之前用的是DNSPOD，大半年没看一打开DNS怎么这么多条。<br>毫不犹豫能删的先全删了再说，然后进我买域名的Godaddy里将DNS托管改为cloudflare(按照它这里给的提示)。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122191602.png" alt><br>然后托管成功之后先把DNS给加上（因为之前全删了)，我是用的github平台，直接用CNAME加了@和www,指向<a href="https://chengpengzhao.github.io" target="_blank" rel="noopener">chengpengzhao.github.io</a> 。当然也可以使用A方式加ip就行了，我懒得去ping一下ip所以没用这种方法。<br>接下来的部分就难到我了，简直选择困难，这也体现了cloudflare的强大之处：这配置项也太多了吧。只能慢慢看它的说明一个个设置，先开个版块记录一下有哪些坑。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193259.png" alt> </p>
 <h2 id="cloudflare设置">7.2&emsp;cloudflare设置</h2><h3 id="Scrape-Shield">7.2.1&emsp;Scrape Shield</h3><p>这一大项是关于反爬虫的，可以适当打开几个保护措施，但其中的Hotlink Protection可以选择关闭，不然在别人blog加你友链时他那边没法显示你的头像（不要问我怎么知道的）。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122193950.png" alt>  </p>
 <h3 id="Speeding">7.2.2&emsp;Speeding</h3><p>这个里面有很多选项可以加快博客的访问速度，我先全部打开试了试，发现在浏览博客时很多效果都没了，直接不让加载，要按F5才能刷新出来。经过排查应该是Brotli这个选项的问题，因为我只关了这个然后问题就解决了，当然也不排除是别的原因。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123160848.png" alt></p>
 <h3 id="Page-Rules">7.2.3&emsp;Page Rules</h3><p>据说这个功能挺强大的，我也不太会就按照网上别人的设置弄了一下，先看看实际效果如何吧。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191123161014.png" alt> </p>
@@ -785,7 +785,7 @@ tags:
     <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">1</span><span class="token punctuation">)</span><span class="token string">"."</span><span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">2</span><span class="token punctuation">)</span><span class="token string">"."</span><span class="token function">counter</span><span class="token punctuation">(</span>counter_h<span class="token number">3</span><span class="token punctuation">)</span><span class="token string">"　"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这段代码利用css的counter属性实现自动编号；但编号有是有了，我发现侧边目录也就是Toc仍没有编号，并且点击右侧跳转当前标题会被上面的状态栏挡住，还是需要进一步修改。<br>在<code>matery.css</code>里改来改去，还是有点小问题，而且侧边栏的编号不知道怎么加，最后我放弃了这条思路。</p>
-<h3 id="最后采用的方法">8.1.2&emsp;最后采用的方法</h3><p>抱着一点期待在github上翻了下，还真的有相关的小工具，<a href="https://github.com/r12f/hexo-heading-index">hexo-heading-index</a>，按照说明先用npm安装：</p>
+<h3 id="最后采用的方法">8.1.2&emsp;最后采用的方法</h3><p>抱着一点期待在github上翻了下，还真的有相关的小工具，<a href="https://github.com/r12f/hexo-heading-index" target="_blank" rel="noopener">hexo-heading-index</a>，按照说明先用npm安装：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> hexo-heading-index --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>再在根目录的<code>_config.yml</code>中插入相关设置：</p>
 <pre class="line-numbers language-yml"><code class="language-yml">heading_index:
@@ -1380,12 +1380,12 @@ tags:
                         <span class="chip bg-color">日志</span>
                     </a>
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
-                    </a>
-                    
                     <a href="/tags/%E5%AE%89%E8%A3%85/">
                         <span class="chip bg-color">安装</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
                     </a>
                     
                 </div>

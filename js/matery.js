@@ -71,7 +71,7 @@ $(function () {
 
     /*文章内容详情的一些初始化特性*/
     let articleInit = function () {
-        $('#articleContent a').attr('target', '_blank');
+        //$('#articleContent a').attr('target', '_self'); 不乱加target，通过配置文件控制跳转外链
 	$('#articleContent h1').after('<hr>');   //一级标题后加一行分隔线
         $('#articleContent img').each(function () {
             let imgPath = $(this).attr('src');
@@ -167,5 +167,7 @@ $(function () {
                 $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
             }
     });
+
+
 });
 
