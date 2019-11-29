@@ -549,9 +549,13 @@
 <h2 id="下载要求">1.2&emsp;下载要求</h2><ul>
 <li>能够全程自动，不需要时时盯着看程序运行状况</li>
 <li>下载的文件按照原有的文件夹结构分类放好，文件名不变</li>
-<li>若运行时遇到断网等特殊情况，下次运行能自动从上次的断点开始，不用重新下载<h1 id="分析网站">2&emsp;分析网站</h1>开工开工，首先打开Chrome或Firefox浏览器调出控制台，查看HTML代码。<h2 id="找到目标位置">2.1&emsp;找到目标位置</h2><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128182850.png" alt><br>可以发现在<code>&lt;th scope="row" headers="files_name_h"&gt;</code>下有我们想要的文件夹的相对链接，而且每一层的结构都类似，故可以通过正则表达式轻易地定位到该部分。<h2 id="找到最终的下载链接">2.2&emsp;找到最终的下载链接</h2><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128185016.png" alt><br>前面的多级文件夹都是采用的相对链接，而到最后每个文件可以看到肯定是有个绝对链接的，点击该href就能下载。<h1 id="Python实现">3&emsp;Python实现</h1>前面的都找到之后就可以编py程序了，因为每个文件夹下都可能有文件和文件夹并存，最好先把文件结构建立起来。利用相对链接建立文件夹，再把相应的绝对链接储存在文本文件中，以便下一步下载。<h2 id="获取下载链接，建立文件夹">3.1&emsp;获取下载链接，建立文件夹</h2>python3环境，采用requests库，引入多个header随机切换，设定一小段休眠时间，通过嵌套的函数建立层层文件夹：  </li>
+<li>若运行时遇到断网等特殊情况，下次运行能自动从上次的断点开始，不用重新下载</li>
 </ul>
-<p><strong>getlinks.py</strong></p>
+<h1 id="分析网站">2&emsp;分析网站</h1><p>开工开工，首先打开Chrome或Firefox浏览器调出控制台，查看HTML代码。</p>
+<h2 id="找到目标位置">2.1&emsp;找到目标位置</h2><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128182850.png" alt><br>可以发现在<code>&lt;th scope="row" headers="files_name_h"&gt;</code>下有我们想要的文件夹的相对链接，而且每一层的结构都类似，故可以通过正则表达式轻易地定位到该部分。</p>
+<h2 id="找到最终的下载链接">2.2&emsp;找到最终的下载链接</h2><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128185016.png" alt><br>前面的多级文件夹都是采用的相对链接，而到最后每个文件可以看到肯定是有个绝对链接的，点击该href就能下载。</p>
+<h1 id="Python实现">3&emsp;Python实现</h1><p>前面的都找到之后就可以编py程序了，因为每个文件夹下都可能有文件和文件夹并存，最好先把文件结构建立起来。利用相对链接建立文件夹，再把相应的绝对链接储存在文本文件中，以便下一步下载。</p>
+<h2 id="获取下载链接，建立文件夹">3.1&emsp;获取下载链接，建立文件夹</h2><p>python3环境，采用requests库，引入多个header随机切换，设定一小段休眠时间，通过嵌套的函数建立层层文件夹：<br><strong>getlinks.py</strong></p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># coding=utf-8</span>
 <span class="token keyword">import</span> requests
 <span class="token keyword">import</span> re
