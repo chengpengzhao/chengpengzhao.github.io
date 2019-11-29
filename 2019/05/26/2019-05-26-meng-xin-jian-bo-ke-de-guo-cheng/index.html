@@ -411,6 +411,7 @@ github p">
     }
 
     .toc-widget {
+        width: 345px;
         padding-left: 20px;
     }
 
@@ -428,7 +429,7 @@ github p">
     }
     #toc-content {
         height: calc(100vh - 250px);
-        overflow: scroll;
+        overflow: auto;
     }
 
     #toc-content ol {
@@ -1258,7 +1259,7 @@ github p">
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            // headingsOffset: -205,
+            collapseDepth: Number('3'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
