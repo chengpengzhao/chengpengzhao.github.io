@@ -533,7 +533,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    16 分
                 </div>
                 
 				
@@ -631,7 +631,7 @@ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
   enable: true
   field: post<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>然后就不会出现不需要的弹窗了，或者将hexo版本降至3.9</p>
-<h2 id="关于Markdown把英文的引号-39-显示成’的解决方案">5.3&emsp;关于Markdown把英文的引号'显示成’的解决方案</h2><p>这个不是主题的问题，而是相关插件hexo-renderer-marked的设置问题。<br>在<code>/node_modules/hexo-renderer-marked</code>文件夹下，找到<code>index.js</code>，将其中<strong>smartypants</strong>选项改成：</p>
+<h2 id="关于Markdown把英文的引号-39-显示成’的解决方案">5.3&emsp;关于Markdown把英文的引号&#39;显示成’的解决方案</h2><p>这个不是主题的问题，而是相关插件hexo-renderer-marked的设置问题。<br>在<code>/node_modules/hexo-renderer-marked</code>文件夹下，找到<code>index.js</code>，将其中<strong>smartypants</strong>选项改成：</p>
 <pre class="line-numbers language-js"><code class="language-js">smartypants<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>应该就没问题了。</p>
 <h2 id="评论系统的邮件提醒问题">5.4&emsp;评论系统的邮件提醒问题</h2><p>如果用的是Valine评论系统并打开了回复邮件提醒但没设置模板，那么对方可能忽然收到这样一封莫名其妙的邮件：</p>
@@ -828,25 +828,7 @@ tags:
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果你也觉得再让一级标题居中会更舒服的话，只需在h1样式中加入<code>text-align: center;</code>就OK了。 </p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1415,8 +1397,8 @@ tags:
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            First I'd like to thank Chien Nguyen  for his blog, it's very helpful for a noob to linux like me.
-Dakota released the v
+                            First I&#39;d like to thank Chien Nguyen  for his blog, it&#39;s very helpful for a noob to linux like me.
+Dakota releas
                         
                     </div>
                     <div class="publish-info">
@@ -1598,7 +1580,7 @@ Dakota released the v
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.8k</span>&nbsp;字
+                class="white-color">27.9k</span>&nbsp;字
             
             
             

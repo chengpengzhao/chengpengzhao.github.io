@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-11-29T03:20:17.082Z</updated>
+  <updated>2019-11-30T11:14:25.903Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用Vim写Markdown</title>
+    <link href="https://chengpengzhao.com/2019/11/30/2019-11-30-markdown-vim-shi-yong/"/>
+    <id>https://chengpengzhao.com/2019/11/30/2019-11-30-markdown-vim-shi-yong/</id>
+    <published>2019-11-29T15:00:00.000Z</published>
+    <updated>2019-11-30T11:14:25.903Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="程序语言" scheme="https://chengpengzhao.com/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
+    
+      <category term="Vim" scheme="https://chengpengzhao.com/tags/Vim/"/>
+    
+  </entry>
   
   <entry>
     <title>python爬虫入门练习——Sourceforge自动下载</title>
@@ -147,7 +176,7 @@
       
         
         
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;First I&#39;d like to thank &lt;a
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;First I&amp;#39;d like to thank &lt;a
         
       
     
@@ -172,7 +201,7 @@
     <link href="https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/"/>
     <id>https://chengpengzhao.com/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/</id>
     <published>2019-11-14T15:00:00.000Z</published>
-    <updated>2019-11-28T08:53:14.829Z</updated>
+    <updated>2019-11-30T11:19:53.152Z</updated>
     
     <summary type="html">
     

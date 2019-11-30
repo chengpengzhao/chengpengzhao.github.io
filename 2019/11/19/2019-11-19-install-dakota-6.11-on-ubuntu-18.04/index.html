@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Install Dakota 6.11 on Ubuntu 18.04, Zcp&#39;s Zone">
-    <meta name="description" content="First I&#39;d like to thank Chien Nguyen  for his blog, it&#39;s very helpful for a noob to linux like me.
-Dakota released the v">
+    <meta name="description" content="First I&amp;#39;d like to thank Chien Nguyen  for his blog, it&amp;#39;s very helpful for a noob to linux like me.
+Dakota releas">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -535,14 +535,14 @@ Dakota released the v">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    489
+                    444
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 				
@@ -558,9 +558,9 @@ Dakota released the v">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>First I'd like to thank <a href="https://chienfm.com/dakota/Compile-Dakota-for-Ubuntu-16.04/" target="_blank" rel="noopener">Chien Nguyen</a>  for his blog, it's very helpful for a noob to linux like me.</p>
-<p>Dakota released the verison 6.11 on Fri 11/15/2019, and I'll share you how I install it on Ubuntu18.04 step by step.</p>
-<h1 id="What-is-Dakota">1&emsp;What is Dakota</h1><p>It's a powerful toolkit which include:</p>
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>First I&#39;d like to thank <a href="https://chienfm.com/dakota/Compile-Dakota-for-Ubuntu-16.04/" target="_blank" rel="noopener">Chien Nguyen</a>  for his blog, it&#39;s very helpful for a noob to linux like me.</p>
+<p>Dakota released the verison 6.11 on Fri 11/15/2019, and I&#39;ll share you how I install it on Ubuntu18.04 step by step.</p>
+<h1 id="What-is-Dakota">1&emsp;What is Dakota</h1><p>It&#39;s a powerful toolkit which include:</p>
 <ul>
 <li>optimization with gradient and nongradient-based methods;</li>
 <li>uncertainty quantification with sampling, reliability, stochastic expansion, and epistemic methods;</li>
@@ -591,35 +591,17 @@ openmpi-doc xorg-dev libmotif-dev<span aria-hidden="true" class="line-numbers-ro
 <p>Just wait for a few minutes and at last add the environment variables to <code>.bashrc</code> :</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> gedit ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Add the following lines at the end of <em>bashrc</em>  and save</p>
-<p><code>export PATH=”$PATH:export PATH="$PATH:$HOME/DAKOTA/dakota_installation/bin"</code></p>
+<p><code>export PATH=”$PATH:export PATH=&quot;$PATH:$HOME/DAKOTA/dakota_installation/bin&quot;</code></p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">source</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Finally, you may need this command to verify the file permissions:</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> -R 777 *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h1 id="Test">4&emsp;Test</h1><p>Now you can just open a terminal and input <code>dakota -v</code> and if everything goes well you will see:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">Dakota version 6.11 released Nov 15 2019.
 Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<span class="token punctuation">)</span> built XXX XX XXXX XX:XX:XX<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>Congratulations! Let's enjoy dakota now~</p>
+<p>Congratulations! Let&#39;s enjoy dakota now~</p>
 <h1 id="GUI">5&emsp;GUI</h1><p>You guys may meet some problems when trying to open the dakota GUI, because the dakota GUI requires JAVA 8. <a href="https://www.oracle.com/technetwork/es/java/javase/downloads/jdk8-downloads-2133151.html?printOnly=1" target="_blank" rel="noopener">jdk-8u231-linux-x64.tar.gz</a> should be a good choice for you.</p>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Dakota%20GUI%20_001.jpg" alt></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1357,7 +1339,7 @@ Repository revision c3efb375 <span class="token punctuation">(</span>2019-11-07<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.8k</span>&nbsp;字
+                class="white-color">27.9k</span>&nbsp;字
             
             
             

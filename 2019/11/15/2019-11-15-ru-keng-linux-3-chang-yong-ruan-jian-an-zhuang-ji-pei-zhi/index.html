@@ -589,8 +589,8 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:daniel-marynicz/filemanager-actions
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> filemanager-actions-nautilus-extension<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>fma-config-tool</code>  启动</p>
-<p>1)新建action命名：Open in Terminator在Action标签页勾选"Display item in location context menu"<br>在Command标签页填写<code>Path:/usr/bin/terminator，parameters:--working-directory=%d/%b</code></p>
-<p>2)配置Preferences勾选"Create a root 'FileManager-Action' menu"</p>
+<p>1)新建action命名：Open in Terminator在Action标签页勾选&quot;Display item in location context menu&quot;<br>在Command标签页填写<code>Path:/usr/bin/terminator，parameters:--working-directory=%d/%b</code></p>
+<p>2)配置Preferences勾选&quot;Create a root &#39;FileManager-Action&#39; menu&quot;</p>
 <h1 id="Foxit-Reader">4&emsp;Foxit Reader</h1><p>可以使用系统自带PDF阅读器，不过Foxit功能更多，但速度没有自带的快。</p>
 <h1 id="Typora">5&emsp;Typora</h1><p>Markdown编辑器，十分好用，强烈推荐，在我使用Vim之前一直用的这款软件。<br>安装过程很简单我就不提了，这里说下如何<strong>在ubuntu中调整Typora显示宽度</strong>：</p>
 <p>默认展示渲染结果的宽度太窄了（github主题的最大宽度是860px）</p>
@@ -648,7 +648,7 @@ indicator-sysmonitor <span class="token operator">&amp;</span><span aria-hidden=
 <h1 id="Zotero">18&emsp;Zotero</h1><p>文献管理神器，之前一直用Endnote，直到一位大佬给我安利了这款开源软件，相比之下Endnote简直太难用了。<br>安装不难，为了方便使用我在桌面建了个快捷方式，参考一下：</p>
 <pre><code>[Desktop Entry]
 Name=Zotero
-Exec=bash -c "/home/zcp/Downloads/Zotero_linux-x86_64/zotero -url %U"
+Exec=bash -c &quot;/home/zcp/Downloads/Zotero_linux-x86_64/zotero -url %U&quot;
 Icon=/home/zcp/Downloads/Zotero_linux-x86_64/chrome/icons/default/default256.jpg
 Type=Application
 Terminal=false
@@ -717,26 +717,15 @@ Categories<span class="token operator">=</span>Pycharm<span class="token punctua
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/share/applications/pycharm.desktop
  <span class="token function">cp</span> /usr/share/applications/pycharm.desktop /home/zcp/Desktop/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>双击选择trust，搞定。</p>
+<blockquote>
+<p><em>以下内容更新于2019-11-30 20:18:59</em></p>
+</blockquote>
+<h1 id="Peek-、screenkey">25&emsp;Peek 、screenkey</h1><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:peek-developers/stable
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> peek<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Peek是用来录制gif的一款软件，<a href="https://gitlab.com/wavexx/screenkey" target="_blank" rel="noopener" title="screenkey">screenkey</a>使用python写的能录制屏幕按键的工具。</p>
 <p><br><br><br></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1244,8 +1233,8 @@ Categories<span class="token operator">=</span>Pycharm<span class="token punctua
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            First I'd like to thank Chien Nguyen  for his blog, it's very helpful for a noob to linux like me.
-Dakota released the v
+                            First I&#39;d like to thank Chien Nguyen  for his blog, it&#39;s very helpful for a noob to linux like me.
+Dakota releas
                         
                     </div>
                     <div class="publish-info">
@@ -1475,7 +1464,7 @@ Dakota released the v
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.8k</span>&nbsp;字
+                class="white-color">27.9k</span>&nbsp;字
             
             
             

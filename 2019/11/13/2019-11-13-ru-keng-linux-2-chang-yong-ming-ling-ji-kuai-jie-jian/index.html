@@ -522,7 +522,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.5k
                 </div>
                 
 
@@ -700,31 +700,13 @@ StartupNotify=true
 Terminal=false
 Categories=Development;Matlab;</code></pre><p>配置文件中Name、Exec与Icon要指定好。<br><br><strong>顺便把ubuntu matlab界面字太小的解决方案放下面：</strong><br>  MathWorks suggested the following procedure, which works well for me (R2017b). Quoting from their email:<br>Tuning a high-DPI Linux system requires two steps</p>
 <pre><code>Setting the MATLAB scale factor
-Calibrating the system's DPI</code></pre><p>The MATLAB scale factor affects MATLAB desktop and the size/position of windows. The system DPI determines the scale and font size of axes and labels. To set the MATLAB scale factor, please use the following MATLAB commands:</p>
+Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects MATLAB desktop and the size/position of windows. The system DPI determines the scale and font size of axes and labels. To set the MATLAB scale factor, please use the following MATLAB commands:</p>
 <pre><code>&gt;&gt; s = settings;s.matlab.desktop.DisplayScaleFactor
 &gt;&gt; s.matlab.desktop.DisplayScaleFactor.PersonalValue = 1.5</code></pre><p>To calibrate the system DPI to match the scale facto, please use the following terminal commands :</p>
 <pre><code>% xdpyinfo | grep resolution
   resolution:    96x96 dots per inch
 % xrandr --dpi 144</code></pre><p>The DPI value chosen should be the resolution found with xdpyinfo multiplied by the MATLAB scale factor that was set. In the example, 96 × 1.5 = 144.<br>MATLAB must be restarted after Step 2.<br><br><br><br></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1454,7 +1436,7 @@ Calibrating the system's DPI</code></pre><p>The MATLAB scale factor affects MATL
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.8k</span>&nbsp;字
+                class="white-color">27.9k</span>&nbsp;字
             
             
             
