@@ -526,14 +526,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    17 分
                 </div>
                 
 				
@@ -828,6 +828,30 @@ tags:
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果你也觉得再让一级标题居中会更舒服的话，只需在h1样式中加入<code>text-align: center;</code>就OK了。 </p>
+<blockquote>
+<p><em>以下内容更新于2019-12-02 20:08:06</em></p>
+</blockquote>
+<h1 id="调整hexo-renderer-marked中Mathjax公式显示">9&emsp;调整hexo-renderer-marked中Mathjax公式显示</h1><p>发现默认的mathjax和marked的配置有的冲突，一些公式没法正常显示，做如下调整：</p>
+<ul>
+<li><code>layout/post.ejs</code>文件中相关部分调整，防止()内的内容显示为公式<pre class="line-numbers language-js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+  MathJax<span class="token punctuation">.</span>Hub<span class="token punctuation">.</span><span class="token function">Config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      tex2jax<span class="token punctuation">:</span> <span class="token punctuation">{</span>inlineMath<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'$'</span><span class="token punctuation">,</span> <span class="token string">'$'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        displayMath<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"$$"</span><span class="token punctuation">,</span><span class="token string">"$$"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        processEscapes<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        skipTags<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'script'</span><span class="token punctuation">,</span> <span class="token string">'noscript'</span><span class="token punctuation">,</span> <span class="token string">'style'</span><span class="token punctuation">,</span> <span class="token string">'textarea'</span><span class="token punctuation">,</span> <span class="token string">'pre'</span><span class="token punctuation">,</span> <span class="token string">'code'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  TeX<span class="token punctuation">:</span> <span class="token punctuation">{</span>equationNumbers<span class="token punctuation">:</span> <span class="token punctuation">{</span> autoNumber<span class="token punctuation">:</span> <span class="token string">"AMS"</span> <span class="token punctuation">}</span> 
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><code>node_modules/marked/lib/marked.js</code>文件修改正则表达式部分，调整渲染策略<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> inline <span class="token operator">=</span> <span class="token punctuation">{</span>
+escape<span class="token punctuation">:</span> <span class="token operator">/</span><span class="token operator">^</span>\\<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token template-string"><span class="token string">`*\[\]()#$+\-.!_>])/,
+//escape: /^\\([!"#$%&amp;'()*+,\-./:;&lt;=>?@\[\]^_`</span></span><span class="token punctuation">{</span><span class="token operator">|</span><span class="token punctuation">}</span><span class="token operator">~</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">,</span>
+br<span class="token punctuation">:</span> <span class="token regex">/^( {2,})\n(?!\s*$)/</span><span class="token punctuation">,</span>
+<span class="token comment" spellcheck="true">//br: /^( {2,}|\\)\n(?!\s*$)/,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+其余部分未作调整。</li>
+</ul>
 
             </div>
             <hr/>
@@ -1580,7 +1604,7 @@ Dakota releas
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28k</span>&nbsp;字
+                class="white-color">30k</span>&nbsp;字
             
             
             
