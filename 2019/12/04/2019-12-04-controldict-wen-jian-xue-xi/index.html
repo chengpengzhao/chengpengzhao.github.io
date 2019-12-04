@@ -4,8 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Markdown-Tips, Zcp&#39;s Zone">
-    <meta name="description" content="很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有">
+    <meta name="keywords" content="controlDict学习, Zcp&#39;s Zone">
+    <meta name="description" content="
+个人学习用，总结、整理了网上一些controlDict解析
+
+1&amp;emsp;文件结构一个例子:
+
+//文件说明
+{
+    version     2.0;                //版本号
+    format      asc">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Markdown-Tips | Zcp&#39;s Zone</title>
+    <title>controlDict学习 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -383,13 +391,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214103.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191204161154.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Markdown-Tips
+                        controlDict学习
                     </div>
                 </div>
             </div>
@@ -507,12 +515,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%86%99%E4%BD%9C/">
-                                <span class="chip bg-color">写作</span>
+                            <a href="/tags/OpenFOAM/">
+                                <span class="chip bg-color">OpenFOAM</span>
                             </a>
                         
-                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                <span class="chip bg-color">语法</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
                     </div>
@@ -523,8 +531,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                语言
+                            <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/" class="post-category">
+                                程序语言
+                            </a>
+                        
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                专业相关
                             </a>
                         
                     </div>
@@ -536,7 +548,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-26
+                    2019-12-04
                 </div>
                 
 
@@ -545,14 +557,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    9 分
                 </div>
                 
 				
@@ -568,96 +580,417 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助,比如换了个环境（学校电脑，没权限安装Typora)还是得一个个查。<br>于是开始逼自己用更泛用的工具写BLog，正好前些日子在学Vim,逐渐体会到其强大之处，干脆就用它写Markdown文章好了，配合<a href="https://github.com/iamcco/markdown-preview.nvim" target="_blank" rel="noopener">MarkdownPreview</a>插件，也觉得挺方便的。（重点是能够<strong>自定义快捷键</strong>） 下面就按照常用的程度记录下Markdown的一些语法吧，方便自己以后查询，看自己曾经写的总比看别人写的印象深~</p>
-<h1 id="最基础的语法">1&emsp;最基础的语法</h1><pre><code># h1级标题
-## h2级标题
-### h3级标题
-#### h4级标题
-##### h5级标题
-###### h6级标题</code></pre><p>文章的层次得要有的吧，平常写东西前三级就够用了，注意#和标题之间要有<strong>空格</strong>，而且要放在行头，像# 这种写法是不会被认作标题的。<br>这个语法太简单了怎么都不会忘的吧，但为了完整起见还是列在这。<br>标题可以用等号和连字符表示：</p>
-<pre><code>This is an H1
-=============
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><blockquote>
+<p>个人学习用，总结、整理了网上一些controlDict解析</p>
+</blockquote>
+<h1 id="文件结构">1&emsp;文件结构</h1><p>一个例子:</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token comment" spellcheck="true">//文件说明</span>
+<span class="token punctuation">{</span>
+    version     <span class="token number">2.0</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//版本号</span>
+    format      ascii<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//文本格式</span>
+    <span class="token keyword">class</span>       <span class="token class-name">dictionary</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//类型为字典文件</span>
+    location    <span class="token string">"system"</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//所在目录</span>
+    object      controlDict<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//对象名</span>
+<span class="token punctuation">}</span>
+application     interFoam<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//求解器名称</span>
+<span class="token comment" spellcheck="true">//时间控制</span>
+startFrom       startTime<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//设置计算开始时间为startTime</span>
+startTime       <span class="token number">0</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//定义startTime</span>
+stopAt          endTime<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//设置计算结束时间为endTime</span>
+endTime         <span class="token number">3</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//定义endTime</span>
+deltaT          <span class="token number">0.005</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//设置时间步长</span>
+<span class="token comment" spellcheck="true">//计算结果输出控制</span>
+writeControl    adjustableRunTime<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//按照计算时间控制输出</span>
+writeInterval   <span class="token number">0.1</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//输出时间间隔,单位秒[s],与writeControl配合使用</span>
+purgeWrite      <span class="token number">0</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//输出是否覆盖先前记录,0为不覆盖,1可用于稳态计算,默认0</span>
+writeFormat     ascii<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//计算结果输出文件格式指定</span>
+writePrecision  <span class="token number">10</span><span class="token punctuation">;</span>                 <span class="token comment" spellcheck="true">//控制输出有效数字位数,与writeFormat配合使用,默认6</span>
+writeCompression uncompressed<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//是否压缩</span>
+timeFormat      general<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//时间目录名称指定</span>
+timePrecision   <span class="token number">6</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//时间目录名称有效数字位数,与timeFormat配合使用,默认6</span>
+<span class="token comment" spellcheck="true">//时间步长自适应控制</span>
+adjustTimeStep  yes<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//是否开启时间步长自适应</span>
+maxCo           <span class="token number">0.5</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//最大库郎数</span>
+maxDeltaT       <span class="token number">1.0</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//最大时间步长</span>
+<span class="token comment" spellcheck="true">//字典读取控制</span>
+runTimeModifiable yes<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//每个时间步是否读取所修改的字典文件设定</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="逐项分析">2&emsp;逐项分析</h1><p><code>system</code>目录下的<code>controlDict</code>文件用来设置 <strong>时间和输入输出控制</strong>，包括 <strong>时间控制</strong>， <strong>计算结果输出控制</strong>，<strong>时间步长自适应控制</strong>， <strong>字典读取控制</strong> 和 <strong>运行时加载库或者函数控制</strong> 五个部分。</p>
+<h2 id="application">2.1&emsp;application</h2><p>查看<code>$FOAM_TUTORIALS</code>里所用到的求解器，输入命令：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">foamSearch $FOAM_TUTORIALS controlDict application
+<span class="token comment" spellcheck="true">//结果显示：</span>
+application     adjointShapeOptimizationFoam<span class="token punctuation">;</span>
+application     blockMesh<span class="token punctuation">;</span>
+application     boundaryFoam<span class="token punctuation">;</span>
+application     buoyantPimpleFoam<span class="token punctuation">;</span>
+application     buoyantSimpleFoam<span class="token punctuation">;</span>
+application     cavitatingFoam<span class="token punctuation">;</span>
+application     chemFoam<span class="token punctuation">;</span>
+application     chtMultiRegionFoam<span class="token punctuation">;</span>
+application     coalChemistryFoam<span class="token punctuation">;</span>
+application     coldEngineFoam<span class="token punctuation">;</span>
+application     compressibleInterFoam<span class="token punctuation">;</span>
+application     compressibleMultiphaseInterFoam<span class="token punctuation">;</span>
+application     dnsFoam<span class="token punctuation">;</span>
+application     DPMFoam<span class="token punctuation">;</span>
+application     driftFluxFoam<span class="token punctuation">;</span>
+application     dsmcFoam<span class="token punctuation">;</span>
+application     electrostaticFoam<span class="token punctuation">;</span>
+application     financialFoam<span class="token punctuation">;</span>
+application     fireFoam<span class="token punctuation">;</span>
+application     foamyHexMesh<span class="token punctuation">;</span>
+application     icoFoam<span class="token punctuation">;</span>
+application     icoUncoupledKinematicParcelFoam<span class="token punctuation">;</span>
+application     interFoam<span class="token punctuation">;</span>
+application     interMixingFoam<span class="token punctuation">;</span>
+application     interPhaseChangeFoam<span class="token punctuation">;</span>
+application     laplacianFoam<span class="token punctuation">;</span>
+application     mdEquilibrationFoam<span class="token punctuation">;</span>
+application     mdFoam<span class="token punctuation">;</span>
+application     mhdFoam<span class="token punctuation">;</span>
+application     moveDynamicMesh<span class="token punctuation">;</span>
+application     MPPICFoam<span class="token punctuation">;</span>
+application     multiphaseEulerFoam<span class="token punctuation">;</span>
+application     multiphaseInterFoam<span class="token punctuation">;</span>
+application     nonNewtonianIcoFoam<span class="token punctuation">;</span>
+application     PDRFoam<span class="token punctuation">;</span>
+application     pimpleFoam<span class="token punctuation">;</span>
+application     pisoFoam<span class="token punctuation">;</span>
+application     porousSimpleFoam<span class="token punctuation">;</span>
+application     potentialFoam<span class="token punctuation">;</span>
+application     potentialFreeSurfaceFoam<span class="token punctuation">;</span>
+application     reactingFoam<span class="token punctuation">;</span>
+application     reactingMultiphaseEulerFoam<span class="token punctuation">;</span>
+application     reactingParcelFoam<span class="token punctuation">;</span>
+application     reactingTwoPhaseEulerFoam<span class="token punctuation">;</span>
+application     rhoCentralFoam<span class="token punctuation">;</span>
+application     rhoPimpleFoam<span class="token punctuation">;</span>
+application     rhoPorousSimpleFoam<span class="token punctuation">;</span>
+application     rhoSimpleFoam<span class="token punctuation">;</span>
+application     scalarTransportFoam<span class="token punctuation">;</span>
+application     shallowWaterFoam<span class="token punctuation">;</span>
+application     simpleFoam<span class="token punctuation">;</span>
+application     simpleReactingParcelFoam<span class="token punctuation">;</span>
+application     snappyHexMesh<span class="token punctuation">;</span>
+application     solidDisplacementFoam<span class="token punctuation">;</span>
+application     solidEquilibriumDisplacementFoam<span class="token punctuation">;</span>
+application     sprayFoam<span class="token punctuation">;</span>
+application     SRFPimpleFoam<span class="token punctuation">;</span>
+application     SRFSimpleFoam<span class="token punctuation">;</span>
+application     twoLiquidMixingFoam<span class="token punctuation">;</span>
+application     twoPhaseEulerFoam<span class="token punctuation">;</span>
+application     XiEngineFoam<span class="token punctuation">;</span>
+application     XiFoam<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>tutorial里基本上平时常用到的、不常用的solver都有，根据自己的研究方向选几个相关的再慢慢研究细节吧。</p>
+<h2 id="时间控制">2.2&emsp;时间控制</h2><h3 id="startFrom-startTime">2.2.1&emsp;startFrom, startTime</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>startFrom</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>firstTime</code></td>
+<td align="center">所有时间目录中最早的时间步</td>
+</tr>
+<tr>
+<td align="center"><code>latestTime</code></td>
+<td align="center">所有时间目录中最近的时间步</td>
+</tr>
+<tr>
+<td align="center"><code>startTime</code></td>
+<td align="center">用户指定开始时间，需指定<code>startTime</code>的值</td>
+</tr>
+</tbody></table>
+<h3 id="stopAt-endTime">2.2.2&emsp;stopAt, endTime</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>stopAt</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>endTime</code></td>
+<td align="center">用户指定结束时间，需指定<code>endTime</code>的值</td>
+</tr>
+<tr>
+<td align="center"><code>writeNow</code></td>
+<td align="center">当前时间步完成时结束计算并且输出计算结果</td>
+</tr>
+<tr>
+<td align="center"><code>noWriteNow</code></td>
+<td align="center">当前时间步完成时结束计算但不输出计算结果</td>
+</tr>
+<tr>
+<td align="center"><code>nextWrite</code></td>
+<td align="center">下一个时间步完成时结束计算并且输出计算结果</td>
+</tr>
+</tbody></table>
+<h3 id="deltaT">2.2.3&emsp;deltaT</h3><p>时间步长控制，有时需要控制 $Co=\frac{\delta t|U|}{\delta x}&lt;1$ $\delta t$ 为时间步、就是这的deltaT; $|U|$ 为某网格单元内的速度矢量的模 $\delta x$ 为速度方向的网格长度。</p>
+<h2 id="输出控制">2.3&emsp;输出控制</h2><h3 id="writeControl-writeInterval">2.3.1&emsp;writeControl,writeInterval</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>writeControl</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>timeStep</code></td>
+<td align="center">按照时间步输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>runTime</code></td>
+<td align="center">按照计算时间输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>adjustableRunTime</code></td>
+<td align="center">时间自适应下按照计算时间输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>cpuTime</code></td>
+<td align="center">按照CPU时间输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>clockTime</code></td>
+<td align="center">按照挂钟时间(真实时间)输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+</tbody></table>
+<h3 id="purgeWrite">2.3.2&emsp;purgeWrite</h3><table>
+<thead>
+<tr>
+<th align="center">0</th>
+<th align="center">关闭该功能，不覆盖输出结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">n(n为大于0的整数)</td>
+<td align="center">输出n次数据后，自动覆盖先前输出结果</td>
+</tr>
+</tbody></table>
+<h3 id="writeFormat-writePrecision">2.3.3&emsp;writeFormat,writePrecision</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>writeFormat</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>ascii</code></td>
+<td align="center">文本格式，由<code>writePrecision</code>控制有效数字位数，方便阅读</td>
+</tr>
+<tr>
+<td align="center"><code>binary</code></td>
+<td align="center">二进制格式，直接将内存内容写入文件，能够减小文件存储空间，提高读写效率</td>
+</tr>
+</tbody></table>
+<h3 id="writeCompression-timeFormat-timePrecision">2.3.4&emsp;writeCompression, timeFormat, timePrecision</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>writeCompression</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>off</code></td>
+<td align="center">不压缩</td>
+</tr>
+<tr>
+<td align="center"><code>on</code></td>
+<td align="center">gzip 压缩格式</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>timeFormat</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>fixed</code></td>
+<td align="center"><code>±m.dddddd</code>，其中<code>d</code>由<code>timePrecision</code>来控制</td>
+</tr>
+<tr>
+<td align="center"><code>scientific</code></td>
+<td align="center"><code>±m.dddddd±xx</code>，其中<code>d</code>由<code>timePrecision</code>来控制</td>
+</tr>
+<tr>
+<td align="center"><code>general</code></td>
+<td align="center">使用<code>scientific</code>格式，默认小数点后有<code>4</code>位有效位数，也可通过<code>timePrecision</code>来调节</td>
+</tr>
+</tbody></table>
+<h3 id="runTimeModifiable">2.3.5&emsp;runTimeModifiable</h3><p>Switch for whether dictionaries, e.g. <code>controlDict</code>, are re-read during a simulation at the beginning of each time step, allowing the user to modify parameters during a simulation. </p>
+<h3 id="graphFormat">2.3.6&emsp;graphFormat</h3><table>
+<thead>
+<tr>
+<th>raw</th>
+<th>采用原ASCII格式输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gnuplot</td>
+<td>采用gunplot格式输出</td>
+</tr>
+<tr>
+<td>xmgr</td>
+<td>采用Grace/xmgr格式输出</td>
+</tr>
+<tr>
+<td>jplot</td>
+<td>采用jPlot格式输出</td>
+</tr>
+</tbody></table>
+<h2 id="时间步长自适应控制">2.4&emsp;时间步长自适应控制</h2><table><tr><th>参数名</th><th>参数值</th><th>说明</th></tr><tr><td rowspan="2">adjustTimeStep</td><td>yes</td><td>允许依据最大Courant数自动调节时间步长</td></tr><tr><td>no</td><td>不允许程序自动调节时间步长</td></tr><tr><td>maxCo</td><td>0.5</td><td>最大允许的Courant数，若Co数大于指定值，自动缩小时间步长</td></tr><tr><td>maxDeltaT</td><td>0.1</td><td>自动调整时间步长时，最大允许的时间步长</td></tr><tr><td rowspan="2">runTimeModifiable (设置在求解过程中是否允许修改以上参数)</td><td>yes</td><td>允许，求解器会在每个时间步计算的开始读入controlDict文件</td></tr><tr><td>no</td><td>不允许，求解器不会在每个时间步开始读入controlDict文件</td></tr></table>
 
-This is an H2
--------------</code></pre><p>有时候你可能只是想打一个分隔线，但由于<strong>少空了一行</strong>导致前一行成了一个二级标题。这里的=和-任意个数都可以，关键是位置；上面的范例在真正写作的时候是不应该出现的（除非你太闲了想多打几个=玩）。</p>
-<h1 id="很常用的语法（对于我来说）">2&emsp;很常用的语法（对于我来说）</h1><p>由于每个人使用Markdown的需求不同，常使用的语法可能相差很大。有的人可能主要用来写小说、日记，这时候其实用的语法并不多；有的可能写代码比较多，或者是写LaTeX的公式较多；甚至是使用表格更多（我觉得Markdown里的表格还是挺麻烦的，而且也不太好控制格式）。<br>我由于是流体力学专业，公式是肯定不会少的，但代码平常也用得很多，下面就从我的需求出发列一下我常用的语法。</p>
-<h2 id="代码">2.1&emsp;代码</h2><p>普通的行内引用： `your code`  ；代码块：```&emsp;  ``` 其中三个斜点要单独占一行，第一个```后可标注该代码语言名称，一般比较常用的语言都可以识别出来。<br>好像代码块还有别的表示方式如~~~、4个空格或者1个水平制表符，但有的可能显示不出来我也不知道是不是编译器的原因。</p>
-<h2 id="空格">2.2&emsp;空格</h2><p>这应该是最让Markdown新手抓狂的一个语法了，当我想拉开两个词的距离而多次按下<code>&lt;Space&gt;</code>时却发现，只有最开始那个空格是有效的，然后你打开百度搜索发现原来Markdown里面有这么多种空格的表达方式。我觉得最多记住一个就够了,比如我偶尔用下<code>&amp;emsp;</code>，但输入太过麻烦后面一想也基本没必要用，除非你有强迫症想让每段开头都空两个字符;或者直接在Vim加一个快捷键方便打空格。</p>
-<h2 id="段落">2.3&emsp;段落</h2><p>毫无疑问这是第二个让新手不得不Google一下的地方，当你按下<code>&lt;Enter&gt;</code>想换个行或者多空几行时，却发现并不奏效。<br>Markdown 段落没有特殊的格式，直接编写文字就好，段落的<strong>换行</strong>是使用<strong>两个以上空格加上回车</strong>。<br><strong>空行</strong> : 也有很多种方法，推荐只记住<code>&lt;br&gt;</code>或者<code>&lt;br/&gt;</code>、<code>&lt;/br&gt;</code>这几个都行，这也是HTML的表示方法。（感觉空行还是挺常用的）  </p>
-<h2 id="字体">2.4&emsp;字体</h2><p>首先是斜体和粗体：</p>
-<pre><code>*斜体文本*
-_斜体文本_
-**粗体文本**
-__粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>斜体</em>的文本</strong> ，如果全部用<code>*</code>可能就容易出错，而混搭起来层次比较清晰——本来是这么想的，但好像有时候嵌套会出现问题：</p>
-<ul>
-<li>斜体外套粗体：<code>**a_b_c**   **a*b*c**   __a*b*c__   __a_b_c__</code><br>显示结果如下：<strong>a_b_c</strong>   <strong>a<em>b</em>c</strong>   <strong>a<em>b</em>c</strong>   <strong>a_b_c</strong> &emsp;结果倒挺让我意外的。</li>
-<li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：<em>a<strong>b</strong>c</em>  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  <em>a__b__c</em><br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>； 而且在<code>_</code>里面的<code>_</code>也会失去作用。  </li>
-<li>代码符号`的优先度又比<code>*</code>高，所以其内部的文字格式通过<code>*</code>控制不了。  </li>
-</ul>
-<p><strong>需要强调的是不同的Markdown引擎对于这些细节的处理是不一样的，我的主题用的是hexo自带的hexo-renderer-marked，当换成其他引擎如hexo-renderer-markdown-it、hexo-renderer-kramed时结果可能会不一样</strong> </p>
-<h2 id="分隔线">2.5&emsp;分隔线</h2><pre><code>|  ***
-|  * * *
-| ******
-| - - -
-| ---
-| ___
-|   《hr》</code></pre><p>忽略前面的|（分隔线在我Blog的编译器里优先度比代码快还高，不加|根本显示不出来），而hr标签则更高，不改成中文符号根本没法显示。  （别的编译器可能显示结果又不一样）<br>随便用哪个都行，推荐<code>---</code>，因为不需要按Shift键，比较方便。</p>
-<h2 id="删除、下划线">2.6&emsp;删除、下划线</h2><p>删除：<code>~~delete~~</code><br>下划：<code>&lt;u&gt;underline&lt;/u&gt;</code>这个复杂一点，是HTML标签<br><strong><u>测试时间到</u></strong>： </p>
-<ul>
-<li>与加粗的比较：<ul>
-<li>加粗在外部： <code>__a~~b~~c__  __a&lt;u&gt;b&lt;/u&gt;c__</code><br>正常显示： <strong>a<del>b</del>c</strong>  <strong>a<u>b</u>c</strong></li>
-<li>加粗在内部：<code>~~a__b__c~~  &lt;u&gt;a__b__c&lt;/u&gt;</code><br>加粗在内部： <del>a__b__c</del>  <u>a__b__c</u>  </li>
-</ul>
-</li>
-<li>删除与下划并存：<code>~~a&lt;u&gt;b&lt;/u&gt;c~~</code>  <code>&lt;u&gt;a~~b~~c&lt;/u&gt;</code><br>显示结果  ： <del>a<u>b</u>c</del>    <u>a<del>b</del>c</u>  </li>
-<li>其他测试均未出现问题所以不用列出来了</li>
-</ul>
-<p>如果把<code>__</code>换成<code>**</code>则均能正常显示，结合前面的可以得出的结论：<br><strong>加粗和斜体只记住<code>*</code>就行了，忘记<code>_</code>吧!</strong><br>当然这些结论也只适用于hexo-renderer-marked引擎（真希望有朝一日Markdown能有一个统一的完整的引擎）</p>
-<h2 id="链接和图片">2.7&emsp;链接和图片</h2><h3 id="链接">2.7.1&emsp;链接</h3><pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token url">[名称](地址 <span class="token string">"title"</span>)</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>地址</span><span class="token punctuation">></span></span>          :直接写一个网址上去也能识别为可点击的链接
-<span class="token url">[名称][<span class="token variable">链接名称</span>]</span>
-<span class="token url-reference url"><span class="token punctuation">[</span><span class="token variable">链接名称</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>若要使用第三种方法，两行之间至少要空一行才能正常显示。注意使用链接时地址一定要<strong>写完整</strong>，前面的<code>http://</code>不要丢了，不然会按照相对地址进行跳转。<br>链接还可以加个title，在地址后用引号的形式写上就行；当把鼠标移到链接上时就会显示title了。<br>举个例子：<br><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306" target="_blank" rel="noopener" title="这是一篇文献">Airfoil optimisation for vertical‐axis wind turbines with variable pitch</a></p>
-<h3 id="图片">2.7.2&emsp;图片</h3><p>和链接极为相似，只是前面多了个<code>!</code>号，注意是英文的感叹号。第一个框里面的名称基本上空着就行，或者简单写个描述，防止哪天图片挂了之后忘记当初这张图是啥样的。<br>当然也可以用HTML标签来表示图片，还能加上更多的格式控制，不过显得比较麻烦</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>图片网址<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>说到图片肯定离不开图床，毕竟图片太多的时候总不能全往一个地方塞。这里推荐PicGo这款软件，Windows和Linux下都能用，添加图片也很方便，看看它总结的一些图床吧：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191127104125.png" alt title="PicGo真好用"><br>我还是白嫖的Github当作图床，不过缺点是有时候国内访问速度很慢甚至打不开（对我来说没影响就行）<br>同样图片也可以加一个title，鼠标移上去的时候会显示出来。像我这个Hexo主题还会在下方显示一行图注。</p>
-<h2 id="列表">2.8&emsp;列表</h2><pre><code>- a
-+ b
-* c</code></pre><p>这三种都可以表示无序列表，还是推荐使用<code>-</code>，因为按键最简单；注意要<strong>留一个空格</strong>。</p>
-<pre><code>1. a
-2. b
-3. c</code></pre><p>有序列表也很简单，也是注意要留一个<strong>空格</strong>。<br>然后是列表的嵌套，说是添加四个空格，不过有的好像只加了两个就能够显示出来。<br><strong>注意一个使用细节：</strong>列表的最后一行和下一段文字之间<strong>一定要先空一行再说</strong>，不然文章的层次会出现问题。总之没事多空一行没坏处~  </p>
-<h2 id="引用">2.9&emsp;引用</h2><h3 id="区块引用">2.9.1&emsp;区块引用</h3><p>有时候想引用一下某人的名言警句，放弃难看的<code>“ ”</code>直接另起一行使用<code>&gt;</code>吧。而且这个也能嵌套（不知道这里嵌套有什么用）：</p>
-<pre><code>&gt; a
-&gt; &gt; b
-&gt; &gt; &gt; c</code></pre><ul>
-<li>注意在<code>&gt;</code>后<strong>最好加上空格</strong>，虽然实际情况是不加空格有的编译器也能显示出来，但加空格总<strong>不会出错</strong>。 </li>
-<li>第一行用了<code>&gt;</code>相当于创了个引用块，接下来的内容都会被当作引用，直到遇见<strong>一个空行</strong>。  </li>
-</ul>
-<h3 id="脚注引用">2.9.2&emsp;脚注引用</h3><p>这又是一个让人蛋疼的地方，<br>脚注引用这部分并不在markdown的基本语法里，所以有的引擎比如我这个hexo默认的hexo-renderer-marked就没办法直接显示脚注。为了能够用脚注我折腾了一个下午，引擎换来换去，解决一个个新冒出来的问题，最后还是放弃了，换回了原来的hexo-renderer-marked。<br>好在最后找到了这个<a href="https://github.com/kchen0x/hexo-reference" target="_blank" rel="noopener">hexo-reference</a>插件，只需要一个命令：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> hexo-reference --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>再在根目录的<code>_config.yml</code>中加入：</p>
-<pre class="line-numbers language-xml"><code class="language-xml">Plugins:
-  - hexo-reference<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>就能够使用脚注了！使用方法：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191127211059.png" alt><br>举个例子：Rogalsky<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="ROGALSKY T P. Acceleration of differential evolution for aerodynamic design[M]. 2004.
-">[1]</span></a></sup><br>更高端一点，可以在脚注内容里面加上链接，点击直接进入文献相关页面：De Tavernier<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[DE TAVERNIER D, FERREIRA C, BUSSEL G. Airfoil optimisation for vertical‐axis wind turbines with variable pitch[J]. Wind Energy, 2019, 22(4): 547–562.](https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306)]  
-">[2]</span></a></sup><br>用户体验极佳~</p>
-<h2 id="公式">2.10&emsp;公式</h2><p>首先得要有公式的引擎，毕竟公式这么复杂的东西Markdown自己很难搞定吧。一般推荐用MathJax引擎，配置好了之后可以用LaTeX语法写公式了~</p>
-<h3 id="行间公式">2.10.1&emsp;行间公式</h3><p><code>$a_1+a_2$</code> : 显示为 $a_1+a_2$</p>
-<h3 id="独立公式">2.10.2&emsp;独立公式</h3><p><code>$$\frac{\partial \rho}{\partial t}+\nabla \cdot(\rho \mathbf{v})=0 \tag{1.1}$$</code><br>显示为：<br>$$\frac{\partial \rho}{\partial t}+\nabla \cdot(\rho \mathbf{v})=0 \tag{1.1}$$<br>注意要另起一行开始再开始输入<code>$$</code>才有效。如果想要给公式加序号，在公式输完了后空个格加入<code>\tag{1.1}</code>就行,这种方式是<strong>手动编号</strong>。<br>加入编号是为了引用，引用也只能手动输入<code>$(1.1)$</code>，显示为$(1.1)$。还是比较麻烦的。</p>
-<h3 id="LaTeX的自动编号公式">2.10.3&emsp;LaTeX的自动编号公式</h3><p>对于公式的处理又是Markdown里的一大难题，下面这一段LaTeX语句可能放在别的引擎里就识别不出来了。</p>
-<pre><code>$$\begin{equation}
-x^n+y^n=z^n
-\end{equation}$$</code></pre><p>显示为：</p>
-<p>$$\begin{equation}<br>x^n+y^n=z^n<br>\end{equation}$$<br>当然这些规则都可以通过Mathjax的配置进行修改，比如有的blog的mathjax配置段没有：</p>
-<pre class="line-numbers language-js"><code class="language-js">TeX<span class="token punctuation">:</span> <span class="token punctuation">{</span>equationNumbers<span class="token punctuation">:</span> <span class="token punctuation">{</span> autoNumber<span class="token punctuation">:</span> <span class="token string">"AMS"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>自然就不会显示自动编号。关于公式的具体语法，实在是太复杂了，不是一下子能说的清楚的；不过世界上也有大佬能够在课堂上用Markdown写公式做笔记，详见<a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener">How I&#39;m able to take notes in mathematics lectures using LaTeX and Vim</a>。实在是太强了... </p>
-<h1 id="其他语法">3&emsp;其他语法</h1><h2 id="表格">3.1&emsp;表格</h2><p>我是不太建议用表格的，毕竟Markdown里表格的输入并不方便，特别是比较复杂的表格，光是<code>|</code>都够你输入了，当然如果是有像Typora这样的工具的话，表格输入还是方便了不少，但Markdown无法对表格进行一些比较高级的控制，如合并单元格。</p>
-<pre><code>| 左对齐 | 右对齐 | 居中对齐 |
-| :-----| ----: | :----: |
-| 单元格 | 单元格 | 单元格 |
-| 单元格 | 单元格 | 单元格 |</code></pre><h2 id="转义-HTML等">3.2&emsp;转义/ HTML等</h2><p><code>\</code>反斜线转义字符用来显示特定的符号，这个用法在一些程序语言里非常常见。<br>另外Markdown还支持许多HTML元素的显示，但不是特殊情况一般不用，毕竟是用来方便我们写作的，没必要搞些特别复杂的东西，要求太高的话出门右拐LaTeX左拐Word欢迎你。 </p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">ROGALSKY T P. Acceleration of differential evolution for aerodynamic design[M]. 2004.<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306" target="_blank" rel="noopener">DE TAVERNIER D, FERREIRA C, BUSSEL G. Airfoil optimisation for vertical‐axis wind turbines with variable pitch[J]. Wind Energy, 2019, 22(4): 547–562.</a>]<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div>
+<h2 id="运行时加载库或者函数控制">2.5&emsp;运行时加载库或者函数控制</h2><p>设置运行时需要加载的库或函数如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">libs</th>
+<th align="center">如<code>libgroovyBC.so</code>等</th>
+<th align="center">调用的动态库文件列表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">functions</td>
+<td align="center">probes, singleGraph等</td>
+<td align="center">调用的附加函数列表</td>
+</tr>
+</tbody></table>
+<p>举个例子，<code>incompressible/pimpleFoam/RAS/TJunction/system/controlDict</code>中相关部分：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">functions
+<span class="token punctuation">{</span>
+    probes
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Where to load it from</span>
+        <span class="token function">libs</span>            <span class="token punctuation">(</span><span class="token string">"libsampling.so"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        type            probes<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// Name of the directory for probe data</span>
+        name            probes<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// Write at same frequency as fields</span>
+        writeControl    writeTime<span class="token punctuation">;</span>
+        writeInterval   <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// Fields to be probed</span>
+        <span class="token function">fields</span>          <span class="token punctuation">(</span>p U<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token function">probeLocations</span>
+        <span class="token punctuation">(</span>
+            <span class="token punctuation">(</span> <span class="token number">1e-06</span> <span class="token number">0</span> <span class="token number">0.01</span> <span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">// at inlet</span>
+            <span class="token punctuation">(</span><span class="token number">0.21</span> <span class="token operator">-</span><span class="token number">0.20999</span> <span class="token number">0.01</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// at outlet1</span>
+            <span class="token punctuation">(</span><span class="token number">0.21</span> <span class="token number">0.20999</span> <span class="token number">0.01</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// at outlet2</span>
+            <span class="token punctuation">(</span><span class="token number">0.21</span> <span class="token number">0</span> <span class="token number">0.01</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true">// at central block</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<p>下面介绍最常用的probes和singleGraph函数的使用方法。</p>
+<h3 id="probes函数">2.5.1&emsp;probes函数</h3><p>该函数功能为程序运行时监测:q指定坐标点场数据随时间的变化。首先在controlDict文件内添加以下语句，调用probes功能的相关函数。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">functions 
+ <span class="token punctuation">{</span> 
+   <span class="token macro property">#includeFunc probes     </span><span class="token comment" spellcheck="true">// 在functions列表中添加probes函数</span>
+ <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接着运行以下命令，复制probes文件至system文件夹下，</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> -r <span class="token variable">$FOAM_ETC</span>/caseDicts/postProcessing/probes/probes system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>probes文件的内容如下，</p>
+<p>通过修改fields参数中可添加需监测的场，修改probeLocations的坐标值可添加监测点的坐标值。运行求解器后，指定坐标点的监测场随时间变化的数据输出至postProcessing/probes/0文件夹。</p>
+<h3 id="singleGraph函数">2.5.2&emsp;singleGraph函数</h3><p>该函数功能为对计算结果数据取样并可视化。首先在controlDict文件内的functions列表中添加singleGraph函数，接着运行以下命令，复制singleGraph文件至system文件夹，</p>
+<pre class="line-numbers language-BASH"><code class="language-BASH">cp -r $FOAM_ETC/caseDicts/postProcessing/graphs/singleGraph system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>singleGraph文件的内容如下，  </p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"> <span class="token function">start</span>  <span class="token punctuation">(</span><span class="token number">0.01</span> <span class="token number">0.025</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 取样的起始点坐标</span>
+  <span class="token function">end</span>   <span class="token punctuation">(</span><span class="token number">0.01</span> <span class="token operator">-</span><span class="token number">0.025</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 取样的终点坐标</span>
+  <span class="token function">fields</span> <span class="token punctuation">(</span>U p<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 取样场的名称</span>
+
+  <span class="token comment" spellcheck="true">// Sampling and I/O settings </span>
+  <span class="token macro property">#includeEtc ”caseDicts/postProcessing/graphs/sampleDict.cfg” </span>
+
+  <span class="token comment" spellcheck="true">// Override settings here, e.g. </span>
+  <span class="token comment" spellcheck="true">// setConfig { type midPoint; } </span>
+
+  <span class="token comment" spellcheck="true">// Must be last entry </span>
+  <span class="token macro property">#includeEtc ”caseDicts/postProcessing/graphs/graph.cfg” </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改fields参数中可添加需采样的场，修改start 和end参数可设置取样点的坐标范围。计算完成后，在算例文件夹下输入命令postProcess -func singleGraph，可对数据取样并输出至postProcessing/singleGraph文件夹。输出数据文件可直接通过gnuplot软件（需预先安装）处理实现可视化。</p>
+<h3 id="foreCoeffs">2.5.3&emsp;foreCoeffs</h3><p>翼型模拟时常需要得到 $C_{p},C_{L},C_{D}$ 等数据，可以利用OpenFOAM的相关工具，推荐在controlDict里直接include然后在<code>system</code>文件夹里重新写一个文件。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//controlDict里加入</span>
+functions 
+<span class="token punctuation">{</span>
+    <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"forceCoeffs"</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>新文件内容如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//文件名forceCoeffs</span>
+<span class="token comment" spellcheck="true">/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates lift, drag and moment coefficients by summing forces on
+    specified patches for a case where the solver is incompressible (pressure
+    is kinematic, e.g. m^2/s^2).
+
+\*---------------------------------------------------------------------------*/</span>
+
+forceCoeffs
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Mandatory entries</span>
+    type            forceCoeffs<span class="token punctuation">;</span>
+    <span class="token function">libs</span>            <span class="token punctuation">(</span><span class="token string">"libforces.so"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">patches</span>         <span class="token punctuation">(</span>airfoil<span class="token operator">-</span>l1 airfoil<span class="token operator">-</span>l2 airfoil<span class="token operator">-</span>h1 airfoil<span class="token operator">-</span>h2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">// Optional entries</span>
+
+    <span class="token comment" spellcheck="true">// Field names</span>
+    p               p<span class="token punctuation">;</span>
+    U               U<span class="token punctuation">;</span>
+    rho     rhoInf<span class="token punctuation">;</span>
+    log         <span class="token boolean">true</span><span class="token punctuation">;</span>
+    rhoInf      <span class="token number">1.225</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Reference pressure [Pa]</span>
+    pRef            <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Include porosity effects?</span>
+    porosity        yes<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Store and write volume field representations of forces and moments</span>
+    writeFields     yes<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Centre of rotation for moment calculations</span>
+    <span class="token function">CofR</span>            <span class="token punctuation">(</span><span class="token number">0.25</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Lift direction</span>
+    <span class="token function">liftDir</span>         <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Drag direction</span>
+    <span class="token function">dragDir</span>         <span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Pitch axis</span>
+    <span class="token function">pitchAxis</span>       <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Freestream velocity magnitude [m/s]</span>
+    magUInf         <span class="token number">50</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Reference length [m]</span>
+    lRef            <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Reference area [m2]</span>
+    Aref            <span class="token number">1.2</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Spatial data binning</span>
+    <span class="token comment" spellcheck="true">// - extents given by the bounds of the input geometry</span>
+    binData
+    <span class="token punctuation">{</span>
+        nBin        <span class="token number">21</span><span class="token punctuation">;</span>
+        <span class="token function">direction</span>   <span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cumulative  yes<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -682,7 +1015,7 @@ x^n+y^n=z^n
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/">https://chengpengzhao.com/2019/11/26/2019-11-26-markdown-tips/</a>
+                    <a href="https://chengpengzhao.com/2019/12/04/2019-12-04-controldict-wen-jian-xue-xi/">https://chengpengzhao.com/2019/12/04/2019-12-04-controldict-wen-jian-xue-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -720,12 +1053,12 @@ x^n+y^n=z^n
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%86%99%E4%BD%9C/">
-                                    <span class="chip bg-color">写作</span>
+                                <a href="/tags/OpenFOAM/">
+                                    <span class="chip bg-color">OpenFOAM</span>
                                 </a>
                             
-                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                    <span class="chip bg-color">语法</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
                         </div>
@@ -1154,28 +1487,37 @@ x^n+y^n=z^n
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/28/2019-11-28-python-pa-chong-ru-men-lian-xi-sourceforge-zi-dong-xia-zai/">
+                <a href="/2019/12/04/2019-12-04-controldict-wen-jian-xue-xi/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214258.jpg" class="responsive-img" alt="python爬虫入门练习——Sourceforge自动下载">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191204161154.jpg" class="responsive-img" alt="controlDict学习">
                         
-                        <span class="card-title">python爬虫入门练习——Sourceforge自动下载</span>
+                        <span class="card-title">controlDict学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;明确需求SourceForge与Github类似，是一套合作式软件开发管理系统，上面有大量的开源项目——这是Wiki百科的描述。然而在我的印象里，它只是个广告一堆下载速度贼慢找半天找不到下载链接在哪的网站；以前在它上面下载过几
+                            
+个人学习用，总结、整理了网上一些controlDict解析
+
+1&emsp;文件结构一个例子:
+
+//文件说明
+{
+    version     2.0;                //版本号
+    format      asc
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1184,15 +1526,24 @@ x^n+y^n=z^n
                                     程序语言
                                 </a>
                             
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                    专业相关
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/OpenFOAM/">
+                        <span class="chip bg-color">OpenFOAM</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>
@@ -1206,35 +1557,30 @@ x^n+y^n=z^n
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/">
+                <a href="/2019/12/02/2019-12-02-airfoil-paraterizaton/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.jpg" class="responsive-img" alt="Linux/Windows使用记录">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191202174431.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(1)---airfoil parametrization">
                         
-                        <span class="card-title">Linux/Windows使用记录</span>
+                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(1)---airfoil parametrization</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;Ubuntu出现U盘能识别但打不开这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  
-1.1&emsp;问题描述插入U盘后在桌面不显示
+                            1&emsp;Airfoil parametrizationThe numerical search for the optimum shape of an airfoil is of great interest for aircraft
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                    软件
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                    专业相关
                                 </a>
                             
                             
@@ -1244,16 +1590,12 @@ x^n+y^n=z^n
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%BF%97/">
-                        <span class="chip bg-color">日志</span>
+                    <a href="/tags/English/">
+                        <span class="chip bg-color">English</span>
                     </a>
                     
-                    <a href="/tags/%E5%AE%89%E8%A3%85/">
-                        <span class="chip bg-color">安装</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
                     </a>
                     
                 </div>
@@ -1386,19 +1728,6 @@ x^n+y^n=z^n
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$']],
-		  displayMath: [["$$","$$"]],
-		  processEscapes: true,
-		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-	},
-	TeX: {equationNumbers: { autoNumber: "AMS" } 
-	}
-    });
-</script>
 
 
 
