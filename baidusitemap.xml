@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
+    <lastmod>2019-12-08</lastmod>
+  </url>  <url>
+    <loc>https://chengpengzhao.com/2019/12/02/2019-12-02-airfoil-paraterizaton/</loc>
+    <lastmod>2019-12-07</lastmod>
+  </url>  <url>
     <loc>https://chengpengzhao.com/2019/11/20/2019-11-20-cong-hugo-zhe-teng-dao-hexo-guo-cheng-ji-lu/</loc>
     <lastmod>2019-12-04</lastmod>
   </url>  <url>
@@ -11,9 +17,6 @@
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/04/06/2019-04-ri-ben-yu-dezuo-wen/</loc>
-    <lastmod>2019-12-02</lastmod>
-  </url>  <url>
-    <loc>https://chengpengzhao.com/2019/12/02/2019-12-02-airfoil-paraterizaton/</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/11/30/2019-11-30-markdown-vim-shi-yong/</loc>
@@ -32,9 +35,6 @@
     <lastmod>2019-11-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</loc>
-    <lastmod>2019-11-28</lastmod>
-  </url>  <url>
-    <loc>https://chengpengzhao.com/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/</loc>
     <lastmod>2019-11-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</loc>
