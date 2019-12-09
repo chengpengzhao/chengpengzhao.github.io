@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-12-09T15:00:19.176Z</updated>
+  <updated>2019-12-09T15:15:46.684Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chengpengzhao.com/2019/12/10/2019-12-09-parsec/"/>
     <id>https://chengpengzhao.com/2019/12/10/2019-12-09-parsec/</id>
     <published>2019-12-09T15:00:00.000Z</published>
-    <updated>2019-12-09T15:00:19.176Z</updated>
+    <updated>2019-12-09T15:15:46.684Z</updated>
     
     <summary type="html">
     
@@ -187,9 +187,9 @@
       <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="语法" scheme="https://chengpengzhao.com/tags/%E8%AF%AD%E6%B3%95/"/>
-    
       <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
+    
+      <category term="语法" scheme="https://chengpengzhao.com/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
@@ -220,9 +220,9 @@
     
       <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
-      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
-    
       <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
     
   </entry>
   

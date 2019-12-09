@@ -507,12 +507,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                <span class="chip bg-color">语法</span>
-                            </a>
-                        
                             <a href="/tags/%E5%86%99%E4%BD%9C/">
                                 <span class="chip bg-color">写作</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                                <span class="chip bg-color">语法</span>
                             </a>
                         
                     </div>
@@ -591,7 +591,7 @@ _斜体文本_
 __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>斜体</em>的文本</strong> ，如果全部用<code>*</code>可能就容易出错，而混搭起来层次比较清晰——本来是这么想的，但好像有时候嵌套会出现问题：</p>
 <ul>
 <li>斜体外套粗体：<code>**a_b_c**   **a*b*c**   __a*b*c__   __a_b_c__</code><br>显示结果如下：<strong>a_b_c</strong>   <strong>a<em>b</em>c</strong>   <strong>a<em>b</em>c</strong>   <strong>a_b_c</strong> &emsp;结果倒挺让我意外的。</li>
-<li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：<em>a<strong>b</strong>c</em>  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  <em>a__b__c</em><br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>； 而且在<code>_</code>里面的<code>_</code>也会失去作用。  </li>
+<li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：_a<strong>b</strong>c_  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  _a__b__c_<br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>； 而且在<code>_</code>里面的<code>_</code>也会失去作用。  </li>
 <li>代码符号`的优先度又比<code>*</code>高，所以其内部的文字格式通过<code>*</code>控制不了。  </li>
 </ul>
 <p><strong>需要强调的是不同的Markdown引擎对于这些细节的处理是不一样的，我的主题用的是hexo自带的hexo-renderer-marked，当换成其他引擎如hexo-renderer-markdown-it、hexo-renderer-kramed时结果可能会不一样</strong> </p>
@@ -720,12 +720,12 @@ x^n+y^n=z^n
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                    <span class="chip bg-color">语法</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%86%99%E4%BD%9C/">
                                     <span class="chip bg-color">写作</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                                    <span class="chip bg-color">语法</span>
                                 </a>
                             
                         </div>
@@ -1248,12 +1248,12 @@ x^n+y^n=z^n
                         <span class="chip bg-color">日志</span>
                     </a>
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
-                    </a>
-                    
                     <a href="/tags/%E5%AE%89%E8%A3%85/">
                         <span class="chip bg-color">安装</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
                     </a>
                     
                 </div>
