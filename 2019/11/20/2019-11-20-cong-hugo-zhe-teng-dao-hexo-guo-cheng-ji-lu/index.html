@@ -545,7 +545,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.2k
+                    5.3k
                 </div>
                 
 
@@ -1073,7 +1073,21 @@ em<span class="token punctuation">:</span> <span class="token regex">/^\*((?:\*\
     Xojo (REALbasic) - xojo
     XQuery - xquery
     YAML - yaml, yml
-    Zig - zig</code></pre>
+    Zig - zig</code></pre><blockquote>
+<p><em>以下内容更新于2019-12-10 08:48:18</em></p>
+</blockquote>
+<h1 id="RSS订阅中文章显示不完整问题">11&emsp;RSS订阅中文章显示不完整问题</h1><p>解决方法：将atom改为rss2<br>具体参照<code>node_modules/hexo-generator-feed</code>设置说明<br>我的根目录<code>_confg.yml</code>:  </p>
+<pre class="line-numbers language-yml"><code class="language-yml">feed: 
+  type: rss2 
+  path: rss2.xml 
+  limit: false 
+  hub: 
+  icon: /medias/logo.png
+  content: true
+  content_limit: 140 
+  content_limit_delim: '...' 
+  order_by: -date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -1825,7 +1839,7 @@ Dakota releas
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.9k</span>&nbsp;字
+                class="white-color">35k</span>&nbsp;字
             
             
             
