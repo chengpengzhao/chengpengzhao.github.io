@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/atom.xml" title="Zcp's Zone" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -865,10 +865,11 @@ tags:
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><code>node_modules/marked/lib/marked.js</code>文件修改正则表达式部分，调整渲染策略<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> inline <span class="token operator">=</span> <span class="token punctuation">{</span>
-  escape<span class="token punctuation">:</span> <span class="token operator">/</span><span class="token operator">^</span>\\<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">!</span>"#$<span class="token operator">%</span><span class="token operator">&amp;</span>'<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token operator">+</span><span class="token punctuation">,</span>\<span class="token operator">-</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">:</span><span class="token punctuation">;</span><span class="token operator">&lt;=</span><span class="token operator">></span><span class="token operator">?</span>@\<span class="token punctuation">[</span>\<span class="token punctuation">]</span><span class="token operator">^</span>_<span class="token template-string"><span class="token string">`|~])/,
+  escape<span class="token punctuation">:</span> <span class="token operator">/</span><span class="token operator">^</span>\\<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">!</span>"#$<span class="token operator">%</span>'<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token operator">+</span><span class="token punctuation">,</span>\<span class="token operator">-</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">:</span><span class="token punctuation">;</span><span class="token operator">&lt;=</span><span class="token operator">></span><span class="token operator">?</span>@\<span class="token punctuation">[</span>\<span class="token punctuation">]</span><span class="token operator">^</span>_<span class="token template-string"><span class="token string">`|~])/,
 //escape: escape: /^\\([!"#$%&amp;'()*+,\-./:;&lt;=>?@\[\]\\^_`</span></span><span class="token punctuation">{</span><span class="token operator">|</span><span class="token punctuation">}</span><span class="token operator">~</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">,</span>
-br<span class="token punctuation">:</span> <span class="token regex">/^( {2,})\n(?!\s*$)/</span><span class="token punctuation">,</span>
-<span class="token comment" spellcheck="true">//br: /^( {2,}|\\)\n(?!\s*$)/,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+br<span class="token punctuation">:</span> <span class="token regex">/^ {2,}\n(?!\s*$)/</span><span class="token punctuation">,</span>
+<span class="token comment" spellcheck="true">//br: /^( {2,}|\\)\n(?!\s*$)/,</span>
+em<span class="token punctuation">:</span> <span class="token regex">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 其余部分未作调整。</li>
 </ul>
 <blockquote>
@@ -1824,7 +1825,7 @@ Dakota releas
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">34.8k</span>&nbsp;字
+                class="white-color">34.9k</span>&nbsp;字
             
             
             
@@ -1923,7 +1924,7 @@ Dakota releas
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fas fa-rss"></i>
     </a>
 
