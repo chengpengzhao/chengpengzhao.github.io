@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chengpengzhao.com/"/>
-  <updated>2019-12-04T07:40:34.075Z</updated>
+  <updated>2019-12-09T15:00:19.176Z</updated>
   <id>https://chengpengzhao.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization</title>
+    <link href="https://chengpengzhao.com/2019/12/10/2019-12-09-parsec/"/>
+    <id>https://chengpengzhao.com/2019/12/10/2019-12-09-parsec/</id>
+    <published>2019-12-09T15:00:00.000Z</published>
+    <updated>2019-12-09T15:00:19.176Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;Modified-PARSEC-Parametrization&quot;&gt;1&amp;emsp;Modified PARSEC
+        
+      
+    
+    </summary>
+    
+    
+      <category term="专业相关" scheme="https://chengpengzhao.com/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="English" scheme="https://chengpengzhao.com/tags/English/"/>
+    
+      <category term="airfoil optimization" scheme="https://chengpengzhao.com/tags/airfoil-optimization/"/>
+    
+  </entry>
   
   <entry>
     <title>controlDict学习</title>
@@ -55,7 +84,7 @@
     <link href="https://chengpengzhao.com/2019/12/02/2019-12-02-airfoil-paraterizaton/"/>
     <id>https://chengpengzhao.com/2019/12/02/2019-12-02-airfoil-paraterizaton/</id>
     <published>2019-12-01T15:00:00.000Z</published>
-    <updated>2019-12-08T09:26:27.590Z</updated>
+    <updated>2019-12-09T08:05:25.358Z</updated>
     
     <summary type="html">
     
@@ -158,9 +187,9 @@
       <category term="语言" scheme="https://chengpengzhao.com/categories/%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
-    
       <category term="语法" scheme="https://chengpengzhao.com/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="写作" scheme="https://chengpengzhao.com/tags/%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -191,9 +220,9 @@
     
       <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
-      <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
-    
       <category term="使用tips" scheme="https://chengpengzhao.com/tags/%E4%BD%BF%E7%94%A8tips/"/>
+    
+      <category term="安装" scheme="https://chengpengzhao.com/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -573,35 +602,6 @@
     
     
       <category term="python" scheme="https://chengpengzhao.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Welcome to CP Zhao&#39;s Blog</title>
-    <link href="https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/"/>
-    <id>https://chengpengzhao.com/2019/03/18/2019-03-18-hello-world/</id>
-    <published>2019-03-17T15:00:00.000Z</published>
-    <updated>2019-11-24T15:38:43.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1
-        
-      
-    
-    </summary>
-    
-    
-      <category term="博客建立" scheme="https://chengpengzhao.com/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/"/>
-    
-      <category term="生活" scheme="https://chengpengzhao.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="日志" scheme="https://chengpengzhao.com/tags/%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
