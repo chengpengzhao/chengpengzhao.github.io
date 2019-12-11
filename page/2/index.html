@@ -476,32 +476,6 @@
     
     
     <div class="col s12 m6" >
-        <div class="post-card" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214258.jpg')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/" class="category">程序语言</a>
-                        
-                    
-                </div>
-                <a href="/2019/11/28/2019-11-28-python-pa-chong-ru-men-lian-xi-sourceforge-zi-dong-xia-zai/">
-                    <h3 class="post-title">python爬虫入门练习——Sourceforge自动下载</h3>
-                </a>
-                <p class="post-description">
-                    
-                        1&emsp;明确需求SourceForge与Github类似，是一套合作式软件开发管理系统，上面有大量的开源项目——这是Wiki百科的描述
-                    
-                </p>
-                <a href="/2019/11/28/2019-11-28-python-pa-chong-ru-men-lian-xi-sourceforge-zi-dong-xia-zai/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
         <div class="post-card" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214103.jpg')">
             <div class="post-body">
                 <div class="post-categories">
@@ -519,7 +493,33 @@
                         很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候
                     
                 </p>
-                <a href="/2019/11/26/2019-11-26-markdown-tips/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <a href="/2019/11/26/2019-11-26-markdown-tips/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214258.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/" class="category">程序语言</a>
+                        
+                    
+                </div>
+                <a href="/2019/11/28/2019-11-28-python-pa-chong-ru-men-lian-xi-sourceforge-zi-dong-xia-zai/">
+                    <h3 class="post-title">python爬虫入门练习——Sourceforge自动下载</h3>
+                </a>
+                <p class="post-description">
+                    
+                        1&emsp;明确需求SourceForge与Github类似，是一套合作式软件开发管理系统，上面有大量的开源项目——这是Wiki百科的描述
+                    
+                </p>
+                <a href="/2019/11/28/2019-11-28-python-pa-chong-ru-men-lian-xi-sourceforge-zi-dong-xia-zai/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -1093,7 +1093,6 @@ github p
             <span id="sitetime">载入运行时间...</span>
             <script>
                 function siteTime() {
-                    window.setTimeout("siteTime()", 1000);
                     var seconds = 1000;
                     var minutes = seconds * 60;
                     var hours = minutes * 60;
@@ -1117,19 +1116,14 @@ github p
                     var diff = t2 - t1;
                     var diffYears = Math.floor(diff / years);
                     var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
+
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
                         document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                            " 天 " ;
                     }
                 }
                 setInterval(siteTime, 1000);

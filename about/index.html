@@ -663,7 +663,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"博客建立","value":3},{"name":"程序语言","value":4},{"name":"语言","value":6},{"name":"生活","value":5},{"name":"Linux","value":5},{"name":"专业相关","value":3},{"name":"软件","value":4}],
+                data: [{"name":"程序语言","value":4},{"name":"博客建立","value":3},{"name":"语言","value":6},{"name":"生活","value":5},{"name":"Linux","value":5},{"name":"专业相关","value":3},{"name":"软件","value":4}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -687,7 +687,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["日志","写作","日本語","随笔","安装","使用tips","English","python","语法","相册"]
+                data: ["日志","写作","日本語","随笔","使用tips","安装","English","python","语法","相册"]
             }
         ],
         yAxis: [
@@ -774,7 +774,6 @@
             <span id="sitetime">载入运行时间...</span>
             <script>
                 function siteTime() {
-                    window.setTimeout("siteTime()", 1000);
                     var seconds = 1000;
                     var minutes = seconds * 60;
                     var hours = minutes * 60;
@@ -798,19 +797,14 @@
                     var diff = t2 - t1;
                     var diffYears = Math.floor(diff / years);
                     var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
+
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
                         document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                            " 天 " ;
                     }
                 }
                 setInterval(siteTime, 1000);

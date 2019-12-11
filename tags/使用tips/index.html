@@ -422,20 +422,20 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E6%97%A5%E5%BF%97/" title="日志: 4">
+                <a href="/tags/python/" title="python: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="日志" style="background-color: #F9EBEA;">日志
-                        <span class="tag-length">4</span>
+                            data-tagname="python" style="background-color: #F9EBEA;">python
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/python/" title="python: 2">
+                <a href="/tags/%E6%97%A5%E5%BF%97/" title="日志: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="python" style="background-color: #F5EEF8;">python
-                        <span class="tag-length">2</span>
+                            data-tagname="日志" style="background-color: #F5EEF8;">日志
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -485,19 +485,19 @@
                 </a>
                 
                 
-                <a href="/tags/%E5%AE%89%E8%A3%85/" title="安装: 3">
+                <a href="/tags/%E4%BD%BF%E7%94%A8tips/" title="使用tips: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="安装" style="background-color: #D7BDE2;">安装
+                             chip-active "
+                            data-tagname="使用tips" style="background-color: #D7BDE2;">使用tips
                         <span class="tag-length">3</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E4%BD%BF%E7%94%A8tips/" title="使用tips: 3">
+                <a href="/tags/%E5%AE%89%E8%A3%85/" title="安装: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="使用tips" style="background-color: #A3E4D7;">使用tips
+                             chip-default "
+                            data-tagname="安装" style="background-color: #A3E4D7;">安装
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -558,7 +558,7 @@
         <div class="row tags-posts">
             
             
-            <div class="article tag-post col s12 m6 l4" data-tags="日志, 安装, 使用tips" data-aos="fade-up">
+            <div class="article tag-post col s12 m6 l4" data-tags="日志, 使用tips, 安装" data-aos="fade-up">
                 <div class="card">
                     <a href="/2019/11/22/2019-11-22-linux-windows-shi-yong-ji-lu/">
                         <div class="card-image tag-image">
@@ -699,7 +699,6 @@
             <span id="sitetime">载入运行时间...</span>
             <script>
                 function siteTime() {
-                    window.setTimeout("siteTime()", 1000);
                     var seconds = 1000;
                     var minutes = seconds * 60;
                     var hours = minutes * 60;
@@ -723,19 +722,14 @@
                     var diff = t2 - t1;
                     var diffYears = Math.floor(diff / years);
                     var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
+
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
                         document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                            " 天 " ;
                     }
                 }
                 setInterval(siteTime, 1000);
