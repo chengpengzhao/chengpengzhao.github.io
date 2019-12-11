@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="入坑Linux(1)——双系统安装, Zcp&#39;s Zone">
-    <meta name="description" content="原以为自己不会接触到Linux系统，毕竟一直舒服地用着Win没什么不满。直到接触了OpenFOAM，在Win上运行实在是不方便，于是装了个虚拟机开始研究Linux，用了一段时间之后还是感觉不太舒服，毕竟是虚拟机，加上笔记本性能也一般；为了追">
+    <meta name="keywords" content="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;Evaluation of PARSEC parametrizationThe principles that parametrization technique should satisfy are:
+
+Minimize t">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>入坑Linux(1)——双系统安装 | Zcp&#39;s Zone</title>
+    <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -383,13 +385,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Beaver_Wallpaper_Grey_4096x2304.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211235843.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        入坑Linux(1)——双系统安装
+                        Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization
                     </div>
                 </div>
             </div>
@@ -507,8 +509,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%89%E8%A3%85/">
-                                <span class="chip bg-color">安装</span>
+                            <a href="/tags/English/">
+                                <span class="chip bg-color">English</span>
+                            </a>
+                        
+                            <a href="/tags/airfoil-optimization/">
+                                <span class="chip bg-color">airfoil optimization</span>
                             </a>
                         
                     </div>
@@ -519,8 +525,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                专业相关
                             </a>
                         
                     </div>
@@ -532,7 +538,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-12
+                    2019-12-11
                 </div>
                 
 
@@ -541,14 +547,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 				
@@ -564,63 +570,110 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>原以为自己不会接触到Linux系统，毕竟一直舒服地用着Win没什么不满。直到接触了OpenFOAM，在Win上运行实在是不方便，于是装了个虚拟机开始研究Linux，用了一段时间之后还是感觉不太舒服，毕竟是虚拟机，加上笔记本性能也一般；为了追求流畅的体验还是决定装个双系统，于是开始了漫长的踩坑爬坑之旅...</p>
-<h1 id="Linux系统安装">1&emsp;Linux系统安装</h1><p>以我安装Ubuntu为例，简单说下步骤；网上很多关于双系统安装的帖子，但不能完全照搬，不然会出各种各样的bug；推荐先多浏览几篇，总结之间的不同点，再针对性进行学习。</p>
-<h2 id="安装盘准备">1.1&emsp;安装盘准备</h2><p>一般用usb或光盘制作一个启动盘，usb的话推荐工具<a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a>。先把镜像下好，如<em>ubuntu-18.04-desktop-amd64.iso</em>,我这里装的是日本人做的一个集成了很多OpenFOAM使用工具的<strong>自定义镜像</strong>，从官网<a href="http://dexcs.gifu-nct.ac.jp/download/" target="_blank" rel="noopener">DEXCS</a>可以下载，使用说明可以参看我收集的一些<a href="https://1drv.ms/u/s!Am1bWNpX3V8CiF8lBMfSMFrlD_9g?e=p5G2Fx" target="_blank" rel="noopener">文档</a>（日语）。注意文件系统格式、分区策略等选项不要随便选，选之前百度一下；总之一般制作启动盘这一步比较简单。</p>
-<h2 id="空出一个磁盘来">1.2&emsp;空出一个磁盘来</h2><p>推荐使用<a href="http://www.diskgenius.cn/" target="_blank" rel="noopener">DiskGenius</a>进行系统分区，清出一块磁盘后记住一定保持<strong>未格式化</strong>的状态。</p>
-<h2 id="Linux系统分区">1.3&emsp;Linux系统分区</h2><p>前两步完成之后就可以重启进入Bios设置从U盘启动然后开始安装Ubuntu系统了。前面的选项随便点过就行，到安装类型界面开始一定要谨慎，一般我们手动分配分区，直接选择最后一项<em>其他选项</em> 。<br>如果不知道怎么创建分区，请暂停安装过程，拿出手机百度一下直到明白了Linux的分区构成，如“/”、“/home”、“/swap”、“/boot”的含义。<br>我不喜欢太多分区所以只分了“/”和“/home”，注意千万不要选错磁盘把Win系统给删了。硬盘名称一般有sda、sdb等...<br>然后静静等待，安装完成！So easy！</p>
-<h2 id="安装引导！！！">1.4&emsp;安装引导！！！</h2><p>如果觉得已经大功告成那真是太天真了，重启之后你会发现，直接进入了grub界面...关于如何设置引导从而开机能够进入双系统选择界面的帖子，网上更是数不胜数；我当初几乎试了个遍，最后还是以失败告终。就在我将要放弃的时候，在油管上找到了一个视频<a href="https://www.youtube.com/watch?v=S1k49TrVBCM&t=5s" target="_blank" rel="noopener">How to install refind boot manager in windows</a>,按照上面说的步骤安装了<em>refindboot</em> ，重启之后终于进入了我想要的系统选择界面！！！谢天谢地!!!<br>相关文件我也传到OneDrive上了。(<a href="https://1drv.ms/u/s!Am1bWNpX3V8CiGC1OwPafZ_XQc4I?e=1jdKIA" target="_blank" rel="noopener">Download</a>)<br><br><br><br><br></p>
-<h1 id="一些基本设置">2&emsp;一些基本设置</h1><p>至此，便可以暂时抛下Windows，在Ubuntu的世界里遨游了。刚开始可以进入设置选项翻一翻，这里主要提两点：</p>
-<h2 id="双系统时间不一致">2.1&emsp;双系统时间不一致</h2><p>Ubuntu默认时间是把BIOS时间当成GMT+0时间，Windows则认为BIOS时间就是你的本地时间。Ubuntu18.04的解决方案是在终端输入：</p>
-<pre class="line-numbers language-sh"><code class="language-sh">timedatectl set-local-rte 1 --adjust-system-clock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="输入法的安装">2.2&emsp;输入法的安装</h2><p>Ubuntu1804默认的输入法系统是ibus，网上推荐用搜狗输入法,但它基于fcitx而且安装后可能会出现系统黑屏或者无限循环登录等bug（亲身经历），所以对于像我这样的萌新还是老老实实用ibus吧。<br><br>但ibus的几个中文输入法都有点bug，（用一段时间就卡住之类的），直到我找到了<strong>Sunpinyin</strong>这款输入法。<br><br>安装Sunpinyin:</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> ibus-sunpinyin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>若没有ibus，则先安装ibus框架：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>之后在终端中输入命令： <code>ibus-setup</code>将 “在应用程序窗口中启用内嵌编辑模式” 选项取消，输入<code>ibus restart</code>；<br>安装好Sunpinyin后需要改一下自动翻页的设置，如果打不开设置窗口则可能是缺少组件(<a href="https://1drv.ms/u/s!Am1bWNpX3V8CiGFcROX68nM4GXRq?e=aX9DK9" target="_blank" rel="noopener">Download</a>)。通过</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> gdebi python-ibus_1.5.5-1ubuntu3.2_all.deb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>安装即可。</p>
-<h1 id="Ubuntu系统备份">3&emsp;Ubuntu系统备份</h1><p>说是可以完全复制到另一台电脑上，我还没有试过，等有机会再自己的台式机上尝试一下再来修改，先把步骤放在这。</p>
-<h2 id="1-备份前先清理一下缓存">3.1&emsp;1. 备份前先清理一下缓存</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 清理旧版本的软件缓存</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> autoclean <span class="token punctuation">;</span> 
-
-<span class="token comment" spellcheck="true"># 清理所有软件缓存</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> clean <span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true"># 删除系统不再使用的孤立软件</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> autoremove<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-tar命令备份">3.2&emsp;2. tar命令备份</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#备份前先切换到root用户，避免权限问题</span>
-<span class="token function">sudo</span> <span class="token function">su</span> <span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">#继续在终端中输入以下指令，进入系统根目录：</span>
-<span class="token function">cd</span> / <span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">#开始备份系统，在终端中输入：</span>
-<span class="token function">tar</span> cvpzf backup.tgz --exclude<span class="token operator">=</span>/proc --exclude<span class="token operator">=</span>/lost+found --exclude<span class="token operator">=</span>/backup.tgz --exclude<span class="token operator">=</span>/mnt --exclude<span class="token operator">=</span>/sys --exclude<span class="token operator">=</span>/media / --warning<span class="token operator">=</span>no-file-change
-<span class="token comment" spellcheck="true">#耐心等待......</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>简单看一下这个命令：</p>
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="Evaluation-of-PARSEC-parametrization">1&emsp;Evaluation of PARSEC parametrization</h1><p>The principles that parametrization technique should satisfy are:</p>
 <ul>
-<li>‘tar’ 是用来备份的程序</li>
-<li>c - 新建一个备份文档</li>
-<li>v - 详细模式， tar程序将在屏幕上实时输出所有信息。</li>
-<li>p - 保存许可，并应用到所有文件。</li>
-<li>z - 采用‘gzip’压缩备份文件，以减小备份文件体积。</li>
-<li>f - 说明备份文件存放的路径， Ubuntu.tgz 是本例子中备份文件名。</li>
-<li>“/”是我们要备份的目录，在这里是整个文件系统。</li>
-<li>在档案文件名“backup.tgz”和要备份的目录名“/”之间给出了备份时必须排除在外的目录。有些目录是无用的，例如“/proc”、“/lost+ found”、“/sys”。当然，“backup.tgz”这个档案文件本身必须排除在外，否则你可能会得到一些超出常理的结果。如果不把“/mnt”排除在外，那么挂载在“/mnt”上的其它分区也会被备份。另外需要确认一下“/media”上没有挂载任何东西(例如光盘、移动硬盘)，如果有挂载东西， 必须把“/media”也排除在外。</li>
-<li>备份完成后，在文件系统的根目录将生成一个名为“backup.tgz”的文件，它的尺寸有可能非常大。现在你可以把它烧录到DVD上或者放到你认为安全的地方去。<br>  在备份命令结束时你可能会看到这样一个提示：’tar: Error exit delayed from previous errors’，多数情况下你可以忽略它。</li>
+<li>Minimize the number of degrees of freedom.</li>
+<li>Be able to represent a wide range of existing airfoils.</li>
+<li>Parameters should be simple to formulate and impose.</li>
+<li>The parametrization should result in effective and efficient optimization.</li>
 </ul>
-<h2 id="3-恢复系统">3.3&emsp;3. 恢复系统</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#备份前先切换到root用户，避免权限问题</span>
-<span class="token function">sudo</span> <span class="token function">su</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">#再切换到/（根目录）</span>
-<span class="token function">cd</span> / <span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">#删除整个文件系统</span>
-<span class="token function">rm</span> -fr /* <span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">#解压缩</span>
-<span class="token function">tar</span> xvpfz backup.tgz <span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">#重新创建那些在备份时被排除在外的目录；</span>
-<span class="token function">sudo</span> <span class="token function">mkdir</span> proc lost+found mnt sys media<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><br><br><br></p>
+<p>The parametric section(PARSEC) parametrization scheme, which uses the unknown linear combination of base functions to express characteristics of the airfoil, uses 11 different geometrical characteristics of airfoil to solve a system of linear equations. The describing parameters are less enough and sometimes even limit the accuracy and robustness of this method. On the other hand, the physical-based parameters can avoid arbitrary airfoil geometry, which leads to good convergence when combined with genetic algorithm or other optimization methods.<br>The PARSEC parameters are easy to understand and impose too, so the left question is whether this parametrization scheme can represent a wide range of existing airfoils.</p>
+<h1 id="Representation-of-NACA0012-airfoil-by-PARSEC-parametrization">2&emsp;Representation of NACA0012 airfoil by PARSEC parametrization</h1><p>The purpose of Representation is to analyse the residual differences between the approximate and the official airfoil shape. Actually, it&#39;s difficult to tell the differences on figures because they are hardly discernible. Thus a quantitative analysis is proposed.</p>
+<h2 id="Fitting-analysis">2.1&emsp;Fitting analysis</h2><p>Kulfan<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .
+">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20%$ is less than the thickness of a piece of printer paper.  </p>
+<p>$$<br>z^{error}=|z^{target}-z^{approx}|<br> \tag{2-1}$$</p>
+<p>And the tolerance criterion<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.">[2]</span></a></sup> is: </p>
+<p>$$<br>z^{error}&lt;\left\{<br>\begin{aligned}<br>    4\times10^{-4}, \frac{x}{c}&lt;0.2 \\<br>    8\times10^{-4}, \frac{x}{c}&gt;0.2<br>\end{aligned}<br>\right.<br> \tag{2-2}$$<br>The representation process is conducted by using the genetic algorithm, defining the matching residual as the object function. Root-mean-square error(RMSE) is calculated by the following expression:  </p>
+<p>$$<br>RMSE_{Z}=\left(\frac{1}{N} \sum_{i=1}^{N}\left(z_{i}^{ \text { target }}-z_{i}^{\text {approx }}\right)^{2}\right)^{1/2}<br> \tag{2-3}$$</p>
+<h2 id="Genetic-algorithm">2.2&emsp;Genetic algorithm</h2><p>Genetic algorithms(GA)<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.">[3]</span></a></sup> is a robust and accurate method for global aerodynamic shape optimization and this can be often suggested in the literature. In contrast to gradient optimization approaches, it offers an alternative approach with several attractive features. The basic idea associated with the GA is to search for optimal solutions using an analogy to the theory of evolution.   </p>
+<p>During solution advance (or &quot;evolution&quot; using GA terminology) each chromosome is ranked according to its fitness vector––one fitness value for each objective. The higher-ranking chromosomes are selected to continue to the next generation while the probability of the selection of lower-ranking chromosomes is less.   </p>
+<p>In every generation, a new set of artificial creatures (strings) is created using bits and pieces of the fittest of the old;an occasional new part is tried for good measure. While randomized, genetic algorithms are no simple random walk. They efficiently exploit historical information to speculate on new search points with expected improved performance. The newly selected chromosomes in the next generation are manipulated using various operators (combination, crossover, or mutation) to create the final set of chromosomes for the new generation. These chromosomes are then evaluated for fitness and the process continues––iterating from generation to generation––until a suitable level of convergence is obtained or until a specified number of generations has been completed.  </p>
+<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called &quot;Pareto optimal sets&quot; instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211231210.png" alt title="GA"></p>
+<p>The optimization process uses Dakota software, and here&#39;s the relating <code>.in</code> file settings:  </p>
+<pre><code>method
+ soga
+  seed = 10525
+  max_function_evaluations = 2000
+  initialization_type
+   unique_random
+  crossover_type
+   multi_point_parameterized_binary = 2
+   crossover_rate = 0.8
+  mutation_type
+   offset_normal
+    mutation_scale = 0.1
+  fitness_type
+    merit_function
+  replacement_type
+   elitist
+  convergence_type
+   best_fitness_tracker
+   percent_change = 0.05
+   num_generations = 10</code></pre><h2 id="Results">2.3&emsp;Results</h2><h3 id="Figures">2.3.1&emsp;Figures</h3><p>The iteration history of GA shows the matching residual drops into a very low level after about 20 generation.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211233103.png" alt title="iteration history"><br>The error comparison with typical wind tunnel tolerance represents that only a slight part is beyond the value, which indicates the PARSEC approximate airfoil matches the actual NACA0012 airfoil geometry well.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234037.png" alt title="Typical WT Model Tolerance"><br>And the figure below shows that the PARSEC parametrization can represent a large range of airfoils.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234705.png" alt></p>
+<p>The last figure is a comparison between approximate and actual NACA0012 airfoil.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234818.png" alt></p>
+<h3 id="Code">2.3.2&emsp;Code</h3><p><em>plot iteration history from Dakota output files</em></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> __future__ <span class="token keyword">import</span> division
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
 
+g <span class="token operator">=</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+files <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> path<span class="token punctuation">,</span> dir_list<span class="token punctuation">,</span> file_list <span class="token keyword">in</span> g<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> file_name <span class="token keyword">in</span> file_list<span class="token punctuation">:</span>
+        files<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span>
+                                  file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> item <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'population_(.*).dat'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        num <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'population_(.*).dat'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'population_'</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">'.dat'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            lines <span class="token operator">=</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            x <span class="token operator">=</span> <span class="token punctuation">[</span>float<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>lines<span class="token punctuation">)</span>
+            y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
+                line <span class="token operator">=</span> line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                line <span class="token operator">=</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
+                y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>float<span class="token punctuation">(</span>line<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'population_data.txt'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>str<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'  '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>y<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>plot a large range of airfoils</em></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+
+<span class="token keyword">def</span> <span class="token function">findpath_and_plot</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    current <span class="token operator">=</span> os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    path <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'(.*?)/airfoil_data.txt'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    X<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> Up <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'airfoil_data.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        value <span class="token operator">=</span> <span class="token punctuation">[</span>float<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">for</span> s <span class="token keyword">in</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Low<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Up<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> X <span class="token punctuation">,</span> Up<span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>current<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    g <span class="token operator">=</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+    files <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> path<span class="token punctuation">,</span> dir_list<span class="token punctuation">,</span> file_list <span class="token keyword">in</span> g<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> file_name <span class="token keyword">in</span> file_list<span class="token punctuation">:</span>
+            files<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span> file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'airfoil_data.txt'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            findpath_and_plot<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="References">3&emsp;References</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.<a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div>
             </div>
             <hr/>
 
@@ -645,7 +698,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/">https://chengpengzhao.com/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</a>
+                    <a href="https://chengpengzhao.com/2019/12/11/2019-12-11-evaluation-of-parsec-paraterization/">https://chengpengzhao.com/2019/12/11/2019-12-11-evaluation-of-parsec-paraterization/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -683,8 +736,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%89%E8%A3%85/">
-                                    <span class="chip bg-color">安装</span>
+                                <a href="/tags/English/">
+                                    <span class="chip bg-color">English</span>
+                                </a>
+                            
+                                <a href="/tags/airfoil-optimization/">
+                                    <span class="chip bg-color">airfoil optimization</span>
                                 </a>
                             
                         </div>
@@ -1113,45 +1170,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/">
+                <a href="/2019/12/11/2019-12-11-evaluation-of-parsec-paraterization/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/ef.jpg" class="responsive-img" alt="入坑Linux(2)——常用命令及快捷键">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211235843.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization">
                         
-                        <span class="card-title">入坑Linux(2)——常用命令及快捷键</span>
+                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;常用快捷键Linux和Windows最大的一个不同就是终端的使用，Win虽然有cmd但我们平时基本生活学习用的较少，大多靠鼠标点击完成操作；而Linux很多操作都是通过终端输入命令来完成，包括软件的安装、文本的编辑等，如何在尽
+                            1&emsp;Evaluation of PARSEC parametrizationThe principles that parametrization technique should satisfy are:
+
+Minimize t
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                    专业相关
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
+                    <a href="/tags/English/">
+                        <span class="chip bg-color">English</span>
+                    </a>
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
                     </a>
                     
                 </div>
@@ -1165,31 +1230,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/26/2019-10-liu-xue-10.26/">
+                <a href="/2019/12/10/2019-12-09-parsec/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1.jpg" class="responsive-img" alt="一个月浑浑噩噩过去了，下个月认真学习(10.26)">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191209235902.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization">
                         
-                        <span class="card-title">一个月浑浑噩噩过去了，下个月认真学习(10.26)</span>
+                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;2019-10-26　一ヶ月不知不觉已经来了整整一个月了，真的挺快的，虽然感觉啥都还没干。下个月必须抓紧了，研究课题也要赶快定下来~今天趁台风过后难得晴天，在宿舍周围随便溜达了下。
-
+                            1&emsp;Modified PARSEC ParametrizationAs mentioned before, the PARSEC parametrization popularized by Sobieczky actually 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                    专业相关
                                 </a>
                             
                             
@@ -1199,12 +1263,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/English/">
+                        <span class="chip bg-color">English</span>
                     </a>
                     
-                    <a href="/tags/%E7%9B%B8%E5%86%8C/">
-                        <span class="chip bg-color">相册</span>
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
                     </a>
                     
                 </div>
@@ -1337,6 +1401,19 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
 
 
 
