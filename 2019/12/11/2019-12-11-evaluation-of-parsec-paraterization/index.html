@@ -580,7 +580,7 @@ Minimize t">
 <p>The parametric section(PARSEC) parametrization scheme, which uses the unknown linear combination of base functions to express characteristics of the airfoil, uses 11 different geometrical characteristics of airfoil to solve a system of linear equations. The describing parameters are less enough and sometimes even limit the accuracy and robustness of this method. On the other hand, the physical-based parameters can avoid arbitrary airfoil geometry, which leads to good convergence when combined with genetic algorithm or other optimization methods.<br>The PARSEC parameters are easy to understand and impose too, so the left question is whether this parametrization scheme can represent a wide range of existing airfoils.</p>
 <h1 id="Representation-of-NACA0012-airfoil-by-PARSEC-parametrization">2&emsp;Representation of NACA0012 airfoil by PARSEC parametrization</h1><p>The purpose of Representation is to analyse the residual differences between the approximate and the official airfoil shape. Actually, it&#39;s difficult to tell the differences on figures because they are hardly discernible. Thus a quantitative analysis is proposed.</p>
 <h2 id="Fitting-analysis">2.1&emsp;Fitting analysis</h2><p>Kulfan<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .
-">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20%$ is less than the thickness of a piece of printer paper.  </p>
+">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20\%$ is less than the thickness of a piece of printer paper.  </p>
 <p>$$<br>z^{error}=|z^{target}-z^{approx}|<br> \tag{2-1}$$</p>
 <p>And the tolerance criterion<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.">[2]</span></a></sup> is: </p>
 <p>$$<br>z^{error}&lt;\left\{<br>\begin{aligned}<br>    4\times10^{-4}, \frac{x}{c}&lt;0.2 \\<br>    8\times10^{-4}, \frac{x}{c}&gt;0.2<br>\end{aligned}<br>\right.<br> \tag{2-2}$$<br>The representation process is conducted by using the genetic algorithm, defining the matching residual as the object function. Root-mean-square error(RMSE) is calculated by the following expression:  </p>
@@ -1421,7 +1421,7 @@ Minimize t
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
-            <span id="year">年份</span>
+            <span id="year">2019</span>
             <a href="https://chengpengzhao.com" target="_blank">zcp</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
