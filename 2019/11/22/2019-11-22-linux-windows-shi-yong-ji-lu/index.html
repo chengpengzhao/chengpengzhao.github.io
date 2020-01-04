@@ -563,14 +563,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 				
@@ -646,6 +646,16 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
 <li>还是在刚刚的注册表项，添加<code>UpperFilters</code><strong>字符串</strong>，内容为<code>kbdclass</code>。</li>
 <li>卸载设备，重新启动，问题解决。</li>
 </ol>
+<blockquote>
+<p><em>以下内容更新于2020-01-04 10:24:24</em></p>
+</blockquote>
+<h1 id="跨平台使用Github时出现换行符自动转换提示">4&emsp;跨平台使用Github时出现换行符自动转换提示</h1><p>解决方案来自<a href="https://github.com/cssmagic/blog/issues/22" target="_blank" rel="noopener">CSS魔法 - 博客</a>，网上也有很多人遇到过这个问题，这里直接把方案搬过来了。</p>
+<h2 id="起因-1">4.1&emsp;起因</h2><p>在各操作系统下，文本文件所使用的换行符是不一样的。UNIX/Linux 使用的是 0x0A（LF），早期的 Mac OS 使用的是 0x0D（CR），后来的 OS X 在更换内核后与 UNIX 保持一致了。但 DOS/Windows 一直使用 0x0D0A（CRLF）作为换行符。</p>
+<p>安装好 GitHub 的 Windows 客户端之后，这个功能默认处于“自动模式”。当你在签出文件时，Git 试图将 UNIX 换行符（LF）替换为 Windows 的换行符（CRLF）；当你在提交文件时，它又试图将 CRLF 替换为 LF。</p>
+<p>如果你手头的这个文件是一个包含中文字符的 UTF-8 文件，那么这个“换行符自动转换”功能 在提交时是不工作的（但签出时的转换处理没有问题）。</p>
+<h2 id="解决方案-2">4.2&emsp;解决方案</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global core.autocrlf <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>关闭此功能，并开启换行符检查：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global core.safecrlf <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1388,7 +1398,7 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.8k</span>&nbsp;字
+                class="white-color">38.1k</span>&nbsp;字
             
             
             
