@@ -556,7 +556,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    962
+                    956
                 </div>
                 
 
@@ -581,9 +581,9 @@
             <div id="articleContent">
                 <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="git学习笔记">1&emsp;git学习笔记</h1><p>学习自：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
 <h2 id="基础">1.1&emsp;基础</h2><ul>
-<li><p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议你下载Notepad++代替记事本，不但功能强大，而且免费！记得把Notepad++的默认编码设置为UTF-8 without BOM</p>
+<li><p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议下载Notepad++代替记事本。记得把Notepad++的默认编码设置为UTF-8 without BOM</p>
 </li>
-<li><p>git status / git diff / git log (--pretty=oneline)</p>
+<li><p><code>git status / git diff / git log (--pretty=oneline)</code></p>
 </li>
 <li><p>工作区--暂存区--HEAD（master...)</p>
 </li>
@@ -591,41 +591,41 @@
 </li>
 </ul>
 <h2 id="版本控制">1.2&emsp;版本控制</h2><ul>
-<li><p>git reset --hard HEAD^  # 回滚到上一个版本 （或git reset --hard 版本号）</p>
+<li><p><code>git reset --hard HEAD^</code>  # 回滚到上一个版本 （或：<code>git reset --hard</code>版本号代码）</p>
 </li>
-<li><p>git relog  #记录每一次命令，可用作回到未来版本; git log 可在回退之前版本前用来查看提交历史</p>
+<li><p><code>git relog</code>  #记录每一次命令，可用作回到未来版本; <code>git log</code> 可在回退之前版本前用来查看提交历史</p>
 </li>
-<li><p>git checkout -- readme.txt   #丢弃工作区修改，恢复上一版本状态（未add之前用）</p>
+<li><p><code>git checkout -- readme.txt</code>   #丢弃工作区修改，恢复上一版本状态（未add之前用）</p>
 </li>
-<li><p>git reset HEAD filename    # add但未commit用，撤销暂存区内容</p>
+<li><p><code>git reset HEAD filename</code>    # add但未commit用，撤销暂存区内容</p>
 </li>
-<li><p>git rm filename  # 删除版本库文件，若是误删可用git checkout -- readme.txt恢复</p>
+<li><p><code>git rm filename</code>  # 删除版本库文件，若是误删可用<code>git checkout -- readme.txt</code>恢复</p>
 </li>
 </ul>
 <h2 id="分支">1.3&emsp;分支</h2><ul>
-<li><p>github中远程库的名字是origin, git push -u origin master  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p>
+<li><p>github中远程库的名字是origin, <code>git push -u origin master</code>  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p>
 </li>
 <li><p>通过ssh支持的原生git协议速度最快。</p>
 </li>
 <li><p>创建分支dev后，新建了一个指针dev，现在HEAD指向dev，再编辑的话dev前移，master指针不变</p>
 </li>
-<li><p>git checkout -b dev  #创建并切换到新分支 = git branch dev + git checkout dev</p>
+<li><p><code>git checkout -b dev</code>  #创建并切换到新分支 = <code>git branch dev</code> + <code>git checkout dev</code></p>
 </li>
-<li><p>git checkout -b dev origin/dev  # 创建远程origin的dev分支到本地,本地和远程分支的名称最好一致；</p>
+<li><p><code>git checkout -b dev origin/dev</code>  # 创建远程origin的dev分支到本地,本地和远程分支的名称最好一致；</p>
 </li>
-<li><p>建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name</p>
+<li><p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code></p>
 </li>
-<li><p>git switch -c dev    #创建并切换到新分支(和 git checkout -b dev 一样)</p>
+<li><p><code>git switch -c dev</code>    #创建并切换到新分支(和 <code>git checkout -b dev</code> 一样)</p>
 </li>
-<li><p>git branch  #查看当前分支  git checkout master   切换HEAD到master分支上 (还可用git switch master)</p>
+<li><p><code>git branch</code>  #查看当前分支  <code>git checkout master</code>   切换HEAD到master分支上 (还可用<code>git switch master</code>)</p>
 </li>
-<li><p>git merge dev  #合并指定分支和当前分支</p>
+<li><p><code>git merge dev</code>  #合并指定分支和当前分支</p>
 </li>
-<li><p>git branch -d dev  #删除dev分支</p>
+<li><p><code>git branch -d dev</code>  #删除dev分支</p>
 </li>
 <li><p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容</p>
 </li>
-<li><p>git log --graph --pretty=oneline --abbrev-commit  #查看分支合并情况</p>
+<li><p><code>git log --graph --pretty=oneline --abbrev-commit</code>  #查看分支合并情况</p>
 </li>
 <li><p>合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
 </li>
@@ -633,29 +633,29 @@
 </li>
 </ul>
 <h2 id="bug处理">1.4&emsp;bug处理</h2><ul>
-<li><p>git stash  #储存当前工作区，修复bug时用，先新建分支修复bug/  git stash pop 恢复工作现场并删除stash / git stash list 查看stash区</p>
+<li><p><code>git stash</code>  #储存当前工作区，修复bug时用，先新建分支修复bug/  <code>git stash pop</code> 恢复工作现场并删除stash / <code>git stash list</code> 查看stash区</p>
 </li>
-<li><p>git checkout master + git checkout -b issue-xxx  #创建修复bug的分支</p>
+<li><p><code>git checkout master</code> + <code>git checkout -b issue-xxx</code>  #创建修复bug的分支</p>
 </li>
-<li><p>git switch master + git merge --no-ff -m &quot;merged bug fix&quot;   #修复完成后删除该分支</p>
+<li><p><code>git switch master</code> + <code>git merge --no-ff -m &quot;merged bug fix&quot;</code>   #修复完成后删除该分支</p>
 </li>
-<li><p>git cherry-pick xxx   / 在当前分支重复一遍xxx修改</p>
+<li><p><code>git cherry-pick xxx</code>  / 在当前分支重复一遍xxx修改</p>
 </li>
-<li><p>丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。</name></p>
+<li><p>丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
 </li>
-<li><p>git remote -v #查看远程库信息  git push origin xxx  #推送xxx分支到origin</p>
+<li><p><code>git remote -v</code> #查看远程库信息  <code>git push origin xxx</code>  #推送xxx分支到origin</p>
 </li>
 </ul>
 <h2 id="标签管理">1.5&emsp;标签管理</h2><ul>
-<li><p>git tag v1.0  #创建tag，便于管理     git tag 查看所有标签<br>]</p>
+<li><p><code>git tag v1.0</code>  #创建tag，便于管理     <code>git tag</code> 查看所有标签</p>
 </li>
-<li><p>git tag v0.9 xxx   #为commit id 为xxx 的操作打标签 /  git show v0.9  #查看标签对应commit</p>
+<li><p><code>git tag v0.9 xxx</code>   #为commit id 为xxx 的操作打标签 /  <code>git show v0.9</code>  #查看标签对应commit</p>
 </li>
-<li><p>git tag -a v1.0 -m &quot;...&quot; xxx #标签也可以加上-m</p>
+<li><p><code>git tag -a v1.0 -m &quot;...&quot; xxx</code> #标签也可以加上-m</p>
 </li>
-<li><p>git push origin --tags   #推送标签到origin</p>
+<li><p><code>git push origin --tags</code>   #推送标签到origin</p>
 </li>
-<li><p>git tag -d v0.9 #标签本地删除  / git push origin :refs/tags/v0.9 #远程删除标签</p>
+<li><p><code>git tag -d v0.9</code> #标签本地删除  / <code>git push origin :refs/tags/v0.9</code> #远程删除标签</p>
 </li>
 </ul>
 
@@ -1215,19 +1215,18 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/04/2020-01-04-vats-simulation/">
+                <a href="/2020/01/04/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104133407.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104131737.jpg" class="responsive-img" alt="新的一年，还是写点什么吧">
                         
-                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</span>
+                        <span class="card-title">新的一年，还是写点什么吧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.
-这是嵌入 Microsoft Office 演示文稿，由 Office 提供
+                            最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。日本过年过的是阳历，每年的最后一天叫啥大
                         
                     </div>
                     <div class="publish-info">
@@ -1238,8 +1237,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
-                                    专业相关
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
                             
@@ -1249,12 +1248,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/English/">
-                        <span class="chip bg-color">English</span>
-                    </a>
-                    
-                    <a href="/tags/airfoil-optimization/">
-                        <span class="chip bg-color">airfoil optimization</span>
+                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">随笔</span>
                     </a>
                     
                 </div>
