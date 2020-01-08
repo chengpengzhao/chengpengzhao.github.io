@@ -556,14 +556,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    956
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 				
@@ -603,7 +603,7 @@
 </li>
 </ul>
 <h2 id="分支">1.3&emsp;分支</h2><ul>
-<li><p>github中远程库的名字是origin, <code>git push -u origin master</code>  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p>
+<li><p>Github中远程库的名字是origin, <code>git push -u origin master</code>  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p>
 </li>
 <li><p>通过ssh支持的原生git协议速度最快。</p>
 </li>
@@ -623,6 +623,8 @@
 </li>
 <li><p><code>git branch -d dev</code>  #删除dev分支</p>
 </li>
+<li><p>丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
+</li>
 <li><p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容</p>
 </li>
 <li><p><code>git log --graph --pretty=oneline --abbrev-commit</code>  #查看分支合并情况</p>
@@ -630,6 +632,10 @@
 <li><p>合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
 </li>
 <li><p>一般都是在dev上工作，形成版本时发布到master</p>
+</li>
+<li><p>时刻注意远程分支和本地分支的区别；   <code>git branch -a</code> 查看所有分支，带有<code>remote/origin/xxx</code>的是远程分支</p>
+</li>
+<li><p><code>git push origin --delete xxx</code> 删除某个远程分支<code>remote/origin/xxx</code></p>
 </li>
 </ul>
 <h2 id="bug处理">1.4&emsp;bug处理</h2><ul>
@@ -640,8 +646,6 @@
 <li><p><code>git switch master</code> + <code>git merge --no-ff -m &quot;merged bug fix&quot;</code>   #修复完成后删除该分支</p>
 </li>
 <li><p><code>git cherry-pick xxx</code>  / 在当前分支重复一遍xxx修改</p>
-</li>
-<li><p>丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
 </li>
 <li><p><code>git remote -v</code> #查看远程库信息  <code>git push origin xxx</code>  #推送xxx分支到origin</p>
 </li>
@@ -1215,18 +1219,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/04/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/">
+                <a href="/2020/01/04/2020-01-04-vats-simulation/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104131737.jpg" class="responsive-img" alt="新的一年，还是写点什么吧">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104133407.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation">
                         
-                        <span class="card-title">新的一年，还是写点什么吧</span>
+                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。日本过年过的是阳历，每年的最后一天叫啥大
+                            Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.
+这是嵌入 Microsoft Office 演示文稿，由 Office 提供
                         
                     </div>
                     <div class="publish-info">
@@ -1237,8 +1242,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                    专业相关
                                 </a>
                             
                             
@@ -1248,8 +1253,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/English/">
+                        <span class="chip bg-color">English</span>
+                    </a>
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
                     </a>
                     
                 </div>
