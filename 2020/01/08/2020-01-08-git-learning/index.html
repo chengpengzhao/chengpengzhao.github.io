@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="入坑Linux(2)——常用命令及快捷键, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;常用快捷键Linux和Windows最大的一个不同就是终端的使用，Win虽然有cmd但我们平时基本生活学习用的较少，大多靠鼠标点击完成操作；而Linux很多操作都是通过终端输入命令来完成，包括软件的安装、文本的编辑等，如何在尽">
+    <meta name="keywords" content="Git学习笔记, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;git学习笔记学习自：廖雪峰的官方网站
+1.1&amp;emsp;基础
+千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>入坑Linux(2)——常用命令及快捷键 | Zcp&#39;s Zone</title>
+    <title>Git学习笔记 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -392,13 +394,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/ef.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200108110720.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        入坑Linux(2)——常用命令及快捷键
+                        Git学习笔记
                     </div>
                 </div>
             </div>
@@ -520,6 +522,10 @@
                                 <span class="chip bg-color">使用tips</span>
                             </a>
                         
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -528,8 +534,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                语言
                             </a>
                         
                     </div>
@@ -541,7 +547,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-13
+                    2020-01-08
                 </div>
                 
 
@@ -550,14 +556,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    962
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    3 分
                 </div>
                 
 				
@@ -573,167 +579,85 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="常用快捷键">1&emsp;常用快捷键</h1><p>Linux和Windows最大的一个不同就是终端的使用，Win虽然有cmd但我们平时基本生活学习用的较少，大多靠鼠标点击完成操作；而Linux很多操作都是通过终端输入命令来完成，包括软件的安装、文本的编辑等，如何在尽量不用鼠标的情况下保持高效率，则是我们在用Linux时经常要思考的问题。</p>
-<table>
-<thead>
-<tr>
-<th align="center">快捷键</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><strong>Ctrl+Alt+T</strong></td>
-<td align="center">启动终端</td>
-</tr>
-<tr>
-<td align="center">F11</td>
-<td align="center">全屏切换</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift+C</td>
-<td align="center">复制</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+Shift+V</strong></td>
-<td align="center">粘贴(鼠标中键)</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+Shift+W</strong></td>
-<td align="center">关闭标签页</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+Shift+Q</strong></td>
-<td align="center">关闭所有终端窗口</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Shift++</td>
-<td align="center">放大窗口（包括窗口内的字体）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+-</td>
-<td align="center">缩写窗口（包括窗口内的字体）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+0</td>
-<td align="center">普通大小（阿拉伯数字 0）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+D</td>
-<td align="center">在空白处执行将结束当前会话（同exit 命令功能）</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+A</strong></td>
-<td align="center">光标移动到行的开头（ahead）</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+E</strong></td>
-<td align="center">光标移动到行的结尾</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Left-Arrow</td>
-<td align="center">光标移动到上一个单词的词首</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Right-Arrow</td>
-<td align="center">光标移动到下一个单词的词尾</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+U</strong></td>
-<td align="center">剪切从行的开头到光标前一个位置的所有字符</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+W</strong></td>
-<td align="center">删除光标位置的前一个单词（同alt+backspace 组合键功能）</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+Y</strong></td>
-<td align="center">粘贴最后一次被删除的单词</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+L</strong></td>
-<td align="center">清除当前屏幕内容（同 clear命令功能）</td>
-</tr>
-<tr>
-<td align="center">Ctrl+S</td>
-<td align="center">暂停屏幕输出</td>
-</tr>
-<tr>
-<td align="center">Ctrl+Q</td>
-<td align="center">继续屏幕输出</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+C</strong></td>
-<td align="center">取消（break）当前行输入</td>
-</tr>
-<tr>
-<td align="center"><strong>Ctrl+R</strong></td>
-<td align="center">搜索之前用过的命令</td>
-</tr>
-</tbody></table>
-<br>
-加粗的是我觉得平常用的比较多的快捷键，当然还有很多快捷键我没有全部列出来。
-<br><br>
-
-<h1 id="常用shell命令">2&emsp;常用shell命令</h1><ul>
-<li><code>ls</code> 列出当前目录下的所有文件（不显示隐藏文件）若要显示隐藏文件: <code>ls -a</code> </li>
-<li><code>cd</code> 进入某个目录</li>
-<li>几种符号的定义：<code>..</code> 上级文件夹; <code>.</code> 当前文件夹;  <code>~</code> 当前用户文件夹(<code>pwd</code>= <code>echo ~</code>);    <code>\</code>  另起一行</li>
-<li><code>cd -</code>返回进入此目录之前所在的目录</li>
-<li><code>mkdir dirname</code> 新建目录</li>
-<li><code>rmdir dirname</code> 删除空目录</li>
-<li><code>touch file</code>创建一个空的名字为file的空文件</li>
-<li><code>rm filename</code> 删除文件; <code>rm -rf dirname</code> 删除非空目录及其包含的所有文件</li>
-<li><code>cp file file1</code> 复制file文件为file1</li>
-<li><code>mv file1 file2</code>将文件1<strong>重命名</strong>为文件2</li>
-<li><code>mv file1 dir1</code> 将文件1<strong>移动</strong>到目录1中</li>
-<li><code>sudo dpkg -i  file.deb</code>  安装下载的deb软件包</li>
-<li><code>apt-get</code> 程序安装与卸载命令的标志，需要管理员权限</li>
-<li><code>install</code> 安装指定程序，举例：<code>sudo apt-get install vim</code> </li>
-<li><code>remove</code> 卸载指定的程序，一般最好加上“--purge”执行清除式卸载；并在程序名称后添加*号。举例：<code>sudo apt-get remove --purge nvidia*</code>  卸载 nvidia 的驱动及其配置文件</li>
-<li><code>update</code> 更新本地软件源文件，需要管理员权限，举例：<code>sudo apt-get update</code> </li>
-<li><code>sudo apt-get upgrade</code>自动更新软件</li>
-<li><code>sudo apt autoremove</code>卸载一些不用了的软件</li>
-<li>温馨提示: 养成习惯，安裝任何套件以前先:<pre><code>sudo apt-get update &amp;&amp; 
-sudo apt-get upgrade</code></pre></li>
-<li><code>!xx</code>  ：Linux 命令行下执行该命令，会执行最近一条包含有 xx关键字的历史命令</li>
-<li>结束某程序运行（强制):<br><code>ps -A| grep xxx</code>记住列出的ID号，再执行：<code>kill ID</code></li>
-<li>软件的依赖关系有错误时：<code>sudo apt-get upgrade -f</code></li>
-<li><code>sudo nautilus .</code> :以管理员权限打开当前目录，当无法在窗口中删除或者粘贴文件时可以使用</li>
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="git学习笔记">1&emsp;git学习笔记</h1><p>学习自：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
+<h2 id="基础">1.1&emsp;基础</h2><ul>
+<li><p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议你下载Notepad++代替记事本，不但功能强大，而且免费！记得把Notepad++的默认编码设置为UTF-8 without BOM</p>
+</li>
+<li><p>git status / git diff / git log (--pretty=oneline)</p>
+</li>
+<li><p>工作区--暂存区--HEAD（master...)</p>
+</li>
+<li><p>HEAD指向master, master指最新的提交，上个版本HEAD^，上上个HEAD^^...</p>
+</li>
 </ul>
-<h1 id="使用过程中碰到的一些命令">3&emsp;使用过程中碰到的一些命令</h1><h2 id="gt-dev-null-2-gt-amp-1">3.1&emsp;&gt; /dev/null 2&gt;&amp;1</h2><p>命令后附加 <code>&gt;/dev/null 2&gt;&amp;1</code> 常用来避免shell命令或者程序等运行中有内容输出。</p>
-<p>0:表示键盘输入(stdin)    1:表示标准输出(stdout),系统默认是1    2:表示错误输出(stderr)</p>
-<p>shell命令：<code>command &gt;/dev/null 2&gt;&amp;1 &amp;</code>  等同于  <code>command 1&gt;/dev/null 2&gt;&amp;1 &amp;</code></p>
-<p>1)command:表示shell命令或一个可执行的程序</p>
-<p>2)&gt;:表示重定向到</p>
-<p>3)/dev/null:表示Linux的空设备文件</p>
-<p>4)2:表示标准错误输出</p>
-<p>5)&amp;1:&amp;表示等同于的意思,2&gt;&amp;1,表示2的输出重定向等同于1的重定向</p>
-<p>6)&amp;:表示后台执行这条指令</p>
-<p>1&gt;/dev/null:表示标准输出重定向到空设备文件,即不输出任何信息到终端。</p>
-<p>2&gt;&amp;1:表示错误输出重定向等同于标准输出,因为之前标准输出已经重定向到了空设备文件,所以错误输出也重定向到空设备文件。</p>
-<p>上述例子中的shell命令的意思就是在后台执行这个程序,并将错误输出2重定向到标准输出1,然后将标准输出1全部放到/dev/null文件,也就是清空.</p>
-<h2 id="挂载映像文件">3.2&emsp;挂载映像文件</h2><p>在安装Matlab过程中遇到的</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> -t auto -o loop R2016b_glnxa64_dvd1.iso /Matlab2016b<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="给软件创建快捷方式">3.3&emsp;给软件创建快捷方式</h2><p>仍然以Matlab为例</p>
-<pre><code>sudo gedit /usr/share/applications/matlab.desktop
-#快捷方式都在这个文件夹里</code></pre><p>把下列复制粘贴进去，修改相关路径即可</p>
-<pre><code>[Desktop Entry]
-Type=Application
-Name=Matlab
-GenericName=MATLAB
-Comment=Matlab:The Language of Technical Computing
-Exec=sh /home/ubuntu/MATLAB/R2016b/bin/matlab -desktop
-Icon=/home/ubuntu/MATLAB/R2016b/toolbox/nnet/nnresource/icons/matlab.jpg
-StartupNotify=true
-Terminal=false
-Categories=Development;Matlab;</code></pre><p>配置文件中Name、Exec与Icon要指定好。<br><br><strong>顺便把ubuntu matlab界面字太小的解决方案放下面：</strong><br>  MathWorks suggested the following procedure, which works well for me (R2017b). Quoting from their email:<br>Tuning a high-DPI Linux system requires two steps</p>
-<pre><code>Setting the MATLAB scale factor
-Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects MATLAB desktop and the size/position of windows. The system DPI determines the scale and font size of axes and labels. To set the MATLAB scale factor, please use the following MATLAB commands:</p>
-<pre><code>&gt;&gt; s = settings;s.matlab.desktop.DisplayScaleFactor
-&gt;&gt; s.matlab.desktop.DisplayScaleFactor.PersonalValue = 1.5</code></pre><p>To calibrate the system DPI to match the scale facto, please use the following terminal commands :</p>
-<pre><code>% xdpyinfo | grep resolution
-  resolution:    96x96 dots per inch
-% xrandr --dpi 144</code></pre><p>The DPI value chosen should be the resolution found with xdpyinfo multiplied by the MATLAB scale factor that was set. In the example, 96 × 1.5 = 144.<br>MATLAB must be restarted after Step 2.<br><br><br><br></p>
+<h2 id="版本控制">1.2&emsp;版本控制</h2><ul>
+<li><p>git reset --hard HEAD^  # 回滚到上一个版本 （或git reset --hard 版本号）</p>
+</li>
+<li><p>git relog  #记录每一次命令，可用作回到未来版本; git log 可在回退之前版本前用来查看提交历史</p>
+</li>
+<li><p>git checkout -- readme.txt   #丢弃工作区修改，恢复上一版本状态（未add之前用）</p>
+</li>
+<li><p>git reset HEAD filename    # add但未commit用，撤销暂存区内容</p>
+</li>
+<li><p>git rm filename  # 删除版本库文件，若是误删可用git checkout -- readme.txt恢复</p>
+</li>
+</ul>
+<h2 id="分支">1.3&emsp;分支</h2><ul>
+<li><p>github中远程库的名字是origin, git push -u origin master  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p>
+</li>
+<li><p>通过ssh支持的原生git协议速度最快。</p>
+</li>
+<li><p>创建分支dev后，新建了一个指针dev，现在HEAD指向dev，再编辑的话dev前移，master指针不变</p>
+</li>
+<li><p>git checkout -b dev  #创建并切换到新分支 = git branch dev + git checkout dev</p>
+</li>
+<li><p>git checkout -b dev origin/dev  # 创建远程origin的dev分支到本地,本地和远程分支的名称最好一致；</p>
+</li>
+<li><p>建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name</p>
+</li>
+<li><p>git switch -c dev    #创建并切换到新分支(和 git checkout -b dev 一样)</p>
+</li>
+<li><p>git branch  #查看当前分支  git checkout master   切换HEAD到master分支上 (还可用git switch master)</p>
+</li>
+<li><p>git merge dev  #合并指定分支和当前分支</p>
+</li>
+<li><p>git branch -d dev  #删除dev分支</p>
+</li>
+<li><p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容</p>
+</li>
+<li><p>git log --graph --pretty=oneline --abbrev-commit  #查看分支合并情况</p>
+</li>
+<li><p>合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
+</li>
+<li><p>一般都是在dev上工作，形成版本时发布到master</p>
+</li>
+</ul>
+<h2 id="bug处理">1.4&emsp;bug处理</h2><ul>
+<li><p>git stash  #储存当前工作区，修复bug时用，先新建分支修复bug/  git stash pop 恢复工作现场并删除stash / git stash list 查看stash区</p>
+</li>
+<li><p>git checkout master + git checkout -b issue-xxx  #创建修复bug的分支</p>
+</li>
+<li><p>git switch master + git merge --no-ff -m &quot;merged bug fix&quot;   #修复完成后删除该分支</p>
+</li>
+<li><p>git cherry-pick xxx   / 在当前分支重复一遍xxx修改</p>
+</li>
+<li><p>丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。</name></p>
+</li>
+<li><p>git remote -v #查看远程库信息  git push origin xxx  #推送xxx分支到origin</p>
+</li>
+</ul>
+<h2 id="标签管理">1.5&emsp;标签管理</h2><ul>
+<li><p>git tag v1.0  #创建tag，便于管理     git tag 查看所有标签<br>]</p>
+</li>
+<li><p>git tag v0.9 xxx   #为commit id 为xxx 的操作打标签 /  git show v0.9  #查看标签对应commit</p>
+</li>
+<li><p>git tag -a v1.0 -m &quot;...&quot; xxx #标签也可以加上-m</p>
+</li>
+<li><p>git push origin --tags   #推送标签到origin</p>
+</li>
+<li><p>git tag -d v0.9 #标签本地删除  / git push origin :refs/tags/v0.9 #远程删除标签</p>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -759,7 +683,7 @@ Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects 
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/">https://chengpengzhao.com/2019/11/13/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</a>
+                    <a href="https://chengpengzhao.com/2020/01/08/2020-01-08-git-learning/">https://chengpengzhao.com/2020/01/08/2020-01-08-git-learning/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -799,6 +723,10 @@ Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects 
                             
                                 <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
                                     <span class="chip bg-color">使用tips</span>
+                                </a>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
                         </div>
@@ -1227,49 +1155,53 @@ Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects 
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/15/2019-11-15-ru-keng-linux-3-chang-yong-ruan-jian-an-zhuang-ji-pei-zhi/">
+                <a href="/2020/01/08/2020-01-08-git-learning/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191119-1-3.jpg" class="responsive-img" alt="入坑Linux(3)——常用软件安装及配置">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200108110720.jpg" class="responsive-img" alt="Git学习笔记">
                         
-                        <span class="card-title">入坑Linux(3)——常用软件安装及配置</span>
+                        <span class="card-title">Git学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;OpenFOAM相关用Linux的原因就是学习OpenFOAM，所以当然要摆在第一位！正如前面所说，我用的自定义镜像自带了使用OpenFOAM需要的一些工具，不用额外安装。不过后面我又下载了多个OpenFOAM版本，与其相关的
+                            1&emsp;git学习笔记学习自：廖雪峰的官方网站
+1.1&emsp;基础
+千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="post-category">
-                                    软件
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
                         <span class="chip bg-color">使用tips</span>
+                    </a>
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -1283,30 +1215,31 @@ Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects 
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/12/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/">
+                <a href="/2020/01/04/2020-01-04-vats-simulation/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/Beaver_Wallpaper_Grey_4096x2304.jpg" class="responsive-img" alt="入坑Linux(1)——双系统安装">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104133407.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation">
                         
-                        <span class="card-title">入坑Linux(1)——双系统安装</span>
+                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            原以为自己不会接触到Linux系统，毕竟一直舒服地用着Win没什么不满。直到接触了OpenFOAM，在Win上运行实在是不方便，于是装了个虚拟机开始研究Linux，用了一段时间之后还是感觉不太舒服，毕竟是虚拟机，加上笔记本性能也一般；为了追
+                            Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.
+这是嵌入 Microsoft Office 演示文稿，由 Office 提供
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+                                    专业相关
                                 </a>
                             
                             
@@ -1316,8 +1249,12 @@ Calibrating the system&#39;s DPI</code></pre><p>The MATLAB scale factor affects 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AE%89%E8%A3%85/">
-                        <span class="chip bg-color">安装</span>
+                    <a href="/tags/English/">
+                        <span class="chip bg-color">English</span>
+                    </a>
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
                     </a>
                     
                 </div>
