@@ -563,14 +563,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 				
@@ -656,6 +656,19 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
 <h2 id="解决方案-2">4.2&emsp;解决方案</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global core.autocrlf <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>关闭此功能，并开启换行符检查：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global core.safecrlf <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-01-08 10:02:04</em></p>
+</blockquote>
+<h1 id="Ubuntu系统启动时间过长">5&emsp;Ubuntu系统启动时间过长</h1><h2 id="起因-2">5.1&emsp;起因</h2><p>由于SSD空间不够，整个Linux系统是放在机械硬盘上的，本身启动就不如Win10,再加上启动过程中一些不必要的服务加载，导致每次都要花搓一把炉石的时间；终于忍无可忍，于是开始找加速方法...<br><a href="https://www.jianshu.com/p/11491ee15344" target="_blank" rel="noopener">详细内容可参考这篇简书</a></p>
+<h2 id="解决方案-3">5.2&emsp;解决方案</h2><h3 id="系统分析工具">5.2.1&emsp;系统分析工具</h3><pre class="line-numbers language-bash"><code class="language-bash">systemd-analyze blame
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用<code>systemd</code>自带分析工具，查看各项服务启动时间，开完机后马上运行下；<br>然后针对启动时间过长的服务，如果不是系统必须的，则直接使用下面的命令禁用它：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl disable xxx.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>若<code>disable</code>不能彻底禁用，则改用<code>mask</code>：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl mask xxx.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="应用启动程序">5.2.2&emsp;应用启动程序</h3><p>去Ubuntu的应用市场搜这个管理子启动的应用，下载下来用就是了，很简单。<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200108100454.png" alt><br><br><br></p>
+<p>经过上面两步我的Ubuntu启动时间至少快了一倍~</p>
 
             </div>
             <hr/>
@@ -1194,12 +1207,12 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%86%99%E4%BD%9C/">
-                        <span class="chip bg-color">写作</span>
-                    </a>
-                    
                     <a href="/tags/%E8%AF%AD%E6%B3%95/">
                         <span class="chip bg-color">语法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%86%99%E4%BD%9C/">
+                        <span class="chip bg-color">写作</span>
                     </a>
                     
                 </div>
@@ -1398,7 +1411,7 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39.6k</span>&nbsp;字
+                class="white-color">39.8k</span>&nbsp;字
             
             
             
