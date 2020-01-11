@@ -4,10 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;Evaluation of PARSEC parametrizationThe principles that parametrization technique should satisfy are:
+    <meta name="keywords" content="正则表达式学习笔记, Zcp&#39;s Zone">
+    <meta name="description" content="之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。大家都推荐这本书：  精通正则表达式 第3版
+1&amp;emsp;特殊作用
+大写往往代表对小写能匹配的字符取补集
 
-Minimize t">
+[_a-zA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +17,7 @@ Minimize t">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization | Zcp&#39;s Zone</title>
+    <title>正则表达式学习笔记 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -394,13 +396,13 @@ Minimize t">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211235843.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200111111930.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization
+                        正则表达式学习笔记
                     </div>
                 </div>
             </div>
@@ -518,12 +520,12 @@ Minimize t">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/English/">
-                                <span class="chip bg-color">English</span>
+                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                                <span class="chip bg-color">语法</span>
                             </a>
                         
-                            <a href="/tags/airfoil-optimization/">
-                                <span class="chip bg-color">airfoil optimization</span>
+                            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                <span class="chip bg-color">正则表达式</span>
                             </a>
                         
                     </div>
@@ -534,8 +536,8 @@ Minimize t">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
-                                专业相关
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                语言
                             </a>
                         
                     </div>
@@ -547,7 +549,7 @@ Minimize t">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-11
+                    2020-01-11
                 </div>
                 
 
@@ -556,14 +558,14 @@ Minimize t">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    715
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    2 分
                 </div>
                 
 				
@@ -579,110 +581,68 @@ Minimize t">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="Evaluation-of-PARSEC-parametrization">1&emsp;Evaluation of PARSEC parametrization</h1><p>The principles that parametrization technique should satisfy are:</p>
-<ul>
-<li>Minimize the number of degrees of freedom.</li>
-<li>Be able to represent a wide range of existing airfoils.</li>
-<li>Parameters should be simple to formulate and impose.</li>
-<li>The parametrization should result in effective and efficient optimization.</li>
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p>
+<h1 id="特殊作用">1&emsp;特殊作用</h1><ul>
+<li><p>大写往往代表对小写能匹配的字符取补集</p>
+</li>
+<li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p>
+</li>
+<li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p>
+</li>
+<li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p>
+</li>
+<li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p>
+</li>
+<li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p>
+</li>
+<li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p>
+</li>
+<li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p>
+</li>
+<li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p>
+</li>
+<li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p>
+</li>
+<li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p>
+</li>
+<li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p>
+</li>
+<li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p>
+</li>
+<li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p>
+</li>
+<li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p>
+</li>
 </ul>
-<p>The parametric section(PARSEC) parametrization scheme, which uses the unknown linear combination of base functions to express characteristics of the airfoil, uses 11 different geometrical characteristics of airfoil to solve a system of linear equations. The describing parameters are less enough and sometimes even limit the accuracy and robustness of this method. On the other hand, the physical-based parameters can avoid arbitrary airfoil geometry, which leads to good convergence when combined with genetic algorithm or other optimization methods.<br>The PARSEC parameters are easy to understand and impose too, so the left question is whether this parametrization scheme can represent a wide range of existing airfoils.</p>
-<h1 id="Representation-of-NACA0012-airfoil-by-PARSEC-parametrization">2&emsp;Representation of NACA0012 airfoil by PARSEC parametrization</h1><p>The purpose of Representation is to analyse the residual differences between the approximate and the official airfoil shape. Actually, it&#39;s difficult to tell the differences on figures because they are hardly discernible. Thus a quantitative analysis is proposed.</p>
-<h2 id="Fitting-analysis">2.1&emsp;Fitting analysis</h2><p>Kulfan<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .
-">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20\%$ is less than the thickness of a piece of printer paper.  </p>
-<p>$$<br>z^{error}=|z^{target}-z^{approx}|<br> \tag{2-1}$$</p>
-<p>And the tolerance criterion<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.">[2]</span></a></sup> is: </p>
-<p>$$<br>z^{error}&lt;\left\{<br>\begin{aligned}<br>    4\times10^{-4}, \frac{x}{c}&lt;0.2 \\<br>    8\times10^{-4}, \frac{x}{c}&gt;0.2<br>\end{aligned}<br>\right.<br> \tag{2-2}$$<br>The representation process is conducted by using the genetic algorithm, defining the matching residual as the object function. Root-mean-square error(RMSE) is calculated by the following expression:  </p>
-<p>$$<br>RMSE_{Z}=\left(\frac{1}{N} \sum_{i=1}^{N}\left(z_{i}^{ \text { target }}-z_{i}^{\text {approx }}\right)^{2}\right)^{1/2}<br> \tag{2-3}$$</p>
-<h2 id="Genetic-algorithm">2.2&emsp;Genetic algorithm</h2><p>Genetic algorithms(GA)<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.">[3]</span></a></sup> is a robust and accurate method for global aerodynamic shape optimization and this can be often suggested in the literature. In contrast to gradient optimization approaches, it offers an alternative approach with several attractive features. The basic idea associated with the GA is to search for optimal solutions using an analogy to the theory of evolution.   </p>
-<p>During solution advance (or &quot;evolution&quot; using GA terminology) each chromosome is ranked according to its fitness vector––one fitness value for each objective. The higher-ranking chromosomes are selected to continue to the next generation while the probability of the selection of lower-ranking chromosomes is less.   </p>
-<p>In every generation, a new set of artificial creatures (strings) is created using bits and pieces of the fittest of the old;an occasional new part is tried for good measure. While randomized, genetic algorithms are no simple random walk. They efficiently exploit historical information to speculate on new search points with expected improved performance. The newly selected chromosomes in the next generation are manipulated using various operators (combination, crossover, or mutation) to create the final set of chromosomes for the new generation. These chromosomes are then evaluated for fitness and the process continues––iterating from generation to generation––until a suitable level of convergence is obtained or until a specified number of generations has been completed.  </p>
-<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called &quot;Pareto optimal sets&quot; instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211231210.png" alt title="GA"></p>
-<p>The optimization process uses Dakota software, and here&#39;s the relating <code>.in</code> file settings:  </p>
-<pre><code>method
- soga
-  seed = 10525
-  max_function_evaluations = 2000
-  initialization_type
-   unique_random
-  crossover_type
-   multi_point_parameterized_binary = 2
-   crossover_rate = 0.8
-  mutation_type
-   offset_normal
-    mutation_scale = 0.1
-  fitness_type
-    merit_function
-  replacement_type
-   elitist
-  convergence_type
-   best_fitness_tracker
-   percent_change = 0.05
-   num_generations = 10</code></pre><h2 id="Results">2.3&emsp;Results</h2><h3 id="Figures">2.3.1&emsp;Figures</h3><p>The iteration history of GA shows the matching residual drops into a very low level after about 20 generation.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211233103.png" alt title="iteration history"><br>The error comparison with typical wind tunnel tolerance represents that only a slight part is beyond the value, which indicates the PARSEC approximate airfoil matches the actual NACA0012 airfoil geometry well.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234037.png" alt title="Typical WT Model Tolerance"><br>And the figure below shows that the PARSEC parametrization can represent a large range of airfoils.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234705.png" alt></p>
-<p>The last figure is a comparison between approximate and actual NACA0012 airfoil.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234818.png" alt></p>
-<h3 id="Code">2.3.2&emsp;Code</h3><p><em>plot iteration history from Dakota output files</em></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> __future__ <span class="token keyword">import</span> division
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> re
+<h1 id="表示数量">2&emsp;表示数量</h1><ul>
+<li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p>
+</li>
+<li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p>
+</li>
+<li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p>
+</li>
+<li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p>
+</li>
+</ul>
+<h1 id="数字">3&emsp;数字</h1><ul>
+<li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p>
+</li>
+<li><p><code>[01357]</code> : 匹配列出的数字中的一个</p>
+</li>
+<li><p><code>\D</code> : 匹配一个非数字字符</p>
+</li>
+</ul>
+<h1 id="其他">4&emsp;其他</h1><ul>
+<li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p>
+</li>
+<li><p><code>\w</code> : 匹配字母、数字和下划线</p>
+</li>
+<li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p>
+</li>
+<li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p>
+</li>
+</ul>
 
-g <span class="token operator">=</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
-files <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> path<span class="token punctuation">,</span> dir_list<span class="token punctuation">,</span> file_list <span class="token keyword">in</span> g<span class="token punctuation">:</span>
-    <span class="token keyword">for</span> file_name <span class="token keyword">in</span> file_list<span class="token punctuation">:</span>
-        files<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span>
-                                  file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> item <span class="token keyword">in</span> files<span class="token punctuation">:</span>
-    <span class="token keyword">if</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'population_(.*).dat'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">continue</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        num <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'population_(.*).dat'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'population_'</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">'.dat'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-            lines <span class="token operator">=</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            x <span class="token operator">=</span> <span class="token punctuation">[</span>float<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>lines<span class="token punctuation">)</span>
-            y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-            <span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
-                line <span class="token operator">=</span> line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
-                line <span class="token operator">=</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
-                y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>float<span class="token punctuation">(</span>line<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'population_data.txt'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>str<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'  '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>y<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
-        f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><em>plot a large range of airfoils</em></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> re
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
-
-
-<span class="token keyword">def</span> <span class="token function">findpath_and_plot</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    current <span class="token operator">=</span> os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    path <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'(.*?)/airfoil_data.txt'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
-    X<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> Up <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'airfoil_data.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        value <span class="token operator">=</span> <span class="token punctuation">[</span>float<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">for</span> s <span class="token keyword">in</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-        X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        Low<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        Up<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> X <span class="token punctuation">,</span> Up<span class="token punctuation">)</span>
-    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>current<span class="token punctuation">)</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    g <span class="token operator">=</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
-    files <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> path<span class="token punctuation">,</span> dir_list<span class="token punctuation">,</span> file_list <span class="token keyword">in</span> g<span class="token punctuation">:</span>
-        <span class="token keyword">for</span> file_name <span class="token keyword">in</span> file_list<span class="token punctuation">:</span>
-            files<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span> file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> item <span class="token keyword">in</span> files<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'airfoil_data.txt'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">continue</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            findpath_and_plot<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="References">3&emsp;References</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.<a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div>
             </div>
             <hr/>
 
@@ -707,7 +667,7 @@ files <span class="token operator">=</span> <span class="token punctuation">[</s
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2019/12/11/2019-12-11-evaluation-of-parsec-paraterization/">https://chengpengzhao.com/2019/12/11/2019-12-11-evaluation-of-parsec-paraterization/</a>
+                    <a href="https://chengpengzhao.com/2020/01/11/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/">https://chengpengzhao.com/2020/01/11/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -745,12 +705,12 @@ files <span class="token operator">=</span> <span class="token punctuation">[</s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/English/">
-                                    <span class="chip bg-color">English</span>
+                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                                    <span class="chip bg-color">语法</span>
                                 </a>
                             
-                                <a href="/tags/airfoil-optimization/">
-                                    <span class="chip bg-color">airfoil optimization</span>
+                                <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                    <span class="chip bg-color">正则表达式</span>
                                 </a>
                             
                         </div>
@@ -1179,56 +1139,55 @@ files <span class="token operator">=</span> <span class="token punctuation">[</s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/15/2019-12-15-fvschemes-xue-xi/">
+                <a href="/2020/01/11/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191216000616.jpg" class="responsive-img" alt="fvSchemes学习">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200111111930.jpg" class="responsive-img" alt="正则表达式学习笔记">
                         
-                        <span class="card-title">fvSchemes学习</span>
+                        <span class="card-title">正则表达式学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  
-打开终端，输入：
-cd $FOAM_TUTORIALS
-grep -r  "Schemes" * -h |sort -n|uniq
+                            之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。大家都推荐这本书：  精通正则表达式 第3版
+1&emsp;特殊作用
+大写往往代表对小写能匹配的字符取补集
+
+[_a-zA
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    程序语言
-                                </a>
-                            
-                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
-                                    专业相关
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/OpenFOAM/">
-                        <span class="chip bg-color">OpenFOAM</span>
+                    <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">语法</span>
                     </a>
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <span class="chip bg-color">正则表达式</span>
                     </a>
                     
                 </div>
@@ -1242,30 +1201,32 @@ grep -r  "Schemes" * -h |sort -n|uniq
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/10/2019-12-09-parsec/">
+                <a href="/2020/01/08/2020-01-08-git-learning/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191209235902.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization">
+                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200108110720.jpg" class="responsive-img" alt="Git学习笔记">
                         
-                        <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization</span>
+                        <span class="card-title">Git学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;Modified PARSEC ParametrizationAs mentioned before, the PARSEC parametrization popularized by Sobieczky actually 
+                            1&emsp;git学习笔记学习自：廖雪峰的官方网站
+1.1&emsp;基础
+千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
-                                    专业相关
+                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
                                 </a>
                             
                             
@@ -1275,12 +1236,12 @@ grep -r  "Schemes" * -h |sort -n|uniq
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/English/">
-                        <span class="chip bg-color">English</span>
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
                     </a>
                     
-                    <a href="/tags/airfoil-optimization/">
-                        <span class="chip bg-color">airfoil optimization</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -1413,19 +1374,6 @@ grep -r  "Schemes" * -h |sort -n|uniq
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$']],
-		  displayMath: [["$$","$$"]],
-		  processEscapes: true,
-		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-	},
-	TeX: {equationNumbers: { autoNumber: "AMS" } 
-	}
-    });
-</script>
 
 
 

@@ -15,8 +15,31 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>この、くそったれな世界に、精一杯愛をこめて</description>
-    <pubDate>Wed, 08 Jan 2020 11:09:31 GMT</pubDate>
+    <pubDate>Sat, 11 Jan 2020 02:20:45 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>正则表达式学习笔记</title>
+      <link>https://chengpengzhao.com/2020/01/11/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</link>
+      <guid>https://chengpengzhao.com/2020/01/11/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</guid>
+      <pubDate>Fri, 10 Jan 2020 15:00:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。&lt;br&gt;大家都推荐这本书： 
+          
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul>]]></content:encoded>
+      
+      <comments>https://chengpengzhao.com/2020/01/11/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Git学习笔记</title>
@@ -36,32 +59,9 @@
       </description>
       
       
-      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="git学习笔记">1&emsp;git学习笔记</h1><p>学习自：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p><h2 id="基础">1.1&emsp;基础</h2><ul><li><p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议下载Notepad++代替记事本。记得把Notepad++的默认编码设置为UTF-8 without BOM</p></li><li><p><code>git status / git diff / git log (--pretty=oneline)</code></p></li><li><p>工作区--暂存区--HEAD（master...)</p></li><li><p>HEAD指向master, master指最新的提交，上个版本HEAD^，上上个HEAD^^...</p></li></ul><h2 id="版本控制">1.2&emsp;版本控制</h2><ul><li><p><code>git reset --hard HEAD^</code>  # 回滚到上一个版本 （或：<code>git reset --hard</code>版本号代码）</p></li><li><p><code>git relog</code>  #记录每一次命令，可用作回到未来版本; <code>git log</code> 可在回退之前版本前用来查看提交历史</p></li><li><p><code>git checkout -- readme.txt</code>   #丢弃工作区修改，恢复上一版本状态（未add之前用）</p></li><li><p><code>git reset HEAD filename</code>    # add但未commit用，撤销暂存区内容</p></li><li><p><code>git rm filename</code>  # 删除版本库文件，若是误删可用<code>git checkout -- readme.txt</code>恢复</p></li></ul><h2 id="分支">1.3&emsp;分支</h2><ul><li><p>Github中远程库的名字是origin, <code>git push -u origin master</code>  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p></li><li><p>通过ssh支持的原生git协议速度最快。</p></li><li><p>创建分支dev后，新建了一个指针dev，现在HEAD指向dev，再编辑的话dev前移，master指针不变</p></li><li><p><code>git checkout -b dev</code>  #创建并切换到新分支 = <code>git branch dev</code> + <code>git checkout dev</code></p></li><li><p><code>git checkout -b dev origin/dev</code>  # 创建远程origin的dev分支到本地,本地和远程分支的名称最好一致；</p></li><li><p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code></p></li><li><p><code>git switch -c dev</code>    #创建并切换到新分支(和 <code>git checkout -b dev</code> 一样)</p></li><li><p><code>git branch</code>  #查看当前分支  <code>git checkout master</code>   切换HEAD到master分支上 (还可用<code>git switch master</code>)</p></li><li><p><code>git merge dev</code>  #合并指定分支和当前分支</p></li><li><p><code>git branch -d dev</code>  #删除dev分支</p></li><li><p>丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p></li><li><p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容</p></li><li><p><code>git log --graph --pretty=oneline --abbrev-commit</code>  #查看分支合并情况</p></li><li><p>合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p></li><li><p>一般都是在dev上工作，形成版本时发布到master</p></li><li><p>时刻注意远程分支和本地分支的区别；   <code>git branch -a</code> 查看所有分支，带有<code>remote/origin/xxx</code>的是远程分支</p></li><li><p><code>git push origin --delete xxx</code> 删除某个远程分支<code>remote/origin/xxx</code></p></li></ul><h2 id="bug处理">1.4&emsp;bug处理</h2><ul><li><p><code>git stash</code>  #储存当前工作区，修复bug时用，先新建分支修复bug/  <code>git stash pop</code> 恢复工作现场并删除stash / <code>git stash list</code> 查看stash区</p></li><li><p><code>git checkout master</code> + <code>git checkout -b issue-xxx</code>  #创建修复bug的分支</p></li><li><p><code>git switch master</code> + <code>git merge --no-ff -m &quot;merged bug fix&quot;</code>   #修复完成后删除该分支</p></li><li><p><code>git cherry-pick xxx</code>  / 在当前分支重复一遍xxx修改</p></li><li><p><code>git remote -v</code> #查看远程库信息  <code>git push origin xxx</code>  #推送xxx分支到origin</p></li></ul><h2 id="标签管理">1.5&emsp;标签管理</h2><ul><li><p><code>git tag v1.0</code>  #创建tag，便于管理     <code>git tag</code> 查看所有标签</p></li><li><p><code>git tag v0.9 xxx</code>   #为commit id 为xxx 的操作打标签 /  <code>git show v0.9</code>  #查看标签对应commit</p></li><li><p><code>git tag -a v1.0 -m &quot;...&quot; xxx</code> #标签也可以加上-m</p></li><li><p><code>git push origin --tags</code>   #推送标签到origin</p></li><li><p><code>git tag -d v0.9</code> #标签本地删除  / <code>git push origin :refs/tags/v0.9</code> #远程删除标签</p></li></ul>]]></content:encoded>
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="git学习笔记">1&emsp;git学习笔记</h1><p>学习自：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p><h2 id="基础">1.1&emsp;基础</h2><ul><li><p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议下载Notepad++代替记事本。记得把Notepad++的默认编码设置为UTF-8 without BOM</p></li><li><p><code>git status / git diff / git log (--pretty=oneline)</code></p></li><li><p>工作区--暂存区--HEAD（master...)</p></li><li><p>HEAD指向master, master指最新的提交，上个版本HEAD^，上上个HEAD^^...</p></li></ul><h2 id="版本控制">1.2&emsp;版本控制</h2><ul><li><p><code>git reset --hard HEAD^</code>  # 回滚到上一个版本 （或：<code>git reset --hard</code>版本号代码）</p></li><li><p><code>reset</code>后只是本地回退到之前版本，若要更新到远程库需要强制推送<code>git push -f</code>,当前版本之后的commit会全部消失</p></li><li><p><code>git relog</code>  #记录每一次命令，可用作回到未来版本; <code>git log</code> 可在回退之前版本前用来查看提交历史</p></li><li><p><code>git checkout -- readme.txt</code>   #丢弃工作区修改，恢复上一版本状态（未add之前用）</p></li><li><p><code>git reset HEAD filename</code>    # add但未commit用，撤销暂存区内容</p></li><li><p><code>git rm filename</code>  # 删除版本库文件，若是误删可用<code>git checkout -- readme.txt</code>恢复</p></li></ul><h2 id="分支">1.3&emsp;分支</h2><ul><li><p>Github中远程库的名字是origin, <code>git push -u origin master</code>  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p></li><li><p>通过ssh支持的原生git协议速度最快。</p></li><li><p>创建分支dev后，新建了一个指针dev，现在HEAD指向dev，再编辑的话dev前移，master指针不变</p></li><li><p><code>git checkout -b dev</code>  #创建并切换到新分支 = <code>git branch dev</code> + <code>git checkout dev</code></p></li><li><p><code>git checkout -b dev origin/dev</code>  # 创建远程origin的dev分支到本地,本地和远程分支的名称最好一致；</p></li><li><p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code></p></li><li><p><code>git switch -c dev</code>    #创建并切换到新分支(和 <code>git checkout -b dev</code> 一样)</p></li><li><p><code>git branch</code>  #查看当前分支  <code>git checkout master</code>   切换HEAD到master分支上 (还可用<code>git switch master</code>)</p></li><li><p><code>git merge dev</code>  #合并指定分支和当前分支</p></li><li><p><code>git branch -d dev</code>  #删除dev分支</p></li><li><p>丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p></li><li><p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容</p></li><li><p><code>git log --graph --pretty=oneline --abbrev-commit</code>  #查看分支合并情况</p></li><li><p>合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p></li><li><p>一般都是在dev上工作，形成版本时发布到master</p></li><li><p>时刻注意远程分支和本地分支的区别；   <code>git branch -a</code> 查看所有分支，带有<code>remote/origin/xxx</code>的是远程分支</p></li><li><p><code>git push origin --delete xxx</code> 删除某个远程分支<code>remote/origin/xxx</code></p></li></ul><h2 id="bug处理">1.4&emsp;bug处理</h2><ul><li><p><code>git stash</code>  #储存当前工作区，修复bug时用，先新建分支修复bug/  <code>git stash pop</code> 恢复工作现场并删除stash / <code>git stash list</code> 查看stash区</p></li><li><p><code>git checkout master</code> + <code>git checkout -b issue-xxx</code>  #创建修复bug的分支</p></li><li><p><code>git switch master</code> + <code>git merge --no-ff -m &quot;merged bug fix&quot;</code>   #修复完成后删除该分支</p></li><li><p><code>git cherry-pick xxx</code>  / 在当前分支重复一遍xxx修改</p></li><li><p><code>git remote -v</code> #查看远程库信息  <code>git push origin xxx</code>  #推送xxx分支到origin</p></li></ul><h2 id="标签管理">1.5&emsp;标签管理</h2><ul><li><p><code>git tag v1.0</code>  #创建tag，便于管理     <code>git tag</code> 查看所有标签</p></li><li><p><code>git tag v0.9 xxx</code>   #为commit id 为xxx 的操作打标签 /  <code>git show v0.9</code>  #查看标签对应commit</p></li><li><p><code>git tag -a v1.0 -m &quot;...&quot; xxx</code> #标签也可以加上-m</p></li><li><p><code>git push origin --tags</code>   #推送标签到origin</p></li><li><p><code>git tag -d v0.9</code> #标签本地删除  / <code>git push origin :refs/tags/v0.9</code> #远程删除标签</p></li></ul>]]></content:encoded>
       
       <comments>https://chengpengzhao.com/2020/01/08/2020-01-08-git-learning/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
-      <link>https://chengpengzhao.com/2020/01/04/2020-01-04-vats-simulation/</link>
-      <guid>https://chengpengzhao.com/2020/01/04/2020-01-04-vats-simulation/</guid>
-      <pubDate>Fri, 03 Jan 2020 15:00:00 GMT</pubDate>
-      <description>
-      
-        
-        
-          
-          
-            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;Well, I&amp;#39;m just too lazy and so I&amp;#39;d like to end with this PowerPoi
-          
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.</p><iframe src="https://onedrive.live.com/embed?cid=025FDD57DA585B6D&amp;resid=25FDD57DA585B6D%211494&amp;authkey=AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333&amp;wdEaa=0" width="1026px" height="793px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content:encoded>
-      
-      <comments>https://chengpengzhao.com/2020/01/04/2020-01-04-vats-simulation/#disqus_thread</comments>
     </item>
     
     <item>
@@ -85,6 +85,29 @@
       <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。<br>日本过年过的是阳历，每年的最后一天叫啥大晦日(おおみそか)，大多数人都是与家人一起度过的，所以宿舍顿时冷清了许多；学校放假很多留学生也趁着假期出去浪了，只有苦逼的我还在宿舍学习。每次想要出去转转一看天气预报又是阴天，旅行计划都制定好了；又一想还是等忙完了这阵子再说吧，于是今年跨年和去年一样，依旧平平淡淡...</p><p>好像博客都没怎么写一些有生活气息的东西，正好今天元旦，新的一年希望有所改变，随便挤点牙膏写点感想吧。</p><blockquote><p><em>以下内容更新于2020-01-04 11:59:34</em></p></blockquote><p>本打算元旦就写完的，因为做PPT和写开题报告一直鸽到今天- -</p><h1 id="回顾过去几年">1&emsp;回顾过去几年</h1><p>每次停下来回顾的时候，总是感觉：人真是变得好快。<br>特别是自己，本觉得自己和以前一样没啥变化，该自闭的时候还是自闭，大学刚开始那两年看起来好点那是逞强出来的，归根到底自己还是喜欢一个人呆着；当然对别人也是有兴趣，和朋友一起吃喝玩乐也不错，但有时候就是不知道怎么表现自己，不知道怎么拉近人与人之间到距离。可能是因为自己连自己都不太了解，回首往事时总是想不通自己当初为什么那么做，想不通为什么变成了这样那样的人，明明是自己经历的事有时却像个旁观者在一边看着。<br>恋爱方面也是，虽然都是几年前的事了但自那时起我好像没有任何长进反而越发自闭了，有时觉得花费太多精力去了解彼此到最后却不再有任何交集这种事还是算了，还是共同利益这种东西比较稳定。这种只追求结果不看过程的想法使得我到现在好像都没法真正喜欢上一个人，是不是过了那个年纪呢（应该不是），总之还是很羡慕初中高中的时候的那种单纯。<br>人际交往方面更不用说，能够和别人相处地很好但是没办法拉近距离，也就是没法敞开心扉。这方面从小就不擅长，以后职场里生活中还有太多要学习的地方。<br>我是那种不怎么生气的人，虽然近年来试着更暴躁一点，但最多也就当时那一会，不会记恨某人，更不喜欢谈论别人，毕竟有这时间还不如用在投资自己上。</p><h1 id="关于将来">2&emsp;关于将来</h1><p>我是个不怎么规划将来的事的人，所以经常是今年的自己永远想不到明年的这个时候自己在什么地方做着什么事；给自己定的唯一的长远的目标就是一定不要成为自己不想成为的那类人（也是够抽象的）。<br>真的很佩服周围的一些人，大家都那么优秀，我光是想做好自己就已经感觉力不从心了，自制力不够偶尔还放纵一下，打打游戏躺躺尸；拿背单词举例吧我就没连续坚持过半年，而看到那些签到600多天的瞬间感觉自己太low。<br>当然从小到大也见过很多比自己还要普通的普通人，在社会的底层艰难的生活着，他们也曾给过自己很多小小的关怀；当感慨当今社会怎么怎么样的时候想到这些比自己不幸得多的人也就没那么多戾气了。</p><p>2020年了，自己也快25了（我爸这年纪都结婚工作了），以前初中高中的朋友好多也工作结婚了，感觉真是一眨眼的事；还是象征性地写几个长远点的目标吧:  </p><p><strong>zcp的五年目标</strong>  </p><ul><li>什么时候能稍微有点沟通能力和人际交往能力？（从小就不行，还是试着改一改）</li><li>英语、日语做到能和母语者无障碍扯谈（这个和第一点是相关的，感觉一是心态二是积累三是多练）</li><li>成为一名业余的程序员；（毕竟这几年工作肯定是和力学相关，但折腾博客过程中让我感觉这些东西还是挺有趣的；待学习： 前端工程师相关，js、html... 爬虫相关... 机器学习相关...)</li><li>精通两个业余爱好； （摄影和吉他，断断续续好多年了，还是想坚持下去）</li><li>专业方面有所成果，国际会议presentation至少一次。</li></ul><h1 id="2020小目标还是要有的吧">3&emsp;2020小目标还是要有的吧</h1><ul><li>一年完成毕设</li><li>雅思7.5</li><li>读完6本日文书，6本英文书，12本中文书</li><li>精通C++、fortran、OpenFOAM</li><li>吉他超过当年水平</li><li>精读3本摄影方面书籍，看完硬盘里存的教程</li><li>保持体重70kg的基础上降低体脂率,总结健身知识，尝试学习一些球类运动</li></ul><p>希望每一年都能变好那么一点吧。</p>]]></content:encoded>
       
       <comments>https://chengpengzhao.com/2020/01/04/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
+      <link>https://chengpengzhao.com/2020/01/04/2020-01-04-vats-simulation/</link>
+      <guid>https://chengpengzhao.com/2020/01/04/2020-01-04-vats-simulation/</guid>
+      <pubDate>Fri, 03 Jan 2020 15:00:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;Well, I&amp;#39;m just too lazy and so I&amp;#39;d like to end with this PowerPoi
+          
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.</p><iframe src="https://onedrive.live.com/embed?cid=025FDD57DA585B6D&amp;resid=25FDD57DA585B6D%211494&amp;authkey=AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333&amp;wdEaa=0" width="1026px" height="793px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content:encoded>
+      
+      <comments>https://chengpengzhao.com/2020/01/04/2020-01-04-vats-simulation/#disqus_thread</comments>
     </item>
     
     <item>
