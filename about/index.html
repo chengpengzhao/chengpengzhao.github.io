@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
@@ -26,9 +26,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -469,7 +469,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="row">
-                    <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
+                    <div class="post-statis col l4 hide-on-med-and-down" >
                         
 <div class="statis">
     <span class="count"><a href="/">29</a></span>
@@ -499,7 +499,7 @@
                                      class="circle responsive-img avatar-img">
                             </div>
                             <div class="author">
-                                <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
+                                <div class="post-statis hide-on-large-only" >
                                     
 <div class="statis">
     <span class="count"><a href="/">29</a></span>
@@ -524,7 +524,7 @@
                                 </div>
                                 <div class="title">zcp</div>
                                 <div class="career">Postgraduate student</br>Major： Computational Fluid Dynamics</br>The Institute of Theoretical and Applied Aerodynamics</div>
-                                <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
+                                <div class="social-link hide-on-large-only" >
                                     
     <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
@@ -565,7 +565,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col l4 hide-on-med-and-down" data-aos="zoom-in-left">
+                    <div class="col l4 hide-on-med-and-down" >
                         <div class="social-link">
                             
     <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -607,7 +607,7 @@
                     </div>
                 </div>
 
-                <div class="introduction center-align" data-aos="fade-up">He&#39;s a lazy human being. While he is not working, he enjoys sleeping and dreaming. Feel free to contact him.</div>
+                <div class="introduction center-align" >He&#39;s a lazy human being. While he is not working, he enjoys sleeping and dreaming. Feel free to contact him.</div>
 
                 <style type="text/css">
     #posts-chart,
@@ -621,19 +621,19 @@
 </style>
 
 <div id="postCharts" class="post-charts">
-    <div class="title center-align" data-aos="zoom-in-up">
+    <div class="title center-align" >
         <i class="far fa-bar-chart"></i>&nbsp;&nbsp;Post Charts
     </div>
     <div class="row">
-        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+        <div class="chart col s12 m6 l4" >
             <div id="posts-chart"></div>
         </div>
 
-        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+        <div class="chart col s12 m6 l4" >
             <div id="categories-chart"></div>
         </div>
 
-        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+        <div class="chart col s12 m6 l4" >
             <div id="tags-chart"></div>
         </div>
     </div>
@@ -710,7 +710,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"语言","value":8},{"name":"程序语言","value":5},{"name":"博客建立","value":3},{"name":"生活","value":7},{"name":"Linux","value":6},{"name":"软件","value":5},{"name":"专业相关","value":6}],
+                data: [{"name":"博客建立","value":3},{"name":"语言","value":8},{"name":"软件","value":5},{"name":"生活","value":7},{"name":"Linux","value":6},{"name":"程序语言","value":5},{"name":"专业相关","value":6}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -734,7 +734,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["随笔","English","写作","日志","安装","使用tips","airfoil optimization","日本語","相册","语法"]
+                data: ["随笔","English","日志","写作","使用tips","安装","airfoil optimization","日本語","语法","相册"]
             }
         ],
         yAxis: [
@@ -776,6 +776,7 @@
     tagsChart.setOption(tagsOption);
 </script>
 
+
                 
 
                 
@@ -786,6 +787,7 @@
         </div>
     </div>
 </main>
+
 
     <footer class="page-footer bg-color">
     <div class="container row center-align">
@@ -930,7 +932,7 @@ $(function () {
 
     <script src="/libs/materialize/materialize.min.js"></script>
     <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
