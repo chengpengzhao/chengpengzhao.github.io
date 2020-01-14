@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zh-CN">
+<html lang="en-US">
 
 
 <head>
@@ -26,9 +26,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+</head>
 
 
 <body>
@@ -54,38 +54,47 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>首页</span>
+      <span>Home</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
+    <a href="javascript:;" class="waves-effect waves-light">
 
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
-      <span>分类</span>
+      <span>Posts</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/tags">
-          
-          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>标签</span>
-        </a>
-      </li>
       
       <li>
         <a href="/archives">
           
           <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>时间线</span>
+          <span>Archives</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Categories</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Tags</span>
         </a>
       </li>
       
@@ -95,15 +104,24 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="javascript:;" class="waves-effect waves-light">
 
       
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>关于</span>
+      <span>About</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
       
       <li>
         <a href="/Useful_Links">
@@ -119,7 +137,7 @@
           
           <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>留言板</span>
+          <span>Contact</span>
         </a>
       </li>
       
@@ -138,7 +156,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/books" class="waves-effect waves-light">
+    <a href="javascript:;" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -185,14 +203,14 @@
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>Friends</span>
     </a>
     
   </li>
   
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
     </a>
   </li>
 </ul>
@@ -221,7 +239,7 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			首页
+			Home
 		</a>
           
         </li>
@@ -230,30 +248,40 @@
 	  
 		<a href="javascript:;">
 			
-				<i class="fa-fw fas fa-bookmark"></i>
+				<i class="fa-fw fas fa-archive"></i>
 			
-			分类
+			Posts
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-            <ul  style="background:  ;" >
+            <ul  >
               
                 <li>   
 				
-                  <a href="/tags " style="margin-left:75px";>
+                  <a href="/archives " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-archive" style="position: absolute;left:28px" ></i>
 			      
-		          <span>标签</span>
+		          <span>Archives</span>
                   </a>
                 </li>
               
                 <li>   
 				
-                  <a href="/archives " style="margin-left:75px";>
+                  <a href="/categories " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:28px" ></i>
 			      
-		          <span>时间线</span>
+		          <span>Categories</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Tags</span>
                   </a>
                 </li>
                
@@ -267,16 +295,26 @@
 			
 				<i class="fa-fw fas fa-user-circle"></i>
 			
-			关于
+			About
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-            <ul  style="background:  ;" >
+            <ul  >
               
                 <li>   
 				
-                  <a href="/Useful_Links " style="margin-left:75px";>
+                  <a href="/about " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-link" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
 			      
 		          <span>Useful_Links</span>
                   </a>
@@ -284,19 +322,19 @@
               
                 <li>   
 				
-                  <a href="/contact " style="margin-left:75px";>
+                  <a href="/contact " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
 			      
-		          <span>留言板</span>
+		          <span>Contact</span>
                   </a>
                 </li>
               
                 <li>   
 				
-                  <a href="/hitokoto " style="margin-left:75px";>
+                  <a href="/hitokoto " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-comment-alt" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
 			      
 		          <span>Hitokoto</span>
                   </a>
@@ -315,13 +353,13 @@
 			Medias
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-            <ul  style="background:  ;" >
+            <ul  >
               
                 <li>   
 				
-                  <a href="/books " style="margin-left:75px";>
+                  <a href="/books " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
 			      
 		          <span>Books</span>
                   </a>
@@ -329,9 +367,9 @@
               
                 <li>   
 				
-                  <a href="/games " style="margin-left:75px";>
+                  <a href="/games " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:28px" ></i>
 			      
 		          <span>Games</span>
                   </a>
@@ -339,9 +377,9 @@
               
                 <li>   
 				
-                  <a href="/movies " style="margin-left:75px";>
+                  <a href="/movies " style="margin-left:50px";>
 				  
-				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
 			      
 		          <span>Movies</span>
                   </a>
@@ -357,7 +395,7 @@
 			
 			    <i class="fa-fw fas fa-address-book"></i>
 			
-			友情链接
+			Friends
 		</a>
           
         </li>
@@ -544,7 +582,7 @@
             <div class="post-info">
                 
                 <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
                     2019-12-10
                 </div>
                 
@@ -553,21 +591,21 @@
 
                 
                 <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
                     1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    11 Min
                 </div>
                 
 				
                 
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
                     </div>
 				
@@ -730,7 +768,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
             <div class="reprint__author">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-user">
-                        文章作者:
+                        Author:
                     </i>
                 </span>
                 <span class="reprint-info">
@@ -740,7 +778,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
             <div class="reprint__type">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-link">
-                        文章链接:
+                        Link:
                     </i>
                 </span>
                 <span class="reprint-info">
@@ -750,13 +788,13 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
             <div class="reprint__notice">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-copyright">
-                        版权声明:
+                        Reprint policy:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
+                    All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
+                    reprint polocy. If reproduced, please indicate source
                     <a href="https://chengpengzhao.com" target="_blank">赵cp</a>
                     !
                 </span>
@@ -766,7 +804,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 
     <script async defer>
       document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
         M.toast({html: toastHTML})
       });
 
@@ -1204,7 +1242,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
         visitor: 'true' === 'true',
         avatar: 'mm',
         pageSize: '10',
-        lang: 'zh-cn',
+        lang: 'en',
         placeholder: '说点啥吧大哥'
     });
 </script>
@@ -1218,7 +1256,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
                 <a href="/2019/12/11/2019-12-11-evaluation-of-parsec-paraterization/">
                     <div class="card-image">
@@ -1271,7 +1309,7 @@ Minimize t
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/12/04/2019-12-04-controldict-wen-jian-xue-xi/">
@@ -1362,7 +1400,7 @@ Minimize t
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -1592,8 +1630,8 @@ Minimize t
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
                    class="search-input">
         </div>
         <div id="searchResult"></div>
