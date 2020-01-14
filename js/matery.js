@@ -6,7 +6,7 @@ $(function () {
     let articleCardHover = function () {
         let animateClass = 'animated pulse';
         $('article .article').hover(function () {
-          /*  $(this).addClass(animateClass);*/   去掉效果
+          /*  $(this).addClass(animateClass);*/   /*去掉效果*/
         }, function () {
             $(this).removeClass(animateClass);
         });
