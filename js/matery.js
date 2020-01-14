@@ -63,11 +63,11 @@ $(function () {
         itemSelector: '.article'
     });
 
-    AOS.init({
+    /*AOS.init({
         easing: 'ease-in-out-sine',
         duration: 0,
-        delay: 0                 /*去掉效果*/
-    });
+        delay: 0
+    });*/
 
     /*文章内容详情的一些初始化特性*/
     let articleInit = function () {
