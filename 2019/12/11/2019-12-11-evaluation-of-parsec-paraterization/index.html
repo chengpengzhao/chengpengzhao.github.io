@@ -28,9 +28,9 @@ Minimize t">
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -394,7 +394,7 @@ Minimize t">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211235843.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191211235843.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -597,7 +597,7 @@ Minimize t">
 <h2 id="Genetic-algorithm">2.2&emsp;Genetic algorithm</h2><p>Genetic algorithms(GA)<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.">[3]</span></a></sup> is a robust and accurate method for global aerodynamic shape optimization and this can be often suggested in the literature. In contrast to gradient optimization approaches, it offers an alternative approach with several attractive features. The basic idea associated with the GA is to search for optimal solutions using an analogy to the theory of evolution.   </p>
 <p>During solution advance (or &quot;evolution&quot; using GA terminology) each chromosome is ranked according to its fitness vector––one fitness value for each objective. The higher-ranking chromosomes are selected to continue to the next generation while the probability of the selection of lower-ranking chromosomes is less.   </p>
 <p>In every generation, a new set of artificial creatures (strings) is created using bits and pieces of the fittest of the old;an occasional new part is tried for good measure. While randomized, genetic algorithms are no simple random walk. They efficiently exploit historical information to speculate on new search points with expected improved performance. The newly selected chromosomes in the next generation are manipulated using various operators (combination, crossover, or mutation) to create the final set of chromosomes for the new generation. These chromosomes are then evaluated for fitness and the process continues––iterating from generation to generation––until a suitable level of convergence is obtained or until a specified number of generations has been completed.  </p>
-<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called &quot;Pareto optimal sets&quot; instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211231210.png" alt title="GA"></p>
+<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called &quot;Pareto optimal sets&quot; instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191211231210.png" alt title="GA"></p>
 <p>The optimization process uses Dakota software, and here&#39;s the relating <code>.in</code> file settings:  </p>
 <pre><code>method
  soga
@@ -618,8 +618,8 @@ Minimize t">
   convergence_type
    best_fitness_tracker
    percent_change = 0.05
-   num_generations = 10</code></pre><h2 id="Results">2.3&emsp;Results</h2><h3 id="Figures">2.3.1&emsp;Figures</h3><p>The iteration history of GA shows the matching residual drops into a very low level after about 20 generation.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211233103.png" alt title="iteration history"><br>The error comparison with typical wind tunnel tolerance represents that only a slight part is beyond the value, which indicates the PARSEC approximate airfoil matches the actual NACA0012 airfoil geometry well.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234037.png" alt title="Typical WT Model Tolerance"><br>And the figure below shows that the PARSEC parametrization can represent a large range of airfoils.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234705.png" alt></p>
-<p>The last figure is a comparison between approximate and actual NACA0012 airfoil.<br><img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234818.png" alt></p>
+   num_generations = 10</code></pre><h2 id="Results">2.3&emsp;Results</h2><h3 id="Figures">2.3.1&emsp;Figures</h3><p>The iteration history of GA shows the matching residual drops into a very low level after about 20 generation.<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191211233103.png" alt title="iteration history"><br>The error comparison with typical wind tunnel tolerance represents that only a slight part is beyond the value, which indicates the PARSEC approximate airfoil matches the actual NACA0012 airfoil geometry well.<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191211234037.png" alt title="Typical WT Model Tolerance"><br>And the figure below shows that the PARSEC parametrization can represent a large range of airfoils.<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191211234705.png" alt></p>
+<p>The last figure is a comparison between approximate and actual NACA0012 airfoil.<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191211234818.png" alt></p>
 <h3 id="Code">2.3.2&emsp;Code</h3><p><em>plot iteration history from Dakota output files</em></p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> __future__ <span class="token keyword">import</span> division
 <span class="token keyword">import</span> os
@@ -1186,7 +1186,7 @@ files <span class="token operator">=</span> <span class="token punctuation">[</s
                 <a href="/2019/12/15/2019-12-15-fvschemes-xue-xi/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191216000616.jpg" class="responsive-img" alt="fvSchemes学习">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191216000616.jpg" class="responsive-img" alt="fvSchemes学习">
                         
                         <span class="card-title">fvSchemes学习</span>
                     </div>
@@ -1245,7 +1245,7 @@ grep -r  "Schemes" * -h |sort -n|uniq
                 <a href="/2019/12/10/2019-12-09-parsec/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191209235902.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization">
+                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191209235902.jpg" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization">
                         
                         <span class="card-title">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization</span>
                     </div>
@@ -1440,7 +1440,7 @@ grep -r  "Schemes" * -h |sort -n|uniq
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.3k</span>&nbsp;字
+                class="white-color">45.1k</span>&nbsp;字
             
             
             
