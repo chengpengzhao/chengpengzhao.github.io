@@ -39,7 +39,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Zcp's Zone</span>
                 </a>
@@ -220,7 +220,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Zcp's Zone</div>
         <div class="logo-desc">
@@ -603,15 +603,15 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="明确需求">1&emsp;明确需求</h1><p>SourceForge与Github类似，是一套合作式软件开发管理系统，上面有大量的开源项目——这是<a href="https://zh.wikipedia.org/wiki/SourceForge" target="_blank" rel="noopener">Wiki百科</a>的描述。然而在我的印象里，它只是个广告一堆下载速度贼慢找半天找不到下载链接在哪的网站；以前在它上面下载过几次东西体验极差，这次又有了需求（找遍了网上只有这一个地方能下载）  </p>
-<h2 id="下载地址">1.1&emsp;下载地址</h2><p>最近在学pyfoam的用法，正好看到OpenFOAM有个workshop讲的很详细，然而源文件没有，于是来到了这个网址<a href="https://sourceforge.net/projects/openfoam-extend/files/OpenFOAM_Workshops/" target="_blank" rel="noopener">https://sourceforge.net/projects/openfoam-extend/files/OpenFOAM_Workshops/</a>进行下载，发现了历年的讲座都有！这么好的资源当然要下载下来。然而面对着这一层层的文件夹SourceForge竟然不让你直接下载，只能点进去一个个文件下载（这要点到什么时候）。<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128181612.png" alt="层层文件夹"><br>这就算了，每当你下载一个文件时不时会让你等个5s<img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128181905.png" alt>迅速得出结论：这是个练习爬虫的好机会。</p>
+<h2 id="下载地址">1.1&emsp;下载地址</h2><p>最近在学pyfoam的用法，正好看到OpenFOAM有个workshop讲的很详细，然而源文件没有，于是来到了这个网址<a href="https://sourceforge.net/projects/openfoam-extend/files/OpenFOAM_Workshops/" target="_blank" rel="noopener">https://sourceforge.net/projects/openfoam-extend/files/OpenFOAM_Workshops/</a>进行下载，发现了历年的讲座都有！这么好的资源当然要下载下来。然而面对着这一层层的文件夹SourceForge竟然不让你直接下载，只能点进去一个个文件下载（这要点到什么时候）。<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128181612.png" alt="层层文件夹"><br>这就算了，每当你下载一个文件时不时会让你等个5s<img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128181905.png" alt>迅速得出结论：这是个练习爬虫的好机会。</p>
 <h2 id="下载要求">1.2&emsp;下载要求</h2><ul>
 <li>能够全程自动，不需要时时盯着看程序运行状况</li>
 <li>下载的文件按照原有的文件夹结构分类放好，文件名不变</li>
 <li>若运行时遇到断网等特殊情况，下次运行能自动从上次的断点开始，不用重新下载</li>
 </ul>
 <h1 id="分析网站">2&emsp;分析网站</h1><p>开工开工，首先打开Chrome或Firefox浏览器调出控制台，查看HTML代码。</p>
-<h2 id="找到目标位置">2.1&emsp;找到目标位置</h2><p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128182850.png" alt><br>可以发现在<code>&lt;th scope=&quot;row&quot; headers=&quot;files_name_h&quot;&gt;</code>下有我们想要的文件夹的相对链接，而且每一层的结构都类似，故可以通过正则表达式轻易地定位到该部分。</p>
-<h2 id="找到最终的下载链接">2.2&emsp;找到最终的下载链接</h2><p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128185016.png" alt><br>前面的多级文件夹都是采用的相对链接，而到最后每个文件可以看到肯定是有个绝对链接的，点击该href就能下载。</p>
+<h2 id="找到目标位置">2.1&emsp;找到目标位置</h2><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128182850.png" alt><br>可以发现在<code>&lt;th scope=&quot;row&quot; headers=&quot;files_name_h&quot;&gt;</code>下有我们想要的文件夹的相对链接，而且每一层的结构都类似，故可以通过正则表达式轻易地定位到该部分。</p>
+<h2 id="找到最终的下载链接">2.2&emsp;找到最终的下载链接</h2><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128185016.png" alt><br>前面的多级文件夹都是采用的相对链接，而到最后每个文件可以看到肯定是有个绝对链接的，点击该href就能下载。</p>
 <h1 id="Python实现">3&emsp;Python实现</h1><p>前面的都找到之后就可以编py程序了，因为每个文件夹下都可能有文件和文件夹并存，最好先把文件结构建立起来。利用相对链接建立文件夹，再把相应的绝对链接储存在文本文件中，以便下一步下载。</p>
 <h2 id="获取下载链接，建立文件夹">3.1&emsp;获取下载链接，建立文件夹</h2><p>python3环境，采用requests库，引入多个header随机切换，设定一小段休眠时间，通过嵌套的函数建立层层文件夹：<br><strong>getlinks.py</strong></p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># coding=utf-8</span>
@@ -666,7 +666,7 @@ my_headers <span class="token operator">=</span> <span class="token punctuation"
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     html <span class="token operator">=</span> <span class="token string">"https://sourceforge.net/projects/openfoam-extend/files/OpenFOAM_Workshops/"</span>
     find_and_print_links<span class="token punctuation">(</span>html<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>为了防止程序中途出错下次重头开始，设置了一个if条件判断当前文件夹是否已经生成；我大概运行了几分钟就建立好了全部的文件夹并获得了所有下载链接。<br><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128191933.png" alt></p>
+<p>为了防止程序中途出错下次重头开始，设置了一个if条件判断当前文件夹是否已经生成；我大概运行了几分钟就建立好了全部的文件夹并获得了所有下载链接。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128191933.png" alt></p>
 <h2 id="读取文本文件，下载至相应位置">3.2&emsp;读取文本文件，下载至相应位置</h2><p>os.walk命令能够读取文件夹里的所有文件并很容易转化成一个List，之后只需要判断每个item里是否含有文本文件，有就逐一下载到本地。<br>下载采用的是非常强大的下载利器<a href="https://you-get.org/" target="_blank" rel="noopener">you-get</a>，什么Youtube、B站上的视频音频通通一个命令就能下载。<br><strong>downloadfiles.py</strong></p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> re
 <span class="token keyword">import</span> os
@@ -696,7 +696,7 @@ my_headers <span class="token operator">=</span> <span class="token punctuation"
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             findlinks_and_download<span class="token punctuation">(</span>item<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>短短几十行代码就能够解决我的需求，而且今后遇到要在sourceforge下载东西时直接拿来用就行。（好在sourceforge没有什么反爬措施，我基本上没遇到被403或其他访问失败的情况）</p>
-<h2 id="成果展示">3.3&emsp;成果展示</h2><p><img src="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128193025.png" alt><br>下是下好了，接下来就是一段漫长的学习了...</p>
+<h2 id="成果展示">3.3&emsp;成果展示</h2><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191128193025.png" alt><br>下是下好了，接下来就是一段漫长的学习了...</p>
 
             </div>
             <hr/>
@@ -892,10 +892,10 @@ my_headers <span class="token operator">=</span> <span class="token punctuation"
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1197,7 +1197,7 @@ my_headers <span class="token operator">=</span> <span class="token punctuation"
                 <a href="/2019-11-30-markdown-vim-shi-yong/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191130140058.jpg" class="responsive-img" alt="用Vim写Markdown">
+                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191130140058.jpg" class="responsive-img" alt="用Vim写Markdown">
                         
                         <span class="card-title">用Vim写Markdown</span>
                     </div>
@@ -1249,7 +1249,7 @@ my_headers <span class="token operator">=</span> <span class="token punctuation"
                 <a href="/2019-11-26-markdown-tips/">
                     <div class="card-image">
                         
-                        <img src="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214103.jpg" class="responsive-img" alt="Markdown-Tips">
+                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214103.jpg" class="responsive-img" alt="Markdown-Tips">
                         
                         <span class="card-title">Markdown-Tips</span>
                     </div>
@@ -1616,6 +1616,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>

@@ -39,7 +39,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Zcp's Zone</span>
                 </a>
@@ -220,7 +220,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Zcp's Zone</div>
         <div class="logo-desc">
@@ -696,7 +696,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"语言","value":8},{"name":"博客建立","value":3},{"name":"软件","value":5},{"name":"生活","value":7},{"name":"Linux","value":6},{"name":"程序语言","value":5},{"name":"专业相关","value":6}],
+                data: [{"name":"博客建立","value":3},{"name":"语言","value":8},{"name":"程序语言","value":5},{"name":"软件","value":5},{"name":"生活","value":7},{"name":"Linux","value":6},{"name":"专业相关","value":6}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -720,7 +720,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["随笔","English","写作","日志","使用tips","安装","airfoil optimization","日本語","语法","相册"]
+                data: ["随笔","English","日志","写作","安装","使用tips","airfoil optimization","日本語","相册","语法"]
             }
         ],
         yAxis: [
@@ -958,6 +958,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>
