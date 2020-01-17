@@ -1257,7 +1257,7 @@ thead {
     position: relative;
     width: 80px;
     height: 80px;
-    margin: 10px 0 50px -20px;
+    margin: 10px 0 10px -20px;
     padding: 21px 10px;
     background-color: #ff5722;
     color: #fff;
@@ -1320,12 +1320,14 @@ thead {
     }
 
     #cd-timeline::before {
-        left: 50%;
+        left: 18px;
+        /*left: 50%;*/
         margin-left: -2px;
     }
 
     #cd-timeline .year {
-        margin: 10px 0 50px -40px;
+        margin: 10px 0 10px -430px;
+        /*margin: 忘了原来是多少了*/
         padding: 22px 11px;
     }
 
@@ -1403,8 +1405,9 @@ thead {
 
 .cd-timeline-content {
     position: relative;
-    margin-top: -40px;
-    margin-left: 60px;
+    margin-top: 1px;
+    /*margin-top: -40px;*/
+    margin-left: 40px;
     padding: 0;
     border-radius: 5px;
     background: #ffffff;
@@ -1450,22 +1453,25 @@ thead {
 
 @media only screen and (min-width: 900px) {
     .cd-timeline-content {
-        margin-left: 0;
+        margin-left: 36px;
+        /*margin-left: 0;*/
         padding: 0;
-        width: 45%;
+        width: 100%;
+        /*width: 45%;*/
 
     }
 
     .cd-timeline-content::before {
         top: 24px;
-        left: 100%;
+        right: 100%;
+        /*left: 100%;*/
     }
 
     .cd-timeline-content .cd-read-more {
         float: left;
     }
 
-    .cd-timeline-block:nth-child(even) .cd-timeline-content {
+    /*.cd-timeline-block:nth-child(even) .cd-timeline-content {
         float: right;
     }
 
@@ -1478,7 +1484,7 @@ thead {
 
     .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
         float: right;
-    }
+    }*/
 
     .cssanimations .cd-timeline-content.is-hidden {
         visibility: hidden;
