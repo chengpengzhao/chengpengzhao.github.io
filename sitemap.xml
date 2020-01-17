@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengpengzhao.com/hitokoto/index.html</loc>
+    
+    <lastmod>2020-01-17T12:04:28.627Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chengpengzhao.com/Useful_Links/index.html</loc>
     
-    <lastmod>2020-01-16T14:16:48.096Z</lastmod>
+    <lastmod>2020-01-17T11:58:51.282Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://chengpengzhao.com/friends/index.html</loc>
+    
+    <lastmod>2020-01-17T11:51:26.888Z</lastmod>
     
   </url>
   
@@ -114,13 +128,6 @@
   </url>
   
   <url>
-    <loc>https://chengpengzhao.com/hitokoto/index.html</loc>
-    
-    <lastmod>2019-12-05T08:37:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://chengpengzhao.com/2019-05-02-ri-ben-yu-nofang-yan/</loc>
     
     <lastmod>2019-12-02T11:07:28.000Z</lastmod>
@@ -173,13 +180,6 @@
     <loc>https://chengpengzhao.com/404.html</loc>
     
     <lastmod>2019-11-24T06:28:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chengpengzhao.com/friends/index.html</loc>
-    
-    <lastmod>2019-11-23T07:36:30.000Z</lastmod>
     
   </url>
   
