@@ -4,12 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="正则表达式学习笔记, Zcp&#39;s Zone">
-    <meta name="description" content="之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。大家都推荐这本书：  精通正则表达式 第3版
-1&amp;emsp;特殊作用
-大写往往代表对小写能匹配的字符取补集
-
-[_a-zA">
+    <meta name="keywords" content="matery主题改动日志, Zcp&#39;s Zone">
+    <meta name="description" content="折腾是永无止境的，刚开始觉得很完美的东西用一段时间后就开始发现各种不顺眼，于是东改西改；人就是这么不知足。  
+1&amp;emsp;前言当前博客主题套用的hexo-theme-matery，功能都很齐全了，看是挺好看的；于是当时果断换成了这个主题">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +15,7 @@
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>正则表达式学习笔记 | Zcp&#39;s Zone</title>
+    <title>matery主题改动日志 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -420,13 +417,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200111111930.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200119233818.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        正则表达式学习笔记
+                        matery主题改动日志
                     </div>
                 </div>
             </div>
@@ -544,12 +541,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                <span class="chip bg-color">语法</span>
+                            <a href="/tags/%E6%97%A5%E5%BF%97/">
+                                <span class="chip bg-color">日志</span>
                             </a>
                         
-                            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-                                <span class="chip bg-color">正则表达式</span>
+                            <a href="/tags/%E6%8A%98%E8%85%BE/">
+                                <span class="chip bg-color">折腾</span>
                             </a>
                         
                     </div>
@@ -560,8 +557,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                语言
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                兴趣爱好
+                            </a>
+                        
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E6%8A%98%E8%85%BE%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                折腾博客
                             </a>
                         
                     </div>
@@ -573,28 +574,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-01-11
+                    2020-01-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-01-14
+                    2020-01-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    801
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    4 Min
                 </div>
                 
 				
@@ -610,68 +611,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p>
-<h1 id="特殊作用">1&emsp;特殊作用</h1><ul>
-<li><p>大写往往代表对小写能匹配的字符取补集</p>
-</li>
-<li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p>
-</li>
-<li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p>
-</li>
-<li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p>
-</li>
-<li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p>
-</li>
-<li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p>
-</li>
-<li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p>
-</li>
-<li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p>
-</li>
-<li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p>
-</li>
-<li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p>
-</li>
-<li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p>
-</li>
-<li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p>
-</li>
-<li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p>
-</li>
-<li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p>
-</li>
-<li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p>
-</li>
+                <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>折腾是永无止境的，刚开始觉得很完美的东西用一段时间后就开始发现各种不顺眼，于是东改西改；人就是这么不知足。  </p>
+<h1 id="前言">1&emsp;前言</h1><p>当前博客主题套用的<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">hexo-theme-matery</a>，功能都很齐全了，看是挺好看的；于是当时果断换成了这个主题。<br>但同时这个优点也成了一部分人眼中的<strong>缺点</strong>：花里胡哨、不实用、加载速度慢。我看了很多个用这个主题的博客，虽然自认为自己网站的速度已经很慢了，但仍有许多人的博客加载速度在不断刷新我的下限，总算进去了，看到的却是满屏的雪花飘...当然并不是这样不好，毕竟不同人的审美不同，但至少这些不是我想要的。当然我也看到了许多极简但文章很好的博客，让我不禁想要拍手称快。<br>有了比较之后，就不难发现自己现在的主题存在一些不需要的元素。经过几天<code>html、css、js</code>的学习（能看懂源码任何一部分的作用、但细节需要一个个<del>百度</del>谷歌的程度），就可以开始进行精简和个性化主题了~</p>
+<h1 id="方法">2&emsp;方法</h1><p>为了增加容错率，先把blog源码全部上传到github一个私人仓库里（除非你觉得让别人看到也没什么），建个dev分支然后就可以开始进行修改咯~每修改一个地方记得commit一下，方便意外时想要回退某个修改前的版本（git现学现用）</p>
+<h1 id="记录">3&emsp;记录</h1><h2 id="更换主题后立即做的改动">3.1&emsp;更换主题后立即做的改动</h2><ul>
+<li>关闭所有动画效果，修改导航栏，自定义页面，增加标题自动编号</li>
+<li>调整渲染器对LaTeX公式的支持</li>
+<li>RSS由atom改为rss2，能够不打开博客预览全文</li>
+<li>界面改成英文，方便偶尔到访的老外</li>
+<li>防止文章目录过长时溢出，加入滑动栏</li>
+<li>解决英文标点<code>&#39;</code>显示为<code>’</code>的问题</li>
 </ul>
-<h1 id="表示数量">2&emsp;表示数量</h1><ul>
-<li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p>
-</li>
-<li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p>
-</li>
-<li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p>
-</li>
-<li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p>
-</li>
-</ul>
-<h1 id="数字">3&emsp;数字</h1><ul>
-<li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p>
-</li>
-<li><p><code>[01357]</code> : 匹配列出的数字中的一个</p>
-</li>
-<li><p><code>\D</code> : 匹配一个非数字字符</p>
-</li>
-</ul>
-<h1 id="其他">4&emsp;其他</h1><ul>
-<li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p>
-</li>
-<li><p><code>\w</code> : 匹配字母、数字和下划线</p>
-</li>
-<li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p>
-</li>
-<li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p>
-</li>
-</ul>
-<h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>
+<h2 id="去掉jsdelivr图片加速">3.2&emsp;去掉jsdelivr图片加速</h2><blockquote>
+<p><em>以下内容更新于2020-01-14 15:01:23</em></p>
+</blockquote>
+<p>虽然之前看别人博客弄了个github图床的免费CDN加速，但也看到些讨论说它不靠谱的地方；我用了一段时间后感觉并没有多大提升，于是赶紧删了所有免费加速。毕竟免费背后它可能会做一些小动作，自己又没有太多相关专业知识还是敬而远之为好。</p>
+<h2 id="去掉百度统计">3.3&emsp;去掉百度统计</h2><blockquote>
+<p><em>以下内容更新于2020-01-15 16:13:07</em></p>
+</blockquote>
+<p>不得不说百度真是辣鸡，谷歌的话提交了之后没过几天就有反馈了，而百度...<br>测试blog的时候发现百度统计、自动推送的相关代码加载占用了相当一部分时间，而且推送跟没推送没啥区别，要它有何用；我只能说，再见百度。</p>
+<h2 id="修改归档页面布局">3.4&emsp;修改归档页面布局</h2><blockquote>
+<p><em>以下内容更新于2020-01-17 17:17:56</em></p>
+</blockquote>
+<p>归档的作用是让来访者快速找到感兴趣的文章，而matery主题的归档页面采用了时间线的布局，虽然眼前一亮但<strong>一点都不方便</strong>！还不如主页里的posts紧凑l，完全没起到相应的作用；这部分肯定是要大改特改的，删除不必要的元素，减少间隔、简化样式。</p>
+<h2 id="减少链接层级">3.5&emsp;减少链接层级</h2><p>默认的posts链接为<code>permalink: :year/:month/:day/:title/</code>，分了个三、四级，不利于搜索引擎爬取；而且我的<code>post title</code>都有注明日期，这样就和前面重复了，不必要。&emsp;直接改成了<code>permalink: :title/</code>。<br><strong>副作用是之前文章的评论消失、文章浏览计数器全部重置</strong></p>
+<h2 id="简化footer信息">3.6&emsp;简化footer信息</h2><p>能删则删，如运行时间实在没必要精确到秒吧...</p>
+<h2 id="图片压缩、lazyload">3.7&emsp;图片压缩、lazyload</h2><p>图片是拖慢博客速度最大的一个原因之一，我喜欢每篇博客放一张自己以前拍的照片、截的图，累积起来占用了不少空间；为了避免在图片加载完成之前只能傻等着的尴尬局面，加个lazyload插件还是很管用的；但注意加了之后<strong>hexo-douban</strong>的图片会加载不出来，需要给其<strong><img></strong>标签贴一个<strong>no-lazy</strong>属性。</p>
+<h2 id="bug修复">3.8&emsp;bug修复</h2><blockquote>
+<p><em>以下内容更新于2020-01-19 23:37:23</em><br>之前调了一些元素的位置，导致出现下一页按钮出现显示错位（可能是改变了哪个<code>width</code>属性引起的），解决方法是干脆换个边显示。</p>
+</blockquote>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200119232732.jpg" alt="next错位"></p>
+<h2 id="调整posts分类">3.9&emsp;调整posts分类</h2><p>之前的分类方法有些不合理，重新规划了下。</p>
+<hr>
+<blockquote>
+<p>待记录...</p>
+</blockquote>
 
             </div>
 
@@ -696,7 +670,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/">https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</a>
+                    <a href="https://chengpengzhao.com/2020-01-17-bo-ke-gai-dong-ri-zhi/">https://chengpengzhao.com/2020-01-17-bo-ke-gai-dong-ri-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -734,12 +708,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                    <span class="chip bg-color">语法</span>
+                                <a href="/tags/%E6%97%A5%E5%BF%97/">
+                                    <span class="chip bg-color">日志</span>
                                 </a>
                             
-                                <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-                                    <span class="chip bg-color">正则表达式</span>
+                                <a href="/tags/%E6%8A%98%E8%85%BE/">
+                                    <span class="chip bg-color">折腾</span>
                                 </a>
                             
                         </div>
@@ -1170,47 +1144,54 @@
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020-01-09-shibui-gu-ban-ri-you/">
+                <a href="/2020-01-17-bo-ke-gai-dong-ri-zhi/">
                     <div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-5.jpg" class="responsive-img" alt="渋谷半日游">
+                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200119233818.jpg" class="responsive-img" alt="matery主题改动日志">
                         
-                        <span class="card-title">渋谷半日游</span>
+                        <span class="card-title">matery主题改动日志</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;多图警告！久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。于是想着工作日人应
+                            折腾是永无止境的，刚开始觉得很完美的东西用一段时间后就开始发现各种不顺眼，于是东改西改；人就是这么不知足。  
+1&emsp;前言当前博客主题套用的hexo-theme-matery，功能都很齐全了，看是挺好看的；于是当时果断换成了这个主题
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E6%8A%98%E8%85%BE%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    折腾博客
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%9B%B8%E5%86%8C/">
-                        <span class="chip bg-color">相册</span>
+                    <a href="/tags/%E6%97%A5%E5%BF%97/">
+                        <span class="chip bg-color">日志</span>
                     </a>
                     
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/%E6%8A%98%E8%85%BE/">
+                        <span class="chip bg-color">折腾</span>
                     </a>
                     
                 </div>
@@ -1224,32 +1205,34 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020-01-08-git-learning/">
+                <a href="/2020-01-13-ru-keng-wsl-windows-subsystem-for-linux/">
                     <div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200108110720.jpg" class="responsive-img" alt="Git学习笔记">
+                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200113131126.jpg" class="responsive-img" alt="入坑WSL(Windows Subsystem for Linux)">
                         
-                        <span class="card-title">Git学习笔记</span>
+                        <span class="card-title">入坑WSL(Windows Subsystem for Linux)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;git学习笔记学习自：廖雪峰的官方网站
-1.1&emsp;基础
-千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地
+                            在笔记本上装Ubuntu用了几个月之后，由于一些软件只能在windows下运行，来回切换系统也挺麻烦的，故决定安装个WSL(Windows Subsystem for Linux)试试。意外感觉用起来挺舒服的；一是平常需求也不多，就用下Sh
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    语言
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6/" class="post-category">
+                                    软件
                                 </a>
                             
                             
@@ -1259,12 +1242,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
+                    <a href="/tags/%E5%AE%89%E8%A3%85/">
+                        <span class="chip bg-color">安装</span>
                     </a>
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/Vim/">
+                        <span class="chip bg-color">Vim</span>
                     </a>
                     
                 </div>

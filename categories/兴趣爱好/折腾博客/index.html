@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Categories, Zcp&#39;s Zone">
+    <meta name="keywords" content="Category: 折腾博客, Zcp&#39;s Zone">
     <meta name="description" content="この、くそったれな世界に、精一杯愛をこめて">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -14,7 +14,7 @@
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Categories | Zcp&#39;s Zone</title>
+    <title>Category: 折腾博客 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -530,7 +530,7 @@
                 
                 <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E6%8A%98%E8%85%BE%E5%8D%9A%E5%AE%A2/" title="折腾博客: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
+                             chip-active "
                             style="background-color: #A3E4D7;">折腾博客
                         <span class="tag-length">1</span>
                     </span>
@@ -543,65 +543,69 @@
 </div>
 
     
-    <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
 
-<div class="container" >
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" >
+                <div class="card">
+                    <a href="/2020-01-17-bo-ke-gai-dong-ri-zhi/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200119233818.jpg" class="responsive-img" alt="matery主题改动日志">
+                            
+                            <span class="card-title">matery主题改动日志</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                折腾是永无止境的，刚开始觉得很完美的东西用一段时间后就开始发现各种不顺眼，于是东改西改；人就是这么不知足。  
+1&emsp;前言当前博客主题套用的hexo-theme-matery，功能都很齐全了，看是挺好看的；于是当时果断换成了这个主题
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                                
+                                <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E6%8A%98%E8%85%BE%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    折腾博客
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
 
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: 'Post Categories Radar Chart',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"语言","max":9},{"name":"程序语言","max":9},{"name":"博客建立","max":9},{"name":"Linux","max":9},{"name":"软件","max":9},{"name":"生活","max":9},{"name":"专业相关","max":9},{"name":"兴趣爱好","max":9},{"name":"折腾博客","max":9}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [8,5,3,6,5,7,6,1,1],
-                    name : 'Number of Categories'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
-</script>
-
-    
-
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%97%A5%E5%BF%97/">
+                            <span class="chip bg-color">日志</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%8A%98%E8%85%BE/">
+                            <span class="chip bg-color">折腾</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
 </main>
+
+
 
 
     <footer class="page-footer bg-color">
