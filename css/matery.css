@@ -1195,12 +1195,13 @@ thead {
 .chip-container .tag-title {
     margin-bottom: 10px;
     color: #3C4858;
-    font-size: 1.75rem;
+    font-size: 1.15rem;
     font-weight: 400;
+    font-weight:bold;
 }
 
 .chip-container .tag-chips {
-    margin: 1rem auto 0.5rem;
+    margin: auto auto;
     max-width: 850px;
     text-align: center;
 }
@@ -2072,4 +2073,40 @@ footer .copy-right {
 }
 
 
+.category-list {
+margin: 0;
+padding: 0;
+list-style: none;
+font-weight: 700;
+}
 
+.category-list-item {
+margin: 5px 3px;
+font-size: 1rem;
+font-weight: inherit;
+}
+
+.category-list-link {
+color: #00BFF;
+padding: 9px 6px;
+display: inline-flex;
+line-height: 0;
+border-radius: 5px;
+cursor: pointer;
+box-shadow: 0 3px 5px rgba(0,0,0,.12);
+}
+
+.category-list-count {color: grey;}
+.category-list-count:before {
+  display: inline;
+  content: " ("
+}
+.category-list-count:after {
+  display: inline;
+  content: ") "
+}
+
+.category-list .category-list-child {
+padding-left: 60px;
+font-weight: 500;
+}
