@@ -1207,9 +1207,9 @@ thead {
 }
 
 .chip-container .tag-chips {
-    margin: auto auto;
+    margin: auto auto auto 41%;
     max-width: 850px;
-    text-align: center;
+    text-align: left;
 }
 
 .chip-container .tags-posts {
@@ -2083,7 +2083,7 @@ footer .copy-right {
 margin: 0;
 padding: 0;
 list-style: none;
-font-weight: 700;
+font-weight: 1000;
 }
 
 .category-list-item {
@@ -2093,7 +2093,7 @@ font-weight: inherit;
 }
 
 .category-list-link {
-color: #00BFF;
+color: #00BFFF;
 padding: 9px 6px;
 display: inline-flex;
 line-height: 0;
@@ -2101,7 +2101,10 @@ border-radius: 5px;
 cursor: pointer;
 box-shadow: 0 3px 5px rgba(0,0,0,.12);
 }
-
+.category-list-link:before {
+display: inline;
+content: "●\00a0"
+}
 .category-list-count {color: grey;}
 .category-list-count:before {
   display: inline;
@@ -2113,6 +2116,19 @@ box-shadow: 0 3px 5px rgba(0,0,0,.12);
 }
 
 .category-list .category-list-child {
-padding-left: 60px;
+padding-left: 40px;
 font-weight: 500;
+}
+
+.category-list .category-list-child .category-list-link {
+color: #0f9d58;
+}
+
+.category-list .category-list-child .category-list-link:before {
+  display: inline;
+  content: "-"
+}
+.category-list .category-list-child .category-list-child .category-list-link:before {
+  display: inline;
+  content: "\00a0"
 }
