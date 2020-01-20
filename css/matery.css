@@ -1206,10 +1206,15 @@ thead {
     font-weight:bold;
 }
 
-.chip-container .tag-chips {
+.chip-container .category-chips {
     margin: auto auto auto 41%;
     max-width: 850px;
     text-align: left;
+}
+.chip-container .tag-chips {
+    margin: auto auto;
+    max-width: 850px;
+    text-align: center;
 }
 
 .chip-container .tags-posts {
@@ -2083,7 +2088,7 @@ footer .copy-right {
 margin: 0;
 padding: 0;
 list-style: none;
-font-weight: 1000;
+font-weight: bolder;
 }
 
 .category-list-item {
@@ -2117,7 +2122,7 @@ content: "●\00a0"
 
 .category-list .category-list-child {
 padding-left: 40px;
-font-weight: 500;
+font-weight: normal;
 }
 
 .category-list .category-list-child .category-list-link {
