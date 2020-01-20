@@ -19,7 +19,6 @@
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <meta name="referrer" content="no-referrer">
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -36,9 +35,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -926,7 +925,7 @@ application     XiFoam<span class="token punctuation">;</span><span aria-hidden=
 <h3 id="probes函数">2.5.1&emsp;probes函数</h3><p>该函数功能为程序运行时监测:q指定坐标点场数据随时间的变化。首先在controlDict文件内添加以下语句，调用probes功能的相关函数。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">functions 
  <span class="token punctuation">{</span> 
-   <span class="token macro property">#includeFunc probes     </span><span class="token comment" spellcheck="true">// 在functions列表中添加probes函数</span>
+   <span class="token macro property">#includeFunc probes   </span><span class="token comment" spellcheck="true">// 在functions列表中添加probes函数</span>
  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>接着运行以下命令，复制probes文件至system文件夹下，</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> -r <span class="token variable">$FOAM_ETC</span>/caseDicts/postProcessing/probes/probes system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1040,7 +1039,7 @@ forceCoeffs
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">赵cp</a>
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -1063,7 +1062,7 @@ forceCoeffs
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="https://chengpengzhao.com" target="_blank">赵cp</a>
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
                     !
                 </span>
             </div>
@@ -1556,12 +1555,12 @@ forceCoeffs
                                     语言
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
-                                    CFD
-                                </a>
-                            
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
                                     OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
                                 </a>
                             
                             <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
@@ -1624,12 +1623,12 @@ forceCoeffs
                                     语言
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
-                                    CFD
-                                </a>
-                            
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
                                     OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
                                 </a>
                             
                             <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
@@ -1790,7 +1789,7 @@ forceCoeffs
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">46.3k</span>&nbsp;字
+                class="white-color">46.7k</span>&nbsp;字
             
             <br>
             

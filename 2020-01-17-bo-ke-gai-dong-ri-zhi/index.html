@@ -12,7 +12,6 @@
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <meta name="referrer" content="no-referrer">
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,9 +28,9 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -571,28 +570,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-01-20
+                    2020-01-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-01-20
+                    2020-01-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.2k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    4 Min
+                    6 Min
                 </div>
                 
 				
@@ -638,7 +637,20 @@
 <p><em>以下内容更新于2020-01-19 23:37:23</em><br>之前调了一些元素的位置，导致出现下一页按钮出现显示错位（可能是改变了哪个<code>width</code>属性引起的），解决方法是干脆换个边显示。</p>
 </blockquote>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200119232732.jpg" alt="next错位"></p>
-<h2 id="调整posts分类">3.9&emsp;调整posts分类</h2><p>之前的分类方法有些不合理，重新规划了下。</p>
+<h2 id="调整posts分类">3.9&emsp;调整posts分类</h2><p>之前的分类方法有些不合理，重新规划了下。大多数博客都有<code>categories</code>和<code>tags</code>两种分类方式:</p>
+<ul>
+<li><p>其中<code>categories</code>往往是互不关联、范围比较广的分类，如生活、学习、工作...在写post之前，最好先确定几个大的分类方向，尽量涵盖所有文章类型；在这基础之上扩展出多个子分类，之后将post对号入座；必要时再增添新的子分类，让博客的分类树不断完善。<br><code>Hexo</code>支持多级子分类，如下列写法：</p>
+<pre class="line-numbers language-yml"><code class="language-yml">categories:
+  -  [学习, 语言, 英语   ]
+  -  [工作, 工具 ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>代表该post同时属于<code>学习</code>和<code>工作</code>两个同级分类，而<code>语言</code>是<code>学习</code>的子分类，<code>英语</code>又是<code>语言</code>的子分类。  注意<strong>英文逗号后必须有一个空格</strong>，而中括号前后的空格则无所谓。  </p>
+</li>
+<li><p><code>tags</code>则相对随意一些，它是另一个维度的分类，可以比较具体，<code>tag</code>之间也可以有重复的地方。此外，不同于<code>categories</code>常事先就规定好，<code>tags</code>往往是写完post拍一下脑袋当场确定的。  </p>
+</li>
+</ul>
+<p>总的来说<code>tags</code>比较乱、相互之间没有什么顺序，而<code>categories</code>注重层级，结构清晰。</p>
+<h2 id="一些元素的小调整">3.10&emsp;一些元素的小调整</h2><p>将文章标题字体改小了点，防止移动端预览时文字超出card；修改目录栏样式，使其能够清晰地显示各级分类，tags样式不需要改动；</p>
+<h2 id="修复移动端hexo-douban中图片不能正常显示">3.11&emsp;修复移动端hexo-douban中图片不能正常显示</h2><p>解决方案是在<code>head</code>中添加一段<code>&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;</code>；这么做的<strong>副作用</strong>会导致<strong>不蒜子计数器</strong>无法正常工作，折中方案是只在<code>hexo-douban</code>相关页面添加该<code>&lt;meta&gt;</code>标签：</p>
 <hr>
 <blockquote>
 <p>待记录...</p>
@@ -657,7 +669,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">赵cp</a>
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -680,7 +692,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint polocy. If reproduced, please indicate source
-                    <a href="https://chengpengzhao.com" target="_blank">赵cp</a>
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
                     !
                 </span>
             </div>
@@ -1157,7 +1169,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-17
                             </span>
                         <span class="publish-author">
                             
@@ -1390,7 +1402,7 @@
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">46.3k</span>&nbsp;字
+                class="white-color">46.7k</span>&nbsp;字
             
             <br>
             
