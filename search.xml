@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>高温气体动力学基础知识复习</title>
+      <link href="/2020-01-23-gao-wen-qi-ti-dong-li-xue-fu-xi/"/>
+      <url>/2020-01-23-gao-wen-qi-ti-dong-li-xue-fu-xi/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>最近要用到，翻出来随缘复习下，只写一些基础知识，方便忘记的时候随手打开看。</p><hr><h1 id="导论">1&emsp;导论</h1><ul><li><p>高温气体的几种能量形式：宏观动能、内能、化学能、辐射能</p></li><li><p>空气、1atm下：<strong>800K</strong>，振动能激发；<strong>2500K</strong>，$\mathrm{O}_{2}$开始离解；<strong>4000K</strong>，$\mathrm{N}_{2}$开始离解，$\mathrm{O}_{2}$已几乎完全离解；<strong>9000K</strong>，$\mathrm{N}_{2}$几乎完全离解，$\mathrm{O}和\mathrm{N}$开始电离</p></li><li><p>振动能激发温度不受压力影响，其他起始温度随<strong>压力降低</strong>而<strong>下降</strong></p></li><li><p>真实气体：分子间作用力很重要（高压或低温）；完全气体：忽略分子间作用</p></li><li><p>气体状态方程：</p><ul><li><p>基础概念： <strong>质量</strong>$\mathrm{kg}$：$m$；<strong>粒子总数</strong>：$N$；<strong>物质的量</strong>$\mathrm{mol}$：$n$；</p></li><li><p>$$<br>pV=nR^{*}T<br>\tag{1-1}$$</p><p>其中V为体积$\mathrm{m^{3}}$、T为温度$\mathrm{K}$；$R^{*}$ 为摩尔气体常数：</p><p>$$<br>R^{*}=8341 \mathrm{J/(mol} \cdot \mathrm{K})<br>\tag{1-2}$$<br>另外有个比气体常数$R$，对于空气：$R=287 \mathrm{J/(kg} \cdot \mathrm{K})$</p><p>$$<br>R=\frac{R^{*}}{M}<br>\tag{1-3}$$<br>M是摩尔质量$\mathrm{kg/mol}$，$n=m/M$；</p></li><li><p>$$<br>pV=n R^{*}T=M \cdot n RT=m RT<br>\tag{1-4}$$</p><p>故 $p=\rho RT$ 或 $p\nu=RT$；其中 $\nu=V/m=1/ \rho$ ，为比容（单位质量的体积）；(1-4)主要描述对象为<strong>质量和体积</strong>。类似地：</p></li><li><p>$$<br>p=\frac{n}{V}R^{*}T=C R^{*}T,&emsp; pV_{m}=R^{*}T<br>\tag{1-5}$$</p><p>其中$V_{m}$ 是摩尔体积（单位摩尔的体积），C为物质的量浓度（单位体积的物质的量）；且$V_{m}=V/n=1/C$。(1-5)对象为<strong>体积和物质的量</strong>。</p></li><li><p>$$<br>p \nu=RT=\frac{R^{*}}{M}T= \eta R^{*}T<br>\tag{1-6}$$</p><p>其中$\eta $ 是摩尔质量比（单位质量的物质的量）； &emsp;$\eta=n/m=1/M$。(1-6)对象为<strong>质量和物质的量</strong><br>最后，每摩尔的粒子数：阿伏伽德罗常数$N_{A}=6.02 \times 10^{26}$，于是：</p></li><li><p>$$<br>pV=nN_{A} \frac{R^{*}}{N_{A}}T=NkT , &emsp; p=n_{p} kT<br>\tag{1-7}$$</p><p>$k=R^{*}/N_{A}=1.38 \times 10^{-23} \mathrm{J/K}$，定义为玻尔兹曼常数；$n_{p}=N/V$ 为粒子数密度（单位体积的粒子数）</p></li></ul></li><li><p>气体分类：</p><ul><li><p>量热完全气体(室温~800$K$)：  比热容$c_{p}、c_{v }$为常数，焓和内能是温度的函数。$h=c_{p}T , &emsp;e=c_{v }T$</p><p>$$<br>\begin{aligned}<br>  c_{p}=\left(\frac{\delta q}{ \mathrm{d}T}\right)_{P}=\left(\frac{\partial h}{\partial T}\right)_{P} \\<br>  c_{v }=\left(\frac{\delta q}{ \mathrm{d}T}\right)_{V }=\left(\frac{\partial e}{\partial T}\right)_{V }<br>\end{aligned}<br>\tag{1-8}$$</p></li><li><p>热完全气体(800~2500$K$)，振动能激发： </p><p>$$<br>\begin{aligned}<br>  c_{p}=f_{1}(T) ,&emsp; &amp; c_{v}=f_{2}(T) \\<br>  \mathrm{d}h=c_{p} \mathrm{d}T ,&emsp; &amp; h=h(T) \\<br>  \mathrm{d}h=c_{v } \mathrm{d}T ,&emsp; &amp; e=e(T)<br>\end{aligned}<br>\tag{1-9}$$</p></li><li><p>热完全气体化学反应混合物(&gt;2500$K$)： 每一组元为热完全气体；非平衡状态时：</p><p>$$<br>h=h(T,N_{i},...), &emsp; e=e(T,N_{i},...) \\<br>c_{p}=c_{p}(T,N_{i},...), &emsp; c_{v }=c_{v }(T,N_{i},...) \\<br>其中： &emsp;N_{i}=N_{i}(p,T,t)<br>\tag{1-10}$$</p></li><li><p>真实气体： 低温或高压；几乎无化学反应（冻结？）</p><p>$$<br>\begin{aligned}<br>  h=h(T,p) , &emsp; &amp; e=e(T,p) \\<br>  c_{p}=f_{1}(T,p) , &emsp; &amp; c_{v}=c_{v}(T,p) \\<br>\left(p+\frac{a}{V^{2}}\right) &amp; \left(V-b\right) =RT<br>\end{aligned}<br>\tag{1-11}$$</p></li></ul></li><li><p>气体混合物描述：</p><ul><li><p>摩尔分数： $x_{i}=\frac{p_{i}}{p}=\frac{N_{i}}{N}=\frac{n_{i}}{n}$</p></li><li><p>质量分数： $c_{i}=\frac{\rho _i}{\rho }=\frac{m_{i}}{m}=\frac{n_{i}M_{i}}{nM}=x_{i}\frac{M_{i}}{M}$ </p></li><li><p>摩尔浓度：$C_{i}=\frac{n_{i}}{V}$ ；摩尔质量比： $\eta _i=\frac{n_{i}}{m}$</p></li><li><p>常用关系式：</p><p>$$<br>\begin{aligned}<br>  p=\sum_{ i }^{  } p_{i} , &emsp; &amp; R=\sum_{ i }^{  } c_{i}R_{i} \\<br>  M=\sum_{ i }^{  } x_{i}M_{i}, &emsp; &amp; M=\frac{1}{ \sum_{i}^{  } \frac{c_{i}}{M_{i}} }<br>\end{aligned}<br>\tag{1-12}$$</p></li></ul></li></ul><h1 id="统计热力学原理">2&emsp;统计热力学原理</h1><ul><li><p>$\epsilon &#39;=\epsilon &#39;_{trans}+\epsilon &#39;_{rot}+\epsilon &#39;_{vib}+\epsilon &#39;_{el}$  ；分子能量=平动能+转动能+振动能+轨道电子能</p></li><li><p>分子同一能级上可有不同的<strong>能态数</strong>$g_{i}$ ，不同能级$(\epsilon &#39;_{0},\epsilon &#39;_{1},...)$的一种粒子数分布$(N_{0},N_{1},...)$为一种宏观态;</p></li></ul><p>$$<br>粒子总数&emsp;N=\sum_{ j }^{  } N_{j} , &emsp; 粒子系统总能&emsp;E=\sum_{ j }^{  } \epsilon &#39;_{j}N_{j}<br> \tag{2-1}$$</p><ul><li><p>微观态： 同一宏观态下，由于每个能级可能有多个能态，一定数量的粒子在其上有多种排列方式；每一种排列方式的综合称为一个微观态</p></li><li><p>最经常出现的宏观态——最可几宏观态（热力平衡时）（具有微观态数目最多的宏观态）</p></li><li><p>Boltzmann分布： </p></li></ul><p>$$<br>N_{j}^{*}=N\frac{g_{j} \mathrm{e}^{-\beta \epsilon _j}}{ \sum_{ j }^{  } g_{j} \mathrm{e}^{\beta \epsilon _j} }=\frac{N}{Q}g_{j} \mathrm{e}^{-\epsilon _j / kT}<br> \tag{2-2}$$</p><p> 其中 $\epsilon &#39;_{j}=\epsilon _j+\epsilon _0$ ，总能=显能+零点能； $g_{j}$ 为$j$能级上能态数，$\beta =\frac{1}{kT}$；Q为配分函数</p><ul><li><p>化学平衡： 系统总能量不变；各元素核数不变；电荷守恒。</p></li><li><p>对于化学反应： $0=\sum_{ i }^{  } v_{i}A_{i}$ ，分压平衡常数定义为：</p><p>$$<br>K_{p}(T)=\prod_{ i }^{  } p_{i}^{v_{i}}<br>\tag{2-3}$$<br>其中$v_{i}$ 为化学计量数（反应式前的系数，生成物取正反应物取负）；$K_{p}$的值常通过数据库查得，从而结合压强建立起非线性方程组。</p></li></ul><h1 id="化学与振动非平衡">3&emsp;化学与振动非平衡</h1><ul><li>振动能变化率方程：</li></ul><p>$$<br>\frac{ \mathrm{d} e_{vib}}{ \mathrm{d}t}=\frac{e_{vib}^{eq}(T)-e_{vib}}{\tau }<br> \tag{3-1}$$</p><ul><li><p>化学反应速率方程：<br>以反应 $\mathrm{O}_{2}+ \mathrm{M} \stackrel{k_{f}}{\longrightarrow} 2 \mathrm{\mathrm{O}+M}$ 为例，用$\mathrm{[O}]$来表示浓度（单位体积物质的量），则正向反应：</p><p>$$<br>\frac{ \mathrm{d}[ \mathrm{O}]}{dt}=2k_{f}[ \mathrm{O}_{2}][ \mathrm{M}]<br>\tag{3-2}$$</p></li></ul><p>$k_{f}$ 是只与$T$ 相关的化学反应速率常数（正向）；从右向左进行的反应称为逆向反应：</p><p>$$<br>\begin{aligned}<br>    \mathrm{O}_{2}+\mathrm{M} &amp; \stackrel{k}{\longleftarrow} 2 \mathrm{O}+\mathrm{M} \\<br>    \frac{ \mathrm{d}[ \mathrm{O}]}{dt}= &amp; -2k_{b}[ \mathrm{O}]^{2}[ \mathrm{M}]<br>\end{aligned}<br> \tag{3-3}$$</p><p>结合起来，得到净反应速率：</p><p>$$<br>\begin{aligned}<br>    \mathrm{O}_{2}+\mathrm{M} &amp; \stackrel{k_{\mathrm{i}}}{\rightleftharpoons} 2 \mathrm{O}+\mathrm{M} \\<br>    \frac{ \mathrm{d}[ \mathrm{O}]}{dt}= 2k_{f}[ &amp; \mathrm{O}_{2}][ \mathrm{M}]-2k_{b}[ \mathrm{O}]^{2}[ \mathrm{M}]<br>\end{aligned}<br> \tag{3-4}$$</p><ul><li>Arrheniuns公式：</li></ul><p>$$<br>k_{反应}=C \mathrm{e}^{-\epsilon _a/kT} , &emsp; k_{反应}=C_{1}T^{\alpha } \mathrm{e}^{-\epsilon _a/kT}（T修正）<br> \tag{3-5}$$<br> 其中$C$、 $\alpha $为系数，$\epsilon _a$为活化能（克服障碍发生反应所需的能量）；</p><p>后面有必要再添加...</p><h1 id>4&emsp;</h1><p>&lt;++&gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+          <category> 专业相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 高温气体动力学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>matery主题改动日志</title>
       <link href="/2020-01-17-bo-ke-gai-dong-ri-zhi/"/>
       <url>/2020-01-17-bo-ke-gai-dong-ri-zhi/</url>
@@ -64,35 +91,6 @@
     
     
     <entry>
-      <title>渋谷半日游</title>
-      <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
-      <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-24.jpg" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-1.jpg" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-2.jpg" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-3.jpg" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-4.jpg" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-5.jpg" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-6.jpg" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-7.jpg" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-8.jpg" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-9.jpg" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-10.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-11.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-12.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-13.jpg" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-14.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-15.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-16.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-17.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-18.jpg" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-19.jpg" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-20.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-21.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-22.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-23.jpg" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 生活 </category>
-          
-          <category> 记录 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 相册 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>正则表达式学习笔记</title>
       <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
       <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
@@ -114,6 +112,35 @@
             <tag> 使用tips </tag>
             
             <tag> 正则表达式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>渋谷半日游</title>
+      <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
+      <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-24.jpg" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-1.jpg" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-2.jpg" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-3.jpg" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-4.jpg" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-5.jpg" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-6.jpg" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-7.jpg" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-8.jpg" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-9.jpg" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-10.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-11.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-12.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-13.jpg" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-14.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-15.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-16.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-17.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-18.jpg" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-19.jpg" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-20.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-21.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-22.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-23.jpg" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+            <tag> 相册 </tag>
             
         </tags>
       
@@ -151,6 +178,41 @@
     
     
     <entry>
+      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
+      <link href="/2020-01-04-vats-simulation/"/>
+      <url>/2020-01-04-vats-simulation/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?cid=025FDD57DA585B6D&amp;resid=25FDD57DA585B6D%211494&amp;authkey=AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333&amp;wdEaa=0" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 语言 </category>
+          
+          <category> 工作 </category>
+          
+          <category> CFD </category>
+          
+          <category> OpenFOAM </category>
+          
+          <category> 英语 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> airfoil optimization </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新的一年，还是写点什么吧</title>
       <link href="/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/"/>
       <url>/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</url>
@@ -170,41 +232,6 @@
         <tags>
             
             <tag> flag </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
-      <link href="/2020-01-04-vats-simulation/"/>
-      <url>/2020-01-04-vats-simulation/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?cid=025FDD57DA585B6D&amp;resid=25FDD57DA585B6D%211494&amp;authkey=AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333&amp;wdEaa=0" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content>
-      
-      
-      <categories>
-          
-          <category> 学习 </category>
-          
-          <category> 工作 </category>
-          
-          <category> 语言 </category>
-          
-          <category> OpenFOAM </category>
-          
-          <category> CFD </category>
-          
-          <category> 英语 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> airfoil optimization </tag>
             
         </tags>
       
@@ -251,13 +278,13 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
+          <category> 工作 </category>
           
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -286,13 +313,13 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
+          <category> 工作 </category>
           
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -348,13 +375,13 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
+          <category> 工作 </category>
           
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -450,9 +477,9 @@
       
         <tags>
             
-            <tag> 语法 </tag>
-            
             <tag> 写作 </tag>
+            
+            <tag> 语法 </tag>
             
             <tag> markdown </tag>
             
@@ -530,9 +557,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> linux </category>
           
@@ -791,13 +818,13 @@
           
           <category> 学习 </category>
           
-          <category> 生活 </category>
-          
           <category> 语言 </category>
           
-          <category> 记录 </category>
+          <category> 生活 </category>
           
           <category> 日本語 </category>
+          
+          <category> 记录 </category>
           
       </categories>
       
@@ -882,9 +909,9 @@
           
           <category> 兴趣爱好 </category>
           
-          <category> 博客 </category>
-          
           <category> 生活 </category>
+          
+          <category> 博客 </category>
           
           <category> 杂感 </category>
           
