@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>2020-02-05-开始使用TiddlyWiki个人笔记系统和Gnucash个人财务管理系统</title>
+      <link href="/2020-02-05-kai-shi-shi-yong-tiddlywiki-ge-ren-bi-ji-xi-tong-he-gnucash-ge-ren-cai-wu-guan-li-xi-tong/"/>
+      <url>/2020-02-05-kai-shi-shi-yong-tiddlywiki-ge-ren-bi-ji-xi-tong-he-gnucash-ge-ren-cai-wu-guan-li-xi-tong/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>最近事情比较多，想看的书、想学的、不得不学的...其中很多都是无意中逛别人博客后发现的，比如财务管理、GTD、如何整理笔记、保险相关知识...  </p><p>我之所以会把这些事的优先级放这么高，<strong>核心目的</strong>还是在于想让自己早点养成习惯，从而提高效率。（不不不，真正原因是现在离最近一个DDL都还有1个多月，不趁此机会做点有意义的事岂不是浪费了宝贵的时间）<br>无论是通过知识、金钱、时间的管理让自己的生活变得有条理、还是通过某个工具使自己的工作能更高效地完成，本质都是围绕如何提高生产力这个话题。之前看过的一个Vim讲座:<a href="https://www.youtube.com/watch?v=eX9m3g5J-XA" target="_blank" rel="noopener">7 Habits For Effective Text Editing </a>里总结的三步感觉很不错：  </p><blockquote><ol><li>Detect inefficiency</li><li>Find a quicker way</li><li>Make it a habit</li></ol></blockquote><p>当然，如果一个工具的学习成本对自己来说过高，那么入坑之前一定要慎重考虑。</p><h1 id="TiddlyWiki">2&emsp;TiddlyWiki</h1><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200205140622.jpg" alt></p><p>关于笔记、备忘录的管理，之前一直用的Onenote，其实也还够用（除了不支持markdown）。陆陆续续尝试了Evernote、Notion、Leannote、Gitnote等工具，总觉得哪差了点；算了还是先想一想自己的需求吧：</p><ul><li>安全性，最近开始对个人信息敏感起来了，能本地的绝不随便放到网上、放网上备份的尽量加密；</li><li>功能全，支持Markdown，免费也能用的很舒服；</li><li>跨平台，编辑、查找方便；</li></ul><p>综合这几点我最后选择了Tiddlywiki，原因：</p><ol><li>本质就是一个html文件，备份、转移方便</li><li>也可以放在Github Page里，直接线上编辑保存</li><li>支持加密，放在网上别人也看不了内容</li><li>插件扩展能力较强</li></ol><h2 id="入门">2.1&emsp;入门</h2><p><a href="http://tw5-zh.tiddlyspot.com/" target="_blank" rel="noopener">繁体中文网站</a>翻译的比较全，把目录里的条目过一遍基本上就会了，重点关注<strong>tiddler</strong>这个概念以及<strong>如何建立目录结构</strong>、<strong>如何对条目进行链接和筛选</strong>。<br>插件的安装可以直接在<em>官方插件库</em>里找，但更多的时候是先导出别人页面里安装的插件（如json格式）、然后直接导入自己的Tiddlywiki。</p><h2 id="使用">2.2&emsp;使用</h2><p>首先是页面样式的设置，在控制面板一个个尝试就行，一直改到自己满意。</p><p>TiddlyWiki有它自己的一套类似Markdown的语法，功能挺强，但我平常用用Markdown就够了，所以懒得学。平常使用起来和别的软件没太大区别，没啥好讲的。</p><blockquote><p>插件推荐：</p><ul><li>Adds support of MathJax   ；Markdown必备</li><li>adds the ability to encrypt single tiddlers    ；可以给单个条目加密<ul><li>Context search - provides visual highlight of search results  ；针对文章内容的搜索</li><li>Markdown parser   ；Markdown必备</li><li>TW5-EnhancedSearchResults – Show search results in a tab  ；扩展搜索功能</li><li>Checklist Plugin  ；增加 Todolist 支持</li></ul></li></ul></blockquote><p>没必要花太多时间在配置上面，重点是如何系统地管理知识。</p><h2 id="归档方案">2.3&emsp;归档方案</h2><p>总原则是比较占空间的非文本一律不直接放到Tiddlywiki里，而是通过链接来引用，本体可以放在网盘、github等云储存工具里。</p><ol><li>网页，可通过<a href="https://archive.org/web/" target="_blank" rel="noopener">wayback machine</a>、<a href="http://Archive.is" target="_blank" rel="noopener">Archive.is</a>等进行备份，防止有一天被404。  </li></ol><p>我的做法是通过Chrome右键另存为<a href="https://zh.wikipedia.org/wiki/MHTML" target="_blank" rel="noopener">Mhtml</a>，然后把文件放在GitHub仓库里，在Tiddlywiki里直接引用就行了。  </p><p>这里有一个要注意的地方，<strong>Windows里保存下来的Mhtml为Dos格式，当被转换成Unix格式后将无法正常打开</strong>。所以在上传到GitHub之前一定要确保进行以下设置：（万恶的CRLF换行符）</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global core.autocrlf <span class="token boolean">false</span><span class="token function">git</span> config --global core.filemode <span class="token boolean">false</span><span class="token function">git</span> config --global core.safecrlf <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>但这种方法的<strong>缺点</strong>是不能直接在线预览，需要先下载mhtml再打开 ；对于比较简洁的页面可以通过<code>Singlefile</code>这款插件（Chrome和Firefox都有）直接保存单文件html，非常好用。引用GitHub里的html文件链接时在前面加上<code>https://htmlpreview.github.io/?</code>，便可以做到点击直接预览。（或者直接给仓库打开GitHub Page，通过自己的GitHub page链接访问）</p><ol start="2"><li><p>图片，传到GitHub图床</p></li><li><p>其他大文件，Onedrive、GoogleDrive、百度云...</p></li></ol><h1 id="Gnucash">3&emsp;Gnucash</h1><p>都是成年人了，也该有点财务方面的意识了吧。以前一直过着有钱就花、没钱吃土这种无忧无虑的生活，虽说不奢望有朝一日财务自由，但对于了解自己的财务状况、学习基本的投资理财知识来说，养成一个记账的习惯还是很有必要的。  </p><h2 id="基础知识">3.1&emsp;基础知识</h2><ol><li><p>The 5 Basic Accounts:</p><ul><li>Assets: 资产</li><li>Liabilities: 负债</li><li>Equity: 所有者权益</li><li>Income: 收入</li><li>Expenses: 支出</li></ul></li><li><p>The Accounting Equation:</p></li></ol><blockquote><p>Assets - Liabilities = Equity + (Income - Expenses)</p></blockquote><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200205165439.png" alt></p><p>这个等式是复式记账法（每一笔账都要按规定的会计科目，至少在两个账户上相互联系地进行分类记录）的核心。<br>不过更常看到的是不包括收入和支出部分的等式：</p><blockquote><p>Assets = Liabilities + Equity</p></blockquote><p>它反映了资产来源的两个方面：一个是负债（比如向银行贷款多少钱），另一个是所有者权益（说实话我没学过财务所以看不懂它）。</p><h2 id="使用-1">3.2&emsp;使用</h2><p>由于国内用的人比较少，帮助文档只有英文版，但界面已经汉化了，修改语言要编辑<code>gnucash\etc\gnucash</code>文件夹里的<code>environment</code>文件。<br>首先按它的向导初始化，科目类别不要想太多全部选上都行，后面按自己需求进行编辑。界面大概这个样子：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200205195713.jpg" alt></p><p>新建会计科目的时候会有个期初余额窗口，刚开始添加自己的资产时会用到。<strong>由于复式记账每一笔钱都必须要有来源和去向</strong>，添加的资产肯定是不能凭空而来的，这里默认是来自所有者权益中的期初余额项（有点像自己找自己贷款的感觉）。</p><p><strong>现有资产</strong>全部添加完之后就可以开始开心的记账历程了，初期推荐<code>&lt;Ctrl-t&gt;</code>打开窗口进行每一笔的记账：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200205200520.jpg" alt></p><p>对于重复性的支出，可以建立计划交易任务....暂时这几个功能就够用了，之后年末做一个报表统计分析下数据，看看自己有没有又变穷了点~</p><h2 id="收获">3.3&emsp;收获</h2><p>虽然才开始用，但收获还是挺多的，特别深的一个感悟就是<strong>保险的作用</strong>,[知乎这个问题](<a href="https://chengpengzhao.com/files_store/以投资的角度来看，买保险的人是不是愚蠢的？">https://chengpengzhao.com/files_store/以投资的角度来看，买保险的人是不是愚蠢的？</a> - 知乎 (2020-02-05 下午8_41_43).html)也给了我很多启发。<br>其实刚开始看到别人把保险列入资产里时我还是很不解的，因为我印象中的保险（特别是国内的保险）都带有理赔难、一文不值、买了跟没买一样等标签（也不知道是谁在什么时候给我贴上去的）。但无论如何，<strong>保险是个人潜在金融风险的重要防御手段，也是家庭最基本的防线</strong>，人生在世有那么多意外，说不定哪天自己就被楼顶跳楼的那个人砸中了呢？有了保险，我们可以规避风险、为家庭减负，作为一个有家庭有社会角色的人（虽然我还没有）如果不考虑这些风险是不负责任的。  </p><p>关于保险的话题我还有很多要学习的地方，一段时间后再总结下吧...</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 记录 </category>
+          
+          <category> 工作 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TiddlyWiki </tag>
+            
+            <tag> Gnucash </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>高温气体动力学基础知识复习</title>
       <link href="/2020-01-23-gao-wen-qi-ti-dong-li-xue-fu-xi/"/>
       <url>/2020-01-23-gao-wen-qi-ti-dong-li-xue-fu-xi/</url>
@@ -193,9 +226,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> OpenFOAM </category>
+          
+          <category> CFD </category>
           
           <category> 英语 </category>
           
@@ -282,9 +315,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> OpenFOAM </category>
+          
+          <category> CFD </category>
           
           <category> 英语 </category>
           
@@ -317,9 +350,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> OpenFOAM </category>
+          
+          <category> CFD </category>
           
           <category> 英语 </category>
           
@@ -379,9 +412,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> OpenFOAM </category>
+          
+          <category> CFD </category>
           
           <category> 英语 </category>
           
@@ -820,9 +853,9 @@
           
           <category> 语言 </category>
           
-          <category> 生活 </category>
-          
           <category> 日本語 </category>
+          
+          <category> 生活 </category>
           
           <category> 记录 </category>
           
@@ -907,9 +940,9 @@
       
       <categories>
           
-          <category> 兴趣爱好 </category>
-          
           <category> 生活 </category>
+          
+          <category> 兴趣爱好 </category>
           
           <category> 博客 </category>
           
