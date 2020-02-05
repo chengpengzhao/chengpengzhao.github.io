@@ -114,29 +114,6 @@
     </item>
     
     <item>
-      <title>正则表达式学习笔记</title>
-      <link>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</link>
-      <guid>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</guid>
-      <pubDate>Fri, 10 Jan 2020 15:00:00 GMT</pubDate>
-      <description>
-      
-        
-        
-          
-          
-            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。&lt;br&gt;大家都推荐这本书： 
-          
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul><h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>]]></content:encoded>
-      
-      <comments>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/#disqus_thread</comments>
-    </item>
-    
-    <item>
       <title>渋谷半日游</title>
       <link>https://chengpengzhao.com/2020-01-09-shibui-gu-ban-ri-you/</link>
       <guid>https://chengpengzhao.com/2020-01-09-shibui-gu-ban-ri-you/</guid>
@@ -157,6 +134,29 @@
       <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-24.jpg" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-1.jpg" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-2.jpg" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-3.jpg" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-4.jpg" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-5.jpg" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-6.jpg" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-7.jpg" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-8.jpg" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-9.jpg" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-10.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-11.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-12.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-13.jpg" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-14.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-15.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-16.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-17.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-18.jpg" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-19.jpg" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-20.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-21.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-22.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-23.jpg" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content:encoded>
       
       <comments>https://chengpengzhao.com/2020-01-09-shibui-gu-ban-ri-you/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>正则表达式学习笔记</title>
+      <link>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</link>
+      <guid>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</guid>
+      <pubDate>Fri, 10 Jan 2020 15:00:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。&lt;br&gt;大家都推荐这本书： 
+          
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul><h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>]]></content:encoded>
+      
+      <comments>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/#disqus_thread</comments>
     </item>
     
     <item>
