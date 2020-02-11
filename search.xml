@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>折腾下闲置的VPS，部署Bitwarden_rs和sharelist</title>
+      <link href="/2020-02-08-bitwarden-mi-ma-guan-li-ji-v2ray-da-jian/"/>
+      <url>/2020-02-08-bitwarden-mi-ma-guan-li-ji-v2ray-da-jian/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="折腾下闲置的VPS">1&emsp;折腾下闲置的VPS</h1><p>本科时同学推荐搬瓦工的VPS，当然那时我连VPS是什么都不知道，听说能够翻过围墙所以就买了。对Linux一窍不通的我在曾经的doubi根据地上的文章指引下，也能够搭建一个比较舒服的上网环境，当时感到十分愉快（用的当然是那些一键脚本）。<br>过了一年除了IP被封过两次、换了几个机房、换了几个一键脚本以外，倒也还没觉得有啥不满；毕竟如果是买市面上那些服务每个月的钱也差不多。<br>人总是在不断学习进步的，我总算学会了一些linux基本操作，可以用XShell登一登我的VPS没事<code>ls</code>一下。但看到大佬们用自己的VPS搭各种服务器到时候，还是非常羡慕的，于是忍不住也尝试下，顺便学习下后端相关知识。<br><br></p><p>由于时间有限，以能用为唯一目的，多余的知识没时间更没必要去掌握（毕竟专业和这个毫不相关），操作全部记录在这方便以后换VPS时再搭一遍。</p><h1 id="Bitwarden-rs部署">2&emsp;Bitwarden_rs部署</h1><h2 id="前言">2.1&emsp;前言</h2><p>好用的密码管理软件之一，<code>_rs</code>版本相对于官方版精简了不少，部署也比较简单。网上大多数bitwarden_rs部署教程的文章我基本上都过了一遍，我遇到的主要问题有：</p><ol><li>部署后用Chrome浏览器无法登录与注册账号，IOS系统无法登录 (——后确定为<strong>未用https</strong>的原因)  </li><li>网上关于申请https这部分往往一笔带过，什么Nginx反向代理啦....看得我这样的零基础玩家云里雾里。  </li></ol><p>结果大量时间都花在如何启用https上了，真让人头大。</p><h2 id="步骤">2.2&emsp;步骤</h2><h3 id="VPS初始配置">2.2.1&emsp;VPS初始配置</h3><p>经过几次重装OS后学乖了，把初始配置做成一个脚本。 </p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> -i<span class="token function">apt-get</span> <span class="token function">install</span> curl -y<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span> -y<span class="token function">apt-get</span> <span class="token function">install</span> vim -y<span class="token comment" spellcheck="true">#=========================</span><span class="token comment" spellcheck="true">#Vim配置</span>curl -fLo ~/.vim/autoload/plug.vim --create-dirs \    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim<span class="token comment" spellcheck="true">#=========================</span><span class="token function">git</span> clone https://github.com/chengpengzhao/My_vimrc.git<span class="token function">cd</span> My_vimrc<span class="token function">git</span> checkout dev-WSL<span class="token function">cp</span> ./<span class="token string">'.vimrc(ssh)'</span> ~/.vimrc<span class="token comment" spellcheck="true">#=========================</span><span class="token comment" spellcheck="true">#安装Docker、docker-compose</span><span class="token function">sudo</span> curl -fsSL https://get.docker.com <span class="token operator">|</span> <span class="token function">bash</span> -s docker --mirror Aliyun<span class="token function">sudo</span> curl -L <span class="token string">"https://github.com/docker/compose/releases/download/1.24.0/docker-compose-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -s<span class="token variable">)</span></span>-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -m<span class="token variable">)</span></span>"</span> -o /usr/local/bin/docker-compose<span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-composesystemctl start dockersystemctl <span class="token function">enable</span> docker<span class="token comment" spellcheck="true">#=========================</span><span class="token comment" spellcheck="true"># 安装acme.sh</span><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">cron</span> socat -ycurl https://get.acme.sh <span class="token operator">|</span> sh<span class="token function">source</span> ~/.bashrc<span class="token function">export</span> Namesilo_Key<span class="token operator">=</span><span class="token string">"xxxxxxxxxxxxx"</span>（我的域名提供商）apt <span class="token function">install</span> firewalld -yfirewall-cmd --permanent --add-service<span class="token operator">=</span>http firewall-cmd --permanent --add-service<span class="token operator">=</span>https firewall-cmd --reload <span class="token function">service</span> docker restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>步骤因人而异，大致都差不多。</p><h3 id="一般部署（没有https的）">2.2.2&emsp;一般部署（没有https的）</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p /opt/bitwarden <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> /opt/bitwarden<span class="token function">cat</span> <span class="token operator">>></span> docker-compose.yml <span class="token operator">&lt;&lt;</span> <span class="token string">EOFversion: "3"services:  bitwarden:    image: bitwardenrs/server    restart: always    ports:    - "8081:80"    volumes:      - ./bw-data:/data    environment:      WEBSOCKET_ENABLED: "true"      SIGNUPS_ALLOWED: "true"      WEB_VAULT_ENABLED: "true"EOF</span>docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>端口相关知识我真的一窍不通...反正能用<code>ip:8081</code>访问就行。</p><h3 id="启用https">2.2.3&emsp;启用https</h3><p>稀里糊涂的装了个acme.sh脚本、在NameSilo申请了个API key；</p><pre class="line-numbers language-bash"><code class="language-bash">acme.sh --issue --dns dns_namesilo --dnssleep 900 -d my_domain_name.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>看到没有报错的时候真的松了口气，然而证书是申请了，怎么绑到之前的bitwarden_rs的domain里我还是不会。<br>后面发现<a href="https://chengpengzhao.com/files_store/%E5%BC%80%E6%BA%90%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%9ABitwarden_rs%20%E7%AC%AC%E4%B8%89%E6%96%B9%E7%89%88%E6%9C%AC%E9%83%A8%E7%BD%B2%20-%20%E8%80%81%E5%85%84de%E5%8D%9A%E5%AE%A2%20(2020-02-11%20%E4%B8%8A%E5%8D%889_45_29).html">这篇教程</a>和其他的都有些不一样，于是抱着一丝希望试了下...总算是解决了问题。</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">>></span> docker-compose.yml <span class="token operator">&lt;&lt;</span> <span class="token string">EOFversion: "3"services:  bitwarden:    image: bitwardenrs/server    restart: always    volumes:      - ./bw-data:/data    environment:      WEBSOCKET_ENABLED: "true"      SIGNUPS_ALLOWED: "true"  caddy:    image: abiosoft/caddy    restart: always    volumes:      - ./Caddyfile:/etc/Caddyfile:ro      - caddycerts:/root/.caddy    ports:      - 80:80      - 443:443    environment:      ACME_AGREE: "true"       DOMAIN: "bitwarden.koko.cat"      EMAIL: "example@gmail.com"volumes:  caddycerts:EOF</span><span class="token function">cat</span> <span class="token operator">>></span> Caddyfile <span class="token operator">&lt;&lt;</span> <span class="token string">EOF{<span class="token variable">$DOMAIN</span>} {    tls {<span class="token variable">$EMAIL</span>}    header / {        Strict-Transport-Security "max-age=31536000;"        X-XSS-Protection "1; mode=block"        X-Frame-Options "DENY"    }    proxy /notifications/hub/negotiate bitwarden:80 {        transparent    }    # Notifications redirected to the websockets server    proxy /notifications/hub bitwarden:3012 {        websocket    }    # Proxy the Root directory to Rocket    proxy / bitwarden:80 {        transparent    }}EOF</span>docker-compose down <span class="token operator">&amp;&amp;</span> docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="定时备份">2.2.4&emsp;定时备份</h3><p>直接用github备份算了，或者定时手动导出到你觉得安全的位置。</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~ssh-keygen -t rsa<span class="token function">cat</span> ~/.ssh/id_rsa.pub<span class="token comment" spellcheck="true">#之后在github上导入，新建私人repository</span><span class="token function">cd</span> /opt/bitwarden/bw-data<span class="token function">git</span> init<span class="token function">git</span> remote add origin git@github.com:xxxx/xxxx.git<span class="token function">git</span> add -A<span class="token function">git</span> commit -m <span class="token string">"first push"</span><span class="token function">git</span> push -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>建立脚本并定时运行：  </p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~<span class="token function">cat</span> <span class="token operator">>></span> backup.sh <span class="token operator">&lt;&lt;</span> <span class="token string">EOF#!/bin/bashdate=<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> '+%Y-%m-%d %H:%M'<span class="token variable">)</span></span>cd /opt/bitwarden/bw-datagit add -Agit commit -m "backup at <span class="token variable">$date</span>"git pushEOF</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>bash ~/gitback.sh</code>试运行，设置定时任务</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"15 05 * * * bash ~/gitback.sh > ~/siteback.log 2>&amp;1 &amp;"</span> <span class="token operator">></span> bt.cron<span class="token function">crontab</span> bt.cron<span class="token function">rm</span> -rf bt.cron<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>自动备份部分白嫖的<a href="https://www.moerats.com/archives/858/" target="_blank" rel="noopener">Rat&#39;s Blog</a>。<br>查看定时任务可通过<code>crontab -l</code></p><h1 id="Sharelist分享云盘">3&emsp;Sharelist分享云盘</h1><p><a href="https://github.com/reruin/sharelist" target="_blank" rel="noopener">项目地址</a><br>这个搭起来就简单多了，dockerr都给你准备好了，只需要注意安装完成后配置云盘可能比较复杂；我选用的是<strong>链接分享</strong>的方式，可以自己指定文件夹且不需要获取API之类的复杂操作。  </p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">wget</span> --no-check-certificate -qO-  https://raw.githubusercontent.com/reruin/sharelist/master/netinstall.sh <span class="token operator">|</span> <span class="token function">bash</span><span class="token function">cd</span> sharelistdocker-compose up<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>没错安装就是这么简单~(能用就行，网址配置、Nginx什么的就勘弁してくれ)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VPS </tag>
+            
+            <tag> Bitwarden </tag>
+            
+            <tag> sharelist </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>开始使用TiddlyWiki个人笔记系统和Gnucash个人财务管理系统</title>
       <link href="/2020-02-05-kai-shi-shi-yong-tiddlywiki-ge-ren-bi-ji-xi-tong-he-gnucash-ge-ren-cai-wu-guan-li-xi-tong/"/>
       <url>/2020-02-05-kai-shi-shi-yong-tiddlywiki-ge-ren-bi-ji-xi-tong-he-gnucash-ge-ren-cai-wu-guan-li-xi-tong/</url>
@@ -15,9 +46,9 @@
           
           <category> 工作 </category>
           
-          <category> 生活 </category>
-          
           <category> 工具 </category>
+          
+          <category> 生活 </category>
           
           <category> 记录 </category>
           
@@ -124,6 +155,35 @@
     
     
     <entry>
+      <title>渋谷半日游</title>
+      <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
+      <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-24.jpg" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-1.jpg" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-2.jpg" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-3.jpg" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-4.jpg" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-5.jpg" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-6.jpg" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-7.jpg" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-8.jpg" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-9.jpg" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-10.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-11.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-12.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-13.jpg" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-14.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-15.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-16.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-17.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-18.jpg" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-19.jpg" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-20.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-21.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-22.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-23.jpg" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+            <tag> 相册 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>正则表达式学习笔记</title>
       <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
       <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
@@ -145,35 +205,6 @@
             <tag> 使用tips </tag>
             
             <tag> 正则表达式 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>渋谷半日游</title>
-      <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
-      <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-24.jpg" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-1.jpg" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-2.jpg" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-3.jpg" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-4.jpg" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-5.jpg" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-6.jpg" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-7.jpg" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-8.jpg" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-9.jpg" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-10.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-11.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-12.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-13.jpg" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-14.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-15.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-16.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-17.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-18.jpg" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-19.jpg" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-20.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-21.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-22.jpg" alt><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200109-23.jpg" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 生活 </category>
-          
-          <category> 记录 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 相册 </tag>
-            
-            <tag> 日记 </tag>
             
         </tags>
       
@@ -510,9 +541,9 @@
       
         <tags>
             
-            <tag> 写作 </tag>
-            
             <tag> 语法 </tag>
+            
+            <tag> 写作 </tag>
             
             <tag> markdown </tag>
             
@@ -717,9 +748,9 @@
       
         <tags>
             
-            <tag> 相册 </tag>
-            
             <tag> 日记 </tag>
+            
+            <tag> 相册 </tag>
             
         </tags>
       
@@ -746,9 +777,9 @@
       
         <tags>
             
-            <tag> 相册 </tag>
-            
             <tag> 日记 </tag>
+            
+            <tag> 相册 </tag>
             
         </tags>
       
@@ -851,13 +882,13 @@
           
           <category> 学习 </category>
           
-          <category> 生活 </category>
-          
           <category> 语言 </category>
           
-          <category> 记录 </category>
+          <category> 生活 </category>
           
           <category> 日本語 </category>
+          
+          <category> 记录 </category>
           
       </categories>
       
