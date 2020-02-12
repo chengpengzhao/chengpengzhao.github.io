@@ -588,14 +588,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.3k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    8 Min
+                    9 Min
                 </div>
                 
 				
@@ -713,6 +713,18 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
 <li>电脑保养，清下灰什么的</li>
 <li>换个（固态）硬盘——穷人的折中方案</li>
 </ul>
+<h1 id="Python环境变量问题">8&emsp;Python环境变量问题</h1><h2 id="起因-5">8.1&emsp;起因</h2><p>最近重装了WSL，由Ubuntu换到了Debian，据说更稳定一些。但遇到了个小问题：pythonn3-pip安装一些库之后调用还是提示<code>command not found</code>，估计着是环境变量没设置好。  </p>
+<h2 id="解决方案-6">8.2&emsp;解决方案</h2><p>进入python查看相关路径：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">python3
+<span class="token operator">>></span><span class="token operator">></span>  <span class="token function">import</span> sys 
+<span class="token operator">>></span><span class="token operator">></span> sys.path<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>我机器的运行结果是：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'/usr/lib/python37.zip'</span><span class="token punctuation">,</span> <span class="token string">'/usr/lib/python3.7'</span><span class="token punctuation">,</span> <span class="token string">'/usr/lib/python3.7/lib-dynload'</span><span class="token punctuation">,</span> <span class="token string">'/home/zcp/.local/lib/python3.7/site-packages'</span><span class="token punctuation">,</span> <span class="token string">'/usr/local/lib/python3.7/dist-packages'</span><span class="token punctuation">,</span> <span class="token string">'/usr/lib/python3/dist-packages'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>原来pip下载的包放到了<code>/home/zcp/.local/lib</code>路径下，而这一路径未被加入<code>PATH</code>里，自然会提示错误。<br>我用的zsh，故只需在<code>.zshrc</code>中加入该PATH就行：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">vim ~/.zshrc
+<span class="token comment" spellcheck="true"># 文件中加入下面一行</span>
+<span class="token function">export</span> PATH<span class="token operator">=</span>/home/zcp/.local/bin:<span class="token variable">$PATH</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>再<code>source ~/.zshrc</code>一下，问题解决~</p>
 
             </div>
 
@@ -1457,7 +1469,7 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">52.4k</span>&nbsp;字
+                class="white-color">52.6k</span>&nbsp;字
             
             <br>
             
