@@ -1,0 +1,70 @@
+==================================================================
+https://keybase.io/jiyotomare
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://chengpengzhao.com
+  * I am jiyotomare (https://keybase.io/jiyotomare) on keybase.
+  * I have a public key with fingerprint 77F3 7C33 368A D0B5 D528  10D1 BF57 38A1 7E62 F3FC
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101d134db355b1c6a46b2cc89897139b68c93d7f2dc7afe3eef1347ceb3931237700a",
+      "fingerprint": "77f37c33368ad0b5d52810d1bf5738a17e62f3fc",
+      "host": "keybase.io",
+      "key_id": "bf5738a17e62f3fc",
+      "kid": "0101d134db355b1c6a46b2cc89897139b68c93d7f2dc7afe3eef1347ceb3931237700a",
+      "uid": "d439d3c499e006cc8e1e80160f816119",
+      "username": "jiyotomare"
+    },
+    "service": {
+      "hostname": "chengpengzhao.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1583420488,
+  "expire_in": 157680000,
+  "prev": "f025e133da68ab3fc6137dc938031d05cba801913590e592051312f8932062ea",
+  "seqno": 3,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUn1sFEUcvZOrCVe1Km0NwaJdYz1IqTM7t1/nWW2VRD7bkoIFPS+7O7O97XG3
+19vl6HlSAwTaRqoUpGIDbWotaYhgolfMFQJeNMaABNRG1KZRG0tRi61GaUiDONvA
+f/7pJJPJ/Oa9N+/3ZvbePc/hdvY+WLPk6PjQVue5XxTHS3J+TYpRDJxkfCkmTOYW
+shkT0wqGdcz4GAABxBB5sYI4ToEqL3t5hVVVURIlASJJ4UVVQljQWKwKskYQIRqF
+CypRkIQgiwQBAJkpZTQ9Wk/isbgetaisIGhIUBFCvChjoHCYY0UIMFQ0TkCiDAXC
+sxrSVEoMGabNoOYU2SRlukFrdBOcs/cf+P/Z95Y5OexFEkaqV5IIADyVIZCIAPJA
+EyEPoWQDTRKPyhFC0Q160rCMiBwnzLZShtYTukrsaO1ebmHUEInWx+h8OSQbZaoR
+oRKxOKWpxmZ6HLKsmOmz6VYyZuO3EiV4Symo6FFM46SMBImbuhFlfJAiVUu3pSEn
+Ii8LvKJYypCmmB4nQd1GcAIvAjrse0iCSgY1wHIEIoRl+gwKjY+HSMA0FxEgiAGn
+KjJtUoKIkwDhJBZwkEajiRJiAc8SOx6TNEYNxoeoT7meapp6fVS2ttidu9ucH7oc
+TrejqLDYtXS7+kzZneDbptNYu/0Fc+6w/5/DPf/e25Xqhbk3n84EXOunL3z8xp60
+p/mhnpO7vziwynF1cvr0p4+mWp2Zx4f7e1e3518cStZVLhir+UyZGOsGh3dtCL3T
+Hh5ee2OK73jsr+O12WUjpV11R/7MpvKvDVzpSm+C+UPh46lav+tgyH/ptxf+KXnv
+jLh4YqZnrG2m5YPnntgnHTnx6qFHWvqb3/TVDe+Smg8FkjvblKaKDSdrvloMcPv+
+kBVji08VnKl6Sy78o2rfxM0SzJavi5x6Zf2s42xV8SeN45mxgbdnj/mYjd3Pfp8s
+8vuXPblmx3K9Idds7Fh9V2j64uTv2Wj6xWOjV2MjU89fvyF+k9dw7XLn5HlzpTnU
+NhOo2DG/8sf3p1q3r0l7Vnzn8qxt/bIjrPjPLokc/Nu6z6NmBt25T2W0SvjT5z0T
+fd2XF60an9c3+/Oee74O9B2o3u0pURp+XVCel0lXJNY9YA7mdGb7R4u6xs//sOnc
+ioUnnBtHOi8sysnrLbhyvXWgqTC7d+e26vToRy3lrwUSDx+9VPv6u0sH7h8sOFz0
+Lw==
+=xnxh
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jiyotomare
+
+==================================================================
