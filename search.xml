@@ -214,9 +214,9 @@
           
           <category> 生活 </category>
           
-          <category> 工作 </category>
-          
           <category> 记录 </category>
+          
+          <category> 工作 </category>
           
           <category> 工具 </category>
           
@@ -452,9 +452,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> 英语 </category>
+          
+          <category> CFD </category>
           
           <category> OpenFOAM </category>
           
@@ -514,9 +514,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> 英语 </category>
+          
+          <category> CFD </category>
           
           <category> OpenFOAM </category>
           
@@ -549,9 +549,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> 英语 </category>
+          
+          <category> CFD </category>
           
           <category> OpenFOAM </category>
           
@@ -611,9 +611,9 @@
           
           <category> 工作 </category>
           
-          <category> CFD </category>
-          
           <category> 英语 </category>
+          
+          <category> CFD </category>
           
           <category> OpenFOAM </category>
           
@@ -709,9 +709,9 @@
       
         <tags>
             
-            <tag> 写作 </tag>
-            
             <tag> 语法 </tag>
+            
+            <tag> 写作 </tag>
             
             <tag> markdown </tag>
             
@@ -1048,11 +1048,11 @@
       
       <categories>
           
+          <category> 生活 </category>
+          
           <category> 学习 </category>
           
           <category> 语言 </category>
-          
-          <category> 生活 </category>
           
           <category> 日本語 </category>
           
