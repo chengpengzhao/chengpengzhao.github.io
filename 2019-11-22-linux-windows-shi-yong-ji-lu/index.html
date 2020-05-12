@@ -600,21 +600,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-02-12
+                    2020-05-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.5k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    9 Min
+                    11 Min
                 </div>
                 
 				
@@ -744,6 +744,34 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
 <span class="token comment" spellcheck="true"># 文件中加入下面一行</span>
 <span class="token function">export</span> PATH<span class="token operator">=</span>/home/zcp/.local/bin:<span class="token variable">$PATH</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>再<code>source ~/.zshrc</code>一下，问题解决~</p>
+<p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-05-12 21:19:28</em></p>
+</blockquote>
+<h1 id="Ubuntu的引导修复">9&emsp;Ubuntu的引导修复</h1><p>刚开始接触Linux系统时就遇到了这个问题，折腾了好像有一整天，当时忘记把解决方法记录下来了，结果在不久的将来又遇到了几次这个问题，真是醉了（可能是因为我安装的是第三方的ubuntu镜像，默认装了一些专业相关的软件）。</p>
+<h2 id="解决方案-7">9.1&emsp;解决方案</h2><h3 id="摆脱gurb界面">9.1.1&emsp;摆脱gurb界面</h3><p>欣喜的安装完Ubuntu系统、重启，却进入了一片黑的grub界面，不要慌，愚蠢的系统需要你来引导一下：</p>
+<pre class="line-numbers language-grub"><code class="language-grub"># 方法1
+
+set root=(hd 
+# 按Tab补全，找到Linux系统所在盘符
+set prefix=(hd*,**)/boot/grub
+insmod normal
+normal
+
+# 方法2
+set root=(hd 
+set prefix=(hd*,**)/boot/grub
+linux /boot/vmli...
+initrd /initrd...
+#...表示按Tab补全
+boot<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>两种方法我都用过，上次装双系统用的方法2，这次在旧电脑装ubuntu用方法1就奏效了。</p>
+<h3 id="修复引导">9.1.2&emsp;修复引导</h3><ul>
+<li><p>第一种方法，用u盘进入它上面的ubuntu系统，安装boot-repair软件进行修复<br>装双系统时我这样一弄就能成功引导了，但这次却不管用，不知道啥原因</p>
+</li>
+<li><p>用<code>rEFind</code>软件进行引导<br>经过前一个步骤进入系统后，直接在<a href="http://www.rodsbooks.com/refind/" target="_blank" rel="noopener">rEFind官网</a>下载deb包安装就行了，之后重启进入bios调整boot顺序，将rEFind放在第一位。</p>
+</li>
+</ul>
 
             </div>
 
@@ -1039,16 +1067,16 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/%E5%86%99%E4%BD%9C/">
+                        <span class="chip bg-color">写作</span>
+                    </a>
+                    
                     <a href="/tags/%E8%AF%AD%E6%B3%95/">
                         <span class="chip bg-color">语法</span>
                     </a>
                     
                     <a href="/tags/markdown/">
                         <span class="chip bg-color">markdown</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%86%99%E4%BD%9C/">
-                        <span class="chip bg-color">写作</span>
                     </a>
                     
                 </div>
@@ -1247,7 +1275,7 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">79.4k</span>&nbsp;字
+                class="white-color">79.8k</span>&nbsp;字
             
             <br>
             
