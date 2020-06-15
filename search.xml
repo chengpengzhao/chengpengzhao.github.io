@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Auto.js编写游戏脚本入门</title>
+      <link href="/2020-06-15-autojs-xue-xi/"/>
+      <url>/2020-06-15-autojs-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="介绍">1&emsp;介绍</h1><blockquote><p>Auto.js is a UiAutomator on android, does not need root access(安卓平台上的JavaScript自动化工具)</p></blockquote><p> 看作者的<code>github ID</code> <a href="https://github.com/hyb1996/Auto.js" target="_blank" rel="noopener">hyb1996</a>应该是个90后大佬；由于Auto.js很适合用来写安卓脚本，被国内各种灰产滥用是少不了的，毕竟很多人靠这个赚钱。<br> 我自己比较喜欢偶尔写一些<code>游戏脚本</code>用用，之前一直用<strong>按键精灵</strong>写脚本，找图找色功能比较好用，但需要设备有root权限，而且用久了发现有些功能实现起来还比较麻烦，故这次打算找个新平台尝试一下。Autojs由于是基于安卓的无障碍服务，只有个别命令需要root权限，此外还支持对控件的操作，功能看上去还挺强大。  </p><p> 因为我的需求是能够写<strong>游戏脚本</strong>，不像一般的APP可以直接操作控件，而只能通过基于坐标的操作完成。所以Autojs里关于控件的部分可以略过不看（除了多账号登录时的登录界面可能会用到一点控件操作，其他基本用不到），大致的学习流程：</p><ol><li>软件安装及环境搭建（版本选择、运行测试）</li><li><code>JavaScript</code>基础语法学习（变量类型、流程操作...）</li><li><code>Auto.js</code>分模块学习，如系统交互（文件读写、设备信息、打开应用...）、找图找色（游戏脚本的核心）、UI界面、多线程...</li></ol><h1 id="安装及环境配置">2&emsp;安装及环境配置</h1><p>我用的是最新的<a href="https://pro.autojs.org/" target="_blank" rel="noopener">Pro</a>版，去淘宝官方店买就行，也不贵；<code>app</code>安装好了就可以在手机上编脚本了，但由于效率低大多数情况都是在电脑上编连接手机（或模拟器）进行测试，官方是通过<code>VSCODE</code>的一个插件来实现这一交互的，虽然对像我这样的非VSCODE用户（Vim党）来说不够友好，但好像只有这一条路可走。<br>安装好后把<code>Auto.js-Pro-Ext</code>这个插件装上(Vim用户再装个vscodevim)，随便创建个<code>.js</code>文件会发现右边有个绿色的小安卓图标，点击后（或者通过快捷键<code>Ctrl+Shift+p</code>）发现可以通过输入IP（和电脑同一网络）、adb（插USB）两种方式连接，手机的话一般连接不会有什么问题，连接成功的话右下角会有一行提示。<br>要注意的是如果使用的是<strong>模拟器</strong>，这时候的网络配置就有点麻烦了。比如我用的雷电模拟器，需要开启网络桥接模式、并设置好静态IP才能连接上，具体操作可以看<a href="https://www.52pojie.cn/thread-1169466-1-1.html" target="_blank" rel="noopener">这篇文章</a>。<br>（非Vim用户直接跳过就行）Vim用户可能需要配置下自己习惯了的常用快捷键，直接在插件的设置里打开<code>settings.json</code>文件改就行了，范例如下：</p><pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>  <span class="token property">"vim.easymotion"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token property">"vim.incsearch"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token property">"vim.useSystemClipboard"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token property">"vim.useCtrlKeys"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token property">"vim.hlsearch"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token property">"vim.insertModeKeyBindings"</span><span class="token operator">:</span> <span class="token punctuation">[</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;C-h>"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;left>"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;C-l>"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;right>"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;C-j>"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;down>"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;C-k>"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;up>"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;C-d>"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"&lt;Delete>"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token property">"vim.normalModeKeyBindings"</span><span class="token operator">:</span> <span class="token punctuation">[</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"E"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"$"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"H"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"^"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token property">"vim.visualModeKeyBindings"</span><span class="token operator">:</span> <span class="token punctuation">[</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"E"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"$"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>      <span class="token property">"before"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"H"</span>      <span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token property">"after"</span><span class="token operator">:</span> <span class="token punctuation">[</span>        <span class="token string">"^"</span>      <span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>连接上了之后当然是必不可少的<code>hello world</code>测试，常用的输出方式有3种：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token function">toast</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//输出到手机屏幕</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//输出到日志</span><span class="token function">toastLog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//前两者之和</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//输出到控制台，console模块的一个成员函数，可以通过console.show()在手机上显示</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h1 id="JavaScript基础">3&emsp;JavaScript基础</h1><p>推荐直接去<a href="https://www.w3school.com.cn/js/index.asp" target="_blank" rel="noopener">w3school</a>或者<a href="https://www.runoob.com/js/js-tutorial.html" target="_blank" rel="noopener">runoob</a>过一遍，这里只列举一些我觉得要注意的地方。</p><ul><li><p>直观感受，很多语法和C\C++一模一样（除了声明变量要用<code>var</code>、函数要加<code>function</code>...）。</p></li><li><p><code>undefined</code>：只声明过但未赋值的变量。</p></li><li><p><code>==</code>与<code>===</code>： 前者是<code>equality</code>、后者为<code>identity</code>，即后者不会进行类型转换，类型不同的结果一定不等。</p></li><li><p>JS的数据类型：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> length <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>                             <span class="token comment" spellcheck="true">// 数字</span><span class="token keyword">var</span> lastName <span class="token operator">=</span> <span class="token string">"Gates"</span><span class="token punctuation">;</span>                      <span class="token comment" spellcheck="true">// 字符串</span><span class="token keyword">var</span> cars <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Porsche"</span><span class="token punctuation">,</span> <span class="token string">"Volvo"</span><span class="token punctuation">,</span> <span class="token string">"BMW"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// 数组</span><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token punctuation">{</span>firstName<span class="token punctuation">:</span><span class="token string">"Bill"</span><span class="token punctuation">,</span> lastName<span class="token punctuation">:</span><span class="token string">"Gates"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 对象</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li><li><p><code>null</code>：类型是对象，不存在的事物。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">null</span> <span class="token operator">===</span> undefined            <span class="token comment" spellcheck="true">// false</span><span class="token keyword">null</span> <span class="token operator">==</span> undefined             <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>对象： 通过关键词 &quot;new&quot; 来声明 JavaScript 变量，则该变量会被创建为对象。</p><pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//也可以通过person.firstName="..."的方式初始化</span><span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>firstName<span class="token punctuation">:</span> <span class="token string">"Bill"</span><span class="token punctuation">,</span>lastName <span class="token punctuation">:</span> <span class="token string">"Gates"</span><span class="token punctuation">,</span>id       <span class="token punctuation">:</span> <span class="token number">678</span><span class="token punctuation">,</span>fullName <span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">//成员函数</span>  <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>firstName <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lastName<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>在字符串中换行，需要加一个反斜杠(非ECMAScript标准）：</p><pre class="line-numbers language-js"><code class="language-js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"demo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"Hello \Kitty!"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p><code>String</code>和<code>Number</code>相加时，会将数字转为字符串；<code>String</code>和<code>Number</code>相减时，会将字符串转为数字；</p></li><li><p>数组添加元素： <code>array.push(&quot;value&quot;)</code></p></li><li><p>常用对象： Date() （获取时间）、 Math() (常用数学工具)</p></li><li><p><code>use strict;</code>: 定义 JavaScript 代码应该以“严格模式”执行。</p></li><li><p>JavaScript的对象通过<code>引用</code>来寻址：</p><pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//person是个对象</span><span class="token keyword">var</span> x <span class="token operator">=</span> person<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 这不会创建 person 的副本，x相当于person的别名，即引用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li></ul><h1 id="Auto-js常用命令及模块">4&emsp;Auto.js常用命令及模块</h1><p>下面分几个部分把编写游戏脚本时可能用到的模块全部讲一下吧，顺便对自己也是个学习完善的过程，全部学完花的时间可能比较多，自己也还有别的事要做，尽量每天写一点吧。<br>官方文档地址：<a href="https://hyb1996.github.io/AutoJs-Docs/#/" target="_blank" rel="noopener">https://hyb1996.github.io/AutoJs-Docs/#/</a></p><h2 id="系统读写等操作">4.1&emsp;系统读写等操作</h2><h3 id="App、Device">4.1.1&emsp;App、Device</h3><h3 id="Files">4.1.2&emsp;Files</h3><h3 id="Shell">4.1.3&emsp;Shell</h3><h2 id="游戏脚本核心">4.2&emsp;游戏脚本核心</h2><h3 id="触摸模拟（基于坐标）、Keys">4.2.1&emsp;触摸模拟（基于坐标）、Keys</h3><h3 id="colors、images">4.2.2&emsp;colors、images</h3><h2 id="脚本结构管理">4.3&emsp;脚本结构管理</h2><h3 id="module">4.3.1&emsp;module</h3><h3 id="Threads">4.3.2&emsp;Threads</h3><h2 id="交互界面">4.4&emsp;交互界面</h2><h3 id="Events、Dialogs">4.4.1&emsp;Events、Dialogs</h3><h3 id="Floaty、Console">4.4.2&emsp;Floaty、Console</h3><h3 id="UI">4.4.3&emsp;UI</h3><p><br><br></p><blockquote><p>未完...</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 兴趣爱好 </category>
+          
+          <category> 脚本 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Auto.js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>log4cpp和gdb学习</title>
       <link href="/2020-05-24-log4cpp-he-gdb-xue-xi/"/>
       <url>/2020-05-24-log4cpp-he-gdb-xue-xi/</url>
@@ -535,9 +562,9 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
+          
+          <category> 语言 </category>
           
           <category> CFD </category>
           
@@ -597,9 +624,9 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
+          
+          <category> 语言 </category>
           
           <category> CFD </category>
           
@@ -632,9 +659,9 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
+          
+          <category> 语言 </category>
           
           <category> CFD </category>
           
@@ -694,9 +721,9 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
+          
+          <category> 语言 </category>
           
           <category> CFD </category>
           
@@ -876,9 +903,9 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
+          
+          <category> 语言 </category>
           
           <category> linux </category>
           
@@ -1137,13 +1164,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 生活 </category>
           
-          <category> 日本語 </category>
+          <category> 语言 </category>
           
           <category> 记录 </category>
+          
+          <category> 日本語 </category>
           
       </categories>
       
