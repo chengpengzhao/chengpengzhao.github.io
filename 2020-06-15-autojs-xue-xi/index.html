@@ -598,21 +598,21 @@ Auto.js is a UiAutomator on android, does not need root access(安卓平台上�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-06-16
+                    2020-06-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.4k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    9 Min
+                    17 Min
                 </div>
                 
 				
@@ -852,13 +852,179 @@ file<span class="token punctuation">.</span><span class="token function">close</
 sh<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"ls"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//执行命令，注意该函数没有返回值！！  并且命令执行是"异步"的，不会等待上一步执行完成。</span>
 sh<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//强制退出</span>
 sh<span class="token punctuation">.</span><span class="token function">exitAndWaitFor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//等待执行完成并退出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="Android常用shell命令"><a href="#Android常用shell命令" class="headerlink" title="Android常用shell命令"></a>Android常用shell命令</h4><h2 id="游戏脚本核心">4.2&emsp;游戏脚本核心</h2><h3 id="触摸模拟（基于坐标）、Keys">4.2.1&emsp;触摸模拟（基于坐标）、Keys</h3><ol>
+<h4 id="Android常用shell命令"><a href="#Android常用shell命令" class="headerlink" title="Android常用shell命令"></a>Android常用shell命令</h4><ul>
+<li><p>Input</p>
+<pre class="line-numbers language-sh"><code class="language-sh">input text 'hello world'
+input keyevent 26  # Powerkey<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>am</p>
+<pre class="line-numbers language-sh"><code class="language-sh"># 感觉对写脚本没太大帮助...
+am start ...
+am kill ...
+am force-stop ...
+am restart ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>pm</p>
+<pre class="line-numbers language-sh"><code class="language-sh">pm list packages #列出所有APP包，这个命令感觉有点用
+pm install ...
+pm uninstall ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>wm</p>
+<pre class="line-numbers language-sh"><code class="language-sh">wm size #查看屏幕尺寸
+wm size 720x1280 # 修改尺寸
+wm size reset #还原<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="游戏脚本核心">4.2&emsp;游戏脚本核心</h2><h3 id="触摸模拟（基于坐标）、Keys">4.2.1&emsp;触摸模拟（基于坐标）、Keys</h3><ol>
 <li><p><code>sleep(n)</code>：暂停运行n毫秒，游戏脚本中最常出现的一个命令；有一些操作必须给它一定的缓冲时间才能正确运行完成。</p>
 </li>
 <li><p>随机数： <code>random(min,max)</code>指定区间、<code>random()</code>范围是[0,1)；点击坐标时常设置一个随机偏移，防止被检测到（每次都点同一个点还是太明显了）</p>
 </li>
+<li><p>分辨率适配问题，<code>setScreenMetrics(1080, 1920);</code>、表示脚本适合的屏幕宽高为1080x1920（编脚本时基于的设备），如果在别的分辨率手机上运行则会自动放缩光标。听上去很好的一个功能，一般游戏脚本必加这一行，但具体效果如何我没有测试过。</p>
+</li>
+<li><p><code>click(x,y)</code>：点击坐标（无需root权限），返回是否成功，点击过程大约150ms，可能被其他事件中断。更长时间的点击如<code>longClick(x,y)</code>、持续600ms。</p>
+</li>
+<li><p><code>press(x,y,duartion)</code>：按住坐标，一般超过500ms才被系统认为是长按。</p>
+</li>
+<li><p><code>swipe(x1,y1,x2,y2,duration)</code>： 从(x1,y1)滑动到(x2,y2)，持续duration。</p>
+</li>
+<li><p><code>RootAutomator</code><br>上面的几个触摸操作都是免root的，而基于RootAutomator对象的触摸需要root权限，优点是执行没有延迟，明显比click要快。</p>
+<pre class="line-numbers language-sh"><code class="language-sh">var ra=new RootAutomator(); //初始化一个对象
+ra.tap(x,y,id); //id代表不同“手指”，用于多点触摸，不需要时可省略该参数
+ra.swipe(x1,y1,x2,y2,duration,id)
+ra.press(x,y,duration,id)
+// 这些命令组合在一起就能完成复杂的操作了~
+ra.touchDown(x,y,id)
+ra.touchMove(x,y,id)
+ra.touchUp(id)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>模拟按键；（返回bool值）</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//按下返回键</span>
+<span class="token function">home</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//返回桌面</span>
+还有一些需要root权限的，开头字母大写<span class="token punctuation">:</span>
+<span class="token comment" spellcheck="true">//Home()、Back()、Power()、Menu()、OK()、KeyCode()...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ol>
-<h3 id="colors、images">4.2.2&emsp;colors、images</h3><h2 id="脚本结构管理">4.3&emsp;脚本结构管理</h2><h3 id="module">4.3.1&emsp;module</h3><h3 id="Threads">4.3.2&emsp;Threads</h3><h2 id="交互界面">4.4&emsp;交互界面</h2><h3 id="Events、Dialogs">4.4.1&emsp;Events、Dialogs</h3><h3 id="Floaty、Console">4.4.2&emsp;Floaty、Console</h3><h3 id="UI">4.4.3&emsp;UI</h3><p><br><br></p>
+<h3 id="colors、images">4.2.2&emsp;colors、images</h3><h4 id="colors"><a href="#colors" class="headerlink" title="colors"></a>colors</h4><p>颜色常用十六进制值或RGB值来表示，如蓝色可表示为<code>#0000FF</code>或<code>(0,0,255)</code>，一般都是<code>#</code>后面带6位十六进制数，分别表示R、G、B，但Autojs是8位，前面多了一个<code>A(Alpha)</code>、表示透明度，即ARGB。</p>
+<ol>
+<li><p>Autojs通过一个16进制整数或一个字符串表示一个颜色，两者可以互相转换</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> myBlue<span class="token operator">=</span>colors<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>color<span class="token punctuation">.</span>BLUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回#ff0000ff,colors.BLUE代表蓝色，后面必须大写。</span>
+<span class="token keyword">var</span> numBlue<span class="token operator">=</span>colors<span class="token punctuation">.</span><span class="token function">parseColor</span><span class="token punctuation">(</span><span class="token string">"#ff0000ff"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回-16776961,至于为什么是这个数我也不清楚，平时还是用字符串表示比较好。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>colors对象里还有一些判断两个颜色的相似度、返回A、R、G、B通道值的函数，平时也基本上用不上；颜色的用途主要体现在后面的多点找色上。</p>
+</li>
+</ol>
+<h4 id="images"><a href="#images" class="headerlink" title="images"></a>images</h4><p>游戏脚本的灵魂所在，images主要有图片处理、找图、找色几个部分；想让脚本识别游戏的某个区域、如果该区域的位置是固定的，通过构造多点比色比较快，而如果位置不固定则常用找图的方式，虽然占用资源比较多但准确性有保障。</p>
+<ol>
+<li><p>images对象使用完后必须回收，防止内存泄漏。</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> img<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token string">"./name.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//读取图片，错误时返回null</span>
+<span class="token comment" spellcheck="true">//var img=images.load(url); //从网址获取图片</span>
+<span class="token comment" spellcheck="true">//...图片操作后回收</span>
+img<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 例外：captureScreen()返回的图片无需回收</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>images对象能对图像进行复制、保存、Base64编码解码、剪切、调整大小、放缩、旋转、拼接、灰度化、阈值化、颜色控件转换、二值化、模糊与平滑处理、滤波...（强是很强大，就是基本上用不上）</p>
+</li>
+<li><p>获取截图权限：在找图找色之前往往要先获取当前屏幕的截图，这个截图一般是临时的、不会保存到文件（也可以设置保存）。 截图之前要向系统<strong>申请一次</strong>截图权限：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">requestScreenCapture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//可指定参数true（横屏截图） 或者 false（竖屏截图）</span>
+ <span class="token function">toast</span><span class="token punctuation">(</span><span class="token string">"请求截图失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>请求截图: <code>captureScreen</code></p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//在此之前记住要请求一次截图权限</span>
+<span class="token keyword">var</span> img<span class="token operator">=</span><span class="token function">captureScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//可以指定保存路径path</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>颜色获取，很重要的一个函数，后面多点找色时可以先用它获取参数值。</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//获取某点的ARGB颜色值</span>
+<span class="token keyword">var</span> color<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">pixel</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//img是之前创建的images对象</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>区域找色（一种颜色）；<code>findColor</code>、<code>findColorInRegion</code>、<code>findColorEquals</code></p>
+</li>
+</ol>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//首先说下region和threshold这两个参数，后面的找色函数options里都要用到：</span>
+<span class="token comment" spellcheck="true">//region、找色区域，默认全图、指定[x,y]代表左上角点，从(x,y)到右下角；指定[x,y,width,height]则代表从(x,y)到(x+width,y+height)。</span>
+<span class="token comment" spellcheck="true">//threshold、相似度临界值，0~255，默认为4；similarity=1-threshold/255，可以算出默认相似度达到了0.98，觉得太严了可以适当增大threshold</span>
+<span class="token keyword">var</span> point <span class="token operator">=</span> images<span class="token punctuation">.</span><span class="token function">findColor</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token string">"#ff0000"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> region<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">,</span> threshold<span class="token punctuation">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//如果找到则返回一个点，如：{463.0, 1242.0}；找不到返回null。</span>
+<span class="token comment" spellcheck="true">//这里颜色值是6位，8位也行不过会忽略A通道（透明度）。</span>
+<span class="token comment" spellcheck="true">// findColorInRegion，功能和findColor一样，只是优化了下参数表示。</span>
+<span class="token keyword">var</span> point<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">findColorInRegion</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span><span class="token string">"#ff0000"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token number">1080</span><span class="token punctuation">,</span><span class="token number">1920</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// findColorEquals，要求颜色完全相等，相当于findColor的threshold参数设为0</span>
+<span class="token keyword">var</span> point<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">findColorEquals</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span><span class="token string">"#ff0000"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token number">1080</span><span class="token punctuation">,</span><span class="token number">1920</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li><p>多点找色：<code>findMultiColors</code>，先定位第一个点的颜色、根据(x,y)偏移获取并对比第二个点的颜色...以此类推，命令很麻烦，通常需要写一个函数来构造颜色列。</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> point <span class="token operator">=</span> images<span class="token punctuation">.</span><span class="token function">findMultiColors</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token string">"#ff949fc7"</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//第一个点</span>
+ <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token string">"#ffe6efe6"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//颜色Array，</span>
+ <span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token string">"#ffeef3e6"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token string">"#ffe6efe6"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token string">"#ffeef3e6"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">{</span> region<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1548</span><span class="token punctuation">,</span> <span class="token number">803</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//指定区域</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>检测某坐标颜色：前几个命令都是根据颜色找坐标，这个是给坐标、比较颜色</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">if</span><span class="token punctuation">(</span>images<span class="token punctuation">.</span><span class="token function">detectsColor</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span><span class="token string">"#fed9a8"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token string">"diff"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//最后两个参数可省略，代表threshold和匹配算法；x=100,y=200</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>找图：有时候找颜色会匹配到一些奇怪的地方去，还得用找图来实现，有<code>images.findImage</code>、<code>images.findImageInRegion</code>、<code>images.matchTemplate</code>。</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> temp1<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>pathToImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> point<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">findImage</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span>temp1<span class="token punctuation">,</span><span class="token punctuation">{</span> region<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">,</span> threshold<span class="token punctuation">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//同样findImageInRegion只是优化了下参数排列</span>
+<span class="token comment" spellcheck="true">//matchTemplate可以同时返回找到的多个位置，通过max控制最大的结果数量</span>
+<span class="token keyword">var</span> result<span class="token operator">=</span>images<span class="token punctuation">.</span><span class="token function">matchTemplate</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span>temp1<span class="token punctuation">,</span><span class="token punctuation">{</span> region<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">,</span> threshold<span class="token punctuation">:</span> <span class="token number">10</span> <span class="token punctuation">,</span>max<span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//返回类型是一个MatchingResult对象，有point和similarity这两个数据成员。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="脚本结构管理">4.3&emsp;脚本结构管理</h2><h3 id="module">4.3.1&emsp;module</h3><p>在一个文件里通过<code>module.exports =...;</code>把某个对象导出，从而可以在另一个文件通过<code>var name=require(&#39;file.js&#39;);</code>导入；相当于把整个文件当做一个函数，把exports的东西当做返回值。感觉用起来也不太方便，我选择不用这个功能。</p>
+<h3 id="Threads">4.3.2&emsp;Threads</h3><ol>
+<li><p>启动一个子线程，<code>threads.start</code>：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//启动一个无限循环的线程</span>
+<span class="token keyword">var</span> thread <span class="token operator">=</span> threads<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//用thread对象可以控制线程运行状态，如果不需要操作可以改为：</span>
+<span class="token comment" spellcheck="true">//threads.start(function(){</span>
+ <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"子线程运行中..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+thread<span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><code>threads.shutDownAll()</code>： 停止所有通过<code>threads.start()</code>启动的子线程</p>
+</li>
+<li><p>等待线程开始执行（一般start后需要一段时间）：<code>thread.waitFor();</code>（这里thread是前面创建的thread变量）</p>
+</li>
+<li><p>等待线程执行完成：<code>thread.join();</code>，参数可以指定一个等待时间</p>
+</li>
+<li><p>中断线程运行：<code>thread.interrupt();</code></p>
+</li>
+<li><p>注意多线程中的变量问题，涉及到<strong>线程安全</strong>，文档里说的很详细</p>
+</li>
+<li><p>线程间的通信与传递变量，通过<code>var connect = threads.disposable();</code>实现；发送结果：<code>connect.setAndNotify(s);</code>，接收结果：<code>connect.blockedGet(s);</code></p>
+</li>
+</ol>
+<h2 id="交互界面">4.4&emsp;交互界面</h2><h3 id="Events、Dialogs">4.4.1&emsp;Events、Dialogs</h3><ol>
+<li><p>Events模块主要用来监听按键、触摸、通知等，但放在单线程里可能会因为程序其他部分而无法及时执行，造成非预期的结果，常常和多线程<code>Threads</code>模块一起使用，如音量键关闭脚本的例子：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token function">auto</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+threads<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//在子线程中调用observeKey()从而使按键事件处理在子线程执行</span>
+ events<span class="token punctuation">.</span><span class="token function">observeKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//启用按键监听</span>
+ events<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"key_down"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>keyCode<span class="token punctuation">,</span> events<span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token comment" spellcheck="true">//常用事件有key、key_down、key_up、exit、toast、notification、touch(触摸某点)</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span>keyCode <span class="token operator">==</span> keys<span class="token punctuation">.</span>volume_up<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//音量上键关闭脚本</span>
+         <span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+events<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"exit"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">//脚本停止运行时会触发exit事件</span>
+ <span class="token function">toast</span><span class="token punctuation">(</span><span class="token string">"脚本已结束"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"脚本运行中..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><code>Dialogs</code></p>
+</li>
+</ol>
+<h3 id="Floaty、Console">4.4.2&emsp;Floaty、Console</h3><h3 id="UI">4.4.3&emsp;UI</h3><p><br><br></p>
 <blockquote>
 <p>未完...</p>
 </blockquote>
@@ -1369,7 +1535,7 @@ Auto.js is a UiAutomator on android, does not need root access(安卓平台上�
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84k</span>&nbsp;字
+                class="white-color">86k</span>&nbsp;字
             
             <br>
             
