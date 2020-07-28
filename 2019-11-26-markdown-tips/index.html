@@ -685,7 +685,7 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
 <p>若要使用第三种方法，两行之间至少要空一行才能正常显示。注意使用链接时地址一定要<strong>写完整</strong>，前面的<code>http://</code>不要丢了，不然会按照相对地址进行跳转。<br>链接还可以加个title，在地址后用引号的形式写上就行；当把鼠标移到链接上时就会显示title了。<br>举个例子：<br><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306" target="_blank" rel="noopener" title="这是一篇文献">Airfoil optimisation for vertical‐axis wind turbines with variable pitch</a></p>
 <h3 id="图片">2.7.2&emsp;图片</h3><p>和链接极为相似，只是前面多了个<code>!</code>号，注意是英文的感叹号。第一个框里面的名称基本上空着就行，或者简单写个描述，防止哪天图片挂了之后忘记当初这张图是啥样的。<br>当然也可以用HTML标签来表示图片，还能加上更多的格式控制，不过显得比较麻烦</p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>图片网址<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>说到图片肯定离不开图床，毕竟图片太多的时候总不能全往一个地方塞。这里推荐PicGo这款软件，Windows和Linux下都能用，添加图片也很方便，看看它总结的一些图床吧：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191127104125.webp" alt><br>我还是白嫖的Github当作图床，不过缺点是有时候国内访问速度很慢甚至打不开（对我来说没影响就行），不过好像还有免费的<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">CDN加速可以用</a>。<br>同样图片也可以加一个title，鼠标移上去的时候会显示出来。像我这个Hexo主题还会在下方显示一行图注。</p>
+<p>说到图片肯定离不开图床，毕竟图片太多的时候总不能全往一个地方塞。这里推荐PicGo这款软件，Windows和Linux下都能用，添加图片也很方便，看看它总结的一些图床吧：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/20191127104125.webp" alt><br>我还是白嫖的Github当作图床，不过缺点是有时候国内访问速度很慢甚至打不开（对我来说没影响就行），不过好像还有免费的<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">CDN加速可以用</a>。<br>同样图片也可以加一个title，鼠标移上去的时候会显示出来。像我这个Hexo主题还会在下方显示一行图注。</p>
 <h2 id="列表">2.8&emsp;列表</h2><pre><code>- a
 + b
 * c</code></pre><p>这三种都可以表示无序列表，还是推荐使用<code>-</code>，因为按键最简单；注意要<strong>留一个空格</strong>。</p>
@@ -704,7 +704,7 @@ __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>
 <p>再在根目录的<code>_config.yml</code>中加入：</p>
 <pre class="line-numbers language-xml"><code class="language-xml">Plugins:
   - hexo-reference<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>就能够使用脚注了！使用方法：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191127211059.webp" alt><br>举个例子：Rogalsky<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="ROGALSKY T P. Acceleration of differential evolution for aerodynamic design[M]. 2004.
+<p>就能够使用脚注了！使用方法：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/20191127211059.webp" alt><br>举个例子：Rogalsky<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="ROGALSKY T P. Acceleration of differential evolution for aerodynamic design[M]. 2004.
 ">[1]</span></a></sup><br>更高端一点，可以在脚注内容里面加上链接，点击直接进入文献相关页面：De Tavernier<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[DE TAVERNIER D, FERREIRA C, BUSSEL G. Airfoil optimisation for vertical‐axis wind turbines with variable pitch[J]. Wind Energy, 2019, 22(4): 547–562.](https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2306)]  
 ">[2]</span></a></sup><br>用户体验极佳~</p>
 <h2 id="公式">2.10&emsp;公式</h2><p>首先得要有公式的引擎，毕竟公式这么复杂的东西Markdown自己很难搞定吧。一般推荐用MathJax引擎，配置好了之后可以用LaTeX语法写公式了~</p>
@@ -986,7 +986,7 @@ x^n+y^n=z^n
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20191128214258.webp" class="responsive-img" alt="python爬虫入门练习——Sourceforge自动下载">
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191128214258.webp" class="responsive-img" alt="python爬虫入门练习——Sourceforge自动下载">
                         -->
                         <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">python爬虫入门练习——Sourceforge自动下载</span>
 
@@ -1044,7 +1044,7 @@ x^n+y^n=z^n
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store/master/img/20191122203851.webp" class="responsive-img" alt="Linux/Windows使用记录">
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/20191122203851.webp" class="responsive-img" alt="Linux/Windows使用记录">
                         -->
                         <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Linux/Windows使用记录</span>
                     </div>
@@ -1243,7 +1243,7 @@ x^n+y^n=z^n
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">92.3k</span>&nbsp;字
+                class="white-color">92.4k</span>&nbsp;字
             
             <br>
             

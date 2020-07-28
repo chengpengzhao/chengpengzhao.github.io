@@ -1042,7 +1042,7 @@ events<span class="token punctuation">.</span><span class="token function">on</s
 <h2 id="基础模块编写与调试">5.3&emsp;基础模块编写与调试</h2><p>对于上面这些需求，可以按顺序来编写，比如可以拍一拍脑袋、就决定先实现日常探索这个功能吧！接下来要做的就是<strong>进一步分解</strong>，把要实现这个功能的<strong>每一个步骤</strong>列出来，把每一步作为一个<strong>基础模块</strong>写成一个function或是别的。<br>比如日常探索这个功能，首先要进入探索页面吧，为此需要定位的基准（如游戏主页）吧，毕竟在哪个页面运行的脚本谁也说不准，那么第一个模块就是<code>backToMainPage()</code>了；进入探索页面后还需要决定刷哪一关、用券刷还是手动刷、手动刷的话如何判断战斗结束、用券刷那么券没有了怎么办、刷完后会弹出一些确认窗口需要处理...一开始需要考虑的问题比较多没办法，但这些模块有很多是能直接放到别的功能中的，一般写着写着就会感觉越来越顺，之后要多考虑的往往是模块间的衔接，比如加个<code>sleep(time)</code>保证动作能够顺利完成。<br>然后是整合模块进行调试，看能不能完成目标功能，如果不能那么是哪一步出问题了（图片识别失败？、动作间停顿时间过短？、没考虑意外情况出现？...）。有时候并不能立刻发现问题，而要等到用一段时间后。</p>
 <h2 id="功能实现">5.4&emsp;功能实现</h2><p>这一部分没啥好说的，一个功能完成、调试也没问题之后，那就下一个呗，只到实现所有当初列的需求功能。</p>
 <h2 id="UI制作">5.5&emsp;UI制作</h2><p>官方提供了很多案例，网上也有许多大佬自己做的漂亮UI，选一个自己进行修改就行了。我选择的是一个悬浮窗类型的界面，可以最小化到窗口边缘不占位置，也方便及时调整脚本的运行状态。<br>一般勾选框比较常用，其次是下拉选择以及按钮，功能这块最好加一个中止当前脚本运行，防止脚本不正确运行。</p>
-<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200725183831.webp" alt></p>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200725183831.webp" alt></p>
 <h2 id="使用中微调">5.6&emsp;使用中微调</h2><p>一般最经常调整的东西有两大块：一是间隔时间，即动作之间的<code>sleep(time)</code>如何决定，这个要不断地尝试改良，没别的；二是图片识别，有时候换个电脑换个模拟器脚本就没法识图了，这时往往要考虑：  </p>
 <ol>
 <li>是不是图片选取不恰当，太小或者太大或者特征不明显</li>
@@ -1555,7 +1555,7 @@ events<span class="token punctuation">.</span><span class="token function">on</s
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">92.3k</span>&nbsp;字
+                class="white-color">92.4k</span>&nbsp;字
             
             <br>
             

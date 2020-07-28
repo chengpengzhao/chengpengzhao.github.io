@@ -681,7 +681,7 @@ ssh-keygen -t rsa -b 4096 -C <span class="token string">"your_email@example.com"
 <pre><code>Agent pid 19103
 Identity added: /home/zcp/.ssh/id_rsa (/home/zcp/.ssh/id_rsa)
 Hi chengpengzhao! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><h2 id="密钥管理">2.5&emsp;密钥管理</h2><p>不知道多少人是每换一个环境（比如换台电脑、换个操作系统、换台VPS）就把上述的<code>SSH keys</code>配置流程重新走一遍的，然后保存了一大堆的私钥。固然，这样安全性比较高，但我更偏向于只使用<strong>一对</strong>密钥，生成之后好好保管着，然后要用的时候复制到相关环境里。<br>最近学shell脚本顺便就写了个自己用的<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener">一键配置Linux环境</a>，我甚至把<strong>SSH公钥</strong>和<strong>加密后的私钥</strong>都放到了<code>Github Repository</code>里，目的是尽可能减少本地管理的密钥数量。这里加密是利用<code>GnuPG</code>完成的。</p>
-<h1 id="GPG">3&emsp;GPG</h1><h2 id="是什么-1">3.1&emsp;是什么</h2><p>刚开始分不清<code>GPG</code>和<code>PGP</code>，以为有一个是写错了，后来才知道原来<code>PGP</code>代表<code>Pretty Good Privacy</code>，是一个加密用的商业软件；<code>GPG</code>是<code>GnuPG</code>的简称，是一个开源软件、<code>PGP</code>的替代品。还有个叫<code>OpenPGP</code>的一套标准，大多数<code>PGP</code>软件都遵循它。 <code>GPG</code>可以用来实现非对称的<strong>文件加密</strong>、对数据进行<strong>签名</strong>等操作；这也是它最主要的两个用途，如GitHub里<code>Verified</code>的签名就是用它实现的：<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200304001924.webp" alt></p>
+<h1 id="GPG">3&emsp;GPG</h1><h2 id="是什么-1">3.1&emsp;是什么</h2><p>刚开始分不清<code>GPG</code>和<code>PGP</code>，以为有一个是写错了，后来才知道原来<code>PGP</code>代表<code>Pretty Good Privacy</code>，是一个加密用的商业软件；<code>GPG</code>是<code>GnuPG</code>的简称，是一个开源软件、<code>PGP</code>的替代品。还有个叫<code>OpenPGP</code>的一套标准，大多数<code>PGP</code>软件都遵循它。 <code>GPG</code>可以用来实现非对称的<strong>文件加密</strong>、对数据进行<strong>签名</strong>等操作；这也是它最主要的两个用途，如GitHub里<code>Verified</code>的签名就是用它实现的：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200304001924.webp" alt></p>
 <h2 id="密钥和子密钥">3.2&emsp;密钥和子密钥</h2><p><code>PGP</code>中有密钥对和子秘钥的概念，如果我们只使用主密钥对，那么私钥泄露后只能吊销整个密钥，所以一般不使用主密钥，而是通过产生一系列用途各异的子秘钥进行操作。好像可以单独导出子秘钥，但公钥由于是公开的，所以主公钥、子公钥都是捆绑在一起的。 (试过只导出一个子公钥，结果和导出所有公钥的输出一模一样)<br><strong>使用建议</strong>：主私钥不要放在网络上，平时只用子私钥操作，并且最好设定一个过期时间；一般用三个子私钥(A验证+E加密+S签名) 。<br><br><br>关于一些人建议将<code>PGP key</code>上传到一些<code>key server</code>，我是<strong>反对</strong>这种做法的，因为公钥服务器上的key<strong>无法删除</strong>，只能被吊销，而且可能暴露你的email等信息。而又几乎没有任何好处，谁会真正去<code>key server</code>上搜你的公钥？搜到的公钥安全性也没有保障；建议公开公钥到更加安全的地方。<br>服务器上的公钥更多的是利用gnupg的<strong>相互签署机制</strong>，即可以签署别人的公钥，即告诉其他人自己是信任这个人的公钥的真实性的；但说真的有多少人会真正用到这个功能呢，总之<strong>不推荐</strong>传<code>key server</code>。<br><br></p>
 <h2 id="常用命令-1">3.3&emsp;常用命令</h2><h3 id="生成密钥">3.3.1&emsp;生成密钥</h3><pre class="line-numbers language-bash"><code class="language-bash">gpg --full-gen-key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>选择因需求而异，我是默认类型、44096位、永不过期、用户标识、密钥安全密码。<br>生成完后会出现类似下面输出：</p>
@@ -745,7 +745,7 @@ gpg --delete-keys <span class="token punctuation">[</span>ID<span class="token p
 <h3 id="导入密钥">3.3.8&emsp;导入密钥</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#从本地文件导入</span>
 gpg --import <span class="token punctuation">[</span>密钥文件<span class="token punctuation">]</span>
 <span class="token comment" spellcheck="true"># 从URL导入</span>
-curl https://raw.githubusercontent.com/chengpengzhao/Zcp-s-PGP-Signatures/master/Zcp_PGP.pub <span class="token operator">|</span> gpg --import<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+curl https://cdn.jsdelivr.net/gh/chengpengzhao/Zcp-s-PGP-Signatures/Zcp_PGP.pub <span class="token operator">|</span> gpg --import<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我导入完成后的输出：</p>
 <pre><code>/home/zcp/.gnupg/pubring.kbx
 ----------------------------
@@ -1037,7 +1037,7 @@ gpg --verify demo.txt.asc demo.txt<span aria-hidden="true" class="line-numbers-r
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200309220126.webp" class="responsive-img" alt="さらば、霓虹">
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200309220126.webp" class="responsive-img" alt="さらば、霓虹">
                         -->
                         <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">さらば、霓虹</span>
 
@@ -1092,7 +1092,7 @@ gpg --verify demo.txt.asc demo.txt<span aria-hidden="true" class="line-numbers-r
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200229231215.webp" class="responsive-img" alt="《1984》个人读书摘录">
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200229231215.webp" class="responsive-img" alt="《1984》个人读书摘录">
                         -->
                         <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">《1984》个人读书摘录</span>
                     </div>
@@ -1279,7 +1279,7 @@ gpg --verify demo.txt.asc demo.txt<span aria-hidden="true" class="line-numbers-r
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">92.3k</span>&nbsp;字
+                class="white-color">92.4k</span>&nbsp;字
             
             <br>
             
