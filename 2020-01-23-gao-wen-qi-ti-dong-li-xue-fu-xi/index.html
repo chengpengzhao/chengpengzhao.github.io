@@ -1286,9 +1286,10 @@
       box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
     }
 
-    #vcomments .vcards .vcard .vh .vcard {
+    #vcomments .vcards .vcard .vh {
       border: none;
       box-shadow: none;
+      overflow: auto;
     }
 </style>
 
@@ -1308,7 +1309,7 @@
   <div class="comment-wrap">
     <div class="comments-items-1" data-name="Valine" style="display: none; animation: 0.5s ease 0s 1 normal none running tabshow;">
       <div class="card valine-card" data-aos="fade-up">
-        <div id="vcomments" class="card-content" style="display: grid">
+        <div id="vcomments" >
         </div>
       </div>
     </div>
@@ -1498,20 +1499,20 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
-                                </a>
-                            
                             <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
                                     生活
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
                                 </a>
                             
                             <a href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/" class="post-category">
                                     记录
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
