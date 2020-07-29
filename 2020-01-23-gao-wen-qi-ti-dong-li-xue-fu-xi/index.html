@@ -952,147 +952,509 @@
   </div>
   
   <style>
-.mvaline-card {
-    margin: 1.5rem auto;
+.valine-card {
+  margin: 1.5rem auto;
 }
-    .mvaline-card .card-content {
-        padding: 20px 20px 5px 20px;
+
+    .valine-card .card-content {
+      padding: 20px 20px 5px 20px;
     }
-    .utterances {
-        display: block;
-        position: relative;
-        max-width: 2260px;
+
+    #vcomments textarea {
+      box-sizing: border-box;
+      background: url("/medias/comment_bg.png") 100% 100% no-repeat;
     }
+
+    #vcomments p {
+      margin: 2px 2px 10px;
+      font-size: 1.05rem;
+      line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+      text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+      padding: 0 2px;
+      color: #4cbf30;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    #vcomments img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    #vcomments ol li {
+      list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+      display: block;
+      padding-left: 2em;
+      word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+      display: list-item;
+      line-height: 1.8rem;
+      font-size: 1rem;
+    }
+
+    #vcomments ul li {
+      list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+      list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+      padding: 12px 13px;
+      border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+      border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+      background-color: #fafafa;
+    }
+
+    #vcomments table th {
+      background-color: #f2f2f2;
+      min-width: 80px;
+    }
+
+    #vcomments table td {
+      min-width: 80px;
+    }
+
+    #vcomments h1 {
+      font-size: 1.85rem;
+      font-weight: bold;
+      line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+      font-size: 1.65rem;
+      font-weight: bold;
+      line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+      font-size: 1.45rem;
+      font-weight: bold;
+      line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+      font-size: 1rem;
+      line-height: 1.3rem;
+    }
+
+    #vcomments p {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+      margin: 12px 0;
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+      margin: 15px 0;
+      border-left: 5px solid #42b983;
+      padding: 1rem 0.8rem 0.3rem 0.8rem;
+      color: #666;
+      background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+      font-family: monospace, monospace;
+      padding: 1.2em;
+      margin: .5em 0;
+      background: #272822;
+      overflow: auto;
+      border-radius: 0.3em;
+      tab-size: 4;
+    }
+
+    #vcomments code {
+      font-family: monospace, monospace;
+      padding: 1px 3px;
+      font-size: 0.92rem;
+      color: #e96900;
+      background-color: #f8f8f8;
+      border-radius: 2px;
+    }
+
+    #vcomments pre code {
+      font-family: monospace, monospace;
+      padding: 0;
+      color: #e8eaf6;
+      background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+      padding: 1.2em;
+      margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+      color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+      position: inherit;
+      margin-left: -1.3rem;
+      margin-right: 0.4rem;
+      margin-top: -1px;
+      vertical-align: middle;
+      left: unset;
+      visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+      font-weight: bold;
+    }
+
+    #vcomments dfn {
+      font-style: italic;
+    }
+
+    #vcomments small {
+      font-size: 85%;
+    }
+
+    #vcomments cite {
+      font-style: normal;
+    }
+
+    #vcomments mark {
+      background-color: #fcf8e3;
+      padding: .2em;
+    }
+
+    #vcomments table, th, td {
+      padding: 12px 13px;
+      border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+      background-color: #fafafa;
+    }
+
+    #vcomments table th {
+      background-color: #f2f2f2;
+      min-width: 80px;
+    }
+
+    #vcomments table td {
+      min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+      position: inherit;
+      margin-left: -1.3rem;
+      margin-right: 0.4rem;
+      margin-top: -1px;
+      vertical-align: middle;
+      left: unset;
+      visibility: visible;
+    }
+</style>
+
+<style>
+.utterances {
+  display: block;
+  position: relative;
+  max-width: 2260px;
+}
     .comments-area .comment-head .comment-headling {
-        display: inline-block;
-        vertical-align: middle;
-        font-weight: 700;
-        font-size: 20px;
-        padding-left: 20px;
-        top: 5px;
-        padding-bottom: 15px;
-        position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      font-weight: 700;
+      font-size: 20px;
+      padding-left: 20px;
+      top: 5px;
+      padding-bottom: 15px;
+      position: relative;
     }
     .comment-head .comment-switch {
-        display: inline-block;
-        float: right;
-        margin: .1rem auto 0;
-        top: 5px;
-        position: relative;
-        padding: .2rem .8rem;
-        right: 25px;
-        width: max-content;
-        border-radius: 8px;
-        background: #f6f8fa;
+      width: max-content;
+      border-radius: 8px;
+      background: #f6f8fa;
+      display: inline-block;
+      vertical-align: middle;
+      height: 30px;
+      font-weight: 700;
+      font-size: 16px;
+      top: 5px;
+      padding-right: 20px;
+      position: relative;
+      float: right;
     }
     .comment-head .comment-switch .first-comment {
-        color: #49b1f5;
+      color: #49b1f5;
     }
     .comment-head .comment-switch label {
-        position: relative;
-        display: inline-block;
-        margin: 0 .4rem;
-        width: 52px;
-        height: 22px;
-        vertical-align: sub;
+      position: relative;
+      display: inline-block;
+      margin: 0 .4rem;
+      width: 52px;
+      height: 0px;
+      font-size: 0px;
+      vertical-align: middle;
     }
     .comment-head .comment-switch label .slider {
-        border-radius: 34px;
-        background-color: #49b1f5;
-        cursor: pointer;
-        transition: .4s;
+      border-radius: 34px;
+      background-color: #49b1f5;
+      cursor: pointer;
+      transition: .4s;
+      position: absolute;
+      top: -12px;
     }
     .comments-area .comment-head .comment-switch label .slider:before {
-        position: absolute;
-        bottom: 4px;
-        left: 4px;
-        width: 19px;
-        height: 19px;
-        border-radius: 50%;
-        background-color: #fff;
-        content: '';
-        transition: .4s;
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background-color: #fff;
+      content: '';
+      transition: .4s;
     }
     [type="checkbox"]:checked+span:not(.lever):before {
-        box-sizing: border-box;
-        padding: 0;
-        border:2px solid #5a5a5a;
-        top: 0;
+      box-sizing: border-box;
+      padding: 0;
+      border:2px solid #5a5a5a;
+      top: 0;
     }
     .comments-area .comment-head .comment-switch label input#switch-comments-btn:checked+.slider {
-        background-color: #ff7242;
+      background-color: #ff7242;
     }
     .comments-area .comment-head .comment-switch label input#switch-comments-btn:checked+.slider:before {
-        transform: translateX(25px);
+      transform: translateX(25px);
     }
     .comment-head .comment-switch .second-comment {
-        color: #ff7242;
+      color: #ff7242;
+    }
+    #vcomments .vheader .vnick {
+      width: 30%;
+    }
+
+    #vcomments .vheader .vmail {
+      width: 30%;
+    }
+
+    #vcomments .vheader .vlink {
+      width: 30%;
+    }
+    #vcomments .vcards .vcard {
+      padding: 15px 20px 0 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+      transition: all .3s
+    }
+
+    #vcomments .vcards .vcard:hover {
+      box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+    }
+
+    #vcomments .vcards .vcard .vh .vcard {
+      border: none;
+      box-shadow: none;
     }
 </style>
 
 <section class="comments-area" id="comment-area">
-    <div class="comment-head">
-        <div class="comment-headling">
-            <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-            <span class="comment-title-count">评论(可能需要fq)</span>
-        </div>
-        <div class="comment-switch">
-            <span class="first-comment">MiniValine</span>
-            <label><input id="switch-comments-btn" type="checkbox" checked="1" data-com.bitwarden.browser.user-edited="yes"><span class="slider"></span></label>
-            <span class="second-comment">utteranc.es</span></div>
+  <div class="comment-head">
+    <div class="comment-headling">
+      <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+      <span class="comment-title-count">评论</span>
     </div>
+    <div class="comment-switch">
+      <span class="first-comment">MiniValine</span>
+      <label><input id="switch-comments-btn" type="checkbox" checked="1" data-com.bitwarden.browser.user-edited="yes"><span class="slider"></span></label>
+      <span class="second-comment">utteranc.es</span></div>
+  </div>
 
-    <div class="comment-wrap">
-        <div class="comments-items-1" data-name="Valine" style="display: none; animation: 0.5s ease 0s 1 normal none running tabshow;">
-            <div class="card mvaline-card" data-aos="fade-up">
-                <div id="mvcomments" class="card-content" style="display: grid">
-                </div>
-            </div>
+
+  <div class="comment-wrap">
+    <div class="comments-items-1" data-name="Valine" style="display: none; animation: 0.5s ease 0s 1 normal none running tabshow;">
+      <div class="card valine-card" data-aos="fade-up">
+        <div id="vcomments" class="card-content" style="display: grid">
         </div>
-        <div class="comments-items-2" data-name="Sakura" style="display: block; animation: 0.5s ease 0s 1 normal none running tabshow;">
-            <script src="https://utteranc.es/client.js"
-                    repo="chengpengzhao/Zcp_blog_comments"
-                    issue-term="title"
-                    label="💬"
-                    theme="github-light"
-                    crossorigin="anonymous"
-                    async>
-            </script>
-        </div>
+      </div>
     </div>
+    <div class="comments-items-2" data-name="Sakura" style="display: block; animation: 0.5s ease 0s 1 normal none running tabshow;">
+      <div class="card" data-aos="fade-up">
+        <script src="https://utteranc.es/client.js"
+                repo="chengpengzhao/Zcp_blog_comments"
+                issue-term="title"
+                label="💬"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+    </div>
+  </div>
 
 </section>
 
 
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
 
-<script src="/libs/valine/MiniValine.min.js"></script>
 <script>
-    new MiniValine({
-        el: '#mvcomments',
-        appId: 'wPiPnze8CqlBdVjyEjHmfWv7-gzGzoHsz',
-        appKey: 'okV6V0RROqLEyh6xPS0xNEC5',
-        mode: 'xCss',
-        placeholder: '请优先使用utteranc.es评论系统，无法fq时再用这个MiniValine评论系统',
-        pathname: window.location.pathname,
-        metaplaceholder:{nick:"昵称/QQ号(必填)",mail:"邮箱(必填)",link:"网址(https://)"},
-        lang: '',
-        adminEmailMd5: 'de8a7aa53d07e6b6bceb45c64027763d',
-        tagMeta: ["管理员", "小伙伴", "访客"],
-        master: ["c32fe026f6881fef0d95880eab95e79c", "8378f846a3e6b47c90a7cf701f74d9f3"],
-        friends: [""],
-        math: true,
-        md: true,
-        enableQQ: false,
-        NoRecordIP: false,
-        visitor: true,
-        maxNest: 6,
-        pageSize: 6,
-        serverURLs: '',
-        emoticonUrl: ["https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest", "https://cdn.jsdelivr.net/npm/alus@latest"],
-    });
+  new Valine({
+    el: '#vcomments',
+    appId: 'wPiPnze8CqlBdVjyEjHmfWv7-gzGzoHsz',
+    appKey: 'okV6V0RROqLEyh6xPS0xNEC5',
+    placeholder: '说点啥吧大哥(推荐用另一个评论系统~)',
+    path: window.location.pathname,
+    avatar: 'mm',
+    visitor: 'false' === 'true',
+    pageSize: '6',
+    lang: 'en',
+    recordIP: 'true',
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/chengpengzhao/emoji/',
+    emojiMaps: {
+      "tb_ok": "ok.png",
+      "tb_啊": "啊.png",
+      "tb_啊哈哈": "啊哈哈.jpg",
+      "tb_哎~": "哎~.jpg",
+      "tb_暗中观察": "暗中观察.jpg",
+      "tb_鄙视": "鄙视.png",
+      "tb_别看，丢人！": "别看，丢人！.jpg",
+      "tb_不高兴": "不高兴.png",
+      "tb_吃鱼.gif": "吃鱼.gif",
+      "tb_大拇指": "大拇指.png",
+      "tb_灯泡": "灯泡.png",
+      "tb_高兴": "高兴.jpg",
+      "tb_乖": "乖.png",
+      "tb_哈哈": "哈哈.png",
+      "tb_哈哈手势": "哈哈手势.png",
+      "tb_还是喝酒": "还是喝酒.jpg",
+      "tb_还是算了": "还是算了.jpg",
+      "tb_汗": "汗.png",
+      "tb_呵呵": "呵呵.png",
+      "tb_喝嘤料": "喝嘤料.jpg",
+      "tb_黑线": "黑线.png",
+      "tb_滑稽": "滑稽.png",
+      "tb_滑稽摇摆.gif": "滑稽摇摆.gif",
+      "tb_稽之舞.gif": "稽之舞.gif",
+      "tb_紧张": "紧张.jpg",
+      "tb_惊讶": "惊讶.jpg",
+      "tb_绝望": "绝望.jpg",
+      "tb_咖啡": "咖啡.png",
+      "tb_开心": "开心.png",
+      "tb_可这和我的帅有什么关系": "可这和我的帅有什么关系.jpg",
+      "tb_酷": "酷.png",
+      "tb_狂汗": "狂汗.png",
+      "tb_老哥，稳": "老哥，稳.jpg",
+      "tb_泪": "泪.png",
+      "tb_冷": "冷.png",
+      "tb_怒": "怒.png",
+      "tb_喷": "喷.png",
+      "tb_气稽败坏": "气稽败坏.jpg",
+      "tb_钱": "钱.png",
+      "tb_钱币": "钱币.png",
+      "tb_蠕动.gif": "蠕动.gif",
+      "tb_弱": "弱.png",
+      "tb_瑟瑟发抖": "瑟瑟发抖.jpg",
+      "tb_生日蛋糕": "生日蛋糕.png",
+      "tb_睡觉": "睡觉.png",
+      "tb_随稽应变": "随稽应变.jpg",
+      "tb_太开心": "太开心.png",
+      "tb_太阳": "太阳.png",
+      "tb_头皮发麻": "头皮发麻.jpg",
+      "tb_突然滑稽": "突然滑稽.jpg",
+      "tb_吐": "吐.png",
+      "tb_吐舌": "吐舌.png",
+      "tb_微笑默叹以为妙绝": "微笑默叹以为妙绝.png",
+      "tb_委屈": "委屈.jpg",
+      "tb_委屈": "委屈.png",
+      "tb_无法接受": "无法接受.jpg",
+      "tb_无话可说": "无话可说.jpg",
+      "tb_相视一笑": "相视一笑.jpg",
+      "tb_笑死.gif": "笑死.gif",
+      "tb_笑眼": "笑眼.png",
+      "tb_耶手势": "耶手势.png",
+      "tb_一时语塞": "一时语塞.jpg",
+      "tb_咦": "咦.png",
+      "tb_疑问": "疑问.png",
+      "tb_阴险": "阴险.png",
+      "tb_月亮": "月亮.png",
+      "tb_跃跃欲试_2": "跃跃欲试_2.jpg",
+      "tb_跃跃欲试？.gif": "跃跃欲试？.gif",
+      "tb_跃跃欲试": "跃跃欲试.jpg",
+      "tb_真棒": "真棒.png",
+      "tb_自闭了": "自闭了.jpg",
+      "tb_坐地_2": "坐地_2.jpg",
+      "tb_坐地": "坐地.jpg",
+      // ... 更多表情
+    },
+    enableQQ: 'false',
+    meta: ['nick','mail','link'] ,
+    requiredFields: ['nick','mail'],
+  });
 </script>
+
+<!-- 滑块控制评论系统切换 -->
 <script type="application/javascript" data-pjax-comment="">
-    $(".slider").click(function(){if($(".comments-items-1").css("display")!='none'){$(".comment-title-count").html("评论(可能需要fq)");$(".comments-items-1").css({"display":"none","animation":"0.5s ease 0s 1 normal none running tabshow"});$(".comments-items-2").css({"display":"block","animation":"0.5s ease 0s 1 normal none running tabshow"});}else{$(".comment-title-count").html("评论");$(".comments-items-2").css({"display":"none","animation":"0.5s ease 0s 1 normal none running tabshow"});$(".comments-items-1").css({"display":"block","animation":"0.5s ease 0s 1 normal none running tabshow"});}});
+  $(".slider").click(function(){if($(".comments-items-1").css("display")!='none'){$(".comment-title-count").html("评论");$(".comments-items-1").css({"display":"none","animation":"0.5s ease 0s 1 normal none running tabshow"});$(".comments-items-2").css({"display":"block","animation":"0.5s ease 0s 1 normal none running tabshow"});}else{$(".comment-title-count").html("评论");$(".comments-items-2").css({"display":"none","animation":"0.5s ease 0s 1 normal none running tabshow"});$(".comments-items-1").css({"display":"block","animation":"0.5s ease 0s 1 normal none running tabshow"});}});
+</script>
+
+<!-- 点击滑块加载mathjax-->
+<script>
+  function loadScript(url, callback){
+    var script = document.createElement("script")
+    script.type = "text/javascript";
+    if (script.readyState){  //IE
+      script.onreadystatechange = function(){
+        if (script.readyState == "loaded" ||
+          script.readyState == "complete"){
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else {  //Others
+      script.onload = function(){
+        callback();
+      };
+    }
+    script.src = url;
+    document.body.appendChild(script);
+  };
+
+$(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML',function(){});});
 </script>
 
   
