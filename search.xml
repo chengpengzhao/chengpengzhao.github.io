@@ -466,35 +466,6 @@
     
     
     <entry>
-      <title>正则表达式学习笔记</title>
-      <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
-      <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul><h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作 </category>
-          
-          <category> 工具 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 使用tips </tag>
-            
-            <tag> 正则表达式 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>渋谷半日游</title>
       <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
       <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
@@ -516,6 +487,35 @@
             <tag> 日记 </tag>
             
             <tag> 相册 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>正则表达式学习笔记</title>
+      <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
+      <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul><h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 使用tips </tag>
+            
+            <tag> 正则表达式 </tag>
             
         </tags>
       
@@ -595,9 +595,9 @@
           
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
-          
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -657,9 +657,9 @@
           
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
-          
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -692,9 +692,9 @@
           
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
-          
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -754,9 +754,9 @@
           
           <category> 语言 </category>
           
-          <category> OpenFOAM </category>
-          
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -852,9 +852,9 @@
       
         <tags>
             
-            <tag> 语法 </tag>
-            
             <tag> 写作 </tag>
+            
+            <tag> 语法 </tag>
             
             <tag> markdown </tag>
             
@@ -1130,7 +1130,7 @@
       <link href="/2019-05-26-meng-xin-jian-bo-ke-de-guo-cheng/"/>
       <url>/2019-05-26-meng-xin-jian-bo-ke-de-guo-cheng/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有<a href="https://www.jianshu.com/p/a44a6347031c" target="_blank" rel="noopener">一些途径</a>我就不多说了。</p><p><a href="https://help.github.com/en/categories/github-pages-basics" target="_blank" rel="noopener">github pages</a>直接托管在github上，比较方便所以很多人都用的这种方式，不过要求至少要会一点git控制命令，git相关教程我记得放在bookmarks里了，真正常用也就那么几个语句，比较容易上手。而之所以选择<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener">hugo</a>纯粹是因为朋友推荐，我搭好了之后看有的hexo主题写的特详细，顿时有点后悔，觉得自己走了很多弯路，不过hugo也是很好用的虽然网上资料可能不是太多。</p><p>接下来我就详细叙述下这个博客的建立的过程，我也是萌新有些地方具体的原理可能不太清楚，不过只要搭的像个样子不就行了。</p><h1 id="步骤">2&emsp;步骤</h1><h2 id="安装-hugo、git、nodejs">2.1&emsp;安装 hugo、git、nodejs</h2><p>用hugo部署网站一般先是在本地调试，通过hugo server命令可以在浏览器<a href="http://localhost:1313" target="_blank" rel="noopener">http://localhost:1313</a> 查看效果，然后用git将文件传到github里；nodejs是之后给网页加一些模块脚本要用的，用的机会不是很多。具体的安装步骤我觉得就没必要讲了，百度一下一大把的东西，又不复杂。</p><h3 id="常用的Git命令">2.1.1&emsp;常用的Git命令</h3><ol><li><p>克隆远程库： git clone+目标库网址\\<br> （如<strong>git clone <a href="https://github.com/chengpengzhao/latex_htm_zcp" target="_blank" rel="noopener">https://github.com/chengpengzhao/latex_htm_zcp</a></strong> ）</p></li><li><p>添加远程库： <strong>git remote add origin</strong>+目标库网址，若提示失败在前面用 <strong>git remote rm origin</strong> 命令。</p></li><li><p>同步到本地库：<strong>git pull origin master</strong>  ，这个时候再使用命令：<strong>git push -u origin master</strong>  就能将本地库的内容推送到远程仓库；加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。下一次直接使用 <strong>git pull</strong> 或者<strong>git push</strong>.</p></li><li><p>本地修改完进行同步： </p><p> <strong>git add -A</strong>  (注意下add各参数的意义)</p><p> <strong>git commit -m &quot;your message&quot;</strong></p><p> <strong>git push origin master</strong></p><h2 id="hugo的文件夹结构">2.2&emsp;hugo的文件夹结构</h2></li></ol><p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store//img/hugo%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.webp" alt="我的hugo文件夹">如图hugo一般是这些文件夹（除了node_modules）加上一个config.toml配置文件（还有些文件是我后来写的上传东西用的脚本）。</p><ul><li><p>archetypes：放模版文件？这个我真不知道有啥用，具体看hugo文档肯定有说明</p></li><li><p>content：写的文章都放这里面，md格式，要写博客<a href="http://www.markdown.cn/#acknowledgement" target="_blank" rel="noopener">markdown语法</a>必须要先学一学</p></li><li><p>data：我的是空的，不知道干嘛的</p></li><li><p>layouts：十分重要！网页的结构全在里面，各种html代码</p></li><li><p>public：用hugo生成网页后的文件，把这些上传到github里就够了，所以通常在public文件夹里面建立.git项目。</p></li><li><p>resources：我的是空的</p></li><li><p>static：有三个文件夹，css里面放字体文件，img放图片，js放网页加载时所用的脚本。</p></li><li><p>themes：下载后的主题放在这里面，不过我一般把主题自己修改后里面的东西挪到layouts和static里，所以我这里面也是空的。</p></li><li><p>config.toml：配置文件，一般每个主题都会说明下这个文件怎么写。</p></li></ul><p>推荐<strong>先在本地把网站安排好了再上传</strong>，不然改来改去很麻烦。</p><h2 id="下载hugo主题">2.3&emsp;下载hugo主题</h2><p><a href="https://themes.gohugo.io/" target="_blank" rel="noopener">https://themes.gohugo.io/</a>上可以找到很多好看的主题，仔细阅读所选主题的相关说明，把它下载到本地，把各个文件夹里的东西放到hugo的相应文件夹里，然后用hugo命令在本地查看效果。一般主题都会有一个exampleSite，可以看看里面config.toml设置和文章的格式。（必须先熟悉hugo文件夹结构后再进行这一步）</p><p>hugo server启动后网页(localhost1313)显示的内容会随着你的修改实时变动，所以在写博客时十分好用，这也是hugo的一大优点吧。</p><h2 id="熟悉所下载主题的模块">2.4&emsp;熟悉所下载主题的模块</h2><p>如果你想要自己对主题做一些修改，比如加入评论系统啊、显示来访数、动态效果、搜索功能……那就必须经过最苦逼的这一个步骤了，把主题layouts和static里的文件一个个的啃一遍，知道每个文件大概实现了什么功能。一般好一点的主题都会说明一下它有哪些模块，怎么加入一些常用模块；总之在这方面花的时间应该是最多的。</p><p>建议把这部分放在最后进行，或者干脆不做修改直接拿他的主题用也行。下面我简单分类介绍下我博客中这几个模块添加的艰辛历程：</p><h3 id="访问计数模块">2.4.1&emsp;访问计数模块</h3><p>我用的是<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>网页计数器，这个还比较简单，layouts文件夹里相应的html位置加入代码就行。</p><h3 id="评论模块">2.4.2&emsp;评论模块</h3><p>由于在国内，某些评论系统被墙不好用，我用的是<a href="https://valine.js.org/" target="_blank" rel="noopener">Valine</a>的评论系统，也是在相应的html中插入代码；这里要注意页面的格式设置，可能会造成字体、方框大小不太合适，这时候要在css文件中修改格式。常采用开发者工具先找到控制对应字体的文件位置，再做相应修改。</p><h3 id="搜索模块">2.4.3&emsp;搜索模块</h3><p>我的主题自带了对<a href="https://www.algolia.com/" target="_blank" rel="noopener">algolia</a>搜索模块的支持，所以注册、设置下来没有花太多功夫，这个好像还要装到本地，然后每次写了posts之后要用<strong>npm run algolia</strong>命令更新索引目录。</p><h3 id="数学公式模块">2.4.4&emsp;数学公式模块</h3><p><a href="https://www.mathjax.org/#gettingstarted" target="_blank" rel="noopener"><strong>Mathjax</strong></a>没得说。</p><h3 id="特殊效果模块">2.4.5&emsp;特殊效果模块</h3><p>可以加入一些动态背景效果（比如像我这样），或者甚至你可以加一个live2D的看板娘。</p><h1 id="总结">3&emsp;总结</h1><p>不要在意具体的细节，知道代码的作用、大体的框架、实现的方式，然后进行粗略的调整就行了。如果把这些代码看成是一个个贴了标签的黑盒，那么对于我们这些非专业人士来说，读懂标签就够用了。</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>之前也说了，我是用的Github Page加Hugo的方式搭建的博客，其实还有很多比如jekyll、hexo等部署静态网站的工具；而托管的服务器方面，有的大佬选择直接自己租一台，还有<a href="https://www.jianshu.com/p/a44a6347031c" target="_blank" rel="noopener">一些途径</a>我就不多说了。</p><p><a href="https://help.github.com/en/categories/github-pages-basics" target="_blank" rel="noopener">github pages</a>直接托管在github上，比较方便所以很多人都用的这种方式，不过要求至少要会一点git控制命令，git相关教程我记得放在bookmarks里了，真正常用也就那么几个语句，比较容易上手。而之所以选择<a href="https://gohugo.io/documentation/" target="_blank" rel="noopener">hugo</a>纯粹是因为朋友推荐，我搭好了之后看有的hexo主题写的特详细，顿时有点后悔，觉得自己走了很多弯路，不过hugo也是很好用的虽然网上资料可能不是太多。</p><p>接下来我就详细叙述下这个博客的建立的过程，我也是萌新有些地方具体的原理可能不太清楚，不过只要搭的像个样子不就行了。</p><h1 id="步骤">2&emsp;步骤</h1><h2 id="安装-hugo、git、nodejs">2.1&emsp;安装 hugo、git、nodejs</h2><p>用hugo部署网站一般先是在本地调试，通过hugo server命令可以在浏览器<a href="http://localhost:1313" target="_blank" rel="noopener">http://localhost:1313</a> 查看效果，然后用git将文件传到github里；nodejs是之后给网页加一些模块脚本要用的，用的机会不是很多。具体的安装步骤我觉得就没必要讲了，百度一下一大把的东西，又不复杂。</p><h3 id="常用的Git命令">2.1.1&emsp;常用的Git命令</h3><ol><li><p>克隆远程库： git clone+目标库网址\\<br> （如<strong>git clone <a href="https://github.com/chengpengzhao/latex_htm_zcp" target="_blank" rel="noopener">https://github.com/chengpengzhao/latex_htm_zcp</a></strong> ）</p></li><li><p>添加远程库： <strong>git remote add origin</strong>+目标库网址，若提示失败在前面用 <strong>git remote rm origin</strong> 命令。</p></li><li><p>同步到本地库：<strong>git pull origin master</strong>  ，这个时候再使用命令：<strong>git push -u origin master</strong>  就能将本地库的内容推送到远程仓库；加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。下一次直接使用 <strong>git pull</strong> 或者<strong>git push</strong>.</p></li><li><p>本地修改完进行同步： </p><p> <strong>git add -A</strong>  (注意下add各参数的意义)</p><p> <strong>git commit -m &quot;your message&quot;</strong></p><p> <strong>git push origin master</strong></p></li></ol><h2 id="hugo的文件夹结构">2.2&emsp;hugo的文件夹结构</h2><p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store//img/hugo%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.webp" alt="我的hugo文件夹">如图hugo一般是这些文件夹（除了node_modules）加上一个config.toml配置文件（还有些文件是我后来写的上传东西用的脚本）。</p><ul><li><p>archetypes：放模版文件？这个我真不知道有啥用，具体看hugo文档肯定有说明</p></li><li><p>content：写的文章都放这里面，md格式，要写博客<a href="http://www.markdown.cn/#acknowledgement" target="_blank" rel="noopener">markdown语法</a>必须要先学一学</p></li><li><p>data：我的是空的，不知道干嘛的</p></li><li><p>layouts：十分重要！网页的结构全在里面，各种html代码</p></li><li><p>public：用hugo生成网页后的文件，把这些上传到github里就够了，所以通常在public文件夹里面建立.git项目。</p></li><li><p>resources：我的是空的</p></li><li><p>static：有三个文件夹，css里面放字体文件，img放图片，js放网页加载时所用的脚本。</p></li><li><p>themes：下载后的主题放在这里面，不过我一般把主题自己修改后里面的东西挪到layouts和static里，所以我这里面也是空的。</p></li><li><p>config.toml：配置文件，一般每个主题都会说明下这个文件怎么写。</p></li></ul><p>推荐<strong>先在本地把网站安排好了再上传</strong>，不然改来改去很麻烦。</p><h2 id="下载hugo主题">2.3&emsp;下载hugo主题</h2><p><a href="https://themes.gohugo.io/" target="_blank" rel="noopener">https://themes.gohugo.io/</a>上可以找到很多好看的主题，仔细阅读所选主题的相关说明，把它下载到本地，把各个文件夹里的东西放到hugo的相应文件夹里，然后用hugo命令在本地查看效果。一般主题都会有一个exampleSite，可以看看里面config.toml设置和文章的格式。（必须先熟悉hugo文件夹结构后再进行这一步）</p><p>hugo server启动后网页(localhost1313)显示的内容会随着你的修改实时变动，所以在写博客时十分好用，这也是hugo的一大优点吧。</p><h2 id="熟悉所下载主题的模块">2.4&emsp;熟悉所下载主题的模块</h2><p>如果你想要自己对主题做一些修改，比如加入评论系统啊、显示来访数、动态效果、搜索功能……那就必须经过最苦逼的这一个步骤了，把主题layouts和static里的文件一个个的啃一遍，知道每个文件大概实现了什么功能。一般好一点的主题都会说明一下它有哪些模块，怎么加入一些常用模块；总之在这方面花的时间应该是最多的。</p><p>建议把这部分放在最后进行，或者干脆不做修改直接拿他的主题用也行。下面我简单分类介绍下我博客中这几个模块添加的艰辛历程：</p><h3 id="访问计数模块">2.4.1&emsp;访问计数模块</h3><p>我用的是<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>网页计数器，这个还比较简单，layouts文件夹里相应的html位置加入代码就行。</p><h3 id="评论模块">2.4.2&emsp;评论模块</h3><p>由于在国内，某些评论系统被墙不好用，我用的是<a href="https://valine.js.org/" target="_blank" rel="noopener">Valine</a>的评论系统，也是在相应的html中插入代码；这里要注意页面的格式设置，可能会造成字体、方框大小不太合适，这时候要在css文件中修改格式。常采用开发者工具先找到控制对应字体的文件位置，再做相应修改。</p><h3 id="搜索模块">2.4.3&emsp;搜索模块</h3><p>我的主题自带了对<a href="https://www.algolia.com/" target="_blank" rel="noopener">algolia</a>搜索模块的支持，所以注册、设置下来没有花太多功夫，这个好像还要装到本地，然后每次写了posts之后要用<strong>npm run algolia</strong>命令更新索引目录。</p><h3 id="数学公式模块">2.4.4&emsp;数学公式模块</h3><p><a href="https://www.mathjax.org/#gettingstarted" target="_blank" rel="noopener"><strong>Mathjax</strong></a>没得说。</p><h3 id="特殊效果模块">2.4.5&emsp;特殊效果模块</h3><p>可以加入一些动态背景效果（比如像我这样），或者甚至你可以加一个live2D的看板娘。</p><h1 id="总结">3&emsp;总结</h1><p>不要在意具体的细节，知道代码的作用、大体的框架、实现的方式，然后进行粗略的调整就行了。如果把这些代码看成是一个个贴了标签的黑盒，那么对于我们这些非专业人士来说，读懂标签就够用了。</p>]]></content>
       
       
       <categories>
@@ -1193,13 +1193,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 生活 </category>
           
-          <category> 日本語 </category>
+          <category> 语言 </category>
           
           <category> 记录 </category>
+          
+          <category> 日本語 </category>
           
       </categories>
       
@@ -1284,9 +1284,9 @@
           
           <category> 兴趣爱好 </category>
           
-          <category> 生活 </category>
-          
           <category> 博客 </category>
+          
+          <category> 生活 </category>
           
           <category> 杂感 </category>
           
