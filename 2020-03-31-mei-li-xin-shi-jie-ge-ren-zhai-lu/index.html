@@ -1236,41 +1236,43 @@
     }
 </style>
 
-<section class="comments-area" id="comment-area">
-  <div class="comment-head">
-    <div class="comment-headling">
-      <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-      <span class="comment-title-count">评论</span>
+<div class="card">
+  <section class="comments-area" id="comment-area">
+    <div class="comment-head">
+      <div class="comment-headling">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span class="comment-title-count">评论</span>
+      </div>
+      <div class="comment-switch">
+        <span class="first-comment">Valine</span>
+        <label><input id="switch-comments-btn" type="checkbox" checked="1" data-com.bitwarden.browser.user-edited="yes"><span class="slider"></span></label>
+        <span class="second-comment">utteranc.es</span></div>
     </div>
-    <div class="comment-switch">
-      <span class="first-comment">Valine</span>
-      <label><input id="switch-comments-btn" type="checkbox" checked="1" data-com.bitwarden.browser.user-edited="yes"><span class="slider"></span></label>
-      <span class="second-comment">utteranc.es</span></div>
-  </div>
 
 
-  <div class="comment-wrap">
-    <div class="comments-items-1" data-name="Valine" style="display: none; animation: 0.5s ease 0s 1 normal none running tabshow;">
-      <div class="card valine-card" data-aos="fade-up">
-        <div id="vcomments" >
+    <div class="comment-wrap">
+      <div class="comments-items-1" data-name="Valine" style="display: none; animation: 0.5s ease 0s 1 normal none running tabshow;">
+        <div class="card valine-card" data-aos="fade-up">
+          <div id="vcomments" >
+          </div>
+        </div>
+      </div>
+      <div class="comments-items-2" data-name="Sakura" style="display: block; animation: 0.5s ease 0s 1 normal none running tabshow;">
+        <div class="card" data-aos="fade-up">
+          <script src="https://utteranc.es/client.js"
+                  repo="chengpengzhao/Zcp_blog_comments"
+                  issue-term="title"
+                  label="💬"
+                  theme="github-light"
+                  crossorigin="anonymous"
+                  async>
+          </script>
         </div>
       </div>
     </div>
-    <div class="comments-items-2" data-name="Sakura" style="display: block; animation: 0.5s ease 0s 1 normal none running tabshow;">
-      <div class="card" data-aos="fade-up">
-        <script src="https://utteranc.es/client.js"
-                repo="chengpengzhao/Zcp_blog_comments"
-                issue-term="title"
-                label="💬"
-                theme="github-light"
-                crossorigin="anonymous"
-                async>
-        </script>
-      </div>
-    </div>
-  </div>
 
-</section>
+  </section>
+</div>
 
 
 <script src="/libs/valine/av-min.js"></script>
