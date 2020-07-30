@@ -461,10 +461,41 @@
 </div>
 
 
+<style>
+
+article .card  .archive-content {
+  height:20px;
+
+}
+.card .card-content .archive-title {
+  font-size:17px;
+  position:relative;
+  top: -6px;
+  left: 0px;
+  display: block;
+  line-height: 20px;
+  margin-bottom: 3px;
+  font-weight:bold;
+}
+.card .card-content .publish-info .publish-date {
+  font-size:14px;
+  color:#8B008B;
+}
+.card .card-content .publish-info .publish-author{
+  font-size:13px;
+  color: #00FFFF;
+}
+.card .card-content .publish-info .publish-author .post-category{
+  color: #3CB371;
+}
+.article.col.s12.m6 .card{
+  box-shadow:none;
+}
+</style>
 <main class="content">
 
-    
-    <div class="container archive-calendar">
+
+<div class="container archive-calendar">
     <div class="card">
         <div id="post-calendar" class="card-content"></div>
     </div>
@@ -546,94 +577,56 @@
 
     myChart.setOption(option);
 </script>
-    
 
-    
 
-    <div id="cd-timeline" class="container">
+
+
+      <div id="cd-timeline" class="container">
         
         <div class="cd-timeline-block">
 
-            
-            
-            
-            <div class="cd-timeline-img year" >
-                <a href="/archives/2020">2020</a>
-            </div>
-            
-
-            <!--
-            
-            
-            <div class="cd-timeline-img month" >
-                <a href="/archives/2020/05">05</a>
-            </div>
-            -->
-
-            <!--
-            <div class="cd-timeline-img day" >
-                <span>24</span>
-            </div>-->
-            <article class="cd-timeline-content" >
-                <div class="article col s12 m6">
-                    <div class="card">
-                            <!--<div class="card-image">
-                                
-                                
-                                <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="log4cpp和gdb学习">
-                                
-                                <span class="card-title">log4cpp和gdb学习</span>
-                            </div>-->
-                        <div class="card-content article-content"  >
-                            <div class="card-title" >
-                                <a href="/2020-05-24-log4cpp-he-gdb-xue-xi/">
-                                <!--
-                                    最近的状态：感觉什么都没干但时间过得飞快。  
-好多要学的课程要写的代码，毕设进度也还不够，加上偶尔打打游戏不想学习，自然花在blog上的时间就更少了。
-1&emsp;log4cpp
-介绍  
-
-最近开始准备写些C++的东西，因为是在lin
-                                -->
-                                log4cpp和gdb学习
-                                </a>
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2020-05-24
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
-                                    </a>
-                                    
-                                    <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        <!--
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/log4cpp/"><span class="chip bg-color">log4cpp</span></a>
-                            
-                            <a href="/tags/gdb/"><span class="chip bg-color">gdb</span></a>
-                            
-                        </div>
-                        -->
-                    </div>
+          
+          
+          
+          <div class="cd-timeline-img year" >
+            <a href="/archives/2020">2020</a>
+          </div>
+          
+          <article class="cd-timeline-content" >
+            <div class="article col s12 m6">
+              <div class="card">
+                <div class="card-content article-content archive-content"  >
+                  <div class="card-title archive-title" >
+                    <a href="/2020-05-24-log4cpp-he-gdb-xue-xi/">
+                    log4cpp和gdb学习
+                    </a>
+                  </div>
+                  <div class="publish-info">
+                    <span class="publish-date">
+                      <i class="far fa-clock fa-fw icon-date"></i>2020-05-24
+                    </span>
+                    <span class="publish-author">
+                      
+                      <i class="fas fa-bookmark fa-fw icon-category"></i>
+                      
+                      <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                        工作
+                      </a>
+                      
+                      <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                        工具
+                      </a>
+                      
+                      
+                    </span>
+                  </div>
                 </div>
-            </article>
+              </div>
+            </div>
+          </article>
         </div>
         
-    </div>
+      </div>
 
 </main>
 

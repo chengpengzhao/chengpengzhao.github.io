@@ -461,10 +461,41 @@
 </div>
 
 
+<style>
+
+article .card  .archive-content {
+  height:20px;
+
+}
+.card .card-content .archive-title {
+  font-size:17px;
+  position:relative;
+  top: -6px;
+  left: 0px;
+  display: block;
+  line-height: 20px;
+  margin-bottom: 3px;
+  font-weight:bold;
+}
+.card .card-content .publish-info .publish-date {
+  font-size:14px;
+  color:#8B008B;
+}
+.card .card-content .publish-info .publish-author{
+  font-size:13px;
+  color: #00FFFF;
+}
+.card .card-content .publish-info .publish-author .post-category{
+  color: #3CB371;
+}
+.article.col.s12.m6 .card{
+  box-shadow:none;
+}
+</style>
 <main class="content">
 
-    
-    <div class="container archive-calendar">
+
+<div class="container archive-calendar">
     <div class="card">
         <div id="post-calendar" class="card-content"></div>
     </div>
@@ -546,89 +577,56 @@
 
     myChart.setOption(option);
 </script>
-    
 
-    
 
-    <div id="cd-timeline" class="container">
+
+
+      <div id="cd-timeline" class="container">
         
         <div class="cd-timeline-block">
 
-            
-            
-            
-            <div class="cd-timeline-img year" >
-                <a href="/archives/2019">2019</a>
-            </div>
-            
-
-            <!--
-            
-            
-            <div class="cd-timeline-img month" >
-                <a href="/archives/2019/10">10</a>
-            </div>
-            -->
-
-            <!--
-            <div class="cd-timeline-img day" >
-                <span>26</span>
-            </div>-->
-            <article class="cd-timeline-content" >
-                <div class="article col s12 m6">
-                    <div class="card">
-                            <!--<div class="card-image">
-                                
-                                <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/20191119-1.webp" class="responsive-img" alt="一个月浑浑噩噩过去了，下个月认真学习(10.26)">
-                                
-                                <span class="card-title">一个月浑浑噩噩过去了，下个月认真学习(10.26)</span>
-                            </div>-->
-                        <div class="card-content article-content"  >
-                            <div class="card-title" >
-                                <a href="/2019-10-26-liu-xue-10.26/">
-                                <!--
-                                    1&emsp;2019-10-26　一ヶ月不知不觉已经来了整整一个月了，真的挺快的，虽然感觉啥都还没干。下个月必须抓紧了，研究课题也要赶快定下来~今天趁台风过后难得晴天，在宿舍周围随便溜达了下。
-
-                                -->
-                                一个月浑浑噩噩过去了，下个月认真学习(10.26)
-                                </a>
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2019-10-26
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
-                                    </a>
-                                    
-                                    <a href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    记录
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        <!--
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E6%97%A5%E8%AE%B0/"><span class="chip bg-color">日记</span></a>
-                            
-                            <a href="/tags/%E7%9B%B8%E5%86%8C/"><span class="chip bg-color">相册</span></a>
-                            
-                        </div>
-                        -->
-                    </div>
+          
+          
+          
+          <div class="cd-timeline-img year" >
+            <a href="/archives/2019">2019</a>
+          </div>
+          
+          <article class="cd-timeline-content" >
+            <div class="article col s12 m6">
+              <div class="card">
+                <div class="card-content article-content archive-content"  >
+                  <div class="card-title archive-title" >
+                    <a href="/2019-10-26-liu-xue-10.26/">
+                    一个月浑浑噩噩过去了，下个月认真学习(10.26)
+                    </a>
+                  </div>
+                  <div class="publish-info">
+                    <span class="publish-date">
+                      <i class="far fa-clock fa-fw icon-date"></i>2019-10-26
+                    </span>
+                    <span class="publish-author">
+                      
+                      <i class="fas fa-bookmark fa-fw icon-category"></i>
+                      
+                      <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                        生活
+                      </a>
+                      
+                      <a href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/" class="post-category">
+                        记录
+                      </a>
+                      
+                      
+                    </span>
+                  </div>
                 </div>
-            </article>
+              </div>
+            </div>
+          </article>
         </div>
         
-    </div>
+      </div>
 
 </main>
 
