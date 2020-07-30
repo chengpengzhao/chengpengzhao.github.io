@@ -483,20 +483,46 @@
       align-items: center;
     }
     .frind-ship .title div {
-      color: #fff;
+      color: #3C4858;
       padding-left: 10px;
     }
     .frind-ship .title img {
-      width: 100px;
-      height: 100px;
+      width: 65px;
+      height: 65px;
+            left: -10px;
+    position: relative;
       flex-shrink: 0;
     }
-    .frind-ship .title h1 {
+    .frind-ship .title a{
+      width:110px;
+      height:100px;
+      flex-shrink: 0;
+    }
+    .frind-ship .title .friend-name {
+      font-weight: bold;
       padding-bottom: 5px;
-      border-bottom: 2px solid #fff;
+      border-bottom: 2px solid #3C4858;
+      font-size: 15px;
       position: relative;
-      top:-15px;
-      left: 3px;
+      top: 21px;
+      left: 0px;
+      text-align:center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+    }
+    .frind-ship .title .friend-intro {
+      font-size: 10px;
+      position: relative;
+      padding-top: 5px;
+      top: 21px;
+      left: 0px;
+      text-align:center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
     }
     .friend-button {
       display: flex;
@@ -580,35 +606,10 @@
       color: #FFF;
       text-decoration: none;
     }
-    .frind-card1 {
-      background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    }
-    .frind-card2 {
-      background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    .frind-card3 {
-      background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
-    }
-    .frind-card4 {
-      background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    }
-    .frind-card5 {
-      background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    }
-    .frind-card6 {
-      background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-    }
-    .frind-card7 {
-      background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-    }
-    .frind-card8 {
-      background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
-    }
-    .frind-card9 {
-      background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
-    }
-    .frind-card10 {
-      background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
+    .friend-div {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     article .card {
@@ -629,206 +630,182 @@
         <div class="row tags-posts friend-all">
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card1">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://blog.licardo.cn/img/avatar.png" alt="img">
-                <a href="https://licardo.cn/" target="_blank">
-                  <div>
-                    <h1 class="friend-name">Licardo</h1>
-                    <p style="position: relative;top: -35px;">一个医学生的成才之路</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://blog.licardo.cn/img/avatar.png" alt="img">
+            <a  href="https://licardo.cn/" target="_blank">
+              <div class="friend-name">Licardo</div>
+              <div class="friend-intro">一个医学生的成才之路 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card2">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://xucheng.name/images/avatar.png" alt="img">
-                <a href="https://xucheng.name" target="_blank">
-                  <div>
-                    <h1 class="friend-name">Xu Cheng</h1>
-                    <p style="position: relative;top: -35px;">本科好友</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://xucheng.name/images/avatar.png" alt="img">
+            <a  href="https://xucheng.name" target="_blank">
+              <div class="friend-name">Xu Cheng</div>
+              <div class="friend-intro">本科好友 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card3">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://s2.ax1x.com/2019/02/21/kRq7b8.jpg" alt="img">
-                <a href="https://www.goldenpotato.cn/" target="_blank">
-                  <div>
-                    <h1 class="friend-name">GoldenPotato</h1>
-                    <p style="position: relative;top: -35px;">蒟蒻/奥赛大佬</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://s2.ax1x.com/2019/02/21/kRq7b8.jpg" alt="img">
+            <a  href="https://www.goldenpotato.cn/" target="_blank">
+              <div class="friend-name">GoldenPotato</div>
+              <div class="friend-intro">蒟蒻/奥赛大佬 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card4">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://github.com/Sitoi.png" alt="img">
-                <a href="https://sitoi.cn" target="_blank">
-                  <div>
-                    <h1 class="friend-name">Sitoi</h1>
-                    <p style="position: relative;top: -35px;">Spider-Man、程序猿</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://github.com/Sitoi.png" alt="img">
+            <a  href="https://sitoi.cn" target="_blank">
+              <div class="friend-name">Sitoi</div>
+              <div class="friend-intro">Spider-Man、程序猿 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card5">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://loli.by/wp-content/uploads/2019/10/63113650_p0.png" alt="img">
-                <a href="https://loli.by" target="_blank">
-                  <div>
-                    <h1 class="friend-name">LYM的小站</h1>
-                    <p style="position: relative;top: -35px;">一个二次元爱好者的小站</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://loli.by/wp-content/uploads/2019/10/63113650_p0.png" alt="img">
+            <a  href="https://loli.by" target="_blank">
+              <div class="friend-name">LYM的小站</div>
+              <div class="friend-intro">一个二次元爱好者的小站 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card6">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://fspark.me/usr/uploads/sina/5cccf8e67fa91.jpg" alt="img">
-                <a href="https://fspark.me" target="_blank">
-                  <div>
-                    <h1 class="friend-name">FSpark</h1>
-                    <p style="position: relative;top: -35px;">「0」が過去で 「1」が未来</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://fspark.me/usr/uploads/sina/5cccf8e67fa91.jpg" alt="img">
+            <a  href="https://fspark.me" target="_blank">
+              <div class="friend-name">FSpark</div>
+              <div class="friend-intro">「0」が過去で 「1」が未来 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card7">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://mqaq.fun/tx.png" alt="img">
-                <a href="https://mQAQ.fun" target="_blank">
-                  <div>
-                    <h1 class="friend-name">墨兰</h1>
-                    <p style="position: relative;top: -35px;">一只爱折腾的小小白</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://mqaq.fun/tx.png" alt="img">
+            <a  href="https://mQAQ.fun" target="_blank">
+              <div class="friend-name">墨兰</div>
+              <div class="friend-intro">一只爱折腾的小小白 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card8">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://printempw.github.io/images/favicon.png" alt="img">
-                <a href="https://printempw.github.io" target="_blank">
-                  <div>
-                    <h1 class="friend-name">PRIN BLOG</h1>
-                    <p style="position: relative;top: -35px;">半吊子全栈开发者的日常</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://printempw.github.io/images/favicon.png" alt="img">
+            <a  href="https://printempw.github.io" target="_blank">
+              <div class="friend-name">PRIN BLOG</div>
+              <div class="friend-intro">半吊子全栈开发者的日常 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card9">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="/medias/loading.gif" alt="img">
-                <a href="https://blog.wxlost.com" target="_blank">
-                  <div>
-                    <h1 class="friend-name">迷失的笔记</h1>
-                    <p style="position: relative;top: -35px;">学习笔记汇聚</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="/medias/loading.gif" alt="img">
+            <a  href="https://blog.wxlost.com" target="_blank">
+              <div class="friend-name">迷失的笔记</div>
+              <div class="friend-intro">学习笔记汇聚 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card10">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://www.newlearner.site/wp-login.php" alt="img">
-                <a href="https://www.newlearner.site/" target="_blank">
-                  <div>
-                    <h1 class="friend-name">Newlearnerの小站</h1>
-                    <p style="position: relative;top: -35px;">探索未知，记录点滴</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://www.newlearner.site/wp-login.php" alt="img">
+            <a  href="https://www.newlearner.site/" target="_blank">
+              <div class="friend-name">Newlearnerの小站</div>
+              <div class="friend-intro">探索未知，记录点滴 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card1">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://gravatar.com/avatar/c42fdfa8aca47ec27a7c35dfa7d1dc51?s=200" alt="img">
-                <a href="https://p3terx.com" target="_blank">
-                  <div>
-                    <h1 class="friend-name">P3TERX ZONE</h1>
-                    <p style="position: relative;top: -35px;">Zhuangbility&Technology</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://gravatar.com/avatar/c42fdfa8aca47ec27a7c35dfa7d1dc51?s=200" alt="img">
+            <a  href="https://p3terx.com" target="_blank">
+              <div class="friend-name">P3TERX ZONE</div>
+              <div class="friend-intro">Zhuangbility&Technology </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
           
-          <div class="col s12 m6 l4 friend-div" >
-            <div class="card frind-card2">
-            <div class="frind-ship">
-              <div class="title">
-                <img src="/medias/loading.gif" data-original="https://i.loli.net/2018/12/23/5c1e6ac43e125.jpg" alt="img">
-                <a href="https://yuuiki.cn" target="_blank">
-                  <div>
-                    <h1 class="friend-name">桜庭夜</h1>
-                    <p style="position: relative;top: -35px;">悠哉日常大王</p>
-                  </div>
-                </a>
+          <div class="col s12 m6 l3 friend-div" >
+            <div class="card frind-card">
+              <div  class="frind-ship">
+                <div class="title">
+                  <img  src="/medias/loading.gif" data-original="https://i.loli.net/2018/12/23/5c1e6ac43e125.jpg" alt="img">
+            <a  href="https://yuuiki.cn" target="_blank">
+              <div class="friend-name">桜庭夜</div>
+              <div class="friend-intro">悠哉日常大王 </div>
+            </a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
           
