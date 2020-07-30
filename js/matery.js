@@ -138,7 +138,7 @@ $(function () {
         /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
         let scroll = $(window).scrollTop();
         showOrHideNavBg(scroll);
-        if(scroll>$(document).height()-1000 | scroll<100){
+        if( scroll<100 || scroll>$(document).height()-1000){
             $('.bottom-scroll').slideUp(300);
         }else{
             $('.bottom-scroll').slideDown(300);
