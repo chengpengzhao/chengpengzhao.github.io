@@ -583,12 +583,12 @@
               语言
             </a>
             
-            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
-              CFD
-            </a>
-            
             <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
               OpenFOAM
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+              CFD
             </a>
             
             <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
@@ -1558,12 +1558,12 @@ Minimize t
                                     语言
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
-                                    CFD
-                                </a>
-                            
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
                                     OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
                                 </a>
                             
                             <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
@@ -1789,7 +1789,7 @@ Minimize t
 
 
 
-    <footer class="page-footer bg-color">
+    <footer id="bottom" class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             &copy;&nbsp;
@@ -1923,6 +1923,29 @@ $(function () {
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
         <i class="fas fa-arrow-up"></i>
     </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
 </div>
 
 

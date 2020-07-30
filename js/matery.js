@@ -124,6 +124,10 @@ $(function () {
         $('body,html').animate({scrollTop: 0}, 400);
         return false;
     });
+    $('#backBottom').click(function () {
+        $('body,html').animate({scrollTop: $(document).height() + $('#backBottom').height()},400);
+        return false;
+    });
 
     /*监听滚动条位置*/
     let $nav = $('#headNav');
@@ -134,6 +138,11 @@ $(function () {
         /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
         let scroll = $(window).scrollTop();
         showOrHideNavBg(scroll);
+        if(scroll>$(document).height()-1000 | scroll<100){
+            $('.bottom-scroll').slideUp(300);
+        }else{
+            $('.bottom-scroll').slideDown(300);
+        }
     });
 
     function showOrHideNavBg(position) {
