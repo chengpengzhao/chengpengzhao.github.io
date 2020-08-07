@@ -586,12 +586,12 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
           <div class="post-cate">
             <i class="fas fa-bookmark fa-fw icon-category"></i>
             
-            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
-              兴趣爱好
-            </a>
-            
             <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
               学习
+            </a>
+            
+            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+              兴趣爱好
             </a>
             
             <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
@@ -626,21 +626,21 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-08-03
+          2020-08-07
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          4k
+          4.7k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          16 Min
+          19 Min
         </div>
         
 
@@ -1074,7 +1074,65 @@ location ~ .*\.(js|css|woff|woff2|gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)?$ {
 <p>yobot 是为公主连接公会战设计的辅助机器人，能够帮助公会战管理者提供自动化管理服务。 yobot 提供了群聊、web 页面两套用户交互方式，具有操作便捷、通知及时、数据详细的特点。 基于 QQ 的部分已不再支持，本项目正在向其他平台迁移</p>
 </blockquote>
 <p>按照<a href="https://yobot.win/" target="_blank" rel="noopener">官网</a>上的Linux-Mirai部署方式一步步来就行，注意QQ号必须先在VPS上登录并挂几天、不然容易被封或被屏蔽消息。</p>
-<h1 id="待发现">10&emsp;待发现</h1><p>后续发现了对自己有帮助的良心服务再更新...</p>
+<p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-08-07 14:19:12</em></p>
+</blockquote>
+<h1 id="Calibre-web，个人书库">10&emsp;Calibre-web，个人书库</h1><h2 id="介绍">10.1&emsp;介绍</h2><p>最近开始用<a href="https://calibre-ebook.com/" target="_blank" rel="noopener">Calibre</a>整理书籍了，之前都是下载一本、往ipad里一丢、看完就不管了（有时随手就删了），导致想翻一翻之前看过的书都找不到地方；  并且因为自己在<strong>日亚</strong>买的正版书有版权限制，只能用注册过的kindle看，不方便管理。<code>Calibre</code>这款软件能很好解决我的需求：</p>
+<ol>
+<li>可以搜索书籍的<strong>元数据</strong>，整理起来很方便轻松。</li>
+<li><code>DeDRM</code><a href="http://45.77.1.137:8083/s/SpkfEbLjgDjMsxo/download" target="_blank" rel="noopener">插件</a>能去除版权限制，可以将书籍转为<code>epub</code>等主流格式方便非<code>kindle</code>阅读器查看。  </li>
+<li>结合<a href="https://github.com/janeczku/calibre-web" target="_blank" rel="noopener"><strong>Calibre-web</strong></a>，搭建线上图书馆（相比于桌面版增加了一些功能，也更便于分享）。  </li>
+</ol>
+<h2 id="VPS中用docker-compose安装">10.2&emsp;VPS中用docker-compose安装</h2><ol>
+<li><p>建一个<code>books</code>（名称随意）文件夹并进入；</p>
+</li>
+<li><p>建立一个<code>docker-compose.yml</code>文件，内容如下：</p>
+</li>
+</ol>
+<pre class="line-numbers language-yml"><code class="language-yml">version: "3"
+
+services:
+  calibre-web:
+    # 体验后还是这个image最好用
+    image: technosoft2000/calibre-web
+    container_name: calibre-web
+    environment:
+        - PUID= 1000     #run `id` in shell to get id for a user
+        - PGID= 1000
+        - SET_CONTAINER_TIMEZONE= true
+        - CONTAINER_TIMEZONE= Asia/Shanghai
+    volumes:
+        - ./calibre:/books  #存放书籍和app.db等数据库
+        # 我喜欢全放一个文件夹，方便管理
+        - ./calibre-web/app:/calibre-web/app
+        - ./calibre-web/kindlegen:/calibre-web/kindlegen
+        - ./calibre-web/config:/calibre-web/config
+    ports:
+        # 左边为外部端口，不要和其他服务冲突就行
+        - "8085:8083"
+    restart: always<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li><p>运行<code>sudo docker-compose up -d</code>，访问<code>http://vps_ip:8085</code>，在web中初始化、路径输入<code>/books</code>。</p>
+</li>
+<li><p>若输入后报错则是文件夹<strong>权限</strong>的问题，我一般用<code>sudo chmod -R 777 *</code>这种粗暴的方式解决。</p>
+</li>
+</ol>
+<h2 id="群晖NAS中用docker安装">10.3&emsp;群晖NAS中用docker安装</h2><ol>
+<li><p>映像中搜索<code>calibre-web</code>，找到<code>technosoft2000/calibre-web</code>并下载；</p>
+</li>
+<li><p><code>创建容器-高级设置-启动自动重新启动</code>、<code>卷-添加文件夹</code>如下：</p>
+</li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200807151248.webp" alt></p>
+<ol start="3">
+<li><p>运行状态可在<code>详情-终端机</code>中查看（拉去github资源需要一段时间）；</p>
+</li>
+<li><p>进入<code>web</code>配置，出错则检查<code>http</code>用户是否对文件夹具有<strong>完全控制</strong>权限。</p>
+</li>
+</ol>
+<h2 id="备份">10.4&emsp;备份</h2><p>书籍的所有数据都在docker内的<code>/books</code>文件夹下（即外部的<code>pathTo/books/calibre</code>），其中<code>metadata.db</code>、<code>metadata_db_prefs_backup.json</code>以及书籍文件夹是和桌面版<code>calibre</code>软件互通的，也就是可以互相拷贝覆盖。<code>app.db</code>、<code>gdrive.db</code>记录了<code>calibre-web</code>上的一些操作（如书架设置、用户名和密码、googleDrive设置），需要将服务迁移到另一台机器上时记得备份这些文件。</p>
+<h1 id="待发现">11&emsp;待发现</h1><p>后续发现了对自己有帮助的良心服务再更新...</p>
 
       </div>
 
@@ -1857,12 +1915,12 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
-                                    兴趣爱好
-                                </a>
-                            
                             <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
                                     学习
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
                                 </a>
                             
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
@@ -2106,7 +2164,7 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">96.7k</span>&nbsp;字
+                class="white-color">97.4k</span>&nbsp;字
             
             <br>
             
