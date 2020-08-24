@@ -13,9 +13,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> 工作 </category>
           
@@ -365,9 +365,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> linux </category>
           
@@ -895,9 +895,9 @@
       
         <tags>
             
-            <tag> 语法 </tag>
-            
             <tag> 写作 </tag>
+            
+            <tag> 语法 </tag>
             
             <tag> markdown </tag>
             
@@ -1236,13 +1236,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 生活 </category>
           
-          <category> 日本語 </category>
+          <category> 语言 </category>
           
           <category> 记录 </category>
+          
+          <category> 日本語 </category>
           
       </categories>
       
@@ -1327,9 +1327,9 @@
           
           <category> 兴趣爱好 </category>
           
-          <category> 生活 </category>
-          
           <category> 博客 </category>
+          
+          <category> 生活 </category>
           
           <category> 杂感 </category>
           
