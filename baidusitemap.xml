@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chengpengzhao.com/2020-10-16-nhk72h-bu-quan-ji-hua/</loc>
+    <lastmod>2020-10-16</lastmod>
+  </url>  <url>
+    <loc>https://chengpengzhao.com/2020-01-23-gao-wen-qi-ti-dong-li-xue-fu-xi/</loc>
+    <lastmod>2020-08-31</lastmod>
+  </url>  <url>
     <loc>https://chengpengzhao.com/2020-08-03-vps-neng-yong-lai-zuo-shi-me/</loc>
     <lastmod>2020-08-07</lastmod>
   </url>  <url>
@@ -31,10 +37,10 @@
     <loc>https://chengpengzhao.com/2020-04-15-fortran-xue-xi/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2020-05-24-log4cpp-he-gdb-xue-xi/</loc>
+    <loc>https://chengpengzhao.com/2020-04-19-yaharian-noqing-chun-rabukomehamatigatuteiru-ba-cui/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2020-04-19-yaharian-noqing-chun-rabukomehamatigatuteiru-ba-cui/</loc>
+    <loc>https://chengpengzhao.com/2020-05-24-log4cpp-he-gdb-xue-xi/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2020-03-09-saraba-ni-hong/</loc>
@@ -55,19 +61,16 @@
     <loc>https://chengpengzhao.com/2020-03-04-ssh-yu-gpg-de-xue-xi-yu-shi-yong/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2020-01-23-gao-wen-qi-ti-dong-li-xue-fu-xi/</loc>
-    <lastmod>2020-07-28</lastmod>
-  </url>  <url>
     <loc>https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2020-01-09-shibui-gu-ban-ri-you/</loc>
+    <loc>https://chengpengzhao.com/2020-01-04-vats-simulation/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2020-01-08-git-learning/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2020-01-04-vats-simulation/</loc>
+    <loc>https://chengpengzhao.com/2020-01-09-shibui-gu-ban-ri-you/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019-12-11-evaluation-of-parsec-paraterization/</loc>
@@ -79,10 +82,10 @@
     <loc>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2019-12-04-controldict-wen-jian-xue-xi/</loc>
+    <loc>https://chengpengzhao.com/2019-12-09-parsec/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2019-12-09-parsec/</loc>
+    <loc>https://chengpengzhao.com/2019-12-04-controldict-wen-jian-xue-xi/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019-11-28-python-pa-chong-ru-men-lian-xi-sourceforge-zi-dong-xia-zai/</loc>
@@ -109,10 +112,10 @@
     <loc>https://chengpengzhao.com/2019-09-28-liu-xue-9.26-10.10/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</loc>
+    <loc>https://chengpengzhao.com/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
-    <loc>https://chengpengzhao.com/2019-11-12-ru-keng-linux-1-shuang-xi-tong-an-zhuang/</loc>
+    <loc>https://chengpengzhao.com/2019-11-13-ru-keng-linux-2-chang-yong-ming-ling-ji-kuai-jie-jian/</loc>
     <lastmod>2020-07-28</lastmod>
   </url>  <url>
     <loc>https://chengpengzhao.com/2019-05-01-ri-ji/</loc>
