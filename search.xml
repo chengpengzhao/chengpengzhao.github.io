@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>Vim常用命令学习</title>
+      <link href="/2020-11-09-vim-chang-yong-ming-ling-xue-xi/"/>
+      <url>/2020-11-09-vim-chang-yong-ming-ling-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p><a href="https://book.douban.com/subject/25869486/" target="_blank" rel="noopener">《Vim使用技巧》</a>里面的东西还是挺多的，适合每天啃一点、来回品味。当然也有一些地方有更优解，总的来说是本好书，基本上书里讲的都能够理解的话vim也用的很熟练了吧。</p><h1 id="Vim基础">1&emsp;Vim基础</h1><ul><li><code>vim -u NONE -N</code>：不加载vimrc、不进入vi兼容模式</li><li>用<code>.</code>命令的时候注意：在<strong>插入模式</strong>移动光标会<strong>重置</strong>修改状态！</li><li><code>C</code>   删除当前光标至行尾，并进入insert模式</li><li><code>S</code>   删除整行并进入insert</li><li><code>I</code>   移至行开头并进入inset； <code>A</code> 移至行尾并进入inset</li><li><code>0</code> 移动到开头，<code>^</code>移动到开头非空格处，<code>$</code>移动到行尾</li><li><code>cw</code>  删除光标位置到单词结尾间的字符</li><li><code>w</code> 跳转到下个单词开头，<code>b</code>跳转到上个单词开头，<code>e</code>跳转到下个单词结尾</li></ul><h1 id="普通模式">2&emsp;普通模式</h1><ul><li><p><code>&lt;C-a&gt;</code>和 <code>&lt;C-x&gt;</code> ：  数字加和减1（会把光标移到该行数字前)</p></li><li><p><code>10&lt;C-a&gt;</code> : 数字加10，上一条的补充</p></li><li><p><code>操作符+动作命令= 操作</code>：<br><code>g~</code>    改变大小写； <code>gu</code>   变为小写； <code>gU</code> 变为大写<br><code>gUaw</code>  把当前单词变为大写<br><code>~</code> 转换一个字母的大小写，同时光标后移一位<br><code>=</code>自动缩进有时挺好用</p></li><li><p><code>zz</code>  重绘屏幕，会把当前行移到屏幕中间</p></li><li><p><code>R</code>   进入替换模式，<code>gR</code>  虚拟替换模式、会将制表符当一组空格处理，  <code>&lt;Esc&gt;</code>返回普通模式</p></li></ul><h1 id="插入模式">3&emsp;插入模式</h1><ul><li><p><code>&lt;C-r&gt;{register}</code> 插入模式中粘贴寄存器内容</p></li><li><p><code>&lt;C-r&gt;&lt;C-p&gt;{register}</code>    相比上一条更智能，会修正不必要的缩进</p></li><li><p><code>&lt;C-r&gt;=</code>  表达式寄存器，可以做一些简单运算</p></li><li><p><code>&lt;C-r&gt;/</code>  把上次查找内容粘贴出来</p></li></ul><h1 id="可视模式">4&emsp;可视模式</h1><ul><li><p><code>gv</code>  重选上次的高亮选区； <code>o</code>    切换高亮选区的活动端</p></li><li><p>如果想构造能重复执行的工作，最好远离可视模式</p></li><li><p>常用文本对象(基础及扩展):</p><ol><li><code>w</code>  单词； <code>W</code>  字符串</li><li><code>s</code>  句子(以<code>.</code>为分隔符)；   <code>p</code> 段落(以空行为分隔符)</li><li><code>( [ { &lt;</code>    用另一半也行</li><li><code>t</code>  一个标签(tag,<code>html/xml</code>用)</li><li><code>i</code>  <code>textobj-indent</code>插件提供，选取缩进相同的一段文本</li><li><code>f</code>  <code>textobj-function</code>插件提供，选取一个函数</li><li><code>,</code>  <code>textobj-parameter</code>插件提供，选取函数的一个参数(<code>vi,</code> 不包括逗号)</li></ol></li></ul><h1 id="命令行模式">5&emsp;命令行模式</h1><ul><li><p>在多行上执行命令：</p><ol><li><code>:1</code> 跳转到行号处； <code>:$</code> 跳转到末尾； <code>:3d</code>  跳转并删除第3行</li><li><code>.</code> 表示当前行； <code>%</code> 表示<strong>所有行</strong>；  <code>1,$</code> 表示从第1行到末尾； <code>&#39;a</code> 表示位置标记a所在行；<code>0</code> 表示虚拟行、在第1行上方</li><li><code>/pattern/</code> 搜寻并跳转含有pattern的行； <code>/&lt;html&gt;/+1,/&lt;\/html&gt;/-1p</code> 可以进行<code>:{address}+n</code>类似的偏移(p命令表示print)</li></ol></li><li><p><code>:copy / :t</code>  复制命令； <code>:[range]copy {address}</code> 使用范例：</p><ol><li><code>:t6</code> 复制当前行到第六行； <code>:.t0</code>  复制当前行到第一行上方</li><li>此命令不会使用寄存器，这是它的优势。</li></ol></li><li><p><code>:move / :m</code> 移动行； <code>:[range]move {address}</code></p></li><li><p><code>@:</code> 重复上次的Ex命令；<code>&amp;</code>重复上次的<code>:substitute</code>命令</p></li><li><p><code>:[range]normal {command}</code>     对范围内每一行同时执行命令，如<code>:% normal A;</code>表示对所有行执行<code>A;</code>命令（跳到行尾加一个<code>;)</code>。修改完后会<strong>自动</strong>返回普通模式；注意<code>normal</code>命令执行前会把光标移到改行起始处</p></li><li><p><code>:&lt;C-r&gt;&lt;C-w&gt;</code>     将当前光标下的单词插入到命令行中（类似的有<code>&lt;C-r&gt;&lt;C-a&gt;</code>，范围更广）</p></li><li><p><code>q:</code>      普通模式下调出命令行窗口，每一行可以编辑，在某行按<code>&lt;CR&gt;</code>就会执行该行命令。（在命令行模式下按<code>&lt;C-f&gt;</code>也可进入命令行窗口）类似的也有<code>q/</code>：打开查找命令历史记录的命令行窗口</p></li><li><p><code>:!</code>  运行外部shell命令，符号<code>%</code>可用来代表当前文件名</p></li><li><p><code>&lt;C-z&gt;</code>把vim挂起到后台、<code>fg</code>唤醒一个被挂起的作业</p></li><li><p><code>:read !{cmd}</code>    把shell命令的输出读入到当前缓冲区</p></li><li><p><code>:write !sh</code>   缓冲区作为sh命令执行，<code>!</code>和<code>sh</code>间可以有空格 <code>write</code>和<code>!</code>之间一定有空格；<code>:write! sh</code>  将缓冲区内容写入名为<code>sh</code>的文件中</p></li><li><p><code>read</code>、<code>write</code>命令前都可加<code>[range]</code>约束</p></li></ul><h1 id="文件">6&emsp;文件</h1><ul><li><p>缓冲区（Buffer）中，<code>%</code>代表当前可见窗口，<code>#</code>代表轮换文件（<code>:ls</code>命令访问缓冲区，文件开头的数字为自动分配的编号）</p></li><li><p>在Vim中用 <code>:args filename</code> 打开（新建）一个文件，并添加到缓冲区</p></li><li><p>Glob模式： <code>*</code>代表当前目录所有文件，<code>**</code><strong>递归</strong>匹配子目录并找到所有文件，如<code>**/*.js</code>能匹配到该目录下所有js文件</p></li><li><p>:args `cat filename` ，将会把反引号里的shell命令执行结果作为args的参数，<code>args</code>命令，不接文件名显示当前所有缓冲区名、接文件名会新打开所匹配的文件到缓冲区</p></li><li><p><code>:on(ly)</code>或者<code>&lt;C-w&gt;o</code>， 只保留活动窗口，关闭其他</p></li><li><p><code>&lt;C-w&gt;=</code>  使窗口等宽等高； <code>&lt;C-w&gt;_</code>   最大化活动窗口高度； <code>&lt;C-w&gt;|</code>   最大化活动窗口宽度</p></li><li><p><code>&lt;C-w&gt;T</code>  打开新标签页, <code>{N} gt(/gT)</code> 标签页间跳转， <code>:tabm(ove) {N}</code> 将当前标签页移到N位置，N=0时为开头位置，N省略时为结尾</p></li><li><p><code>:!mkdir -p %:h</code>   把文件保存到不存在的目录中。其中<code>-p</code>表示创建任何不存在的中间目录、<code>%:h</code>表示当前缓冲区完整文件路径（去除文件名）</p></li><li><p><code>:wall</code>   保存缓冲区列表所有文件</p></li></ul><h1 id="更快地移动及跳转">7&emsp;更快地移动及跳转</h1><ul><li><p><code>gj</code> 往下移动一个屏幕行（非实际行）；其他移动命令同理在前面加个<code>g</code>表示按屏幕行移动</p></li><li><p>基于单词的移动。 单词开头：<code>w</code>、<code>b</code> ， 单词结尾：<code>e</code>、<code>ge</code>；（大写时则变成基于子串的移动）</p></li><li><p><code>m{letter}</code>创建位置标记，大写字母时为全局标记、小写是局部缓冲区标记</p></li><li><p>Vim中的自动位置标记（ `和&#39;都能跳转，但&#39;只能跳转到行、需要具体到列时最好用`）：</p><ol><li>`` : 上次跳转动作前的位置（结合<code>%</code>命令很好用）,<code>&lt;C-o&gt;</code>命令也能完成这一功能</li><li>`. ：上次修改的地方</li><li>`^ : 上次插入的地方</li><li>`[ : 上次修改或复制的起始位置（ `]为结束位置）</li><li>`&lt; : 上次高亮选区的起始位置 （`&gt;为结束位置）。</li></ol></li><li><p><code>surround.vim</code>插件使用：</p><ol><li><code>ds[...]</code>，如<code>ds&quot;</code>表示删除一对<code>&quot;</code>符号（<code>s</code>代表surround）</li><li><code>cs[...][...]</code>，如<code>cs&quot;(</code>表示将一对<code>&quot;</code>符号改为<code>()</code></li><li><code>ysiw]</code>，给一个单词两侧加一个<code>[]</code></li><li><code>yss&quot;</code>，给该行套一个<code>&quot; &quot;</code></li><li>可视模式下<code>S(</code>，给所选范围外部套一个<code>()</code></li></ol></li></ul><h1 id="文件间跳转">8&emsp;文件间跳转</h1><ul><li><code>H/M/L</code>   跳到屏幕最上方/正中间/最下方</li><li><code>gf</code>  跳到光标下文件名(go to file)</li><li><code>&lt;C-]&gt;</code>   跳到光标下关键字定义处</li><li><code>&lt;C-i&gt;</code>等价于<code>&lt;Tab&gt;</code></li></ul><h1 id="寄存器">9&emsp;寄存器</h1><ul><li><p>vim常见的操作会将内容拷贝到<strong>无名寄存器</strong><code>&quot;&quot;</code>，<code>&quot;&quot;p</code>等价于<code>p</code></p></li><li><p>命令前加<code>&quot;{register}</code> 指定寄存器，如<code>&quot;ayiw</code>、<code>&quot;bdd</code></p></li><li><p>寄存器用<strong>大写字母</strong>时表示把内容附加到指定寄存器后，而小写字母是覆盖原有内容</p></li><li><p>复制专用寄存器<code>&quot;0</code>，被复制的文本(<code>y</code>命令)会同时拷贝到无名寄存器和该专用寄存器中</p></li><li><p>系统剪贴板<code>&quot;+</code>、选择专用寄存器<code>&quot;*</code>（保存上次<code>v</code>命令选择的区域）</p></li><li><p><code>p</code>粘贴到当前光标后，<code>P</code>粘贴到光标前；插入模式中用<code>&lt;C-r&gt;{register}</code>或许更方便</p></li></ul><h1 id="宏、模式">10&emsp;宏、模式</h1><ul><li><p><code>@@</code>重复最近调用过的宏</p></li><li><p><code>:put a</code>，粘贴寄存器<code>&quot;a</code>的内容到新行，可用来编辑录制好的宏</p></li><li><p><code>qaq</code> ，录制一个空的宏，起到清空寄存器的作用</p></li><li><p>vim中的正则表达式：</p><ol><li><code>magic</code>模式，使用\m前缀，<code>^，$，.，*和[]</code>等字符含有特殊意义；而<code>+、?、()、和{}</code>等其它字符则按字面意义解释。magic为默认设置，表达式中的\m前缀可以省略； </li><li><code>no magic</code>模式，使用\M前缀，除了<code>^和$</code>之外的特殊字符，都将被视为普通文本； </li><li><code>very magic</code>模式，使用\v前缀，其后模式中除 <code>&#39;0&#39;-&#39;9&#39;，&#39;a&#39;-&#39;z&#39;，&#39;A&#39;-&#39;Z&#39; 和 &#39;_&#39;</code>之外的字符都当作特殊字符解释； </li><li><code>very nomagic</code>模式，使用\V前缀，其后模式中只有反斜杠（<code>\</code>）具有特殊意义，用于原义查找。</li></ol></li><li><p>vim正则表达式匹配重复部分：<code>()</code>与<code>\1</code>组合使用（引用第1-9个括号内容，0引用整个匹配）</p></li><li><p>强大的替换命令<code>:[range]s[ubstitute]/{pattern}/{string}/[flags]</code>； flags: <code>g</code>全局范围、<code>c</code>每次修改前确认、<code>n</code>抑制替换、<code>&amp;</code>用上一次的flag</p></li><li><p>查找和替换可以分开来，先用<code>/</code>查找、再用<code>%s//{...}/g</code>进行替换(<code>{pattern}</code>部分留空表示自动使用当前查找模式)</p></li></ul><h1 id="global命令">11&emsp;global命令</h1><ul><li><p><code>[range] g[lobal][!] /{pattern}/ [cmd]</code>，默认范围为<code>%</code>、默认<code>cmd</code>为<code>print</code>，该命令用于在<strong>所有匹配行</strong>上运行Ex命令</p></li><li><p><code>vglobal</code>或简写<code>:v</code>，在非匹配行上执行Ex命令、不修改匹配行</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
+          
+          <category> linux </category>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vim </tag>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>NHK72h补全计划</title>
       <link href="/2020-10-16-nhk72h-bu-quan-ji-hua/"/>
       <url>/2020-10-16-nhk72h-bu-quan-ji-hua/</url>
@@ -44,13 +77,13 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> linux </category>
           
-          <category> 工具 </category>
+          <category> 工作 </category>
           
           <category> VPS </category>
+          
+          <category> 工具 </category>
           
       </categories>
       
@@ -425,13 +458,13 @@
       
       <categories>
           
-          <category> 工作 </category>
-          
           <category> 生活 </category>
           
-          <category> 工具 </category>
+          <category> 工作 </category>
           
           <category> 记录 </category>
+          
+          <category> 工具 </category>
           
       </categories>
       
@@ -514,9 +547,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> linux </category>
+          
+          <category> 工作 </category>
           
           <category> 工具 </category>
           
@@ -661,9 +694,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -723,9 +756,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -758,9 +791,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -820,9 +853,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -1002,11 +1035,11 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
+          <category> linux </category>
           
           <category> 语言 </category>
           
-          <category> linux </category>
+          <category> 工作 </category>
           
           <category> 工具 </category>
           
@@ -1037,9 +1070,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> linux </category>
+          
+          <category> 工作 </category>
           
           <category> 工具 </category>
           
