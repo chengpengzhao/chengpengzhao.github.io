@@ -586,12 +586,12 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
           <div class="post-cate">
             <i class="fas fa-bookmark fa-fw icon-category"></i>
             
-            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
-              兴趣爱好
-            </a>
-            
             <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
               学习
+            </a>
+            
+            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+              兴趣爱好
             </a>
             
             <a href="/categories/%E5%AD%A6%E4%B9%A0/linux/" class="post-category">
@@ -602,12 +602,12 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
               工作
             </a>
             
-            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/VPS/" class="post-category">
-              VPS
-            </a>
-            
             <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
               工具
+            </a>
+            
+            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/VPS/" class="post-category">
+              VPS
             </a>
             
           </div>
@@ -626,21 +626,21 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-08-07
+          2020-11-13
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          4.7k
+          5.1k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          19 Min
+          20 Min
         </div>
         
 
@@ -1127,7 +1127,15 @@ services:
 </li>
 </ol>
 <h2 id="备份">10.4&emsp;备份</h2><p>书籍的所有数据都在docker内的<code>/books</code>文件夹下（即外部的<code>pathTo/books/calibre</code>），其中<code>metadata.db</code>、<code>metadata_db_prefs_backup.json</code>以及书籍文件夹是和桌面版<code>calibre</code>软件互通的，也就是可以互相拷贝覆盖。<code>app.db</code>、<code>gdrive.db</code>记录了<code>calibre-web</code>上的一些操作（如书架设置、用户名和密码、googleDrive设置），需要将服务迁移到另一台机器上时记得备份这些文件。</p>
-<h1 id="待发现">11&emsp;待发现</h1><p>后续发现了对自己有帮助的良心服务再更新...</p>
+<p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-11-13 23:22:02</em></p>
+</blockquote>
+<h1 id="Leanote，私有云笔记">11&emsp;Leanote，私有云笔记</h1><p>蚂蚁笔记虽然几年前就已经没更新了，但基本的功能挺全的，作为私有云笔记用起来没啥问题。我尝试了一个多月感觉还行，支持markdown、可以传图片、IOS下也有app、网页就能直接访问、备份方便...总之个人强力推荐吧，看了一些其他支持私人部署的笔记平台也都差不多的样。  </p>
+<p>我用的是<a href="https://github.com/KeiferJu/docker-leanote" target="_blank" rel="noopener">docker部署</a>的方式，比较无脑，而且这个仓库是大佬整合制作的镜像，有不同版本可供选择（视vps配置），反正我512M内存祖传vps运行完全版Leanote也毫无压力。  </p>
+<h1 id="FileRun，私人网盘">12&emsp;FileRun，私人网盘</h1><p>与之前的Nextcloud相比，FileRun私人网盘体积更加轻盈，部署起来没有那么多糟心的坑，也支持Webdav，适合部署在低配的机器上，只是传一传小文件（抱歉、低配硬盘根本不够用）、用webdav同步下一些app的数据（如OmniFocus之类的）。  </p>
+<p>配置过程及其简单，官网<a href="https://docs.filerun.com/docker" target="_blank" rel="noopener">https://docs.filerun.com/docker</a>里说的明明白白，顶多改一改<code>volumes</code>方便换vps时同步数据、或者改一改文件夹权限之类的，不像nextcloud真的是各种错误（虽然nextcloud的功能确实强大、加上各种插件、社区也很活跃）。</p>
+<h1 id="删去一些不必要的服务">13&emsp;删去一些不必要的服务</h1><p>用了一段时间后清理了一些平时基本不怎么用的服务，最后只留下<strong>Bitwarden</strong>、<strong>Leanote</strong>、和<strong>FileRun</strong>，别的比如nextcloud、Aria2、Calibre-web放到了我的群晖NAS（越用越香）上，最近手头有点紧，能省则省吧（最终还是不肯放弃bandwagon的祖传小鸡、被自己啪啪打脸）。</p>
 
       </div>
 
@@ -2138,7 +2146,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">104.2k</span>&nbsp;字
+                class="white-color">109.5k</span>&nbsp;字
             
             <br>
             
