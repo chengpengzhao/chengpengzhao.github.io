@@ -15,8 +15,31 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>この、くそったれな世界に、精一杯愛をこめて</description>
-    <pubDate>Wed, 28 Jul 2021 15:07:43 GMT</pubDate>
+    <pubDate>Sun, 29 Aug 2021 14:22:23 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>NAS可以外网访问咯</title>
+      <link>https://chengpengzhao.com/2021-08-29-nas-ke-yi-wai-wang-fang-wen-ge/</link>
+      <guid>https://chengpengzhao.com/2021-08-29-nas-ke-yi-wai-wang-fang-wen-ge/</guid>
+      <pubDate>Sat, 28 Aug 2021 16:00:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;h1 id=&quot;前言&quot;&gt;1&amp;emsp;前言&lt;/h1&gt;&lt;p&gt;虽然这篇post的主题是&lt;strong&gt;NAS(Network Attached Storag
+          
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>虽然这篇post的主题是<strong>NAS(Network Attached Storage)</strong>，但因为懒还是放在了<strong>VPS(virtual private server)</strong>目录里。上班后发现家里的黑群晖处于长期闲置状态，虽然一直开着机但在公司里也用不了（只能局域网访问）。这周末终于狠下心来整改一番，实现了外网访问，以后<del>摸鱼</del>工作起来更加便利了。</p><h1 id="准备阶段">2&emsp;准备阶段</h1><p>首先进行需求分析：能够从外网访问NAS的文件以及各种服务，实现方式经过<del>百度</del>Google可知有<strong>内网穿透</strong>与<strong>端口映射</strong>两类，其中<code>内网穿透</code>我很早之前试过但死活不成功，有点恶心到我了所以这次直接pass。<code>端口映射</code>的话需要以下条件：  </p><ol><li>光猫改桥接，通过<strong>路由器拨号</strong>，这样路由器页面里设置的端口映射才有效，不然在光猫的下级网络里。（什么？你没有路由器直接拿光猫上网？并且还在用光猫的WIFI？不会吧不会吧？）  </li><li>最好得有个域名，配置下DDNS，因为外部IP地址隔一段时间就会变，配置之后NAS检测到IP变化后会自动修改服务器提供商的解析设置，用户每次只需用域名访问即可。  </li></ol><p>下面回顾下具体需要准备的东西。</p><h2 id="光猫改桥接">2.1&emsp;光猫改桥接</h2><ol><li>首先得获取光猫的管理员账号密码，这个一般搜一下就能搜到，实在不行问装机小哥，再不行万能的淘宝解决；</li><li>宽带拨号用的用户名（连接名称<code>INTERNET_R_VID_XXX</code>里面可以看到）及密码，办宽带的时候一般都会告诉你密码，没说的话自己在网上营业厅里应该也都能查到，我是自己在网上重置了拨号密码（顺便吐槽下中国联通，重置几次都失败，最后忍无可忍提交宽带故障保修后又立马重置成功了）。</li><li>修改成桥接模式很简单，但还是保守一点比较好，留条后路，不要随便把连接直接删了。只需要先把原来PPP(或者PPPOE？)模式的连接勾选的绑定端口给取消，然后再新建一个桥接模式的连接并勾选这个端口（千兆）就完事了。</li><li>路由器里面改成拨号输入账号密码就行，不出意外的话现在路由器就能够上网了，但光猫的管理页面大概率没办法再登上去。要用的话可以直接拿网线连，一般也不会再去动它。</li><li>记得根据群晖的MAC地址给它分配一个静态IP。</li><li>随便设置一个端口映射，用<code>WAN IP:端口</code>的形式可以访问就表示大功告成了。</li></ol><h2 id="DDNS设置">2.2&emsp;DDNS设置</h2><blockquote><p>DDNS(Dynamic Domain Name Server)，是将用户的动态IP地址映射到一个固定的域名解析服务上，用户每次连接网络的时候客户端程序就会通过信息传递把该主机的动态IP地址传送给位于服务商主机上的服务器程序，服务器程序负责提供DNS服务并实现动态域名解析。</p></blockquote><p>我的域名放在Cloudflare上，但在群晖上一看支持DDNS的默认服务商竟然没有它，好在有<a href="https://github.com/joshuaavalon/SynologyCloudflareDDNS" target="_blank" rel="noopener">SynologyCloudflareDDNS</a>这个工具可以添加，配置起来也很简单，我按照步骤来没出现任何问题。</p><h1 id="其他设置">3&emsp;其他设置</h1><p>沉浸在成功实现外网访问的喜悦中，我一顿操作下来添加了接近10个端口映射。正准备再加个ssh端口时，我忽然想到，当初用NAS是因为它的安全性，文件都放在本地，在自己的掌控中；而将这些东西暴露在外网，甚至想直接用ssh登录，这样和VPS有什么区别，人家毕竟还是是专业托管机器的，反而比我这个小白弄的裸奔群晖安全吧。  </p><p>那么相对安全地暴露到公网的方式是什么呢，第一个想到的是<strong>VPN</strong>，只需要开放VPN相关的端口，通过它进入内网，之后就可以愉快地在工作时访问啦~  </p><p>下面具体说下我的设置:</p><ol><li>群晖安装<code>VPN Server</code>应用(国内被下架了，需要到官网去下载安装包手动安装)</li><li>开启之前先看一看群晖的证书设置，也以自己导入SSL证书，但最好<strong>不要</strong>把默认的给删了</li><li>我用的是<code>openvpn</code>，它的配置可以非常复杂，但我现在以能用为首要目标，就直接在页面上设置完事。只需要改一下动态IP地址（和局域网不同网段）以及勾选 <em>允许客户端访问服务器的LAN</em> 选项，导出配置里在修改下域名端口就行</li><li>我暂且只设置了账号密码登录，后续配合秘钥登录可能更好，但感觉安全性已经差不多了，毕竟是毫无规律性的<strong>几十位的数字字母字符混合密码</strong>加上群晖的<strong>自动封锁</strong>和<strong>账户保护</strong>功能</li><li>关闭除VPN以外的所有端口，保证直接从外网是打开不了网页的，防止被攻击以及被运营商找茬</li><li>更多安全设置可以参考<a href="https://blog.csdn.net/hilaryfrank/article/details/106127871" target="_blank" rel="noopener">这位大佬</a>的文章（垃圾充斥的CSDN里还是有点好东西的）</li></ol>]]></content:encoded>
+      
+      <comments>https://chengpengzhao.com/2021-08-29-nas-ke-yi-wai-wang-fang-wen-ge/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Makefile学习</title>
@@ -758,29 +781,6 @@
     </item>
     
     <item>
-      <title>新的一年，还是写点什么吧</title>
-      <link>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</link>
-      <guid>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</guid>
-      <pubDate>Fri, 03 Jan 2020 16:00:00 GMT</pubDate>
-      <description>
-      
-        
-        
-          
-          
-            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了-
-          
-        
-      
-      </description>
-      
-      
-      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。<br>日本过年过的是阳历，每年的最后一天叫啥大晦日(おおみそか)，大多数人都是与家人一起度过的，所以宿舍顿时冷清了许多；学校放假很多留学生也趁着假期出去浪了，只有苦逼的我还在宿舍学习。每次想要出去转转一看天气预报又是阴天，旅行计划都制定好了；又一想还是等忙完了这阵子再说吧，于是今年跨年和去年一样，依旧平平淡淡...</p><p>好像博客都没怎么写一些有生活气息的东西，正好今天元旦，新的一年希望有所改变，随便挤点牙膏写点感想吧。</p><blockquote><p><em>以下内容更新于2020-01-04 11:59:34</em></p></blockquote><p>本打算元旦就写完的，因为做PPT和写开题报告一直鸽到今天- -</p><h1 id="回顾过去几年">1&emsp;回顾过去几年</h1><p>每次停下来回顾的时候，总是感觉：人真是变得好快。<br>特别是自己，本觉得自己和以前一样没啥变化，该自闭的时候还是自闭，大学刚开始那两年看起来好点那是逞强出来的，归根到底自己还是喜欢一个人呆着；当然对别人也是有兴趣，和朋友一起吃喝玩乐也不错，但有时候就是不知道怎么表现自己，不知道怎么拉近人与人之间到距离。可能是因为自己连自己都不太了解，回首往事时总是想不通自己当初为什么那么做，想不通为什么变成了这样那样的人，明明是自己经历的事有时却像个旁观者在一边看着。<br>恋爱方面也是，虽然都是几年前的事了但自那时起我好像没有任何长进反而越发自闭了，有时觉得花费太多精力去了解彼此到最后却不再有任何交集这种事还是算了，还是共同利益这种东西比较稳定。这种只追求结果不看过程的想法使得我到现在好像都没法真正喜欢上一个人，是不是过了那个年纪呢（应该不是），总之还是很羡慕初中高中的时候的那种单纯。<br>人际交往方面更不用说，能够和别人相处地很好但是没办法拉近距离，也就是没法敞开心扉。这方面从小就不擅长，以后职场里生活中还有太多要学习的地方。<br>我是那种不怎么生气的人，虽然近年来试着更暴躁一点，但最多也就当时那一会，不会记恨某人，更不喜欢谈论别人，毕竟有这时间还不如用在投资自己上。</p><h1 id="关于将来">2&emsp;关于将来</h1><p>我是个不怎么规划将来的事的人，所以经常是今年的自己永远想不到明年的这个时候自己在什么地方做着什么事；给自己定的唯一的长远的目标就是一定不要成为自己不想成为的那类人（也是够抽象的）。<br>真的很佩服周围的一些人，大家都那么优秀，我光是想做好自己就已经感觉力不从心了，自制力不够偶尔还放纵一下，打打游戏躺躺尸；拿背单词举例吧我就没连续坚持过半年，而看到那些签到600多天的瞬间感觉自己太low。<br>当然从小到大也见过很多比自己还要普通的普通人，在社会的底层艰难的生活着，他们也曾给过自己很多小小的关怀；当感慨当今社会怎么怎么样的时候想到这些比自己不幸得多的人也就没那么多戾气了。</p><p>2020年了，自己也快25了（我爸这年纪都结婚工作了），以前初中高中的朋友好多也工作结婚了，感觉真是一眨眼的事；还是象征性地写几个长远点的目标吧:  </p><p><strong>zcp的五年目标</strong>  </p><ul><li>什么时候能稍微有点沟通能力和人际交往能力？（从小就不行，还是试着改一改）</li><li>英语、日语做到能和母语者无障碍扯谈（这个和第一点是相关的，感觉一是心态二是积累三是多练）</li><li>成为一名业余的程序员；（毕竟这几年工作肯定是和力学相关，但折腾博客过程中让我感觉这些东西还是挺有趣的；待学习： 前端工程师相关，js、html... 爬虫相关... 机器学习相关...)</li><li>精通两个业余爱好； （摄影和吉他，断断续续好多年了，还是想坚持下去）</li><li>专业方面有所成果，国际会议presentation至少一次。</li></ul><h1 id="2020小目标还是要有的吧">3&emsp;2020小目标还是要有的吧</h1><ul><li>一年完成毕设</li><li>雅思7.5</li><li>读完6本日文书，6本英文书，12本中文书</li><li>精通C++、fortran、OpenFOAM</li><li>吉他超过当年水平</li><li>精读3本摄影方面书籍，看完硬盘里存的教程</li><li>保持体重70kg的基础上降低体脂率,总结健身知识，尝试学习一些球类运动</li></ul><p>希望每一年都能变好那么一点吧。</p>]]></content:encoded>
-      
-      <comments>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/#disqus_thread</comments>
-    </item>
-    
-    <item>
       <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
       <link>https://chengpengzhao.com/2020-01-04-vats-simulation/</link>
       <guid>https://chengpengzhao.com/2020-01-04-vats-simulation/</guid>
@@ -801,6 +801,29 @@
       <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?resid=25FDD57DA585B6D%211494&amp;authkey=%21AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content:encoded>
       
       <comments>https://chengpengzhao.com/2020-01-04-vats-simulation/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>新的一年，还是写点什么吧</title>
+      <link>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</link>
+      <guid>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</guid>
+      <pubDate>Fri, 03 Jan 2020 16:00:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/hint.min.css&quot;&gt;&lt;p&gt;最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了-
+          
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。<br>日本过年过的是阳历，每年的最后一天叫啥大晦日(おおみそか)，大多数人都是与家人一起度过的，所以宿舍顿时冷清了许多；学校放假很多留学生也趁着假期出去浪了，只有苦逼的我还在宿舍学习。每次想要出去转转一看天气预报又是阴天，旅行计划都制定好了；又一想还是等忙完了这阵子再说吧，于是今年跨年和去年一样，依旧平平淡淡...</p><p>好像博客都没怎么写一些有生活气息的东西，正好今天元旦，新的一年希望有所改变，随便挤点牙膏写点感想吧。</p><blockquote><p><em>以下内容更新于2020-01-04 11:59:34</em></p></blockquote><p>本打算元旦就写完的，因为做PPT和写开题报告一直鸽到今天- -</p><h1 id="回顾过去几年">1&emsp;回顾过去几年</h1><p>每次停下来回顾的时候，总是感觉：人真是变得好快。<br>特别是自己，本觉得自己和以前一样没啥变化，该自闭的时候还是自闭，大学刚开始那两年看起来好点那是逞强出来的，归根到底自己还是喜欢一个人呆着；当然对别人也是有兴趣，和朋友一起吃喝玩乐也不错，但有时候就是不知道怎么表现自己，不知道怎么拉近人与人之间到距离。可能是因为自己连自己都不太了解，回首往事时总是想不通自己当初为什么那么做，想不通为什么变成了这样那样的人，明明是自己经历的事有时却像个旁观者在一边看着。<br>恋爱方面也是，虽然都是几年前的事了但自那时起我好像没有任何长进反而越发自闭了，有时觉得花费太多精力去了解彼此到最后却不再有任何交集这种事还是算了，还是共同利益这种东西比较稳定。这种只追求结果不看过程的想法使得我到现在好像都没法真正喜欢上一个人，是不是过了那个年纪呢（应该不是），总之还是很羡慕初中高中的时候的那种单纯。<br>人际交往方面更不用说，能够和别人相处地很好但是没办法拉近距离，也就是没法敞开心扉。这方面从小就不擅长，以后职场里生活中还有太多要学习的地方。<br>我是那种不怎么生气的人，虽然近年来试着更暴躁一点，但最多也就当时那一会，不会记恨某人，更不喜欢谈论别人，毕竟有这时间还不如用在投资自己上。</p><h1 id="关于将来">2&emsp;关于将来</h1><p>我是个不怎么规划将来的事的人，所以经常是今年的自己永远想不到明年的这个时候自己在什么地方做着什么事；给自己定的唯一的长远的目标就是一定不要成为自己不想成为的那类人（也是够抽象的）。<br>真的很佩服周围的一些人，大家都那么优秀，我光是想做好自己就已经感觉力不从心了，自制力不够偶尔还放纵一下，打打游戏躺躺尸；拿背单词举例吧我就没连续坚持过半年，而看到那些签到600多天的瞬间感觉自己太low。<br>当然从小到大也见过很多比自己还要普通的普通人，在社会的底层艰难的生活着，他们也曾给过自己很多小小的关怀；当感慨当今社会怎么怎么样的时候想到这些比自己不幸得多的人也就没那么多戾气了。</p><p>2020年了，自己也快25了（我爸这年纪都结婚工作了），以前初中高中的朋友好多也工作结婚了，感觉真是一眨眼的事；还是象征性地写几个长远点的目标吧:  </p><p><strong>zcp的五年目标</strong>  </p><ul><li>什么时候能稍微有点沟通能力和人际交往能力？（从小就不行，还是试着改一改）</li><li>英语、日语做到能和母语者无障碍扯谈（这个和第一点是相关的，感觉一是心态二是积累三是多练）</li><li>成为一名业余的程序员；（毕竟这几年工作肯定是和力学相关，但折腾博客过程中让我感觉这些东西还是挺有趣的；待学习： 前端工程师相关，js、html... 爬虫相关... 机器学习相关...)</li><li>精通两个业余爱好； （摄影和吉他，断断续续好多年了，还是想坚持下去）</li><li>专业方面有所成果，国际会议presentation至少一次。</li></ul><h1 id="2020小目标还是要有的吧">3&emsp;2020小目标还是要有的吧</h1><ul><li>一年完成毕设</li><li>雅思7.5</li><li>读完6本日文书，6本英文书，12本中文书</li><li>精通C++、fortran、OpenFOAM</li><li>吉他超过当年水平</li><li>精读3本摄影方面书籍，看完硬盘里存的教程</li><li>保持体重70kg的基础上降低体脂率,总结健身知识，尝试学习一些球类运动</li></ul><p>希望每一年都能变好那么一点吧。</p>]]></content:encoded>
+      
+      <comments>https://chengpengzhao.com/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/#disqus_thread</comments>
     </item>
     
     <item>
