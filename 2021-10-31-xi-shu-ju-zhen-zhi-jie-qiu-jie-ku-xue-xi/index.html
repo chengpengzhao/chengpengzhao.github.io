@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="折腾下闲置的VPS，部署Bitwarden_rs和sharelist, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;折腾下闲置的VPS本科时同学推荐搬瓦工的VPS，当然那时我连VPS是什么都不知道，听说能够翻过围墙所以就买了。对Linux一窍不通的我在曾经的doubi根据地上的文章指引下，也能够搭建一个比较舒服的上网环境，当时感到十分愉快（">
+    <meta name="keywords" content="稀疏线性方程组直接求解库学习, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;前言最近正在入门代数求解相关领域，简单来说就是研究$Ax=b$如何求解，只不过这里的$A$是一个大型（上亿阶）稀疏（大量0元素）矩阵。虽然工程实际中用得最多的是迭代法，这里还是先介绍直接求解的相关库  
+首先，推荐Xiaoye">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>折腾下闲置的VPS，部署Bitwarden_rs和sharelist | Zcp&#39;s Zone</title>
+    <title>稀疏线性方程组直接求解库学习 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -441,7 +442,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        折腾下闲置的VPS，部署Bitwarden_rs和sharelist
+                        稀疏线性方程组直接求解库学习
                     </div>
                 </div>
             </div>
@@ -559,39 +560,14 @@
           
           <div class="article-tag">
             
-            <a href="/tags/bitwarden/">
-              <span class="chip bg-color">bitwarden</span>
-            </a>
-            
-            <a href="/tags/sharelist/">
-              <span class="chip bg-color">sharelist</span>
+            <a href="/tags/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5/">
+              <span class="chip bg-color">稀疏矩阵</span>
             </a>
             
           </div>
           
         </div>
         <div class="col s5 right-align">
-          
-          <div class="post-cate">
-            <i class="fas fa-bookmark fa-fw icon-category"></i>
-            
-            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
-              兴趣爱好
-            </a>
-            
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-              学习
-            </a>
-            
-            <a href="/categories/%E5%AD%A6%E4%B9%A0/linux/" class="post-category">
-              linux
-            </a>
-            
-            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/VPS/" class="post-category">
-              VPS
-            </a>
-            
-          </div>
           
         </div>
       </div>
@@ -600,28 +576,28 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-          2020-02-11
+          2021-10-31
         </div>
         
 
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-08-03
+          2021-10-31
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          3k
+          612
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          12 Min
+          2 Min
         </div>
         
 
@@ -632,307 +608,141 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="折腾下闲置的VPS">1&emsp;折腾下闲置的VPS</h1><p>本科时同学推荐搬瓦工的VPS，当然那时我连VPS是什么都不知道，听说能够翻过围墙所以就买了。对Linux一窍不通的我在曾经的doubi根据地上的文章指引下，也能够搭建一个比较舒服的上网环境，当时感到十分愉快（用的当然是那些一键脚本）。<br>过了一年除了IP被封过两次、换了几个机房、换了几个一键脚本以外，倒也还没觉得有啥不满；毕竟如果是买市面上那些服务每个月的钱也差不多。<br>人总是在不断学习进步的，我总算学会了一些linux基本操作，可以用XShell登一登我的VPS没事<code>ls</code>一下。但看到大佬们用自己的VPS搭各种服务器到时候，还是非常羡慕的，于是忍不住也尝试下，顺便学习下后端相关知识。<br><br></p>
-<p>由于时间有限，以能用为唯一目的，多余的知识没时间更没必要去掌握（毕竟专业和这个毫不相关），操作全部记录在这方便以后换VPS时再搭一遍。</p>
-<h1 id="Bitwarden-rs部署">2&emsp;Bitwarden_rs部署</h1><h2 id="前言">2.1&emsp;前言</h2><p>好用的密码管理软件之一，<code>_rs</code>版本相对于官方版精简了不少，部署也比较简单。网上大多数bitwarden_rs部署教程的文章我基本上都过了一遍，我遇到的主要问题有：</p>
-<ol>
-<li>部署后用Chrome浏览器无法登录与注册账号，IOS系统无法登录 (——后确定为<strong>未用https</strong>的原因)  </li>
-<li>网上关于申请https这部分往往一笔带过，什么Nginx反向代理啦....看得我这样的零基础玩家云里雾里。  </li>
-</ol>
-<p>结果大量时间都花在如何启用https上了，真让人头大。</p>
-<h2 id="步骤">2.2&emsp;步骤</h2><h3 id="VPS初始配置">2.2.1&emsp;VPS初始配置</h3><p>经过几次重装OS后学乖了，把初始配置做成一个脚本。 </p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> -i
-<span class="token function">apt-get</span> <span class="token function">install</span> curl -y
-<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span> -y
-<span class="token function">apt-get</span> <span class="token function">install</span> vim -y
-<span class="token comment" spellcheck="true">#=========================</span>
-<span class="token comment" spellcheck="true">#Vim配置</span>
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim
-<span class="token comment" spellcheck="true">#=========================</span>
-<span class="token function">git</span> clone https://github.com/chengpengzhao/My_vimrc.git
-<span class="token function">cd</span> My_vimrc
-<span class="token function">git</span> checkout dev-WSL
-<span class="token function">cp</span> ./<span class="token string">'.vimrc(ssh)'</span> ~/.vimrc
-<span class="token comment" spellcheck="true">#=========================</span>
-<span class="token comment" spellcheck="true">#安装Docker、docker-compose</span>
-<span class="token function">sudo</span> curl -fsSL https://get.docker.com <span class="token operator">|</span> <span class="token function">bash</span> -s docker --mirror Aliyun
-<span class="token function">sudo</span> curl -L <span class="token string">"https://github.com/docker/compose/releases/download/1.24.0/docker-compose-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -s<span class="token variable">)</span></span>-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -m<span class="token variable">)</span></span>"</span> -o /usr/local/bin/docker-compose
-<span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-compose
-systemctl start docker
-systemctl <span class="token function">enable</span> docker
-<span class="token comment" spellcheck="true">#=========================</span>
-<span class="token comment" spellcheck="true"># 安装acme.sh</span>
-<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">cron</span> socat -y
-curl https://get.acme.sh <span class="token operator">|</span> sh
-<span class="token function">source</span> ~/.bashrc
-<span class="token function">export</span> Namesilo_Key<span class="token operator">=</span><span class="token string">"xxxxxxxxxxxxx"</span>（我的域名提供商）
-
-apt <span class="token function">install</span> firewalld -y
-
-firewall-cmd --permanent --add-service<span class="token operator">=</span>http 
-firewall-cmd --permanent --add-service<span class="token operator">=</span>https 
-firewall-cmd --reload 
-<span class="token function">service</span> docker restart
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>步骤因人而异，大致都差不多。</p>
-<h3 id="一般部署">2.2.2&emsp;一般部署</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p /opt/bitwarden <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> /opt/bitwarden
-
-<span class="token function">cat</span> <span class="token operator">>></span> docker-compose.yml <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
-version: "3"
-
-services:
-  bitwarden:
-    image: bitwardenrs/server
-    restart: always
-    ports:
-    - "8080:80"
-    - "8081:3012"
-    volumes:
-      - ./bw-data:/data
-    environment:
-      WEBSOCKET_ENABLED: "true"
-      SIGNUPS_ALLOWED: "true"
-      WEB_VAULT_ENABLED: "true"
-EOF</span>
-
-docker-compose up -d
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>端口相关知识我真的一窍不通...反正能用<code>ip:8081</code>访问就行。</p>
-<h3 id="启用https">2.2.3&emsp;启用https</h3><p>稀里糊涂的装了个acme.sh脚本、在NameSilo申请了个API key；</p>
-<pre class="line-numbers language-bash"><code class="language-bash">acme.sh --issue --dns dns_namesilo --dnssleep 900 -d my_domain_name.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>看到没有报错的时候真的松了口气，然而证书是申请了，怎么绑到之前的bitwarden_rs的domain里我还是不会。<br>后面发现<a href="https://chengpengzhao.com/files_store/%E5%BC%80%E6%BA%90%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%9ABitwarden_rs%20%E7%AC%AC%E4%B8%89%E6%96%B9%E7%89%88%E6%9C%AC%E9%83%A8%E7%BD%B2%20-%20%E8%80%81%E5%85%84de%E5%8D%9A%E5%AE%A2%20(2020-02-11%20%E4%B8%8A%E5%8D%889_45_29).html">这篇教程</a>和其他的都有些不一样，于是抱着一丝希望试了下...总算是解决了问题。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">>></span> docker-compose.yml <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
-version: "3"
-
-services:
-  bitwarden:
-    image: bitwardenrs/server
-    restart: always
-    volumes:
-      - ./bw-data:/data
-    environment:
-      WEBSOCKET_ENABLED: "true"
-      SIGNUPS_ALLOWED: "true"
-
-  caddy:
-    image: abiosoft/caddy
-    restart: always
-    volumes:
-      - ./Caddyfile:/etc/Caddyfile:ro
-      - caddycerts:/root/.caddy
-    ports:
-      - 80:80
-      - 443:443
-    environment:
-      ACME_AGREE: "true" 
-      DOMAIN: "bitwarden.koko.cat"
-      EMAIL: "example@gmail.com"
-volumes:
-  caddycerts:
-EOF</span>
-
-<span class="token function">cat</span> <span class="token operator">>></span> Caddyfile <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
-{<span class="token variable">$DOMAIN</span>} {
-    tls {<span class="token variable">$EMAIL</span>}
-
-    header / {
-        Strict-Transport-Security "max-age=31536000;"
-        X-XSS-Protection "1; mode=block"
-        X-Frame-Options "DENY"
-    }
-
-    proxy /notifications/hub/negotiate bitwarden:80 {
-        transparent
-    }
-
-    # Notifications redirected to the websockets server
-    proxy /notifications/hub bitwarden:3012 {
-        websocket
-    }
-
-    # Proxy the Root directory to Rocket
-    proxy / bitwarden:80 {
-        transparent
-    }
-}
-EOF</span>
-
-docker-compose down <span class="token operator">&amp;&amp;</span> docker-compose up -d
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="定时备份">2.2.4&emsp;定时备份</h3><p>直接用github备份算了，或者定时手动导出到你觉得安全的位置。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~
-ssh-keygen -t rsa
-<span class="token function">cat</span> ~/.ssh/id_rsa.pub
-<span class="token comment" spellcheck="true">#之后在github上导入，新建私人repository</span>
-<span class="token function">cd</span> /opt/bitwarden/bw-data
-<span class="token function">git</span> init
-<span class="token function">git</span> remote add origin git@github.com:xxxx/xxxx.git
-<span class="token function">git</span> add -A
-<span class="token function">git</span> commit -m <span class="token string">"first push"</span>
-<span class="token function">git</span> push -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>建立脚本并定时运行：  </p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~
-<span class="token function">cat</span> <span class="token operator">>></span> backup.sh <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
-#!/bin/bash
-date=<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> '+%Y-%m-%d %H:%M'<span class="token variable">)</span></span>
-cd /opt/bitwarden/bw-data
-git add -A
-git commit -m "backup at <span class="token variable">$date</span>"
-git push
-EOF</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>bash ~/gitback.sh</code>试运行，设置定时任务</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"15 05 * * * bash ~/gitback.sh > ~/siteback.log 2>&amp;1 &amp;"</span> <span class="token operator">></span> bt.cron
-<span class="token function">crontab</span> bt.cron
-<span class="token function">rm</span> -rf bt.cron<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>自动备份部分白嫖的<a href="https://www.moerats.com/archives/858/" target="_blank" rel="noopener">Rat&#39;s Blog</a>。<br>查看定时任务可通过<code>crontab -l</code></p>
-<h1 id="Sharelist分享云盘">3&emsp;Sharelist分享云盘</h1><p><a href="https://github.com/reruin/sharelist" target="_blank" rel="noopener">项目地址</a><br>这个搭起来就简单多了，dockerr都给你准备好了，只需要注意安装完成后配置云盘可能比较复杂；我选用的是<strong>链接分享</strong>的方式，可以自己指定文件夹且不需要获取API之类的复杂操作。  </p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">wget</span> --no-check-certificate -qO-  https://cdn.jsdelivr.net/gh/reruin/sharelist/netinstall.sh <span class="token operator">|</span> <span class="token function">bash</span>
-<span class="token function">cd</span> sharelist
-docker-compose up<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><br><br></p>
-<blockquote>
-<p><em>以下内容更新于2020-06-23 13:48:33</em></p>
-</blockquote>
-<h1 id="更新：加入Nginx学习与使用-（推荐从这部分看起）">4&emsp;更新：加入Nginx学习与使用 （推荐从这部分看起）</h1><p>之前配置好的bitwarden用了几个月，昨天忽然发现移动端没法同步了，因为刚开始配置的时候就出现过这个问题所以一下子就定位到是<strong>https</strong>的问题。ping了一下域名竟然没ping通，不知道又是不是DNS服务器抽风了。正好对<code>namesilo</code>不太了解，干脆直接把域名转移到了<code>cloudflare</code>下。选择<code>cloudflare</code>是因为它的种种优点，而且设置起来比较方便。</p>
-<h2 id="namesilo域名转移到cloudflare">4.1&emsp;namesilo域名转移到cloudflare</h2><ol>
-<li>在<code>cloudflare</code>中添加要转移的域名，在<code>namesilo</code>中将DNS解析改为<code>cloudflare</code>（会提示你怎么做）。  </li>
-<li><code>cloudflare</code>里要有付款方式；我之前已经用过很久<code>cloudflare</code>了，所以这步略过。</li>
-<li>在<code>namesilo</code>里将域名解锁（unlock图标），之后在<code>cloudflare</code>中申请转移，会要求输入一个授权码；</li>
-<li><code>namesilo</code>里找到<code>send email</code>，授权码会发到邮箱里，在<code>cloudflare</code>输入后会提示正在转移中（这步会付款）。</li>
-<li>过一会儿<code>namesilo</code>会再发邮件提示正在转移域名，点进相关网址可以立即通过转移（省时间）。</li>
-</ol>
-<h2 id="cloudflare的ssl-tls设置">4.2&emsp;cloudflare的ssl-tls设置</h2><p>一般将加密模式设置为<strong>完全</strong>（<code>cloudflare</code>前一阵子出了简体中文版网页，更香了有没有），之后再到源服务器选项下创建源证书，之后要放到VPS上的。（我直接创了个15年有效期的），将公钥和私钥保存为<code>cert.pem</code>和<code>cert.key</code>。  </p>
-<h2 id="cloudflare的DNS设置">4.3&emsp;cloudflare的DNS设置</h2><p>虽然对这些方面一窍不通，但在用的过程中还是有点心得之类的东西：<br>比如在解析像<code>Github Page</code>这种时可以只用<code>CNAME</code>记录，而在解析<code>ip地址</code>时一般只用<code>A</code>记录就行了。另外通常会设置多条记录，一条给根域名(@表示或直接输入完整域名)、另一条给<code>www</code>（名称）的前缀，之后可以根据喜好随便加几条（如<code>0</code>、<code>000</code>...）。<br>这些记录的内容都是指向同一个<code>ip地址</code>、即VPS的ip，在没有用<code>Nginx</code>配置时，无论是用<code>www.yoursite</code>还是<code>yoursite</code>、<code>0.yoursite</code>、<code>000.yoursitez</code>访问，页面应该都是相同的。</p>
-<h2 id="VPS上启动docker-compose容器">4.4&emsp;VPS上启动docker-compose容器</h2><p>先以bitwarden为例讲下吧：</p>
-<ol>
-<li><p>去网上学习下常用的几个命令如<code>docker ps</code>、<code>docker-compose down &amp;&amp; docker-compose up -d</code>、<code>docker-compose restart</code>，大概了解下怎么使用；</p>
-</li>
-<li><p>按照<a href="#toc-heading-6">一般部署</a>这部分创建好<code>docker-compose.yml</code>文件，这里<code>8080</code>和<code>8081</code>可以改成别的，后面访问网页就是通过8080端口。</p>
-</li>
-<li><p>部署成功后用<code>docker ps</code>应该能看到运行状态，并且通过<code>VPS的ip地址:8080</code>的方式能够访问bitwarden网页，这时已经完成了一大半。（浏览器会提示<em>不安全</em>，因为还没有SSL证书）</p>
-</li>
-<li><p>最后用<code>Nginx</code>将<code>VPS的ip地址:8080</code>和<code>准备好的域名</code>“绑在一起”就好了。</p>
-</li>
-</ol>
-<h2 id="Nginx学习与使用">4.5&emsp;Nginx学习与使用</h2><p>之前看别人教程的时候都是“接下来用Nginx弄个反代...完”、这种节奏，看来是默认大家都会<code>Nginx</code>了（哭了出来）。<br>本着<strong>原理可以不弄太懂，关键不影响使用</strong>的懒人态度，直到今天我也终于开始Google搜索<em>Nginx入门</em> 了。</p>
-<ol>
-<li><p>安装，想当然的输入 <code>sudo apt-get install nginx</code> ，嗯？能行，好、下一步。</p>
-</li>
-<li><p>命令，检测配置<code>nginx -t</code>、 重载配置<code>nginx -s reload</code>、启动<code>nginx</code>，暂时先记这几个了。</p>
-</li>
-<li><p>文件位置，输入<code>whereis nginx</code>查一查再说；  </p>
-<ul>
-<li>噢? <code>/usr/share/nginx</code>目录下放有个html目录，打开<code>VPS的ip地址</code>显示的<code>Welcome to nginx!</code>原来就是这个<code>index.html</code>。  </li>
-<li><code>/etc/nginx</code>下的<code>nginx.conf</code>应该就是配置文件了，用<code>vim</code>打开看下吧，里面有一行<code>include /etc/nginx/conf.d/*.conf;</code>，也就是说我在<code>/etc/nginx/conf.d</code>目录下建的<code>.conf</code>文件也会当做配置文件读入。</li>
+        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>最近正在入门代数求解相关领域，简单来说就是研究$Ax=b$如何求解，只不过这里的$A$是一个<strong>大型</strong>（上亿阶）<strong>稀疏</strong>（大量0元素）<strong>矩阵</strong>。虽然工程实际中用得最多的是迭代法，这里还是先介绍直接求解的相关库  </p>
+<p>首先，推荐<code>Xiaoye(Sherry) Li</code>(在美国<code>Lawrence Berkeley National Laboratory</code>担任<code>Senior Scientist &amp; Group Lead</code>)在<a href="https://archive.siam.org/students/g2s3/2013/lecturers/XSLi/Lecture-Notes/sherry.pdf" target="_blank" rel="noopener">Summer School的PPT</a>，过一遍就大概知道了稀疏矩阵直接求解有哪些要注意的问题。接着就是找文献继续深入了~</p>
+<h1 id="汇总表">2&emsp;汇总表</h1><p>前人做的比较全面的对比：<a href="https://portal.nersc.gov/project/sparse/superlu/SparseDirectSurvey.pdf" target="_blank" rel="noopener">Direct Solvers for Sparse Matrices</a>  </p>
+<p>这里补充了一些自己找的，稍微整理了一下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>名称含义</th>
+<th>机构</th>
+<th>求解方法</th>
+<th>对应矩阵类型</th>
+<th>网址</th>
+<th>程序语言</th>
+<th>个人评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HSL</td>
+<td>Harwell Subroutine Library</td>
+<td>STFC&#39;s Rutherford Appleton Laboratory, UK</td>
+<td>Multifrontal</td>
+<td>Sym、Sym-pat、Unsym</td>
+<td><a href="http://www.hsl.rl.ac.uk/" target="_blank" rel="noopener">link</a></td>
+<td>FORTRAN</td>
+<td>👍</td>
+</tr>
+<tr>
+<td>BCSLIB-EXT</td>
+<td>Unknown</td>
+<td>Boeing Computer Services, USA</td>
+<td>Multifrontal</td>
+<td>Sym、Unsym</td>
+<td><a href="http://www.aanalytics.com/products.htm" target="_blank" rel="noopener">link</a></td>
+<td>FORTRAN</td>
+<td>👍</td>
+</tr>
+<tr>
+<td>PSPASES</td>
+<td>Parallel SPArse Symmetric dirEct Solver</td>
+<td>IBM Corporation and  University of Minnesota，USA</td>
+<td>Multifrontal</td>
+<td>SPD</td>
+<td><a href="https://www.lrz.de/services/software/mathematik/pspases/" target="_blank" rel="noopener">link</a></td>
+<td>C/FORTRAN</td>
+<td>👍</td>
+</tr>
+<tr>
+<td>WSMP</td>
+<td>Watson Sparse Matrix Package</td>
+<td>IBM Corporation，USA</td>
+<td>Multifrontal</td>
+<td>SPD、Unsym</td>
+<td><a href="https://researcher.watson.ibm.com/researcher/view_group_subpage.php?id=7624" target="_blank" rel="noopener">link</a></td>
+<td>FORTRAN</td>
+<td>👍👍👍👍👍</td>
+</tr>
+<tr>
+<td>TAUCS</td>
+<td>Unknown</td>
+<td>Tel-Aviv University，Israel</td>
+<td>Left/Multifr.</td>
+<td>Sym、Unsym</td>
+<td><a href="https://www.tau.ac.il/~stoledo/taucs/" target="_blank" rel="noopener">link</a></td>
+<td>C</td>
+<td>👍👍</td>
+</tr>
+<tr>
+<td>PARDISO</td>
+<td>Parallel Sparse Direct Solver</td>
+<td>USI, Lugano，Switzerland</td>
+<td>Left-Right looking</td>
+<td>Sym-pat</td>
+<td><a href="https://www.pardiso-project.org/" target="_blank" rel="noopener">link</a></td>
+<td>FORTRAN</td>
+<td>👍👍👍</td>
+</tr>
+<tr>
+<td>PaStiX</td>
+<td>Parallel Sparse direct Solver</td>
+<td>BORDEAUX I UNIVERSITY，France</td>
+<td>Left-Right looking</td>
+<td>Sym-pat</td>
+<td><a href="http://pastix.gforge.inria.fr/files/README-txt.html" target="_blank" rel="noopener">link</a></td>
+<td>C</td>
+<td>👍👍👍👍</td>
+</tr>
+<tr>
+<td>UMFPACK</td>
+<td>Unknown（Now as a part of <a href="https://people.engr.tamu.edu/davis/suitesparse.html" target="_blank" rel="noopener">SuiteSparse</a></td>
+<td>Texas A&amp;M university，USA</td>
+<td>Multifrontal</td>
+<td>Unsym</td>
+<td><a href="https://people.sc.fsu.edu/~jburkardt/f77_src/umfpack/umfpack.html" target="_blank" rel="noopener">link</a></td>
+<td>FORTRAN</td>
+<td>👍👍</td>
+</tr>
+<tr>
+<td>SuperLU</td>
+<td>Supernodal Low Upper Decomposition</td>
+<td>Lawrence Berkeley National Laboratory，USA</td>
+<td>Left/Right-looking</td>
+<td>Unsym</td>
+<td><a href="https://portal.nersc.gov/project/sparse/superlu/" target="_blank" rel="noopener">link</a></td>
+<td>C</td>
+<td>👍👍👍👍👍</td>
+</tr>
+<tr>
+<td>MUMPS</td>
+<td>Multifrontal Massively Parallel Sparse Direct Solver</td>
+<td>University of Bordeaux，France</td>
+<td>Multifrontal</td>
+<td>SPD、Sym-pat、Unsym</td>
+<td><a href="http://mumps.enseeiht.fr/" target="_blank" rel="noopener">link</a></td>
+<td>FORTRAN</td>
+<td>👍👍👍👍</td>
+</tr>
+<tr>
+<td>STRUMPACK</td>
+<td>STRUctured Matrix PACKage</td>
+<td>Lawrence Berkeley National Laboratory，USA</td>
+<td>Multifrontal</td>
+<td>Sym-pat、Unsym</td>
+<td><a href="https://portal.nersc.gov/project/sparse/strumpack/index.html" target="_blank" rel="noopener">link</a></td>
+<td>C++</td>
+<td>👍👍👍👍👍</td>
+</tr>
+</tbody></table>
+<h1 id="一些说明">3&emsp;一些说明</h1><ul>
+<li>个人评分根据求解库对个人的<strong>参考价值</strong>来判断，判断标准有：是否开源、性能、可扩展性、代码可读性、相关文档丰富度、程序版本号等</li>
+<li>PARDISO（上次更新：2020.11），网页做的很好，<code>Intel MKL</code>库中的直接求解模块就用到了它；文献量不多，值得关注</li>
+<li>PaStiX（上次更新：2021.07），文献较新，测试最大问题规模达10M？，文献值得跟进</li>
+<li>MUMPS（上次更新：2021.08），算例最大问题规模10M，推荐（因为是用FORTRAN写的、个人评分减一）</li>
+<li>STRUMPACK（上次更新：几天前），很有潜力，采用的是面向对象的C++编程，用到了大量C++11特性，为稀疏及稠密矩阵提供了一系列线性代数操作以及方程求解方法，不仅仅是直接求解库</li>
 </ul>
-</li>
-<li><p>随便到网上找一个配置文件例子，比如我找了个<code>default.conf</code>，放在<code>conf.d</code>目录下的：</p>
-<ul>
-<li>注意这里用到了之前申请的源证书<code>cert.pem</code>和<code>cert.key</code>。  </li>
-<li>从配置文件可以发现可以有多个<code>server</code>，之后我们只需为bitwarden、sharelist等各配置一个server就行了。  </li>
-</ul>
-</li>
-</ol>
-<pre class="line-numbers language-conf"><code class="language-conf">#设定虚拟主机配置
-server {
-  #侦听443端口，这个是ssl访问端口
-  listen    443;
-  #定义使用 访问域名
-  server_name  yoursite.com
-  #定义服务器的默认网站根目录位置,这里的html指的是/usr/share/nginx/html目录
-  root html;
-  # 这些都是腾讯云推荐的配置，直接拿来用就行了，只是修改证书的路径，注意这些路径是相对于/etc/nginx
-  ssl on;
-  ssl_certificate cert.pem;
-  ssl_certificate_key cert.key;
-  ssl_session_timeout 5m;
-  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;      #按照这个协议配置
-  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置
-  ssl_prefer_server_ciphers on;
-  #默认请求
-  location / {
-  root html;
-  index index.html;
-  }
-  #静态文件，nginx自己处理
-  location ~ ^/(images|javascript|js|css|flash|media|static)/ {
-      #过期30天，静态文件不怎么更新，过期可以设大一点，
-      #如果频繁更新，则可以设置得小一点。
-      expires 30d;
-  }
-  #禁止访问 .htxxx 文件
-  #    location ~ /.ht {
-  #    deny all;
-  #}
-}
-server
-{
-  # 80端口是http正常访问的接口
-  listen 80;
-  server_name  yoursite.com;
-  # 在这里，我做了https全加密处理，在访问http的时候自动跳转到https
-  rewrite ^(.*) https://$host$1 permanent;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="5">
-<li>为<code>bitwarden</code>配置server：<br>在<a href="https://github.com/dani-garcia/bitwarden_rs/wiki/Proxy-examples" target="_blank" rel="noopener">Bitwarden_rs的github</a>可以找到相应的例子，只需要粘贴到<code>default.conf</code>上再稍作修改，最后运行<code>nginx -s reload</code>就行了。下面是我的配置：</li>
-</ol>
-<pre class="line-numbers language-conf"><code class="language-conf">server {
-  listen 443 ssl http2;
-  server_name  0.yoursite.com;  #这里改成自己的域名，可以加前缀（之前DNS解析了的）
-  # Specify SSL config if using a shared one.
-  #include conf.d/ssl/ssl.conf;
-  # Allow large attachments
-  client_max_body_size 128M;
-  location / {
-    proxy_pass http://127.0.0.1:8080;       #这里8080对应前面的设置，127.0.0.1代表本机ip
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-  }
-  location /notifications/hub {
-    proxy_pass http://127.0.0.1:8081;   #8081对应前面的设置
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-  }
-  location /notifications/hub/negotiate {
-    proxy_pass http://127.0.0.1:8080;   #8080对应前面的设置
-  }
-  # Optionally add extra authentication besides the AUTH_TOKEN
-  # If you don't want this, leave this part out
-  location /admin {
-    # See: https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/
-    auth_basic "Private";
-    auth_basic_user_file /path/to/htpasswd_file;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_pass http://127.0.0.1:8080;   #8080对应前面的设置
-  }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="6">
-<li>顺便附上<code>sharelist</code>的Nginx设置：</li>
-</ol>
-<pre class="line-numbers language-conf"><code class="language-conf">server {
-  listen 443 ssl http2;
-  server_name  www.yoursite.com;
-  # Specify SSL config if using a shared one.
-  #include conf.d/ssl/ssl.conf;
-  # Allow large attachments
-  location / {
-    proxy_pass http://127.0.0.1:33001;
-      proxy_set_header Host  $host;
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header X-Forwarded-Proto $scheme;
-
-      proxy_set_header Range $http_range;
-      proxy_set_header If-Range $http_if_range;
-      proxy_no_cache $http_range $http_if_range;
-  }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       </div>
 
@@ -957,7 +767,7 @@ server
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2020-02-08-bitwarden-mi-ma-guan-li-ji-sharelist-da-jian/">https://chengpengzhao.com/2020-02-08-bitwarden-mi-ma-guan-li-ji-sharelist-da-jian/</a>
+                    <a href="https://chengpengzhao.com/2021-10-31-xi-shu-ju-zhen-zhi-jie-qiu-jie-ku-xue-xi/">https://chengpengzhao.com/2021-10-31-xi-shu-ju-zhen-zhi-jie-qiu-jie-ku-xue-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -995,12 +805,8 @@ server
           
           <div class="article-tag">
             
-            <a href="/tags/bitwarden/">
-              <span class="chip bg-color">bitwarden</span>
-            </a>
-            
-            <a href="/tags/sharelist/">
-              <span class="chip bg-color">sharelist</span>
+            <a href="/tags/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5/">
+              <span class="chip bg-color">稀疏矩阵</span>
             </a>
             
           </div>
@@ -1688,57 +1494,45 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020-02-16-yong-ba-zhua-yu-cai-ji-qi-pa-qu-comsol-pei-xun-shi-pin/">
+                <a href="/2021-10-31-xi-shu-ju-zhen-zhi-jie-qiu-jie-ku-xue-xi/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200216221057.webp" class="responsive-img" alt="用八爪鱼采集器爬取COMSOL培训视频">
-                        -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">用八爪鱼采集器爬取COMSOL培训视频</span>
-
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="稀疏线性方程组直接求解库学习">
+                        
+                        <span class="card-title">稀疏线性方程组直接求解库学习</span> -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">稀疏线性方程组直接求解库学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言整理邮件垃圾箱时偶然发现COMSOL（多物理场仿真软件）中国给我发了条有用的信息：
-COMSOL 用户，您好！
-
-新型冠状病毒肺炎的疫情仍在持续，在疫情期间，COMSOL 中国将向所有注册用户
-免费开放 15 个专题，共计
+                            1&emsp;前言最近正在入门代数求解相关领域，简单来说就是研究$Ax=b$如何求解，只不过这里的$A$是一个大型（上亿阶）稀疏（大量0元素）矩阵。虽然工程实际中用得最多的是迭代法，这里还是先介绍直接求解的相关库  
+首先，推荐Xiaoye
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-31
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zcp
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%88%AC%E8%99%AB/">
-                        <span class="chip bg-color">爬虫</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%85%AB%E7%88%AA%E9%B1%BC%E9%87%87%E9%9B%86%E5%99%A8/">
-                        <span class="chip bg-color">八爪鱼采集器</span>
+                    <a href="/tags/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5/">
+                        <span class="chip bg-color">稀疏矩阵</span>
                     </a>
                     
                 </div>
@@ -1752,44 +1546,42 @@ COMSOL 用户，您好！
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020-02-05-kai-shi-shi-yong-tiddlywiki-ge-ren-bi-ji-xi-tong-he-gnucash-ge-ren-cai-wu-guan-li-xi-tong/">
+                <a href="/2021-10-15-ke-zhuan-zhai-ru-men-bi-ji/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200205232957.webp" class="responsive-img" alt="开始使用TiddlyWiki个人笔记系统和Gnucash个人财务管理系统">
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="可转债入门笔记">
                         -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">开始使用TiddlyWiki个人笔记系统和Gnucash个人财务管理系统</span>
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">可转债入门笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言最近事情比较多，想看的书、想学的、不得不学的...其中很多都是无意中逛别人博客后发现的，比如财务管理、GTD、如何整理笔记、保险相关知识...  
-我之所以会把这些事的优先级放这么高，核心目的还是在于想让自己早点养成习惯，
+                            
+相关网站： 集思录
+
+1&emsp;入门篇
+可转债，全称为“可转换公司债券”，是可以转换成公司股票的债券，债权+期权。其持有人可以选择持有债券到期，获取公司还本付息；也可以选择在约定的时间内转换成股票，享受股利分配或资本增值。
+
+法律规定
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                            
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    记录
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%8A%95%E8%B5%84/" class="post-category">
+                                    投资
                                 </a>
                             
                             
@@ -1799,12 +1591,8 @@ COMSOL 用户，您好！
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/TiddlyWiki/">
-                        <span class="chip bg-color">TiddlyWiki</span>
-                    </a>
-                    
-                    <a href="/tags/Gnucash/">
-                        <span class="chip bg-color">Gnucash</span>
+                    <a href="/tags/%E5%8F%AF%E8%BD%AC%E5%80%BA/">
+                        <span class="chip bg-color">可转债</span>
                     </a>
                     
                 </div>
@@ -1938,6 +1726,19 @@ COMSOL 用户，您好！
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
 
 
 

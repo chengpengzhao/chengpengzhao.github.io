@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>稀疏线性方程组直接求解库学习</title>
+      <link href="/2021-10-31-xi-shu-ju-zhen-zhi-jie-qiu-jie-ku-xue-xi/"/>
+      <url>/2021-10-31-xi-shu-ju-zhen-zhi-jie-qiu-jie-ku-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>最近正在入门代数求解相关领域，简单来说就是研究$Ax=b$如何求解，只不过这里的$A$是一个<strong>大型</strong>（上亿阶）<strong>稀疏</strong>（大量0元素）<strong>矩阵</strong>。虽然工程实际中用得最多的是迭代法，这里还是先介绍直接求解的相关库  </p><p>首先，推荐<code>Xiaoye(Sherry) Li</code>(在美国<code>Lawrence Berkeley National Laboratory</code>担任<code>Senior Scientist &amp; Group Lead</code>)在<a href="https://archive.siam.org/students/g2s3/2013/lecturers/XSLi/Lecture-Notes/sherry.pdf" target="_blank" rel="noopener">Summer School的PPT</a>，过一遍就大概知道了稀疏矩阵直接求解有哪些要注意的问题。接着就是找文献继续深入了~</p><h1 id="汇总表">2&emsp;汇总表</h1><p>前人做的比较全面的对比：<a href="https://portal.nersc.gov/project/sparse/superlu/SparseDirectSurvey.pdf" target="_blank" rel="noopener">Direct Solvers for Sparse Matrices</a>  </p><p>这里补充了一些自己找的，稍微整理了一下：</p><table><thead><tr><th>名称</th><th>名称含义</th><th>机构</th><th>求解方法</th><th>对应矩阵类型</th><th>网址</th><th>程序语言</th><th>个人评分</th></tr></thead><tbody><tr><td>HSL</td><td>Harwell Subroutine Library</td><td>STFC&#39;s Rutherford Appleton Laboratory, UK</td><td>Multifrontal</td><td>Sym、Sym-pat、Unsym</td><td><a href="http://www.hsl.rl.ac.uk/" target="_blank" rel="noopener">link</a></td><td>FORTRAN</td><td>👍</td></tr><tr><td>BCSLIB-EXT</td><td>Unknown</td><td>Boeing Computer Services, USA</td><td>Multifrontal</td><td>Sym、Unsym</td><td><a href="http://www.aanalytics.com/products.htm" target="_blank" rel="noopener">link</a></td><td>FORTRAN</td><td>👍</td></tr><tr><td>PSPASES</td><td>Parallel SPArse Symmetric dirEct Solver</td><td>IBM Corporation and  University of Minnesota，USA</td><td>Multifrontal</td><td>SPD</td><td><a href="https://www.lrz.de/services/software/mathematik/pspases/" target="_blank" rel="noopener">link</a></td><td>C/FORTRAN</td><td>👍</td></tr><tr><td>WSMP</td><td>Watson Sparse Matrix Package</td><td>IBM Corporation，USA</td><td>Multifrontal</td><td>SPD、Unsym</td><td><a href="https://researcher.watson.ibm.com/researcher/view_group_subpage.php?id=7624" target="_blank" rel="noopener">link</a></td><td>FORTRAN</td><td>👍👍👍👍👍</td></tr><tr><td>TAUCS</td><td>Unknown</td><td>Tel-Aviv University，Israel</td><td>Left/Multifr.</td><td>Sym、Unsym</td><td><a href="https://www.tau.ac.il/~stoledo/taucs/" target="_blank" rel="noopener">link</a></td><td>C</td><td>👍👍</td></tr><tr><td>PARDISO</td><td>Parallel Sparse Direct Solver</td><td>USI, Lugano，Switzerland</td><td>Left-Right looking</td><td>Sym-pat</td><td><a href="https://www.pardiso-project.org/" target="_blank" rel="noopener">link</a></td><td>FORTRAN</td><td>👍👍👍</td></tr><tr><td>PaStiX</td><td>Parallel Sparse direct Solver</td><td>BORDEAUX I UNIVERSITY，France</td><td>Left-Right looking</td><td>Sym-pat</td><td><a href="http://pastix.gforge.inria.fr/files/README-txt.html" target="_blank" rel="noopener">link</a></td><td>C</td><td>👍👍👍👍</td></tr><tr><td>UMFPACK</td><td>Unknown（Now as a part of <a href="https://people.engr.tamu.edu/davis/suitesparse.html" target="_blank" rel="noopener">SuiteSparse</a></td><td>Texas A&amp;M university，USA</td><td>Multifrontal</td><td>Unsym</td><td><a href="https://people.sc.fsu.edu/~jburkardt/f77_src/umfpack/umfpack.html" target="_blank" rel="noopener">link</a></td><td>FORTRAN</td><td>👍👍</td></tr><tr><td>SuperLU</td><td>Supernodal Low Upper Decomposition</td><td>Lawrence Berkeley National Laboratory，USA</td><td>Left/Right-looking</td><td>Unsym</td><td><a href="https://portal.nersc.gov/project/sparse/superlu/" target="_blank" rel="noopener">link</a></td><td>C</td><td>👍👍👍👍👍</td></tr><tr><td>MUMPS</td><td>Multifrontal Massively Parallel Sparse Direct Solver</td><td>University of Bordeaux，France</td><td>Multifrontal</td><td>SPD、Sym-pat、Unsym</td><td><a href="http://mumps.enseeiht.fr/" target="_blank" rel="noopener">link</a></td><td>FORTRAN</td><td>👍👍👍👍</td></tr><tr><td>STRUMPACK</td><td>STRUctured Matrix PACKage</td><td>Lawrence Berkeley National Laboratory，USA</td><td>Multifrontal</td><td>Sym-pat、Unsym</td><td><a href="https://portal.nersc.gov/project/sparse/strumpack/index.html" target="_blank" rel="noopener">link</a></td><td>C++</td><td>👍👍👍👍👍</td></tr></tbody></table><h1 id="一些说明">3&emsp;一些说明</h1><ul><li>个人评分根据求解库对个人的<strong>参考价值</strong>来判断，判断标准有：是否开源、性能、可扩展性、代码可读性、相关文档丰富度、程序版本号等</li><li>PARDISO（上次更新：2020.11），网页做的很好，<code>Intel MKL</code>库中的直接求解模块就用到了它；文献量不多，值得关注</li><li>PaStiX（上次更新：2021.07），文献较新，测试最大问题规模达10M？，文献值得跟进</li><li>MUMPS（上次更新：2021.08），算例最大问题规模10M，推荐（因为是用FORTRAN写的、个人评分减一）</li><li>STRUMPACK（上次更新：几天前），很有潜力，采用的是面向对象的C++编程，用到了大量C++11特性，为稀疏及稠密矩阵提供了一系列线性代数操作以及方程求解方法，不仅仅是直接求解库</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 稀疏矩阵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>可转债入门笔记</title>
       <link href="/2021-10-15-ke-zhuan-zhai-ru-men-bi-ji/"/>
       <url>/2021-10-15-ke-zhuan-zhai-ru-men-bi-ji/</url>
@@ -214,9 +233,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> 语言 </category>
           
@@ -249,9 +268,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> 阅读 </category>
           
@@ -363,9 +382,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> linux </category>
           
@@ -423,9 +442,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> 工作 </category>
           
@@ -775,9 +794,9 @@
       
       <categories>
           
-          <category> 学习 </category>
-          
           <category> 兴趣爱好 </category>
+          
+          <category> 学习 </category>
           
           <category> linux </category>
           
@@ -919,35 +938,6 @@
     
     
     <entry>
-      <title>渋谷半日游</title>
-      <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
-      <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-24.webp" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-1.webp" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-2.webp" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-3.webp" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-4.webp" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-5.webp" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-6.webp" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-7.webp" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-8.webp" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-9.webp" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-10.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-11.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-12.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-13.webp" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-14.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-15.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-16.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-17.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-18.webp" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-19.webp" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-20.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-21.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-22.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-23.webp" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 生活 </category>
-          
-          <category> 记录 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 相册 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>正则表达式学习笔记</title>
       <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
       <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
@@ -969,6 +959,35 @@
             <tag> 使用tips </tag>
             
             <tag> 正则表达式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>渋谷半日游</title>
+      <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
+      <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="多图警告！">1&emsp;多图警告！</h1><p>久违趁天气不错地出去转了转，正好前一向在新闻里看到2019年秋涉谷开放了一个新的展望台SHIBUYA SKY，高229m，东京铁塔、富士山、晴空塔、涉谷十字路口等有名景点都能一览无余，简直超棒好嘛。<br>于是想着工作日人应该不是很多，拿着相机就出发了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-24.webp" alt><br> 不得不说地铁上人还是挺多的（虽然和北京比起来要好很多）；到了涉谷直奔目的地，票价2000円，两天饭钱就这么没了有点小心痛，好在景色是真的震撼；而且高处风比想象中要大很多，刚开始还稍微害怕了下。</p><p> 这肯定是富士山了！不知道有没有时间去更近的地方看看；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-1.webp" alt><br>通往最高处的电梯，上面还有个直升机停机坪；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-2.webp" alt><br> 渋谷最有名的路口；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-3.webp" alt><br> 左边代代木竞技场右边东京体育馆，那一大块绿地是明治神宫；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-4.webp" alt><br> 东东东京铁塔！<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-5.webp" alt><br>要是相机什么的掉下去就gg了；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-6.webp" alt><br> 这有面镜子；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-7.webp" alt><br> 东京晴空塔；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-8.webp" alt><br> 还有软座给人休息；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-9.webp" alt><br> 停机坪全景图（广角、又隔这么近难免有些变形)；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-10.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-11.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-12.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-13.webp" alt><br> 不知不觉逛了几圈；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-14.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-15.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-16.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-17.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-18.webp" alt><br> 渋谷109；<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-19.webp" alt>  </p><p> <br><br><br><br><br> 下午去明治神宫转了下，本想多看下的结果悲催的是忽然肚子痛而且神宫这种地方厕所也半天找不到一个；好不容易飞奔到地铁站结果厕所还没位置，最后坐地铁换了个站终于解决之后已经没了心情，于是直接回去了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-20.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-21.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-22.webp" alt><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200109-23.webp" alt><br> <strong>本次出行得到的经验和教训</strong>： 在外面不要乱吃东西，去便利店买点迅速解决就行！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+            <tag> 相册 </tag>
             
         </tags>
       
@@ -1006,41 +1025,6 @@
     
     
     <entry>
-      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
-      <link href="/2020-01-04-vats-simulation/"/>
-      <url>/2020-01-04-vats-simulation/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?resid=25FDD57DA585B6D%211494&amp;authkey=%21AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content>
-      
-      
-      <categories>
-          
-          <category> 学习 </category>
-          
-          <category> 语言 </category>
-          
-          <category> 工作 </category>
-          
-          <category> OpenFOAM </category>
-          
-          <category> CFD </category>
-          
-          <category> 英语 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> airfoil optimization </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>新的一年，还是写点什么吧</title>
       <link href="/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/"/>
       <url>/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</url>
@@ -1060,6 +1044,41 @@
         <tags>
             
             <tag> flag </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
+      <link href="/2020-01-04-vats-simulation/"/>
+      <url>/2020-01-04-vats-simulation/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?resid=25FDD57DA585B6D%211494&amp;authkey=%21AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 工作 </category>
+          
+          <category> 语言 </category>
+          
+          <category> CFD </category>
+          
+          <category> OpenFOAM </category>
+          
+          <category> 英语 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> airfoil optimization </tag>
             
         </tags>
       
@@ -1106,13 +1125,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
           
-          <category> OpenFOAM </category>
+          <category> 语言 </category>
           
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -1141,13 +1160,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
           
-          <category> OpenFOAM </category>
+          <category> 语言 </category>
           
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -1203,13 +1222,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
           
-          <category> OpenFOAM </category>
+          <category> 语言 </category>
           
           <category> CFD </category>
+          
+          <category> OpenFOAM </category>
           
           <category> 英语 </category>
           
@@ -1385,9 +1404,9 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 工作 </category>
+          
+          <category> 语言 </category>
           
           <category> linux </category>
           
@@ -1646,13 +1665,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 生活 </category>
           
-          <category> 日本語 </category>
+          <category> 语言 </category>
           
           <category> 记录 </category>
+          
+          <category> 日本語 </category>
           
       </categories>
       
