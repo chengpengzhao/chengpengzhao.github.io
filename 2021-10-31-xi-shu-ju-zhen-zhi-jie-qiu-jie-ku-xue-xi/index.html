@@ -569,6 +569,19 @@
         </div>
         <div class="col s5 right-align">
           
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E4%B8%93%E4%B8%9A%E7%9B%B8%E5%85%B3/" class="post-category">
+              专业相关
+            </a>
+            
+          </div>
+          
         </div>
       </div>
 
@@ -583,14 +596,14 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2021-10-31
+          2021-11-28
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          612
+          657
         </div>
         
 
@@ -737,11 +750,18 @@
 </tr>
 </tbody></table>
 <h1 id="一些说明">3&emsp;一些说明</h1><ul>
-<li>个人评分根据求解库对个人的<strong>参考价值</strong>来判断，判断标准有：是否开源、性能、可扩展性、代码可读性、相关文档丰富度、程序版本号等</li>
-<li>PARDISO（上次更新：2020.11），网页做的很好，<code>Intel MKL</code>库中的直接求解模块就用到了它；文献量不多，值得关注</li>
-<li>PaStiX（上次更新：2021.07），文献较新，测试最大问题规模达10M？，文献值得跟进</li>
-<li>MUMPS（上次更新：2021.08），算例最大问题规模10M，推荐（因为是用FORTRAN写的、个人评分减一）</li>
-<li>STRUMPACK（上次更新：几天前），很有潜力，采用的是面向对象的C++编程，用到了大量C++11特性，为稀疏及稠密矩阵提供了一系列线性代数操作以及方程求解方法，不仅仅是直接求解库</li>
+<li><p>个人评分根据求解库对个人的<strong>参考价值</strong>来判断，判断标准有：是否开源、性能、可扩展性、代码可读性、相关文档丰富度、程序版本号等</p>
+</li>
+<li><p>PARDISO（上次更新：2020.11），网页做的很好，<code>Intel MKL</code>库中的直接求解模块就用到了它；文献量不多，值得关注</p>
+</li>
+<li><p>PaStiX（上次更新：2021.07），文献较新，测试最大问题规模达10M？，文献值得跟进</p>
+</li>
+<li><p>MUMPS（上次更新：2021.08），算例最大问题规模10M，推荐（因为是用FORTRAN写的、个人评分减一）</p>
+</li>
+<li><p>STRUMPACK（上次更新：几天前），很有潜力，采用的是面向对象的C++编程，用到了大量C++11特性，为稀疏及稠密矩阵提供了一系列线性代数操作以及方程求解方法，不仅仅是直接求解库</p>
+</li>
+<li><p>PSPASES貌似是WSMP的前身，同一个团队开发的，前几年PSPASES把官网的下载渠道给关了，可能是为了保护自己的一些成果吧</p>
+</li>
 </ul>
 
       </div>
@@ -1494,45 +1514,57 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021-10-31-xi-shu-ju-zhen-zhi-jie-qiu-jie-ku-xue-xi/">
+                <a href="/2021-11-28-guan-yu-bing-xing-cheng-xu-diao-shi/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
                         
-                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="稀疏线性方程组直接求解库学习">
-                        
-                        <span class="card-title">稀疏线性方程组直接求解库学习</span> -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">稀疏线性方程组直接求解库学习</span>
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="关于并行程序调试">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">关于并行程序调试</span>
+
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言最近正在入门代数求解相关领域，简单来说就是研究$Ax=b$如何求解，只不过这里的$A$是一个大型（上亿阶）稀疏（大量0元素）矩阵。虽然工程实际中用得最多的是迭代法，这里还是先介绍直接求解的相关库  
-首先，推荐Xiaoye
+                            
+大规模并行程序调试及优化
+
+1&emsp;前言从串行到并行，需要多考虑很多东西（并行体系结构、通信、负载均衡），有些事也变得更困难了，最典型的一个例子就是程序的调试想象如下场景，我刚用MPI写了个程序，运行发现有问题，可能出现的错误种类有
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-28
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            zcp
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5/">
-                        <span class="chip bg-color">稀疏矩阵</span>
+                    <a href="/tags/MPI/">
+                        <span class="chip bg-color">MPI</span>
+                    </a>
+                    
+                    <a href="/tags/debug/">
+                        <span class="chip bg-color">debug</span>
                     </a>
                     
                 </div>
@@ -1751,7 +1783,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">162.1k</span>&nbsp;字
+                class="white-color">163.4k</span>&nbsp;字
             
             <br>
             
