@@ -4,11 +4,42 @@
   
     
     <entry>
+      <title>markdown转离线单文件html</title>
+      <link href="/2021-12-27-markdown-zhuan-chi-xian-html-dan-wen-jian/"/>
+      <url>/2021-12-27-markdown-zhuan-chi-xian-html-dan-wen-jian/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>经常需要写一些markdown文档，用vscode或者vim的<code>MarkdownPreview</code>插件都能实现比较好的实时渲染与编辑，但导出给别人看时发现存在一个问题：<strong>没有目录栏</strong>，文档很长时翻起来十分费劲。（vscode的导出功能我没怎么用，好像挺鸡肋就放弃了；vim的话我是直接用谷歌浏览器的SingleFile插件保存渲染的html）<br>查了一下发现有位叫i5ting的大佬很早开发过一个叫<a href="https://github.com/i5ting/tocmd.npm" target="_blank" rel="noopener">i5ting_ztree_toc</a>的工具，能够为markdown转html后生成目录并且自动编号，正好是我想要的东西。用了一会发现还不够满足自己的需求，主要有以下几点不足：  </p><p>1) 生成的html需要和一堆样式文件(<code>.css</code>、<code>.js</code>)所在的文件夹放一起；<br>2）目录栏随滚动高亮功能不错，但有图片、uml等元素时正在浏览区域与高亮条目明显对应不起来；<br>3）不支持LaTeX公式；<br>4）不支持各种图（mermaid、plantuml...）；<br>5）默认marked渲染器配置不全，高亮没有；  </p><p>综上所述，还是自己动动手修改吧。于是有了<a href="https://github.com/chengpengzhao/md2html" target="_blank" rel="noopener">md2html</a>这个工具：</p><h1 id="md2html">2&emsp;md2html</h1><p>首先几个足够展示markdown与LaTeX几乎所有常用语法的demo：  </p><p><a href="https://chengpengzhao.com/md2html/test/commTest.html">basicTest</a><br><a href="https://chengpengzhao.com/md2html/test/katexSupportTest.html">katexSupportTest</a><br><a href="https://chengpengzhao.com/md2html/test/latexTest.html">latexTest1</a><br><a href="https://chengpengzhao.com/md2html/test/tensorTest.html">latexTest2</a>  </p><p>这个工具的<strong>设计原则</strong>有如下两点：  </p><ul><li>完全<strong>本地化</strong>，所有内容不需要联网便可舒适阅览  </li><li>只能有<strong>一个</strong>html文件，所有样式文件必须内嵌进去，不能通过联网或本地其他文件的方式获取  </li></ul><p><strong>主要特性</strong>:</p><p>1）目录侧边栏与自动编号，以及定位高亮；<br>2）markdown中本地图片路径(如<code>![](img/a.png)</code>)可转为base64内嵌入html，不再需要<code>img</code>文件夹；（可禁用该转换）<br>3）plantuml支持，可选择使用<code>plantuml.jar</code>生成<code>.svg</code>到本地再转为base64嵌入html；<br>4）mermaid支持，这个比较容易实现；<br>5）flowchart.js支持(一种画流程图的)，我没怎么用过，不过也比较容易实现；<br>6）本地化KaTeX支持（一开始用Mathjax但感觉最新版很难弄进一个html里就放弃了），所有字体手动转为base64嵌入了html中；</p><h1 id="使用建议">3&emsp;使用建议</h1><p>1）默认不使用本地<code>plantuml.jar</code>（生成速度慢一些），默认转换图片为base64；<br>2）使用<code>mdhtml -h</code>查看帮助：</p><pre class="line-numbers language-bash"><code class="language-bash">$ md2html -hUsage: md2html can convert markdown<span class="token punctuation">(</span>.md<span class="token punctuation">)</span> <span class="token function">file</span> to single html file<span class="token punctuation">(</span>offline<span class="token punctuation">)</span>, <span class="token function">which</span> is a modified tocmd.npm<span class="token punctuation">(</span>a <span class="token function">npm</span> wrapper of i5ting_ztree_toc<span class="token punctuation">)</span> toolOptions:  -V, --version                output the version number  -i, --intputfile <span class="token operator">&lt;</span>filename<span class="token operator">></span>  .md <span class="token function">file</span> location, default is README.md  <span class="token punctuation">(</span>default:                               <span class="token string">"README.md"</span><span class="token punctuation">)</span>  -o, --output-path <span class="token operator">&lt;</span>path<span class="token operator">></span>     output .html PATH, default PATH is the same with .md <span class="token function">file</span>  -d, --debug                  print detailed information<span class="token punctuation">(</span>for debug<span class="token punctuation">)</span>  -n, --no-convert-img         don't convert local images to base64 when generating .html                               <span class="token function">file</span>  -u, --uml-path <span class="token punctuation">[</span>path<span class="token punctuation">]</span>        plantuml.jar PATH to generate offilne UML images<span class="token punctuation">(</span>require                               java<span class="token operator">!</span><span class="token punctuation">)</span>, default PATH is ./pantuml.jar  -h, --help                   display <span class="token function">help</span> <span class="token keyword">for</span> <span class="token function">command</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>3）推荐Linux系统，或者WSL也行。Windows下用cmd也太难受了<br>4）目前pkg打包后的windows版本用本地<code>plantuml.jar</code>会图片出现乱码，且无法正确生成html，请使用默认选项（解析为网址）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+            <tag> html </tag>
+            
+            <tag> md2html </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《死月妖花～四月八日～》游玩思考记录1</title>
       <link href="/2021-12-18-si-yue-yao-hua-you-wan-si-kao-ji-lu-1/"/>
       <url>/2021-12-18-si-yue-yao-hua-you-wan-si-kao-ji-lu-1/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>上班之后基本上很少有时间玩这类游戏，之前也偶尔有粗略找过一些，没发现什么好的作品。直到上周翻<a href="https://bangumi.tv/game/browser?sort=rank" target="_blank" rel="noopener">番組</a>的榜单时，一个叫做《<ruby>死月妖花<rp> (</rp><rt>しがつようか</rt><rp>) </rp></ruby>～四月八日～》的同人作品映入我的眼中。给我的第一印象是：看起来像是我喜欢的类型，并且这个<strong>双关名</strong>有点意思（四月八日和死月妖花都读作しがつようか），再加上这游戏本身<strong>免费</strong>！迫不及待的我立马下载安装玩了起来，不知不觉难得的一个周末就过去了...  </p><blockquote><p>2021-12-18 10:37<br>游戏版本号： Ver1.16.19.17<br>目前进度： <ruby>呪殺編<rp> (</rp><rt>じゅさつへん</rt><rp>) </rp></ruby> 35/46<br>目前个人评分：★★★★☆  （有点寒蝉的感觉）</p></blockquote><h1 id="呪殺編">2&emsp;呪殺編</h1><h2 id="人物关系">2.1&emsp;人物关系</h2><img src="http://www.plantuml.com/plantuml/svg/ROxBIiD058RtynIpr4M49hkXv5s2Q97UGWDkH6Y8bcfw4xmjBDgI657JQ4jBIT4-J3AJz2sSIJ8b1M4s_pV_-SvHbSEoKZg2k6zjZD4PG87-7kXMeAyHL3HOEoq057UUUAZITEMHwOg3Ot0ErCn1xh_8y8OwoACTNtzd5H6WwBU7MvyyKmTvkGYNpOtHuool2VrRF5jGJJIVa_4RjjjPIwA38mEx0vurEeMmvOH-9t4LYx7xYhrdMMO5jG80KqD1aE5Uw9laxfAugtt0pavXFFuW4nElksJOn9DPyWK5TX144Di_k6-cY34fpyH_M26H9dO4e_OYzATvMgMKUDsKYXaLTxfRkjELCYffR9ipe0yaleDjzS69lHPGAxn9MQFUE2dNQty0"><h2 id="剧情线">2.2&emsp;剧情线</h2><p>(右击图片在新标签页中打开)</p><blockquote><p>常識はずれの要素が入った時点で、 あらゆることを常識はずれで考えなくてはならない</p></blockquote><img src="http://www.plantuml.com/plantuml/svg/bLdBSYB95Ttp5KJqPden4p4FUo65lV5ilFF6tZWSYdPOqwDmXpmnqzuNGa3n1Wa44Y24cfSUl8I4e03nBwFAhAnL_uBFhIog2gHMZnKTQedAohoFSyyzD-NxvVsRdz_xDXu3bu-1-cDWOPpiirA9brMZ4DB7ANxUtFJj_kVzjl_ddRS_llSPrzVwMD77btZ0qabUFDErCEkdUM74b6CZVwoFuzZYLwNC5a4Z4sPgIP_LVrKglZ_WooUYFNuprQT9NZZZ8vK7UXzd2P4eytW8wrb4qxMuRtltNtuwqhV1Ear-LkEv1nQ8V857-dJ4qbaZLtsDrtYn8M83rXqPvVZtV_j-nKo_hYLqJJEL31zdOA5eVM1gN-u0y_HnmumakTAohKgKyLHqccoWy5Y3rrJNXbz-UhUp5X-A0RQtOl1nfhBam3o-CC_tZMhZuwpwSHRTb6_vtxnzixFh-_Blh_xvxh_R__ZoZxvNVzdP_VS6gr_mQ98rXiOyguzZeX_arSRc-aE6xm-AaUgpihPSujcA39IsxVpW_u8rvgmHGGZDYu4-No0wCW16R286L_guyzh__iVjNIoCQ6QX_ThdzsyWkwubfR4PYD1huoZ5hPvXgP2krKLVtSHQAxBljdz0OFrVV-MNaJTFCiRfWQ6ETEs6fQRw-0YxiD0GQxvPhk6PQoI8PLBwMDFdUPPMMUcKLnfOy-rNVYUeyga-Jihr22elfl2FfGkyFQ0ipmViC8dGuiNlll8xTlDq1Xw9o2Mx7x3UHDTIJevvgitlubZlfDBlfr0vXwxcBS5Y5RCuTNPU1Wn6CJLi1WvvzDhC3oboLkmeJ395xeRTqQRrs1ikln_rOWodJ2qOqx28xV6JWb7NU6Sgb10lzbnWMO6qtd1tJ5yAxKeU8-5fFVTu97roGNDWbuKtWqxkAoSy4P1OadvOlhWlfwRo45F90JBY_8fNb4rduQfNz8MuYrf2p9jYtXN15E_du93e1r2mI035D3BYqRW-KL4NpbjkyZfreetx6sEQnc56gOTgGB5YCG5YgbWl9ioJ1mg_vHR5idJBocrhVLQqmYixMyVHK-d6yRvOP8rEb3s4u0dh3ft04kiiYh1MRYZkgs9ywGPYSUNmWUM8UyHAwEdhrKzltcs__NbxUtS3pxxUabQz6BK5IF8IYtTstnBRPfAiKw023gPH74OdHumQJPgLSukf55qh6KTPiz1rTh18Q_cBuvFCb_EvJOy72HOQyLwIrGTmyTD-u0E9hNU_R0Cg8GGXw6pz75giHd7A5XvVLw38emy8ehH2OXkboVCXSRVFZuwNcCGg6x25BX-7UEF4SvRD8OCz5hjmA4sVdI0q12whBDoaBQjFcbbf6iTpGnlZ3T4BiOC32gOMVoanFAg8_g5SlGHTpxQXboG7nWhmnG-JXdQtXWl9OA8P4DqB-vLuWvUZIBRHIehRgZ6_vFlL5w6q8HryoYhaBDeUMa68oeK7ssQW8n7z8j3wgkXLKCaitTEd3RH9SANJDIMoq3MuSacncPpfYyBp45kDWKNLaoeOJDOgzWMZKpcLezXKxDLORC5Yq12NPla6kNeALVG1OWehDjY73_FKp_7wFC_tq_eakaOPJqCbJG818GmKdYKAY99kFxoOPP1Ju8eN7upzaKK0q1nXQ17pkCwh6KfMBy2JRh6ny34iSwf9Ha4MBMa12s6IzbZWvFzZYs-tIDhCWfjFgj2jH7rMP25LNrHuhFviFIv9cw9maF2qL8Lb4bIXthfOFV-RBK2ILmzV39TwQrGK4PnBFh8PVTemAwUaBmPJV6WgLQOrIME5XnB3p-C8qi6cw6fSdwL1r6mH0ldhaxYuxta31m514d8fHA4VrmhIbXsbC-JFGc9DdvqPqsElJlDk2BLXxdtWtJiIdiCy4MsPX2e_YY2H-g86AMf6qko-pUgjpxEa_VFE3pxlJpPtEemKJehkmXOabewprGFoH3dh5gNiak7Va2sRPRBo6OyUiimr3uQWI9-J5J8EZh-cKXAr0ehTjz9Z7Usx4hRv8PlSIa848_jM4kMMKhUEu7fvo2hm9B1WDATifh1goin7A8XMtK3j6xd1sXujDD-2NJmFjbH-NiCu1_5Km-s-kJjGc5UBBU7-j4tSt-kJ0LL19kiQRRM1b_3j0gOq9XXOUn4R1OTWSzQDyb2VDIQVP-rAXeoTDqqb2FFP05gbyzB168B0G4Y_DPY4POLX8veeGYg9X8dA8bcMKL5_B7t5CYsfVvSggiMRUqOgWf8mAsTs3D2ToXhhdkXpY6KLYc1DNeAYn2A2PMB_nBlR9mds_0ekyODJIp2L_lodl_BOESzdFwDlp4W2i71SuZSrG8SDybG54OtL8RLEl0I2bMWOPF6Y262HeeILbORNH4a0D2CKgPk1zwswjoJ1M3DANLdnBDDawZ5u3T0Z3WHCMt4aK9zUi_xWxLk4shKKsLgrb3QsXMOIz8IDqOqnP202i0ZWS-PEz2bMFu8tv5CwAPG4KoVOKFR4zTQvE82n68Ey8S6yuk8qraPIl2zATwNX-kB2CaOHT_Uac4DetXrx3BUwC3IHd8jHOyQmQWppihW_8pTc1L97WHCYuiJKF3xtTbBCGvYBqK_Dvj6B3UA9E20LP3TcrIXNgJbQlrfDFUgr2GT0zyaaSYM51VpidloPn14ig0GyDHvIB7pjF2KWzcvfDcnCCBWXHcvCYpsv-Dbfmu6b70mj54cJgjQyQVVtbOkGq12JcnU4nlIGzMt5Ifrn2Hqvr3aR_bO1yDsMFQRdga3-vgV4-3ES9nxQu6TPr6QWeCyzJTokNV2WTowKNMMT43UasfIzXsABLRqgLSqWpsE7F9ddjrEWSmq1zYtBIiNJBBxQPoY449gJcaWU6Bc-MGgBpDnzop98TXd2zk9K7zyuuxijDAnozqBCvSzvU9tSF9GeWG33AU7H-DgXigr0COY71sUmH3N9yS9fLFOWEiy3QrobUoJG33-BU3Fy_2nc-vy_XYG1oALGv9KQRHqQchdknzc9wyb3_37GXTjUJBBGDHi72M2zYaiJo_7ULZ7bjb5_WCLK-PsYronRb2-74HbbcaVSMKW37qeLpYAGKU3a5ldluKSa3tb53cIXuI1I0CkvNDJQA4Ef-ucIfaTIzvDLJqRpf-m3RB9q7oGeRbz6bqobJ0HFLEaAGzxt0DRxq3r1STTVeTp6pAoDnFrG7yUfT1P5QY-J8VNomfd5YWcwYBBQ4NNUKOXeq6f1QuTI--i7pCl26gj_fgn_joMo9L6elrmqW8K6oNe8kYHL1R5XfPoQbXfvXh_0UcM5DUO4fkaXForBOWKzMyEJmYffVF99CnsHQlrl3nVeSkw5e37FYjiEZrs93AbWS08vi84n4dKj4MsZBmZLVkaAhcJUY5_BZPpRmgMpVDX6gvGCGMM4lZTkIftYynGC1ag6H7NxpbC9H8yBIrgJaxtdsl7fcVBM4IgiCNpS6_2RSpRUSsUzcocYADc4Y6OHn8HXNNtce6ibLV7IhLXaVSlkXkJmmPu-ZI4R-ZZb7RACqgripAAM0DrGEAnQ84Zr0t2BSjiAoFsbUfP3cS_X3lkCtgt4jHJNhXosIXqiBE5i7p3ka0393fsCUmF5Zgv4OiIq0jrzBV6pwNFlBP7Ekpj-tcODrRe9w3mDuP8LCSIm6Lr0UvmciDeZ09emAAeLDhI5I0HPwHRluaEcvKIl8Md3s9iiEOF8JzTIZgfPwx5U7sGZul4oHYZokHiL7qB6PH0p4JksOBR1UWkMXcZl6lC2Lq5_gZp7l9vPb_3FtbRHNXxXHUqXVwtFBoJK7Ia1xZn_6XNF1KQ1UXqqNMhgz3gUYB1PVjqFZpf1oJ_PKenYT1Y-PqwfsqNs9F2nTdahdhARShRD2t48JIcdnMBkcBDwvYeP_NvBvdBBxEGGY2qORJHEFv5mFb9PdMOu-uyj6I_May023buRpDV-0a8AljoM-VJUPtabWBo2faF1MfaK4ThYp2ZFf51v3CHOA_eOg3tk1H_t3kNTogg7f8zi7iDF_mC0"><h2 id="Reference">2.3&emsp;Reference</h2><p>根据游戏中与玩家互动的能面人的说法，reference中有很多提示，能够帮助推导故事的“裏側”，但有些是很主观的看法。<br>带一个*代表个人觉得比较重要的Ref，两个*为古书，三个*为生物兵器相关报告</p><p>1) 転居届  *<br>なつみ家搬到隔壁？搬家的深层原因？</p><p>2) 桜祭ポスター<br>底下说的就是春花父亲当年的事故</p><p>3) 幼儿园毕业照<br>显示出なつみ对当时记忆模糊</p><p>4) おはようjapan  *<br>受访教授的观点：a. 樱花中含有麻黄碱（可能是谣言），是制造冰毒的重要化学成分；b. 樱花都是一样的，都是嫁接（克隆）出来的；c. 介绍染井吉野樱，无法自然繁殖，自交不亲和性，需要利用其他品种；</p><p>5) 手机介绍  *<br>Real-time Maintenance功能：定期外部通信<br>Friend GPS：近距离可被定位<br>Copyright不是なつみ父亲的公司<br>end4中春花手机中发现有一金属板，这里能找到什么线索么？</p><p>6) 电影评价网页： 似乎没有什么有用信息  </p><p>7) なつみ学生证： 似乎没有什么有用信息  </p><p>8) 春花学生证： 证实2020年5月春花家和なつみ家交换了位置</p><p>9) 絵梨奈的过去：塑造人物形象</p><p>10) 新闻现场连线：塑造事件氛围</p><p>11) 絵梨奈的笔记①  <em><br>和女ケ沢市事件<em>*很不同</em></em>（案发现场≠发现现场），不像是模仿犯<br>犯人为何要让尸体被发现？<br>其他推测后面基本被证实</p><p>12) 灵异现象之妖花：忽然出现的巨大樱花树（1954年）</p><p>13) 灵异现象之心灵感应：心灵感应现象的一些历史实验（大概是真实存在的研究）</p><p>14) 天才女与春花讨论  *<br>关于事件死者的死法：<code>犠牲者がすぐに死なないようになっている</code><br>推测犯人不是真想连续杀人（给下一个目标的警告）</p><p>15) 17) 絵梨奈的笔记②  ：关于なつみ梦的解析</p><p>16) 塾の案内：侧面表现絵梨奈的聪明</p><p>18) 大二郎的兴趣介绍：塑造人物形象</p><p>19) 元木日報：end1结局描述</p><p>20) 翠眼の娘　　**<br>第一封古书（先这么叫吧），时间1180年7月1日（日本平安时代后期），历史背景是平清盛刚迫使高仓天皇退位不久，拥立自己的外孙，平德子之子即位，是为安德天皇。这是平氏一族的全盛时期。日记的意思是平清盛在派人找一个皇居没落家系的女儿，当时10岁左右，特征是单眼翠绿。这里提到的<code>帝の三男坊</code>应该是源赖朝了。</p><p>21) 桃子的简历：塑造人物形象</p><p>22) 同学会通知：解释天才女母亲没出场</p><p>23) 汽车失窃情报：应该就是用来运尸体的</p><p>24) 元木町犯罪情况：反映当地治安较好</p><p>25) 电话对方： 塑造桃子的人物形象</p><p>26) 絵梨奈的笔记③<br>重点区别这次事件和之前的不同，对犯人来说这次是紧急情况？</p><p>27) 女ケ沢报纸： 第一女ケ沢市事件</p><p>28) 女ケ沢报纸： 第二女ケ沢市事件</p><p>29) 诊断录音记录： end3的补充，天才女放弃后产生自杀倾向</p><p>30) 供养  *<br>2001年，第一人称带能面的人是谁？<br>开头的玻璃瓶和火焰是什么？制作药物？还是单纯什么仪式？<br>开头的对话Google一下发现竟然是葡萄牙语（最后的オブリガーダObrigada意思即ありがとう）<br>美冬说的優しい友達就是茜吧，还在迷茫，迷茫什么？</p><p>31) 高贵者的首领  **<br>1190年4月1日，讲的是这个人未得到平清盛信任，在其迁都后被降职到元木这个地方，远离政治纷争，但仍崇拜平清盛。文中的<code>法皇</code>即后白河天皇（信赖平清盛），</p><p>32) 42) 周四休诊日  *<br>2018年10月，春花因某种原因去医院，且瞒着なつみ</p><p>33) なつみ的调查：侧面反映警官的认真负责</p><p>34) 春花父亲的死亡诊断书  *<br>有某种药物中毒的迹象？</p><p>35) 目击者采访  *<br>2017年，第三女ケ沢市事件<br>可以看出春花一家刚从老家回来，其母亲不应该是犯人</p><p>36) 食人集团  **<br>1180年11月，当时的背景应该是：平治之乱中被打败的源义平（源赖朝的哥哥）逃到飛騨这个地方苟延残喘<br>由于缺少食物出现了吃同伴尸体的情况</p><p>37) 姐姐在哪里：反映絵梨奈小时候很依赖姐姐</p><p>38) 大二郎的警官证：塑造人物形象</p><p>39) 不審者情報：完善故事情节</p><p>40) 宅急送通话记录 *<br>春花把地址写错了(306写成603)，有什么特殊含义么？<br>该住宅只有5层所以配送员发现了错误</p><p>41) 元木站时刻表：</p><p>43) 絵梨奈的笔记④  *<br>为何春花要隐瞒父亲的死？<br>为何なつみ父母也要隐瞒这点？<br>为何なつみ一家不搬走？</p><p>44) 絵梨奈的笔记⑤  *<br>这部分是关于end4的一些推理<br>春花母亲自杀一是为了隐瞒证据（自身）、二是为了向某人传达某种信息<br>春花母亲“追杀”二人但中途发觉目的已无法达成，所以决定不再下杀手？</p><p>45) 春花手机的调查报告  *<br>被做的一些手脚，但仍不太清楚一些部件是干嘛的</p><p>46) 鬼神の群れ  **<br>1560年8月，背景是日本战国时代，朝比奈元長是确实存在的人物，原为今川义元的部下，1560年桶狭间之战中今川义元亲自率军攻入尾张国境内（在今爱知县名古屋市一带），遭织田信长领军奇袭本阵阵亡，在此文中被描述为织田家一方有着鬼神之力。今川家还让同盟武田信玄注意织田家的动向。</p><p>47)　なつみ父亲的死亡诊断书 *<br>医师名这里有个细节，原来的医师是现医师的父亲，曾说要调查春花父亲药物中毒，现在是引退了还是被失踪了？</p><p>48) 担心①: 2018年10月，茜也不知道春花为何去医院</p><p>49) 学生时代的信： 塑造警官的人物形象</p><p>50)　抓捕行动： ホシ代表美冬，マルタイ代表春花</p><p>51) 紧急联络： 塑造桃子的人物形象</p><p>52) なつみ父亲的信  *<br>含有非常关键的信息<br>果然春花和なつみ两人在一起时不会被杀？</p><p>53) &quot;妖魔的声音&quot;  **<br>1561年4月，还是朝比奈元長的记录，说是桶狭间之战后军队中有些人（杀了“鬼神般”的织田军的人）能听到妖魔的声音，从而预知并回避危险</p><p>54) 教えて新村さん： 描述春花对地理的兴趣</p><p>55) I&#39;m a bird: ...这是来搞笑的吧</p><p>56) 犯行現場  *<br>end6这条线中警察发现作案现场，确定为失窃的货车，为何犯人将其遗弃至此？</p><p>57) お気を付けて: 警官和茜的通话，茜坚持回家（想当诱饵）</p><p>58) 担心②: 2018年10月，なつみ担心春花最近的状况询问美冬</p><p>59) 桜寿司: 看上去很贵的店...</p><p>60) 不能靠近: 天才女和姐姐的对话</p><p>61) 火事場の馬鹿力  *<br>火事場の馬鹿力（ことわざ）：火事のときに、自分にはあると思えない大きな力を出して重い物を持ち出したりすることから。切迫した状況に置かれると、普段は想像できないような力を無意識に出すことのたとえ。<br>天才女关于兴奋剂（ドーピング）的调查，提到了麻黄碱（エフェドリン）</p><p>62) 63) 排球教练的评价、体育大会: 天才女和なつみ过去的故事</p><p>64) 絵梨奈的笔记⑥  *<br>讲述天才女协助警方保护なつみ</p><p>65) 音信不通 *<br>突然刮起的大风是人为么？<br>信号不通的原因和大风有关么？</p><p>66) 灵异现象之终焉喇叭声<br>圣经新约中相应章节科普<br>学者对于宗教的认识</p><p>67) 春花父亲的死亡诊断书2 *<br>类似麻黄碱的药物<br>调查被上层中止（案件上升到国家层面）<br>药物和微生物混合</p><p>68) 儀之助の日記　**<br>点数不够解锁</p><p>69) 強き女　**<br>点数不够解锁</p><hr><ol><li><p>生物兵器企划书 ***<br>1935年3月，军队得知荒田集落中存在某种药，能让人拥有“鬼神之力”，派人前去调查</p></li><li><p>荒田集落调查结果 ***<br>1953年4月，荒田集落积极提供帮助（文献资料、样品等），并告知药已没再使用，原料之一为当地樱花<br>对于近乎异样的热情协助，军队怀疑他们有别的目的</p></li><li><p>药物的使用方法相关对比 ***<br>点数不足暂时无法解锁...</p></li></ol><h2 id="事典">2.4&emsp;事典</h2><p>这一部分基本上都是客观的描述，如人物和事件的概述、故事背景地点的介绍，帮助玩家了解故事发生的这座城镇</p><h1 id="目前的推测">3&emsp;目前的推测</h1><p>在<code>end2_感染</code>中，最后有段文字是无法暂停下来回放的，描述了天才女在“得到”なつみ的能力后听到的东西：  </p><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store3/master/img/202112181530648.PNG" alt="1"><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store3/master/img/202112181530982.PNG" alt="2"></p><ul><li>春花父亲作为荒田集落的一员，有着某种秘密（药物，鬼神之力）</li><li>なつみ在春花父亲的事故中近距离目睹了他的死亡，获得了“危险预知能力”（参考Ref53，妖魔的声音）</li><li>太多事件的目的不明确，要首先从なつみ父亲的那封信开始理解才行</li><li>犯下女ケ沢市事件的犯人另有其人，他利用了美冬，使其杀害了なつみ父亲</li><li>春花和なつみ在一起时，因为某种考量犯人不会动杀手</li></ul>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>上班之后基本上很少有时间玩这类游戏，之前也偶尔有粗略找过一些，没发现什么好的作品。直到上周翻<a href="https://bangumi.tv/game/browser?sort=rank" target="_blank" rel="noopener">番組</a>的榜单时，一个叫做《<ruby>死月妖花<rp> (</rp><rt>しがつようか</rt><rp>) </rp></ruby>～四月八日～》的同人作品映入我的眼中。给我的第一印象是：看起来像是我喜欢的类型，并且这个<strong>双关名</strong>有点意思（四月八日和死月妖花都读作しがつようか），再加上这游戏本身<strong>免费</strong>！迫不及待的我立马下载安装玩了起来，不知不觉难得的一个周末就过去了...  </p><blockquote><p>2021-12-18 10:37<br>游戏版本号： Ver1.16.19.17<br>目前进度： <ruby>呪殺編<rp> (</rp><rt>じゅさつへん</rt><rp>) </rp></ruby> 35/46<br>目前个人评分：★★★★☆  （有点寒蝉的感觉）</p></blockquote><h1 id="呪殺編">2&emsp;呪殺編</h1><h2 id="人物关系">2.1&emsp;人物关系</h2><img src="http://www.plantuml.com/plantuml/svg/ROxBIiD058RtynIpr4M49hkXv5s2Q97UGWDkH6Y8bcfw4xmjBDgI657JQ4jBIT4-J3AJz2sSIJ8b1M4s_pV_-SvHbSEoKZg2k6zjZD4PG87-7kXMeAyHL3HOEoq057UUUAZITEMHwOg3Ot0ErCn1xh_8y8OwoACTNtzd5H6WwBU7MvyyKmTvkGYNpOtHuool2VrRF5jGJJIVa_4RjjjPIwA38mEx0vurEeMmvOH-9t4LYx7xYhrdMMO5jG80KqD1aE5Uw9laxfAugtt0pavXFFuW4nElksJOn9DPyWK5TX144Di_k6-cY34fpyH_M26H9dO4e_OYzATvMgMKUDsKYXaLTxfRkjELCYffR9ipe0yaleDjzS69lHPGAxn9MQFUE2dNQty0"><h2 id="剧情线">2.2&emsp;剧情线</h2><p>(右击图片在新标签页中打开)</p><blockquote><p>常識はずれの要素が入った時点で、 あらゆることを常識はずれで考えなくてはならない</p></blockquote><img src="http://www.plantuml.com/plantuml/svg/bLdBSYB95Ttp5KJqPden4p4FUo65lV5ilFF6tZWSYdPOqwDmXpmnqzuNGa3n1Wa44Y24cfSUl8I4e03nBwFAhAnL_uBFhIog2gHMZnKTQedAohoFSyyzD-NxvVsRdz_xDXu3bu-1-cDWOPpiirA9brMZ4DB7ANxUtFJj_kVzjl_ddRS_llSPrzVwMD77btZ0qabUFDErCEkdUM74b6CZVwoFuzZYLwNC5a4Z4sPgIP_LVrKglZ_WooUYFNuprQT9NZZZ8vK7UXzd2P4eytW8wrb4qxMuRtltNtuwqhV1Ear-LkEv1nQ8V857-dJ4qbaZLtsDrtYn8M83rXqPvVZtV_j-nKo_hYLqJJEL31zdOA5eVM1gN-u0y_HnmumakTAohKgKyLHqccoWy5Y3rrJNXbz-UhUp5X-A0RQtOl1nfhBam3o-CC_tZMhZuwpwSHRTb6_vtxnzixFh-_Blh_xvxh_R__ZoZxvNVzdP_VS6gr_mQ98rXiOyguzZeX_arSRc-aE6xm-AaUgpihPSujcA39IsxVpW_u8rvgmHGGZDYu4-No0wCW16R286L_guyzh__iVjNIoCQ6QX_ThdzsyWkwubfR4PYD1huoZ5hPvXgP2krKLVtSHQAxBljdz0OFrVV-MNaJTFCiRfWQ6ETEs6fQRw-0YxiD0GQxvPhk6PQoI8PLBwMDFdUPPMMUcKLnfOy-rNVYUeyga-Jihr22elfl2FfGkyFQ0ipmViC8dGuiNlll8xTlDq1Xw9o2Mx7x3UHDTIJevvgitlubZlfDBlfr0vXwxcBS5Y5RCuTNPU1Wn6CJLi1WvvzDhC3oboLkmeJ395xeRTqQRrs1ikln_rOWodJ2qOqx28xV6JWb7NU6Sgb10lzbnWMO6qtd1tJ5yAxKeU8-5fFVTu97roGNDWbuKtWqxkAoSy4P1OadvOlhWlfwRo45F90JBY_8fNb4rduQfNz8MuYrf2p9jYtXN15E_du93e1r2mI035D3BYqRW-KL4NpbjkyZfreetx6sEQnc56gOTgGB5YCG5YgbWl9ioJ1mg_vHR5idJBocrhVLQqmYixMyVHK-d6yRvOP8rEb3s4u0dh3ft04kiiYh1MRYZkgs9ywGPYSUNmWUM8UyHAwEdhrKzltcs__NbxUtS3pxxUabQz6BK5IF8IYtTstnBRPfAiKw023gPH74OdHumQJPgLSukf55qh6KTPiz1rTh18Q_cBuvFCb_EvJOy72HOQyLwIrGTmyTD-u0E9hNU_R0Cg8GGXw6pz75giHd7A5XvVLw38emy8ehH2OXkboVCXSRVFZuwNcCGg6x25BX-7UEF4SvRD8OCz5hjmA4sVdI0q12whBDoaBQjFcbbf6iTpGnlZ3T4BiOC32gOMVoanFAg8_g5SlGHTpxQXboG7nWhmnG-JXdQtXWl9OA8P4DqB-vLuWvUZIBRHIehRgZ6_vFlL5w6q8HryoYhaBDeUMa68oeK7ssQW8n7z8j3wgkXLKCaitTEd3RH9SANJDIMoq3MuSacncPpfYyBp45kDWKNLaoeOJDOgzWMZKpcLezXKxDLORC5Yq12NPla6kNeALVG1OWehDjY73_FKp_7wFC_tq_eakaOPJqCbJG818GmKdYKAY99kFxoOPP1Ju8eN7upzaKK0q1nXQ17pkCwh6KfMBy2JRh6ny34iSwf9Ha4MBMa12s6IzbZWvFzZYs-tIDhCWfjFgj2jH7rMP25LNrHuhFviFIv9cw9maF2qL8Lb4bIXthfOFV-RBK2ILmzV39TwQrGK4PnBFh8PVTemAwUaBmPJV6WgLQOrIME5XnB3p-C8qi6cw6fSdwL1r6mH0ldhaxYuxta31m514d8fHA4VrmhIbXsbC-JFGc9DdvqPqsElJlDk2BLXxdtWtJiIdiCy4MsPX2e_YY2H-g86AMf6qko-pUgjpxEa_VFE3pxlJpPtEemKJehkmXOabewprGFoH3dh5gNiak7Va2sRPRBo6OyUiimr3uQWI9-J5J8EZh-cKXAr0ehTjz9Z7Usx4hRv8PlSIa848_jM4kMMKhUEu7fvo2hm9B1WDATifh1goin7A8XMtK3j6xd1sXujDD-2NJmFjbH-NiCu1_5Km-s-kJjGc5UBBU7-j4tSt-kJ0LL19kiQRRM1b_3j0gOq9XXOUn4R1OTWSzQDyb2VDIQVP-rAXeoTDqqb2FFP05gbyzB168B0G4Y_DPY4POLX8veeGYg9X8dA8bcMKL5_B7t5CYsfVvSggiMRUqOgWf8mAsTs3D2ToXhhdkXpY6KLYc1DNeAYn2A2PMB_nBlR9mds_0ekyODJIp2L_lodl_BOESzdFwDlp4W2i71SuZSrG8SDybG54OtL8RLEl0I2bMWOPF6Y262HeeILbORNH4a0D2CKgPk1zwswjoJ1M3DANLdnBDDawZ5u3T0Z3WHCMt4aK9zUi_xWxLk4shKKsLgrb3QsXMOIz8IDqOqnP202i0ZWS-PEz2bMFu8tv5CwAPG4KoVOKFR4zTQvE82n68Ey8S6yuk8qraPIl2zATwNX-kB2CaOHT_Uac4DetXrx3BUwC3IHd8jHOyQmQWppihW_8pTc1L97WHCYuiJKF3xtTbBCGvYBqK_Dvj6B3UA9E20LP3TcrIXNgJbQlrfDFUgr2GT0zyaaSYM51VpidloPn14ig0GyDHvIB7pjF2KWzcvfDcnCCBWXHcvCYpsv-Dbfmu6b70mj54cJgjQyQVVtbOkGq12JcnU4nlIGzMt5Ifrn2Hqvr3aR_bO1yDsMFQRdga3-vgV4-3ES9nxQu6TPr6QWeCyzJTokNV2WTowKNMMT43UasfIzXsABLRqgLSqWpsE7F9ddjrEWSmq1zYtBIiNJBBxQPoY449gJcaWU6Bc-MGgBpDnzop98TXd2zk9K7zyuuxijDAnozqBCvSzvU9tSF9GeWG33AU7H-DgXigr0COY71sUmH3N9yS9fLFOWEiy3QrobUoJG33-BU3Fy_2nc-vy_XYG1oALGv9KQRHqQchdknzc9wyb3_37GXTjUJBBGDHi72M2zYaiJo_7ULZ7bjb5_WCLK-PsYronRb2-74HbbcaVSMKW37qeLpYAGKU3a5ldluKSa3tb53cIXuI1I0CkvNDJQA4Ef-ucIfaTIzvDLJqRpf-m3RB9q7oGeRbz6bqobJ0HFLEaAGzxt0DRxq3r1STTVeTp6pAoDnFrG7yUfT1P5QY-J8VNomfd5YWcwYBBQ4NNUKOXeq6f1QuTI--i7pCl26gj_fgn_joMo9L6elrmqW8K6oNe8kYHL1R5XfPoQbXfvXh_0UcM5DUO4fkaXForBOWKzMyEJmYffVF99CnsHQlrl3nVeSkw5e37FYjiEZrs93AbWS08vi84n4dKj4MsZBmZLVkaAhcJUY5_BZPpRmgMpVDX6gvGCGMM4lZTkIftYynGC1ag6H7NxpbC9H8yBIrgJaxtdsl7fcVBM4IgiCNpS6_2RSpRUSsUzcocYADc4Y6OHn8HXNNtce6ibLV7IhLXaVSlkXkJmmPu-ZI4R-ZZb7RACqgripAAM0DrGEAnQ84Zr0t2BSjiAoFsbUfP3cS_X3lkCtgt4jHJNhXosIXqiBE5i7p3ka0393fsCUmF5Zgv4OiIq0jrzBV6pwNFlBP7Ekpj-tcODrRe9w3mDuP8LCSIm6Lr0UvmciDeZ09emAAeLDhI5I0HPwHRluaEcvKIl8Md3s9iiEOF8JzTIZgfPwx5U7sGZul4oHYZokHiL7qB6PH0p4JksOBR1UWkMXcZl6lC2Lq5_gZp7l9vPb_3FtbRHNXxXHUqXVwtFBoJK7Ia1xZn_6XNF1KQ1UXqqNMhgz3gUYB1PVjqFZpf1oJ_PKenYT1Y-PqwfsqNs9F2nTdahdhARShRD2t48JIcdnMBkcBDwvYeP_NvBvdBBxEGGY2qORJHEFv5mFb9PdMOu-uyj6I_May023buRpDV-0a8AljoM-VJUPtabWBo2faF1MfaK4ThYp2ZFf51v3CHOA_eOg3tk1H_t3kNTogg7f8zi7iDF_mC0"><h2 id="Reference">2.3&emsp;Reference</h2><p>根据游戏中与玩家互动的能面人的说法，reference中有很多提示，能够帮助推导故事的“裏側”，但有些是很主观的看法。<br>带一个*代表个人觉得比较重要的Ref，两个*为古书，三个*为生物兵器相关报告</p><p>1) 転居届  *<br>なつみ家搬到隔壁？？？搬家的深层原因？（也许是我想多了）</p><p>2) 桜祭ポスター<br>底下说的就是春花父亲当年的事故</p><p>3) 幼儿园毕业照<br>显示出なつみ对当时记忆模糊</p><p>4) おはようjapan  *<br>受访教授的观点：a. 樱花中含有麻黄碱（可能是谣言），是制造冰毒的重要化学成分；b. 樱花都是一样的，都是嫁接（克隆）出来的；c. 介绍染井吉野樱，无法自然繁殖，自交不亲和性，需要利用其他品种；</p><p>5) 手机介绍  *<br>Real-time Maintenance功能：定期外部通信<br>Friend GPS：近距离可被定位<br>Copyright不是なつみ父亲的公司<br>end4中春花手机中发现有一金属板，这里能找到什么线索么？</p><p>6) 电影评价网页： 似乎没有什么有用信息  </p><p>7) なつみ学生证： 似乎没有什么有用信息  </p><p>8) 春花学生证： 证实2020年5月春花家和なつみ家交换了位置</p><p>9) 絵梨奈的过去：塑造人物形象</p><p>10) 新闻现场连线：塑造事件氛围</p><p>11) 絵梨奈的笔记①  <em><br>和女ケ沢市事件<em>*很不同</em></em>（案发现场≠发现现场），不像是模仿犯<br>犯人为何要让尸体被发现？<br>其他推测后面基本被证实</p><p>12) 灵异现象之妖花：忽然出现的巨大樱花树（1954年）</p><p>13) 灵异现象之心灵感应：心灵感应现象的一些历史实验（大概是真实存在的研究）</p><p>14) 天才女与春花讨论  *<br>关于事件死者的死法：<code>犠牲者がすぐに死なないようになっている</code><br>推测犯人不是真想连续杀人<del>（也许是给下一个目标的警告）</del></p><p>15) 17) 絵梨奈的笔记②  ：关于なつみ梦的解析</p><p>16) 塾の案内：侧面表现絵梨奈的聪明</p><p>18) 大二郎的兴趣介绍：塑造人物形象</p><p>19) 元木日報：end1结局描述</p><p>20) 翠眼の娘　　**<br>第一封古书（先这么叫吧），时间1180年7月1日（日本平安时代后期），历史背景是平清盛刚迫使高仓天皇退位不久，拥立自己的外孙，平德子之子即位，是为安德天皇。这是平氏一族的全盛时期。日记的意思是平清盛在派人找一个皇居没落家系的女儿，当时10岁左右，特征是单眼翠绿。这里提到的<code>帝の三男坊</code>应该是源赖朝了。</p><p>21) 桃子的简历：塑造人物形象</p><p>22) 同学会通知：解释天才女母亲没出场</p><p>23) 汽车失窃情报：应该就是用来运尸体的</p><p>24) 元木町犯罪情况：反映当地治安较好</p><p>25) 电话对方： 塑造桃子的人物形象</p><p>26) 絵梨奈的笔记③<br>重点区别这次事件和之前的不同，对犯人来说这次是紧急情况？</p><p>27) 女ケ沢报纸： 第一女ケ沢市事件</p><p>28) 女ケ沢报纸： 第二女ケ沢市事件</p><p>29) 诊断录音记录： end3的补充，天才女放弃后产生自杀倾向</p><p>30) 供养  *<br>2001年，第一人称带能面的人是谁？<br>开头的玻璃瓶和火焰是什么？制作药物？还是单纯什么仪式？<br>开头的对话Google一下发现竟然是葡萄牙语（最后的オブリガーダObrigada意思即ありがとう）<br>美冬说的優しい友達就是茜吧，还在迷茫，迷茫什么？</p><p>31) 高贵者的首领  **<br>1190年4月1日，讲的是这个人未得到平清盛信任，在其迁都后被降职到元木这个地方，远离政治纷争，但仍崇拜平清盛。文中的<code>法皇</code>即后白河天皇（信赖平清盛）</p><p>32) 42) 周四休诊日  *<br>2018年10月，春花因某种原因去医院，且瞒着なつみ</p><p>33) なつみ的调查：侧面反映警官的认真负责</p><p>34) 春花父亲的死亡诊断书  *<br>有某种药物中毒的迹象？</p><p>35) 目击者采访  *<br>2017年，第三女ケ沢市事件<br>可以看出春花一家刚从老家回来，其母亲不应该是犯人</p><p>36) 食人集团  **<br>1180年11月，当时的背景应该是：平治之乱中被打败的源义平（源赖朝的哥哥）逃到飛騨这个地方苟延残喘<br>由于缺少食物出现了吃同伴尸体的情况</p><p>37) 姐姐在哪里：反映絵梨奈小时候很依赖姐姐</p><p>38) 大二郎的警官证：塑造人物形象</p><p>39) 不審者情報：完善故事情节</p><p>40) 宅急送通话记录 *<br>春花把地址写错了(306写成603)，有什么特殊含义么？<br>该住宅只有5层所以配送员发现了错误</p><p>41) 元木站时刻表</p><p>43) 絵梨奈的笔记④  *<br>为何春花要隐瞒父亲的死？<br>为何なつみ父母也要隐瞒这点？<br>为何なつみ一家不搬走？</p><p>44) 絵梨奈的笔记⑤  *<br>这部分是关于end4的一些推理<br>春花母亲自杀一是为了隐瞒证据（自身）、二是为了向某人传达某种信息<br>春花母亲“追杀”二人但中途发觉目的已无法达成，所以决定不再下杀手？</p><p>45) 春花手机的调查报告  *<br>被做的一些手脚，但仍不太清楚一些部件是干嘛的</p><p>46) 鬼神の群れ  **<br>1560年8月，背景是日本战国时代，朝比奈元長是确实存在的人物，原为今川义元的部下，1560年桶狭间之战中今川义元亲自率军攻入尾张国境内（在今爱知县名古屋市一带），遭织田信长领军奇袭本阵阵亡，在此文中被描述为织田家一方有着鬼神之力。今川家还让同盟武田信玄注意织田家的动向。</p><p>47)　なつみ父亲的死亡诊断书 *<br>医师名这里有个细节，原来的医师是现医师的父亲，曾说要调查春花父亲药物中毒，现在是引退了还是被失踪了？</p><p>48) 担心①: 2018年10月，茜也不知道春花为何去医院</p><p>49) 学生时代的信： 塑造警官的人物形象</p><p>50)　抓捕行动： ホシ代表美冬，マルタイ代表春花</p><p>51) 紧急联络： 塑造桃子的人物形象</p><p>52) なつみ父亲的信  *<br>含有非常关键的信息<br>果然春花和なつみ两人在一起时不会被杀？</p><p>53) &quot;妖魔的声音&quot;  **<br>1561年4月，还是朝比奈元長的记录，说是桶狭间之战后军队中有些人（杀了“鬼神般”的织田军的人）能听到妖魔的声音，从而预知并回避危险</p><p>54) 教えて新村さん： 描述春花对地理的兴趣</p><p>55) I&#39;m a bird: ...这是来搞笑的吧</p><p>56) 犯行現場  *<br>end6这条线中警察发现作案现场，确定为失窃的货车，为何犯人将其遗弃至此？</p><p>57) お気を付けて: 警官和茜的通话，茜坚持回家（想当诱饵）</p><p>58) 担心②: 2018年10月，なつみ担心春花最近的状况询问美冬</p><p>59) 桜寿司: 看上去很贵的店...</p><p>60) 不能靠近: 天才女和姐姐的对话</p><p>61) 火事場の馬鹿力  *<br>火事場の馬鹿力（ことわざ）：火事のときに、自分にはあると思えない大きな力を出して重い物を持ち出したりすることから。切迫した状況に置かれると、普段は想像できないような力を無意識に出すことのたとえ。<br>天才女关于兴奋剂（ドーピング）的调查，提到了麻黄碱（エフェドリン）</p><p>62) 63) 排球教练的评价、体育大会: 天才女和なつみ过去的故事</p><p>64) 絵梨奈的笔记⑥  *<br>讲述天才女协助警方保护なつみ</p><p>65) 音信不通 *<br>突然刮起的大风是人为么？<br>信号不通的原因和大风有关么？</p><p>66) 灵异现象之终焉喇叭声 *<br>圣经新约中相应章节科普<br>学者对于宗教的认识</p><p>67) 春花父亲的死亡诊断书2 *<br>类似麻黄碱的药物<br>调查被上层中止（案件上升到国家层面）<br>药物和微生物混合</p><p>68) 儀之助の日記　**<br>点数不够解锁</p><p>69) 強き女　**<br>点数不够解锁</p><hr><ol><li><p>生物兵器企划书 ***<br>1935年3月，军队得知荒田集落中存在某种药，能让人拥有“鬼神之力”，派人前去调查</p></li><li><p>荒田集落调查结果 ***<br>1953年4月，荒田集落积极提供帮助（文献资料、样品等），并告知药已没再使用，原料之一为当地樱花<br>对于近乎异样的热情协助，军队怀疑他们有别的目的</p></li><li><p>药物的使用方法相关对比 ***<br>点数不足暂时无法解锁...</p></li></ol><h2 id="事典">2.4&emsp;事典</h2><p>这一部分基本上都是客观的描述，如人物和事件的概述、故事背景地点的介绍，帮助玩家了解故事发生的这座城镇</p><h1 id="目前的推测">3&emsp;目前的推测</h1><p>在<code>end2_感染</code>中，最后有段文字是无法暂停下来回放的，描述了天才女在“得到”なつみ的能力后听到的东西：  </p><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store3/master/img/202112181530648.PNG" alt="1"><br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store3/master/img/202112181530982.PNG" alt="2"></p><ul><li>春花父亲作为荒田集落的一员，有着某种秘密（药物，鬼神之力）</li><li>なつみ在春花父亲的事故中近距离目睹了他的死亡，获得了“危险预知能力”（参考Ref53，妖魔的声音）</li><li>太多事件的目的不明确，要首先从なつみ父亲的那封信开始理解才行</li><li>犯下女ケ沢市事件的犯人另有其人，<del>他利用了美冬，使其杀害了なつみ父亲</del>(美冬确实被利用了，也确实最可能杀害了なつみ父亲，但幕后黑手应该不会轻易亲自动手杀人)</li><li><del>春花和なつみ在一起时，因为某种考量犯人不会动杀手</del>(也许只是巧合，也许只是不想当春花面杀なつみ)</li></ul>]]></content>
       
       
       <categories>
@@ -893,13 +924,13 @@
       
       <categories>
           
-          <category> 工作 </category>
-          
           <category> 生活 </category>
           
-          <category> 工具 </category>
+          <category> 工作 </category>
           
           <category> 记录 </category>
+          
+          <category> 工具 </category>
           
       </categories>
       
@@ -1004,35 +1035,6 @@
     
     
     <entry>
-      <title>正则表达式学习笔记</title>
-      <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
-      <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul><h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作 </category>
-          
-          <category> 工具 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 使用tips </tag>
-            
-            <tag> 正则表达式 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>渋谷半日游</title>
       <link href="/2020-01-09-shibui-gu-ban-ri-you/"/>
       <url>/2020-01-09-shibui-gu-ban-ri-you/</url>
@@ -1054,6 +1056,35 @@
             <tag> 日记 </tag>
             
             <tag> 相册 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>正则表达式学习笔记</title>
+      <link href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/"/>
+      <url>/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p><h1 id="特殊作用">1&emsp;特殊作用</h1><ul><li><p>大写往往代表对小写能匹配的字符取补集</p></li><li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p></li><li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p></li><li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p></li><li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p></li><li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p></li><li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p></li><li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p></li><li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p></li><li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p></li><li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p></li><li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p></li><li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p></li><li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p></li><li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p></li></ul><h1 id="表示数量">2&emsp;表示数量</h1><ul><li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p></li><li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p></li><li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p></li><li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p></li></ul><h1 id="数字">3&emsp;数字</h1><ul><li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p></li><li><p><code>[01357]</code> : 匹配列出的数字中的一个</p></li><li><p><code>\D</code> : 匹配一个非数字字符</p></li></ul><h1 id="其他">4&emsp;其他</h1><ul><li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p></li><li><p><code>\w</code> : 匹配字母、数字和下划线</p></li><li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p></li><li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p></li></ul><h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 使用tips </tag>
+            
+            <tag> 正则表达式 </tag>
             
         </tags>
       
@@ -1091,41 +1122,6 @@
     
     
     <entry>
-      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
-      <link href="/2020-01-04-vats-simulation/"/>
-      <url>/2020-01-04-vats-simulation/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?resid=25FDD57DA585B6D%211494&amp;authkey=%21AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content>
-      
-      
-      <categories>
-          
-          <category> 学习 </category>
-          
-          <category> 工作 </category>
-          
-          <category> 语言 </category>
-          
-          <category> CFD </category>
-          
-          <category> OpenFOAM </category>
-          
-          <category> 英语 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> airfoil optimization </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>新的一年，还是写点什么吧</title>
       <link href="/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/"/>
       <url>/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/</url>
@@ -1145,6 +1141,41 @@
         <tags>
             
             <tag> flag </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</title>
+      <link href="/2020-01-04-vats-simulation/"/>
+      <url>/2020-01-04-vats-simulation/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.<br><br></p><iframe src="https://onedrive.live.com/embed?resid=25FDD57DA585B6D%211494&amp;authkey=%21AIg5uscSPhHNBHE&amp;em=2&amp;wdAr=1.3333333333333333" width="640px" height="480px" frameborder="0">这是嵌入 <a target="_blank" href="https://office.com">Microsoft Office</a> 演示文稿，由 <a target="_blank" href="https://office.com/webapps">Office</a> 提供支持。</iframe>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 语言 </category>
+          
+          <category> 工作 </category>
+          
+          <category> CFD </category>
+          
+          <category> OpenFOAM </category>
+          
+          <category> 英语 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> airfoil optimization </tag>
             
         </tags>
       
@@ -1191,9 +1222,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -1226,9 +1257,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -1288,9 +1319,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> CFD </category>
           
@@ -1470,9 +1501,9 @@
           
           <category> 学习 </category>
           
-          <category> 工作 </category>
-          
           <category> 语言 </category>
+          
+          <category> 工作 </category>
           
           <category> linux </category>
           
@@ -1731,13 +1762,13 @@
           
           <category> 学习 </category>
           
-          <category> 语言 </category>
-          
           <category> 生活 </category>
           
-          <category> 日本語 </category>
+          <category> 语言 </category>
           
           <category> 记录 </category>
+          
+          <category> 日本語 </category>
           
       </categories>
       
