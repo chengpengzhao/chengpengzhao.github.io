@@ -622,6 +622,11 @@ make是一个命令工具，它解释Makefile中的指令（应该说是规则">
         
 
         
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+        
       </div>
 
     </div>
@@ -755,12 +760,9 @@ files := $(wildcard a/* b/* c/* d/*)<span aria-hidden="true" class="line-numbers
 </li>
 <li><p>自动生成每一个<code>.c</code>文件对应的<code>.d</code>文件（包含相应依赖文件描述）</p>
 <pre class="line-numbers language-Makefile"><code class="language-Makefile">%.d: %.cpp
-# 1. 使用编译器自自动生成依赖文件（$<）的头文件的依赖关系，并输出成为一个临时文件
-# 2. 使用sed处理第二行已产生的那个临时文件并生成此规则的目标文件。（将.d加入到规则的目标中）
-# 3. 删除临时文件
-  $(CXX) -MM $(CXXFLAGS) $< > $@.$$$$; \
+# 1. 使用编译器自自动生成依赖文件（$<）的头文件的依赖关系，并输出成为一个临时文件 # 2. 使用sed处理第二行已产生的那个临时文件并生成此规则的目标文件。（将.d加入到规则的目标中） 3. 删除临时文件 $(cxx) -mm $(cxxflags) $<> $@.$$$$; \
   sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
-  rm -f $@.$$$$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  rm -f $@.$$$$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></）的头文件的依赖关系，并输出成为一个临时文件></code></pre>
 </li>
 <li><p><code>.d</code>文件的处理（接着上面一条）</p>
 <pre class="line-numbers language-Makefile"><code class="language-Makefile">SRCS = $(wildcard ./*.cpp)
@@ -1855,6 +1857,13 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             
             
             
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
             <span id="sitetime">载入运行时间...</span>
             <script>
                 function siteTime() {
@@ -1897,7 +1906,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -2016,6 +2025,8 @@ $(function () {
     <!-- Baidu Push -->
 
     
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
