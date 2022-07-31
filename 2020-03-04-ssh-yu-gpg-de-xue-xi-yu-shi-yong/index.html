@@ -599,7 +599,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2020-03-04
         </div>
         
 
@@ -629,7 +629,7 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>记得<strong>第一次</strong>接触到SSH是在开始折腾博客那会，照着网上的教程一步步来设置<code>Github</code>环境、生成<code>SSH key</code>什么的，然后每次<code>git push</code>的时候就不用输密码了。<br><strong>第二次</strong>接触到它是在买了VPS之后，听说大佬们为了增加安全性都是通过密钥登录的，这里用的也是<code>SSH key</code>。<br>而接触到<code>GPG</code>是最近逛别人博客时，发现有好几个都留了个叫<em>PGP公钥</em> 的东西，如<a href="https://printempw.github.io/about/" target="_blank" rel="noopener">PRIN</a>和<a href="https://neoatlantis.org/identserv/" target="_blank" rel="noopener">NeoAtlantis</a>的博客。正好印象中记得Github里好像有个<code>GPG key</code>，出于好奇于是学习了下相关知识，说不定以后用得到。  </p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>记得<strong>第一次</strong>接触到SSH是在开始折腾博客那会，照着网上的教程一步步来设置<code>Github</code>环境、生成<code>SSH key</code>什么的，然后每次<code>git push</code>的时候就不用输密码了。<br><strong>第二次</strong>接触到它是在买了VPS之后，听说大佬们为了增加安全性都是通过密钥登录的，这里用的也是<code>SSH key</code>。<br>而接触到<code>GPG</code>是最近逛别人博客时，发现有好几个都留了个叫<em>PGP公钥</em> 的东西，如<a href="https://printempw.github.io/about/" target="_blank" rel="noopener">PRIN</a>和<a href="https://neoatlantis.org/identserv/" target="_blank" rel="noopener">NeoAtlantis</a>的博客。正好印象中记得Github里好像有个<code>GPG key</code>，出于好奇于是学习了下相关知识，说不定以后用得到。  </p>
 <h1 id="SSH">2&emsp;SSH</h1><h2 id="是什么">2.1&emsp;是什么</h2><blockquote>
 <p>SSH(Secure Shell)，一种加密的网络传输协议，来实现SSH客户端与服务器之间的连接。</p>
 </blockquote>
@@ -653,7 +653,7 @@
 <li>用公钥加密的数据<strong>只有</strong>对应的私钥可以解密</li>
 </ol>
 <p>这不没区别么？？？好像真是这样，除了公钥和私钥是<strong>成对的</strong>、随便规定一个为公钥、那么另一个就叫私钥好了。<strong>数学上</strong>据说没区别，但是平常使用中，<strong>私钥的地位远远高于公钥</strong>；而且很多工具都设计成：<strong>私钥包含公钥信息</strong>,即<strong>私钥可以推导出公钥</strong>、<strong>私钥包含公钥</strong>。<br>所以使用中千万不要弄混了，一般带有<code>pub</code>字眼的为公钥(public key)。</p>
-<h2 id="SSH登录">2.3&emsp;SSH登录</h2><p>梳理下利用SSH登录<code>vps</code>的流程吧，虽然个人理解的可能不太准确...  </p>
+<h2 id="SSH登录">2.3&emsp;SSH登录</h2><p>梳理下利用SSH登录<code>vps</code>的流程吧，虽然个人理解的可能不太准确…  </p>
 <ol>
 <li>客户端向<code>vps</code>发起一个登录请求</li>
 <li><code>vps</code>生成一串随机数，利用之前配置好的公钥(<code>authorized_keys</code>)进行加密，将加密后字符串传给客户端</li>
@@ -772,7 +772,7 @@ gpg --armor --detach-sign input.txt  <span class="token comment" spellcheck="tru
 <pre class="line-numbers language-bash"><code class="language-bash">gpg --local-user <span class="token punctuation">[</span>发信者ID<span class="token punctuation">]</span> --recipient <span class="token punctuation">[</span>接收者ID<span class="token punctuation">]</span> --armor --detach-sign --encrypt input.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="验证签名">3.3.11&emsp;验证签名</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 注意签名在前，被签名文件在后</span>
 gpg --verify demo.txt.asc demo.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="我的PGP-keys">4&emsp;我的PGP keys</h1><p>我把自己的身份验证方法放在了<code>Github</code>一个仓库里，所有的提交都是经过<code>PGP key</code>验证了的。<br><a href="https://github.com/chengpengzhao/Zcp-s-PGP-Signatures" target="_blank" rel="noopener">Zcp&#39;s PGP Signatures</a><br><br><br>前面介绍的<code>GnuPGP</code>主要在Linux环境下使用，Windows中推荐<code>WSL</code>或者用<code>Gpg4win</code>软件。总的来说我们使用<code>PGP keys</code>的目的就是：</p>
+<h1 id="我的PGP-keys">4&emsp;我的PGP keys</h1><p>我把自己的身份验证方法放在了<code>Github</code>一个仓库里，所有的提交都是经过<code>PGP key</code>验证了的。<br><a href="https://github.com/chengpengzhao/Zcp-s-PGP-Signatures" target="_blank" rel="noopener">Zcp’s PGP Signatures</a><br><br><br>前面介绍的<code>GnuPGP</code>主要在Linux环境下使用，Windows中推荐<code>WSL</code>或者用<code>Gpg4win</code>软件。总的来说我们使用<code>PGP keys</code>的目的就是：</p>
 <ol>
 <li>供他人验证身份，来证实某消息确实出自自己之手、并且未被第三人修改过。</li>
 <li>加密消息，通过他人公开的公钥能够向对方发送加密了的讯息，而只有持有对应私钥的他本人能够解密。</li>
@@ -1780,7 +1780,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

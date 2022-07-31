@@ -656,10 +656,10 @@ VPS, Virtual Private Servers，中文即虚拟专用服务器
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="写在前面">1&emsp;写在前面</h1><blockquote>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="写在前面">1&emsp;写在前面</h1><blockquote>
 <p>VPS, Virtual Private Servers，中文即虚拟专用服务器  </p>
 </blockquote>
-<p>虽说入坑vps也有两年了，说来惭愧我至今仍分不清VPS、虚拟主机、云主机等一些专有名词的关系。<br>最近感觉自己对VPS的需求越来越高，入门级的小鸡已经空间不足了，故决定放弃续费几年前入手的bandwagon祖传vps。（翻出了最开始的账单，这种价位的搬瓦工现在也很少了、经常缺货中）<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200801220308.webp" alt><br>这段时间试了试阿里云（国内的话网站要备份，很多推荐国际站香港的服务器）、cloudcone（便宜，但感觉不稳），最终选择了大厂<a href="https://www.vultr.com/" target="_blank" rel="noopener">Vultr</a>的产品；一个月<code>$10</code>（我选的硅谷机房）还是有点心痛的，但至少方便管理些、所有服务都能放在一台机器上。<br>说到VPS、很多情况下还要牵涉到域名，我现在有两个域名：一个专门做博客、一个配置各种服务，都转移到了<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>上管理，域名续费一年的开支是<code>$8.18+$8.03</code>，累计起来每年要花近1000块,也算的上一笔不小的开支了（但相对于各种手游手一抖就是518,似乎也不算什么）。<br>那么回归正题，<strong>VPS能为我带来些什么呢？</strong> 记得最开始是fq、到后来的密码管理、网盘分享、webdv存文献、bt下载、NAS外网访问、qq机器人...<br>下面系统地记录一下自己用VPS搭建这些服务的步骤：（fq除外、我怕ip被封影响其他服务）  </p>
+<p>虽说入坑vps也有两年了，说来惭愧我至今仍分不清VPS、虚拟主机、云主机等一些专有名词的关系。<br>最近感觉自己对VPS的需求越来越高，入门级的小鸡已经空间不足了，故决定放弃续费几年前入手的bandwagon祖传vps。（翻出了最开始的账单，这种价位的搬瓦工现在也很少了、经常缺货中）<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200801220308.webp" alt><br>这段时间试了试阿里云（国内的话网站要备份，很多推荐国际站香港的服务器）、cloudcone（便宜，但感觉不稳），最终选择了大厂<a href="https://www.vultr.com/" target="_blank" rel="noopener">Vultr</a>的产品；一个月<code>$10</code>（我选的硅谷机房）还是有点心痛的，但至少方便管理些、所有服务都能放在一台机器上。<br>说到VPS、很多情况下还要牵涉到域名，我现在有两个域名：一个专门做博客、一个配置各种服务，都转移到了<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>上管理，域名续费一年的开支是<code>$8.18+$8.03</code>，累计起来每年要花近1000块,也算的上一笔不小的开支了（但相对于各种手游手一抖就是518,似乎也不算什么）。<br>那么回归正题，<strong>VPS能为我带来些什么呢？</strong> 记得最开始是fq、到后来的密码管理、网盘分享、webdv存文献、bt下载、NAS外网访问、qq机器人…<br>下面系统地记录一下自己用VPS搭建这些服务的步骤：（fq除外、我怕ip被封影响其他服务）  </p>
 <h1 id="Bitwarden，密码管理服务">2&emsp;Bitwarden，密码管理服务</h1><p>之前的一篇<a href="https://chengpengzhao.com/2020-02-08-bitwarden-mi-ma-guan-li-ji-v2ray-da-jian/">post</a>有讲过具体搭建步骤，但废话比较多，我也懒得改了。新手还可以一看，和大佬一比也只能是班门弄斧了；<br>这次还是也顺便回顾下。</p>
 <h2 id="安装docker、docker-compose">2.1&emsp;安装docker、docker-compose</h2><p>推荐去网上找一个一键安装脚本、省时省力，我在<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener">My_vimrc</a>（最初用来记录vim个人配置）这个仓库整理了一些折腾vps时用到的脚本，接下来讲到的一些配置文件也有放里面。  </p>
 <h2 id="配置文件-docker-compose-yml">2.2&emsp;配置文件(docker-compose.yml)</h2><p>文件目录如下，其中<code>bw-data</code>中存放密码数据，最好及时备份，迁移到另一台vps时将这个文件夹拷贝覆盖就行。</p>
@@ -951,7 +951,7 @@ RUN set -ex; \
 <ol start="2">
 <li><p>访问<code>http://vps_ip:8083</code>，不出意外应该能显示登录页面了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803125447.webp" alt></p>
 </li>
-<li><p>如果不是对nginx很熟悉，<strong>非常不推荐设置nextcloud的反向代理</strong>。因为自己设置好后虽然能访问，很经常出现各种bug：上传错误、图标不显示、网址链接错误...  </p>
+<li><p>如果不是对nginx很熟悉，<strong>非常不推荐设置nextcloud的反向代理</strong>。因为自己设置好后虽然能访问，很经常出现各种bug：上传错误、图标不显示、网址链接错误…  </p>
 </li>
 </ol>
 <p><strong>踩了上面说的这些坑</strong>之后我也看了很多别人的设置，但仍未找到比较完美的解决方案，但一想不配置http、https也能用，只是网址比较难看而已，<strong>最终选择了妥协</strong>。</p>
@@ -1136,7 +1136,7 @@ services:
 <blockquote>
 <p><em>以下内容更新于2020-11-13 23:22:02</em></p>
 </blockquote>
-<h1 id="Leanote，私有云笔记">11&emsp;Leanote，私有云笔记</h1><p>蚂蚁笔记虽然几年前就已经没更新了，但基本的功能挺全的，作为私有云笔记用起来没啥问题。我尝试了一个多月感觉还行，支持markdown、可以传图片、IOS下也有app、网页就能直接访问、备份方便...总之个人强力推荐吧，看了一些其他支持私人部署的笔记平台也都差不多的样。  </p>
+<h1 id="Leanote，私有云笔记">11&emsp;Leanote，私有云笔记</h1><p>蚂蚁笔记虽然几年前就已经没更新了，但基本的功能挺全的，作为私有云笔记用起来没啥问题。我尝试了一个多月感觉还行，支持markdown、可以传图片、IOS下也有app、网页就能直接访问、备份方便…总之个人强力推荐吧，看了一些其他支持私人部署的笔记平台也都差不多的样。  </p>
 <p>我用的是<a href="https://github.com/KeiferJu/docker-leanote" target="_blank" rel="noopener">docker部署</a>的方式，比较无脑，而且这个仓库是大佬整合制作的镜像，有不同版本可供选择（视vps配置），反正我512M内存祖传vps运行完全版Leanote也毫无压力。  </p>
 <h1 id="FileRun，私人网盘">12&emsp;FileRun，私人网盘</h1><p>与之前的Nextcloud相比，FileRun私人网盘体积更加轻盈，部署起来没有那么多糟心的坑，也支持Webdav，适合部署在低配的机器上，只是传一传小文件（抱歉、低配硬盘根本不够用）、用webdav同步下一些app的数据（如OmniFocus之类的）。  </p>
 <p>配置过程及其简单，官网<a href="https://docs.filerun.com/docker" target="_blank" rel="noopener">https://docs.filerun.com/docker</a>里说的明明白白，顶多改一改<code>volumes</code>方便换vps时同步数据、或者改一改文件夹权限之类的，不像nextcloud真的是各种错误（虽然nextcloud的功能确实强大、加上各种插件、社区也很活跃）。</p>
@@ -2151,7 +2151,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

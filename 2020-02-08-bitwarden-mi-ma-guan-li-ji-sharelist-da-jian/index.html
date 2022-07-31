@@ -607,7 +607,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-08-03
+          2020-06-23
         </div>
         
 
@@ -637,12 +637,12 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="折腾下闲置的VPS">1&emsp;折腾下闲置的VPS</h1><p>本科时同学推荐搬瓦工的VPS，当然那时我连VPS是什么都不知道，听说能够翻过围墙所以就买了。对Linux一窍不通的我在曾经的doubi根据地上的文章指引下，也能够搭建一个比较舒服的上网环境，当时感到十分愉快（用的当然是那些一键脚本）。<br>过了一年除了IP被封过两次、换了几个机房、换了几个一键脚本以外，倒也还没觉得有啥不满；毕竟如果是买市面上那些服务每个月的钱也差不多。<br>人总是在不断学习进步的，我总算学会了一些linux基本操作，可以用XShell登一登我的VPS没事<code>ls</code>一下。但看到大佬们用自己的VPS搭各种服务器到时候，还是非常羡慕的，于是忍不住也尝试下，顺便学习下后端相关知识。<br><br></p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="折腾下闲置的VPS">1&emsp;折腾下闲置的VPS</h1><p>本科时同学推荐搬瓦工的VPS，当然那时我连VPS是什么都不知道，听说能够翻过围墙所以就买了。对Linux一窍不通的我在曾经的doubi根据地上的文章指引下，也能够搭建一个比较舒服的上网环境，当时感到十分愉快（用的当然是那些一键脚本）。<br>过了一年除了IP被封过两次、换了几个机房、换了几个一键脚本以外，倒也还没觉得有啥不满；毕竟如果是买市面上那些服务每个月的钱也差不多。<br>人总是在不断学习进步的，我总算学会了一些linux基本操作，可以用XShell登一登我的VPS没事<code>ls</code>一下。但看到大佬们用自己的VPS搭各种服务器到时候，还是非常羡慕的，于是忍不住也尝试下，顺便学习下后端相关知识。<br><br></p>
 <p>由于时间有限，以能用为唯一目的，多余的知识没时间更没必要去掌握（毕竟专业和这个毫不相关），操作全部记录在这方便以后换VPS时再搭一遍。</p>
 <h1 id="Bitwarden-rs部署">2&emsp;Bitwarden_rs部署</h1><h2 id="前言">2.1&emsp;前言</h2><p>好用的密码管理软件之一，<code>_rs</code>版本相对于官方版精简了不少，部署也比较简单。网上大多数bitwarden_rs部署教程的文章我基本上都过了一遍，我遇到的主要问题有：</p>
 <ol>
 <li>部署后用Chrome浏览器无法登录与注册账号，IOS系统无法登录 (——后确定为<strong>未用https</strong>的原因)  </li>
-<li>网上关于申请https这部分往往一笔带过，什么Nginx反向代理啦....看得我这样的零基础玩家云里雾里。  </li>
+<li>网上关于申请https这部分往往一笔带过，什么Nginx反向代理啦….看得我这样的零基础玩家云里雾里。  </li>
 </ol>
 <p>结果大量时间都花在如何启用https上了，真让人头大。</p>
 <h2 id="步骤">2.2&emsp;步骤</h2><h3 id="VPS初始配置">2.2.1&emsp;VPS初始配置</h3><p>经过几次重装OS后学乖了，把初始配置做成一个脚本。 </p>
@@ -703,10 +703,10 @@ EOF</span>
 
 docker-compose up -d
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>端口相关知识我真的一窍不通...反正能用<code>ip:8081</code>访问就行。</p>
+<p>端口相关知识我真的一窍不通…反正能用<code>ip:8081</code>访问就行。</p>
 <h3 id="启用https">2.2.3&emsp;启用https</h3><p>稀里糊涂的装了个acme.sh脚本、在NameSilo申请了个API key；</p>
 <pre class="line-numbers language-bash"><code class="language-bash">acme.sh --issue --dns dns_namesilo --dnssleep 900 -d my_domain_name.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>看到没有报错的时候真的松了口气，然而证书是申请了，怎么绑到之前的bitwarden_rs的domain里我还是不会。<br>后面发现<a href="https://chengpengzhao.com/files_store/%E5%BC%80%E6%BA%90%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%9ABitwarden_rs%20%E7%AC%AC%E4%B8%89%E6%96%B9%E7%89%88%E6%9C%AC%E9%83%A8%E7%BD%B2%20-%20%E8%80%81%E5%85%84de%E5%8D%9A%E5%AE%A2%20(2020-02-11%20%E4%B8%8A%E5%8D%889_45_29).html">这篇教程</a>和其他的都有些不一样，于是抱着一丝希望试了下...总算是解决了问题。</p>
+<p>看到没有报错的时候真的松了口气，然而证书是申请了，怎么绑到之前的bitwarden_rs的domain里我还是不会。<br>后面发现<a href="https://chengpengzhao.com/files_store/%E5%BC%80%E6%BA%90%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%9ABitwarden_rs%20%E7%AC%AC%E4%B8%89%E6%96%B9%E7%89%88%E6%9C%AC%E9%83%A8%E7%BD%B2%20-%20%E8%80%81%E5%85%84de%E5%8D%9A%E5%AE%A2%20(2020-02-11%20%E4%B8%8A%E5%8D%889_45_29).html">这篇教程</a>和其他的都有些不一样，于是抱着一丝希望试了下…总算是解决了问题。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">>></span> docker-compose.yml <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
 version: "3"
 
@@ -790,7 +790,7 @@ EOF</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"15 05 * * * bash ~/gitback.sh > ~/siteback.log 2>&amp;1 &amp;"</span> <span class="token operator">></span> bt.cron
 <span class="token function">crontab</span> bt.cron
 <span class="token function">rm</span> -rf bt.cron<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>自动备份部分白嫖的<a href="https://www.moerats.com/archives/858/" target="_blank" rel="noopener">Rat&#39;s Blog</a>。<br>查看定时任务可通过<code>crontab -l</code></p>
+<p>自动备份部分白嫖的<a href="https://www.moerats.com/archives/858/" target="_blank" rel="noopener">Rat’s Blog</a>。<br>查看定时任务可通过<code>crontab -l</code></p>
 <h1 id="Sharelist分享云盘">3&emsp;Sharelist分享云盘</h1><p><a href="https://github.com/reruin/sharelist" target="_blank" rel="noopener">项目地址</a><br>这个搭起来就简单多了，dockerr都给你准备好了，只需要注意安装完成后配置云盘可能比较复杂；我选用的是<strong>链接分享</strong>的方式，可以自己指定文件夹且不需要获取API之类的复杂操作。  </p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">wget</span> --no-check-certificate -qO-  https://cdn.jsdelivr.net/gh/reruin/sharelist/netinstall.sh <span class="token operator">|</span> <span class="token function">bash</span>
 <span class="token function">cd</span> sharelist
@@ -808,7 +808,7 @@ docker-compose up<span aria-hidden="true" class="line-numbers-rows"><span></span
 <li>过一会儿<code>namesilo</code>会再发邮件提示正在转移域名，点进相关网址可以立即通过转移（省时间）。</li>
 </ol>
 <h2 id="cloudflare的ssl-tls设置">4.2&emsp;cloudflare的ssl-tls设置</h2><p>一般将加密模式设置为<strong>完全</strong>（<code>cloudflare</code>前一阵子出了简体中文版网页，更香了有没有），之后再到源服务器选项下创建源证书，之后要放到VPS上的。（我直接创了个15年有效期的），将公钥和私钥保存为<code>cert.pem</code>和<code>cert.key</code>。  </p>
-<h2 id="cloudflare的DNS设置">4.3&emsp;cloudflare的DNS设置</h2><p>虽然对这些方面一窍不通，但在用的过程中还是有点心得之类的东西：<br>比如在解析像<code>Github Page</code>这种时可以只用<code>CNAME</code>记录，而在解析<code>ip地址</code>时一般只用<code>A</code>记录就行了。另外通常会设置多条记录，一条给根域名(@表示或直接输入完整域名)、另一条给<code>www</code>（名称）的前缀，之后可以根据喜好随便加几条（如<code>0</code>、<code>000</code>...）。<br>这些记录的内容都是指向同一个<code>ip地址</code>、即VPS的ip，在没有用<code>Nginx</code>配置时，无论是用<code>www.yoursite</code>还是<code>yoursite</code>、<code>0.yoursite</code>、<code>000.yoursitez</code>访问，页面应该都是相同的。</p>
+<h2 id="cloudflare的DNS设置">4.3&emsp;cloudflare的DNS设置</h2><p>虽然对这些方面一窍不通，但在用的过程中还是有点心得之类的东西：<br>比如在解析像<code>Github Page</code>这种时可以只用<code>CNAME</code>记录，而在解析<code>ip地址</code>时一般只用<code>A</code>记录就行了。另外通常会设置多条记录，一条给根域名(@表示或直接输入完整域名)、另一条给<code>www</code>（名称）的前缀，之后可以根据喜好随便加几条（如<code>0</code>、<code>000</code>…）。<br>这些记录的内容都是指向同一个<code>ip地址</code>、即VPS的ip，在没有用<code>Nginx</code>配置时，无论是用<code>www.yoursite</code>还是<code>yoursite</code>、<code>0.yoursite</code>、<code>000.yoursitez</code>访问，页面应该都是相同的。</p>
 <h2 id="VPS上启动docker-compose容器">4.4&emsp;VPS上启动docker-compose容器</h2><p>先以bitwarden为例讲下吧：</p>
 <ol>
 <li><p>去网上学习下常用的几个命令如<code>docker ps</code>、<code>docker-compose down &amp;&amp; docker-compose up -d</code>、<code>docker-compose restart</code>，大概了解下怎么使用；</p>
@@ -820,7 +820,7 @@ docker-compose up<span aria-hidden="true" class="line-numbers-rows"><span></span
 <li><p>最后用<code>Nginx</code>将<code>VPS的ip地址:8080</code>和<code>准备好的域名</code>“绑在一起”就好了。</p>
 </li>
 </ol>
-<h2 id="Nginx学习与使用">4.5&emsp;Nginx学习与使用</h2><p>之前看别人教程的时候都是“接下来用Nginx弄个反代...完”、这种节奏，看来是默认大家都会<code>Nginx</code>了（哭了出来）。<br>本着<strong>原理可以不弄太懂，关键不影响使用</strong>的懒人态度，直到今天我也终于开始Google搜索<em>Nginx入门</em> 了。</p>
+<h2 id="Nginx学习与使用">4.5&emsp;Nginx学习与使用</h2><p>之前看别人教程的时候都是“接下来用Nginx弄个反代…完”、这种节奏，看来是默认大家都会<code>Nginx</code>了（哭了出来）。<br>本着<strong>原理可以不弄太懂，关键不影响使用</strong>的懒人态度，直到今天我也终于开始Google搜索<em>Nginx入门</em> 了。</p>
 <ol>
 <li><p>安装，想当然的输入 <code>sudo apt-get install nginx</code> ，嗯？能行，好、下一步。</p>
 </li>
@@ -1769,8 +1769,8 @@ COMSOL 用户，您好！
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言最近事情比较多，想看的书、想学的、不得不学的...其中很多都是无意中逛别人博客后发现的，比如财务管理、GTD、如何整理笔记、保险相关知识...  
-我之所以会把这些事的优先级放这么高，核心目的还是在于想让自己早点养成习惯，
+                            1&emsp;前言最近事情比较多，想看的书、想学的、不得不学的…其中很多都是无意中逛别人博客后发现的，比如财务管理、GTD、如何整理笔记、保险相关知识…  
+我之所以会把这些事的优先级放这么高，核心目的还是在于想让自己早点养成习惯，从而提高
                         
                     </div>
                     <div class="publish-info">
@@ -1781,20 +1781,20 @@ COMSOL 用户，您好！
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
-                                </a>
-                            
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
                                     工作
                                 </a>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    记录
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
                                     工具
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    记录
                                 </a>
                             
                             
@@ -1955,7 +1955,7 @@ COMSOL 用户，您好！
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

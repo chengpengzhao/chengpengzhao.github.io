@@ -613,7 +613,7 @@ Minimize t">
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2019-12-11
         </div>
         
 
@@ -643,7 +643,7 @@ Minimize t">
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="Evaluation-of-PARSEC-parametrization">1&emsp;Evaluation of PARSEC parametrization</h1><p>The principles that parametrization technique should satisfy are:</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Evaluation-of-PARSEC-parametrization">1&emsp;Evaluation of PARSEC parametrization</h1><p>The principles that parametrization technique should satisfy are:</p>
 <ul>
 <li>Minimize the number of degrees of freedom.</li>
 <li>Be able to represent a wide range of existing airfoils.</li>
@@ -651,18 +651,18 @@ Minimize t">
 <li>The parametrization should result in effective and efficient optimization.</li>
 </ul>
 <p>The parametric section(PARSEC) parametrization scheme, which uses the unknown linear combination of base functions to express characteristics of the airfoil, uses 11 different geometrical characteristics of airfoil to solve a system of linear equations. The describing parameters are less enough and sometimes even limit the accuracy and robustness of this method. On the other hand, the physical-based parameters can avoid arbitrary airfoil geometry, which leads to good convergence when combined with genetic algorithm or other optimization methods.<br>The PARSEC parameters are easy to understand and impose too, so the left question is whether this parametrization scheme can represent a wide range of existing airfoils.</p>
-<h1 id="Representation-of-NACA0012-airfoil-by-PARSEC-parametrization">2&emsp;Representation of NACA0012 airfoil by PARSEC parametrization</h1><p>The purpose of Representation is to analyse the residual differences between the approximate and the official airfoil shape. Actually, it&#39;s difficult to tell the differences on figures because they are hardly discernible. Thus a quantitative analysis is proposed.</p>
+<h1 id="Representation-of-NACA0012-airfoil-by-PARSEC-parametrization">2&emsp;Representation of NACA0012 airfoil by PARSEC parametrization</h1><p>The purpose of Representation is to analyse the residual differences between the approximate and the official airfoil shape. Actually, it’s difficult to tell the differences on figures because they are hardly discernible. Thus a quantitative analysis is proposed.</p>
 <h2 id="Fitting-analysis">2.1&emsp;Fitting analysis</h2><p>Kulfan<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .
-">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20\%$ is less than the thickness of a piece of printer paper.  </p>
+">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20%$ is less than the thickness of a piece of printer paper.  </p>
 <p>$$<br>z^{error}=|z^{target}-z^{approx}|<br> \tag{2-1}$$</p>
 <p>And the tolerance criterion<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.">[2]</span></a></sup> is: </p>
-<p>$$<br>z^{error}&lt;\left\{<br>\begin{aligned}<br>    4\times10^{-4}, \frac{x}{c}&lt;0.2 \\<br>    8\times10^{-4}, \frac{x}{c}&gt;0.2<br>\end{aligned}<br>\right.<br> \tag{2-2}$$<br>The representation process is conducted by using the genetic algorithm, defining the matching residual as the object function. Root-mean-square error(RMSE) is calculated by the following expression:  </p>
+<p>$$<br>z^{error}&lt;\left{<br>\begin{aligned}<br>    4\times10^{-4}, \frac{x}{c}&lt;0.2 \<br>    8\times10^{-4}, \frac{x}{c}&gt;0.2<br>\end{aligned}<br>\right.<br> \tag{2-2}$$<br>The representation process is conducted by using the genetic algorithm, defining the matching residual as the object function. Root-mean-square error(RMSE) is calculated by the following expression:  </p>
 <p>$$<br>RMSE_{Z}=\left(\frac{1}{N} \sum_{i=1}^{N}\left(z_{i}^{ \text { target }}-z_{i}^{\text {approx }}\right)^{2}\right)^{1/2}<br> \tag{2-3}$$</p>
 <h2 id="Genetic-algorithm">2.2&emsp;Genetic algorithm</h2><p>Genetic algorithms(GA)<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.">[3]</span></a></sup> is a robust and accurate method for global aerodynamic shape optimization and this can be often suggested in the literature. In contrast to gradient optimization approaches, it offers an alternative approach with several attractive features. The basic idea associated with the GA is to search for optimal solutions using an analogy to the theory of evolution.   </p>
-<p>During solution advance (or &quot;evolution&quot; using GA terminology) each chromosome is ranked according to its fitness vector––one fitness value for each objective. The higher-ranking chromosomes are selected to continue to the next generation while the probability of the selection of lower-ranking chromosomes is less.   </p>
+<p>During solution advance (or “evolution” using GA terminology) each chromosome is ranked according to its fitness vector––one fitness value for each objective. The higher-ranking chromosomes are selected to continue to the next generation while the probability of the selection of lower-ranking chromosomes is less.   </p>
 <p>In every generation, a new set of artificial creatures (strings) is created using bits and pieces of the fittest of the old;an occasional new part is tried for good measure. While randomized, genetic algorithms are no simple random walk. They efficiently exploit historical information to speculate on new search points with expected improved performance. The newly selected chromosomes in the next generation are manipulated using various operators (combination, crossover, or mutation) to create the final set of chromosomes for the new generation. These chromosomes are then evaluated for fitness and the process continues––iterating from generation to generation––until a suitable level of convergence is obtained or until a specified number of generations has been completed.  </p>
-<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called &quot;Pareto optimal sets&quot; instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211231210.webp" alt title="GA"></p>
-<p>The optimization process uses Dakota software, and here&#39;s the relating <code>.in</code> file settings:  </p>
+<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called “Pareto optimal sets” instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211231210.webp" alt title="GA"></p>
+<p>The optimization process uses Dakota software, and here’s the relating <code>.in</code> file settings:  </p>
 <pre><code>method
  soga
   seed = 10525
@@ -1770,7 +1770,7 @@ grep -r  "Schemes" * -h |sort -n|uniq
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

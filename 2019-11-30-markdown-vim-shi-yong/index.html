@@ -603,7 +603,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2019-11-30
         </div>
         
 
@@ -633,7 +633,7 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>自从接触了Vim之后就成了它的脑残粉，无论些什么东西都想拿它来试试，每天还坚持练习盲打；前几天刚总结了写Markdown时可能用到的语法，马上想到如何利用mapping让在Vim写Markdown变得更简单。<br>当然现在那么多写markdown的工具，比如我之前一直用的Typora就感觉很不错，但毕竟是别人的软件，有一些你想要的功能它没有那就没办法，但Vim的话只要学几天Vimscript就能自己实现一些功能、自己定义觉得方便的快捷键，简直随心所欲为所欲为。<br>有些人总是喜欢折腾，我也不例外，连专业学习都能丢在一边，先把这边折腾完再说。<br><strong>下面简单介绍我专门为写Markdown定义的Vim快捷键</strong>，刚开始是B站的一个<a href="https://www.bilibili.com/video/av56946680/" target="_blank" rel="noopener">大佬</a>给我的启发，我在它的基础上改进了一下，为了方便我自己的使用。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>自从接触了Vim之后就成了它的脑残粉，无论些什么东西都想拿它来试试，每天还坚持练习盲打；前几天刚总结了写Markdown时可能用到的语法，马上想到如何利用mapping让在Vim写Markdown变得更简单。<br>当然现在那么多写markdown的工具，比如我之前一直用的Typora就感觉很不错，但毕竟是别人的软件，有一些你想要的功能它没有那就没办法，但Vim的话只要学几天Vimscript就能自己实现一些功能、自己定义觉得方便的快捷键，简直随心所欲为所欲为。<br>有些人总是喜欢折腾，我也不例外，连专业学习都能丢在一边，先把这边折腾完再说。<br><strong>下面简单介绍我专门为写Markdown定义的Vim快捷键</strong>，刚开始是B站的一个<a href="https://www.bilibili.com/video/av56946680/" target="_blank" rel="noopener">大佬</a>给我的启发，我在它的基础上改进了一下，为了方便我自己的使用。</p>
 <hr>
 <h1 id="最基础的语法">1&emsp;最基础的语法</h1><p>这个设置不设置快捷键区别不是很大，但感觉还是快了那么一点点，毕竟可以少按几次<code>Enter</code>。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191130174945.gif" alt title="title"><br>相关<code>.vimrc</code>配置文件：</p>
 <pre class="line-numbers language-vim"><code class="language-vim"><span class="token builtin">autocmd</span> Filetype markdown inoremap <span class="token operator">&lt;</span>localLeader<span class="token operator">></span><span class="token keyword">f</span> <span class="token operator">&lt;</span>Esc<span class="token operator">></span><span class="token operator">/</span><span class="token operator">&lt;</span><span class="token operator">+</span><span class="token operator">+</span><span class="token operator">></span><span class="token operator">&lt;</span>CR<span class="token operator">></span><span class="token punctuation">:</span><span class="token keyword">nohlsearch</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>i<span class="token operator">&lt;</span>Del<span class="token operator">></span><span class="token operator">&lt;</span>Del<span class="token operator">></span><span class="token operator">&lt;</span>Del<span class="token operator">></span><span class="token operator">&lt;</span>Del<span class="token operator">></span>
@@ -685,7 +685,7 @@
 </blockquote>
 <h2 id="Markdown-Preview">8.1&emsp;Markdown-Preview</h2><p>忘了介绍写markdown用的这个工具了，能够实现实时的显示，对就像gif里看到的这样。<a href="https://github.com/iamcco/markdown-preview.nvim" target="_blank" rel="noopener" title="Preview">github相关页面</a><br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191130190437.gif" alt title="preview"></p>
 <h2 id="Ultisnips">8.2&emsp;Ultisnips</h2><p>接下来介绍一个非常强大的插件，叫做<strong>ultisnips</strong>，它也能自定义来实现许多复杂的命令，但它的原理不是mapping而是<strong>snippet</strong>，当你输入一段特定的字符串时它会用事先定义好的另一段字符串来代替它。<br>它也内置了许多命令，可以在安装的vim-snippets插件里找到相关文件，比如markdown里的一些命令：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191130195703.gif" alt title="ultisnips"><br>第一次没按出来是因为screenkey这个小程序的原因- -，但相比自己定义的命令来说它自带的补全还是比较复杂的。  </p>
-<h1 id="下一步计划">9&emsp;下一步计划</h1><p>Markdown里面写LaTeX公式是最复杂的一个部分，因为公式里面包含的语法比所有Markdown本身的语法还要多，导致写公式的时候效率极低，导致最后要么是图片复制粘贴、要么是<code>Mathpix snapping tool</code>直接识别（能直接识别为什么要自己输入一遍）。<br>根据<a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener" title="dalao">How I&#39;m able to take notes in mathematics lectures using LaTeX and Vim</a>这篇文章，如何结合自己的需要，让在Vim里输入公式变得简单？这便是下一步的计划。</p>
+<h1 id="下一步计划">9&emsp;下一步计划</h1><p>Markdown里面写LaTeX公式是最复杂的一个部分，因为公式里面包含的语法比所有Markdown本身的语法还要多，导致写公式的时候效率极低，导致最后要么是图片复制粘贴、要么是<code>Mathpix snapping tool</code>直接识别（能直接识别为什么要自己输入一遍）。<br>根据<a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener" title="dalao">How I’m able to take notes in mathematics lectures using LaTeX and Vim</a>这篇文章，如何结合自己的需要，让在Vim里输入公式变得简单？这便是下一步的计划。</p>
 <hr>
 <blockquote>
 <p>这是我的<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener" title=".vimrc">.vimrc</a>文件，专门记录一些更新。</p>
@@ -1723,7 +1723,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

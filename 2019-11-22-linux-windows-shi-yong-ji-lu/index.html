@@ -600,7 +600,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2020-05-12
         </div>
         
 
@@ -630,7 +630,7 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="Ubuntu出现U盘能识别但打不开">1&emsp;Ubuntu出现U盘能识别但打不开</h1><p>这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  </p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Ubuntu出现U盘能识别但打不开">1&emsp;Ubuntu出现U盘能识别但打不开</h1><p>这个问题困扰了我很久，不知道是什么原因造成的，网上给出的大多数解决方案也都行不通，而且有时候重启下又可以正常打开了，不知道电脑是哪里抽风。  </p>
 <h2 id="问题描述">1.1&emsp;问题描述</h2><p>插入U盘后在桌面不显示图标，打开文件管理器能在左侧菜单看到U盘名称，但在点击时会弹出:</p>
 <pre><code>Not Authorized polkit authority not available and caller is not uid 0</code></pre><p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/20191123153150.webp" alt> </p>
 <h2 id="解决方案">1.2&emsp;解决方案</h2><p>不保证所有步骤都有用，但流水线走下来就能打开了</p>
@@ -704,7 +704,7 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
 <blockquote>
 <p><em>以下内容更新于2020-01-08 10:02:04</em></p>
 </blockquote>
-<h1 id="Ubuntu系统启动时间过长">5&emsp;Ubuntu系统启动时间过长</h1><h2 id="起因-2">5.1&emsp;起因</h2><p>由于SSD空间不够，整个Linux系统是放在机械硬盘上的，本身启动就不如Win10,再加上启动过程中一些不必要的服务加载，导致每次都要花搓一把炉石的时间；终于忍无可忍，于是开始找加速方法...<br><a href="https://www.jianshu.com/p/11491ee15344" target="_blank" rel="noopener">详细内容可参考这篇简书</a></p>
+<h1 id="Ubuntu系统启动时间过长">5&emsp;Ubuntu系统启动时间过长</h1><h2 id="起因-2">5.1&emsp;起因</h2><p>由于SSD空间不够，整个Linux系统是放在机械硬盘上的，本身启动就不如Win10,再加上启动过程中一些不必要的服务加载，导致每次都要花搓一把炉石的时间；终于忍无可忍，于是开始找加速方法…<br><a href="https://www.jianshu.com/p/11491ee15344" target="_blank" rel="noopener">详细内容可参考这篇简书</a></p>
 <h2 id="解决方案-3">5.2&emsp;解决方案</h2><h3 id="系统分析工具">5.2.1&emsp;系统分析工具</h3><pre class="line-numbers language-bash"><code class="language-bash">systemd-analyze blame
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使用<code>systemd</code>自带分析工具，查看各项服务启动时间，开完机后马上运行下；<br>然后针对启动时间过长的服务，如果不是系统必须的，则直接使用下面的命令禁用它：</p>
@@ -717,14 +717,14 @@ dpigs -H --lines<span class="token operator">=</span>20<span aria-hidden="true" 
 <blockquote>
 <p><em>以下内容更新于2020-01-11 17:21:43</em></p>
 </blockquote>
-<h1 id="Windows下图片颜色显示问题">6&emsp;Windows下图片颜色显示问题</h1><h2 id="起因-3">6.1&emsp;起因</h2><p>重装windows也有一段时间了，今天用Lightroom准备处理下单反相片的时候发现图片显示和单反里显示的有很大不同，对比度很高而且及其难看，简直没法继续后处理下去；于是从软件的各个选项开始排查...</p>
+<h1 id="Windows下图片颜色显示问题">6&emsp;Windows下图片颜色显示问题</h1><h2 id="起因-3">6.1&emsp;起因</h2><p>重装windows也有一段时间了，今天用Lightroom准备处理下单反相片的时候发现图片显示和单反里显示的有很大不同，对比度很高而且及其难看，简直没法继续后处理下去；于是从软件的各个选项开始排查…</p>
 <h2 id="解决方案-4">6.2&emsp;解决方案</h2><p>最后发现是Win10自身颜色校正没有弄好，不关软件的事；按Win键然后搜索颜色管理，如图：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200111171027.webp" alt><br>设置成<strong>Adobe RGB</strong>（单反的颜色空间也设置成Adobe RGB)，然后校准下显示器；重启再次打开Lightroom，OK问题解决~</p>
 <p><br><br></p>
 <blockquote>
 <p><em>以下内容更新于2020-02-09 20:46:44</em></p>
 </blockquote>
 <h1 id="Windows开机一会儿就卡死">7&emsp;Windows开机一会儿就卡死</h1><h2 id="起因-4">7.1&emsp;起因</h2><p>一般Windows死机有两种：蓝屏或是彻底卡死；第一种对于Win10用户来说应该是家常便饭了，不过我的笔记本最近总是用着用着忽然卡住，按<code>Num Lock</code>也没反应的那种，这就很难受了，只能强制重启。<br>原因排查起来就比较困难了，我之前的ThinkPad用了几年后也有这个问题，不过重装系统之后就没再出现过。但现在用的神舟是刚重装完最新的win10，数据也比较多舍不得重装，一时间有点不知所措。<br><br><br>无非是硬盘、驱动、显卡、系统之中的哪一项出了毛病。让我花时间一个个排查是不可能的，换台新本因为没钱是不现实的。最效率的方法应该是将有过同样问题的人的解决方案全部试一遍，之后就随缘了。</p>
-<h2 id="解决方案-5">7.2&emsp;解决方案</h2><p>能否真正解决这个问题不能保证，至少我把前3项过了一遍之后死机情况就暂时没出现过了。(实践之前电脑处于开机不到三分钟就卡死然后强制重启继续卡死的循环中...)  </p>
+<h2 id="解决方案-5">7.2&emsp;解决方案</h2><p>能否真正解决这个问题不能保证，至少我把前3项过了一遍之后死机情况就暂时没出现过了。(实践之前电脑处于开机不到三分钟就卡死然后强制重启继续卡死的循环中…)  </p>
 <ul>
 <li>桌面右键-显示设置-电源和睡眠-（屏幕和睡眠都调成从不），在电源高级选项里将<strong>关闭硬盘时间</strong>设置长一些，如2000分钟</li>
 <li>拔插电源（这都能想出来）</li>
@@ -1776,7 +1776,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

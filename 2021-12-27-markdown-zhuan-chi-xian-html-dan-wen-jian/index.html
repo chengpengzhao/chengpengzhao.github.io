@@ -633,8 +633,8 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>经常需要写一些markdown文档，用vscode或者vim的<code>MarkdownPreview</code>插件都能实现比较好的实时渲染与编辑，但导出给别人看时发现存在一个问题：<strong>没有目录栏</strong>，文档很长时翻起来十分费劲。（vscode的导出功能我没怎么用，好像挺鸡肋就放弃了；vim的话我是直接用谷歌浏览器的SingleFile插件保存渲染的html）<br>查了一下发现有位叫i5ting的大佬很早开发过一个叫<a href="https://github.com/i5ting/tocmd.npm" target="_blank" rel="noopener">i5ting_ztree_toc</a>的工具，能够为markdown转html后生成目录并且自动编号，正好是我想要的东西。用了一会发现还不够满足自己的需求，主要有以下几点不足：  </p>
-<p>1) 生成的html需要和一堆样式文件(<code>.css</code>、<code>.js</code>)所在的文件夹放一起；<br>2）目录栏随滚动高亮功能不错，但有图片、uml等元素时正在浏览区域与高亮条目明显对应不起来；<br>3）不支持LaTeX公式；<br>4）不支持各种图（mermaid、plantuml...）；<br>5）默认marked渲染器配置不全，高亮没有；  </p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>经常需要写一些markdown文档，用vscode或者vim的<code>MarkdownPreview</code>插件都能实现比较好的实时渲染与编辑，但导出给别人看时发现存在一个问题：<strong>没有目录栏</strong>，文档很长时翻起来十分费劲。（vscode的导出功能我没怎么用，好像挺鸡肋就放弃了；vim的话我是直接用谷歌浏览器的SingleFile插件保存渲染的html）<br>查了一下发现有位叫i5ting的大佬很早开发过一个叫<a href="https://github.com/i5ting/tocmd.npm" target="_blank" rel="noopener">i5ting_ztree_toc</a>的工具，能够为markdown转html后生成目录并且自动编号，正好是我想要的东西。用了一会发现还不够满足自己的需求，主要有以下几点不足：  </p>
+<p>1) 生成的html需要和一堆样式文件(<code>.css</code>、<code>.js</code>)所在的文件夹放一起；<br>2）目录栏随滚动高亮功能不错，但有图片、uml等元素时正在浏览区域与高亮条目明显对应不起来；<br>3）不支持LaTeX公式；<br>4）不支持各种图（mermaid、plantuml…）；<br>5）默认marked渲染器配置不全，高亮没有；  </p>
 <p>综上所述，还是自己动动手修改吧。于是有了<a href="https://github.com/chengpengzhao/md2html" target="_blank" rel="noopener">md2html</a>这个工具：</p>
 <h1 id="md2html">2&emsp;md2html</h1><p>首先几个足够展示markdown与LaTeX几乎所有常用语法的demo：  </p>
 <p><a href="https://chengpengzhao.com/md2html/test/commTest.html">basicTest</a><br><a href="https://chengpengzhao.com/md2html/test/katexSupportTest.html">katexSupportTest</a><br><a href="https://chengpengzhao.com/md2html/test/latexTest.html">latexTest1</a><br><a href="https://chengpengzhao.com/md2html/test/tensorTest.html">latexTest2</a>  </p>
@@ -1436,7 +1436,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;目前的状态说到最近的状态，从3个多月博客没有更新、个人年终总结拖到2022年过了快$\frac{1}{4}$才想起来写就可以看出来：慵懒、浑浑噩噩、行尸走肉...具体表现在： 近2个月没去健身房、下班后只想打游戏丝毫不想学习、
+                            1&emsp;目前的状态说到最近的状态，从3个多月博客没有更新、个人年终总结拖到2022年过了快$\frac{1}{4}$才想起来写就可以看出来：慵懒、浑浑噩噩、行尸走肉…具体表现在： 近2个月没去健身房、下班后只想打游戏丝毫不想学习、找游
                         
                     </div>
                     <div class="publish-info">
@@ -1667,7 +1667,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

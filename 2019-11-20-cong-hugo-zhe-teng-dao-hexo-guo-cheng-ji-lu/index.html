@@ -595,7 +595,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2019-12-10
         </div>
         
 
@@ -625,7 +625,7 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。<br>在网上搜了一下发现是有个大佬写了个基于Hexo的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">小插件</a>，顿时心灰意冷，因为当时从零基础开始折腾博客花费了太多时间，到最后也没完全弄懂。<br>一边纠结着到底要不要换成Hexo一边看着程序员大佬们的博客，忽然眼前一亮发现了一款比较好的主题<a href="https://github.com/chengpengzhao/hexo-theme-fluid" target="_blank" rel="noopener">Fluid</a> ，Material Design 风格而且功能比较多文档描述的很详细，大呼为什么没有早点发现这么好的东西，于是开始了为期3天的折腾之旅。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>本来对自己之前基于hugo的博客感觉挺满意的，直到某一天手贱点开了一篇关于如何把豆瓣读书等模块加入到博客中的文章，于是羡慕之情油然而生。<br>在网上搜了一下发现是有个大佬写了个基于Hexo的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">小插件</a>，顿时心灰意冷，因为当时从零基础开始折腾博客花费了太多时间，到最后也没完全弄懂。<br>一边纠结着到底要不要换成Hexo一边看着程序员大佬们的博客，忽然眼前一亮发现了一款比较好的主题<a href="https://github.com/chengpengzhao/hexo-theme-fluid" target="_blank" rel="noopener">Fluid</a> ，Material Design 风格而且功能比较多文档描述的很详细，大呼为什么没有早点发现这么好的东西，于是开始了为期3天的折腾之旅。</p>
 <hr>
 <p>折腾到一半发现这个hexo-theme-fluid主题主页两边比较空，想改看了下源码却不知道从何开始下手；再加上不知道这个主题和hexo-douban是否兼容，又有点犹豫了，后悔花了时间却啥也没干成之余，无意间又发现了一款Material Design的主题 <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener"><strong>hexo-theme-matery</strong></a>！功能更加全面而且也很好看，阅读时目录、上下一篇等小细节也做的不错，于是义无反顾地选择了它。  </p>
 <hr>
@@ -699,7 +699,7 @@ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
       - name: Hitokoto
         url: /hitokoto
         icon: fas fa-comment-alt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>建好了之后去根目录<code>/source</code>文件夹下建好相应子文件夹，这里我的<code>/books /games /movies</code>是之后用hexo-douban插件生成的页面所以不需要建立文件夹。<br>然后先可以去看下效果，发现有的页面已经接近完美了，因为layout里面就有相关的样式设置。这时候需要<strong>认真阅读</strong><code>themes/hexo-theme-matery/layout</code>相关样式文件(.ejs),然后到处抄一点最后完成自定义页面的布局...<br>我是不怎么会抄所以只能做一个简单的<a href="https://chengpengzhao.com/hitokoto/">一言</a>页面。 </p>
+<p>建好了之后去根目录<code>/source</code>文件夹下建好相应子文件夹，这里我的<code>/books /games /movies</code>是之后用hexo-douban插件生成的页面所以不需要建立文件夹。<br>然后先可以去看下效果，发现有的页面已经接近完美了，因为layout里面就有相关的样式设置。这时候需要<strong>认真阅读</strong><code>themes/hexo-theme-matery/layout</code>相关样式文件(.ejs),然后到处抄一点最后完成自定义页面的布局…<br>我是不怎么会抄所以只能做一个简单的<a href="https://chengpengzhao.com/hitokoto/">一言</a>页面。 </p>
 <h2 id="豆瓣插件的安装">5.2&emsp;豆瓣插件的安装</h2><p>终于到这部分了，害得我花了几天折腾博客的罪魁祸首。关于怎么安装，作者的<a href="https://github.com/mythsman/hexo-douban" target="_blank" rel="noopener">github</a>上已经说的很清楚了，这里主要问题是适配和一些小问题的解决：</p>
 <h3 id="适配主题">5.2.1&emsp;适配主题</h3><p>我自己不太会弄，这里参考了<a href="https://licardo.cn/posts/11199/" target="_blank" rel="noopener">一位医学大佬</a>的解决方案。啥都不用想，抄就完事了，多轻松。</p>
 <h3 id="关于弹窗">5.2.2&emsp;关于弹窗</h3><p>弄好之后发现每次打开豆瓣读书相关页面会弹出三个空白窗口，在网上搜了一下发现是Hexo4.0新版本的问题，详细请参考<a href="https://github.com/hexojs/hexo/issues/3796" target="_blank" rel="noopener">这里</a>，我的解决方法是将根目录的配置文件中相关部分改为：</p>
@@ -707,7 +707,7 @@ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
   enable: true
   field: post<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>然后就不会出现不需要的弹窗了，或者将hexo版本降至3.9</p>
-<h2 id="关于Markdown把英文的引号-39-显示成’的解决方案">5.3&emsp;关于Markdown把英文的引号&#39;显示成’的解决方案</h2><p>这个不是主题的问题，而是相关插件hexo-renderer-marked的设置问题。<br>在<code>/node_modules/hexo-renderer-marked</code>文件夹下，找到<code>index.js</code>，将其中<strong>smartypants</strong>选项改成：</p>
+<h2 id="关于Markdown把英文的引号’显示成’的解决方案">5.3&emsp;关于Markdown把英文的引号’显示成’的解决方案</h2><p>这个不是主题的问题，而是相关插件hexo-renderer-marked的设置问题。<br>在<code>/node_modules/hexo-renderer-marked</code>文件夹下，找到<code>index.js</code>，将其中<strong>smartypants</strong>选项改成：</p>
 <pre class="line-numbers language-js"><code class="language-js">smartypants<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>应该就没问题了。</p>
 <h2 id="评论系统的邮件提醒问题">5.4&emsp;评论系统的邮件提醒问题</h2><p>如果用的是Valine评论系统并打开了回复邮件提醒但没设置模板，那么对方可能忽然收到这样一封莫名其妙的邮件：</p>
@@ -1967,8 +1967,8 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            First I&#39;d like to thank Chien Nguyen  for his blog, it&#39;s very helpful for a noob to linux like me.
-Dakota releas
+                            First I’d like to thank Chien Nguyen  for his blog, it’s very helpful for a noob to linux like me.
+Dakota released the v
                         
                     </div>
                     <div class="publish-info">
@@ -2157,7 +2157,7 @@ Dakota releas
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

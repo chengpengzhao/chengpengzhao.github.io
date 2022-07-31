@@ -598,7 +598,7 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2019-12-15
         </div>
         
 
@@ -628,7 +628,7 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  </p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  </p>
 <p>打开终端，输入：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> <span class="token variable">$FOAM_TUTORIALS</span>
 <span class="token function">grep</span> -r  <span class="token string">"Schemes"</span> * -h <span class="token operator">|</span><span class="token function">sort</span> -n<span class="token operator">|</span><span class="token function">uniq</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -668,7 +668,7 @@ snGradSchemes<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <p><strong>这里就涉及到一个小技巧，当不知道某一个关键词有哪些可选项的时候该怎么办</strong></p>
 <ol>
 <li>banana方法<br>我是在wolf dynamic的教程中学到的，即将一个选项的值替换成一个肯定不存在的值，如<code>banana</code>，这样就可以从输出信息中找到有哪些选项。（当然在某些情况这个方法不起作用）  </li>
-<li>利用Linux自身的强大查找命令，如<code>grep</code>、<code>find</code>...我还没怎么学会，平时就用用简单的grep。  </li>
+<li>利用Linux自身的强大查找命令，如<code>grep</code>、<code>find</code>…我还没怎么学会，平时就用用简单的grep。  </li>
 <li>利用OpenFOAM自带命令，如<code>foamInfo</code>、<code>foamSearch</code>等，缺点是说明比较少，不知道哪些能搜到哪些搜不到，一切随缘。常见用法，如：<pre class="line-numbers language-bash"><code class="language-bash"> foamSearch <span class="token variable">$FOAM_TUTORIALS</span> fvSchemes ddtSchemes.default
  foamSearch <span class="token variable">$FOAM_TUTORIALS</span> fvSchemes <span class="token string">"divSchemes.div(phi,U)"</span>
  foamSearch -c <span class="token variable">$FOAM_TUTORIALS</span> fvSolution solvers.p.solver <span class="token comment" spellcheck="true">#-c 则会统计每个关键词信息出现的数量</span>
@@ -852,9 +852,9 @@ steadyState
 <li>rhoName: Name of the density field used to obtain the volumetric flux from the mass flux if required </li>
 <li>maxCo: Maximum local Courant number</li>
 </ul>
-<h3 id="CrankNicolson">3.1.2&emsp;CrankNicolson</h3><p><strong>Second-order</strong> Crank-Nicolson implicit ddt using the current and previous time-step fields as well as the previous time-step ddt.<br>The Crank-Nicolson scheme is often <strong>unstable</strong> for complex flows in complex geometries and it is necessary to &quot;off-centre&quot; the scheme to stabilize it while retaining <strong>greater temporal accuracy than the first-order Euler-implicit scheme</strong>.  Off-centering is specified via the mandatory coefficient \c ocCoeff in the range [0,1] following the scheme name e.g.</p>
+<h3 id="CrankNicolson">3.1.2&emsp;CrankNicolson</h3><p><strong>Second-order</strong> Crank-Nicolson implicit ddt using the current and previous time-step fields as well as the previous time-step ddt.<br>The Crank-Nicolson scheme is often <strong>unstable</strong> for complex flows in complex geometries and it is necessary to “off-centre” the scheme to stabilize it while retaining <strong>greater temporal accuracy than the first-order Euler-implicit scheme</strong>.  Off-centering is specified via the mandatory coefficient \c ocCoeff in the range [0,1] following the scheme name e.g.</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span>         CrankNicolson <span class="token number">0.9</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>or with an optional &quot;ramp&quot; function to transition from the Euler scheme to Crank-Nicolson over a initial period to avoid start-up problems, e.g.</p>
+<p>or with an optional “ramp” function to transition from the Euler scheme to Crank-Nicolson over a initial period to avoid start-up problems, e.g.</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span>         CrankNicolson
 ocCoeff
 <span class="token punctuation">{</span>
@@ -870,7 +870,7 @@ ocCoeff
 <p>Fully centred CN:  Forward Euler + Backward Euler:</p>
 <p>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n+1}-\phi^{n}}{2\Delta t}<br>+\frac{\phi^{n}-\phi^{n-1}}{2\Delta t}=\frac{\phi^{n+1}-\phi^{n-1}}{2\Delta t}<br> \tag{3-3}$$<br>假设 ocCoeff: $\lambda$，则：<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\lambda}{1+\lambda}\frac{\phi^{n+1}-\phi^{n}}{\Delta t}+\frac{1}{1+\lambda}\frac{\phi^{n}-\phi^{n-1}}{\Delta t}<br> \tag{3-4}$$<br>显然，当 $\lambda=0$ ，退化成Backward Euler； $\lambda=1$，为完全的CrankNicolson格式。</p>
 <blockquote>
-<p>突然发现有好多要学的，未完待续...&emsp;&emsp;<em>2019-12-16 00:03:56</em></p>
+<p>突然发现有好多要学的，未完待续…&emsp;&emsp;<em>2019-12-16 00:03:56</em></p>
 </blockquote>
 
       </div>
@@ -1625,53 +1625,36 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020-01-04-vats-simulation/">
+                <a href="/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104133407.webp" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation">
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104131737.webp" class="responsive-img" alt="新的一年，还是写点什么吧">
                         -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(4)---VATs simulation</span>
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">新的一年，还是写点什么吧</span>
 
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Well, I&#39;m just too lazy and so I&#39;d like to end with this PowerPoint only.
-这是嵌入 Microsoft Office 演示文稿，由 Office 提供
+                            最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。日本过年过的是阳历，每年的最后一天叫啥大
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-04
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    语言
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
-                                    CFD
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
-                                    OpenFOAM
-                                </a>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
-                                    英语
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
                                 </a>
                             
                             
@@ -1681,8 +1664,8 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/airfoil-optimization/">
-                        <span class="chip bg-color">airfoil optimization</span>
+                    <a href="/tags/flag/">
+                        <span class="chip bg-color">flag</span>
                     </a>
                     
                 </div>
@@ -1912,7 +1895,7 @@ Minimize t
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

@@ -603,7 +603,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2019-12-10
         </div>
         
 
@@ -633,7 +633,7 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><h1 id="OpenFOAM相关">1&emsp;OpenFOAM相关</h1><p>用Linux的原因就是学习OpenFOAM，所以当然要摆在第一位！正如<a href="/2019/11/linux1">前面</a>所说，我用的自定义镜像自带了使用OpenFOAM需要的一些工具，不用额外安装。不过后面我又下载了多个OpenFOAM版本，与其相关的内容我会单独拿出来。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="OpenFOAM相关">1&emsp;OpenFOAM相关</h1><p>用Linux的原因就是学习OpenFOAM，所以当然要摆在第一位！正如<a href="/2019/11/linux1">前面</a>所说，我用的自定义镜像自带了使用OpenFOAM需要的一些工具，不用额外安装。不过后面我又下载了多个OpenFOAM版本，与其相关的内容我会单独拿出来。</p>
 <h1 id="显卡驱动！！">2&emsp;显卡驱动！！</h1><p>很有可能装好双系统后出现无法显示Ubuntu桌面的情况，大概率是显卡驱动没装好。这时候需要按Ctrl+Alt+F1，进入命令行界面，输入账号密码，进行显卡驱动的安装<br>还有一个坑就是在安装linux时一定要在开机界面<strong>禁用N卡</strong>不然极大概率开不了机。</p>
 <h1 id="Terminator终端">3&emsp;Terminator终端</h1><p>既然是Linux，终端必须要好看</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:gnome-terminator
@@ -678,8 +678,8 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:daniel-marynicz/filemanager-actions
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> filemanager-actions-nautilus-extension<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>fma-config-tool</code>  启动</p>
-<p>1)新建action命名：Open in Terminator在Action标签页勾选&quot;Display item in location context menu&quot;<br>在Command标签页填写<code>Path:/usr/bin/terminator，parameters:--working-directory=%d/%b</code></p>
-<p>2)配置Preferences勾选&quot;Create a root &#39;FileManager-Action&#39; menu&quot;</p>
+<p>1)新建action命名：Open in Terminator在Action标签页勾选”Display item in location context menu”<br>在Command标签页填写<code>Path:/usr/bin/terminator，parameters:--working-directory=%d/%b</code></p>
+<p>2)配置Preferences勾选”Create a root ‘FileManager-Action’ menu”</p>
 <h1 id="Foxit-Reader">4&emsp;Foxit Reader</h1><p>可以使用系统自带PDF阅读器，不过Foxit功能更多，但速度没有自带的快。</p>
 <h1 id="Typora">5&emsp;Typora</h1><p>Markdown编辑器，十分好用，强烈推荐，在我使用Vim之前一直用的这款软件。<br>安装过程很简单我就不提了，这里说下如何<strong>在ubuntu中调整Typora显示宽度</strong>：</p>
 <p>默认展示渲染结果的宽度太窄了（github主题的最大宽度是860px）</p>
@@ -745,7 +745,7 @@ Categories=Office;
 MimeType=text/plain</code></pre><p>我用的插件有<code>ZotFile</code>、<code>Markdown Here</code>、<code>Scihub</code>。使用坚果云同步</p>
 <h1 id="Vim">19&emsp;Vim</h1><p>神器，萌新劝退，我还在学习中，为了用Vim专门练习了一周的盲打。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> vim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>为了提高效率，配置文件非常重要，在网上可以找到一对大佬的配置文件，装着许多自己听都没听过的插件...输入<code>vim ~/.vimrc</code>即可进行配置！<br>我把自己的配置文件也传到了网盘里(<a href="https://1drv.ms/u/s!Am1bWNpX3V8CiGTxtVXNlnNpW7DS?e=IJUAAV" target="_blank" rel="noopener">Download</a>)<br>这是我Vim配置后的外观（在Terminator终端中）：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/vimr001.webp" alt><br>这是OpenFOAM文件的自动补全与高亮：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/OpenFOAM-zcp-dev-run-elbow-system_002.webp" alt></p>
+<p>为了提高效率，配置文件非常重要，在网上可以找到一对大佬的配置文件，装着许多自己听都没听过的插件…输入<code>vim ~/.vimrc</code>即可进行配置！<br>我把自己的配置文件也传到了网盘里(<a href="https://1drv.ms/u/s!Am1bWNpX3V8CiGTxtVXNlnNpW7DS?e=IJUAAV" target="_blank" rel="noopener">Download</a>)<br>这是我Vim配置后的外观（在Terminator终端中）：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/vimr001.webp" alt><br>这是OpenFOAM文件的自动补全与高亮：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/OpenFOAM-zcp-dev-run-elbow-system_002.webp" alt></p>
 <h1 id="picgo">20&emsp;picgo</h1><p>写blog上传图片到图库常用软件，Windows下也有。</p>
 <h1 id="Firefox浏览器">21&emsp;Firefox浏览器</h1><p>差点忘了还有浏览器，用自带的就行，注意系统自带的是国际版的，创建帐号后想在别的系统上同步时记得也要下载国际版的Firefox，国内版和国际版不互通的。</p>
 <h2 id="Firefox常用插件及扩展">21.1&emsp;Firefox常用插件及扩展</h2><ul>
@@ -1587,8 +1587,8 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            First I&#39;d like to thank Chien Nguyen  for his blog, it&#39;s very helpful for a noob to linux like me.
-Dakota releas
+                            First I’d like to thank Chien Nguyen  for his blog, it’s very helpful for a noob to linux like me.
+Dakota released the v
                         
                     </div>
                     <div class="publish-info">
@@ -1830,7 +1830,7 @@ Dakota releas
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             

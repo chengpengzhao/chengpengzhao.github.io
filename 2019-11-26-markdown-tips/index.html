@@ -603,7 +603,7 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-07-28
+          2019-11-26
         </div>
         
 
@@ -633,7 +633,7 @@
     <hr class="clearfix">
     <div class="card-content article-card-content">
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="/css/hint.min.css"><p>很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助,比如换了个环境（学校电脑，没权限安装Typora)还是得一个个查。<br>于是开始逼自己用更泛用的工具写BLog，正好前些日子在学Vim,逐渐体会到其强大之处，干脆就用它写Markdown文章好了，配合<a href="https://github.com/iamcco/markdown-preview.nvim" target="_blank" rel="noopener">MarkdownPreview</a>插件，也觉得挺方便的。（重点是能够<strong>自定义快捷键</strong>） 下面就按照常用的程度记录下Markdown的一些语法吧，方便自己以后查询，看自己曾经写的总比看别人写的印象深~</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>很早之前就想总结一下Markdown的一些语法了，记得刚开始学的时候随便搜一下就能找到很多人总结的文章，胡乱地看了一通结果到自己真正写的时候还是一个一个语法地搜，虽然Typora用着很舒服但用久了之后却发现自己的Markdown水平依旧没有任何长进，一离开Typora的帮助,比如换了个环境（学校电脑，没权限安装Typora)还是得一个个查。<br>于是开始逼自己用更泛用的工具写BLog，正好前些日子在学Vim,逐渐体会到其强大之处，干脆就用它写Markdown文章好了，配合<a href="https://github.com/iamcco/markdown-preview.nvim" target="_blank" rel="noopener">MarkdownPreview</a>插件，也觉得挺方便的。（重点是能够<strong>自定义快捷键</strong>） 下面就按照常用的程度记录下Markdown的一些语法吧，方便自己以后查询，看自己曾经写的总比看别人写的印象深~</p>
 <h1 id="最基础的语法">1&emsp;最基础的语法</h1><pre><code># h1级标题
 ## h2级标题
 ### h3级标题
@@ -656,7 +656,7 @@ _斜体文本_
 __粗体文本__</code></pre><p>假如要输入一段<strong>粗体中包含<em>斜体</em>的文本</strong> ，如果全部用<code>*</code>可能就容易出错，而混搭起来层次比较清晰——本来是这么想的，但好像有时候嵌套会出现问题：</p>
 <ul>
 <li>斜体外套粗体：<code>**a_b_c**   **a*b*c**   __a*b*c__   __a_b_c__</code><br>显示结果如下：<strong>a_b_c</strong>   <strong>a<em>b</em>c</strong>   <strong>a<em>b</em>c</strong>   <strong>a_b_c</strong> &emsp;结果倒挺让我意外的。</li>
-<li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：_a<strong>b</strong>c_  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  _a__b__c_<br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>； 而且在<code>_</code>里面的<code>_</code>也会失去作用。  </li>
+<li>粗体外加斜体：<code>_a**b**c_  *a**b**c*  *a__b__c*  _a__b__c_</code><br>显示结果如下：<em>a<strong>b</strong>c</em>  <em>a<strong>b</strong>c</em>  <em>a__b__c</em>  <em>a__b__c</em><br>总结这几个测试可以得出，<code>*</code>的优先度是大于<code>_</code>的，<strong><code>*</code>内部的<code>_</code>将失去<code>_</code>原有的作用</strong>； 而且在<code>_</code>里面的<code>_</code>也会失去作用。  </li>
 <li>代码符号`的优先度又比<code>*</code>高，所以其内部的文字格式通过<code>*</code>控制不了。  </li>
 </ul>
 <p><strong>需要强调的是不同的Markdown引擎对于这些细节的处理是不一样的，我的主题用的是hexo自带的hexo-renderer-marked，当换成其他引擎如hexo-renderer-markdown-it、hexo-renderer-kramed时结果可能会不一样</strong> </p>
@@ -716,7 +716,7 @@ x^n+y^n=z^n
 \end{equation}$$</code></pre><p>显示为：</p>
 <p>$$\begin{equation}<br>x^n+y^n=z^n<br>\end{equation}$$<br>当然这些规则都可以通过Mathjax的配置进行修改，比如有的blog的mathjax配置段没有：</p>
 <pre class="line-numbers language-js"><code class="language-js">TeX<span class="token punctuation">:</span> <span class="token punctuation">{</span>equationNumbers<span class="token punctuation">:</span> <span class="token punctuation">{</span> autoNumber<span class="token punctuation">:</span> <span class="token string">"AMS"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>自然就不会显示自动编号。关于公式的具体语法，实在是太复杂了，不是一下子能说的清楚的；不过世界上也有大佬能够在课堂上用Markdown写公式做笔记，详见<a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener">How I&#39;m able to take notes in mathematics lectures using LaTeX and Vim</a>。实在是太强了... </p>
+<p>自然就不会显示自动编号。关于公式的具体语法，实在是太复杂了，不是一下子能说的清楚的；不过世界上也有大佬能够在课堂上用Markdown写公式做笔记，详见<a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener">How I’m able to take notes in mathematics lectures using LaTeX and Vim</a>。实在是太强了… </p>
 <h1 id="其他语法">3&emsp;其他语法</h1><h2 id="表格">3.1&emsp;表格</h2><p>我是不太建议用表格的，毕竟Markdown里表格的输入并不方便，特别是比较复杂的表格，光是<code>|</code>都够你输入了，当然如果是有像Typora这样的工具的话，表格输入还是方便了不少，但Markdown无法对表格进行一些比较高级的控制，如合并单元格。</p>
 <pre><code>| 左对齐 | 右对齐 | 居中对齐 |
 | :-----| ----: | :----: |
@@ -1744,7 +1744,7 @@ $(".slider").click(function(){loadScript('https://cdn.bootcss.com/mathjax/2.7.5/
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">172k</span>&nbsp;字
+                class="white-color">173.4k</span>&nbsp;字
             
             <br>
             
