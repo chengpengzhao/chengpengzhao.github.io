@@ -1,0 +1,1415 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Git学习笔记, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;git学习笔记学习自：廖雪峰的官方网站
+1.1&amp;emsp;基础
+千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Git学习笔记 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Git学习笔记
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+              <span class="chip bg-color">使用tips</span>
+            </a>
+            
+            <a href="/tags/git/">
+              <span class="chip bg-color">git</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2020-01-08
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2020-02-09
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          2.3k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          9 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="git学习笔记">1&emsp;git学习笔记</h1><p>学习自：<br><a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
+<h2 id="基础">1.1&emsp;基础</h2><ul>
+<li><p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议下载Notepad++代替记事本。记得把Notepad++的默认编码设置为UTF-8 without BOM</p>
+</li>
+<li><p><code>git status / git diff / git log (--pretty=oneline)</code></p>
+</li>
+<li><p>工作区–暂存区–HEAD（master…)</p>
+</li>
+<li><p>HEAD指向master, master指最新的提交，上个版本HEAD^，上上个HEAD^^…</p>
+</li>
+</ul>
+<h2 id="版本控制">1.2&emsp;版本控制</h2><ul>
+<li><p><code>git reset --hard HEAD^</code>  # 回滚到上一个版本 （或：<code>git reset --hard</code>版本号代码）</p>
+</li>
+<li><p><code>reset</code>后只是本地回退到之前版本，若要更新到远程库需要强制推送<code>git push -f</code>,当前版本之后的commit会全部消失</p>
+</li>
+<li><p><code>git relog</code>  #记录每一次命令，可用作回到未来版本; <code>git log</code> 可在回退之前版本前用来查看提交历史</p>
+</li>
+<li><p><code>git checkout -- readme.txt</code>   #丢弃工作区修改，恢复上一版本状态（未add之前用）</p>
+</li>
+<li><p><code>git reset HEAD filename</code>    # add但未commit用，撤销暂存区内容</p>
+</li>
+<li><p><code>git rm filename</code>  # 删除版本库文件，若是误删可用<code>git checkout -- readme.txt</code>恢复</p>
+</li>
+</ul>
+<h2 id="分支">1.3&emsp;分支</h2><ul>
+<li><p>Github中远程库的名字是origin, <code>git push -u origin master</code>  #把当前分支master推送到origin, -u 建立本地和远程分支的关联，以后推送可以简化命令。</p>
+</li>
+<li><p>通过ssh支持的原生git协议速度最快。</p>
+</li>
+<li><p>创建分支dev后，新建了一个指针dev，现在HEAD指向dev，再编辑的话dev前移，master指针不变</p>
+</li>
+<li><p><code>git checkout -b dev</code>  #创建并切换到新分支 = <code>git branch dev</code> + <code>git checkout dev</code></p>
+</li>
+<li><p><code>git checkout -b dev origin/dev</code>  # 创建远程origin的dev分支到本地,本地和远程分支的名称最好一致；</p>
+</li>
+<li><p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code></p>
+</li>
+<li><p><code>git switch -c dev</code>    #创建并切换到新分支(和 <code>git checkout -b dev</code> 一样)</p>
+</li>
+<li><p><code>git branch</code>  #查看当前分支  <code>git checkout master</code>   切换HEAD到master分支上 (还可用<code>git switch master</code>)</p>
+</li>
+<li><p><code>git merge dev</code>  #合并指定分支和当前分支</p>
+</li>
+<li><p><code>git branch -d dev</code>  #删除dev分支</p>
+</li>
+<li><p>丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
+</li>
+<li><p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容</p>
+</li>
+<li><p><code>git log --graph --pretty=oneline --abbrev-commit</code>  #查看分支合并情况</p>
+</li>
+<li><p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
+</li>
+<li><p>一般都是在dev上工作，形成版本时发布到master</p>
+</li>
+<li><p>时刻注意远程分支和本地分支的区别；   <code>git branch -a</code> 查看所有分支，带有<code>remote/origin/xxx</code>的是远程分支</p>
+</li>
+<li><p><code>git push origin --delete xxx</code> 删除某个远程分支<code>remote/origin/xxx</code></p>
+</li>
+</ul>
+<h2 id="bug处理">1.4&emsp;bug处理</h2><ul>
+<li><p><code>git stash</code>  #储存当前工作区，修复bug时用，先新建分支修复bug/  <code>git stash pop</code> 恢复工作现场并删除stash / <code>git stash list</code> 查看stash区</p>
+</li>
+<li><p><code>git checkout master</code> + <code>git checkout -b issue-xxx</code>  #创建修复bug的分支</p>
+</li>
+<li><p><code>git switch master</code> + <code>git merge --no-ff -m &quot;merged bug fix&quot;</code>   #修复完成后删除该分支</p>
+</li>
+<li><p><code>git cherry-pick xxx</code>  / 在当前分支重复一遍xxx修改</p>
+</li>
+<li><p><code>git remote -v</code> #查看远程库信息  <code>git push origin xxx</code>  #推送xxx分支到origin</p>
+</li>
+</ul>
+<h2 id="标签管理">1.5&emsp;标签管理</h2><ul>
+<li><p><code>git tag v1.0</code>  #创建tag，便于管理     <code>git tag</code> 查看所有标签</p>
+</li>
+<li><p><code>git tag v0.9 xxx</code>   #为commit id 为xxx 的操作打标签 /  <code>git show v0.9</code>  #查看标签对应commit</p>
+</li>
+<li><p><code>git tag -a v1.0 -m &quot;...&quot; xxx</code> #标签也可以加上-m</p>
+</li>
+<li><p><code>git push origin --tags</code>   #推送标签到origin</p>
+</li>
+<li><p><code>git tag -d v0.9</code> #标签本地删除  / <code>git push origin :refs/tags/v0.9</code> #远程删除标签</p>
+</li>
+</ul>
+<h1 id="工作流">2&emsp;工作流</h1><p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-02-29 10:12:35</em></p>
+</blockquote>
+<p>最近用git发现每次忘记的都是同样的场景下那几个同样的命令，所以为了更方便自己及时查阅，按照工作流再总结一遍Git的一些命令。<br>这里默认<strong>用Github作为远程仓库</strong>，所以用命令时要<em>时刻注意远程和本地的区别</em>  </p>
+<h2 id="git配置">2.1&emsp;git配置</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"xxx"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"xxx@xxxx.com"</span>
+<span class="token function">git</span> config --global core.quotepath <span class="token boolean">false</span>  <span class="token comment" spellcheck="true">#防止用tab键自动补全的中文文件名被转义</span>
+<span class="token function">git</span> config --global core.autocrlf <span class="token boolean">false</span>  <span class="token comment" spellcheck="true"># 不自动转换换行符</span>
+<span class="token function">git</span> config --global core.filemode <span class="token boolean">false</span>  <span class="token comment" spellcheck="true"># 忽略文件权限，多人时慎用</span>
+<span class="token function">git</span> config --global core.safecrlf <span class="token boolean">true</span>   <span class="token comment" spellcheck="true"># 拒绝提交包含混合换行符的文件</span>
+<span class="token function">git</span> config --global core.pager <span class="token function">cat</span>    <span class="token comment" spellcheck="true"># 更改Git难受的分页器显示</span>
+<span class="token function">git</span> config --global core.editor vim   <span class="token comment" spellcheck="true">#修改ecommit的ditor为vim</span>
+<span class="token function">git</span> config --global alias.lg <span class="token string">"log --color --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"</span>             <span class="token comment" spellcheck="true">#让git log 更好看，配置自定义命令 git lg</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述命令是在shell中完成的，如果要检查当前配置可运行<code>git config --list</code>，或者直接查看<em>配置文件</em>：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash">vim   /etc/gitconfig    <span class="token comment" spellcheck="true"># 系统上每一个用户及他们仓库的通用配置。 如果使用带有 --system 选项的 git config 时，它会从此文件读写配置变量</span>
+
+vim ~/.gitconfig <span class="token comment" spellcheck="true">#(或 ~/.config/git/config)：只针对当前用户。 可以传递 --global 选项让 Git 读写此文件。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>当然第二项比较常用。</p>
+<p><strong>SSH配置</strong>：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash">ssh-keygen -t rsa -C <span class="token string">"xxx@xxxx.com"</span>   <span class="token comment" spellcheck="true"># Github注册邮箱</span>
+vim ~/.ssh/id_rsa.pub     <span class="token comment" spellcheck="true">#  内容复制添加到github</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这样一来自己电脑上存有私钥，github里的是公钥，可以免去每次push输入用户名和密码。</p>
+<h2 id="初始化一个Git（本地和远程同步）">2.2&emsp;初始化一个Git（本地和远程同步）</h2><h3 id="从空的Github仓库clone">2.2.1&emsp;从空的Github仓库clone</h3><p>这种方法最简单，没什么好说的，<code>git clone</code>就完事了，配置了SSH的话推荐<code>Clone with SSH</code>。<br>之后将本地仓库的文件移动到<code>clone</code>下来的仓库中，提交一次Github就行了。</p>
+<h3 id="关联本地仓库到远程">2.2.2&emsp;关联本地仓库到远程</h3><p>如果本地已经<code>git init</code>了一个仓库，并做了很多次修改，现在想上传到Github里，这时候可以关联一个Github的新仓库并<code>push</code>一次:  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> gitrepository  <span class="token comment" spellcheck="true">#进入本地仓库文件夹</span>
+<span class="token function">git</span> remote add origin git@github.com:xxx/xxx.git   <span class="token comment" spellcheck="true">#还是推荐用SSH地址</span>
+<span class="token comment" spellcheck="true"># 假设本地已经commit完了</span>
+<span class="token function">git</span> push -u origin master  <span class="token comment" spellcheck="true"># 初次push指定远程分支</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>-u</code>的作用相当于<code>--set-upstream</code>，如果你直接不带参数<code>git push</code>的话Github会提示你：  </p>
+<pre><code>fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master</code></pre><h2 id="移除commit">2.3&emsp;移除commit</h2><h3 id="移除之前所有的commit">2.3.1&emsp;移除之前所有的commit</h3><p>这种情况比较少，一般是删了一些文件不想让别人看到，所以<code>commit</code>也需要清空：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> checkout --orphan latest_branch   <span class="token comment" spellcheck="true">#新建并切换到一个本地分支</span>
+<span class="token function">git</span> add -A
+<span class="token function">git</span> commit -am <span class="token string">"delete all of the previous commit messages"</span>
+<span class="token function">git</span> branch -D master     <span class="token comment" spellcheck="true">#删除master分支</span>
+<span class="token function">git</span> branch -m master     <span class="token comment" spellcheck="true">#重命名当前分支为master</span>
+<span class="token function">git</span> push -f origin master    <span class="token comment" spellcheck="true">#强制更新</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="回滚到之前某个版本">2.3.2&emsp;回滚到之前某个版本</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log  <span class="token comment" spellcheck="true">#查看想要回滚到的版本代号</span>
+<span class="token function">git</span> reset --hard CommitID   <span class="token comment" spellcheck="true">#回滚当前分支到该版本，本地</span>
+<span class="token function">git</span> push -f  <span class="token comment" spellcheck="true">#强制更新</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="删除中间某些commit">2.3.3&emsp;删除中间某些commit</h3><p>这种情况比较复杂；比如发现之前某个版本的改动需要删除，但那个版本之后的改动又需要保留  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log    <span class="token comment" spellcheck="true">#查看待删除分支之前的那个commit的ID</span>
+<span class="token function">git</span> checkout -b fixing CommitID   <span class="token comment" spellcheck="true">#切出来一个新分支</span>
+<span class="token function">git</span> merge -s ours CommitID_2    <span class="token comment" spellcheck="true">#这里的commitID为待删除commit中最新的那一个</span>
+<span class="token comment" spellcheck="true"># -s : strategy ; ours表示保留当前分支内容，theirs表示保留另一个版本而放弃当前版本</span>
+<span class="token function">git</span> merge master    <span class="token comment" spellcheck="true">#再合并CommitID_2后的commit （可能会出现冲突）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Add与Commit操作">2.4&emsp;Add与Commit操作</h2><h3 id="只提交已有文件改动，不新增文件">2.4.1&emsp;只提交已有文件改动，不新增文件</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="撤销改动">2.4.2&emsp;撤销改动</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> reset    <span class="token comment" spellcheck="true">#撤销add操作</span>
+<span class="token function">git</span> reset --hard    <span class="token comment" spellcheck="true">#重置所有改动，至上一commit状态</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="修改上次commit">2.4.3&emsp;修改上次commit</h3><p>已经commit完，发现漏掉文件:</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> add files
+<span class="token function">git</span> commit --amend<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>先撤销上次commit，但不修改文件：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> reset --soft HEAD^<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="从仓库中去掉某文件">2.4.4&emsp;从仓库中去掉某文件</h3><p>有时发现仓库里上传了不该传的东西，需要删除：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 建立一个.gitignore文件，写入忽略的文件名单</span>
+<span class="token comment" spellcheck="true"># 删除仓库中已有文件</span>
+<span class="token function">git</span> <span class="token function">rm</span> --cached filename   <span class="token comment" spellcheck="true">#但保留了本地文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="远程分支">2.5&emsp;远程分支</h2><h3 id="拉取一个远程分支">2.5.1&emsp;拉取一个远程分支</h3><p>且当前仓库不存在该分支：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> fetch  <span class="token comment" spellcheck="true">#同步本地仓库</span>
+<span class="token function">git</span> checkout <span class="token function">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="删除远程分支">2.5.2&emsp;删除远程分支</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push origin --delete <span class="token function">test</span>
+<span class="token comment" spellcheck="true"># 注意:</span>
+<span class="token function">git</span> branch -D <span class="token function">test</span>    <span class="token comment" spellcheck="true">#只是删除了本地分支</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="推送本地新分支到远程">2.5.3&emsp;推送本地新分支到远程</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push --set-upstream origin new_branch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2020-01-08-git-learning/">https://chengpengzhao.com/2020-01-08-git-learning/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+              <span class="chip bg-color">使用tips</span>
+            </a>
+            
+            <a href="/tags/git/">
+              <span class="chip bg-color">git</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2020-01-08T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200111111930.webp" class="responsive-img" alt="正则表达式学习笔记">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">正则表达式学习笔记</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。大家都推荐这本书：  精通正则表达式 第3版
+1&emsp;特殊作用
+大写往往代表对小写能匹配的字符取补集
+
+[_a-zA
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
+                        <span class="chip bg-color">使用tips</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <span class="chip bg-color">正则表达式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104131737.webp" class="responsive-img" alt="新的一年，还是写点什么吧">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">新的一年，还是写点什么吧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。日本过年过的是阳历，每年的最后一天叫啥大
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/flag/">
+                        <span class="chip bg-color">flag</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

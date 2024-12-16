@@ -1,0 +1,1397 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;Evaluation of PARSEC parametrizationThe principles that parametrization technique should satisfy are:
+
+Minimize t">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/airfoil-optimization/">
+              <span class="chip bg-color">airfoil optimization</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+              学习
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
+              语言
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+              CFD
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+              OpenFOAM
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
+              英语
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2019-12-11
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2019-12-11
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          1.1k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          7 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Evaluation-of-PARSEC-parametrization">1&emsp;Evaluation of PARSEC parametrization</h1><p>The principles that parametrization technique should satisfy are:</p>
+<ul>
+<li>Minimize the number of degrees of freedom.</li>
+<li>Be able to represent a wide range of existing airfoils.</li>
+<li>Parameters should be simple to formulate and impose.</li>
+<li>The parametrization should result in effective and efficient optimization.</li>
+</ul>
+<p>The parametric section(PARSEC) parametrization scheme, which uses the unknown linear combination of base functions to express characteristics of the airfoil, uses 11 different geometrical characteristics of airfoil to solve a system of linear equations. The describing parameters are less enough and sometimes even limit the accuracy and robustness of this method. On the other hand, the physical-based parameters can avoid arbitrary airfoil geometry, which leads to good convergence when combined with genetic algorithm or other optimization methods.<br>The PARSEC parameters are easy to understand and impose too, so the left question is whether this parametrization scheme can represent a wide range of existing airfoils.</p>
+<h1 id="Representation-of-NACA0012-airfoil-by-PARSEC-parametrization">2&emsp;Representation of NACA0012 airfoil by PARSEC parametrization</h1><p>The purpose of Representation is to analyse the residual differences between the approximate and the official airfoil shape. Actually, it’s difficult to tell the differences on figures because they are hardly discernible. Thus a quantitative analysis is proposed.</p>
+<h2 id="Fitting-analysis">2.1&emsp;Fitting analysis</h2><p>Kulfan<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .
+">[1]</span></a></sup> suggested that the residual differences between the approximated airfoils and the actual airfoil geometry show be compared with typical wind tunnel model tolerance, which the tighter tolerance for $\frac{x}{c}\leqslant20%$ is less than the thickness of a piece of printer paper.  </p>
+<p>$$<br>z^{error}=|z^{target}-z^{approx}|<br> \tag{2-1}$$</p>
+<p>And the tolerance criterion<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.">[2]</span></a></sup> is: </p>
+<p>$$<br>z^{error}&lt;\left{<br>\begin{aligned}<br>    4\times10^{-4}, \frac{x}{c}&lt;0.2 \<br>    8\times10^{-4}, \frac{x}{c}&gt;0.2<br>\end{aligned}<br>\right.<br> \tag{2-2}$$<br>The representation process is conducted by using the genetic algorithm, defining the matching residual as the object function. Root-mean-square error(RMSE) is calculated by the following expression:  </p>
+<p>$$<br>RMSE_{Z}=\left(\frac{1}{N} \sum_{i=1}^{N}\left(z_{i}^{ \text { target }}-z_{i}^{\text {approx }}\right)^{2}\right)^{1/2}<br> \tag{2-3}$$</p>
+<h2 id="Genetic-algorithm">2.2&emsp;Genetic algorithm</h2><p>Genetic algorithms(GA)<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.">[3]</span></a></sup> is a robust and accurate method for global aerodynamic shape optimization and this can be often suggested in the literature. In contrast to gradient optimization approaches, it offers an alternative approach with several attractive features. The basic idea associated with the GA is to search for optimal solutions using an analogy to the theory of evolution.   </p>
+<p>During solution advance (or “evolution” using GA terminology) each chromosome is ranked according to its fitness vector––one fitness value for each objective. The higher-ranking chromosomes are selected to continue to the next generation while the probability of the selection of lower-ranking chromosomes is less.   </p>
+<p>In every generation, a new set of artificial creatures (strings) is created using bits and pieces of the fittest of the old;an occasional new part is tried for good measure. While randomized, genetic algorithms are no simple random walk. They efficiently exploit historical information to speculate on new search points with expected improved performance. The newly selected chromosomes in the next generation are manipulated using various operators (combination, crossover, or mutation) to create the final set of chromosomes for the new generation. These chromosomes are then evaluated for fitness and the process continues––iterating from generation to generation––until a suitable level of convergence is obtained or until a specified number of generations has been completed.  </p>
+<p>GA optimization requires no gradients; it does not need the sensitivity of derivatives. It theoretically works well in non-smooth design spaces containing several or perhaps many local extrema. It is also an attractive method for multi-objective design optimization applications offering the ability to compute the so called “Pareto optimal sets” instead of the limited single design point traditionally provided by other methods. The basic genetic algorithm important steps and the work flow of the GA is depicted in the next figure:<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211231210.webp" alt title="GA"></p>
+<p>The optimization process uses Dakota software, and here’s the relating <code>.in</code> file settings:  </p>
+<pre><code>method
+ soga
+  seed = 10525
+  max_function_evaluations = 2000
+  initialization_type
+   unique_random
+  crossover_type
+   multi_point_parameterized_binary = 2
+   crossover_rate = 0.8
+  mutation_type
+   offset_normal
+    mutation_scale = 0.1
+  fitness_type
+    merit_function
+  replacement_type
+   elitist
+  convergence_type
+   best_fitness_tracker
+   percent_change = 0.05
+   num_generations = 10</code></pre><h2 id="Results">2.3&emsp;Results</h2><h3 id="Figures">2.3.1&emsp;Figures</h3><p>The iteration history of GA shows the matching residual drops into a very low level after about 20 generation.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211233103.webp" alt title="iteration history"><br>The error comparison with typical wind tunnel tolerance represents that only a slight part is beyond the value, which indicates the PARSEC approximate airfoil matches the actual NACA0012 airfoil geometry well.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234037.webp" alt title="Typical WT Model Tolerance"><br>And the figure below shows that the PARSEC parametrization can represent a large range of airfoils.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234705.webp" alt></p>
+<p>The last figure is a comparison between approximate and actual NACA0012 airfoil.<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211234818.webp" alt></p>
+<h3 id="Code">2.3.2&emsp;Code</h3><p><em>plot iteration history from Dakota output files</em></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> __future__ <span class="token keyword">import</span> division
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
+
+g <span class="token operator">=</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+files <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> path<span class="token punctuation">,</span> dir_list<span class="token punctuation">,</span> file_list <span class="token keyword">in</span> g<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> file_name <span class="token keyword">in</span> file_list<span class="token punctuation">:</span>
+        files<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span>
+                                  file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> item <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'population_(.*).dat'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        num <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'population_(.*).dat'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'population_'</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">'.dat'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            lines <span class="token operator">=</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            x <span class="token operator">=</span> <span class="token punctuation">[</span>float<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>lines<span class="token punctuation">)</span>
+            y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
+                line <span class="token operator">=</span> line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                line <span class="token operator">=</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\t'</span><span class="token punctuation">)</span>
+                y<span class="token punctuation">.</span>append<span class="token punctuation">(</span>float<span class="token punctuation">(</span>line<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'population_data.txt'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>str<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'  '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>y<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>plot a large range of airfoils</em></p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+
+<span class="token keyword">def</span> <span class="token function">findpath_and_plot</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    current <span class="token operator">=</span> os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    path <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'(.*?)/airfoil_data.txt'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    X<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> Up <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'airfoil_data.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> line <span class="token keyword">in</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        value <span class="token operator">=</span> <span class="token punctuation">[</span>float<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">for</span> s <span class="token keyword">in</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        X<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Low<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Up<span class="token punctuation">.</span>append<span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> X <span class="token punctuation">,</span> Up<span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>current<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    g <span class="token operator">=</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+    files <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> path<span class="token punctuation">,</span> dir_list<span class="token punctuation">,</span> file_list <span class="token keyword">in</span> g<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> file_name <span class="token keyword">in</span> file_list<span class="token punctuation">:</span>
+            files<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span> file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'airfoil_data.txt'</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            findpath_and_plot<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="References">3&emsp;References</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">KULFAN B M, BUSSOLETTI J E. 《Fundamental》 Parametric Geometry Representations for Aircraft Component Shapes[J]. 2006: 46. .<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">KULFAN B M. Universal Parametric Geometry Representation Method[J/OL]. Journal of Aircraft, 2008, 45(1): 142–158[2019–12–09]. https://arc.aiaa.org/doi/10.2514/1.29958. DOI:10.2514/1.29958.<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">MUKESH R, LINGADURAI K, SELVAKUMAR U. Airfoil Shape Optimization Using Non-Traditional Optimization Technique and Its Validation[J/OL]. Journal of King Saud University - Engineering Sciences, 2014, 26(2): 191–197[2019–12–10]. https://linkinghub.elsevier.com/retrieve/pii/S1018363913000159. DOI:10.1016/j.jksues.2013.04.003.<a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div>
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2019-12-11-evaluation-of-parsec-paraterization/">https://chengpengzhao.com/2019-12-11-evaluation-of-parsec-paraterization/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/airfoil-optimization/">
+              <span class="chip bg-color">airfoil optimization</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2019-12-11T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019-12-15-fvschemes-xue-xi/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191216000616.webp" class="responsive-img" alt="fvSchemes学习">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">fvSchemes学习</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;前言在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  
+打开终端，输入：
+cd $FOAM_TUTORIALS
+grep -r  "Schemes" * -h |sort -n|uniq
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+                                    OpenFOAM
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/fvSchemes/">
+                        <span class="chip bg-color">fvSchemes</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019-12-09-parsec/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191209235902.webp" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;Modified PARSEC ParametrizationAs mentioned before, the PARSEC parametrization popularized by Sobieczky actually 
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+                                    OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

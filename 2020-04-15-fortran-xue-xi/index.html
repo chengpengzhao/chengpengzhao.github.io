@@ -1,0 +1,1671 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Fortran学习, Zcp&#39;s Zone">
+    <meta name="description" content="没想到2020年了我还在学习Fortran，因为老师说组里的人都用的Fortran，虽然我还是更偏向C++但暂且还是得会用Fortran吧，简单学习一下~
+
+1&amp;emsp;Fortran基础知识
+&amp;amp;符号标记下一行继续书写
+
+Fort">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Fortran学习 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Fortran学习
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/Fortran/">
+              <span class="chip bg-color">Fortran</span>
+            </a>
+            
+            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+              <span class="chip bg-color">笔记</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+              学习
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+              编程语言
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Fortran/" class="post-category">
+              Fortran
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2020-04-15
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2020-04-15
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          2.9k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          11 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>没想到2020年了我还在学习Fortran，因为老师说组里的人都用的Fortran，虽然我还是更偏向C++但暂且还是得会用Fortran吧，简单学习一下~</p>
+<hr>
+<h1 id="Fortran基础知识">1&emsp;Fortran基础知识</h1><ul>
+<li><p><code>&amp;</code>符号标记<strong>下一行</strong>继续书写</p>
+</li>
+<li><p>Fortran程序单元：</p>
+</li>
+</ul>
+<ol>
+<li>声明，位于程序开头(变量声明放一起)</li>
+<li>执行</li>
+<li>终止, end program</li>
+</ol>
+<p>必须按这顺序来，比如声明不能插到执行语句里面，这点让我有点没法接受。</p>
+<ul>
+<li><p>变量类型声明</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">integer</span><span class="token operator">::</span> var1<span class="token punctuation">,</span> var2
+<span class="token keyword">real</span><span class="token operator">::</span> var1
+<span class="token keyword">character</span><span class="token punctuation">(</span>len<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">::</span> var1    <span class="token comment" spellcheck="true">!没数字时默认长度为1,若字符赋值长度小于len，则多余的用空格补</span>
+<span class="token keyword">logical</span> <span class="token operator">::</span> var1
+<span class="token keyword">type</span><span class="token punctuation">,</span> <span class="token keyword">parameter</span> <span class="token operator">::</span> PI <span class="token operator">=</span> <span class="token number">3.14</span>    <span class="token comment" spellcheck="true">!常数定义，type为前面四种</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>整数和实数的转换</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">integer</span><span class="token operator">::</span> x
+x2<span class="token operator">=</span><span class="token keyword">real</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+x3<span class="token operator">=</span>nint<span class="token punctuation">(</span>x2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">!四舍五入</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>尽可能使用整形指数、因为实数的幂精度更低</p>
+</li>
+<li><p>fortran中乘方操作符是<code>**</code>：<code>a**b</code></p>
+</li>
+<li><p>永远不要对负数进行实数幂运算(没有定义负数的自然对数)</p>
+</li>
+<li><p>输入输出</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span> a
+<span class="token keyword">read</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">)</span> a <span class="token comment" spellcheck="true">!输入时用逗号或空格分隔</span>
+<span class="token comment" spellcheck="true">! 第一数据域： 从哪个输入输出单元读入，*表示计算机标准输入</span>
+<span class="token comment" spellcheck="true">! 第二数据域： 读入数据的格式，*表示表控输入（自由格式输入）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><code>implicit none</code>: 必须显示声明变量</p>
+</li>
+</ul>
+<h1 id="分支结构">2&emsp;分支结构</h1><ul>
+<li><p>逻辑数据类型： <code>.true. 和 .false.</code> (注意有两个句点)</p>
+</li>
+<li><p><code>/=</code>，<strong>不等于</strong> 的写法比较特殊</p>
+</li>
+<li><p>if分支</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token keyword">then</span>
+  ...
+<span class="token keyword">end if</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">select</span> <span class="token keyword">case</span> <span class="token punctuation">(</span>expr<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">!根据expr的值判断属于哪个case</span>
+  <span class="token keyword">case</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+      ...
+  <span class="token keyword">case</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+      ...
+  <span class="token keyword">case</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token punctuation">)</span>
+      ...
+  <span class="token keyword">case</span> <span class="token keyword">default</span>
+      ...
+<span class="token keyword">end select</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>写分支条件时时刻考虑四舍五入误差！尽量用不等式而不是<code>==</code></p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">if</span> <span class="token punctuation">(</span>abs<span class="token punctuation">(</span>x<span class="token number">-10.</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token number">1.e-5</span><span class="token punctuation">)</span>  <span class="token keyword">then</span>
+  ...
+<span class="token keyword">end if</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="循环和字符操作">3&emsp;循环和字符操作</h1><ul>
+<li><p>DO循环</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">do</span>
+  ...
+<span class="token keyword">end do</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>DO WHILE循环(一般不用或尽量少用)</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">do</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span>
+  ...
+<span class="token keyword">end do</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>DO计数循环</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">do</span> i <span class="token operator">=</span> start<span class="token punctuation">,</span> <span class="token keyword">end</span><span class="token punctuation">,</span> incr
+ ...
+<span class="token keyword">end do</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>CYCLE和EXIT语句</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">do</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">cycle</span> <span class="token comment" spellcheck="true">!相当于continue，退出当前循环</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">exit</span>  <span class="token comment" spellcheck="true">!直接退出外层循环</span>
+  <span class="token keyword">write</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">)</span> i
+<span class="token keyword">end do</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>字符串小tips</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">character</span><span class="token punctuation">(</span>len<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">)</span> <span class="token operator">::</span> a<span class="token operator">=</span><span class="token string">'hello'</span><span class="token operator">//</span><span class="token string">'world'</span><span class="token operator">//</span><span class="token string">"as"</span>   <span class="token comment" spellcheck="true">!连接操作符</span>
+<span class="token keyword">write</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">)</span> a<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">!子串抽取方式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="基本I-O操作">4&emsp;基本I/O操作</h1><ul>
+<li>格式化write<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">write</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> i<span class="token punctuation">,</span><span class="token keyword">result</span>
+<span class="token number">100</span> <span class="token keyword">format</span> <span class="token punctuation">(</span><span class="token string">'The result for iteration '</span><span class="token punctuation">,</span> I3<span class="token punctuation">,</span> <span class="token string">' is '</span><span class="token punctuation">,</span> F7<span class="token number">.3</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">!100为语句标号， I3表示3个字符宽，F7.3表示7个字符宽、三位小数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>格式描述符汇总：(以输出为例，输入差不多)</li>
+</ul>
+<ol>
+<li><p>整数输出——I</p>
+<pre class="line-numbers language-Fortran"><code class="language-Fortran">rIw.m
+!其中 r代表重复计数（使用次数、即有多少变量套用该格式）
+! w代表域宽、即字符总数
+! m代表显示的最小位数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>实数输出——F</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">rFw.d
+<span class="token comment" spellcheck="true">! d代表小数位数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>指数计数法输出——E</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">rEw.d
+<span class="token comment" spellcheck="true">! 一般w>=d+7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>科学计数法——ES</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">rESw.d
+<span class="token comment" spellcheck="true">! 同上，为了不让星号填充需要w>=d+7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>逻辑输出——L</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">rLw
+<span class="token comment" spellcheck="true">!一般为右对齐</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>字符输出——A</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">rA<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">!也是右对齐</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>水平定位——X和T</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">nX  Tc
+<span class="token comment" spellcheck="true">!n为要插入的空格数， c为列号</span>
+<span class="token comment" spellcheck="true">! Tc跳转到特定一列</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>格式可通过<code>()</code>进行嵌套</p>
+</li>
+<li><p>改变输出行—— <code>/</code>,可单独放在一个逗号里或和接在其他格式符之后</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">write</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> a<span class="token punctuation">,</span>b
+<span class="token number">100</span> <span class="token keyword">format</span>（<span class="token number">1</span>X<span class="token punctuation">,</span>F7<span class="token number">.0</span><span class="token operator">/</span><span class="token punctuation">,</span><span class="token operator">/</span><span class="token punctuation">,</span>F7<span class="token number">.1</span>）
+<span class="token comment" spellcheck="true">! 推荐在format开头写1X空一格</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>双精度输出——D编辑符</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">Dw.d
+<span class="token comment" spellcheck="true">!使用方法与E编辑符相仿，只是把字母“E”换成“D”。F编辑符也可用于双精度数据的输出，和用于实型数据输出相似。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<ul>
+<li>文件处理<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">open</span><span class="token punctuation">(</span>unit <span class="token operator">=</span> fp<span class="token punctuation">,</span> <span class="token keyword">file</span> <span class="token operator">=</span> <span class="token string">'filename'</span><span class="token punctuation">,</span> status <span class="token operator">=</span> <span class="token string">'unknown'</span><span class="token punctuation">,</span> iostat <span class="token operator">=</span> ierr<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">! fp为一个数字，I/O单元号； status为old时打开旧文件、new打开新文件、replace替换文件、scratch打开临时文件</span>
+<span class="token keyword">write</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> x
+<span class="token number">100</span> <span class="token keyword">format</span> <span class="token punctuation">(</span>...<span class="token punctuation">)</span>
+<span class="token keyword">close</span><span class="token punctuation">(</span>unit<span class="token operator">=</span>fp<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="数组">5&emsp;数组</h1><ul>
+<li><p>声明数组</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">type</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">::</span> arr
+<span class="token punctuation">(/</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">/)</span>   <span class="token comment" spellcheck="true">!数组建构器</span>
+<span class="token comment" spellcheck="true">!下标默认从1到n</span>
+<span class="token keyword">integer</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">::</span>arr2<span class="token operator">=</span><span class="token punctuation">(/</span>  <span class="token punctuation">(</span>i<span class="token punctuation">,</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">/)</span>
+<span class="token comment" spellcheck="true">! 隐式DO循环</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>指定下标范围</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">::</span>arr3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>数组操作</p>
+</li>
+</ul>
+<ol>
+<li>维度相同的两个数组可以直接相加减（相当于每个元素加减）</li>
+<li>指定部分数组：<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">::</span> arr<span class="token operator">=</span><span class="token punctuation">(/</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">/)</span>
+arr<span class="token punctuation">(</span><span class="token punctuation">:</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">!整个数组</span>
+arr<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">!第三个数为增量，若省略则默认1</span>
+arr<span class="token punctuation">(</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">!从起始到下标为5的数</span>
+arr<span class="token punctuation">(</span><span class="token operator">::</span><span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">!1代表增量，前面一个:代表整个数组</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<ul>
+<li>时刻记得隐式Do循环<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">write</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">)</span>  <span class="token punctuation">(</span>arr<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">! arg1,arg2,..., index=istart,iend,incr</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="过程">6&emsp;过程</h1><h2 id="子程序（subroutine）">6.1&emsp;子程序（subroutine）</h2><pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">subroutine</span> name<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+    <span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">::</span> a<span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">!无法检测越界，不应该用这种形式</span>
+    <span class="token comment" spellcheck="true">!tip: 永远别用不定大小的形参数组</span>
+
+    <span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">::</span> b
+    <span class="token keyword">character</span><span class="token punctuation">(</span>len<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span> <span class="token operator">::</span> string  <span class="token comment" spellcheck="true">!*声明字符变量长度</span>
+    <span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">out</span><span class="token punctuation">)</span><span class="token operator">::</span> c
+    <span class="token comment" spellcheck="true">! intent属性声明输入输出</span>
+<span class="token keyword">end subroutine</span> name
+
+<span class="token keyword">call</span> name<span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>指针，pass-by-reference: 子程序和主程序是用<strong>地址传递</strong>方案通信的！<br>(注意主程序和子程序相对应的参数类型一致)</p>
+</li>
+<li><p>tip: 永远不要在子程序中使用stop语句</p>
+</li>
+<li><p>子程序能够作为参数传递</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">subroutine</span> sub_as_arg<span class="token punctuation">(</span>sub<span class="token punctuation">,</span>x<span class="token punctuation">)</span>
+<span class="token keyword">external</span><span class="token operator">::</span> sub
+<span class="token comment" spellcheck="true">!作为参数传递时需要声明external</span>
+<span class="token keyword">real</span><span class="token punctuation">,</span> intenet<span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">::</span>x
+<span class="token keyword">end subroutine</span> sub_as_arg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="模块">6.2&emsp;模块</h2><ul>
+<li><p>一种提供程序单元<strong>共享数据</strong>的方式(独立编译)</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">module</span> modulename
+  <span class="token keyword">implicit none</span>
+  <span class="token keyword">save</span> <span class="token comment" spellcheck="true">!保证在模块中声明的数据被保护在不同过程间的引用中，一定记得加</span>
+  <span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token operator">::</span>arr
+  <span class="token keyword">contains</span>    <span class="token comment" spellcheck="true">! 模块也可以含子程序和函数</span>
+      <span class="token keyword">subroutine</span> sub1<span class="token punctuation">(</span><span class="token punctuation">)</span>
+      ...
+      <span class="token keyword">end subroutine</span> sub1
+<span class="token keyword">end module</span> modulename
+<span class="token keyword">use</span> modulename<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>为什么要在模块里套个子程序？直接写个子程序文件也行啊<br>答： 模块中编译过程和使用模块时，过程接口的所有细节对编译器都是有效的，即<strong>编译器可以捕捉程序员调用时可能犯的错误</strong>（如参数类型、个数错误）， explicit interface。而不在模块里的过程为implicit interface</p>
+</li>
+<li><p>推荐把过程放在模块里</p>
+</li>
+</ul>
+<h2 id="函数-function-subprogram">6.3&emsp;函数(function subprogram)</h2><ul>
+<li><p>声明函数</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">integer</span> <span class="token keyword">function</span> name<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">! or</span>
+<span class="token keyword">function</span> name<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">integer</span> <span class="token operator">::</span> name
+<span class="token comment" spellcheck="true">!注意函数声明和调用时都要声明其类型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>函数有多个输入和<strong>一个输出</strong>，当需要多个输出时请用<strong>子程序</strong>!!</p>
+</li>
+<li><p>函数记得用<code>intent(in)</code>声明所有输入参数，防止函数意外修改（函数和子程序都是通过指针传参的）</p>
+</li>
+<li><p>函数可以当做参数传递，前提是被声明为外部量（external）</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">external</span> <span class="token operator">::</span> func1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="数组的高级特性">7&emsp;数组的高级特性</h1><ul>
+<li><p>多维数组<code>real,dimension(3,6)::sum</code><br>多维数组内存分配： 一列一列来的</p>
+</li>
+<li><p>以列储存数组数据、按行序读取数据<br>(第一个下标变化最快、最后一个下标变化最慢)</p>
+</li>
+<li><p>数组构造器产生一维数组，需要借助<code>reshape</code>初始化多维数组</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">,</span><span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">::</span>arr
+arr<span class="token operator">=</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(/</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">/)</span><span class="token punctuation">,</span><span class="token punctuation">(/</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">/)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">!数列为：</span>
+<span class="token comment" spellcheck="true">! 1 2 3</span>
+<span class="token comment" spellcheck="true">! 1 2 3</span>
+<span class="token comment" spellcheck="true">! 1 2 3</span>
+<span class="token comment" spellcheck="true">! 1 2 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>用read语句能够方便地初始化多维数组</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token comment" spellcheck="true">!文件数据为： 1 1 1 1 2 2 2 2 3 3 3 3</span>
+<span class="token keyword">real</span><span class="token punctuation">,</span><span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">::</span>arr
+<span class="token keyword">open</span><span class="token punctuation">(</span>unit <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token keyword">file</span> <span class="token operator">=</span> <span class="token string">'data.dat'</span><span class="token punctuation">,</span> status <span class="token operator">=</span> <span class="token string">'old'</span><span class="token punctuation">,</span> iostat <span class="token operator">=</span> ierr<span class="token punctuation">)</span>
+<span class="token keyword">read</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token operator">*</span><span class="token punctuation">)</span> arr
+<span class="token comment" spellcheck="true">!当然也可以使用类似 ((arr(i,j),j=1,3),i=1,4) 的隐式do循环，不过麻烦一点；但可以避免矩阵转置的问题</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>masked array assignment， 对多个数组元素进行操作<br>(对满足特定条件的元素执行指定操作)</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">where</span><span class="token punctuation">(</span>value<span class="token operator">></span><span class="token number">0.</span><span class="token punctuation">)</span>
+  logval<span class="token operator">=</span>log<span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+<span class="token keyword">elsewhere</span> 
+  logval<span class="token operator">=</span><span class="token number">-99999.</span>
+<span class="token keyword">endwhere</span>
+<span class="token comment" spellcheck="true">!value 可以是数组，where逐个对元素进行运算</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>forall, 逐个操作数组元素</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">forall</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">:</span>n<span class="token punctuation">,</span>j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">:</span>m<span class="token punctuation">,</span>work<span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token operator">/=</span><span class="token number">0.</span><span class="token punctuation">)</span>
+  work<span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">1.</span><span class="token operator">/</span>work<span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span>
+<span class="token keyword">end forall</span>
+<span class="token comment" spellcheck="true">! 相比于嵌套的do循环，forall的优点在于语句可以按照任意顺来执行</span>
+<span class="token comment" spellcheck="true">! 若有多条语句，则上一条完全执行完了（对所有元素）再进行下一条的执行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>可分配数组</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">,</span> <span class="token keyword">allocatable</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">)</span> <span class="token operator">::</span> arr1
+<span class="token keyword">allocate</span><span class="token punctuation">(</span>arr1<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">stat</span><span class="token operator">=</span>status<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">! 分配成功，stat返回0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>传递多维数组</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token comment" spellcheck="true">!plan 1</span>
+<span class="token keyword">subroutine</span> process <span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>m<span class="token punctuation">)</span>
+<span class="token keyword">integer</span><span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">::</span>n<span class="token punctuation">,</span>m    <span class="token comment" spellcheck="true">!通过每一维度取值范围传递多维数组</span>
+<span class="token keyword">end subroutine</span> process
+<span class="token comment" spellcheck="true">!plan 2</span>
+<span class="token keyword">subroutine</span> process1 <span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">)</span>
+<span class="token keyword">real</span> <span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">dimension</span><span class="token punctuation">(</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">)</span> <span class="token operator">::</span> <span class="token keyword">data</span>   <span class="token comment" spellcheck="true">!不定结构的形参数组（只有子程序有显式接口时才能使用）</span>
+<span class="token comment" spellcheck="true">! 使用时常在子程序外套一个模块</span>
+<span class="token keyword">end subroutine</span> process1
+<span class="token comment" spellcheck="true">!plan 3</span>
+<span class="token comment" spellcheck="true">!不定大小的数组（用*代替最后一个维度），不应该再使用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>save属性和语句</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">,</span><span class="token keyword">save</span><span class="token operator">::</span>sums
+<span class="token comment" spellcheck="true">!保证在调用过程之间不修改保存的局部变量和数组。（需要多次调用时）</span>
+<span class="token comment" spellcheck="true">! save不能出现在与形参的关联中</span>
+<span class="token comment" spellcheck="true">! 类型声明中初始化的局部变量都会自动保存，隐含save属性</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>fortran程序在退出过程后，默认所有局部变量和数组的值成为未定义，用save可以保存这些变量</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">save</span><span class="token operator">::</span> var1<span class="token punctuation">,</span>var2
+<span class="token keyword">save</span>    <span class="token comment" spellcheck="true">!不指定变量时，该过程或模块中所有的局部变量都会被无改变的保存起来</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>自动数组： 子程序中的非形参数组，过程完成后自动释放空间</p>
+</li>
+</ul>
+<ul>
+<li><p><code>pure</code>前缀的function或subroutine的限制：<br>不修改输入参数、局部变量无save属性（不初始化）…</p>
+</li>
+<li><p><code>elemental</code>前缀，定义一个过程为‘逐元’的，即该过程用标量输入和输出定义。</p>
+</li>
+<li><p>内部过程<br>内部过程（internal procedures）包含在宿主程序单元（host program unit）中，只能在宿主中调用，且能够访问宿主中的变量。用于完成一些重复低级操作</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">program</span> name
+  ...
+  <span class="token keyword">contains</span>
+  <span class="token keyword">real</span> <span class="token keyword">function</span> name2<span class="token punctuation">(</span>...<span class="token punctuation">)</span>
+      ...
+  <span class="token keyword">end function</span> name2
+<span class="token keyword">end program</span> name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="附加的内置数据类型">8&emsp;附加的内置数据类型</h1><ul>
+<li><p><code>real</code>，默认4字节（32位），最多7个有效数字？</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">real</span><span class="token punctuation">(</span><span class="token keyword">kind</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">::</span> val_1
+<span class="token keyword">real</span><span class="token punctuation">(</span><span class="token keyword">kind</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">::</span> val_2
+<span class="token keyword">real</span><span class="token punctuation">(</span><span class="token keyword">kind</span><span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">::</span> val_3
+<span class="token keyword">real</span><span class="token punctuation">(</span><span class="token keyword">kind</span><span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token operator">::</span> val_4
+<span class="token comment" spellcheck="true">!对不同计算机、一个32位的实数可能是kind=1，也可能是kind=4...</span>
+<span class="token keyword">write</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token string">'("The kind for single precision is ",I2)'</span><span class="token punctuation">)</span> <span class="token keyword">kind</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">!可用上述命令判断计算机对类别号的定义</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>为了使程序移植性好，一般用selected_real_kind函数</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">kind_number<span class="token operator">=</span>selected_real_kind<span class="token punctuation">(</span>p<span class="token operator">=</span>precision<span class="token punctuation">,</span>r<span class="token operator">=</span>range<span class="token punctuation">)</span>
+<span class="token keyword">real</span><span class="token punctuation">(</span><span class="token keyword">kind</span><span class="token operator">=</span>kind_number<span class="token punctuation">)</span><span class="token operator">::</span>var
+<span class="token comment" spellcheck="true">!   p为精度位数，r为所需指数范围(10^r)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="派生数据类型">9&emsp;派生数据类型</h1><ul>
+<li><p>任何数值、元素组合在一起，定义用户自己的类型</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">type</span> <span class="token operator">::</span> type_name
+  <span class="token keyword">sequence</span>    <span class="token comment" spellcheck="true">!当需要派生数据占据连续内存空间时使用，否则随机分配内存空间</span>
+  <span class="token keyword">character</span><span class="token punctuation">(</span>len<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token operator">::</span> first
+  <span class="token keyword">integer</span><span class="token operator">::</span>age
+  <span class="token keyword">character</span><span class="token punctuation">:</span>sex
+<span class="token keyword">end type</span> type_name
+<span class="token keyword">type</span><span class="token punctuation">(</span>type_name<span class="token punctuation">)</span><span class="token operator">::</span> variables <span class="token comment" spellcheck="true">!声明此类型的变量</span>
+var<span class="token operator">=</span>type_name<span class="token punctuation">(</span><span class="token string">'first_var'</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token string">'M'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">!直接初始化方式</span>
+var<span class="token operator">%</span>age<span class="token operator">=</span><span class="token number">15</span>  <span class="token comment" spellcheck="true">!通过%访问成员</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>通常将一个程序中所有派生数据定义在一个模块中</p>
+</li>
+<li><p>派生数据类型的函数(常放入模块的contains里)</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">type</span><span class="token operator">::</span>vector
+  ...
+<span class="token keyword">end type</span> vector
+<span class="token keyword">type</span><span class="token punctuation">(</span>vector<span class="token punctuation">)</span> <span class="token keyword">function</span> vector_add<span class="token punctuation">(</span>v1<span class="token punctuation">,</span>v2<span class="token punctuation">)</span>
+  ...
+<span class="token keyword">end function</span> vector_add<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>associate结构，临时关联某个变量或表达式，增强可读性(fortran2003特性)</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">associate<span class="token punctuation">(</span>x<span class="token operator">=></span>.... <span class="token punctuation">&amp;</span>
+y<span class="token operator">=></span>.... <span class="token punctuation">)</span>
+  statements
+<span class="token keyword">end</span> associate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1 id="过程和模块的高级特性">10&emsp;过程和模块的高级特性</h1><ul>
+<li><p>作用域相关</p>
+</li>
+<li><p>递归过程</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">recursive</span> <span class="token keyword">subroutine</span> name<span class="token punctuation">(</span>n<span class="token punctuation">,</span><span class="token keyword">result</span><span class="token punctuation">)</span>
+  ...
+  <span class="token keyword">call</span> name<span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">,</span><span class="token keyword">result</span><span class="token punctuation">)</span>
+<span class="token keyword">end subroutine</span>
+<span class="token keyword">recursive</span> <span class="token keyword">function</span> fact<span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token keyword">RESULT</span><span class="token punctuation">(</span>answer<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">! 对于递归函数比较特殊，需指定一个形参answer接受调用返回值</span>
+  answer<span class="token operator">=</span>n<span class="token operator">*</span>fact<span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span>
+<span class="token keyword">end function</span> fact<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>可选参数与参数顺序</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran">calc<span class="token punctuation">(</span>first<span class="token operator">=</span><span class="token number">3.</span><span class="token punctuation">,</span>second<span class="token operator">=</span><span class="token number">1.</span><span class="token punctuation">,</span>third<span class="token operator">=</span><span class="token number">2.</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">!指定参数顺序，有可选参数时比较实用</span>
+<span class="token keyword">function</span> calc<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span>
+<span class="token keyword">integer</span><span class="token punctuation">,</span> <span class="token keyword">intent</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">optional</span><span class="token operator">::</span>a <span class="token comment" spellcheck="true">!定义一个可选参数</span>
+<span class="token keyword">if</span> present<span class="token punctuation">(</span>a<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">!如果使用时有这个参数</span>
+  ...
+<span class="token keyword">end if</span>
+<span class="token keyword">end function</span> calc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>显式接口，除了module还可用interface</p>
+<pre class="line-numbers language-fortran"><code class="language-fortran"><span class="token keyword">interface</span>
+  <span class="token keyword">subroutine</span> name<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+  ...
+  <span class="token keyword">end subroutine</span> name
+<span class="token keyword">end interface</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>每一个接口都是个独立的作用域</p>
+</li>
+</ul>
+<p><br><br></p>
+<blockquote>
+<p>不行学不下去了，我还是去啃我的C++ Primer吧。</p>
+</blockquote>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2020-04-15-fortran-xue-xi/">https://chengpengzhao.com/2020-04-15-fortran-xue-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/Fortran/">
+              <span class="chip bg-color">Fortran</span>
+            </a>
+            
+            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+              <span class="chip bg-color">笔记</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2020-04-15T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020-04-19-yaharian-noqing-chun-rabukomehamatigatuteiru-ba-cui/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="《やはり俺の青春ラブコメはまちがっている》抜粋">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">《やはり俺の青春ラブコメはまちがっている》抜粋</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+更新于2020-12-07 15:40:43
+
+1&emsp;前書きまず前提として、何年前にこの作品のアニメを見たことがある(今はほぼ忘れた)。日本語を勉強し、そして暇つぶしに何か読もうと思い、何冊のラノベをKindleで購入しました。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E9%98%85%E8%AF%BB/" class="post-category">
+                                    阅读
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E3%83%A9%E3%83%8E%E3%83%99/">
+                        <span class="chip bg-color">ラノベ</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020-03-31-mei-li-xin-shi-jie-ge-ren-zhai-lu/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="《美丽新世界》个人摘录">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">《美丽新世界》个人摘录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;前言最近看书的时间不太够了，一是要做毕设（进度本来就有点落后）、二是刚买个显示屏游戏去了；不知不觉今年就过了1/4，读书任务还是得完成的，只能减一减睡眠时间了。《美丽新世界》还是挺有意思的，可能很多人还会向往这样的生活吧，实在
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E9%98%85%E8%AF%BB/" class="post-category">
+                                    阅读
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8F%8D%E4%B9%8C%E6%89%98%E9%82%A6/">
+                        <span class="chip bg-color">反乌托邦</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

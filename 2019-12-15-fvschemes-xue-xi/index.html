@@ -1,0 +1,1522 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="fvSchemes学习, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;前言在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  
+打开终端，输入：
+cd $FOAM_TUTORIALS
+grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>fvSchemes学习 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        fvSchemes学习
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/fvSchemes/">
+              <span class="chip bg-color">fvSchemes</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+              OpenFOAM
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2019-12-15
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2019-12-15
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          1.5k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          7 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  </p>
+<p>打开终端，输入：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> <span class="token variable">$FOAM_TUTORIALS</span>
+<span class="token function">grep</span> -r  <span class="token string">"Schemes"</span> * -h <span class="token operator">|</span><span class="token function">sort</span> -n<span class="token operator">|</span><span class="token function">uniq</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>可以看到输出里面包含所有关键字：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">d2dt2Schemes
+ddtSchemes
+divSchemes
+    echo <span class="token string">"Modifying the fvSchemes to contain only default schemes"</span>
+<span class="token operator">-</span>e s<span class="token operator">/</span><span class="token string">"\(fvSchemes[ \t]*\)\([0-9]\);"</span><span class="token operator">/</span><span class="token string">"\1 1;"</span><span class="token operator">/</span>g \
+    <span class="token keyword">for</span> FV_SC in `find <span class="token punctuation">.</span> <span class="token operator">-</span>name fvSchemes`
+gradSchemes
+gradSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> Gauss linear<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    integrationSchemes
+interpolationSchemes
+    interpolationSchemes
+interpolationSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> linear<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+laplacianSchemes
+laplacianSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> Gauss linear corrected<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token operator">*</span> limited corrected <span class="token number">0.5</span> on all laplacianSchemes because the mesh is so poor
+    object      fvSchemes<span class="token punctuation">;</span>
+SCHEMES_FILE<span class="token operator">=</span><span class="token string">"FvSchemes"</span>
+SCHEMES_TEMP<span class="token operator">=</span><span class="token string">"FvSchemes.temp"</span>
+<span class="token function">setDefaultFvSchemes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        setDefaultFvSchemes <span class="token operator">>></span> $<span class="token punctuation">{</span>FV_SC<span class="token punctuation">}</span>
+snGradSchemes
+snGradSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> corrected<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    solver setting in fvSolution <span class="token operator">and</span> a <span class="token function">div</span><span class="token punctuation">(</span>phi<span class="token punctuation">,</span>age<span class="token punctuation">)</span> scheme in fvSchemes<span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>稍微整理下，关键字有：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">d2dt2Schemes
+ddtSchemes
+divSchemes
+gradSchemes
+interpolationSchemes
+laplacianSchemes
+snGradSchemes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>这里就涉及到一个小技巧，当不知道某一个关键词有哪些可选项的时候该怎么办</strong></p>
+<ol>
+<li>banana方法<br>我是在wolf dynamic的教程中学到的，即将一个选项的值替换成一个肯定不存在的值，如<code>banana</code>，这样就可以从输出信息中找到有哪些选项。（当然在某些情况这个方法不起作用）  </li>
+<li>利用Linux自身的强大查找命令，如<code>grep</code>、<code>find</code>…我还没怎么学会，平时就用用简单的grep。  </li>
+<li>利用OpenFOAM自带命令，如<code>foamInfo</code>、<code>foamSearch</code>等，缺点是说明比较少，不知道哪些能搜到哪些搜不到，一切随缘。常见用法，如：<pre class="line-numbers language-bash"><code class="language-bash"> foamSearch <span class="token variable">$FOAM_TUTORIALS</span> fvSchemes ddtSchemes.default
+ foamSearch <span class="token variable">$FOAM_TUTORIALS</span> fvSchemes <span class="token string">"divSchemes.div(phi,U)"</span>
+ foamSearch -c <span class="token variable">$FOAM_TUTORIALS</span> fvSolution solvers.p.solver <span class="token comment" spellcheck="true">#-c 则会统计每个关键词信息出现的数量</span>
+ foamSearch <span class="token variable">$FOAM_TUTORIALS</span> RAS.RASModel turbulenceProperties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+ 可见foamSearch这一命令用的好的话对学习OpenFOAM还是很有帮助的  </li>
+<li>直接从代码里找？ 这个我没试过，因为C++还没到家，看着头疼，不过能看的懂代码的话应该会好很多。</li>
+<li>Vim里的<code>vim-OpenFoam-syntax</code>插件，带有自动提示补全功能，有一定作用但需要有一些经验才能很好使用。</li>
+</ol>
+<h1 id="总览">2&emsp;总览</h1><h2 id="文件实例">2.1&emsp;文件实例</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//文件说明</span>
+FoamFile
+<span class="token punctuation">{</span>
+version     <span class="token number">2.0</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//版本号</span>
+format      ascii<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//文本格式</span>
+<span class="token keyword">class</span>       <span class="token class-name">dictionary</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//类型为字典文件</span>
+location    <span class="token string">"system"</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//所在目录</span>
+object      fvSchemes<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//对象名</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//时间一阶导项(非定常项)格式</span>
+ddtSchemes
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         Euler<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//梯度项格式</span>
+gradSchemes
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         Gauss linear<span class="token punctuation">;</span>
+<span class="token function">grad</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>         Gauss linear<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//散度项格式</span>
+divSchemes
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//拉普拉斯项格式</span>
+laplacianSchemes
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         none<span class="token punctuation">;</span>
+<span class="token function">laplacian</span><span class="token punctuation">(</span>DT<span class="token punctuation">,</span>T<span class="token punctuation">)</span> Gauss linear corrected<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//插值格式</span>
+interpolationSchemes
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         linear<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//面法向梯度格式</span>
+snGradSchemes
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         corrected<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//需要用来计算通量的场</span>
+fluxRequired
+<span class="token punctuation">{</span>
+<span class="token keyword">default</span>         no<span class="token punctuation">;</span>
+T<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="keywords">2.2&emsp;keywords</h2><table>
+<thead>
+<tr>
+<th align="center">子字典关键字</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>interpolationSchemes</code></td>
+<td align="center">网格体心至面心插值格式</td>
+</tr>
+<tr>
+<td align="center"><code>snGradSchemes</code></td>
+<td align="center">面法向梯度格式</td>
+</tr>
+<tr>
+<td align="center"><code>timeScheme</code></td>
+<td align="center">时间导数项$\frac{\partial}{\partial t}$ $\frac{\partial ^2}{\partial t^2}$</td>
+</tr>
+<tr>
+<td align="center"><code>divSchemes</code></td>
+<td align="center">散度(对流)项格式 $\nabla \cdot$</td>
+</tr>
+<tr>
+<td align="center"><code>gradSchemes</code></td>
+<td align="center">梯度项格式$\nabla$</td>
+</tr>
+<tr>
+<td align="center"><code>laplacianSchemes</code></td>
+<td align="center">拉普拉斯项格式$\nabla ^2$</td>
+</tr>
+<tr>
+<td align="center"><code>fluxRequired 如(wallDist)</code></td>
+<td align="center">需要计算通量的场</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>以下结果与OpenFOAM版本有关，我用的是OpenFoam-dev(7)</p>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp">Valid schemes are <span class="token operator">:</span>
+
+<span class="token function">61</span>
+<span class="token punctuation">(</span>
+CoBlended
+Gamma
+GammaV
+LUST
+MUSCL
+MUSCLV
+Minmod
+MinmodV
+OSPRE
+OSPREV
+Phi
+QUICK
+QUICKV
+SFCD
+SFCDV
+SuperBee
+SuperBeeV
+UMIST
+UMISTV
+biLinearFit
+blended
+cellCoBlended
+clippedLinear
+cubic
+cubicUpwindFit
+downwind
+filteredLinear
+filteredLinear2
+filteredLinear2V
+filteredLinear3
+filteredLinear3V
+fixedBlended
+limitWith
+limitedCubic
+limitedCubicV
+limitedLinear
+limitedLinearV
+limiterBlended
+linear
+linearFit
+linearPureUpwindFit
+linearUpwind
+linearUpwindV
+localBlended
+localMax
+localMin
+midPoint
+outletStabilised
+pointLinear
+quadraticFit
+quadraticLinearFit
+quadraticLinearUpwindFit
+quadraticUpwindFit
+reverseLinear
+skewCorrected
+upwind
+vanAlbada
+vanAlbadaV
+vanLeer
+vanLeerV
+weighted
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="关于default">2.3&emsp;关于default</h2><p>如果…Schemes 子字典中的 default关键词已经被指定， 那么子字典中所有的项都会应用这个格式。用户也可以指定 default 为 none。 这种情况下，用户必须强制为每个项指定离散格式。<br>推荐把default指定为none，这样的话强制用户对方程的每个需要离散的项进行设定，有助于对问题的理解。<br>总的来说就是<strong>从ERROR中学习</strong>。</p>
+<h1 id="逐项分析">3&emsp;逐项分析</h1><p>可参考OpenFOAM官网的<a href="https://www.openfoam.com/documentation/guides/latest/doc/guide-schemes.html" target="_blank" rel="noopener">Extended Code Guide</a>，上面有一些说明。</p>
+<h2 id="ddtSchemes-frac-partial-partial-t-left-phi-right">3.1&emsp;ddtSchemes $\frac{\partial }{\partial t}\left(\phi\right)$</h2><pre class="line-numbers language-cpp"><code class="language-cpp">Valid ddt schemes are <span class="token operator">:</span>
+
+<span class="token function">8</span>
+<span class="token punctuation">(</span>
+CoEuler
+CrankNicolson
+Euler
+SLTS
+backward
+bounded
+localEuler
+steadyState
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="CoEuler">3.1.1&emsp;CoEuler</h3><p>Courant number <strong>limited first-order Euler</strong> implicit/explicit ddt.<br>This scheme should only be used for <strong>steady-state</strong> computations using transient codes where <strong>local time-stepping</strong> is preferable to under-relaxation for transport consistency reasons.<br>例子，如：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span> CoEuler phi rho <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>phiName: Name of the flux field used to calculate the local time-step </li>
+<li>rhoName: Name of the density field used to obtain the volumetric flux from the mass flux if required </li>
+<li>maxCo: Maximum local Courant number</li>
+</ul>
+<h3 id="CrankNicolson">3.1.2&emsp;CrankNicolson</h3><p><strong>Second-order</strong> Crank-Nicolson implicit ddt using the current and previous time-step fields as well as the previous time-step ddt.<br>The Crank-Nicolson scheme is often <strong>unstable</strong> for complex flows in complex geometries and it is necessary to “off-centre” the scheme to stabilize it while retaining <strong>greater temporal accuracy than the first-order Euler-implicit scheme</strong>.  Off-centering is specified via the mandatory coefficient \c ocCoeff in the range [0,1] following the scheme name e.g.</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span>         CrankNicolson <span class="token number">0.9</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>or with an optional “ramp” function to transition from the Euler scheme to Crank-Nicolson over a initial period to avoid start-up problems, e.g.</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span>         CrankNicolson
+ocCoeff
+<span class="token punctuation">{</span>
+    type scale<span class="token punctuation">;</span>
+    scale linearRamp<span class="token punctuation">;</span>
+    duration <span class="token number">0.01</span><span class="token punctuation">;</span>
+    value <span class="token number">0.9</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>With a coefficient of <strong>1 the scheme is fully centred</strong> and second-order, with a coefficient of <strong>0 the scheme is equivalent to Euler-implicit</strong>.  A coefficient of <strong>0.9</strong> has been found to be suitable for a range of cases for which higher-order accuracy in time is needed and provides similar accuracy and stability to the backward scheme.  However, <strong>the backward scheme has been found to be more robust and provides formal second-order accuracy in time.</strong>  </p>
+<p>The advantage of the Crank-Nicolson scheme over backward is that <strong>only the new and old-time values are needed</strong>, the additional terms relating to the fluxes and sources are evaluated at the mid-point of the time-step which provides the opportunity to limit the fluxes in such a way as to ensure <strong>boundedness</strong> while maintaining <strong>greater accuracy in time compared to the Euler-implicit scheme</strong>.  This approach is now used with MULES in the interFoam family of solvers.  <strong>Boundedness cannot be guaranteed with the backward scheme.</strong><br>Note: The Crank-Nicolson coefficient for the implicit part of the RHS is related to the off-centering coefficient by <code>cnCoeff = 1.0/(1.0 + ocCoeff)</code>;  </p>
+<p>Forward Euler:<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n+1}-\phi^{n}}{\Delta t}<br> \tag{3-1}$$</p>
+<p>Backward Euler:<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n}-\phi^{n-1}}{\Delta t}<br> \tag{3-2}$$</p>
+<p>Fully centred CN:  Forward Euler + Backward Euler:</p>
+<p>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n+1}-\phi^{n}}{2\Delta t}<br>+\frac{\phi^{n}-\phi^{n-1}}{2\Delta t}=\frac{\phi^{n+1}-\phi^{n-1}}{2\Delta t}<br> \tag{3-3}$$<br>假设 ocCoeff: $\lambda$，则：<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\lambda}{1+\lambda}\frac{\phi^{n+1}-\phi^{n}}{\Delta t}+\frac{1}{1+\lambda}\frac{\phi^{n}-\phi^{n-1}}{\Delta t}<br> \tag{3-4}$$<br>显然，当 $\lambda=0$ ，退化成Backward Euler； $\lambda=1$，为完全的CrankNicolson格式。</p>
+<blockquote>
+<p>突然发现有好多要学的，未完待续…&emsp;&emsp;<em>2019-12-16 00:03:56</em></p>
+</blockquote>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2019-12-15-fvschemes-xue-xi/">https://chengpengzhao.com/2019-12-15-fvschemes-xue-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/fvSchemes/">
+              <span class="chip bg-color">fvSchemes</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2019-12-15T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020-01-01-xin-de-yi-nian-huan-shi-xie-dian-shi-me-ba/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200104131737.webp" class="responsive-img" alt="新的一年，还是写点什么吧">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">新的一年，还是写点什么吧</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            最近在忙着做presentation的PPT, 当做是这几个月的一个小节吧。接下来还有毕设的任务，到现在还没开始做也是慌得一匹，别人开题都开完了- -不过好在收获也挺多的，也算是体验了一下留学生活吧。日本过年过的是阳历，每年的最后一天叫啥大
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/flag/">
+                        <span class="chip bg-color">flag</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019-12-11-evaluation-of-parsec-paraterization/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211235843.webp" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;Evaluation of PARSEC parametrizationThe principles that parametrization technique should satisfy are:
+
+Minimize t
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+                                    OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

@@ -1,0 +1,1778 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="VPS能做什么（总结几个我正在用的服务的配置过程）, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;写在前面
+VPS, Virtual Private Servers，中文即虚拟专用服务器  
+
+虽说入坑vps也有两年了，说来惭愧我至今仍分不清VPS、虚拟主机、云主机等一些专有名词的关系。最近感觉自己对VPS的需求越来越高，">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>VPS能做什么（总结几个我正在用的服务的配置过程） | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        VPS能做什么（总结几个我正在用的服务的配置过程）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/bitwarden/">
+              <span class="chip bg-color">bitwarden</span>
+            </a>
+            
+            <a href="/tags/webdav/">
+              <span class="chip bg-color">webdav</span>
+            </a>
+            
+            <a href="/tags/nextcloud/">
+              <span class="chip bg-color">nextcloud</span>
+            </a>
+            
+            <a href="/tags/NAS/">
+              <span class="chip bg-color">NAS</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+              兴趣爱好
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+              学习
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/linux/" class="post-category">
+              linux
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
+            </a>
+            
+            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/VPS/" class="post-category">
+              VPS
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2020-08-03
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2020-11-13
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          5.1k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          20 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="写在前面">1&emsp;写在前面</h1><blockquote>
+<p>VPS, Virtual Private Servers，中文即虚拟专用服务器  </p>
+</blockquote>
+<p>虽说入坑vps也有两年了，说来惭愧我至今仍分不清VPS、虚拟主机、云主机等一些专有名词的关系。<br>最近感觉自己对VPS的需求越来越高，入门级的小鸡已经空间不足了，故决定放弃续费几年前入手的bandwagon祖传vps。（翻出了最开始的账单，这种价位的搬瓦工现在也很少了、经常缺货中）<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200801220308.webp" alt><br>这段时间试了试阿里云（国内的话网站要备份，很多推荐国际站香港的服务器）、cloudcone（便宜，但感觉不稳），最终选择了大厂<a href="https://www.vultr.com/" target="_blank" rel="noopener">Vultr</a>的产品；一个月<code>$10</code>（我选的硅谷机房）还是有点心痛的，但至少方便管理些、所有服务都能放在一台机器上。<br>说到VPS、很多情况下还要牵涉到域名，我现在有两个域名：一个专门做博客、一个配置各种服务，都转移到了<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>上管理，域名续费一年的开支是<code>$8.18+$8.03</code>，累计起来每年要花近1000块,也算的上一笔不小的开支了（但相对于各种手游手一抖就是518,似乎也不算什么）。<br>那么回归正题，<strong>VPS能为我带来些什么呢？</strong> 记得最开始是fq、到后来的密码管理、网盘分享、webdv存文献、bt下载、NAS外网访问、qq机器人…<br>下面系统地记录一下自己用VPS搭建这些服务的步骤：（fq除外、我怕ip被封影响其他服务）  </p>
+<h1 id="Bitwarden，密码管理服务">2&emsp;Bitwarden，密码管理服务</h1><p>之前的一篇<a href="https://chengpengzhao.com/2020-02-08-bitwarden-mi-ma-guan-li-ji-v2ray-da-jian/">post</a>有讲过具体搭建步骤，但废话比较多，我也懒得改了。新手还可以一看，和大佬一比也只能是班门弄斧了；<br>这次还是也顺便回顾下。</p>
+<h2 id="安装docker、docker-compose">2.1&emsp;安装docker、docker-compose</h2><p>推荐去网上找一个一键安装脚本、省时省力，我在<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener">My_vimrc</a>（最初用来记录vim个人配置）这个仓库整理了一些折腾vps时用到的脚本，接下来讲到的一些配置文件也有放里面。  </p>
+<h2 id="配置文件-docker-compose-yml">2.2&emsp;配置文件(docker-compose.yml)</h2><p>文件目录如下，其中<code>bw-data</code>中存放密码数据，最好及时备份，迁移到另一台vps时将这个文件夹拷贝覆盖就行。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">~/bitwarden
+├── bw-data
+│   ├── db.sqlite3
+│   ├── icon_cache
+│   ├── rsa_key.der
+│   ├── rsa_key.pem
+│   └── rsa_key.pub.der
+└── docker-compose.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>docker-compose.yml</code>文件如下：</p>
+<pre class="line-numbers language-yml"><code class="language-yml">version: "3"
+
+services:
+  bitwarden:
+    image: bitwardenrs/server
+    restart: always
+    ports:
+    - "8080:80"
+    - "8081:3012"
+    volumes:
+      - ./bw-data:/data
+    environment:
+      WEBSOCKET_ENABLED: "true"
+      SIGNUPS_ALLOWED: "false"          #允许注册，配置的时候打开，之后关闭就行
+      WEB_VAULT_ENABLED: "true"         #允许网页访问，配置好了可以关闭<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中左侧的<code>8080</code>端口（之后访问bitwarden的web页面所用端口）和<code>8081</code>端口（忘了啥用）可以随意改动，不过注意不要和其他服务端口冲突了（说个常识：http默认80端口、https默认443端口）。</p>
+<h2 id="运行服务">2.3&emsp;运行服务</h2><p>在 <code>docker-compose.yml</code>目录下运行 <code>sudo docker-compose up -d</code>。 若未报错则访问<code>http://vps_ip:8080</code>应该能打开如下页面，但要正常使用还需配置<strong>https</strong>。<br>常用命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> docker <span class="token function">ps</span>  <span class="token comment" spellcheck="true">#列出当前的containers</span>
+<span class="token function">sudo</span> docker-compose down<span class="token operator">&amp;&amp;</span><span class="token function">sudo</span> docker-compose up -d <span class="token comment" spellcheck="true">#先停止并移除，再创建并启用</span>
+<span class="token function">sudo</span> docker-compose build --pull    <span class="token comment" spellcheck="true"># build、rebuild，有些情况下不需要用这步</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200802001113.webp" alt></p>
+<h2 id="设置nginx代理（需要域名，并在托管商处申请到SSL证书）">2.4&emsp;设置nginx代理（需要域名，并在托管商处申请到SSL证书）</h2><ol>
+<li><p>我的域名托管在<code>cloudflare</code>故以它为例，先添加一个DNS的<strong>A记录</strong>，名称我设置的是<code>bitwarden</code>，以后就通过<code>bitwarden.yourdomain.com</code>访问bitwarden服务。</p>
+</li>
+<li><p>之后在<code>SSL/TLS</code>选项中的<code>边缘证书</code>可以申请一个，保存好<code>cert.pem</code>和<code>cert.key</code>文件。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803103209.webp" alt></p>
+</li>
+<li><p>安装nginx，并进入配置文件夹，将之前获得的<code>cert.pem</code>和<code>cert.key</code>复制到<code>/etc/nginx</code>中。</p>
+</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> nginx<span class="token punctuation">;</span>
+<span class="token function">cd</span>  /etc/nginx<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>在<code>/etc/nginx/conf.d/</code>中新建<code>default.conf</code>，并编辑：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> vim /etc/nginx/conf.d/default.conf<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>加入如下内容：（更多配置请参考<a href="https://github.com/dani-garcia/bitwarden_rs/wiki/Proxy-examples" target="_blank" rel="noopener">官方文档</a>）</p>
+<pre class="line-numbers language-default.conf"><code class="language-default.conf"># bitwarden
+# 需要改的地方已用注释标出
+server {
+  listen 443 ssl http2;
+  server_name yourdomain.com;  #这里改成自己的域名（之前DNS解析了的）
+  client_max_body_size 128M;
+  ssl on;
+  ssl_certificate cert.pem;         #之前获得的SSL证书
+  ssl_certificate_key cert.key;
+  ssl_session_timeout 5m;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+  ssl_prefer_server_ciphers on;
+  location / {
+    proxy_pass http://127.0.0.1:8080;       #这里8080对应前面docker-compose里的设置，127.0.0.1代表本机ip
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+  location /notifications/hub {
+    proxy_pass http://127.0.0.1:8081;   #8081也对应前面设置
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+  location /notifications/hub/negotiate {
+    proxy_pass http://127.0.0.1:8080;   #8080对应前面设置
+  }
+  # Optionally add extra authentication besides the AUTH_TOKEN
+  # If you don't want this, leave this part out
+  location /admin {
+    # See: https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/
+    auth_basic "Private";
+    auth_basic_user_file /path/to/htpasswd_file;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_pass http://127.0.0.1:8080;   #8080对应前面设置
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="定时备份数据">2.5&emsp;定时备份数据</h2><ol>
+<li><p>需要先配置好github环境，用私钥免密码登录github（我把这一步写成了一个脚本，方便自己在别的机器上配置。）由于github配置因人而异、比较个性化，需要参考的话可以在<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener">My_vimrc</a>仓库找到。<br>我习惯保管好一对密钥，免得每次都要重新生成；关于<strong>非对称加密</strong>知识可以参考<a href="https://chengpengzhao.com/2020-03-04-ssh-yu-gpg-de-xue-xi-yu-shi-yong/">我之前的post</a>。  </p>
+</li>
+<li><p>先建立远程备份仓库并和本地绑定。</p>
+</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~/bitwarden/bw-data      <span class="token comment" spellcheck="true">#改成自己bitwarden所在位置</span>
+<span class="token function">git</span> init
+<span class="token function">git</span> remote add origin git@github.com:xxxx/xxxx.git  <span class="token comment" spellcheck="true">#自己在github建的空仓库，这里用SSH进行clone</span>
+<span class="token function">git</span> add -A
+<span class="token function">git</span> commit -m <span class="token string">"first push"</span>
+<span class="token function">git</span> push -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>建立定时上传github的脚本，备份<code>bw-data</code>文件夹。</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~
+<span class="token function">sudo</span> timedatectl set-timezone Asia/Shanghai<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">#修改系统时区</span>
+<span class="token function">cat</span> <span class="token operator">>></span> backUp_Bitwarden.sh <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+#!/bin/sh
+
+date=\<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> '+%Y-%m-%d %H:%M'<span class="token variable">)</span></span>
+cd ~/bitwarden/bw-data
+git add -A
+git commit -m "backup at <span class="token variable">$date</span>"
+git push
+EOF</span>
+<span class="token function">chmod</span> +x backUp_Bitwarden.sh<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>定时任务crontab建立。</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 每天13:00备份一次</span>
+<span class="token keyword">echo</span> <span class="token string">"00 13  * * * bash ~/backUp_Bitwarden.sh> ~/backup.log 2>&amp;1 &amp;"</span><span class="token operator">></span>bt.cron<span class="token punctuation">;</span>
+<span class="token function">crontab</span> bt.cron<span class="token punctuation">;</span>
+<span class="token function">rm</span> -rf bt.cron<span class="token punctuation">;</span>
+<span class="token function">crontab</span> -l<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">#查看是否设置成功</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Webdav，同步Zotero文献">3&emsp;Webdav，同步Zotero文献</h1><p>以前都是用坚果云存Zotero里的文献，方便在多设备同步。但随着文献数量越来越多，自己又经常做一些标注、修改，<strong>坚果云的免费空间</strong>已经完全不够用了，遂在VPS上搭一个webdav服务来存文献。</p>
+<h2 id="docker-compose文件配置">3.1&emsp;docker-compose文件配置</h2><p>Webcam搭建起来很简单，只需要一个<code>docker-compose.yml</code>文件就行了，我选择在<code>~/webdav</code>建立服务：</p>
+<pre class="line-numbers language-yml"><code class="language-yml">version: '3'
+services:
+  webdav:
+    image: bytemark/webdav
+    restart: always
+    ports:
+      - "8082:80"
+    environment:
+      AUTH_TYPE: Digest
+      USERNAME: yourname    #用户名
+      PASSWORD: yourpasswd  #密码
+    volumes:
+    # :左边为数据保存路径
+      - /srv/dav:/var/lib/dav<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Zotero软件设置">3.2&emsp;Zotero软件设置</h2><ol>
+<li>运行<code>sudo docker-compose up -d</code>后访问<code>http://vps_ip:8082</code>，应该会跳出如下弹窗，说明配置成功。</li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803133646.webp" alt></p>
+<ol start="2">
+<li><p>打开Zotero，<code>编辑-首选项-同步-文件同步-使用WebDAV</code>，填入地址、用户名和密码，点击验证服务器，会提示创建zotero文件夹，之后验证成功后就可以愉快地同步了～</p>
+</li>
+<li><p><strong>注意</strong>，这个webdav是为内存比较小的VPS准备的，如果还要装<code>nextcloud</code>的话就没必要用这个了（nextcloud自带webdav，主页面左下角点击就是地址，账号密码输入nextcloud设置的admin用户就行）。</p>
+</li>
+</ol>
+<h1 id="Nextcloud，私人网盘">4&emsp;Nextcloud，私人网盘</h1><blockquote>
+<p>Nextcloud是一套用于创建网络硬盘的客户端－服务器软件。其功能与Dropbox相近，但Nextcloud是自由及开放源代码软件，每个人都可以在私人服务器上安装并运行它。</p>
+</blockquote>
+<h2 id="docker-compose文件配置-1">4.1&emsp;docker-compose文件配置</h2><p>文件夹结构如下：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">
+~/nextcloud
+├── app
+│   └── Dockerfile
+├── db.env
+├── docker-compose.yml
+└── web
+    ├── Dockerfile
+    └── nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>下面贴出每个文件的内容：</p>
+<ul>
+<li><code>docker-compose.yml</code></li>
+</ul>
+<pre class="line-numbers language-yml"><code class="language-yml">version: '3'
+
+# 运行后数据储存在/var/lib/docker/volumes下的nextcloud_db和nextcloud_nextcloud文件夹下
+services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=        #这里需要填入要设定的初始密码
+    env_file:
+      - db.env
+
+  redis:
+    image: redis:alpine
+    restart: always
+    # command: redis-server --requirepass 123456      #这里的123456和后面redis密码对应，没啥用（为了解决部署后日志中一个bug）；
+    # 这一项设置后会拖慢上传速度，故取消
+
+  app:
+      #image: nextcloud:fpm-alpine
+    build: ./app
+    restart: always
+    volumes:
+      - nextcloud:/var/www/html
+    environment:
+        REDIS_HOST: redis
+        # REDIS_HOST_PASSWORD: 123456     #和前面对应，值不重要
+        # 这一项设置后会拖慢上传速度，故取消
+        MYSQL_HOST: db
+    env_file:
+      - db.env
+    depends_on:
+      - db
+      - redis
+
+  web:
+    build: ./web
+    restart: always
+    ports:
+      - 8083:80         #设置访问端口
+    volumes:
+      - nextcloud:/var/www/html:ro
+    depends_on:
+      - app
+
+  cron:
+    image: nextcloud:fpm-alpine
+    restart: always
+    volumes:
+      - nextcloud:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  db:
+  nextcloud:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>db.env</code>：</li>
+</ul>
+<pre class="line-numbers language-env"><code class="language-env">MYSQL_PASSWORD=
+MYSQL_DATABASE=nextcloud
+MYSQL_USER=nextcloud
+NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.tdbrywwwcg.xyz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里的密码和<code>docker-compose.yml</code>里要一致，<code>USER</code>随便起，<code>NEXTCLOUD_TRUSTED_DOMAINS</code>填自己的域名，后面配置代理。</p>
+<ul>
+<li><code>app/Dockerfile</code></li>
+</ul>
+<pre class="line-numbers language-Dockerfile"><code class="language-Dockerfile">FROM nextcloud:fpm-alpine
+
+RUN set -ex; \
+    \
+    apk add --no-cache \
+        ffmpeg \
+        imagemagick \
+        procps \
+        samba-client \
+#       libreoffice \
+    ;
+
+RUN set -ex; \
+    \
+    apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        imap-dev \
+        krb5-dev \
+        openssl-dev \
+        samba-dev \
+        bzip2-dev \
+    ; \
+    \
+    docker-php-ext-configure imap --with-kerberos --with-imap-ssl; \
+    docker-php-ext-install \
+        bz2 \
+        imap \
+    ; \
+    pecl install smbclient; \
+    docker-php-ext-enable smbclient; \
+    \
+    runDeps="$( \
+        scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
+            | tr ',' '\n' \
+            | sort -u \
+            | awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
+    )"; \
+    apk add --virtual .nextcloud-phpext-rundeps $runDeps; \
+    apk del .build-deps<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>配置这部分是为了之后在nextcloud里挂载Onedrive、GoogleDrive这些<strong>外部储存</strong>，需要用到<code>smbclient</code>等套件；很多教程<strong>没有</strong>这部分，而是通过安装好后再输入几个命令去配置、显得比较麻烦。  </p>
+<ul>
+<li><code>web/nginx.conf</code>和<code>web/Dockerfile</code></li>
+</ul>
+<p>nextcloud直接在docker里配置了nginx代理，不需要再在<code>/etc/nginx</code>中加，而且对新手来说内容比较复杂，故照搬<a href="https://github.com/nextcloud/docker/tree/master/.examples/docker-compose/insecure/mariadb-cron-redis/fpm" target="_blank" rel="noopener">example</a>里的就行了。  </p>
+<h2 id="个人建议">4.2&emsp;个人建议</h2><ol>
+<li>建立好上面的几个文件就可以构建了（国内的vps下载速度慢、可能要花很久）。</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> docker-compose build --pull<span class="token punctuation">;</span>
+<span class="token function">sudo</span> docker-compose up -d<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><p>访问<code>http://vps_ip:8083</code>，不出意外应该能显示登录页面了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803125447.webp" alt></p>
+</li>
+<li><p>如果不是对nginx很熟悉，<strong>非常不推荐设置nextcloud的反向代理</strong>。因为自己设置好后虽然能访问，很经常出现各种bug：上传错误、图标不显示、网址链接错误…  </p>
+</li>
+</ol>
+<p><strong>踩了上面说的这些坑</strong>之后我也看了很多别人的设置，但仍未找到比较完美的解决方案，但一想不配置http、https也能用，只是网址比较难看而已，<strong>最终选择了妥协</strong>。</p>
+<h1 id="Sharelist，分享工具">5&emsp;Sharelist，分享工具</h1><blockquote>
+<p>ShareList 是一个易用的网盘工具，支持快速挂载 GoogleDrive、OneDrive ，可通过插件扩展功能。<br>它的优点体现在支持的网盘种类比较多，而且配置一次后只要拷贝配置文件就可以很方便在不同机器上部署。</p>
+</blockquote>
+<h2 id="部署服务">5.1&emsp;部署服务</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~
+<span class="token function">git</span> clone https://github.com/reruin/sharelist <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> sharelist
+vim docker-compose.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>docker-compose.yml</code>中可修改端口，之后一样运行<code>sudo docker-compose up -d</code></p>
+<pre class="line-numbers language-yml"><code class="language-yml">version: "3"
+services:
+  sharelist:
+    image: reruin/sharelist
+    volumes:
+      - $HOME/sharelist:/sharelist/cache
+    ports:
+      - "8084:33001"        #我把sharelist放在8084端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>覆盖配置文件（可选）。</li>
+</ul>
+<p>如果之前用过sharelist、现在只是换了个机器部署的话，只需要拷贝覆盖目录中的<code>config.json</code></p>
+<h2 id="nginx代理配置">5.2&emsp;nginx代理配置</h2><p>在<code>/etc/nginx/conf.d/default.conf</code>中加入如下内容：</p>
+<pre class="line-numbers language-default.conf"><code class="language-default.conf"># sharelist
+server {
+  listen 443 ssl http2;
+  server_name yourdomain.com;       #填入自己的域名
+  # Specify SSL config if using a shared one.
+  #include conf.d/ssl/ssl.conf;
+  # Allow large attachments
+  ssl on;
+  ssl_certificate cert.pem;
+  ssl_certificate_key cert.key;
+  ssl_session_timeout 5m;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置
+  ssl_prefer_server_ciphers on;
+  location / {
+    proxy_pass http://127.0.0.1:8084;       #设置的sharelist端口
+      proxy_set_header Host  $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+
+      proxy_set_header Range $http_range;
+      proxy_set_header If-Range $http_if_range;
+      proxy_no_cache $http_range $http_if_range;
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="Aria2，下载利器">6&emsp;Aria2，下载利器</h1><blockquote>
+<p>Aria2是一款自由、跨平台命令行界面的下载管理器，该软件根据GPLv2许可证进行分发。支持的下载协议有：HTTP、HTTPS、FTP、Bittorrent和Metalink。</p>
+</blockquote>
+<p>我用的是<a href="https://github.com/P3TERX/Docker-Aria2-Pro" target="_blank" rel="noopener">P3TERX</a>大佬的<code>Aria2-Pro</code>Docker镜像，安装很简单：<br>由于Aria2只是个命令行，是否安装好了没法直接看出来，需要配置服务端并能连接成功才算成功了第一步；接着下载一个种子试试就知道了。</p>
+<h2 id="服务端安装">6.1&emsp;服务端安装</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> ~
+<span class="token function">git</span> clone https://github.com/P3TERX/Docker-Aria2-Pro <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> Docker-Aria2-Pro<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 把&lt;TOKEN>改成要设置的密码</span>
+<span class="token function">sudo</span> docker run -d \
+    --name aria2-pro \
+    --restart unless-stopped \
+    --log-opt max-size<span class="token operator">=</span>1m \
+    -e PUID<span class="token operator">=</span><span class="token variable">$UID</span> \
+    -e PGID<span class="token operator">=</span><span class="token variable">$GID</span> \
+    -e RPC_SECRET<span class="token operator">=</span><span class="token operator">&lt;</span>TOKEN<span class="token operator">></span> \
+    -e RPC_PORT<span class="token operator">=</span>6800 \
+    -p 6800:6800 \
+    -e LISTEN_PORT<span class="token operator">=</span>6888 \
+    -p 6888:6888 \
+    -p 6888:6888/udp \
+    -v ~/aria2-config:/config \
+    -v ~/downloads:/downloads \
+    p3terx/aria2-pro<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>安装好后可以在<code>~/aria2-config</code>文件夹修改配置。</p>
+<h2 id="AriaNg-web客户端">6.2&emsp;AriaNg, web客户端</h2><p>下载一个<a href="https://github.com/mayswind/AriaNg/releases/download/1.1.6/AriaNg-1.1.6-AllInOne.zip" target="_blank" rel="noopener">AriaNg</a>的html文件，连接上服务端就可以开始用了。<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803195418.webp" alt="AriaNg的Web界面"></p>
+<h1 id="Zdir，目录列表">7&emsp;Zdir，目录列表</h1><blockquote>
+<p><a href="https://github.com/helloxz/zdir" target="_blank" rel="noopener">Zdir</a>是一款使用PHP开发的目录列表程序，无需数据库，体积小巧，功能完善。</p>
+</blockquote>
+<p>我一般用它直接访问Aria2下载好的文件，部署也很简单：</p>
+<ol>
+<li><p><a href="http://45.77.1.137:8083/s/btmj7Bc6L9bzD4c/download" target="_blank" rel="noopener">下载</a>一键安装脚本，按照说明来配置。</p>
+</li>
+<li><p><code>zdir</code>文件夹里修改相关模板文件。（懂一点html知识就行）<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803195607.webp" alt="我的Zdir，图为Aria2下载文件夹"></p>
+</li>
+<li><p>nginx代理配置：</p>
+</li>
+</ol>
+<pre class="line-numbers language-default.conf"><code class="language-default.conf">#zdir
+server {
+    listen 80;
+    server_name  yourdomain.com;
+    location / {
+       proxy_pass http://127.0.0.1:1080;    #zdir端口，可以通过改脚本修改
+       proxy_redirect off;
+       proxy_set_header Host $host;
+       client_max_body_size 50m;
+           client_body_buffer_size 256k;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_max_temp_file_size 200m;
+  }
+
+location ~ .*\.(js|css|woff|woff2|gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)?$ {
+       proxy_pass http://127.0.0.1:1080;
+       proxy_redirect off;
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       expires 7d;
+        access_log off;
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="frp，NAS内网穿透">8&emsp;frp，NAS内网穿透</h1><h2 id="win10虚拟机上安装黑群晖">8.1&emsp;win10虚拟机上安装黑群晖</h2><p>具体安装步骤和文件我传到了<a href="http://45.77.1.137:8083/s/ZC8tRFqXYaybRC7" target="_blank" rel="noopener">Nextcloud</a>里，这里注意虚拟机的网络一定要设置成<strong>桥接模式</strong>，原理可以参照这张路由器的图来说明：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200803194939.webp" alt><br>当选择<strong>非桥接模式</strong>时虚拟机相当于上面的路由器2，其处在win10主机派生出的局域网下，而win10主机和其他同一WIFI下的设备处于同一个上级局域网中，上级网络无法访问下级网络。<br>同样外网设备（不在路由器1的局域网下）也无法直接访问到NAS，常见的解决方法有两个：</p>
+<ol>
+<li>路由器1改成桥接模式，并设置端口转发；这种方式要求要有公网IP、并且路由器改模式可能需要向运营商申请，总的来说很麻烦。  </li>
+<li>内网穿透，需要一个VPS和域名，利用VPS作为中转服务器将两个客户端相连。比较常用的内网穿透工具是国人开发的<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">frp</a>。</li>
+</ol>
+<h2 id="内网访问NAS">8.2&emsp;内网访问NAS</h2><p>在win10中通过<code>cmd</code>的<code>ipconfig</code>获取到本机ip，如果前面设置正确，同一局域网下的其他设备应该能通过<code>http://win10_ip:5000</code>访问到NAS主页（具体端口参考<a href="https://www.synology.com/zh-cn/knowledgebase/DSM/tutorial/Network/How_to_make_Synology_NAS_accessible_over_the_Internet" target="_blank" rel="noopener">群晖官网</a>）。  </p>
+<p><del>## client（客户端）frpc配置</del><br><del>## server（服务端）frps配置 ~</del>  </p>
+<h2 id="内网穿透从入坑到放弃">8.3&emsp;内网穿透从入坑到放弃</h2><p>frp的配置分为客户端和服务端，客户端（也就是黑群晖）可以开一个docker运行<code>frpc</code>，服务端（VPS）开一个<code>screen</code>运行<code>frps</code>，当然前提是写好配置文件。<br>说下我踩到的坑吧，第一天配置挺好可以正常访问、Nginx代理文件都写好了。结果第二天不知怎么的各种<code>http proxy EOF</code>错误，怎么改都弄不好，折腾了一个下午最终放弃了。</p>
+<h1 id="yobot，手游机器人">9&emsp;yobot，手游机器人</h1><blockquote>
+<p>yobot 是为公主连接公会战设计的辅助机器人，能够帮助公会战管理者提供自动化管理服务。 yobot 提供了群聊、web 页面两套用户交互方式，具有操作便捷、通知及时、数据详细的特点。 基于 QQ 的部分已不再支持，本项目正在向其他平台迁移</p>
+</blockquote>
+<p>按照<a href="https://yobot.win/" target="_blank" rel="noopener">官网</a>上的Linux-Mirai部署方式一步步来就行，注意QQ号必须先在VPS上登录并挂几天、不然容易被封或被屏蔽消息。</p>
+<p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-08-07 14:19:12</em></p>
+</blockquote>
+<h1 id="Calibre-web，个人书库">10&emsp;Calibre-web，个人书库</h1><h2 id="介绍">10.1&emsp;介绍</h2><p>最近开始用<a href="https://calibre-ebook.com/" target="_blank" rel="noopener">Calibre</a>整理书籍了，之前都是下载一本、往ipad里一丢、看完就不管了（有时随手就删了），导致想翻一翻之前看过的书都找不到地方；  并且因为自己在<strong>日亚</strong>买的正版书有版权限制，只能用注册过的kindle看，不方便管理。<code>Calibre</code>这款软件能很好解决我的需求：</p>
+<ol>
+<li>可以搜索书籍的<strong>元数据</strong>，整理起来很方便轻松。</li>
+<li><code>DeDRM</code><a href="http://45.77.1.137:8083/s/SpkfEbLjgDjMsxo/download" target="_blank" rel="noopener">插件</a>能去除版权限制，可以将书籍转为<code>epub</code>等主流格式方便非<code>kindle</code>阅读器查看。  </li>
+<li>结合<a href="https://github.com/janeczku/calibre-web" target="_blank" rel="noopener"><strong>Calibre-web</strong></a>，搭建线上图书馆（相比于桌面版增加了一些功能，也更便于分享）。  </li>
+</ol>
+<h2 id="VPS中用docker-compose安装">10.2&emsp;VPS中用docker-compose安装</h2><ol>
+<li><p>建一个<code>books</code>（名称随意）文件夹并进入；</p>
+</li>
+<li><p>建立一个<code>docker-compose.yml</code>文件，内容如下：</p>
+</li>
+</ol>
+<pre class="line-numbers language-yml"><code class="language-yml">version: "3"
+
+services:
+  calibre-web:
+    # 体验后还是这个image最好用
+    image: technosoft2000/calibre-web
+    container_name: calibre-web
+    environment:
+        - PUID= 1000     #run `id` in shell to get id for a user
+        - PGID= 1000
+        - SET_CONTAINER_TIMEZONE= true
+        - CONTAINER_TIMEZONE= Asia/Shanghai
+    volumes:
+        - ./calibre:/books  #存放书籍和app.db等数据库
+        # 我喜欢全放一个文件夹，方便管理
+        - ./calibre-web/app:/calibre-web/app
+        - ./calibre-web/kindlegen:/calibre-web/kindlegen
+        - ./calibre-web/config:/calibre-web/config
+    ports:
+        # 左边为外部端口，不要和其他服务冲突就行
+        - "8085:8083"
+    restart: always<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li><p>运行<code>sudo docker-compose up -d</code>，访问<code>http://vps_ip:8085</code>，在web中初始化、路径输入<code>/books</code>。</p>
+</li>
+<li><p>若输入后报错则是文件夹<strong>权限</strong>的问题，我一般用<code>sudo chmod -R 777 *</code>这种粗暴的方式解决。</p>
+</li>
+</ol>
+<h2 id="群晖NAS中用docker安装">10.3&emsp;群晖NAS中用docker安装</h2><ol>
+<li><p>映像中搜索<code>calibre-web</code>，找到<code>technosoft2000/calibre-web</code>并下载；</p>
+</li>
+<li><p><code>创建容器-高级设置-启动自动重新启动</code>、<code>卷-添加文件夹</code>如下：</p>
+</li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200807151248.webp" alt></p>
+<ol start="3">
+<li><p>运行状态可在<code>详情-终端机</code>中查看（拉去github资源需要一段时间）；</p>
+</li>
+<li><p>进入<code>web</code>配置，出错则检查<code>http</code>用户是否对文件夹具有<strong>完全控制</strong>权限。</p>
+</li>
+</ol>
+<h2 id="备份">10.4&emsp;备份</h2><p>书籍的所有数据都在docker内的<code>/books</code>文件夹下（即外部的<code>pathTo/books/calibre</code>），其中<code>metadata.db</code>、<code>metadata_db_prefs_backup.json</code>以及书籍文件夹是和桌面版<code>calibre</code>软件互通的，也就是可以互相拷贝覆盖。<code>app.db</code>、<code>gdrive.db</code>记录了<code>calibre-web</code>上的一些操作（如书架设置、用户名和密码、googleDrive设置），需要将服务迁移到另一台机器上时记得备份这些文件。</p>
+<p><br><br></p>
+<blockquote>
+<p><em>以下内容更新于2020-11-13 23:22:02</em></p>
+</blockquote>
+<h1 id="Leanote，私有云笔记">11&emsp;Leanote，私有云笔记</h1><p>蚂蚁笔记虽然几年前就已经没更新了，但基本的功能挺全的，作为私有云笔记用起来没啥问题。我尝试了一个多月感觉还行，支持markdown、可以传图片、IOS下也有app、网页就能直接访问、备份方便…总之个人强力推荐吧，看了一些其他支持私人部署的笔记平台也都差不多的样。  </p>
+<p>我用的是<a href="https://github.com/KeiferJu/docker-leanote" target="_blank" rel="noopener">docker部署</a>的方式，比较无脑，而且这个仓库是大佬整合制作的镜像，有不同版本可供选择（视vps配置），反正我512M内存祖传vps运行完全版Leanote也毫无压力。  </p>
+<h1 id="FileRun，私人网盘">12&emsp;FileRun，私人网盘</h1><p>与之前的Nextcloud相比，FileRun私人网盘体积更加轻盈，部署起来没有那么多糟心的坑，也支持Webdav，适合部署在低配的机器上，只是传一传小文件（抱歉、低配硬盘根本不够用）、用webdav同步下一些app的数据（如OmniFocus之类的）。  </p>
+<p>配置过程及其简单，官网<a href="https://docs.filerun.com/docker" target="_blank" rel="noopener">https://docs.filerun.com/docker</a>里说的明明白白，顶多改一改<code>volumes</code>方便换vps时同步数据、或者改一改文件夹权限之类的，不像nextcloud真的是各种错误（虽然nextcloud的功能确实强大、加上各种插件、社区也很活跃）。</p>
+<h1 id="删去一些不必要的服务">13&emsp;删去一些不必要的服务</h1><p>用了一段时间后清理了一些平时基本不怎么用的服务，最后只留下<strong>Bitwarden</strong>、<strong>Leanote</strong>、和<strong>FileRun</strong>，别的比如nextcloud、Aria2、Calibre-web放到了我的群晖NAS（越用越香）上，最近手头有点紧，能省则省吧（最终还是不肯放弃bandwagon的祖传小鸡、被自己啪啪打脸）。</p>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2020-08-03-vps-neng-yong-lai-zuo-shi-me/">https://chengpengzhao.com/2020-08-03-vps-neng-yong-lai-zuo-shi-me/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/bitwarden/">
+              <span class="chip bg-color">bitwarden</span>
+            </a>
+            
+            <a href="/tags/webdav/">
+              <span class="chip bg-color">webdav</span>
+            </a>
+            
+            <a href="/tags/nextcloud/">
+              <span class="chip bg-color">nextcloud</span>
+            </a>
+            
+            <a href="/tags/NAS/">
+              <span class="chip bg-color">NAS</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2020-08-03T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020-10-16-nhk72h-bu-quan-ji-hua/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="NHK72h补全计划">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">NHK72h补全计划</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            都说互联网是有记忆的，每当我寻找以前看过的某集记录片却发现被全网下架了的时候就会开始质疑这句话。但后来一想，记忆本身就不是什么可靠的东西，会被遗忘、被美化、被篡改。ドキュメント72時間（NHK纪实72小时）是我一直唯一坚持看的纪录片。一方面
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E6%9D%82/" class="post-category">
+                                    杂
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%8872%E6%99%82%E9%96%93/">
+                        <span class="chip bg-color">ドキュメント72時間</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020-07-24-zong-jie-xia-zui-jin-kan-de-ji-bu-sheng-cun-ti-cai-de-man-hua/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="总结下最近看的几部生存题材的漫画">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">总结下最近看的几部生存题材的漫画</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;近况最近一直处在很咸鱼的状态，一方面是因为疫情的原因、处在一个几乎没有人督促的环境下，学习效率非常低；但说到底这也是个借口，有点迷茫、对今后的生活缺乏考量、逃避现实这类词语比较合适吧。当然并不是很闲没事做，毕业设计还有大块要做
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E9%98%85%E8%AF%BB/" class="post-category">
+                                    阅读
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%AB%E7%94%BB/">
+                        <span class="chip bg-color">漫画</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%94%9F%E5%AD%98/">
+                        <span class="chip bg-color">生存</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

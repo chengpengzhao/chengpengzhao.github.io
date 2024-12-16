@@ -1,0 +1,1610 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="neovim一些插件的快捷键备忘录, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;前言 本来SpaceVim用的好好的，在无意中一次更新Nvim和插件后，一切都改变了：各种乱七八糟的插件报错，怎么也解决不了，看来别人配好的东西还是有点局限性，真要稳定使用还得自己DIY，于是毅然删除了SpaceVim，从头开">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>neovim一些插件的快捷键备忘录 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        neovim一些插件的快捷键备忘录
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/Vim/">
+              <span class="chip bg-color">Vim</span>
+            </a>
+            
+            <a href="/tags/Neovim/">
+              <span class="chip bg-color">Neovim</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2023-01-26
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2023-01-26
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          1.3k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          6 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p> 本来SpaceVim用的好好的，在无意中一次更新Nvim和插件后，一切都改变了：各种乱七八糟的插件报错，怎么也解决不了，看来别人配好的东西还是有点局限性，真要稳定使用还得自己DIY，于是毅然删除了SpaceVim，从头开始配置我的Neovim（结合之前自己的vim配置）。这里记录一下几个常用插件的常用功能，作为备忘录使用，刚开始用的不熟时可以方便自己迅速找到参考处。  </p>
+<p> nvim查看某快捷键详细信息： <code>:verbose map xxx&lt;cr&gt;</code></p>
+<p>(各插件不分先后顺序)</p>
+<h1 id="nvim-tree">2&emsp;nvim-tree</h1><p>侧边栏，呼出的命令分<code>NvimTreeToggle</code>与<code>NvimTreeFindFile</code>两个，用<code>which-key</code>插件统一管理快捷键，开关的快捷键我设为了<code>&lt;Space&gt;ft</code>或<code>&lt;leader&gt;n</code>，定位到文件的快捷键我设为了<code>&lt;Space&gt;fo或&lt;space&gt;n</code>。前面的快捷键与原SpaceVim保持一致，后面的是我根据习惯设置的。其他快捷键配置见<code>nvim-tree</code>配置文件：</p>
+<pre class="line-numbers language-lua"><code class="language-lua"><span class="token keyword">local</span> keymap_list <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"&lt;CR>"</span><span class="token punctuation">,</span> <span class="token string">"o"</span><span class="token punctuation">,</span> <span class="token string">"l"</span><span class="token punctuation">,</span> <span class="token string">"&lt;2-LeftMouse>"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"edit"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"h"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"close_node"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"p"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"preview"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"&lt;C-r>"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"refresh"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"yn"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"copy_name"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"yp"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"copy_path"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"yy"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"copy_absolute_path"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"a"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"create"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"d"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"remove"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"r"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"rename"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"I"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"toggle_git_ignored"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"R"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"collapse_all"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">"?"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"toggle_help"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="buffer-line">3&emsp;buffer-line</h1><p>自己设置的快捷键如下：（依赖close-buffers插件）</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;leader&gt;j</td>
+<td>next buffer</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;k</td>
+<td>previous buffer</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;[number]</td>
+<td>to buffer [number]</td>
+</tr>
+<tr>
+<td>&lt;space&gt;bc</td>
+<td>close invisible buffers</td>
+</tr>
+<tr>
+<td>&lt;space&gt;bd</td>
+<td>close current buffer</td>
+</tr>
+<tr>
+<td>&lt;space&gt;bt</td>
+<td>close other buffers</td>
+</tr>
+</tbody></table>
+<h1 id="nvim-treesitter">4&emsp;nvim-treesitter</h1><ol>
+<li>增量选择，可视模式下<code>&lt;CR&gt;</code>与<code>&lt;BS&gt;</code>进行选择；  </li>
+</ol>
+<pre class="line-numbers language-lua"><code class="language-lua">  incremental_selection <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">-- 启用增量选择</span>
+    enable <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    keymaps <span class="token operator">=</span> <span class="token punctuation">{</span>
+      init_selection <span class="token operator">=</span> <span class="token string">'&lt;CR>'</span><span class="token punctuation">,</span>
+      node_incremental <span class="token operator">=</span> <span class="token string">'&lt;CR>'</span><span class="token punctuation">,</span>
+      node_decremental <span class="token operator">=</span> <span class="token string">'&lt;BS>'</span><span class="token punctuation">,</span>
+      scope_incremental <span class="token operator">=</span> <span class="token string">'&lt;TAB>'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>智能选择，<code>v.</code>、<code>v;</code>、<code>vi;</code>分别对应smart、outer、inner三种模式；</li>
+</ol>
+<pre class="line-numbers language-lua"><code class="language-lua">textsubjects <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">-- 智能选择</span>
+    enable <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    prev_selection <span class="token operator">=</span> <span class="token string">','</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- (Optional) keymap to select the previous selection</span>
+    keymaps <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">[</span><span class="token string">'.'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'textsubjects-smart'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token string">';'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'textsubjects-container-outer'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token string">'i;'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'textsubjects-container-inner'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>文本对象的选择、跳转、交换等，新文本对象f(function)、c(class)；移动快捷键h为start、l为end、j为next、k为previous、小写为function、大写为class；</li>
+</ol>
+<pre class="line-numbers language-lua"><code class="language-lua">  textobjects <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">-- 智能跳转</span>
+    select <span class="token operator">=</span> <span class="token punctuation">{</span>
+      enable <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+
+      <span class="token comment" spellcheck="true">-- Automatically jump forward to textobj, similar to targets.vim</span>
+      lookahead <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+
+      keymaps <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">-- You can use the capture groups defined in textobjects.scm</span>
+        <span class="token punctuation">[</span><span class="token string">"af"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@function.outer"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">"if"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@function.inner"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">"ac"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@class.outer"</span><span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true">-- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap</span>
+        <span class="token punctuation">[</span><span class="token string">"ic"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> query <span class="token operator">=</span> <span class="token string">"@class.inner"</span><span class="token punctuation">,</span> desc <span class="token operator">=</span> <span class="token string">"Select inner part of a class region"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">-- You can choose the select mode (default is charwise 'v')</span>
+      selection_modes <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token string">'@parameter.outer'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'v'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- charwise</span>
+        <span class="token punctuation">[</span><span class="token string">'@function.outer'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'V'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- linewise</span>
+        <span class="token punctuation">[</span><span class="token string">'@class.outer'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'&lt;c-v>'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- blockwise</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">-- If you set this to `true` (default is `false`) then any textobject is</span>
+      <span class="token comment" spellcheck="true">-- extended to include preceding xor succeeding whitespace. Succeeding</span>
+      <span class="token comment" spellcheck="true">-- whitespace has priority in order to act similarly to eg the built-in</span>
+      <span class="token comment" spellcheck="true">-- `ap`.</span>
+      include_surrounding_whitespace <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    move <span class="token operator">=</span> <span class="token punctuation">{</span>
+      enable <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+      set_jumps <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- whether to set jumps in the jumplist</span>
+      goto_next_start <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token string">"xl"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@function.outer"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">"xL"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@class.outer"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      goto_previous_start <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token string">"xh"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@function.outer"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">"xH"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@class.outer"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      goto_next_end <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token string">"xj"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@function.outer"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">"xJ"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@class.outer"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      goto_previous_end <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token string">"xk"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@function.outer"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">"xK"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"@class.outer"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="telescope">5&emsp;telescope</h1><p>模糊搜索神器，有很多扩展，我装了<code>fzf</code>（模糊匹配）、<code>bookmarks</code>（书签,基于vim-bookmarks？）、<code>heading</code>、<code>emoji</code>、<code>neoclip</code>，此外还有个`telescope-coc，下面是我设置的快捷键位：  </p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;leader&gt;f</td>
+<td>find files(当前buffer所在文件层级开始)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;F</td>
+<td>搜寻当前git项目中的文件(应用gitignore)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;b</td>
+<td>search buffers</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;o</td>
+<td>search symbols in current file</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;s</td>
+<td>search symbols in project</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;g</td>
+<td>live grep, 内容搜索</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;G</td>
+<td>live grep cursor word, 内容搜索所选单词</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;m/<space>ma</space></td>
+<td>search bookmarks</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;d</td>
+<td>search coc diagnostic</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;h</td>
+<td>jump between headings(md、beancount…)</td>
+</tr>
+</tbody></table>
+<p>模糊匹配平时感觉用的挺多，这里先说下书签相关快捷键：</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mm</td>
+<td>当前行做标记</td>
+</tr>
+<tr>
+<td>mi</td>
+<td>当前行做标记,并写上相应的注释</td>
+</tr>
+<tr>
+<td>mn</td>
+<td>跳到下一个标记</td>
+</tr>
+<tr>
+<td>mp</td>
+<td>跳到上一个标记</td>
+</tr>
+<tr>
+<td>ma</td>
+<td>show all bookmarks</td>
+</tr>
+<tr>
+<td>mc</td>
+<td>删除当前buffer的标记</td>
+</tr>
+<tr>
+<td>mx</td>
+<td>删除所有buffer的标记</td>
+</tr>
+</tbody></table>
+<h1 id="nvim-surround">6&emsp;nvim-surround</h1><p>Add/delete/change surrounding pairs</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>示例</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ys</td>
+<td>ysiw(</td>
+<td>在当前文本对象周围增加surround</td>
+</tr>
+<tr>
+<td>ds</td>
+<td>ds[</td>
+<td>删除一个[]</td>
+</tr>
+<tr>
+<td>cs</td>
+<td>cs’”</td>
+<td>将一对’改为一对”</td>
+</tr>
+</tbody></table>
+<h1 id="vista">7&emsp;vista</h1><p>显示symbols和tags导航栏，快捷键<code>cn</code></p>
+<h1 id="vim-floaterm">8&emsp;vim-floaterm</h1><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;C-t&gt;</td>
+<td>显示/关闭悬浮窗</td>
+</tr>
+<tr>
+<td>&lt;C-n&gt;</td>
+<td>新建悬浮窗</td>
+</tr>
+<tr>
+<td>&lt;C-p&gt;</td>
+<td>上一个悬浮窗</td>
+</tr>
+</tbody></table>
+<h1 id="vim-commentary">9&emsp;vim-commentary</h1><p><code>:Commentary</code>注释代码，设定快捷键为<code>&lt;space&gt;lc</code>，默认快捷键如下：</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gcc</td>
+<td>comment out a line</td>
+</tr>
+<tr>
+<td>gcaw</td>
+<td>comment out a textobject</td>
+</tr>
+<tr>
+<td>gc</td>
+<td>comment out selected(visual mode)</td>
+</tr>
+</tbody></table>
+<h1 id="undotree">10&emsp;undotree</h1><p>显示编辑历史记录，<code>:UndotreeToggle</code>，设定快捷键<code>&lt;space&gt;cu</code>，打开后按<code>?</code>可查看更具体的帮助。</p>
+<h1 id="nvim-spectre">11&emsp;nvim-spectre</h1><p>文件名替换，同时对多个文件进行替换。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;space&gt;sp</td>
+<td>在当前项目中搜索</td>
+</tr>
+<tr>
+<td>&lt;space&gt;sP</td>
+<td>搜索当前光标</td>
+</tr>
+</tbody></table>
+<h1 id="code-runner">12&emsp;code_runner</h1><p>只用该插件的<code>:RunCode</code>命令，忽略其他功能，快捷键我设为<code>&lt;Space&gt;rc</code></p>
+<h1 id="vim-table-mode">13&emsp;vim-table-mode</h1><p><code>&lt;space&gt;tm</code>进入/退出表格编辑模式</p>
+<h1 id="coc-nvim">14&emsp;coc-nvim</h1><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gd</td>
+<td>跳转到定义处</td>
+</tr>
+<tr>
+<td>gr</td>
+<td>跳转到references-used</td>
+</tr>
+<tr>
+<td>K</td>
+<td>可以查询函数，变量，宏等，注释将会显示在悬浮窗口上</td>
+</tr>
+<tr>
+<td>gy</td>
+<td>跳转到type-definition处</td>
+</tr>
+<tr>
+<td>gi</td>
+<td>跳转到implementation</td>
+</tr>
+<tr>
+<td>[g, ]g</td>
+<td>跳转到coc各个诊断处</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;ln</td>
+<td>重命名变量（别用算了，直接用nvim-spectre重命名）</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;d</td>
+<td>打开诊断窗口（前面讲过了）</td>
+</tr>
+</tbody></table>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2023-01-26-neovim-yi-xie-cha-jian-kuai-jie-jian-bei-wang-lu/">https://chengpengzhao.com/2023-01-26-neovim-yi-xie-cha-jian-kuai-jie-jian-bei-wang-lu/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/Vim/">
+              <span class="chip bg-color">Vim</span>
+            </a>
+            
+            <a href="/tags/Neovim/">
+              <span class="chip bg-color">Neovim</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2023-01-26T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023-03-31-latex-cheatsheet/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="latex-cheatsheet">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">latex-cheatsheet</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;前言最近需要和一堆公式打交道，用mathpix的公式识别还是太贵了（API也连涨几次价），还是自己记住这些语法手打公式比较快。下文全部从别的地方收集而来，仅供自己备用。
+2&emsp;cheatsheet(分类)2.1&ems
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LaTeX/">
+                        <span class="chip bg-color">LaTeX</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023-01-25-2022-nian-zong-jie-tang-ping-de-yi-nian/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="2022年总结——躺平的一年">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">2022年总结——躺平的一年</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;小目标回顾
+通过5月28日的软考（高级系统架构设计师）      因疫情取消了，下半年懒没有考。话说上半年只有系分下半年才有架构考，这个当初都没调研清楚= =
+7月的JLPT N1拿到满分（扣5分之内能够接受）        
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/atimelogger/">
+                        <span class="chip bg-color">atimelogger</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

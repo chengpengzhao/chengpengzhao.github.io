@@ -1,0 +1,1695 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="controlDict学习, Zcp&#39;s Zone">
+    <meta name="description" content="
+个人学习用，总结、整理了网上一些controlDict解析
+
+1&amp;emsp;文件结构一个例子:
+
+//文件说明
+{
+    version     2.0;                //版本号
+    format      asc">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>controlDict学习 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        controlDict学习
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/controlDict/">
+              <span class="chip bg-color">controlDict</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+              OpenFOAM
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2019-12-04
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2019-12-04
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          2.1k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          9 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p>个人学习用，总结、整理了网上一些controlDict解析</p>
+</blockquote>
+<h1 id="文件结构">1&emsp;文件结构</h1><p>一个例子:</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token comment" spellcheck="true">//文件说明</span>
+<span class="token punctuation">{</span>
+    version     <span class="token number">2.0</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//版本号</span>
+    format      ascii<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//文本格式</span>
+    <span class="token keyword">class</span>       <span class="token class-name">dictionary</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//类型为字典文件</span>
+    location    <span class="token string">"system"</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//所在目录</span>
+    object      controlDict<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//对象名</span>
+<span class="token punctuation">}</span>
+application     interFoam<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//求解器名称</span>
+<span class="token comment" spellcheck="true">//时间控制</span>
+startFrom       startTime<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//设置计算开始时间为startTime</span>
+startTime       <span class="token number">0</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//定义startTime</span>
+stopAt          endTime<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//设置计算结束时间为endTime</span>
+endTime         <span class="token number">3</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//定义endTime</span>
+deltaT          <span class="token number">0.005</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//设置时间步长</span>
+<span class="token comment" spellcheck="true">//计算结果输出控制</span>
+writeControl    adjustableRunTime<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//按照计算时间控制输出</span>
+writeInterval   <span class="token number">0.1</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//输出时间间隔,单位秒[s],与writeControl配合使用</span>
+purgeWrite      <span class="token number">0</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//输出是否覆盖先前记录,0为不覆盖,1可用于稳态计算,默认0</span>
+writeFormat     ascii<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//计算结果输出文件格式指定</span>
+writePrecision  <span class="token number">10</span><span class="token punctuation">;</span>                 <span class="token comment" spellcheck="true">//控制输出有效数字位数,与writeFormat配合使用,默认6</span>
+writeCompression uncompressed<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//是否压缩</span>
+timeFormat      general<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//时间目录名称指定</span>
+timePrecision   <span class="token number">6</span><span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//时间目录名称有效数字位数,与timeFormat配合使用,默认6</span>
+<span class="token comment" spellcheck="true">//时间步长自适应控制</span>
+adjustTimeStep  yes<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//是否开启时间步长自适应</span>
+maxCo           <span class="token number">0.5</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//最大库郎数</span>
+maxDeltaT       <span class="token number">1.0</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//最大时间步长</span>
+<span class="token comment" spellcheck="true">//字典读取控制</span>
+runTimeModifiable yes<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//每个时间步是否读取所修改的字典文件设定</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="逐项分析">2&emsp;逐项分析</h1><p><code>system</code>目录下的<code>controlDict</code>文件用来设置 <strong>时间和输入输出控制</strong>，包括 <strong>时间控制</strong>， <strong>计算结果输出控制</strong>，<strong>时间步长自适应控制</strong>， <strong>字典读取控制</strong> 和 <strong>运行时加载库或者函数控制</strong> 五个部分。</p>
+<h2 id="application">2.1&emsp;application</h2><p>查看<code>$FOAM_TUTORIALS</code>里所用到的求解器，输入命令：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">foamSearch $FOAM_TUTORIALS controlDict application
+<span class="token comment" spellcheck="true">//结果显示：</span>
+application     adjointShapeOptimizationFoam<span class="token punctuation">;</span>
+application     blockMesh<span class="token punctuation">;</span>
+application     boundaryFoam<span class="token punctuation">;</span>
+application     buoyantPimpleFoam<span class="token punctuation">;</span>
+application     buoyantSimpleFoam<span class="token punctuation">;</span>
+application     cavitatingFoam<span class="token punctuation">;</span>
+application     chemFoam<span class="token punctuation">;</span>
+application     chtMultiRegionFoam<span class="token punctuation">;</span>
+application     coalChemistryFoam<span class="token punctuation">;</span>
+application     coldEngineFoam<span class="token punctuation">;</span>
+application     compressibleInterFoam<span class="token punctuation">;</span>
+application     compressibleMultiphaseInterFoam<span class="token punctuation">;</span>
+application     dnsFoam<span class="token punctuation">;</span>
+application     DPMFoam<span class="token punctuation">;</span>
+application     driftFluxFoam<span class="token punctuation">;</span>
+application     dsmcFoam<span class="token punctuation">;</span>
+application     electrostaticFoam<span class="token punctuation">;</span>
+application     financialFoam<span class="token punctuation">;</span>
+application     fireFoam<span class="token punctuation">;</span>
+application     foamyHexMesh<span class="token punctuation">;</span>
+application     icoFoam<span class="token punctuation">;</span>
+application     icoUncoupledKinematicParcelFoam<span class="token punctuation">;</span>
+application     interFoam<span class="token punctuation">;</span>
+application     interMixingFoam<span class="token punctuation">;</span>
+application     interPhaseChangeFoam<span class="token punctuation">;</span>
+application     laplacianFoam<span class="token punctuation">;</span>
+application     mdEquilibrationFoam<span class="token punctuation">;</span>
+application     mdFoam<span class="token punctuation">;</span>
+application     mhdFoam<span class="token punctuation">;</span>
+application     moveDynamicMesh<span class="token punctuation">;</span>
+application     MPPICFoam<span class="token punctuation">;</span>
+application     multiphaseEulerFoam<span class="token punctuation">;</span>
+application     multiphaseInterFoam<span class="token punctuation">;</span>
+application     nonNewtonianIcoFoam<span class="token punctuation">;</span>
+application     PDRFoam<span class="token punctuation">;</span>
+application     pimpleFoam<span class="token punctuation">;</span>
+application     pisoFoam<span class="token punctuation">;</span>
+application     porousSimpleFoam<span class="token punctuation">;</span>
+application     potentialFoam<span class="token punctuation">;</span>
+application     potentialFreeSurfaceFoam<span class="token punctuation">;</span>
+application     reactingFoam<span class="token punctuation">;</span>
+application     reactingMultiphaseEulerFoam<span class="token punctuation">;</span>
+application     reactingParcelFoam<span class="token punctuation">;</span>
+application     reactingTwoPhaseEulerFoam<span class="token punctuation">;</span>
+application     rhoCentralFoam<span class="token punctuation">;</span>
+application     rhoPimpleFoam<span class="token punctuation">;</span>
+application     rhoPorousSimpleFoam<span class="token punctuation">;</span>
+application     rhoSimpleFoam<span class="token punctuation">;</span>
+application     scalarTransportFoam<span class="token punctuation">;</span>
+application     shallowWaterFoam<span class="token punctuation">;</span>
+application     simpleFoam<span class="token punctuation">;</span>
+application     simpleReactingParcelFoam<span class="token punctuation">;</span>
+application     snappyHexMesh<span class="token punctuation">;</span>
+application     solidDisplacementFoam<span class="token punctuation">;</span>
+application     solidEquilibriumDisplacementFoam<span class="token punctuation">;</span>
+application     sprayFoam<span class="token punctuation">;</span>
+application     SRFPimpleFoam<span class="token punctuation">;</span>
+application     SRFSimpleFoam<span class="token punctuation">;</span>
+application     twoLiquidMixingFoam<span class="token punctuation">;</span>
+application     twoPhaseEulerFoam<span class="token punctuation">;</span>
+application     XiEngineFoam<span class="token punctuation">;</span>
+application     XiFoam<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>tutorial里基本上平时常用到的、不常用的solver都有，根据自己的研究方向选几个相关的再慢慢研究细节吧。</p>
+<h2 id="时间控制">2.2&emsp;时间控制</h2><h3 id="startFrom-startTime">2.2.1&emsp;startFrom, startTime</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>startFrom</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>firstTime</code></td>
+<td align="center">所有时间目录中最早的时间步</td>
+</tr>
+<tr>
+<td align="center"><code>latestTime</code></td>
+<td align="center">所有时间目录中最近的时间步</td>
+</tr>
+<tr>
+<td align="center"><code>startTime</code></td>
+<td align="center">用户指定开始时间，需指定<code>startTime</code>的值</td>
+</tr>
+</tbody></table>
+<h3 id="stopAt-endTime">2.2.2&emsp;stopAt, endTime</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>stopAt</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>endTime</code></td>
+<td align="center">用户指定结束时间，需指定<code>endTime</code>的值</td>
+</tr>
+<tr>
+<td align="center"><code>writeNow</code></td>
+<td align="center">当前时间步完成时结束计算并且输出计算结果</td>
+</tr>
+<tr>
+<td align="center"><code>noWriteNow</code></td>
+<td align="center">当前时间步完成时结束计算但不输出计算结果</td>
+</tr>
+<tr>
+<td align="center"><code>nextWrite</code></td>
+<td align="center">下一个时间步完成时结束计算并且输出计算结果</td>
+</tr>
+</tbody></table>
+<h3 id="deltaT">2.2.3&emsp;deltaT</h3><p>时间步长控制，有时需要控制 $Co=\frac{\delta t|U|}{\delta x}&lt;1$ $\delta t$ 为时间步、就是这的deltaT; $|U|$ 为某网格单元内的速度矢量的模 $\delta x$ 为速度方向的网格长度。</p>
+<h2 id="输出控制">2.3&emsp;输出控制</h2><h3 id="writeControl-writeInterval">2.3.1&emsp;writeControl,writeInterval</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>writeControl</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>timeStep</code></td>
+<td align="center">按照时间步输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>runTime</code></td>
+<td align="center">按照计算时间输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>adjustableRunTime</code></td>
+<td align="center">时间自适应下按照计算时间输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>cpuTime</code></td>
+<td align="center">按照CPU时间输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+<tr>
+<td align="center"><code>clockTime</code></td>
+<td align="center">按照挂钟时间(真实时间)输出，间隔由关键字<code>writeInterval</code>指定</td>
+</tr>
+</tbody></table>
+<h3 id="purgeWrite">2.3.2&emsp;purgeWrite</h3><table>
+<thead>
+<tr>
+<th align="center">0</th>
+<th align="center">关闭该功能，不覆盖输出结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">n(n为大于0的整数)</td>
+<td align="center">输出n次数据后，自动覆盖先前输出结果</td>
+</tr>
+</tbody></table>
+<h3 id="writeFormat-writePrecision">2.3.3&emsp;writeFormat,writePrecision</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>writeFormat</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>ascii</code></td>
+<td align="center">文本格式，由<code>writePrecision</code>控制有效数字位数，方便阅读</td>
+</tr>
+<tr>
+<td align="center"><code>binary</code></td>
+<td align="center">二进制格式，直接将内存内容写入文件，能够减小文件存储空间，提高读写效率</td>
+</tr>
+</tbody></table>
+<h3 id="writeCompression-timeFormat-timePrecision">2.3.4&emsp;writeCompression, timeFormat, timePrecision</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>writeCompression</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>off</code></td>
+<td align="center">不压缩</td>
+</tr>
+<tr>
+<td align="center"><code>on</code></td>
+<td align="center">gzip 压缩格式</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>timeFormat</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>fixed</code></td>
+<td align="center"><code>±m.dddddd</code>，其中<code>d</code>由<code>timePrecision</code>来控制</td>
+</tr>
+<tr>
+<td align="center"><code>scientific</code></td>
+<td align="center"><code>±m.dddddd±xx</code>，其中<code>d</code>由<code>timePrecision</code>来控制</td>
+</tr>
+<tr>
+<td align="center"><code>general</code></td>
+<td align="center">使用<code>scientific</code>格式，默认小数点后有<code>4</code>位有效位数，也可通过<code>timePrecision</code>来调节</td>
+</tr>
+</tbody></table>
+<h3 id="runTimeModifiable">2.3.5&emsp;runTimeModifiable</h3><p>Switch for whether dictionaries, e.g. <code>controlDict</code>, are re-read during a simulation at the beginning of each time step, allowing the user to modify parameters during a simulation. </p>
+<h3 id="graphFormat">2.3.6&emsp;graphFormat</h3><table>
+<thead>
+<tr>
+<th>raw</th>
+<th>采用原ASCII格式输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gnuplot</td>
+<td>采用gunplot格式输出</td>
+</tr>
+<tr>
+<td>xmgr</td>
+<td>采用Grace/xmgr格式输出</td>
+</tr>
+<tr>
+<td>jplot</td>
+<td>采用jPlot格式输出</td>
+</tr>
+</tbody></table>
+<h2 id="时间步长自适应控制">2.4&emsp;时间步长自适应控制</h2><table><tr><th>参数名</th><th>参数值</th><th>说明</th></tr><tr><td rowspan="2">adjustTimeStep</td><td>yes</td><td>允许依据最大Courant数自动调节时间步长</td></tr><tr><td>no</td><td>不允许程序自动调节时间步长</td></tr><tr><td>maxCo</td><td>0.5</td><td>最大允许的Courant数，若Co数大于指定值，自动缩小时间步长</td></tr><tr><td>maxDeltaT</td><td>0.1</td><td>自动调整时间步长时，最大允许的时间步长</td></tr><tr><td rowspan="2">runTimeModifiable (设置在求解过程中是否允许修改以上参数)</td><td>yes</td><td>允许，求解器会在每个时间步计算的开始读入controlDict文件</td></tr><tr><td>no</td><td>不允许，求解器不会在每个时间步开始读入controlDict文件</td></tr></table>
+
+<h2 id="运行时加载库或者函数控制">2.5&emsp;运行时加载库或者函数控制</h2><p>设置运行时需要加载的库或函数如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">libs</th>
+<th align="center">如<code>libgroovyBC.so</code>等</th>
+<th align="center">调用的动态库文件列表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">functions</td>
+<td align="center">probes, singleGraph等</td>
+<td align="center">调用的附加函数列表</td>
+</tr>
+</tbody></table>
+<p>举个例子，<code>incompressible/pimpleFoam/RAS/TJunction/system/controlDict</code>中相关部分：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">functions
+<span class="token punctuation">{</span>
+    probes
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Where to load it from</span>
+        <span class="token function">libs</span>            <span class="token punctuation">(</span><span class="token string">"libsampling.so"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        type            probes<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// Name of the directory for probe data</span>
+        name            probes<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// Write at same frequency as fields</span>
+        writeControl    writeTime<span class="token punctuation">;</span>
+        writeInterval   <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// Fields to be probed</span>
+        <span class="token function">fields</span>          <span class="token punctuation">(</span>p U<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token function">probeLocations</span>
+        <span class="token punctuation">(</span>
+            <span class="token punctuation">(</span> <span class="token number">1e-06</span> <span class="token number">0</span> <span class="token number">0.01</span> <span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">// at inlet</span>
+            <span class="token punctuation">(</span><span class="token number">0.21</span> <span class="token operator">-</span><span class="token number">0.20999</span> <span class="token number">0.01</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// at outlet1</span>
+            <span class="token punctuation">(</span><span class="token number">0.21</span> <span class="token number">0.20999</span> <span class="token number">0.01</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// at outlet2</span>
+            <span class="token punctuation">(</span><span class="token number">0.21</span> <span class="token number">0</span> <span class="token number">0.01</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true">// at central block</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<p>下面介绍最常用的probes和singleGraph函数的使用方法。</p>
+<h3 id="probes函数">2.5.1&emsp;probes函数</h3><p>该函数功能为程序运行时监测:q指定坐标点场数据随时间的变化。首先在controlDict文件内添加以下语句，调用probes功能的相关函数。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">functions 
+ <span class="token punctuation">{</span> 
+   <span class="token macro property">#includeFunc probes   </span><span class="token comment" spellcheck="true">// 在functions列表中添加probes函数</span>
+ <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接着运行以下命令，复制probes文件至system文件夹下，</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> -r <span class="token variable">$FOAM_ETC</span>/caseDicts/postProcessing/probes/probes system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>probes文件的内容如下，</p>
+<p>通过修改fields参数中可添加需监测的场，修改probeLocations的坐标值可添加监测点的坐标值。运行求解器后，指定坐标点的监测场随时间变化的数据输出至postProcessing/probes/0文件夹。</p>
+<h3 id="singleGraph函数">2.5.2&emsp;singleGraph函数</h3><p>该函数功能为对计算结果数据取样并可视化。首先在controlDict文件内的functions列表中添加singleGraph函数，接着运行以下命令，复制singleGraph文件至system文件夹，</p>
+<pre class="line-numbers language-BASH"><code class="language-BASH">cp -r $FOAM_ETC/caseDicts/postProcessing/graphs/singleGraph system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>singleGraph文件的内容如下，  </p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"> <span class="token function">start</span>  <span class="token punctuation">(</span><span class="token number">0.01</span> <span class="token number">0.025</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 取样的起始点坐标</span>
+  <span class="token function">end</span>   <span class="token punctuation">(</span><span class="token number">0.01</span> <span class="token operator">-</span><span class="token number">0.025</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 取样的终点坐标</span>
+  <span class="token function">fields</span> <span class="token punctuation">(</span>U p<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 取样场的名称</span>
+
+  <span class="token comment" spellcheck="true">// Sampling and I/O settings </span>
+  <span class="token macro property">#includeEtc ”caseDicts/postProcessing/graphs/sampleDict.cfg” </span>
+
+  <span class="token comment" spellcheck="true">// Override settings here, e.g. </span>
+  <span class="token comment" spellcheck="true">// setConfig { type midPoint; } </span>
+
+  <span class="token comment" spellcheck="true">// Must be last entry </span>
+  <span class="token macro property">#includeEtc ”caseDicts/postProcessing/graphs/graph.cfg” </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改fields参数中可添加需采样的场，修改start 和end参数可设置取样点的坐标范围。计算完成后，在算例文件夹下输入命令postProcess -func singleGraph，可对数据取样并输出至postProcessing/singleGraph文件夹。输出数据文件可直接通过gnuplot软件（需预先安装）处理实现可视化。</p>
+<h3 id="foreCoeffs">2.5.3&emsp;foreCoeffs</h3><p>翼型模拟时常需要得到 $C_{p},C_{L},C_{D}$ 等数据，可以利用OpenFOAM的相关工具，推荐在controlDict里直接include然后在<code>system</code>文件夹里重新写一个文件。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//controlDict里加入</span>
+functions 
+<span class="token punctuation">{</span>
+    <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"forceCoeffs"</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>新文件内容如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//文件名forceCoeffs</span>
+<span class="token comment" spellcheck="true">/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates lift, drag and moment coefficients by summing forces on
+    specified patches for a case where the solver is incompressible (pressure
+    is kinematic, e.g. m^2/s^2).
+
+\*---------------------------------------------------------------------------*/</span>
+
+forceCoeffs
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Mandatory entries</span>
+    type            forceCoeffs<span class="token punctuation">;</span>
+    <span class="token function">libs</span>            <span class="token punctuation">(</span><span class="token string">"libforces.so"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">patches</span>         <span class="token punctuation">(</span>airfoil<span class="token operator">-</span>l1 airfoil<span class="token operator">-</span>l2 airfoil<span class="token operator">-</span>h1 airfoil<span class="token operator">-</span>h2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">// Optional entries</span>
+
+    <span class="token comment" spellcheck="true">// Field names</span>
+    p               p<span class="token punctuation">;</span>
+    U               U<span class="token punctuation">;</span>
+    rho     rhoInf<span class="token punctuation">;</span>
+    log         <span class="token boolean">true</span><span class="token punctuation">;</span>
+    rhoInf      <span class="token number">1.225</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Reference pressure [Pa]</span>
+    pRef            <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Include porosity effects?</span>
+    porosity        yes<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Store and write volume field representations of forces and moments</span>
+    writeFields     yes<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Centre of rotation for moment calculations</span>
+    <span class="token function">CofR</span>            <span class="token punctuation">(</span><span class="token number">0.25</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Lift direction</span>
+    <span class="token function">liftDir</span>         <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">1</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Drag direction</span>
+    <span class="token function">dragDir</span>         <span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Pitch axis</span>
+    <span class="token function">pitchAxis</span>       <span class="token punctuation">(</span><span class="token number">0</span> <span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Freestream velocity magnitude [m/s]</span>
+    magUInf         <span class="token number">50</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Reference length [m]</span>
+    lRef            <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Reference area [m2]</span>
+    Aref            <span class="token number">1.2</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Spatial data binning</span>
+    <span class="token comment" spellcheck="true">// - extents given by the bounds of the input geometry</span>
+    binData
+    <span class="token punctuation">{</span>
+        nBin        <span class="token number">21</span><span class="token punctuation">;</span>
+        <span class="token function">direction</span>   <span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cumulative  yes<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>具体内容可参考<a href="https://www.openfoam.com/documentation/guides/latest/doc/guide-fos-forces-force-coeffs.html" target="_blank" rel="noopener">OpenFOAM在线文档</a>。</p>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2019-12-04-controldict-wen-jian-xue-xi/">https://chengpengzhao.com/2019-12-04-controldict-wen-jian-xue-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/controlDict/">
+              <span class="chip bg-color">controlDict</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2019-12-04T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019-12-09-parsec/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191209235902.webp" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(2)---Modified PARSEC Parametrization</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;Modified PARSEC ParametrizationAs mentioned before, the PARSEC parametrization popularized by Sobieczky actually 
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+                                    OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019-12-02-airfoil-paraterizaton/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191202174431.webp" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(1)---airfoil parametrization">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(1)---airfoil parametrization</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;Airfoil parametrizationThe numerical search for the optimum shape of an airfoil is of great interest for aircraft
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
+                                    CFD
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
+                                    OpenFOAM
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
+                                    英语
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/airfoil-optimization/">
+                        <span class="chip bg-color">airfoil optimization</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

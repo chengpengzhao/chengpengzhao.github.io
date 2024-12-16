@@ -1,0 +1,1489 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="python爬虫入门练习——爬取北航课程中心课件资源, Zcp&#39;s Zone">
+    <meta name="description" content="目标是课程中心7195条课程信息下的所有资源~：
+1&amp;emsp;前言首先声明我现在还只是个萌新，某一天忽然想学一下爬虫，然后去百度随便找了个教程然后看了开头一点点，于是想随便找个项目练习一下，所以就写了个简单的爬取课件资源的py程序。为什么">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>python爬虫入门练习——爬取北航课程中心课件资源 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        python爬虫入门练习——爬取北航课程中心课件资源
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/%E7%88%AC%E8%99%AB/">
+              <span class="chip bg-color">爬虫</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+              学习
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
+              编程语言
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/python/" class="post-category">
+              python
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2019-03-21
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2019-03-21
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          3.3k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          13 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>目标是课程中心7195条课程信息下的所有资源~：</p>
+<h1 id="前言">1&emsp;前言</h1><p>首先声明我现在还只是个萌新，某一天忽然想学一下爬虫，然后去百度随便找了个教程然后看了开头一点点，于是想随便找个项目练习一下，所以就写了个简单的爬取课件资源的py程序。<br><br>为什么只看了一点点呢，因为实在看不下去啊，当时的心理状态：“他在讲什么，这软件干嘛的，这库咋用的，为什么他知道这么多啊……”然后想算了找本书学学可能更好吧，于是我翻开了目录：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/%E7%9B%AE%E5%BD%95.webp" alt><br>幸好我先看视频配置好了环境，这些东西都还有印象，要是先看书的话简直就是新手劝退。果然学一个东西之前还是要进行一些取舍，根据自己的目的来，看要达到一个什么水平，之后分配适当的时间，能不用就不学，毕竟不是自己专业相关的东西，纯属娱乐，能迅速达到自己的目标就行了，虽然有些功利但毕竟光陰矢の如し。<br><br>首先是几个惯例性问题：<br></p>
+<h2 id="What">1.1&emsp;What</h2><p>啥是爬虫啊？百度告诉我们<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711?fr=aladdin" target="_blank" rel="noopener">爬虫</a>就是<strong>请求</strong>网站并<strong>提取数据</strong>的<strong>自动化</strong>程序，我之前平常玩玩手游，又菜又不想花太多时间，经常用按键精灵写一些简单脚本完成重复性的动作，当然其中也涉及到很多循环判断。Web spider也是个类似的东西，能够免去许多重复性的工作，所以其实技术含量倒没啥，而且大佬们都把轮子给造好了，我们只需要伸手就能用；真正要下点功夫的也就是和一些反爬虫斗智斗勇，有时候也容易走偏甚至触犯法律。</p>
+<h2 id="Why">1.2&emsp;Why</h2><p>为什么要用爬虫，或者说什么时候用；当然是你需要大量数据的时候，这些数据可以是各种类型的，比如文本可以用来进行一些大数据分析、用来给AI学习、用来抢票…….来看看知乎大神们的回答：<a href="https://www.zhihu.com/question/27621722" target="_blank" rel="noopener">利用爬虫技术能做到哪些很酷很有趣很有用的事情？</a>肯定比我想得到的用法要多。</p>
+<h2 id="Where">1.3&emsp;Where</h2><p>JAVA | PYTHON |    PHP | C# | C/C++……这么多语言，随便哪个都能拿来写爬虫，要我推荐当然是pyhton啊，毕竟人家是IEEE Spectrum 2018 编程语言 Top 1，所以我也是从pyhton爬虫开始学（别的都用的太少不熟悉- -），如果你没学过，正好我推荐<a href="https://www.coursera.org/specializations/python" target="_blank" rel="noopener">密歇根大学Charles Severance教授</a>的一系列<a href="https://www.py4e.com/materials" target="_blank" rel="noopener">python课程</a>，什么听说你被墙了网站打不开，没关系我都下好了<a href="https://pan.baidu.com/s/1cQIpwzDUblokfrwxOMFcJg" target="_blank" rel="noopener">打包</a>送你<em>ofek</em>。然后我用的是python3，软件推荐pyCharm，谁用谁知道。</p>
+<h1 id="爬之前需要了解的">2&emsp;爬之前需要了解的</h1><p>真正动手开始写才知道写博客真的挺花时间的。</p>
+<h2 id="网页基础">2.1&emsp;网页基础</h2><p>学爬虫的一个好处就是你可以顺带了解到几乎每天都会接触的网页的一些知识，从而带来许多方便之处；比如某天登录一个网址它默认帮你填充了密码但是你忘了具体是什么想看一下，你只需要看一眼开发者工具里浏览器发出的请求就可以了。(我是觉得比打开保存的密码表单一个个找要快，当然你也许有更好的管理密码的工具)<br><br>这段对我来说真的不好写，毕竟是个外行人，<a href="https://cuiqingcai.com/?s=%E7%88%AC%E8%99%AB" target="_blank" rel="noopener">崔老师的博客</a>和书里都有很详细的讲解，我就简单讲下我的认识吧：</p>
+<ul>
+<li><p>打开你的浏览器开发者工具，Elements下那块一堆尖括号让人难受的字符串就是html——HyperText Markup Language，它包含许许多多的标签，很多时候在这里面就藏了我们想要的东西（当然这只是最幸运的情况），接下来的工作就是如何让计算机能识别并且提出这些东西出来。</p>
+</li>
+<li><p>点击Network项，会发现一排东西，XHR、JS、CSS、Img……有些时候没那么幸运，html里空空如也，这说明该网站使用的是别的加载方式如ajax等；这时不妨去XHR里瞧一瞧说不定就发现了呢，JS（JavaScript）有很多都是写好的函数用来控制网页的行为，我是还没仔细研究过这块；CSS主要用来美化网页布局如排版、字体等；img就如其名，简单易懂。</p>
+</li>
+<li><p>点击Application项，在storage找到<strong>Cookies</strong>，这是个非常重要的东西，网站用它辨别你的身份，所以爬虫常用它进行伪装，让对方认为是一个人在操作模拟器点击浏览网页；当然这只是第一步很简单的伪装。</p>
+<p>  <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/%E5%8C%97%E8%88%AAvpnweb.webp" alt></p>
+</li>
+<li><p>点进一个请求，看到右边有<strong>Requests Headers</strong>、<strong>Response Headers</strong>等等，这又是一个非非非常重要的一项，里面清清楚楚的记载了浏览器是如何<u>发送请求</u>并且网站端是如何<u>响应</u>的，所以如果你的爬虫不按它的格式发请求还妄想访问它，等待你的只会是一系列的奇葩<a href="https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/5053660?fr=aladdin" target="_blank" rel="noopener">状态码</a>。</p>
+<p>  <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/header.webp" alt></p>
+</li>
+</ul>
+<h2 id="Python相关库">2.2&emsp;Python相关库</h2><ul>
+<li>先说点别的，好像有种叫做可视化爬虫的东西，就算不怎么懂编程都能爬些数据，我没接触过，不过也是一种选择吧。</li>
+<li><strong>requests库</strong>，用来发送请求，python内置的urllib也能用，不过好像这个更方便。（自行安装）</li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener">Beautiful Soup</a>，用来解析html的库，官网有点意思，十分出色，好像还有几个如XPath、Pyquery，功能都差不多，先只学一个以后不够用再说。</li>
+<li>还有如re、os这些库，用来进行字符串匹配和文件操作的，也很常用。</li>
+<li>数据储存方面，我现在还用不到MongoDB、MySQL这些东西，所以相关库就暂且不提。</li>
+</ul>
+<p>(总算快到正片了…)</p>
+<h1 id="py爬虫思路及过程—以北航课程中心为例">3&emsp;py爬虫思路及过程—以北航课程中心为例</h1><h2 id="明确需求">3.1&emsp;明确需求</h2><ol>
+<li>获取北航课程中心的所有课程，信息（类别、名称、链接、教师）储存为一个文本文档。</li>
+<li>筛选想下载的课程（抱歉，我全都要），进入链接并判断是否有课件资源，建立文件夹储存课件以及详细的课程信息。<br>
+
+</li>
+</ol>
+<h2 id="分析网站">3.2&emsp;分析网站</h2><p>由于我不在北航，校外访问首先要登录<a href="https://e.buaa.edu.cn/users/sign_in" target="_blank" rel="noopener">北航vpn</a>，首先打开开发者工具刷新网址，可以看到有一个Name是sign_in，明显就是我们要找的；然后，点击登录后（<u>首先你得有个北航课程中心的账号</u>）发现Headers里面多了Form Data这一项，里面记录了你的账号密码和一个<strong>authenticity_token</strong>以及一些键名，发送请求时肯定是要按照这个格式来；<br></p>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/%E8%AF%BE%E7%A8%8B%E4%B8%AD%E5%BF%83%E7%99%BB%E5%BD%95.webp" alt></p>
+<p>不过细心的你可能发现每次authenticity_token的值都在变化，你可能会说：这要我怎么请求啊？但北航怎么会难为你呢，更加细心的你在网站的<strong>html源代码</strong>里一搜便搜到了竟然有这个值，所以你只需要先提取出来再加入你的请求中就行了，多简单。</p>
+<p>当你满怀欣喜进入一门课程的界面时，又发现右上角竟然还是没有登录的状态？？对这个设定让我当初下课件的时候特别难受，你还得再点一下登录按钮然后会自动跳转进portal界面然后你再返回课程界面按下F5！而且过了一会又会变成需要登录的状态，这个细节在写爬虫的时候也得注意一下，这里不细讲了，毕竟程序员们都在说：<br></p>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/Talk%20is%20cheap.webp" alt><br></p>
+<h2 id="请求获取解析储存数据">3.3&emsp;请求获取解析储存数据</h2><p>首先看下一共有多少条目课程：<br></p>
+<h3 id="coursesinfo-spider-py">3.3.1&emsp;coursesinfo_spider.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> urlencode
+<span class="token keyword">from</span> requests<span class="token punctuation">.</span>exceptions <span class="token keyword">import</span> ConnectionError
+<span class="token keyword">import</span> json
+<span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> Pool
+s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">#会话维持</span>
+<span class="token comment" spellcheck="true">#返回当页的json</span>
+<span class="token keyword">def</span> <span class="token function">get_one_page</span><span class="token punctuation">(</span>pagenumber<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token string">'pageSize'</span><span class="token punctuation">:</span> <span class="token string">'50'</span><span class="token punctuation">,</span>
+        <span class="token string">'pageNumber'</span><span class="token punctuation">:</span> pagenumber<span class="token punctuation">,</span>
+        <span class="token string">'orderParams'</span><span class="token punctuation">:</span> <span class="token string">'[{"field":"updateDate","dir":"desc"}]'</span><span class="token punctuation">,</span>
+        <span class="token string">'searchParams'</span><span class="token punctuation">:</span> <span class="token string">'[]'</span><span class="token punctuation">,</span>
+        <span class="token string">'specialParams'</span><span class="token punctuation">:</span> <span class="token string">'[]'</span>
+    <span class="token punctuation">}</span>
+  loginurl<span class="token operator">=</span><span class="token string">'https://course.e.buaa.edu.cn/opencourse/course/list?'</span><span class="token operator">+</span>urlencode<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json, text/javascript, */*; q=0.01'</span><span class="token punctuation">,</span>
+        <span class="token string">'Accept-Encoding'</span><span class="token punctuation">:</span> <span class="token string">'gzip, deflate, br'</span><span class="token punctuation">,</span>
+        <span class="token string">'Host'</span><span class="token punctuation">:</span><span class="token string">'course.e.buaa.edu.cn'</span><span class="token punctuation">,</span>
+        <span class="token string">'Connection'</span><span class="token punctuation">:</span> <span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
+        <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36'</span><span class="token punctuation">,</span>
+        <span class="token string">'Cookie'</span><span class="token punctuation">:</span> （<span class="token comment" spellcheck="true">#这个我可不能告诉你） ,</span>
+        <span class="token string">'Referer'</span><span class="token punctuation">:</span> <span class="token string">'https://course.e.buaa.edu.cn/opencourse/course/list'</span><span class="token punctuation">,</span>
+        <span class="token string">'X-Requested-With'</span><span class="token punctuation">:</span> <span class="token string">'XMLHttpRequest'</span>
+    <span class="token punctuation">}</span>     <span class="token comment" spellcheck="true">#我是老老实实按照它的请求写的，当然少写几个也可能没啥问题</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        login<span class="token operator">=</span>s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>loginurl<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'status code:'</span><span class="token punctuation">,</span> login<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> login<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> login<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> ConnectionError<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> None
+
+<span class="token comment" spellcheck="true">#返回generator，当前页上的所有课程</span>
+<span class="token keyword">def</span> <span class="token function">parse_page</span><span class="token punctuation">(</span>pagenumber<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    text<span class="token operator">=</span>get_one_page<span class="token punctuation">(</span>pagenumber<span class="token punctuation">)</span>
+    data <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> data<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">yield</span> <span class="token punctuation">{</span>
+            <span class="token string">'Type'</span><span class="token punctuation">:</span>item<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'courseType'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'Title'</span><span class="token punctuation">:</span>item<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'url'</span><span class="token punctuation">:</span><span class="token string">"https://course.e.buaa.edu.cn/opencourse/course/detail/"</span><span class="token operator">+</span>str<span class="token punctuation">(</span>item<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'Teacher'</span><span class="token punctuation">:</span>item<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'teachers'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">#以字符串形式返回当前页的课程</span>
+<span class="token keyword">def</span> <span class="token function">each_page_content</span><span class="token punctuation">(</span>pagenumber<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    content <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> parse_page<span class="token punctuation">(</span>pagenumber<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        content<span class="token punctuation">.</span>append<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> content
+
+<span class="token comment" spellcheck="true">#主程序</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    pool <span class="token operator">=</span> Pool<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">#多线程，这里数据就几千条，其实没必要</span>
+    content<span class="token operator">=</span>list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    result<span class="token operator">=</span>pool<span class="token punctuation">.</span>map<span class="token punctuation">(</span>each_page_content<span class="token punctuation">,</span> <span class="token punctuation">[</span>i  <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        content<span class="token operator">=</span>content<span class="token operator">+</span>result<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+    pool<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    pool<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'beihangcourses.txt'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> item <span class="token keyword">in</span> content<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>item<span class="token punctuation">,</span> ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>                   <span class="token comment" spellcheck="true">#储存为字典形式运行结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：<br></p>
+<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/%E8%AF%BE%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%9C.webp" alt><br></p>
+<h3 id="download-courses-py">3.3.2&emsp;download_courses.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> os
+<span class="token keyword">class</span> <span class="token class-name">Login</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>                       <span class="token comment" spellcheck="true">#模拟登录北航vpn模块</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36'</span><span class="token punctuation">,</span>
+            <span class="token string">'Host'</span><span class="token punctuation">:</span> <span class="token string">'e.buaa.edu.cn'</span>
+        <span class="token punctuation">}</span>
+        self<span class="token punctuation">.</span>login_url <span class="token operator">=</span> <span class="token string">'https://e.buaa.edu.cn/users/sign_in'</span>
+        self<span class="token punctuation">.</span>session <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">"beihangcourses.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 读取之前保存的文件</span>
+        str <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将txt文件的所有内容读入到字符串str中</span>
+        a <span class="token operator">=</span> str<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>content <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> item <span class="token keyword">in</span> a<span class="token punctuation">:</span>
+            item <span class="token operator">=</span> eval<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>content<span class="token punctuation">.</span>append<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">token</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> self<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>self<span class="token punctuation">.</span>login_url<span class="token punctuation">,</span> headers<span class="token operator">=</span>self<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">.</span>text
+        soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>response<span class="token punctuation">,</span> <span class="token string">'lxml'</span><span class="token punctuation">)</span>
+        token<span class="token operator">=</span>soup<span class="token punctuation">.</span>find<span class="token punctuation">(</span>attrs<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'authenticity_token'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>attrs<span class="token punctuation">[</span><span class="token string">'value'</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">#获取登录authenticity_token</span>
+        <span class="token keyword">return</span> token
+
+    <span class="token keyword">def</span> <span class="token function">login</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> email<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        post_data <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'utf8'</span><span class="token punctuation">:</span> <span class="token string">'✓'</span><span class="token punctuation">,</span>
+            <span class="token string">'authenticity_token'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>token<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'user[login]'</span><span class="token punctuation">:</span> email<span class="token punctuation">,</span>
+            <span class="token string">'user[password]'</span><span class="token punctuation">:</span> password<span class="token punctuation">,</span>
+            <span class="token string">'commit'</span><span class="token punctuation">:</span> <span class="token string">'登录 Login'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+        response <span class="token operator">=</span> self<span class="token punctuation">.</span>session<span class="token punctuation">.</span>post<span class="token punctuation">(</span>self<span class="token punctuation">.</span>login_url<span class="token punctuation">,</span> data<span class="token operator">=</span>post_data<span class="token punctuation">,</span> headers<span class="token operator">=</span>self<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'status_code:'</span><span class="token punctuation">,</span>response<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> response<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'\n登录北航vpn成功'</span><span class="token punctuation">)</span>
+
+
+    <span class="token keyword">def</span> <span class="token function">logincourse</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>       <span class="token comment" spellcheck="true">#登录课程中心以下载资源</span>
+        self<span class="token punctuation">.</span>headers1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+        self<span class="token punctuation">.</span>post_url <span class="token operator">=</span> <span class="token string">'https://sso-443.e.buaa.edu.cn/login?service=https%3A%2F%2Fcourse.e.buaa.edu.cn%2Fsakai-login-tool%2Fcontainer'</span>
+        response1 <span class="token operator">=</span> self<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>self<span class="token punctuation">.</span>post_url<span class="token punctuation">,</span> headers<span class="token operator">=</span>self<span class="token punctuation">.</span>headers1<span class="token punctuation">)</span>
+
+
+    <span class="token keyword">def</span> <span class="token function">view_page</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>page<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        headers<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'Cookie'</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true">#这个也不能告诉你吧}</span>
+        result<span class="token operator">=</span>self<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>self<span class="token punctuation">.</span>content<span class="token punctuation">[</span>page<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'url'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span><span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result
+
+<span class="token keyword">def</span> <span class="token function">get_data</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">:</span>          <span class="token comment" spellcheck="true">#下载某一课程的资源</span>
+    code<span class="token operator">=</span>login<span class="token punctuation">.</span>view_page<span class="token punctuation">(</span>page<span class="token punctuation">)</span>
+    soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>code<span class="token punctuation">,</span> <span class="token string">'lxml'</span><span class="token punctuation">)</span>
+    token <span class="token operator">=</span> soup<span class="token punctuation">.</span>find<span class="token punctuation">(</span>attrs<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'bd'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>contents
+    introduction<span class="token operator">=</span>re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">'&lt;[^&lt;]+?>'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> str<span class="token punctuation">(</span>token<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dagang<span class="token operator">=</span>re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">'&lt;[^&lt;]+?>'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> str<span class="token punctuation">(</span>token<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ziyuan<span class="token operator">=</span>token<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span>
+    teacher_info<span class="token operator">=</span>re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">'&lt;[^&lt;]+?>'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> str<span class="token punctuation">(</span>token<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    file_name<span class="token operator">=</span>validateTitle<span class="token punctuation">(</span>login<span class="token punctuation">.</span>content<span class="token punctuation">[</span>page<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"Title"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    folder_path <span class="token operator">=</span> <span class="token string">"E:/course_data/"</span> <span class="token operator">+</span> file_name <span class="token operator">+</span> <span class="token string">"/"</span>
+    <span class="token keyword">if</span> str<span class="token punctuation">(</span>ziyuan<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'&lt;div>无&lt;/div>'</span><span class="token punctuation">:</span>
+        folder_path<span class="token operator">=</span><span class="token string">"E:/course_data/"</span> <span class="token operator">+</span> file_name <span class="token operator">+</span><span class="token string">"（无课件）"</span><span class="token operator">+</span><span class="token string">"/"</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>folder_path<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>folder_path<span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>folder_path<span class="token punctuation">)</span>
+
+
+    <span class="token keyword">with</span> open<span class="token punctuation">(</span>file_name<span class="token operator">+</span><span class="token string">'.txt'</span><span class="token punctuation">,</span> <span class="token string">'w+'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 课程信息写入</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>introduction<span class="token operator">+</span><span class="token string">'\n\n'</span><span class="token operator">+</span>dagang<span class="token operator">+</span><span class="token string">'\n\n'</span><span class="token operator">+</span>teacher_info<span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    pattern <span class="token operator">=</span> re<span class="token punctuation">.</span>compile<span class="token punctuation">(</span><span class="token string">'.*?&lt;a href="(.*?)">(.*?)&lt;/a>'</span><span class="token punctuation">,</span> re<span class="token punctuation">.</span>S<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># re.S: .能匹配换行</span>
+    downloadurl <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> str<span class="token punctuation">(</span>ziyuan<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>file_name<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>downloadurl<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'请先登录后再查看资源！'</span><span class="token punctuation">,</span> str<span class="token punctuation">(</span>downloadurl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">==</span>None<span class="token punctuation">:</span>
+        login<span class="token punctuation">.</span>login<span class="token punctuation">(</span>email<span class="token operator">=</span><span class="token string">'#输入你的账号'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'#输入密码'</span><span class="token punctuation">)</span>
+        login<span class="token punctuation">.</span>logincourse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        code <span class="token operator">=</span> login<span class="token punctuation">.</span>view_page<span class="token punctuation">(</span>page<span class="token punctuation">)</span>
+        soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>code<span class="token punctuation">,</span> <span class="token string">'lxml'</span><span class="token punctuation">)</span>
+        token <span class="token operator">=</span> soup<span class="token punctuation">.</span>find<span class="token punctuation">(</span>attrs<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'bd'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>contents
+        ziyuan <span class="token operator">=</span> token<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span>
+        downloadurl <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> str<span class="token punctuation">(</span>ziyuan<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> file <span class="token keyword">in</span> downloadurl<span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            r <span class="token operator">=</span> login<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>file<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>file<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token boolean">False</span><span class="token punctuation">:</span>
+            <span class="token keyword">try</span><span class="token punctuation">:</span>
+                <span class="token keyword">with</span> open<span class="token punctuation">(</span>validateTitle<span class="token punctuation">(</span>file<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"wb"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> code<span class="token punctuation">:</span>
+                    code<span class="token punctuation">.</span>write<span class="token punctuation">(</span>r<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"dowload over:"</span><span class="token operator">+</span>file<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">except</span><span class="token punctuation">:</span>
+                <span class="token keyword">continue</span>
+
+
+<span class="token keyword">def</span> <span class="token function">validateTitle</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true">#  规范奇葩的文件名和课程名！</span>
+    rstr <span class="token operator">=</span> r<span class="token string">'[(\s* )(/)(\\)(\:)(\*)(\?)(\")(\&lt;)(\>)(\|)]'</span>  <span class="token comment" spellcheck="true"># '/ \ : * ? " &lt; > |'</span>
+    new_title <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span>rstr<span class="token punctuation">,</span> <span class="token string">"_"</span><span class="token punctuation">,</span> title<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 替换为下划线</span>
+    <span class="token keyword">return</span> new_title
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true">#主程序</span>
+    login <span class="token operator">=</span> Login<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    login<span class="token punctuation">.</span>login<span class="token punctuation">(</span>email<span class="token operator">=</span><span class="token string">'#输入你的账号'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'#输入密码'</span><span class="token punctuation">)</span>
+    login<span class="token punctuation">.</span>logincourse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token comment" spellcheck="true">#起始下载项,#看你想下载多少):</span>
+        get_data<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'下载完毕'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="几点说明">3.3.3&emsp;几点说明</h3><ul>
+<li>requests.Session()用来维持一次登录，这个很重要，不然每次都是相互独立的请求；</li>
+<li>validateTitle是我后来加的，程序各种报错发现是一些课程名竟然有些./\符号；</li>
+<li>我用的是<a href="http://www.runoob.com/regexp/regexp-syntax.html" target="_blank" rel="noopener">正则表达式</a>，强烈推荐学习，让你的搜索能力一夜猛增；</li>
+<li>写了能用我就懒得改了，改是肯定有很多地方能改清晰简洁点的；</li>
+<li>判断的地方有待完善，运行太长时有时还是会出现“请先登录后再查看资源”提示</li>
+</ul>
+<h1 id="总结">4&emsp;总结</h1><p>学习爬虫中的第一个小练习，也是第一篇有点内容的博客，以后有空会进一步学习下验证码的识别、app的爬取、分布式爬虫等知识，时间有限，下一个练习不知道啥时才能做完- -    博客坚持2周一篇，这几天花的时间多了点。</p>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2019-03-21-python-pa-chong-ru-men-lian-xi/">https://chengpengzhao.com/2019-03-21-python-pa-chong-ru-men-lian-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/%E7%88%AC%E8%99%AB/">
+              <span class="chip bg-color">爬虫</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2019-03-21T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2019-04-06-ri-ben-yu-dezuo-wen/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/IMG_1927.webp" class="responsive-img" alt="日本語で作文——文章を書こう">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">日本語で作文——文章を書こう</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;漢字と符号及び原稿用紙の使い方について1.1&emsp;表示体系
+漢字：　　音読み、訓読み $ \begin{cases} 和語：&amp; \text{畳、下駄…}  \\ 漢語：&amp; \text{就職、拡大…} \e
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-04-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    语言
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E6%97%A5%E6%9C%AC%E8%AA%9E/" class="post-category">
+                                    日本語
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%86%99%E4%BD%9C/">
+                        <span class="chip bg-color">写作</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019-03-18-hello-world/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store/img/IMG_1929.webp" class="responsive-img" alt="Welcome to CP Zhao's Blog">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Welcome to CP Zhao's Blog</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;总算把博客建的差不多了!&emsp;&emsp;作为一个非计算机专业的萌新来说，自己搭一个博客真的是一个痛苦的过程，面对一排排的html代码还有json、css文件，简直不知道该干嘛，说实话我现在想改个字体大小都找不到地方，凑
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    博客
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%97%A5%E5%BF%97/">
+                        <span class="chip bg-color">日志</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

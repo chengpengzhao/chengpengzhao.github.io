@@ -1,0 +1,1888 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Vim升级NeoVim，再到SpaceVim, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;Vim的麻烦之处Vim用了很长一段时间，搭配各种插件、学习VimScript等也逐步积累了一些配置。但随着使用场景重心转移到C/C++项目上，感觉YCM(YouCompleteMe)、ctags(vim-gutentags)等">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Vim升级NeoVim，再到SpaceVim | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Vim升级NeoVim，再到SpaceVim
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/Vim/">
+              <span class="chip bg-color">Vim</span>
+            </a>
+            
+            <a href="/tags/SpaceVim/">
+              <span class="chip bg-color">SpaceVim</span>
+            </a>
+            
+            <a href="/tags/ccls/">
+              <span class="chip bg-color">ccls</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2021-10-06
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2021-10-06
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          4.5k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          20 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Vim的麻烦之处">1&emsp;Vim的麻烦之处</h1><p>Vim用了很长一段时间，搭配各种插件、学习VimScript等也逐步<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener">积累</a>了一些配置。但随着使用场景重心转移到C/C++项目上，感觉YCM(YouCompleteMe)、ctags(vim-gutentags)等插件有点力不从心，有时跳转不到正确的位置、有时没法提供想要的补全…<br>网上冲浪搜寻解决方案时看到Martins的<a href="https://martins3.github.io/My-Linux-Config/nvim.html" target="_blank" rel="noopener">这篇文章</a>，顿时觉得豁然开朗，于是又花了一阵子折腾，结果还算比较满意。</p>
+<h1 id="NeoVim、SpaceVim">2&emsp;NeoVim、SpaceVim</h1><p>让我们一步一步进行升级，首先对于最基本的Vim，配置文件常用位置为<code>~/.vimrc</code>，当然也可以通过如下方式自定义路径：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 个人vimrc文件配置路径</span>
+<span class="token function">export</span> VIMINIT<span class="token operator">=</span><span class="token string">'source <span class="token variable">$MYVIMRC</span>'</span>
+<span class="token function">export</span> MYVIMRC<span class="token operator">=</span><span class="token variable">$mypath</span>/.vimrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><a href="https://neovim.io/charter/" target="_blank" rel="noopener">Neovim</a>是在Vim的基础上派生出的编辑器，兼容大部分Vim配置，据说在性能等方面和Vim有差异（我是没啥感觉），配置文件通常在<code>~/.config/nvim/init.vim</code>。如果使用SpaceVim的话，这个文件会有一行内容，我们不需要修改它：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">execute <span class="token string">'source'</span> fnamemodify<span class="token punctuation">(</span>expand<span class="token punctuation">(</span><span class="token string">'&lt;sfile>'</span><span class="token punctuation">)</span>, <span class="token string">':h'</span><span class="token punctuation">)</span>.<span class="token string">'/main.vim'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果称Vim和NeoVim为编辑器，那么<a href="https://spacevim.org/cn/quick-start-guide/" target="_blank" rel="noopener">SpaceVim</a>则更像是<strong>IDE</strong>，也就是说它默认就捆绑了各种插件、快捷键配置、显示外观等，不用自己再去一个个配置。就像官网描述的：</p>
+<blockquote>
+<p>SpaceVim 是一个社区驱动的模块化的 Vim IDE，以模块的方式组织管理插件以及相关配置， 为不同的语言开发量身定制了相关的开发模块，该模块提供代码自动补全， 语法检查、格式化、调试、REPL 等特性。用户仅需载入相关语言的模块即可得到一个开箱即用的 Vim IDE。  </p>
+</blockquote>
+<p>SpaceVim的配置在<code>~/.SpaceVim.d</code>文件夹中，比较方便建一个git仓库，我的相关文件树如下：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">.</span>
+├── autoload
+│   └── myspacevim.vim
+├── init.toml
+├── LICENSE
+├── plugin
+│   ├── coc.vim
+│   └── defx.vim
+├── Readme.md
+└── UltiSnips
+    ├── beancount.snippets
+    ├── cmake.snippets
+    ├── cpp.snippets
+    ├── c.snippets
+    ├── fortran.snippets
+    ├── html.snippets
+    ├── javascript.snippets
+    └── markdown.snippets<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="ccls、LSP">3&emsp;ccls、LSP</h1><p>LSP(Language Server Protocol)即语言服务器协议，微软提出的一个<a href="https://microsoft.github.io/language-server-protocol/" target="_blank" rel="noopener">主意</a>，意在让 editor 和 IDE 以后能够使用一个通用的组件来做代码分析。具体可以参考<a href="https://microsoft.github.io/language-server-protocol/overviews/lsp/overview/" target="_blank" rel="noopener">这里</a>，用过Vscode的应该都知道吧，我前一阵子才听说这个词语，真是孤陋寡闻了- -<br>ccls则是<code>C/C++/ObjC language server</code>，针对这几个语言提供了相应的自动补全、 查找定义、交叉引用、调用树/成员树/继承树、自动格式化、符号重命名等功能，在NeoVim中的实现为<a href="https://github.com/Maxattax97/coc-ccls" target="_blank" rel="noopener">coc-ccls</a>。</p>
+<h1 id="相关配置">4&emsp;相关配置</h1><p>快速了解了相关概念后，重要的是如何根据自己的使用偏好调整配置。首先，需要详细学习<a href="https://spacevim.org/cn/quick-start-guide/" target="_blank" rel="noopener">SpaceVim使用文档</a>，搞清楚和<code>&lt;Space&gt;</code>有关的快捷键以及常用插件的使用。如果是一个老Vim用户的话，还需要重点关注如何把之前的好用配置移到SpaceVim中，通常是编辑<code>~/.SpaceVim.d/autoload/myspacevim.vim</code>文件，利用<code>myspacevim#before()</code>和<code>myspacevim#after()</code>函数直接将原配置复制粘贴过来（需要注意两个函数的区别）。  </p>
+<p>用NAS之后习惯把所有东西只放在局域网中，git仓库也是用自建的Gogs服务而不是GitHub托管，下面还是贴一下自己现在的配置吧（凑凑字数）。</p>
+<h2 id="myspacevim-vim">4.1&emsp;myspacevim.vim</h2><p>大部分是我原来的Vim配置，小部分是沿用了Martins3大佬的配置，这里特别强调下<code>airline</code>部分是我自己调整后的SpaceVim状态栏设置，删去了原版不少自认为多余之处，自己用起来还挺舒服的。</p>
+<pre class="line-numbers language-vim"><code class="language-vim">func<span class="token operator">!</span> myspacevim#<span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> abort
+
+    <span class="token comment" spellcheck="true">"有时候在windows下编写的python脚本在linux下不能运行，因为^M的原因,设置格式为unix能够自动清除多余的^M</span>
+    <span class="token keyword">set</span> <span class="token builtin">fileformat</span><span class="token operator">=</span>unix
+    <span class="token keyword">set</span> <span class="token builtin">showmatch</span>       <span class="token comment" spellcheck="true">" 高亮显示匹配的括号</span>
+    <span class="token comment" spellcheck="true">"设置标记，三个{定义为标记，可用za折叠展开</span>
+    <span class="token keyword">set</span> <span class="token builtin">foldenable</span>
+    <span class="token keyword">set</span> <span class="token builtin">foldmethod</span><span class="token operator">=</span>marker
+    <span class="token builtin">autocmd</span> FileType <span class="token keyword">c</span><span class="token punctuation">,</span>cpp<span class="token punctuation">,</span><span class="token keyword">python</span> <span class="token keyword">set</span> <span class="token builtin">foldmethod</span><span class="token operator">=</span>indent <span class="token builtin">nofoldenable</span>
+    <span class="token comment" spellcheck="true">"解决乱码问题</span>
+    <span class="token keyword">set</span> <span class="token builtin">encoding</span><span class="token operator">=</span>utf<span class="token operator">-</span><span class="token number">8</span>
+    <span class="token keyword">set</span> <span class="token builtin">termencoding</span><span class="token operator">=</span>utf<span class="token operator">-</span><span class="token number">8</span>
+    <span class="token keyword">set</span> <span class="token builtin">fileencodings</span><span class="token operator">=</span>utf<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">,</span>gbk<span class="token punctuation">,</span>latin1
+    <span class="token keyword">set</span> <span class="token builtin">langmenu</span><span class="token operator">=</span>zh_CN<span class="token operator">.</span>UTF<span class="token operator">-</span><span class="token number">8</span>
+    <span class="token keyword">set</span> <span class="token builtin">helplang</span><span class="token operator">=</span><span class="token keyword">cn</span>
+    <span class="token keyword">set</span> <span class="token builtin">ttyfast</span>        <span class="token comment" spellcheck="true">"a fast terminal connection.</span>
+    <span class="token comment" spellcheck="true">"设置数字为十进制，防止&lt;C-a>&lt;C-x>修改时出现不希望的结果</span>
+    <span class="token keyword">set</span> <span class="token builtin">nrformats</span><span class="token operator">=</span>
+    <span class="token comment" spellcheck="true">"依文件类型设置自动缩进</span>
+    <span class="token keyword">filetype</span> plugin <span class="token keyword">on</span>
+    <span class="token keyword">filetype</span> indent <span class="token keyword">on</span>
+    <span class="token comment" spellcheck="true">"显示当前的行号(普通模式为相对)：</span>
+    <span class="token keyword">set</span> <span class="token builtin">ruler</span>
+    <span class="token keyword">set</span> <span class="token keyword">number</span>
+    <span class="token keyword">set</span> relativenumber
+    augroup relative_numbser
+        <span class="token builtin">autocmd</span><span class="token operator">!</span>
+        <span class="token builtin">autocmd</span> InsertEnter <span class="token operator">*</span> <span class="token punctuation">:</span><span class="token keyword">set</span> norelativenumber
+        <span class="token builtin">autocmd</span> InsertLeave <span class="token operator">*</span> <span class="token punctuation">:</span><span class="token keyword">set</span> relativenumber
+    augroup END
+    <span class="token comment" spellcheck="true">"显示行尾多余空格与tab符号</span>
+    <span class="token keyword">set</span> <span class="token builtin">listchars</span><span class="token operator">=</span><span class="token keyword">tab</span><span class="token punctuation">:</span>»<span class="token operator">-</span><span class="token punctuation">,</span>trail<span class="token punctuation">:</span>■
+    <span class="token keyword">set</span> <span class="token keyword">list</span>
+    <span class="token comment" spellcheck="true">"将制表符扩展为空格</span>
+    <span class="token keyword">set</span> <span class="token builtin">expandtab</span>
+    <span class="token comment" spellcheck="true">"设置编辑时制表符占用空格数</span>
+    <span class="token keyword">set</span> <span class="token builtin">tabstop</span><span class="token operator">=</span><span class="token number">4</span>
+    <span class="token comment" spellcheck="true">"设置格式化时制表符占用空格数</span>
+    <span class="token keyword">set</span> <span class="token builtin">shiftwidth</span><span class="token operator">=</span><span class="token number">4</span>
+    <span class="token comment" spellcheck="true">" 关闭softtabstop 永远不要将空格和tab混合输入</span>
+    <span class="token keyword">set</span> <span class="token builtin">softtabstop</span><span class="token operator">=</span><span class="token number">0</span>
+    <span class="token comment" spellcheck="true">"开启自动缩进</span>
+    <span class="token keyword">set</span> <span class="token builtin">autoindent</span>   <span class="token comment" spellcheck="true">" Indent at the same level of the previous line</span>
+    <span class="token comment" spellcheck="true">"开启智能对齐</span>
+    <span class="token keyword">set</span> <span class="token builtin">smartindent</span>
+    <span class="token comment" spellcheck="true">"设置使用 C/C++ 语言的自动缩进方式</span>
+    <span class="token keyword">set</span> <span class="token builtin">cindent</span>
+    <span class="token comment" spellcheck="true">"设置命令行的高度</span>
+    <span class="token keyword">set</span> <span class="token builtin">cmdheight</span><span class="token operator">=</span><span class="token number">1</span>
+    <span class="token comment" spellcheck="true">"设置大小写不敏感/当前为大写字母时调整为敏感/自动改动字母大小写</span>
+    <span class="token keyword">set</span> <span class="token builtin">ignorecase</span>
+    <span class="token keyword">set</span> <span class="token builtin">smartcase</span>
+    <span class="token keyword">set</span> <span class="token builtin">infercase</span>
+    <span class="token keyword">set</span> <span class="token builtin">smarttab</span>        <span class="token comment" spellcheck="true">" insert tabs on the start of a line according to context</span>
+    <span class="token keyword">set</span> <span class="token builtin">magic</span>
+    <span class="token comment" spellcheck="true">"单词自动补全功能,写博客时用,自定义词典可参考网上教程</span>
+    <span class="token string">""</span><span class="token keyword">set</span> <span class="token builtin">dictionary</span><span class="token operator">+=</span><span class="token operator">/</span>usr<span class="token operator">/</span>share<span class="token operator">/</span><span class="token builtin">dict</span><span class="token operator">/</span>american<span class="token operator">-</span>english
+    <span class="token keyword">set</span> <span class="token builtin">dictionary</span><span class="token operator">+=</span><span class="token operator">/</span>usr<span class="token operator">/</span>share<span class="token operator">/</span><span class="token builtin">dict</span><span class="token operator">/</span>engspchk<span class="token operator">-</span><span class="token builtin">dict</span>
+    <span class="token keyword">set</span> <span class="token builtin">completeopt</span><span class="token operator">+=</span>noinsert
+
+    <span class="token comment" spellcheck="true">".Md文件也能被识别为markdown</span>
+    <span class="token builtin">autocmd</span> BufNewFile<span class="token punctuation">,</span>BufRead <span class="token operator">*</span><span class="token operator">.</span>Md <span class="token keyword">set</span> <span class="token keyword">filetype</span><span class="token operator">=</span>markdown
+    <span class="token comment" spellcheck="true">"ejs识别为html</span>
+    <span class="token builtin">autocmd</span> BufNewFile<span class="token punctuation">,</span>BufRead <span class="token operator">*</span><span class="token operator">.</span>ejs <span class="token keyword">set</span> <span class="token keyword">filetype</span><span class="token operator">=</span>html
+    <span class="token comment" spellcheck="true">"Scons相关脚本识别为python</span>
+    <span class="token builtin">autocmd</span> BufNewFile<span class="token punctuation">,</span>BufRead SConstruct <span class="token keyword">set</span> <span class="token keyword">filetype</span><span class="token operator">=</span><span class="token keyword">python</span>
+    <span class="token builtin">autocmd</span> BufNewFile<span class="token punctuation">,</span>BufRead SConscript <span class="token keyword">set</span> <span class="token keyword">filetype</span><span class="token operator">=</span><span class="token keyword">python</span>
+
+    <span class="token comment" spellcheck="true">" 焦点消失的时候自动保存</span>
+    au FocusLost <span class="token operator">*</span> <span class="token punctuation">:</span><span class="token keyword">wa</span>
+    au FocusGained<span class="token punctuation">,</span>BufEnter <span class="token operator">*</span> <span class="token punctuation">:</span><span class="token keyword">checktime</span>
+    <span class="token comment" spellcheck="true">" 当文件被其他编辑器修改时，自动加载</span>
+    <span class="token keyword">set</span> <span class="token builtin">autowrite</span>
+    <span class="token keyword">set</span> <span class="token builtin">autoread</span>
+    <span class="token comment" spellcheck="true">" 重新映射 leader 键</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>mapleader <span class="token operator">=</span> <span class="token string">','</span>
+
+    <span class="token comment" spellcheck="true">" 让 leaderf 可以搜索 git 的 submodule，否则 submodule 的文件会被自动忽略</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>Lf_RecurseSubmodules <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>table_mode_corner<span class="token operator">=</span><span class="token string">'|'</span>
+
+    <span class="token comment" spellcheck="true">" 调节 window 大小</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>winresizer_start_key <span class="token operator">=</span> <span class="token string">'&lt;space>wa'</span>
+    <span class="token comment" spellcheck="true">" If you cancel and quit window resize mode by `q` (keycode 113)</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>winresizer_keycode_cancel <span class="token operator">=</span> <span class="token number">113</span>
+
+    <span class="token comment" spellcheck="true">" 让file tree 显示文件图标，需要 terminal 安装 nerd font</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>spacevim_enable_vimfiler_filetypeicon <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true">" 让 filetree 显示 git 的状态</span>
+    <span class="token comment" spellcheck="true">" let g:spacevim_enable_vimfiler_gitstatus = 1</span>
+
+    <span class="token comment" spellcheck="true">" 默认 markdown preview 在切换到其他的 buffer 或者 vim</span>
+    <span class="token comment" spellcheck="true">" 失去焦点的时候会自动关闭 preview</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>mkdp_auto_close <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment" spellcheck="true">" 书签选中之后自动关闭 quickfix window</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>bookmark_auto_close <span class="token operator">=</span> <span class="token number">1</span>
+
+    <span class="token comment" spellcheck="true">" vim-lsp-cxx-highlight 和这个选项存在冲突</span>
+    <span class="token comment" spellcheck="true">" let g:rainbow_active = 1</span>
+
+
+    <span class="token comment" spellcheck="true">" 让光标自动进入到popup window 中间</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>git_messenger_always_into_popup <span class="token operator">=</span> v<span class="token punctuation">:</span>true
+    <span class="token comment" spellcheck="true">" 设置映射规则，和 spacevim 保持一致</span>
+    <span class="token keyword">call</span> SpaceVim#custom#<span class="token function">SPC</span><span class="token punctuation">(</span><span class="token string">'nnoremap'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'m'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'GitMessenger'</span><span class="token punctuation">,</span> <span class="token string">'show commit message in popup window'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">call</span> SpaceVim#custom#<span class="token function">SPC</span><span class="token punctuation">(</span><span class="token string">'nnoremap'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'FloatermNew lazygit'</span><span class="token punctuation">,</span> <span class="token string">'open lazygit in floaterm'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">" 和 sourcetrail 配合使用</span>
+    <span class="token comment" spellcheck="true">"call SpaceVim#custom#SPC(</span><span class="token string">'nnoremap'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'SourcetrailStartServer'</span><span class="token punctuation">,</span> <span class="token string">'start sourcetrail server'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">"call SpaceVim#custom#SPC(</span><span class="token string">'nnoremap'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'SourcetrailActivateToken'</span><span class="token punctuation">,</span> <span class="token string">'sync sourcetrail with neovim'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">"call SpaceVim#custom#SPC(</span><span class="token string">'nnoremap'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'SourcetrailRefresh'</span><span class="token punctuation">,</span> <span class="token string">'sourcetrail server'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">" 设置默认的pdf阅览工具</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>vimtex_view_method <span class="token operator">=</span> <span class="token string">'zathura'</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>vimtex_syntax_conceal_default <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment" spellcheck="true">" 关闭所有隐藏设置</span>
+        <span class="token keyword">let</span> g<span class="token punctuation">:</span>tex_conceal <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token comment" spellcheck="true">" 实现一键运行各种文件，适合非交互式的，少量的代码，比如 leetcode {{{</span>
+    func<span class="token operator">!</span> <span class="token function">QuickRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        exec <span class="token string">"w"</span>
+        <span class="token keyword">let</span> ext <span class="token operator">=</span> <span class="token function">expand</span><span class="token punctuation">(</span><span class="token string">"%:e"</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> <span class="token keyword">file</span> <span class="token operator">=</span> <span class="token function">expand</span><span class="token punctuation">(</span><span class="token string">"%"</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> ext <span class="token operator">==#</span> <span class="token string">"sh"</span>
+            exec <span class="token string">"!bash %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"cpp"</span>
+            exec <span class="token string">"!clang++ % -Wall -g -std=c++17 -o %&lt;.out &amp;&amp; ./%&lt;.out"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"c"</span>
+            exec <span class="token string">"!clang % -Wall -g -std=c11 -o %&lt;.out &amp;&amp; ./%&lt;.out"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"java"</span>
+            <span class="token keyword">let</span> classPath <span class="token operator">=</span> <span class="token function">expand</span><span class="token punctuation">(</span><span class="token string">'%:h'</span><span class="token punctuation">)</span>
+            <span class="token keyword">let</span> className <span class="token operator">=</span> <span class="token function">expand</span><span class="token punctuation">(</span><span class="token string">'%:p:t:r'</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true">" echo classPath</span>
+            <span class="token comment" spellcheck="true">" echo className</span>
+            exec <span class="token string">"!javac %"</span>
+            exec <span class="token string">"!java -classpath "</span> <span class="token operator">.</span> classPath <span class="token operator">.</span> <span class="token string">" "</span> <span class="token operator">.</span> className
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"go"</span>
+            exec <span class="token string">"!go run %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"js"</span>
+            exec <span class="token string">"!node %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"bin"</span>
+            exec <span class="token string">"!readelf -h %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"py"</span>
+            exec <span class="token string">"!python3 %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"vim"</span>
+            exec <span class="token string">"so %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"html"</span>
+            exec <span class="token string">"!microsoft-edge %"</span>
+        <span class="token keyword">elseif</span> ext <span class="token operator">==#</span> <span class="token string">"rs"</span>
+            <span class="token keyword">call</span> <span class="token function">CargoRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span>
+            echo <span class="token string">"Check file type !"</span>
+        <span class="token keyword">endif</span>
+        echo <span class="token string">'done'</span>
+    <span class="token keyword">endf</span>
+    <span class="token string">"===============================插件配置======================================"</span>
+    <span class="token comment" spellcheck="true">" floaterm - 浮动终端窗口</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>floaterm_keymap_prev   <span class="token operator">=</span> <span class="token string">'&lt;C-p>'</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>floaterm_keymap_new    <span class="token operator">=</span> <span class="token string">'&lt;C-n>'</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>floaterm_keymap_toggle <span class="token operator">=</span> <span class="token string">'&lt;F5>'</span>
+
+    <span class="token comment" spellcheck="true">"gutentags配置，由于依靠compile_command.json总是跳转到安装目录，不方便编辑源文件，还是用ctags吧</span>
+    <span class="token comment" spellcheck="true">" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_modules <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'ctags'</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_project_root <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'.root'</span><span class="token punctuation">,</span> <span class="token string">'.svn'</span><span class="token punctuation">,</span> <span class="token string">'.git'</span><span class="token punctuation">,</span> <span class="token string">'.hg'</span><span class="token punctuation">,</span> <span class="token string">'.project'</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_ctags_exclude<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'.ccls-cache'</span><span class="token punctuation">,</span><span class="token string">'build'</span><span class="token punctuation">,</span><span class="token string">'install'</span><span class="token punctuation">]</span>
+    <span class="token comment" spellcheck="true">" 所生成的数据文件的名称</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_ctags_tagfile <span class="token operator">=</span> <span class="token string">'.tags'</span>
+    <span class="token comment" spellcheck="true">" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录</span>
+    <span class="token keyword">let</span> s<span class="token punctuation">:</span>vim_tags <span class="token operator">=</span> <span class="token function">expand</span><span class="token punctuation">(</span><span class="token string">'~/.cache/tags'</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_cache_dir <span class="token operator">=</span> s<span class="token punctuation">:</span>vim_tags
+    <span class="token string">" 检测 ~/.cache/tags 不存在就新建 "</span>
+    <span class="token keyword">if</span> <span class="token operator">!</span><span class="token function">isdirectory</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span>vim_tags<span class="token punctuation">)</span>
+       <span class="token keyword">silent</span><span class="token operator">!</span> <span class="token keyword">call</span> <span class="token function">mkdir</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span>vim_tags<span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span>
+    <span class="token keyword">endif</span>
+    <span class="token comment" spellcheck="true">" 配置 ctags 的参数</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_ctags_extra_args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'--fields=+niazS'</span><span class="token punctuation">,</span> <span class="token string">'--extra=+q'</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_ctags_extra_args <span class="token operator">+=</span> <span class="token punctuation">[</span><span class="token string">'--c++-kinds=+px'</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>gutentags_ctags_extra_args <span class="token operator">+=</span> <span class="token punctuation">[</span><span class="token string">'--c-kinds=+px'</span><span class="token punctuation">]</span>
+
+    <span class="token comment" spellcheck="true">" airline代替statusline，部分配置在bootsrap_after</span>
+    <span class="token keyword">call</span> SpaceVim#layers#<span class="token function">disable</span><span class="token punctuation">(</span><span class="token string">'core#statusline'</span><span class="token punctuation">)</span>
+    <span class="token keyword">call</span> SpaceVim#layers#<span class="token function">disable</span><span class="token punctuation">(</span><span class="token string">'core#tabline'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">" 关闭最右边栏</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>airline#extensions#whitespace#enabled <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment" spellcheck="true">" 不显示git分支</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>airline#extensions#branch#enabled <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment" spellcheck="true">" 去掉section B和X</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>airline_section_b <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token comment" spellcheck="true">"let g:airline_section_x = </span><span class="token string">''</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>airline_section_x <span class="token operator">=</span> <span class="token string">'%-0.25{getcwd()}'</span>
+<span class="token keyword">endf</span>
+
+
+func<span class="token operator">!</span> myspacevim#<span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">)</span> abort
+
+    <span class="token comment" spellcheck="true">"一般关闭paste模式，该模式下有的map会出问题</span>
+    <span class="token keyword">set</span> <span class="token builtin">nopaste</span>
+    <span class="token comment" spellcheck="true">"不自动分行(但可以分行显示）</span>
+    <span class="token keyword">set</span> <span class="token builtin">wrap</span>
+    <span class="token keyword">set</span> <span class="token builtin">textwidth</span><span class="token operator">=</span><span class="token number">0</span>
+    <span class="token comment" spellcheck="true">" Search mappings: These will make it so that going to the next one in a</span>
+    <span class="token comment" spellcheck="true">" search will center on the line it's found in.</span>
+    nnoremap <span class="token keyword">n</span> nzzzv
+    nnoremap <span class="token keyword">N</span> Nzzzv
+    <span class="token string">"Ctrl+Space单词补全"</span>
+    <span class="token comment" spellcheck="true">"WSL系统中此快捷键不管用，故换成下面一条</span>
+    <span class="token comment" spellcheck="true">"inoremap &lt;C-@> &lt;C-x>&lt;C-k></span>
+    inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">f</span><span class="token operator">></span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">x</span><span class="token operator">></span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">k</span><span class="token operator">></span>
+    <span class="token comment" spellcheck="true">"保存文件</span>
+    nnoremap <span class="token operator">&lt;</span>Leader<span class="token operator">></span><span class="token keyword">w</span>  <span class="token punctuation">:</span><span class="token keyword">w</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token comment" spellcheck="true">"选择全文</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>M<span class="token operator">-</span>a<span class="token operator">></span> <span class="token operator">&lt;</span>Esc<span class="token operator">></span>ggVG<span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token comment" spellcheck="true">"退出</span>
+    nnoremap  qw    <span class="token punctuation">:</span><span class="token keyword">wq</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    nnoremap  qq    <span class="token punctuation">:</span><span class="token keyword">q</span><span class="token operator">!</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token comment" spellcheck="true">"插入模式下移动光标</span>
+    inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">k</span><span class="token operator">></span> <span class="token operator">&lt;</span>Up<span class="token operator">></span>
+    inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">h</span><span class="token operator">></span> <span class="token operator">&lt;</span>Left<span class="token operator">></span>
+    inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">l</span><span class="token operator">></span> <span class="token operator">&lt;</span>Right<span class="token operator">></span>
+    inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">j</span><span class="token operator">></span> <span class="token operator">&lt;</span>Down<span class="token operator">></span>
+    <span class="token comment" spellcheck="true">"向后删除 *为向前删除，shell通用</span>
+    inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">d</span><span class="token operator">></span> <span class="token operator">&lt;</span>Delete<span class="token operator">></span>
+    <span class="token comment" spellcheck="true">"超级用户权限编辑，出现权限不够无法保存时命令模式输入sw即可</span>
+    cnoremap <span class="token builtin">sw</span> <span class="token keyword">w</span> <span class="token operator">!</span>sudo tee <span class="token operator">></span><span class="token operator">/</span>dev<span class="token operator">/</span>null <span class="token operator">%</span>
+    <span class="token comment" spellcheck="true">"可视模式下用*和#查找选中文本</span>
+    <span class="token keyword">xnoremap</span> <span class="token operator">*</span> <span class="token punctuation">:</span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">u</span><span class="token operator">></span><span class="token keyword">call</span> <span class="token operator">&lt;</span>SID<span class="token operator">></span><span class="token function">VsetSearch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>CR<span class="token operator">></span><span class="token operator">/</span><span class="token operator">&lt;</span>C<span class="token operator">-</span>R<span class="token operator">>=</span>@<span class="token operator">/</span><span class="token operator">&lt;</span>CR<span class="token operator">></span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token keyword">xnoremap</span> # <span class="token punctuation">:</span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">u</span><span class="token operator">></span><span class="token keyword">call</span> <span class="token operator">&lt;</span>SID<span class="token operator">></span><span class="token function">VsetSearch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>CR<span class="token operator">>?</span><span class="token operator">&lt;</span>C<span class="token operator">-</span>R<span class="token operator">>=</span>@<span class="token operator">/</span><span class="token operator">&lt;</span>CR<span class="token operator">></span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token keyword">function</span><span class="token operator">!</span> s<span class="token punctuation">:</span><span class="token function">VsetSearch</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> temp<span class="token operator">=</span>@s
+        norm<span class="token operator">!</span> gv<span class="token comment" spellcheck="true">"sy</span>
+        <span class="token keyword">let</span> @<span class="token operator">/</span> <span class="token operator">=</span> <span class="token string">'\V'</span> <span class="token operator">.</span> <span class="token function">substitute</span><span class="token punctuation">(</span><span class="token function">escape</span><span class="token punctuation">(</span>@s<span class="token punctuation">,</span> <span class="token string">'/\'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">'\\n'</span><span class="token punctuation">,</span><span class="token string">'g'</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> @s<span class="token operator">=</span> temp
+    <span class="token keyword">endfunction</span>
+    <span class="token string">""</span> Switching windows
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">j</span><span class="token operator">></span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">j</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">k</span><span class="token operator">></span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">k</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">l</span><span class="token operator">></span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">l</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">h</span><span class="token operator">></span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">h</span>
+    <span class="token string">""</span> Move <span class="token keyword">visual</span> block
+    vnoremap K <span class="token punctuation">:</span><span class="token keyword">m</span> '<span class="token operator">&lt;</span><span class="token operator">-</span><span class="token number">2</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>gv<span class="token operator">=</span>gv
+    vnoremap J <span class="token punctuation">:</span><span class="token keyword">m</span> '<span class="token operator">></span><span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>gv<span class="token operator">=</span>gv
+    <span class="token comment" spellcheck="true">"关闭高亮直到下一次查找</span>
+    cnoremap <span class="token builtin">hl</span>  <span class="token keyword">nohlsearch</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+
+    <span class="token comment" spellcheck="true">" &lt;F3> 打开文件树</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>vista_sidebar_position <span class="token operator">=</span> <span class="token string">"vertical topleft"</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>vista_default_executive <span class="token operator">=</span> <span class="token string">'coc'</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>vista_finder_alternative_executives <span class="token operator">=</span> <span class="token string">'ctags'</span>
+    nnoremap  <span class="token operator">&lt;</span>F2<span class="token operator">></span>  <span class="token punctuation">:</span>Vista<span class="token operator">!</span><span class="token operator">!</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    nnoremap  <span class="token operator">&lt;</span>F4<span class="token operator">></span>  <span class="token punctuation">:</span><span class="token keyword">call</span> <span class="token function">QuickRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token comment" spellcheck="true">" &lt;F5> floaterm toggle</span>
+    <span class="token comment" spellcheck="true">" &lt;F7> 打开历史记录</span>
+    tnoremap  <span class="token operator">&lt;</span>Esc<span class="token operator">></span>  <span class="token operator">&lt;</span>C<span class="token operator">-</span>\<span class="token operator">></span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">n</span><span class="token operator">></span>
+
+    <span class="token comment" spellcheck="true">" 窗口间切换</span>
+    <span class="token comment" spellcheck="true">"map &lt;Tab> :wincmd w&lt;CR></span>
+
+    <span class="token comment" spellcheck="true">" coc-smartf配置，press &lt;esc> to cancel.</span>
+    nmap <span class="token keyword">f</span> <span class="token operator">&lt;</span>Plug<span class="token operator">></span><span class="token punctuation">(</span>coc<span class="token operator">-</span>smartf<span class="token operator">-</span>forward<span class="token punctuation">)</span>
+    nmap F <span class="token operator">&lt;</span>Plug<span class="token operator">></span><span class="token punctuation">(</span>coc<span class="token operator">-</span>smartf<span class="token operator">-</span>backward<span class="token punctuation">)</span>
+    nmap <span class="token punctuation">;</span> <span class="token operator">&lt;</span>Plug<span class="token operator">></span><span class="token punctuation">(</span>coc<span class="token operator">-</span>smartf<span class="token operator">-</span>repeat<span class="token punctuation">)</span>
+    nmap <span class="token punctuation">,</span> <span class="token operator">&lt;</span>Plug<span class="token operator">></span><span class="token punctuation">(</span>coc<span class="token operator">-</span>smartf<span class="token operator">-</span>repeat<span class="token operator">-</span>opposite<span class="token punctuation">)</span>
+    augroup Smartf
+      <span class="token builtin">autocmd</span> User SmartfEnter <span class="token punctuation">:</span><span class="token builtin">hi</span> Conceal ctermfg<span class="token operator">=</span><span class="token number">220</span> guifg<span class="token operator">=</span>pink
+      <span class="token builtin">autocmd</span> User SmartfLeave <span class="token punctuation">:</span><span class="token builtin">hi</span> Conceal ctermfg<span class="token operator">=</span><span class="token number">239</span> guifg<span class="token operator">=</span>#<span class="token number">504945</span>
+    augroup end
+
+    <span class="token comment" spellcheck="true">"目录栏设置相对行号</span>
+    <span class="token builtin">autocmd</span> FileType defx <span class="token keyword">setlocal</span> relativenumber
+
+    <span class="token comment" spellcheck="true">"同时显示git信息和line number</span>
+    <span class="token keyword">set</span> signcolumn<span class="token operator">=</span>yes
+    <span class="token string">"===============================插件配置======================================"</span>
+    <span class="token comment" spellcheck="true">" vim-beanCount</span>
+    <span class="token comment" spellcheck="true">"path to your root beancount file</span>
+    <span class="token keyword">let</span> <span class="token keyword">b</span><span class="token punctuation">:</span>beancount_root<span class="token operator">=</span> <span class="token string">'~/Desktop/repositories/beanCount_zcp/zcp.bean'</span>
+    <span class="token comment" spellcheck="true">" default or chunks</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>beancount_account_completion<span class="token operator">=</span> <span class="token string">'default'</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>beancount_separator_col<span class="token operator">=</span> <span class="token number">10</span>
+    <span class="token comment" spellcheck="true">" If non-zero, accounts higher down the hierarchy will be listed first as completions.</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>beancount_detailed_first <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token builtin">autocmd</span> Filetype beancount inoremap <span class="token operator">.</span> <span class="token operator">.</span><span class="token operator">&lt;</span>C<span class="token operator">-</span>\<span class="token operator">></span><span class="token operator">&lt;</span>C<span class="token operator">-</span>O<span class="token operator">></span><span class="token punctuation">:</span>AlignCommodity<span class="token operator">&lt;</span>CR<span class="token operator">></span>
+    <span class="token builtin">autocmd</span> Filetype beancount inoremap <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">o</span><span class="token operator">></span> <span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">x</span><span class="token operator">></span><span class="token operator">&lt;</span>C<span class="token operator">-</span>O<span class="token operator">></span>
+
+    <span class="token comment" spellcheck="true">" vim-airline</span>
+    <span class="token comment" spellcheck="true">" 去掉LN显示</span>
+    <span class="token keyword">let</span> g<span class="token punctuation">:</span>airline_symbols<span class="token operator">.</span>linenr<span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token comment" spellcheck="true">" 加入Window编号</span>
+    <span class="token keyword">function</span><span class="token operator">!</span> <span class="token function">WindowNumber</span><span class="token punctuation">(</span><span class="token operator">.</span><span class="token operator">.</span><span class="token operator">.</span><span class="token punctuation">)</span>
+        <span class="token keyword">let</span> builder <span class="token operator">=</span> a<span class="token punctuation">:</span><span class="token number">1</span>
+        <span class="token keyword">let</span> context <span class="token operator">=</span> a<span class="token punctuation">:</span><span class="token number">2</span>
+        <span class="token keyword">call</span> builder<span class="token operator">.</span><span class="token function">add_section</span><span class="token punctuation">(</span><span class="token string">'airline_b'</span><span class="token punctuation">,</span> <span class="token string">'%{tabpagewinnr(tabpagenr())}'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">endfunction</span>
+    <span class="token keyword">call</span> airline#<span class="token function">add_statusline_func</span><span class="token punctuation">(</span><span class="token string">'WindowNumber'</span><span class="token punctuation">)</span>
+    <span class="token keyword">call</span> airline#<span class="token function">add_inactive_statusline_func</span><span class="token punctuation">(</span><span class="token string">'WindowNumber'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">" 用airline时`SPC num`跳转窗口失效，重新映射</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>Space<span class="token operator">></span><span class="token number">1</span> <span class="token number">1</span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">w</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>Space<span class="token operator">></span><span class="token number">2</span> <span class="token number">2</span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">w</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>Space<span class="token operator">></span><span class="token number">3</span> <span class="token number">3</span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">w</span>
+    <span class="token builtin">noremap</span> <span class="token operator">&lt;</span>Space<span class="token operator">></span><span class="token number">4</span> <span class="token number">4</span><span class="token operator">&lt;</span>C<span class="token operator">-</span><span class="token keyword">w</span><span class="token operator">></span><span class="token keyword">w</span>
+<span class="token keyword">endf</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="init-toml">4.2&emsp;init.toml</h2><p>SpaceVim的默认配置文件，文法和<code>.vimrc</code>不一样。这里禁用了<code>statusline</code>改为使用<code>airline</code>，同时增加了以前Vim中经常用的插件</p>
+<pre class="line-numbers language-toml"><code class="language-toml">#=============================================================================
+# Copyright (c) 2021-20xx
+# Author:  zcp
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    # 设置 SpaceVim 主题及背景，默认的主题是 gruvbox，如果你需要使用更
+    # 多的主题，你可以载入 colorscheme 模块
+    colorscheme = "gruvbox"
+
+    # colorscheme = "OceaniwcNext"
+    colorscheme_bg = "dark"
+
+    # colorscheme = "NeoSolarized"
+    # colorscheme_bg = "light"
+    # 背景可以取值 "dark" 和 "light"
+
+    # 启用/禁用终端真色，在目前大多数终端下都是支持真色的，当然也有
+    # 一小部分终端不支持真色，如果你的 SpaceVim 颜色看上去比较怪异
+    # 可以禁用终端真色，将下面的值设为 false
+    enable_guicolors = true
+
+    # statusline设置，启用时才有效
+    # 设置状态栏上分割符号形状，如果字体安装失败，可以将值设为 "nil" 以
+    # 禁用分割符号，默认为箭头 "arrow"
+    statusline_separator = "nil"
+    # statusline_separator = "bar"
+    # 设置顶部标签列表序号类型，有以下五种类型，分别是 0 - 4
+    buffer_index_type = 4
+    # 0: 1 ➛ ➊
+    # 1: 1 ➛ ➀
+    # 2: 1 ➛ ⓵
+    # 3: 1 ➛ ¹
+    # 4: 1 ➛
+    # 显示/隐藏顶部标签栏上文件类型图标，这一图标需要安装 nerd fonts，
+    # 如果未能成功安装这一字体，可以隐藏图标
+    enable_tabline_filetype_icon = true
+    # 是否在状态栏上显示当前模式，默认情况下，不显示 Normal/Insert 等
+    # 字样，只以颜色区分当前模式
+    enable_statusline_display_mode = false
+    statusline_left_sections = [
+       'winnr',
+       'filename',
+       'major mode',
+       'fileformat',
+       'minor mode lighters',
+       'version control info',
+    ]
+    statusline_right_sections = [
+       'cursorpos',
+       'percentage',
+       'date',
+       'time',
+    ]
+    #######################################################################
+    # MY OWN OPTIONS
+    filemanager = "defx"
+    autocomplete_method = "coc"
+    #snippet_engine = "ultisnips"
+    # 启动函数名称，该函数中可以使用Vim Script
+    # 启动函数文件位置：~/.SpaceVim.d/autoload/myspacevim.vim
+    # 函数 bootstrap_before 将在读取用户配置后执行，而函数 bootstrap_after 将在 VimEnter autocmd 之后执行。
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
+    # Vim兼容
+    # vimcompatible = true
+    # Vim兼容：Normal模式窗口快捷键的前缀改为X，s作为删除字符
+    windows_leader = 'X'
+    # Vim兼容：语言专用的前缀键，f、F、t、T改为搜索
+    enable_language_specific_leader = false
+    # Vim兼容：智能关闭窗口q改为录制宏
+    windows_smartclose = ''
+
+
+# ----------------- SpaceVim 添加的各种 layers ---------------------------------
+# 强化`/`搜索显示
+[[layers]]
+    name = "incsearch"
+
+# 计算器, 日历, 书签等小工具
+[[layers]]
+    name = 'tools'
+
+# 禁用 SpaceVim 的 checkers layer, 让 coc.nvim 来管理
+[[layers]]
+    name = "checkers"
+    enable = false
+
+# 版本控制
+[[layers]]
+    name = "VersionControl"
+    enable-gtm-status = false
+
+[[layers]]
+    name = "git"
+    git-plugin = "fugitive"
+
+[[layers]]
+    name = "fzf"
+
+[[layers]]
+    name = "lang#markdown"
+
+[[layers]]
+    name = "lang#latex"
+
+[[layers]]
+    name = "lang#c"
+    enable_clang_syntax_highlight = true
+
+[[layers]]
+    name = "lang#python"
+
+[[layers]]
+    name = "lang#toml"
+
+[[layers]]
+    name = "lang#vim"
+
+[[layers]]
+    name = "lang#sh"
+
+[[layers]]
+    name = "format"
+# ----------------- 添加的插件 -------------------------------------------------
+
+# oceanic-next 主题，采用其他的主题可以删除
+[[custom_plugins]]
+    name = "mhartington/oceanic-next"
+    merged = 0
+
+# coc.nvim 核心配置，不要删除
+# ~/.cache/vimfiles/repos/github.com/neoclide/coc.nvim
+[[custom_plugins]]
+    name = 'neoclide/coc.nvim'
+    merge = 0
+
+# 优化 coc 的搜索界面
+[[custom_plugins]]
+    name = 'antoinemadec/coc-fzf'
+    branch = 'release'
+
+[[custom_plugins]]
+    name = 'junegunn/fzf.vim'
+
+# 快速搜索文件和 buffer
+[[custom_plugins]]
+    name = "Yggdroot/LeaderF"
+    build = "./install.sh"
+
+# 快速编辑 markdown 的表格
+[[custom_plugins]]
+    name = 'dhruvasagar/vim-table-mode'
+
+# 更加美观的 tagbar
+[[custom_plugins]]
+    name = 'liuchengxu/vista.vim'
+
+# 更加方便的调节窗口的大小
+[[custom_plugins]]
+    name = 'simeji/winresizer'
+
+# 为 c/cpp 提供基于 lsp 的高亮
+[[custom_plugins]]
+    name = 'jackguo380/vim-lsp-cxx-highlight'
+
+# 从 http://cplusplus.com/ 和 http://cppreference.com/ 获取文档
+[[custom_plugins]]
+    name = 'skywind3000/vim-cppman'
+
+# 利用 git blame 显示当前行的 commit message
+[[custom_plugins]]
+    name = 'rhysd/git-messenger.vim'
+    lazy =  1
+    on_cmd = 'GitMessenger'
+
+# 以悬浮窗口的形式打开终端
+[[custom_plugins]]
+    name = 'voldikss/vim-floaterm'
+
+# 显示搜索的标号
+[[custom_plugins]]
+    name = 'google/vim-searchindex.git'
+
+# 记账
+[[custom_plugins]]
+    name = 'jonsmithers/vim-beancount'
+
+# 常用snippets
+[[custom_plugins]]
+    name = 'honza/vim-snippets'
+
+# 用于高效操作与括号、引号或html、xml标签相关的配对符号(surrounding)
+[[custom_plugins]]
+    name = 'tpope/vim-surround'
+[[custom_plugins]]
+    name = 'tpope/vim-repeat'
+
+# 文本对象
+[[custom_plugins]]
+    name = 'kana/vim-textobj-user'
+[[custom_plugins]]
+    name = 'kana/vim-textobj-indent'
+[[custom_plugins]]
+    name = 'kana/vim-textobj-syntax'
+[[custom_plugins]]
+    name = 'kana/vim-textobj-function'
+[[custom_plugins]]
+    name = 'sgur/vim-textobj-parameter'
+
+# ctags
+[[custom_plugins]]
+    name = 'ludovicchabant/vim-gutentags'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="总结">5&emsp;总结</h1><p>文中未提相关安装方式，是因为<a href="https://martins3.github.io/My-Linux-Config/nvim.html" target="_blank" rel="noopener">这篇文章</a>已经很详细了，我就是照着它入门的；而SpaceVim、NeoVim具体的使用方式官方文档也已经说的很清楚了，下面就简单写下我自己的使用备忘录吧：  </p>
+<ul>
+<li><p>几个需要知道的概念：  </p>
+<pre class="line-numbers language-markdown"><code class="language-markdown">| --------- | ------------------------------------------------- |
+| Window    | A window can split into more windows              |
+| Buffer    | A buffer is a file loaded into memory for editing |
+| Tab/Frame | A tab could contain different file                |
+| Tagbar    | Display tags of current file                      |
+| Filetree  | File browser                                      |<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>卸载并回滚到原vim：<code>curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall</code></p>
+</li>
+<li><p>同时使用原有的vim和spacevim <a href="https://spacevim.org/faq/#have-a-try-with-spacevim-without-overwrite-vimrc" target="_blank" rel="noopener">FAQ:Have a try with SpaceVim without overwrite vimrc?</a></p>
+</li>
+<li><p>探索快捷键的最好方式是在spacevim中按下空格键等待一秒，它会弹出有用的提示框， 亲自尝试其中的快捷键才能更加准确知道它的效果。</p>
+</li>
+<li><p><code>[SPC]</code>：表示空格键； <code>[WIN]</code>，窗口操作，默认s（我改为了X）</p>
+</li>
+<li><p><code>spc f t</code>：open filetree</p>
+</li>
+<li><p><code>spc b b</code>：打开缓冲区管理页面,<code>spc b d</code>关闭当前缓冲区</p>
+</li>
+<li><p><code>g</code>     | go to       | <code>g 0</code>     | 跳到第一个tab                 | <a href="https://spacevim.org/documentation/#commands-starting-with-g" target="_blank" rel="noopener">link</a> </p>
+</li>
+<li><p><code>z</code>     | fold        | <code>z a</code>     | 触发代码折叠 | <a href="https://spacevim.org/documentation/#commands-starting-with-z" target="_blank" rel="noopener">link</a> </p>
+</li>
+<li><p>按一下空格键，等待1秒，可以看到有用的提示信息</p>
+</li>
+<li><p><code>F2</code>             | Open tagbar                                                     </p>
+</li>
+<li><p><code>spc p /</code>    | 模糊查找</p>
+</li>
+<li><p><code>spc f o</code>        | open file tree and locate to current directory                  </p>
+</li>
+<li><p><code>win g</code>(<code>spc w /</code>)            | open file and split window horizontally                         </p>
+</li>
+<li><p><code>win v</code>(<code>spc w -</code>)            | open file split window vertically                               </p>
+</li>
+<li><p>注释代码（取消注释重复即可） | <a href="https://spacevim.org/documentation/#commenting" target="_blank" rel="noopener">Link</a><br>| <code>spc c l</code>        | comment/uncomment current line<br>| <code>spc c p/P</code>      | comment/uncomment current paragraph<br>| <code>spc ; [num] j</code>  | comment <em>num</em> lines                                             </p>
+</li>
+<li><p>页面Tab管理器 | <a href="https://spacevim.org/documentation/#tabline" target="_blank" rel="noopener">Link</a><br>| <code>spc t t</code>        | open tab manager<br>| <code>spc w F</code>        | open a new tab, equal to <code>spc t t + n</code><br>| <code>spc w o</code>        | switch tab<br>| <code>spc s c</code>        | clear search highlight                                          </p>
+</li>
+<li><p>搜索 | <a href="https://spacevim.org/documentation/#searching" target="_blank" rel="noopener">Link</a><br>| <code>spc s s</code>        | Searching in current file<br>| <code>spc s d</code>        | Searching in current directory<br>| <code>spc s b</code>        | Searching in all loaded buffers<br>| <code>spc s p</code>        | Searching in current proj, equal to <code>spc /</code>                     </p>
+</li>
+<li><p>编程相关<br>| <code>g d</code>       | Go to function definition<br>| <code>spc b f</code>   | format code according to pep8 standard<br>| <code>spc l g d</code> | generate docstring                     </p>
+</li>
+<li><p>git使用<br>| <code>spc g s</code>       | 查看git状态<br>| <code>spc g A</code>   | 添加所有文件<br>| <code>spc g c</code> | commit messages，保存即提交<br>| <code>spc g p</code> | push</p>
+</li>
+<li><p><code>spc t w</code> | 行尾空格检查</p>
+</li>
+<li><p><code>&lt;Leader&gt;</code> y    | 复制文本至系统剪切板</p>
+</li>
+<li><p><code>spc s c</code> 或者运行命令 <code>:nohlsearch</code> 来取消搜索结果的高亮表示</p>
+</li>
+<li><p>书签跳转（需要启用tools）<br>| <code>m a</code> | 显示书签列表<br>| <code>m c</code> | 清除所有书签<br>| <code>m m</code> | 切换当前行标签状态<br>| <code>m n</code> | 跳至下一个书签<br>| <code>m p</code> | 跳至前一个书签<br>| <code>m i</code> | 给当前行标签添加说明</p>
+</li>
+<li><p>UltiSnips插件配置,<code>&lt;C-l&gt;</code>展开，<code>&lt;C-j&gt;</code>下一个，<code>&lt;C-k&gt;</code>上一个</p>
+</li>
+<li><p>coc.nvim学习<br>| <code>[g</code>, <code>]g</code> |  跳转到coc各个诊断处<br>| <code>gd</code> |  跳转到定义处<br>| <code>gy</code> |  跳转到type-definition<br>| <code>gi</code> |  跳转到implementation<br>| <code>gr</code> |  跳转到references-used<br>| <code>&lt;Leader&gt;rn</code> |  重命名变量<br>| <code>&lt;Leader&gt;d</code> |  打开诊断窗口<br>| <code>&lt;Leader&gt;o</code> |  查看文件outline</p>
+</li>
+<li><p>vim-table-mode使用：<code>&lt;Leader&gt;tm</code>开启table模式，输入<code>|</code>开始制表，文字与<code>|</code>要有空格，回车后<code>||</code>会自动插入行，第一行作为标题</p>
+</li>
+</ul>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2021-10-06-vim-sheng-ji-neovim/">https://chengpengzhao.com/2021-10-06-vim-sheng-ji-neovim/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/Vim/">
+              <span class="chip bg-color">Vim</span>
+            </a>
+            
+            <a href="/tags/SpaceVim/">
+              <span class="chip bg-color">SpaceVim</span>
+            </a>
+            
+            <a href="/tags/ccls/">
+              <span class="chip bg-color">ccls</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2021-10-06T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2021-10-15-ke-zhuan-zhai-ru-men-bi-ji/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="可转债入门笔记">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">可转债入门笔记</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+相关网站： 集思录
+
+1&emsp;入门篇
+可转债，全称为“可转换公司债券”，是可以转换成公司股票的债券，债权+期权。其持有人可以选择持有债券到期，获取公司还本付息；也可以选择在约定的时间内转换成股票，享受股利分配或资本增值。
+
+法律规定
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%8A%95%E8%B5%84/" class="post-category">
+                                    投资
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8F%AF%E8%BD%AC%E5%80%BA/">
+                        <span class="chip bg-color">可转债</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021-08-29-nas-ke-yi-wai-wang-fang-wen-ge/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="NAS可以外网访问咯">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">NAS可以外网访问咯</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;前言虽然这篇post的主题是NAS(Network Attached Storage)，但因为懒还是放在了VPS(virtual private server)目录里。上班后发现家里的黑群晖处于长期闲置状态，虽然一直开着机但在
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/VPS/" class="post-category">
+                                    VPS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/NAS/">
+                        <span class="chip bg-color">NAS</span>
+                    </a>
+                    
+                    <a href="/tags/openvpn/">
+                        <span class="chip bg-color">openvpn</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

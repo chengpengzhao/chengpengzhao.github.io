@@ -1,0 +1,1407 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SSH、GPG学习与使用, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;前言记得第一次接触到SSH是在开始折腾博客那会，照着网上的教程一步步来设置Github环境、生成SSH key什么的，然后每次git push的时候就不用输密码了。第二次接触到它是在买了VPS之后，听说大佬们为了增加安全性都是">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SSH、GPG学习与使用 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SSH、GPG学习与使用
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/SSH/">
+              <span class="chip bg-color">SSH</span>
+            </a>
+            
+            <a href="/tags/PGP/">
+              <span class="chip bg-color">PGP</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+              学习
+            </a>
+            
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/linux/" class="post-category">
+              linux
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2020-03-04
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2020-03-04
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          3k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          11 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>记得<strong>第一次</strong>接触到SSH是在开始折腾博客那会，照着网上的教程一步步来设置<code>Github</code>环境、生成<code>SSH key</code>什么的，然后每次<code>git push</code>的时候就不用输密码了。<br><strong>第二次</strong>接触到它是在买了VPS之后，听说大佬们为了增加安全性都是通过密钥登录的，这里用的也是<code>SSH key</code>。<br>而接触到<code>GPG</code>是最近逛别人博客时，发现有好几个都留了个叫<em>PGP公钥</em> 的东西，如<a href="https://printempw.github.io/about/" target="_blank" rel="noopener">PRIN</a>和<a href="https://neoatlantis.org/identserv/" target="_blank" rel="noopener">NeoAtlantis</a>的博客。正好印象中记得Github里好像有个<code>GPG key</code>，出于好奇于是学习了下相关知识，说不定以后用得到。  </p>
+<h1 id="SSH">2&emsp;SSH</h1><h2 id="是什么">2.1&emsp;是什么</h2><blockquote>
+<p>SSH(Secure Shell)，一种加密的网络传输协议，来实现SSH客户端与服务器之间的连接。</p>
+</blockquote>
+<blockquote>
+<p>SSH是每一台Linux电脑的标准配置。</p>
+</blockquote>
+<p>众所周知，SSH主要用于远程登录；说它安全是因为采用了非对称加密，但也不是没有风险。由于具体的实现细节我没必要去关注，涉及到密码学一些知识也看不到，只求知道大概的原理和使用方法就行。  </p>
+<h2 id="公钥和私钥">2.2&emsp;公钥和私钥</h2><p>首先是这两个基础概念，非常重要  </p>
+<ul>
+<li><strong>私钥</strong>  </li>
+</ul>
+<ol>
+<li>非公开（废话），打死不交给别人</li>
+<li>用私钥加密的数据<strong>只有</strong>对应的公钥可以解密</li>
+</ol>
+<ul>
+<li><strong>公钥</strong>  </li>
+</ul>
+<ol>
+<li>公开</li>
+<li>用公钥加密的数据<strong>只有</strong>对应的私钥可以解密</li>
+</ol>
+<p>这不没区别么？？？好像真是这样，除了公钥和私钥是<strong>成对的</strong>、随便规定一个为公钥、那么另一个就叫私钥好了。<strong>数学上</strong>据说没区别，但是平常使用中，<strong>私钥的地位远远高于公钥</strong>；而且很多工具都设计成：<strong>私钥包含公钥信息</strong>,即<strong>私钥可以推导出公钥</strong>、<strong>私钥包含公钥</strong>。<br>所以使用中千万不要弄混了，一般带有<code>pub</code>字眼的为公钥(public key)。</p>
+<h2 id="SSH登录">2.3&emsp;SSH登录</h2><p>梳理下利用SSH登录<code>vps</code>的流程吧，虽然个人理解的可能不太准确…  </p>
+<ol>
+<li>客户端向<code>vps</code>发起一个登录请求</li>
+<li><code>vps</code>生成一串随机数，利用之前配置好的公钥(<code>authorized_keys</code>)进行加密，将加密后字符串传给客户端</li>
+<li>客户端利用私钥(<code>id_rsa</code>)进行解密，将解密后的字符串外加一些别的(<code>sessionKey</code>之类的、我也不知道是啥)字符串；将整合得到的新的“摘要”用<strong>私钥</strong>加密，发给<code>vps</code></li>
+<li><code>vps</code>对“摘要”用<strong>公钥</strong>解密，通过解密得到的文本判断是否认证该客户端登录</li>
+</ol>
+<p>可以看到整个过程充分利用了公钥和私钥可以互相加密与解密的特点，通常说<strong>公钥加密、私钥解密</strong></p>
+<h2 id="常用命令">2.4&emsp;常用命令</h2><ul>
+<li>首先得生成一对SSH密钥<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Github帮助里就有</span>
+ssh-keygen -t rsa -b 4096 -C <span class="token string">"your_email@example.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+用默认值、按几下空格就生成了，<code>passphrase</code>不填（填了的话每次还得输一遍安全密码），毕竟用<code>SSH keys</code>的目的就是想偷点懒不必每次输入密码。<br>注意密钥的<strong>位置</strong>默认是：<pre class="line-numbers language-bash"><code class="language-bash">~/.ssh/id_rsa
+~/.ssh/id_rsa.pub
+<span class="token comment" spellcheck="true">#也就是说和当前$USER有关，若为root，则在/root/.ssh/</span>
+<span class="token comment" spellcheck="true">#若为xxx，则在/home/xxx/.ssh/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>若不是在本机生成的密钥（如从别的地方拷贝过来的），还要将SSH 密钥添加到<code>ssh-agent</code><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 注意.ssh文件夹的权限、所属用户组</span>
+<span class="token function">sudo</span> -u <span class="token variable">$USER</span> /bin/bash -c <span class="token string">"sudo chmod -R 700 <span class="token variable">$HOME</span>/.ssh"</span> <span class="token operator">&amp;&amp;</span> \
+<span class="token function">sudo</span> -u <span class="token variable">$USER</span> /bin/bash -c <span class="token string">"sudo chown -R <span class="token variable">$USER</span>:<span class="token variable">$USER</span> <span class="token variable">$HOME</span>/.ssh"</span> <span class="token operator">&amp;&amp;</span>\
+<span class="token function">sudo</span> -u <span class="token variable">$USER</span> /bin/bash -c <span class="token string">"sudo chmod 600 <span class="token variable">$HOME</span>/.ssh/id_rsa.pub"</span> <span class="token operator">&amp;&amp;</span> \
+<span class="token function">eval</span> <span class="token variable"><span class="token variable">$(</span>ssh-agent -s<span class="token variable">)</span></span> <span class="token operator">&amp;&amp;</span> ssh-add ~/.ssh/id_rsa <span class="token operator">&amp;&amp;</span> \
+<span class="token function">ssh</span> -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p>如果已经把<code>$HOME/.ssh/id_rsa.pub</code>添加到了<code>Github</code>，那么运行下面的命令后应该就会出现类似下面的问候（当然用户名、邮箱之类的要配置好）：</p>
+<pre><code>Agent pid 19103
+Identity added: /home/zcp/.ssh/id_rsa (/home/zcp/.ssh/id_rsa)
+Hi chengpengzhao! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><h2 id="密钥管理">2.5&emsp;密钥管理</h2><p>不知道多少人是每换一个环境（比如换台电脑、换个操作系统、换台VPS）就把上述的<code>SSH keys</code>配置流程重新走一遍的，然后保存了一大堆的私钥。固然，这样安全性比较高，但我更偏向于只使用<strong>一对</strong>密钥，生成之后好好保管着，然后要用的时候复制到相关环境里。<br>最近学shell脚本顺便就写了个自己用的<a href="https://github.com/chengpengzhao/My_vimrc" target="_blank" rel="noopener">一键配置Linux环境</a>，我甚至把<strong>SSH公钥</strong>和<strong>加密后的私钥</strong>都放到了<code>Github Repository</code>里，目的是尽可能减少本地管理的密钥数量。这里加密是利用<code>GnuPG</code>完成的。</p>
+<h1 id="GPG">3&emsp;GPG</h1><h2 id="是什么-1">3.1&emsp;是什么</h2><p>刚开始分不清<code>GPG</code>和<code>PGP</code>，以为有一个是写错了，后来才知道原来<code>PGP</code>代表<code>Pretty Good Privacy</code>，是一个加密用的商业软件；<code>GPG</code>是<code>GnuPG</code>的简称，是一个开源软件、<code>PGP</code>的替代品。还有个叫<code>OpenPGP</code>的一套标准，大多数<code>PGP</code>软件都遵循它。 <code>GPG</code>可以用来实现非对称的<strong>文件加密</strong>、对数据进行<strong>签名</strong>等操作；这也是它最主要的两个用途，如GitHub里<code>Verified</code>的签名就是用它实现的：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200304001924.webp" alt></p>
+<h2 id="密钥和子密钥">3.2&emsp;密钥和子密钥</h2><p><code>PGP</code>中有密钥对和子秘钥的概念，如果我们只使用主密钥对，那么私钥泄露后只能吊销整个密钥，所以一般不使用主密钥，而是通过产生一系列用途各异的子秘钥进行操作。好像可以单独导出子秘钥，但公钥由于是公开的，所以主公钥、子公钥都是捆绑在一起的。 (试过只导出一个子公钥，结果和导出所有公钥的输出一模一样)<br><strong>使用建议</strong>：主私钥不要放在网络上，平时只用子私钥操作，并且最好设定一个过期时间；一般用三个子私钥(A验证+E加密+S签名) 。<br><br><br>关于一些人建议将<code>PGP key</code>上传到一些<code>key server</code>，我是<strong>反对</strong>这种做法的，因为公钥服务器上的key<strong>无法删除</strong>，只能被吊销，而且可能暴露你的email等信息。而又几乎没有任何好处，谁会真正去<code>key server</code>上搜你的公钥？搜到的公钥安全性也没有保障；建议公开公钥到更加安全的地方。<br>服务器上的公钥更多的是利用gnupg的<strong>相互签署机制</strong>，即可以签署别人的公钥，即告诉其他人自己是信任这个人的公钥的真实性的；但说真的有多少人会真正用到这个功能呢，总之<strong>不推荐</strong>传<code>key server</code>。<br><br></p>
+<h2 id="常用命令-1">3.3&emsp;常用命令</h2><h3 id="生成密钥">3.3.1&emsp;生成密钥</h3><pre class="line-numbers language-bash"><code class="language-bash">gpg --full-gen-key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>选择因需求而异，我是默认类型、44096位、永不过期、用户标识、密钥安全密码。<br>生成完后会出现类似下面输出：</p>
+<pre><code>gpg: 密钥 404AAAD7FED2325E 被标记为绝对信任
+gpg: 目录‘/home/zcp/.gnupg/openpgp-revocs.d’已创建
+gpg: 吊销证书已被存储为‘/home/zcp/.gnupg/openpgp-revocs.d/9C0281B1DDCCD3289CE3B297404AAAD7FED2325E.rev’
+公钥和私钥已经生成并被签名。
+
+pub   rsa3072 2020-03-03 [SC]
+      9C0281B1DDCCD3289CE3B297404AAAD7FED2325E
+      uid                      zzzcp
+      sub   rsa3072 2020-03-03 [E]</code></pre><p>可以看出会自动产生一个用于加密的<strong>子密钥对</strong></p>
+<h3 id="常见缩写含义">3.3.2&emsp;常见缩写含义</h3><pre><code>A    =&gt;    Authentication
+C    =&gt;    Certify
+E    =&gt;    Encrypt
+S    =&gt;    Sign
+?    =&gt;    Unknown capability
+sec  =&gt;    Secret Key
+ssb  =&gt;    Secret SuBkey
+pub  =&gt;    Public Key
+sub  =&gt;    Public Subkey</code></pre><h3 id="添加子密钥对">3.3.3&emsp;添加子密钥对</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#专家模式</span>
+gpg --expert --edit-key  xxxx <span class="token comment" spellcheck="true"># 进入GPG界面，接下来help看帮助，addkey加子秘钥</span>
+<span class="token comment" spellcheck="true"># 只有在专家模式下能够自定义密钥用途</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>生成后的输出:</p>
+<pre><code>sec  rsa4096/BF5738A17E62F3FC
+     创建于：2020-03-04  有效至：永不       可用于：SC
+     信任度：绝对        有效性：绝对
+ssb  rsa4096/53BF89B0D716836D
+     创建于：2020-03-04  有效至：永不       可用于：E
+ssb  rsa3072/A11C5129AAE5BA77
+     创建于：2020-03-04  有效至：永不       可用于：S
+ssb  rsa3072/F63314C02344A273
+     创建于：2020-03-04  有效至：永不       可用于：A
+[ 绝对 ] (1). JiyoTomare (この、くそったれな世界に、精一杯愛をこめて) &lt;cavsarpwgnckamekerokardank89@gmail.com&gt;</code></pre><ul>
+<li><strong>重中之重</strong><br>生成完之后千万不要一激动按<code>&lt;Ctrl+C&gt;</code>退出gpg界面了，输入<code>save</code><strong>正确的退出</strong>!!!</li>
+</ul>
+<h3 id="生成注销证书">3.3.4&emsp;生成注销证书</h3><p>密钥作废时使用（我没用过所以还不清楚具体怎么用），需要用到的时候再学吧</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --gen-revoke <span class="token punctuation">[</span>ID<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">#ID可以是邮箱或者是密钥标识的那一长串字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="列出密钥">3.3.5&emsp;列出密钥</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 列出所有公钥、子公钥</span>
+gpg --list-keys --keyid-format LONG
+<span class="token comment" spellcheck="true"># 列出所有密钥、子密钥</span>
+gpg --list-secret-keys --keyid-format LONG
+<span class="token comment" spellcheck="true"># 更简洁的命令：</span>
+gpg -k <span class="token comment" spellcheck="true"># 列出公钥</span>
+gpg -K <span class="token comment" spellcheck="true"># 列出私钥</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="输出密钥">3.3.6&emsp;输出密钥</h3><p>推荐分开输出，即每个子私钥保存一个文件，不混在一起</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --fingerprint <span class="token comment" spellcheck="true">#输出公钥指纹，用来核对公钥的可靠性</span>
+gpg --armor --output public-key.txt --export <span class="token punctuation">[</span>ID<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">#导出公钥</span>
+gpg --armor --output secret-key --export-secret-key <span class="token punctuation">[</span>ID<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#导出主私钥，注意安全性！！！</span>
+gpg --armor --output sign-subkey --export-secret-subkeys <span class="token punctuation">[</span>ID<span class="token punctuation">]</span>   <span class="token comment" spellcheck="true">#导出有[S]标识、签名用子私钥</span>
+gpg --armor --output encrypt-subkey --export-secret-subkeys <span class="token punctuation">[</span>ID<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#导出有[E]标识、加密用子私钥</span>
+gpg --armor --output authentication-subkey --export-secret-subkeys <span class="token punctuation">[</span>ID<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#导出有[A]标识、认证用子私钥</span>
+<span class="token comment" spellcheck="true"># --armor选项不启用，就会导出二进制格式文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>妥善保管自己的私钥!</strong></p>
+<h3 id="删除密钥">3.3.7&emsp;删除密钥</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#一般要先删除子私钥才能删除主私钥</span>
+gpg --delete-secret-keys <span class="token punctuation">[</span>ID<span class="token punctuation">]</span>
+gpg --delete-keys <span class="token punctuation">[</span>ID<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">#如果想全部删除推荐直接删文件夹,即删除 $HOME/.gnupg</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>确保把所有数据都删除了。之后再就只导入子私钥了，主私钥妥善保管，一般不使用。</p>
+<h3 id="导入密钥">3.3.8&emsp;导入密钥</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#从本地文件导入</span>
+gpg --import <span class="token punctuation">[</span>密钥文件<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 从URL导入</span>
+curl https://cdn.jsdelivr.net/gh/chengpengzhao/Zcp-s-PGP-Signatures/Zcp_PGP.pub <span class="token operator">|</span> gpg --import<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我导入完成后的输出：</p>
+<pre><code>/home/zcp/.gnupg/pubring.kbx
+----------------------------
+sec#  rsa4096 2020-03-04 [SC]
+      77F37C33368AD0B5D52810D1BF5738A17E62F3FC
+uid           [ 未知 ] JiyoTomare (この、くそったれな世界に、精一杯愛をこめて) &lt;cavsarpwgnckamekerokardank89@gmail.com&gt;ssb   rsa4096 2020-03-04 [E]
+ssb   rsa3072 2020-03-04 [S]
+ssb   rsa3072 2020-03-04 [A]</code></pre><p>可以看到信用等级是<code>[未知]</code>，可以通过<code>gpg --edit-key ID</code>再运行<code>trust</code>命令调整。<br>带<code>#</code>号说明<strong>缺失</strong>当前私钥，因为我为了安全没有导入主私钥</p>
+<h3 id="加密解密">3.3.9&emsp;加密解密</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 加密：</span>
+<span class="token comment" spellcheck="true"># recipient指定接收者的公钥ID</span>
+gpg --recipient <span class="token punctuation">[</span>ID<span class="token punctuation">]</span> --output encrypt.txt --encrypt input.txt
+<span class="token comment" spellcheck="true"># 也可以按喜好加上--armor选项等</span>
+<span class="token comment" spellcheck="true"># ***************************************</span>
+<span class="token comment" spellcheck="true"># 解密：</span>
+gpg --decrypt encrypt.txt --output decrypt.txt
+<span class="token comment" spellcheck="true"># 虽然是常识性问题但还是再提一下，解密要用公钥对应的私钥！</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="签名">3.3.10&emsp;签名</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 第一种方式，生成二进制签名文件</span>
+gpg --sign input.txt  <span class="token comment" spellcheck="true"># 当然也可以加上--output参数</span>
+<span class="token comment" spellcheck="true"># 第二种方式，生成ASCII格式签名</span>
+gpg --clearsign input.txt
+<span class="token comment" spellcheck="true"># 第三种，签名和原文本分开（前两种的签名文件中包含了所有原文本，所以体积会比较大）</span>
+gpg --armor --detach-sign input.txt  <span class="token comment" spellcheck="true">#不加armor生成会二进制</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然也可以结合签名和加密，用<strong>自己的私钥签名，他人的公钥加密</strong>:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --local-user <span class="token punctuation">[</span>发信者ID<span class="token punctuation">]</span> --recipient <span class="token punctuation">[</span>接收者ID<span class="token punctuation">]</span> --armor --detach-sign --encrypt input.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="验证签名">3.3.11&emsp;验证签名</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 注意签名在前，被签名文件在后</span>
+gpg --verify demo.txt.asc demo.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="我的PGP-keys">4&emsp;我的PGP keys</h1><p>我把自己的身份验证方法放在了<code>Github</code>一个仓库里，所有的提交都是经过<code>PGP key</code>验证了的。<br><a href="https://github.com/chengpengzhao/Zcp-s-PGP-Signatures" target="_blank" rel="noopener">Zcp’s PGP Signatures</a><br><br><br>前面介绍的<code>GnuPGP</code>主要在Linux环境下使用，Windows中推荐<code>WSL</code>或者用<code>Gpg4win</code>软件。总的来说我们使用<code>PGP keys</code>的目的就是：</p>
+<ol>
+<li>供他人验证身份，来证实某消息确实出自自己之手、并且未被第三人修改过。</li>
+<li>加密消息，通过他人公开的公钥能够向对方发送加密了的讯息，而只有持有对应私钥的他本人能够解密。</li>
+</ol>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2020-03-04-ssh-yu-gpg-de-xue-xi-yu-shi-yong/">https://chengpengzhao.com/2020-03-04-ssh-yu-gpg-de-xue-xi-yu-shi-yong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/SSH/">
+              <span class="chip bg-color">SSH</span>
+            </a>
+            
+            <a href="/tags/PGP/">
+              <span class="chip bg-color">PGP</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2020-03-04T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020-03-09-saraba-ni-hong/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200309220126.webp" class="responsive-img" alt="さらば、霓虹">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">さらば、霓虹</span>
+
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;现在每次离开一个呆了一段时间的地方都会产生一些乱七八糟的感慨，与其望着一地行李发呆，不如写点什么，顺便做个阶段性的总结吧。  
+1.1&emsp;返程计划首先，这次离开的有些匆忙，受疫情影响大量航班都取消了，我先后买了海南航空
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%97%A5%E8%AE%B0/">
+                        <span class="chip bg-color">日记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020-02-29-1984-ge-ren-du-shu-zhai-lu/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200229231215.webp" class="responsive-img" alt="《1984》个人读书摘录">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">《1984》个人读书摘录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            剧透警告
+1&emsp;前言最近试着休息时尽量多看点杂书，不知不觉已经看完几本了。中文偏向于读一些引发人思考类型的，日文和英文因为读起来比较费劲还是读轻小说这种书有意思，不然根本读不下去。  
+看完的第一本是George Orwell的名作
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" class="post-category">
+                                    兴趣爱好
+                                </a>
+                            
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E9%98%85%E8%AF%BB/" class="post-category">
+                                    阅读
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8F%8D%E4%B9%8C%E6%89%98%E9%82%A6/">
+                        <span class="chip bg-color">反乌托邦</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B9%94%E6%B2%BB%C2%B7%E5%A5%A5%E5%A8%81%E5%B0%94/">
+                        <span class="chip bg-color">乔治·奥威尔</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">175.9k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>
