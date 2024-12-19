@@ -647,12 +647,9 @@ files := $(wildcard a/* b/* c/* d/*)<span aria-hidden="true" class="line-numbers
 </li>
 <li><p>自动生成每一个<code>.c</code>文件对应的<code>.d</code>文件（包含相应依赖文件描述）</p>
 <pre class="line-numbers language-Makefile"><code class="language-Makefile">%.d: %.cpp
-# 1. 使用编译器自自动生成依赖文件（$<）的头文件的依赖关系，并输出成为一个临时文件
-# 2. 使用sed处理第二行已产生的那个临时文件并生成此规则的目标文件。（将.d加入到规则的目标中）
-# 3. 删除临时文件
-  $(CXX) -MM $(CXXFLAGS) $< > $@.$$$$; \
+# 1. 使用编译器自自动生成依赖文件（$<）的头文件的依赖关系，并输出成为一个临时文件 # 2. 使用sed处理第二行已产生的那个临时文件并生成此规则的目标文件。（将.d加入到规则的目标中） 3. 删除临时文件 $(cxx) -mm $(cxxflags) $<> $@.$$$$; \
   sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
-  rm -f $@.$$$$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  rm -f $@.$$$$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></）的头文件的依赖关系，并输出成为一个临时文件></code></pre>
 </li>
 <li><p><code>.d</code>文件的处理（接着上面一条）</p>
 <pre class="line-numbers language-Makefile"><code class="language-Makefile">SRCS = $(wildcard ./*.cpp)
