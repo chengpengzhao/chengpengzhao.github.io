@@ -518,10 +518,10 @@
 
     </div>
     <hr class="clearfix">
-    <div>
-    <script type="text/javascript" src="/js/timecount.js"></script>
-    </div>
     <div class="card-content article-card-content">
+      <div>
+      <script type="text/javascript" src="/js/timecount.js"></script>
+      </div>
       <div id="articleContent">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>经常需要写一些markdown文档，用vscode或者vim的<code>MarkdownPreview</code>插件都能实现比较好的实时渲染与编辑，但导出给别人看时发现存在一个问题：<strong>没有目录栏</strong>，文档很长时翻起来十分费劲。（vscode的导出功能我没怎么用，好像挺鸡肋就放弃了；vim的话我是直接用谷歌浏览器的SingleFile插件保存渲染的html）<br>查了一下发现有位叫i5ting的大佬很早开发过一个叫<a href="https://github.com/i5ting/tocmd.npm" target="_blank" rel="noopener">i5ting_ztree_toc</a>的工具，能够为markdown转html后生成目录并且自动编号，正好是我想要的东西。用了一会发现还不够满足自己的需求，主要有以下几点不足：  </p>
 <p>1) 生成的html需要和一堆样式文件(<code>.css</code>、<code>.js</code>)所在的文件夹放一起；<br>2）目录栏随滚动高亮功能不错，但有图片、uml等元素时正在浏览区域与高亮条目明显对应不起来；<br>3）不支持LaTeX公式；<br>4）不支持各种图（mermaid、plantuml…）；<br>5）默认marked渲染器配置不全，高亮没有；  </p>

@@ -514,10 +514,10 @@
 
     </div>
     <hr class="clearfix">
-    <div>
-    <script type="text/javascript" src="/js/timecount.js"></script>
-    </div>
     <div class="card-content article-card-content">
+      <div>
+      <script type="text/javascript" src="/js/timecount.js"></script>
+      </div>
       <div id="articleContent">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>虽然这篇post的主题是<strong>NAS(Network Attached Storage)</strong>，但因为懒还是放在了<strong>VPS(virtual private server)</strong>目录里。上班后发现家里的黑群晖处于长期闲置状态，虽然一直开着机但在公司里也用不了（只能局域网访问）。这周末终于狠下心来整改一番，实现了外网访问，以后<del>摸鱼</del>工作起来更加便利了。</p>
 <h1 id="准备阶段">2&emsp;准备阶段</h1><p>首先进行需求分析：能够从外网访问NAS的文件以及各种服务，实现方式经过<del>百度</del>Google可知有<strong>内网穿透</strong>与<strong>端口映射</strong>两类，其中<code>内网穿透</code>我很早之前试过但死活不成功，有点恶心到我了所以这次直接pass。<code>端口映射</code>的话需要以下条件：  </p>
