@@ -697,7 +697,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>guid</code>复制它默认的就完事了，字体可以自己安装，或者到<code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink</code>注册表找一找系统自带哪些，选个好看的（我觉得windowsterminal自带的字体Consolas就挺好的了）。然后就是快捷键，虽说V平常都在Vim里进行窗口分割什么的，但如果执行shell命令还是在Vim外打开比较方便，之前Ubuntu里用的是Terminator终端，所以这里快捷键也是依照之前的习惯来的；为了避免和Vim配置冲突不必要的快捷键能关则关。<strong>最终效果</strong>:<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20200114104052.webp" alt></p>
+<p><code>guid</code>复制它默认的就完事了，字体可以自己安装，或者到<code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink</code>注册表找一找系统自带哪些，选个好看的（我觉得windowsterminal自带的字体Consolas就挺好的了）。然后就是快捷键，虽说V平常都在Vim里进行窗口分割什么的，但如果执行shell命令还是在Vim外打开比较方便，之前Ubuntu里用的是Terminator终端，所以这里快捷键也是依照之前的习惯来的；为了避免和Vim配置冲突不必要的快捷键能关则关。<strong>最终效果</strong>:<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200114104052.webp" alt></p>
 <h2 id="增加右键菜单">2.3&emsp;增加右键菜单</h2><p>如果不想每次打开都要cd半天的话还是加一个在当前目录直接右键打开terminal的功能比较好；根据<a href="https://printempw.github.io/windows-terminal-setup-guide/" target="_blank" rel="noopener">PRIN博客</a>的设置，建立批处理文件：</p>
 <pre class="line-numbers language-bat"><code class="language-bat">@echo off
 
@@ -762,7 +762,7 @@ endfunc
 <span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim
 
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
 <span class="token function">sudo</span> dpkg -i ripgrep_11.0.2_amd64.deb
@@ -819,7 +819,7 @@ vim ~/.ssh/id_rsa.pub     <span class="token comment" spellcheck="true">#  复�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2020-01-13-ru-keng-wsl-windows-subsystem-for-linux/">https://chengpengzhao.com/2020-01-13-ru-keng-wsl-windows-subsystem-for-linux/</a>
+                    <a href="https://chengpengzhao.com/2020-01-13-ru-keng-wsl-windows-sub-system-for-linux/">https://chengpengzhao.com/2020-01-13-ru-keng-wsl-windows-sub-system-for-linux/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1328,7 +1328,7 @@ vim ~/.ssh/id_rsa.pub     <span class="token comment" spellcheck="true">#  复�
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.2k</span>&nbsp;字
+                class="white-color">175.7k</span>&nbsp;字
             
             <br>
             

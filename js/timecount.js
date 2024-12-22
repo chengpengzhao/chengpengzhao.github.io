@@ -10,5 +10,5 @@ var datepassing = parseInt(now - postinfo__date_created)
 // 超过31天提示：3600*24*31*1000
 if(datepassing > 2678400000){
     var out = parseInt(datepassing / 86400000)
-    document.write("<div class=\"note info\"><blockquote><strong>文章时效性提示</strong><br>这是一篇创建于 " + out + " 天前的文章，请注意⚠️，：其中的信息可能已发生变化或有所更新，部分内容可能不再完全适用当前的情况。</blockquote></div>")
+    document.write("<div class=\"note info\"><blockquote><strong>文章时效性提示</strong><br>这是一篇创建于至少 " + out + " 天前的文章，请注意⚠️：其中的信息可能已发生变化或有所更新，部分内容可能不再完全适用当前的情况。</blockquote></div>")
 }
