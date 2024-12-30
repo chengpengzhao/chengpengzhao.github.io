@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>无Ipv4折腾NAS外网访问</title>
+      <link href="/2024-12-30-wu-ipv4-zhe-teng-nas-wai-wang-fang-wen/"/>
+      <url>/2024-12-30-wu-ipv4-zhe-teng-nas-wai-wang-fang-wen/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="背景">1&emsp;背景</h1><p>自从之前我的出租屋联通宽带这套方案实施后（<a href="/2021-08-29-nas-ke-yi-wai-wang-fang-wen-ge/" title="NAS可以外网访问咯">NAS可以外网访问咯</a>），NAS已经稳定运行了有3年多，期间基本没有出现过任何问题（访问不了的情况等），这400块的蜗牛星际当时买来还是挺有性价比的。<br>然而现在不是买房了嘛，联通宽带迁移还得多付100多块，我思考索性重新办个宽带。不知道是看了小区电梯的小广告还是脑袋抽风怎么的，我竟然云里雾里地办了<strong>中国移动</strong>的宽带，还是太年轻了，这里我重点强调一下：  </p><blockquote><p>有NAS除非迫不得已千万不要选择中国移动宽带！<br>有NAS除非迫不得已千万不要选择中国移动宽带！<br>有NAS除非迫不得已千万不要选择中国移动宽带！  </p></blockquote><p>主要基于如下几点理由：  </p><ol><li>中国移动（我们这）的光猫用的动态密码，业务注册后会自动改密，装光猫的师傅不查也是不知道密码的；  </li><li>中国移动不给桥接，光猫师傅是不可能搞定的（说是明令禁止、帮我查了密码会有记录）；  </li><li>改了后如果被移动后台检测到，会自动改密、或者光猫拉黑名单；  </li><li>中国移动是大内网，<strong>没有动态的公网IP！没有动态的公网IP！没有动态的公网IP！</strong>；  </li></ol><h1 id="光猫改桥接">2&emsp;光猫改桥接</h1><p>在知道了上述坑后，后悔已经来不及了，现在违约移动还得赔一笔钱不划算，于是只能想有没有什么曲线救国方案，最后我发现了一线曙光：  </p><p><strong>没有公网IPv4地址，但是我有公网IPv6啊！</strong>  </p><p>当然首先第一步是光猫改桥接，脱离万恶的中国移动的魔爪是必须的。下面是我尝试过的一些方法。  </p><h2 id="安装师傅">2.1&emsp;安装师傅</h2><p>如果能搞定人那肯定是最好的，然而不论我怎么晓之以情动之以理，师傅都不为所动，估计是公司特别向他们强调了这种情况，没办法只能放弃该方法（不过最后师傅还是给出了一点提示，虽然他自己没办法帮我查，但是如果我通过别的途径查到了他也不会管）。  </p><h2 id="网上各类方法">2.2&emsp;网上各类方法</h2><p>接着就是根据光猫的型号（我的是中兴ZXHN F663NV9）查网上的各类方法，包括：  </p><ol><li>改html大法（通过修改网页执行隐藏命令）；  </li><li>恢复默认设置大法（注意记录原有信息）；  </li><li>基于factorymode_crack.exe等工具的Telnet方法…  </li></ol><p>然而不幸的是，以上方法全部阵亡，虽然光猫是个老型号但我怀疑移动在内部动了手脚，一个最显著的特点就是无论我怎么按reset按钮想要重置系统，它都毫无反应。  </p><h2 id="淘宝-闲鱼大法">2.3&emsp;淘宝/闲鱼大法</h2><p>迫不得已，只能使用从内部攻破的方法，去闲鱼找了一个支持查我们市光猫密码的，小小破费了10来块，不到1分钟便将密码发了过来，是<code>CMCCAdmin+一串随机字符串</code>的形式。  </p><h2 id="光猫改设置并除后患">2.4&emsp;光猫改设置并除后患</h2><p>管理员权限到手，这不立马就可以光纤一拔、开始改设置了么：  </p><ol><li>原设置每一页拍照留存；  </li><li><code>X_INTERNET_R_VID_xx</code>，光猫拨号设置，删掉；  </li><li><code>X_TR069_R_VID_xxxx</code>，万恶的TR069，删掉；  </li><li><code>QoS</code>，关掉；  </li><li>乱七八糟的使能设置，去掉勾；  </li><li>远程管理服务器，URL改掉；  </li><li>新建<code>X_INTERNET_B_VID_XXX</code>，桥接模式设定！  </li></ol><p>多确认以下这些设置，确保没有问题之后再插上光纤。不出意外的话，路由器接上光猫、在路由器拨号里账号密码一填就能够正常上网了。  </p><h1 id="NAS与路由器配置">3&emsp;NAS与路由器配置</h1><p>我的<strong>最终目的</strong>是要实现NAS在外网的安全访问，虽然通过ipv6地址是可以直接访问的，但总感觉有点不安全，还是希望能有层VPN保护一下，尽可能减少端口的暴露，于是尝试了很多方案：  </p><ol><li><p>老方法配置OpenVPN服务端，但遇到了阻碍，那就是不知道纯ipv6环境下该如何设置，复杂的网络配置我也不懂，只好放弃；  </p></li><li><p>尝试使用<strong>softetherVPN</strong>，配置过程是很简单，但巨坑的是很容易<strong>CPU占用原地螺旋上升</strong>，根本不懂怎么进阶配置才能既能快速访问又不占用资源；  </p></li><li><p>自己配置VPN的路行不通，那就使用P2P穿透技术代替吧！于是用<strong>ZeroTier</strong>试了下，发现还可以，但连接上花的时间多了点，且和内网ip相同时好像有点问题（可能是我不会设置）；  </p></li><li><p>用<strong>tailscale</strong>代替ZeroTier，配置起来也很简单，而且不用改变IP，确实很不错，最后就选择了它。  </p><p>最后再用<strong>ddns-go</strong>配置一番，动态解析下可能会变动的ipv6地址（仅暴露一个端口以防tailscale连不上的时候有操作空间），路由器再检查下防火墙是否全部打开着（用tailscale就不用暴露其他端口啦），一切准备就绪！  </p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 兴趣爱好 </category>
+          
+          <category> 生活 </category>
+          
+          <category> 记录 </category>
+          
+          <category> VPS/NAS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NAS </tag>
+            
+            <tag> ddns-go </tag>
+            
+            <tag> tailscale </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>二手房交易流程记录</title>
       <link href="/2024-12-21-er-shou-fang-jiao-yi-liu-cheng-ji-lu/"/>
       <url>/2024-12-21-er-shou-fang-jiao-yi-liu-cheng-ji-lu/</url>
@@ -956,9 +991,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> Fortran </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
