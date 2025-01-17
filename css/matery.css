@@ -163,6 +163,11 @@ code {
     border-radius: 2px;
 }
 
+/* 解决代码文本框选取时的显示问题 */
+pre[class*="language-"].line-numbers > code {
+	position: sticky !important;
+}
+
 .code_copy {
     position: absolute;
     top: 0.7rem;
