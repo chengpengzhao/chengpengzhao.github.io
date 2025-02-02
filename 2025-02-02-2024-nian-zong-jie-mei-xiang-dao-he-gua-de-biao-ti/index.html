@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="markdown转离线单文件html, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;前言经常需要写一些markdown文档，用vscode或者vim的MarkdownPreview插件都能实现比较好的实时渲染与编辑，但导出给别人看时发现存在一个问题：没有目录栏，文档很长时翻起来十分费劲。（vscode的导出功">
+    <meta name="keywords" content="2024年总结--没想到合适的标题, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;2024年总结依照惯例，看看2024年自己的时间都花在哪了吧：  
+
+回顾一下我的时间分类：
+
+睡眠，毕竟人类的一生有$\frac{1}{3}$的时间都在睡觉  
+消费时间，指我们每天的日常工作（或学业），为了获取报酬所花的时">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +19,7 @@
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>markdown转离线单文件html | Zcp&#39;s Zone</title>
+    <title>2024年总结--没想到合适的标题 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -328,7 +333,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        markdown转离线单文件html
+                        2024年总结--没想到合适的标题
                     </div>
                 </div>
             </div>
@@ -446,16 +451,8 @@
           
           <div class="article-tag">
             
-            <a href="/tags/markdown/">
-              <span class="chip bg-color">markdown</span>
-            </a>
-            
-            <a href="/tags/html/">
-              <span class="chip bg-color">html</span>
-            </a>
-            
-            <a href="/tags/md2html/">
-              <span class="chip bg-color">md2html</span>
+            <a href="/tags/atimelogger/">
+              <span class="chip bg-color">atimelogger</span>
             </a>
             
           </div>
@@ -466,12 +463,12 @@
           <div class="post-cate">
             <i class="fas fa-bookmark fa-fw icon-category"></i>
             
-            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-              工作
+            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+              生活
             </a>
             
-            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
-              工具
+            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+              杂感
             </a>
             
           </div>
@@ -483,28 +480,28 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-          2021-12-27
+          2025-02-02
         </div>
         
 
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2021-12-27
+          2025-02-02
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          764
+          2.3k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          3 Min
+          7 Min
         </div>
         
 
@@ -523,34 +520,83 @@
       <script type="text/javascript" src="/js/timecount.js"></script>
       </div>
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>经常需要写一些markdown文档，用vscode或者vim的<code>MarkdownPreview</code>插件都能实现比较好的实时渲染与编辑，但导出给别人看时发现存在一个问题：<strong>没有目录栏</strong>，文档很长时翻起来十分费劲。（vscode的导出功能我没怎么用，好像挺鸡肋就放弃了；vim的话我是直接用谷歌浏览器的SingleFile插件保存渲染的html）<br>查了一下发现有位叫i5ting的大佬很早开发过一个叫<a href="https://github.com/i5ting/tocmd.npm" target="_blank" rel="noopener">i5ting_ztree_toc</a>的工具，能够为markdown转html后生成目录并且自动编号，正好是我想要的东西。用了一会发现还不够满足自己的需求，主要有以下几点不足：  </p>
-<p>1) 生成的html需要和一堆样式文件(<code>.css</code>、<code>.js</code>)所在的文件夹放一起；<br>2）目录栏随滚动高亮功能不错，但有图片、uml等元素时正在浏览区域与高亮条目明显对应不起来；<br>3）不支持LaTeX公式；<br>4）不支持各种图（mermaid、plantuml…）；<br>5）默认marked渲染器配置不全，高亮没有；  </p>
-<p>综上所述，还是自己动动手修改吧。于是有了<a href="https://github.com/chengpengzhao/md2html" target="_blank" rel="noopener">md2html</a>这个工具：</p>
-<h1 id="md2html">2&emsp;md2html</h1><p>首先几个足够展示markdown与LaTeX几乎所有常用语法的demo：  </p>
-<p><a href="https://chengpengzhao.com/md2html/test/commTest.html">basicTest</a><br><a href="https://chengpengzhao.com/md2html/test/katexSupportTest.html">katexSupportTest</a><br><a href="https://chengpengzhao.com/md2html/test/latexTest.html">latexTest1</a><br><a href="https://chengpengzhao.com/md2html/test/tensorTest.html">latexTest2</a>  </p>
-<p>这个工具的<strong>设计原则</strong>有如下两点：  </p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="2024年总结">1&emsp;2024年总结</h1><p>依照惯例，看看2024年自己的时间都花在哪了吧：  </p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250202151208557.PNG" alt></p>
+<p>回顾一下我的时间分类：</p>
 <ul>
-<li>完全<strong>本地化</strong>，所有内容不需要联网便可舒适阅览  </li>
-<li>只能有<strong>一个</strong>html文件，所有样式文件必须内嵌进去，不能通过联网或本地其他文件的方式获取  </li>
+<li>睡眠，毕竟人类的一生有$\frac{1}{3}$的时间都在睡觉  </li>
+<li>消费时间，指我们每天的日常工作（或学业），为了获取报酬所花的时间  </li>
+<li>投资时间，有助于我们提高自身能力的，比如读书运动学习新技能等  </li>
+<li>浪费时间，洗漱、通勤、用餐等硬性时间  </li>
+<li>消磨时间，放空、打游戏看剧等娱乐活动  </li>
 </ul>
-<p><strong>主要特性</strong>:</p>
-<p>1）目录侧边栏与自动编号，以及定位高亮；<br>2）markdown中本地图片路径(如<code>![](img/a.png)</code>)可转为base64内嵌入html，不再需要<code>img</code>文件夹；（可禁用该转换）<br>3）plantuml支持，可选择使用<code>plantuml.jar</code>生成<code>.svg</code>到本地再转为base64嵌入html；<br>4）mermaid支持，这个比较容易实现；<br>5）flowchart.js支持(一种画流程图的)，我没怎么用过，不过也比较容易实现；<br>6）本地化KaTeX支持（一开始用Mathjax但感觉最新版很难弄进一个html里就放弃了），所有字体手动转为base64嵌入了html中；</p>
-<h1 id="使用建议">3&emsp;使用建议</h1><p>1）默认不使用本地<code>plantuml.jar</code>（生成速度慢一些），默认转换图片为base64；<br>2）使用<code>mdhtml -h</code>查看帮助：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">$ md2html -h
-Usage: md2html can convert markdown<span class="token punctuation">(</span>.md<span class="token punctuation">)</span> <span class="token function">file</span> to single html file<span class="token punctuation">(</span>offline<span class="token punctuation">)</span>, <span class="token function">which</span> is a modified tocmd.npm<span class="token punctuation">(</span>a <span class="token function">npm</span> wrapper of i5ting_ztree_toc<span class="token punctuation">)</span> tool
-
-Options:
-  -V, --version                output the version number
-  -i, --intputfile <span class="token operator">&lt;</span>filename<span class="token operator">></span>  .md <span class="token function">file</span> location, default is README.md  <span class="token punctuation">(</span>default:
-                               <span class="token string">"README.md"</span><span class="token punctuation">)</span>
-  -o, --output-path <span class="token operator">&lt;</span>path<span class="token operator">></span>     output .html PATH, default PATH is the same with .md <span class="token function">file</span>
-  -d, --debug                  print detailed information<span class="token punctuation">(</span>for debug<span class="token punctuation">)</span>
-  -n, --no-convert-img         don't convert local images to base64 when generating .html
-                               <span class="token function">file</span>
-  -u, --uml-path <span class="token punctuation">[</span>path<span class="token punctuation">]</span>        plantuml.jar PATH to generate offilne UML images<span class="token punctuation">(</span>require
-                               java<span class="token operator">!</span><span class="token punctuation">)</span>, default PATH is ./pantuml.jar
-  -h, --help                   display <span class="token function">help</span> <span class="token keyword">for</span> <span class="token function">command</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>3）推荐Linux系统，或者WSL也行。Windows下用cmd也太难受了<br>4）目前pkg打包后的windows版本用本地<code>plantuml.jar</code>会图片出现乱码，且无法正确生成html，请使用默认选项（解析为网址）</p>
+<p>2024年一共有$24\times 366=8784$个小时，我的记录包含8759个小时，有时候还是因为太累或者太专注没来得及记录，导致总时间有一定偏差，同时一些事项记录分类可能存在错误。  </p>
+<ol>
+<li>2024年的睡眠时间占比32.4%，这些年基本都维持在稳定水平，表明作息/生活习惯比较固定；  </li>
+<li>2024年消磨时间占比26.2%，总时间较往年有所减少，是一个好的趋势（感觉上年纪之后有些电子yw了）；  </li>
+<li>2024年消费时间占比27.3%，和去年基本没区别（工作日每年就那些天），实际可能有所增加，但没有记录进去；  </li>
+<li>2024年投资时间3.3%，总的来说比较少，但实际要多一些，特别是下半年开始学钢琴后有些时间都没有记录到这里面进去；  </li>
+<li>2024年浪费时间占总时间10.8%，原因一是整体出差时间较往年更多，二是该项记录不够仔细，有部分属于消费和投资时间也记录进来了，实际应该和去年持平。  </li>
+</ol>
+<p>下面再来看看每个月的各时间占比：</p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250202151314780.png" alt></p>
+<ol>
+<li>睡眠时间全年整体波动最小，稳得一匹；  </li>
+<li>消磨时间整体呈现下降趋势，月份间的差别大；  </li>
+<li>年底10、11、12月的浪费时间显著提高，主要因为事情比较多(买房、练琴)，没有将事项分好类；  </li>
+<li>投资时间仍然有待提高。  </li>
+</ol>
+<h1 id="2024发生的几件事">2&emsp;2024发生的几件事</h1><h2 id="家庭">2.1&emsp;家庭</h2><ul>
+<li><p>今年终于买了自己的房子，虽然这个过程经历了一些不小的波折，甚至和家人因不同看法发生了几次小争执，但最终还是圆满完成了这一重要的生活里程碑。  </p>
+</li>
+<li><p>开始在工作之外更多地去接触他人（尽管仍然单身）。尝试去社交，认识新朋友（还是有点耗能量）。  </p>
+</li>
+<li><p>奶奶的健康状况依然未能好转，长期卧床让她生活质量极为低下。为了更好地照顾她，家里请了保姆全天候照顾，虽然她的状况保持稳定，但我们心里依然充满担忧。  </p>
+</li>
+<li><p>爷爷出现了明显的阿兹海默症症状，记忆力逐渐减退，情绪不稳定，时常有被害妄想，甚至作息时间也开始混乱。这不仅对他本人造成了极大的困扰，也给我们照顾他的家庭成员带来了很大的压力。深刻体会到“久病床前无孝子”这句话的含义，照顾老人的心力和精力消耗远超想象。  </p>
+</li>
+</ul>
+<h2 id="生活">2.2&emsp;生活</h2><ul>
+<li><p>拥有了自己的房子之后，心情和生活质量都有了显著的变化。虽然每次打扫卫生、装饰家居、挑选家具等琐事都很费时费力，但每一次看到一个个小细节的完成，都让我有一种满足感。家不再只是一个住的地方，更像是一个属于自己的温暖港湾。  </p>
+</li>
+<li><p>国庆假期，我独自一人去了大阪旅行。这是一次完全由自己规划和安排的旅行，包括签证的办理、行程的设计等。虽然途中有些小挑战，但更多的是享受独立旅行的乐趣和自由。通过这次旅行，我不仅见识了不同的文化和景观，也对自己的独立性和解决问题的能力有了更深的认识。<br><a href="https://www.google.com/maps/d/edit?mid=1bcXLo5VguS63PYncWnS42oXJbKFRHsw&usp=sharing" target="_blank" rel="noopener">附上我的简单行程规划</a></p>
+</li>
+</ul>
+<h2 id="工作">2.3&emsp;工作</h2><ul>
+<li><p>今年独立完成了一个百万级别的项目，虽然过程中遇到了一些技术和资源方面的困难，但通过不断的努力，最终还是顺利完成了项目目标，成果也是令人满意的。也让我意识到，要想在未来的工作中有所突破，还需要继续提升自己的能力和团队合作的效率。  </p>
+</li>
+<li><p>从整体形势来看，行业环境仍然充满挑战。虽然每一项工作都在努力推进，但市场的不确定性和竞争压力始终存在。我依然保持谨慎乐观的态度，但也不敢掉以轻心，时刻提醒自己要保持学习和创新的动力。  </p>
+</li>
+</ul>
+<h2 id="收支">2.4&emsp;收支</h2><ul>
+<li><p>今年的支出整体可控，但也有一些重要的大额消费项目。今年的食品支出大约1.1万元，娱乐支出则较为节制，控制在了3千元。房屋相关的支出占据了大部分预算，包含了5.9万元的中介费、房屋税、房租等费用。家居家具购置方面支出较大，总共约4.1万元，其中大部分是为新家添置家具。交通费用方面，花费了1.8万元，包括出差的机票费用及部分交通工具的支出。  </p>
+</li>
+<li><p>在收入方面，整体水平比去年有所增长，尤其是薪资和项目奖金上有所提升。然而，年终奖继续缩水，这让我感到有些失落。尽管如此，整体收入状况依然较为稳定，只是未能达到预期的理想状态。  </p>
+</li>
+</ul>
+<h2 id="技能">2.5&emsp;技能</h2><ul>
+<li><p>在技术方面，我尝试使用人工智能开发了一个游戏脚本。通过AI的辅助，使得这个脚本能够让玩家在短短的时间内达到一般玩家需要上千小时的熟练度水平（仅在PVE模式中使用）。这个项目让我对AI的应用和潜力有了更深的理解，同时也给我带来了不少成就感。  </p>
+</li>
+<li><p>此外，我还搭建了一个发卡平台，采用了按月订阅的收费模式，尝试将自己开发的游戏脚本软件进行售卖。虽然收入不算丰厚，基本上只是够买几杯奶茶，但这个尝试让我学到了很多关于平台建设和产品运营的知识，对未来的技能提升和副业开拓也有了更清晰的思路。  </p>
+</li>
+</ul>
+<h2 id="其他">2.6&emsp;其他</h2><ul>
+<li>2024年是我进入股市的第三个年头，我做了一个不违背祖宗的决定——放弃股市投资这条路，理由如下： </li>
+</ul>
+<ol>
+<li>事实证明自己没有天赋和能力，连续3年均在亏损状态；  </li>
+<li>幸运也未站在我这一方，比如24年如果错过了国庆那一波基本上一年都是白干；  </li>
+<li>最后让我下决心的事件是：证券史上第一例违约可转债——搜特退债(404002)的出现，让我深深感受到A股就是个垃圾场，<strong>你可能惦记的是那百分之多少点的利益，但别人惦记的是你的所有本金！</strong>  </li>
+</ol>
+<p>作为搜特退债的小额持有者，我在整个过程中深刻感受到了人性的贪婪、底层维权的艰难，以及那些既当运动员又当裁判、贼喊捉贼的无语行径。  </p>
+<p>简单的描述整个过程，就是公司为了圈钱弄了个可转债，买通华英证券等机构做了个光鲜亮丽的外表，钱到了后立马移作他用，然后不装摊牌了公司年报连续几年巨额亏损、转债连利息都没得付。这时候华英证券假惺惺地出来弄了个债权人会议撇清关系。年底东莞法院的破产案件审理过程管理人也是恶心的一匹：你不按时参会就是默认同意，你15天之内没去法院起诉我就是默认同意我的处理方式了。<br><strong>专业一点的描述</strong>就是：搜于特集团利益输送，转移资产，财报造假，恶意退市。破产清算过程中债权管理人又计票造假，操纵分配决议结果。东莞中院民五厅对此默不作声，电话不接民怨不管，漠视当地银行债权人侵吞全国广大中小债权人的合法利益。  </p>
+<p>在我的视角里，A股就是这个德行，美股又处在这样一个位置，加之个人买房后将长期处于负债状态，作为一枚普通的金融消费者，只好选择离开这个地方。  </p>
+<h1 id="2025的期望">3&emsp;2025的期望</h1><ol>
+<li>人生中的另一件大事能够有所进展  </li>
+<li>工作能够前进一个阶段  </li>
+<li>家人身体健康  </li>
+<li>世界和平  </li>
+</ol>
 
       </div>
 
@@ -575,7 +621,7 @@ Options:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2021-12-27-markdown-zhuan-chi-xian-html-dan-wen-jian/">https://chengpengzhao.com/2021-12-27-markdown-zhuan-chi-xian-html-dan-wen-jian/</a>
+                    <a href="https://chengpengzhao.com/2025-02-02-2024-nian-zong-jie-mei-xiang-dao-he-gua-de-biao-ti/">https://chengpengzhao.com/2025-02-02-2024-nian-zong-jie-mei-xiang-dao-he-gua-de-biao-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -613,16 +659,8 @@ Options:
           
           <div class="article-tag">
             
-            <a href="/tags/markdown/">
-              <span class="chip bg-color">markdown</span>
-            </a>
-            
-            <a href="/tags/html/">
-              <span class="chip bg-color">html</span>
-            </a>
-            
-            <a href="/tags/md2html/">
-              <span class="chip bg-color">md2html</span>
+            <a href="/tags/atimelogger/">
+              <span class="chip bg-color">atimelogger</span>
             </a>
             
           </div>
@@ -806,7 +844,7 @@ Options:
         repo: 'Zcp_blog_comments',
         owner: 'chengpengzhao',
         admin: "chengpengzhao",
-        id: '2021-12-27T00-00-00',
+        id: '2025-02-02T00-00-00',
         distractionFreeMode: false,  // Facebook-like distraction free mode
         proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
     });
@@ -838,29 +876,35 @@ Options:
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022-03-08-chi-dao-de-2021-nian-zong-jie-shi-jian-du-qu-na-liao/">
+                <a href="/2025-02-02-2024-nian-zong-jie-mei-xiang-dao-he-gua-de-biao-ti/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
                         
-                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="迟到的2021年总结——时间都去哪了">
-                        -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">迟到的2021年总结——时间都去哪了</span>
-
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="2024年总结--没想到合适的标题">
+                        
+                        <span class="card-title">2024年总结--没想到合适的标题</span> -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">2024年总结--没想到合适的标题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;目前的状态说到最近的状态，从3个多月博客没有更新、个人年终总结拖到2022年过了快$\frac{1}{4}$才想起来写就可以看出来：慵懒、浑浑噩噩、行尸走肉…具体表现在： 近2个月没去健身房、下班后只想打游戏丝毫不想学习、找游
+                            1&emsp;2024年总结依照惯例，看看2024年自己的时间都花在哪了吧：  
+
+回顾一下我的时间分类：
+
+睡眠，毕竟人类的一生有$\frac{1}{3}$的时间都在睡觉  
+消费时间，指我们每天的日常工作（或学业），为了获取报酬所花的时
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -877,6 +921,7 @@ Options:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -895,25 +940,25 @@ Options:
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021-12-18-si-yue-yao-hua-you-wan-si-kao-ji-lu-1/">
+                <a href="/2025-01-15-mu-qian-zheng-zai-yong-de-ge-lei-fu-wu-docker-compose-ji-lu/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
                         
-                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="《死月妖花～四月八日～》游玩思考记录1">
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="目前正在用的各类服务docker-compose记录">
                         -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">《死月妖花～四月八日～》游玩思考记录1</span>
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">目前正在用的各类服务docker-compose记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;前言上班之后基本上很少有时间玩这类游戏，之前也偶尔有粗略找过一些，没发现什么好的作品。直到上周翻番組的榜单时，一个叫做《死月妖花 (しがつようか) ～四月八日～》的同人作品映入我的眼中。给我的第一印象是：看起来像是我喜欢的类型
+                            1&emsp;背景最近搬家后，蜗牛星际的电源又一次坏掉了，加上2T硬盘空间几乎见底，我咬咬牙花了几千块血汗钱入手了一台全新的NAS和两块10T硬盘（令人无奈的是，一块硬盘竟然比NAS本体还贵得多）。接下来需要将原有的数据和服务迁移到新NAS
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-01-15
                             </span>
                         <span class="publish-author">
                             
@@ -923,8 +968,8 @@ Options:
                                     兴趣爱好
                                 </a>
                             
-                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/%E5%A8%B1%E4%B9%90/" class="post-category">
-                                    娱乐
+                            <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/VPS-NAS/" class="post-category">
+                                    VPS/NAS
                                 </a>
                             
                             
@@ -934,12 +979,12 @@ Options:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/galgame/">
-                        <span class="chip bg-color">galgame</span>
+                    <a href="/tags/NAS/">
+                        <span class="chip bg-color">NAS</span>
                     </a>
                     
-                    <a href="/tags/%E6%AD%BB%E6%9C%88%E5%A6%96%E8%8A%B1%EF%BD%9E%E5%9B%9B%E6%9C%88%E5%85%AB%E6%97%A5%EF%BD%9E/">
-                        <span class="chip bg-color">死月妖花～四月八日～</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -1073,6 +1118,19 @@ Options:
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
 
 
 
