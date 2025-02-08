@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="fvSchemes学习, Zcp&#39;s Zone">
-    <meta name="description" content="1&amp;emsp;前言在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  
-打开终端，输入：
-cd $FOAM_TUTORIALS
-grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
+    <meta name="keywords" content="关于团队知识库的选择, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;背景与目标随着高性能计算技术在工业仿真领域的快速发展，团队成员面临着日益复杂的技术挑战。为了提高工作效率、促进知识共享、减少重复劳动和提升技术水平，建立一个高效、易用、全面的团队知识库显得尤为重要。该知识库将成为团队知识积累、">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +14,7 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>fvSchemes学习 | Zcp&#39;s Zone</title>
+    <title>关于团队知识库的选择 | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -331,7 +328,7 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        fvSchemes学习
+                        关于团队知识库的选择
                     </div>
                 </div>
             </div>
@@ -449,8 +446,20 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
           
           <div class="article-tag">
             
-            <a href="/tags/fvSchemes/">
-              <span class="chip bg-color">fvSchemes</span>
+            <a href="/tags/git/">
+              <span class="chip bg-color">git</span>
+            </a>
+            
+            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+              <span class="chip bg-color">笔记</span>
+            </a>
+            
+            <a href="/tags/docker/">
+              <span class="chip bg-color">docker</span>
+            </a>
+            
+            <a href="/tags/Wiki-js/">
+              <span class="chip bg-color">Wiki.js</span>
             </a>
             
           </div>
@@ -465,8 +474,8 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
               工作
             </a>
             
-            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
-              OpenFOAM
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
             </a>
             
           </div>
@@ -478,28 +487,28 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-          2019-12-15
+          2025-02-08
         </div>
         
 
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2019-12-15
+          2025-02-08
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          1.5k
+          4.9k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          7 Min
+          17 Min
         </div>
         
 
@@ -518,250 +527,531 @@ grep -r  &#34;Schemes&#34; * -h |sort -n|uniq">
       <script type="text/javascript" src="/js/timecount.js"></script>
       </div>
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><p>在学习fvSchemes之前，先得把CFD课程过一遍，不然很多格式都不知道是怎么回事。  </p>
-<p>打开终端，输入：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> <span class="token variable">$FOAM_TUTORIALS</span>
-<span class="token function">grep</span> -r  <span class="token string">"Schemes"</span> * -h <span class="token operator">|</span><span class="token function">sort</span> -n<span class="token operator">|</span><span class="token function">uniq</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>可以看到输出里面包含所有关键字：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">d2dt2Schemes
-ddtSchemes
-divSchemes
-    echo <span class="token string">"Modifying the fvSchemes to contain only default schemes"</span>
-<span class="token operator">-</span>e s<span class="token operator">/</span><span class="token string">"\(fvSchemes[ \t]*\)\([0-9]\);"</span><span class="token operator">/</span><span class="token string">"\1 1;"</span><span class="token operator">/</span>g \
-    <span class="token keyword">for</span> FV_SC in `find <span class="token punctuation">.</span> <span class="token operator">-</span>name fvSchemes`
-gradSchemes
-gradSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> Gauss linear<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    integrationSchemes
-interpolationSchemes
-    interpolationSchemes
-interpolationSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> linear<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-laplacianSchemes
-laplacianSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> Gauss linear corrected<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token operator">*</span> limited corrected <span class="token number">0.5</span> on all laplacianSchemes because the mesh is so poor
-    object      fvSchemes<span class="token punctuation">;</span>
-SCHEMES_FILE<span class="token operator">=</span><span class="token string">"FvSchemes"</span>
-SCHEMES_TEMP<span class="token operator">=</span><span class="token string">"FvSchemes.temp"</span>
-<span class="token function">setDefaultFvSchemes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        setDefaultFvSchemes <span class="token operator">>></span> $<span class="token punctuation">{</span>FV_SC<span class="token punctuation">}</span>
-snGradSchemes
-snGradSchemes <span class="token punctuation">{</span> <span class="token keyword">default</span> corrected<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    solver setting in fvSolution <span class="token operator">and</span> a <span class="token function">div</span><span class="token punctuation">(</span>phi<span class="token punctuation">,</span>age<span class="token punctuation">)</span> scheme in fvSchemes<span class="token punctuation">.</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>稍微整理下，关键字有：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">d2dt2Schemes
-ddtSchemes
-divSchemes
-gradSchemes
-interpolationSchemes
-laplacianSchemes
-snGradSchemes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>这里就涉及到一个小技巧，当不知道某一个关键词有哪些可选项的时候该怎么办</strong></p>
-<ol>
-<li>banana方法<br>我是在wolf dynamic的教程中学到的，即将一个选项的值替换成一个肯定不存在的值，如<code>banana</code>，这样就可以从输出信息中找到有哪些选项。（当然在某些情况这个方法不起作用）  </li>
-<li>利用Linux自身的强大查找命令，如<code>grep</code>、<code>find</code>…我还没怎么学会，平时就用用简单的grep。  </li>
-<li>利用OpenFOAM自带命令，如<code>foamInfo</code>、<code>foamSearch</code>等，缺点是说明比较少，不知道哪些能搜到哪些搜不到，一切随缘。常见用法，如：<pre class="line-numbers language-bash"><code class="language-bash"> foamSearch <span class="token variable">$FOAM_TUTORIALS</span> fvSchemes ddtSchemes.default
- foamSearch <span class="token variable">$FOAM_TUTORIALS</span> fvSchemes <span class="token string">"divSchemes.div(phi,U)"</span>
- foamSearch -c <span class="token variable">$FOAM_TUTORIALS</span> fvSolution solvers.p.solver <span class="token comment" spellcheck="true">#-c 则会统计每个关键词信息出现的数量</span>
- foamSearch <span class="token variable">$FOAM_TUTORIALS</span> RAS.RASModel turbulenceProperties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
- 可见foamSearch这一命令用的好的话对学习OpenFOAM还是很有帮助的  </li>
-<li>直接从代码里找？ 这个我没试过，因为C++还没到家，看着头疼，不过能看的懂代码的话应该会好很多。</li>
-<li>Vim里的<code>vim-OpenFoam-syntax</code>插件，带有自动提示补全功能，有一定作用但需要有一些经验才能很好使用。</li>
-</ol>
-<h1 id="总览">2&emsp;总览</h1><h2 id="文件实例">2.1&emsp;文件实例</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//文件说明</span>
-FoamFile
-<span class="token punctuation">{</span>
-version     <span class="token number">2.0</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//版本号</span>
-format      ascii<span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//文本格式</span>
-<span class="token keyword">class</span>       <span class="token class-name">dictionary</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//类型为字典文件</span>
-location    <span class="token string">"system"</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//所在目录</span>
-object      fvSchemes<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//对象名</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//时间一阶导项(非定常项)格式</span>
-ddtSchemes
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         Euler<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//梯度项格式</span>
-gradSchemes
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         Gauss linear<span class="token punctuation">;</span>
-<span class="token function">grad</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>         Gauss linear<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//散度项格式</span>
-divSchemes
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//拉普拉斯项格式</span>
-laplacianSchemes
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         none<span class="token punctuation">;</span>
-<span class="token function">laplacian</span><span class="token punctuation">(</span>DT<span class="token punctuation">,</span>T<span class="token punctuation">)</span> Gauss linear corrected<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//插值格式</span>
-interpolationSchemes
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         linear<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//面法向梯度格式</span>
-snGradSchemes
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         corrected<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//需要用来计算通量的场</span>
-fluxRequired
-<span class="token punctuation">{</span>
-<span class="token keyword">default</span>         no<span class="token punctuation">;</span>
-T<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="keywords">2.2&emsp;keywords</h2><table>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="背景与目标">1&emsp;背景与目标</h1><p>随着高性能计算技术在工业仿真领域的快速发展，团队成员面临着日益复杂的技术挑战。为了提高工作效率、促进知识共享、减少重复劳动和提升技术水平，建立一个高效、易用、全面的团队知识库显得尤为重要。该知识库将成为团队知识积累、经验共享和技术创新的核心平台，确保团队在不断变化的技术环境中保持竞争力。</p>
+<p>团队知识库的目标如下：</p>
+<ul>
+<li><strong>知识存储与管理</strong>：高效存储和管理团队成员在项目中积累的技术知识、经验、解决方案、文档和工具。  </li>
+<li><strong>信息共享与传递</strong>：促进团队成员之间的知识共享，避免信息孤岛，提升团队的整体技术水平。  </li>
+<li><strong>技术支持与问题解决</strong>：提供对常见问题、挑战和技术难题的解决方案和最佳实践。  </li>
+<li><strong>培训与成长</strong>：为新成员提供系统的技术入门资料和学习资源，帮助团队成员快速提升专业能力。  </li>
+<li><strong>文档化工作流程</strong>：记录和规范团队的工作流程、项目管理规范和技术决策，为后续工作提供指导和参考。  </li>
+</ul>
+<h1 id="需求分析">2&emsp;需求分析</h1><p>为满足团队的实际工作需求，知识库应具备以下功能：</p>
+<h2 id="核心功能">2.1&emsp;核心功能</h2><ul>
+<li><strong>技术文档管理</strong>  <ul>
+<li>版本控制、文档更新日志和权限管理。  </li>
+<li>确保知识库中的文档和资料及时更新，并且成员可以方便地查看文档的历史版本。  </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>文档搜索与分类</strong>  </p>
+<ul>
+<li>强大的全文搜索功能，能够快速定位到需要的技术文档和解决方案。  </li>
+<li>分类清晰的目录结构，支持按主题、领域、项目等多维度进行浏览。  </li>
+</ul>
+</li>
+<li><p><strong>权限管理</strong>  </p>
+<ul>
+<li>根据团队成员的角色和权限设置不同的访问权限，保证敏感信息的安全性。  </li>
+<li>支持不同级别的编辑和评论权限，以便团队成员能够参与到文档的完善和更新中。  </li>
+</ul>
+</li>
+<li><p><strong>集成与兼容性</strong>  </p>
+<ul>
+<li>支持多种格式的文档，如文本(Markdown)、图像、PDF、代码文件等，确保资料的多样性和可读性。  </li>
+</ul>
+</li>
+<li><p><strong>数据备份与恢复</strong></p>
+<ul>
+<li>设置定期的数据备份方案，防止数据丢失。  </li>
+<li>提供应急数据恢复机制，确保系统故障时能够快速恢复。  </li>
+</ul>
+</li>
+<li><p><strong>安全性与隐私保护</strong></p>
+<ul>
+<li>数据本地储存</li>
+<li>公司内网访问  </li>
+</ul>
+</li>
+</ul>
+<h2 id="可选功能">2.2&emsp;可选功能</h2><ul>
+<li><p><strong>成员间交互</strong>  </p>
+<ul>
+<li>支持评论、反馈和讨论功能，促进成员间的知识交流。  </li>
+<li>提供书签、收藏夹等功能，帮助成员保存常用文档和知识点。  </li>
+</ul>
+</li>
+<li><p><strong>数据库与存储</strong></p>
+<ul>
+<li>使用高性能的数据库管理系统（如MySQL、PostgreSQL）来管理知识库中的文档数据。</li>
+</ul>
+</li>
+<li><p><strong>自动化更新与提醒</strong>  </p>
+<ul>
+<li>系统可以自动提醒团队成员参与文档的更新和审阅工作，确保知识库内容的及时更新。  </li>
+<li>定期发布知识库更新报告，向团队成员推送重要文档和技术内容。  </li>
+</ul>
+</li>
+</ul>
+<h1 id="几款知名知识库">3&emsp;几款知名知识库</h1><h2 id="Wiki-js">3.1&emsp;Wiki.js</h2><ul>
+<li><strong>功能特点</strong>：<ul>
+<li>支持Markdown和富文本编辑器。</li>
+<li>提供多用户实时协作功能。</li>
+<li>支持多种备份存储方式和用户验证方式。</li>
+<li>提供灵活的权限管理。</li>
+<li>支持国际化和自定义主题。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>开源免费，可自由部署和定制。</li>
+<li>界面简洁美观，易于使用。</li>
+<li>支持多种编辑器和插件扩展。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>部署和配置需要一定的技术基础。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Confluence">3.2&emsp;Confluence</h2><ul>
+<li><strong>功能特点</strong>：<ul>
+<li>提供强大的文档管理和团队协作功能。</li>
+<li>支持丰富的插件和自定义功能。</li>
+<li>支持文档版本控制和搜索功能。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>界面简洁直观，易于上手。</li>
+<li>与Jira等Atlassian产品无缝集成。</li>
+<li>功能强大，适合大型企业和复杂项目。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>价格较高，尤其是用户数量增加时。</li>
+<li>不支持私有部署。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Outline">3.3&emsp;Outline</h2><ul>
+<li><strong>功能特点</strong>：<ul>
+<li>支持Markdown语法和富文本编辑。</li>
+<li>支持团队协作和内容分享。</li>
+<li>提供即时搜索功能。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>开源免费，可私有化部署。</li>
+<li>界面简洁，学习成本低。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>功能相对简单，部分高级功能有待完善。</li>
+</ul>
+</li>
+</ul>
+<h2 id="DocMost">3.4&emsp;DocMost</h2><ul>
+<li><strong>功能特点</strong>：<ul>
+<li>支持实时协作的富文本编辑器。</li>
+<li>支持表格、数学公式和注释。</li>
+<li>提供完善的权限管理系统。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>开源免费，可自托管。</li>
+<li>界面简洁，类似Notion。</li>
+<li>支持Docker部署，便于安装。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>功能相对有限，不如其他软件丰富。</li>
+<li>层级目录管理功能缺失。</li>
+</ul>
+</li>
+</ul>
+<h2 id="PingCode">3.5&emsp;PingCode</h2><ul>
+<li><strong>功能特点</strong>：<ul>
+<li>支持多人实时在线协同编辑，信息实时保存同步。</li>
+<li>支持富文本编辑，支持插入图片、表格、思维导图等。</li>
+<li>支持页面级权限管控和安全能力。</li>
+<li>支持AI智能助手。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>产品开箱即用，简单易上手。</li>
+<li>支持私有部署和定制化。</li>
+<li>国际信息安全体系认证，安全有保障。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>商软，且功能比较杂。</li>
+<li>用户没有数据的掌控权。</li>
+</ul>
+</li>
+</ul>
+<h2 id="对比">3.6&emsp;对比</h2><table>
 <thead>
 <tr>
-<th align="center">子字典关键字</th>
-<th align="center">说明</th>
+<th>功能/工具</th>
+<th>Wiki.js</th>
+<th>Confluence</th>
+<th>Outline</th>
+<th>DocMost</th>
+<th>PingCode</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><code>interpolationSchemes</code></td>
-<td align="center">网格体心至面心插值格式</td>
+<td><strong>开源性</strong></td>
+<td>开源免费</td>
+<td>非开源，需付费</td>
+<td>开源免费</td>
+<td>开源免费</td>
+<td>非开源，需付费</td>
 </tr>
 <tr>
-<td align="center"><code>snGradSchemes</code></td>
-<td align="center">面法向梯度格式</td>
+<td><strong>编辑器</strong></td>
+<td>Markdown、富文本</td>
+<td>富文本编辑器</td>
+<td>Markdown、富文本</td>
+<td>富文本、Markdown</td>
+<td>富文本、Markdown等</td>
 </tr>
 <tr>
-<td align="center"><code>timeScheme</code></td>
-<td align="center">时间导数项$\frac{\partial}{\partial t}$ $\frac{\partial ^2}{\partial t^2}$</td>
+<td><strong>协作功能</strong></td>
+<td>多用户实时协作</td>
+<td>多人协作编辑和审核</td>
+<td>多人协作</td>
+<td>多人实时协作</td>
+<td>多人实时在线协同编辑</td>
 </tr>
 <tr>
-<td align="center"><code>divSchemes</code></td>
-<td align="center">散度(对流)项格式 $\nabla \cdot$</td>
+<td><strong>版本控制</strong></td>
+<td>支持</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
 </tr>
 <tr>
-<td align="center"><code>gradSchemes</code></td>
-<td align="center">梯度项格式$\nabla$</td>
+<td><strong>权限管理</strong></td>
+<td>灵活</td>
+<td>强大</td>
+<td>简单</td>
+<td>完善</td>
+<td>页面级权限管控</td>
 </tr>
 <tr>
-<td align="center"><code>laplacianSchemes</code></td>
-<td align="center">拉普拉斯项格式$\nabla ^2$</td>
+<td><strong>多语言支持</strong></td>
+<td>支持多种语言</td>
+<td>支持多种语言</td>
+<td>支持多种语言</td>
+<td>支持多种语言</td>
+<td>不支持多语言</td>
 </tr>
 <tr>
-<td align="center"><code>fluxRequired 如(wallDist)</code></td>
-<td align="center">需要计算通量的场</td>
+<td><strong>集成能力</strong></td>
+<td>支持多种插件</td>
+<td>与Atlassian生态系统集成</td>
+<td>不支持集成</td>
+<td>不支持集成</td>
+<td>支持多种集成</td>
+</tr>
+<tr>
+<td><strong>部署方式</strong></td>
+<td>自行部署</td>
+<td>云部署或本地部署</td>
+<td>自行部署</td>
+<td>自行部署</td>
+<td>云部署或本地部署</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>中等</td>
+<td>较高</td>
+<td>低</td>
+<td>低</td>
+<td>中等</td>
+</tr>
+<tr>
+<td><strong>价格</strong></td>
+<td>免费</td>
+<td>高</td>
+<td>免费</td>
+<td>免费</td>
+<td>中等</td>
 </tr>
 </tbody></table>
-<blockquote>
-<p>以下结果与OpenFOAM版本有关，我用的是OpenFoam-dev(7)</p>
-</blockquote>
-<pre class="line-numbers language-cpp"><code class="language-cpp">Valid schemes are <span class="token operator">:</span>
+<h1 id="总结">4&emsp;总结</h1><p>建立一个高效、全面的团队知识库将极大提升团队的技术水平和工作效率。通过系统的文档管理、技术分享和问题解决，知识库能够帮助团队成员在复杂的高性能计算和工业仿真项目中快速找到解决方案，减少重复劳动，推动技术创新和协作。  </p>
+<p>根据需求分析以及各产品的功能调研，最终选择<a href="https://docs.requarks.io/" target="_blank" rel="noopener"><strong>Wiki.js</strong></a>作为使用的团队知识库，它支持上述所有需求且有较高的安全与灵活性，兼顾开源低成本的优势。</p>
+<h1 id="docker部署Wiki-js流程">5&emsp;docker部署Wiki.js流程</h1><ol>
+<li>新建文件夹，在其中建立<code>docker-compose.yml</code>文件如下；  </li>
+</ol>
+<pre class="line-numbers language-yml"><code class="language-yml">services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_PASSWORD: wikijsrocks
+      POSTGRES_USER: wikijs
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
 
-<span class="token function">61</span>
-<span class="token punctuation">(</span>
-CoBlended
-Gamma
-GammaV
-LUST
-MUSCL
-MUSCLV
-Minmod
-MinmodV
-OSPRE
-OSPREV
-Phi
-QUICK
-QUICKV
-SFCD
-SFCDV
-SuperBee
-SuperBeeV
-UMIST
-UMISTV
-biLinearFit
-blended
-cellCoBlended
-clippedLinear
-cubic
-cubicUpwindFit
-downwind
-filteredLinear
-filteredLinear2
-filteredLinear2V
-filteredLinear3
-filteredLinear3V
-fixedBlended
-limitWith
-limitedCubic
-limitedCubicV
-limitedLinear
-limitedLinearV
-limiterBlended
-linear
-linearFit
-linearPureUpwindFit
-linearUpwind
-linearUpwindV
-localBlended
-localMax
-localMin
-midPoint
-outletStabilised
-pointLinear
-quadraticFit
-quadraticLinearFit
-quadraticLinearUpwindFit
-quadraticUpwindFit
-reverseLinear
-skewCorrected
-upwind
-vanAlbada
-vanAlbadaV
-vanLeer
-vanLeerV
-weighted
-<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="关于default">2.3&emsp;关于default</h2><p>如果…Schemes 子字典中的 default关键词已经被指定， 那么子字典中所有的项都会应用这个格式。用户也可以指定 default 为 none。 这种情况下，用户必须强制为每个项指定离散格式。<br>推荐把default指定为none，这样的话强制用户对方程的每个需要离散的项进行设定，有助于对问题的理解。<br>总的来说就是<strong>从ERROR中学习</strong>。</p>
-<h1 id="逐项分析">3&emsp;逐项分析</h1><p>可参考OpenFOAM官网的<a href="https://www.openfoam.com/documentation/guides/latest/doc/guide-schemes.html" target="_blank" rel="noopener">Extended Code Guide</a>，上面有一些说明。</p>
-<h2 id="ddtSchemes-frac-partial-partial-t-left-phi-right">3.1&emsp;ddtSchemes $\frac{\partial }{\partial t}\left(\phi\right)$</h2><pre class="line-numbers language-cpp"><code class="language-cpp">Valid ddt schemes are <span class="token operator">:</span>
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: wikijsrocks
+      DB_NAME: wiki
+      OFFLINE_ACTIVE: 1
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./sideload:/wiki/data/sideload
+      - ./config.yml:/wiki/config.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><p>在文件夹中新建<code>sideload</code>文件夹，将<a href="https://github.com/requarks/wiki-localization" target="_blank" rel="noopener">https://github.com/requarks/wiki-localization</a>中的内容下载到<code>sideload</code>文件夹内部；</p>
+</li>
+<li><p>在<code>docker-compose.yml</code>同级目录下建立<code>config.yml</code>如下（更多设置项参考<a href="https://github.com/requarks/wiki/blob/main/config.sample.yml" target="_blank" rel="noopener">官方example</a>)：</p>
+</li>
+</ol>
+<pre class="line-numbers language-yml"><code class="language-yml">port: 3000
+bindIP: 0.0.0.0
+db:
+  type: $(DB_TYPE)
+  host: '$(DB_HOST)'
+  port: $(DB_PORT)
+  user: '$(DB_USER)'
+  pass: '$(DB_PASS)'
+  db: $(DB_NAME)
+  storage: $(DB_FILEPATH)
+  ssl: $(DB_SSL)
+ssl:
+  enabled: $(SSL_ACTIVE)
+  port: 3443
+  provider: letsencrypt
+  domain: $(LETSENCRYPT_DOMAIN)
+  subscriberEmail: $(LETSENCRYPT_EMAIL)
+logLevel: info
+ha: $(HA_ACTIVE)
+offline: $(OFFLINE_ACTIVE)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><p>运行<code>docker-compose up -d</code>；</p>
+</li>
+<li><p>打开网页，进行初始化设置；</p>
+</li>
+</ol>
+<h1 id="部署注意事项">6&emsp;部署注意事项</h1><p>按照Wiki.js官网给出的docker安装流程(<a href="https://docs.requarks.io/install/docker" target="_blank" rel="noopener">https://docs.requarks.io/install/docker</a>)会出现问题，与上面的配置区别主要体现在offline设置和本地化文件的下载，原配置文件如下：  </p>
+<pre class="line-numbers language-yml"><code class="language-yml">version: "3"
+services:
 
-<span class="token function">8</span>
-<span class="token punctuation">(</span>
-CoEuler
-CrankNicolson
-Euler
-SLTS
-backward
-bounded
-localEuler
-steadyState
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="CoEuler">3.1.1&emsp;CoEuler</h3><p>Courant number <strong>limited first-order Euler</strong> implicit/explicit ddt.<br>This scheme should only be used for <strong>steady-state</strong> computations using transient codes where <strong>local time-stepping</strong> is preferable to under-relaxation for transport consistency reasons.<br>例子，如：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span> CoEuler phi rho <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_PASSWORD: wikijsrocks
+      POSTGRES_USER: wikijs
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: wikijsrocks
+      DB_NAME: wiki
+    restart: unless-stopped
+    ports:
+      - "80:3000"
+
+volumes:
+  db-data:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>关于问题的具体描述，可参考该讨论贴：<a href="https://github.com/requarks/wiki/discussions/5339" target="_blank" rel="noopener">https://github.com/requarks/wiki/discussions/5339</a></p>
+<h1 id="Wiki-js使用说明">7&emsp;Wiki.js使用说明</h1><h2 id="基础">7.1&emsp;基础</h2><p>Wiki.js 是一个现代化的开源知识库系统，用于创建和管理文档、知识库或维基网站。以下是关于 Wiki.js 的界面布局和基本操作的详细介绍。</p>
+<h3 id="界面布局">7.1.1&emsp;界面布局</h3><p>以下是 Wiki.js 界面的主要组成部分：</p>
 <ul>
-<li>phiName: Name of the flux field used to calculate the local time-step </li>
-<li>rhoName: Name of the density field used to obtain the volumetric flux from the mass flux if required </li>
-<li>maxCo: Maximum local Courant number</li>
+<li>全局导航栏（Global Navigation）：这是一个持续显示在所有页面上的导航菜单，通常包含重要页面或外部链接。</li>
+<li>全局搜索（Global Search）：通过搜索快速找到页面。</li>
+<li>新建页面（Create New Page）：用于创建新页面。</li>
+<li>用户菜单（User Menu）：用户特定的操作，如查看个人资料、管理界面和注销。</li>
+<li>页面操作（Page Actions）：当前页面的操作列表，如编辑、移动、删除、历史记录等。</li>
+<li>页面路径（Breadcrumbs）：显示当前页面的完整路径，代表文件夹结构。<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208134953525.jpeg" alt></li>
+<li>目录（Table of Contents）：基于内容中的标题显示当前页面的各个部分。</li>
+<li>页面标签（Page Tags）：与当前页面关联的标签，点击标签可以查看相关页面。</li>
+<li>作者信息（Author）：显示页面最后修改的作者和日期。</li>
+<li>社交链接（Social Links）：用于分享或打印当前页面的链接。</li>
+<li>编辑页面 / 页面操作（Edit Page / Page Actions）：快速访问菜单，用于编辑或对当前页面执行其他操作。</li>
 </ul>
-<h3 id="CrankNicolson">3.1.2&emsp;CrankNicolson</h3><p><strong>Second-order</strong> Crank-Nicolson implicit ddt using the current and previous time-step fields as well as the previous time-step ddt.<br>The Crank-Nicolson scheme is often <strong>unstable</strong> for complex flows in complex geometries and it is necessary to “off-centre” the scheme to stabilize it while retaining <strong>greater temporal accuracy than the first-order Euler-implicit scheme</strong>.  Off-centering is specified via the mandatory coefficient \c ocCoeff in the range [0,1] following the scheme name e.g.</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span>         CrankNicolson <span class="token number">0.9</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>or with an optional “ramp” function to transition from the Euler scheme to Crank-Nicolson over a initial period to avoid start-up problems, e.g.</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">default</span>         CrankNicolson
-ocCoeff
-<span class="token punctuation">{</span>
-    type scale<span class="token punctuation">;</span>
-    scale linearRamp<span class="token punctuation">;</span>
-    duration <span class="token number">0.01</span><span class="token punctuation">;</span>
-    value <span class="token number">0.9</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>With a coefficient of <strong>1 the scheme is fully centred</strong> and second-order, with a coefficient of <strong>0 the scheme is equivalent to Euler-implicit</strong>.  A coefficient of <strong>0.9</strong> has been found to be suitable for a range of cases for which higher-order accuracy in time is needed and provides similar accuracy and stability to the backward scheme.  However, <strong>the backward scheme has been found to be more robust and provides formal second-order accuracy in time.</strong>  </p>
-<p>The advantage of the Crank-Nicolson scheme over backward is that <strong>only the new and old-time values are needed</strong>, the additional terms relating to the fluxes and sources are evaluated at the mid-point of the time-step which provides the opportunity to limit the fluxes in such a way as to ensure <strong>boundedness</strong> while maintaining <strong>greater accuracy in time compared to the Euler-implicit scheme</strong>.  This approach is now used with MULES in the interFoam family of solvers.  <strong>Boundedness cannot be guaranteed with the backward scheme.</strong><br>Note: The Crank-Nicolson coefficient for the implicit part of the RHS is related to the off-centering coefficient by <code>cnCoeff = 1.0/(1.0 + ocCoeff)</code>;  </p>
-<p>Forward Euler:<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n+1}-\phi^{n}}{\Delta t}<br> \tag{3-1}$$</p>
-<p>Backward Euler:<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n}-\phi^{n-1}}{\Delta t}<br> \tag{3-2}$$</p>
-<p>Fully centred CN:  Forward Euler + Backward Euler:</p>
-<p>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\phi^{n+1}-\phi^{n}}{2\Delta t}<br>+\frac{\phi^{n}-\phi^{n-1}}{2\Delta t}=\frac{\phi^{n+1}-\phi^{n-1}}{2\Delta t}<br> \tag{3-3}$$<br>假设 ocCoeff: $\lambda$，则：<br>$$<br>\frac{\partial }{\partial t}\left(\phi^{n}\right)\approx\frac{\lambda}{1+\lambda}\frac{\phi^{n+1}-\phi^{n}}{\Delta t}+\frac{1}{1+\lambda}\frac{\phi^{n}-\phi^{n-1}}{\Delta t}<br> \tag{3-4}$$<br>显然，当 $\lambda=0$ ，退化成Backward Euler； $\lambda=1$，为完全的CrankNicolson格式。</p>
-<blockquote>
-<p>突然发现有好多要学的，未完待续…&emsp;&emsp;<em>2019-12-16 00:03:56</em></p>
-</blockquote>
+<h3 id="基本用法">7.1.2&emsp;基本用法</h3><h4 id="创建新页面">7.1.2.1&emsp;创建新页面</h4><p>要创建新页面，请点击页面右上角的 新建页面（New Page） 按钮。会弹出对话框：</p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135035200.png" alt></p>
+<ol>
+<li>选择语言：选择要创建页面的语言（默认选择当前语言）。</li>
+<li>输入页面路径： 路径应包含无空格（使用连字符代替）、无句点，且由 URL 安全字符组成。不要在路径末尾添加斜杠。</li>
+<li>无需手动创建文件夹。只需输入完整的路径，文件夹将自动创建。例如，输入<code>universe/planets/earth</code>，将自动创建 <code>universe</code> 和 <code>planets</code> 子文件夹，<code>earth</code>则作为当前页面的实际文件名（页面的显示名称在后续<code>title</code>中设置）。</li>
+<li>点击“选择”：继续下一步。</li>
+</ol>
+<h4 id="选择编辑器">7.1.2.2&emsp;选择编辑器</h4><p>创建新页面时，会弹出对话框：  </p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135102722.png" alt></p>
+<p>Wiki.js 提供多种编辑器，具体取决于你想要编写的内容类型或个人偏好。开发者通常会选择 Markdown 编辑器，而非技术人员可能更喜欢可视化编辑器（Visual Editor）。</p>
+<h4 id="填写页面元数据">7.1.2.3&emsp;填写页面元数据</h4><p>选择编辑器后，会弹出页面元数据对话框：  </p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135127234.png" alt></p>
+<ol>
+<li>输入页面的 标题、描述 和 标签（路径之前填写过，此处可修改），并点击 “确定” 关闭对话框并开始编写内容。  </li>
+<li>之后可以随时通过点击页面右上角的 “页面” 按钮，返回页面元数据对话框。  </li>
+</ol>
+<h4 id="保存页面">7.1.2.4&emsp;保存页面</h4><p>页面创建完成之前，你需要点击页面右上角的 “创建” 按钮。页面将被保存并渲染，之后你将自动被重定向到最终结果页面。如果需要继续编辑，只需点击编辑按钮即可。</p>
+<h2 id="文件夹与标签">7.2&emsp;文件夹与标签</h2><h3 id="文件夹结构">7.2.1&emsp;文件夹结构</h3><p>Wiki.js 并没有传统意义上的文件夹结构。无需创建文件夹即可创建新页面。相反，你可以直接在你选择的路径上创建页面。<br>例如，要创建路径为 <code>/universe/planets/earth</code> 的页面，你无需事先创建 <code>universe</code> 和 <code>planets</code> 文件夹。这些文件夹会根据页面路径自动推断。  </p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135152233.jpeg" alt>  </p>
+<p>这种系统提供了更大的灵活性，并减少了页面之间的依赖性。但这并不意味着你不能使用传统的文件夹系统。文件夹结构在创建和移动页面时仍然可用，唯一的区别是你无需手动管理文件夹，它们会根据页面路径自动推断。<br>每页顶部显示的导航栏也是根据路径自动生成的。</p>
+<h3 id="多级页面与引导页">7.2.2&emsp;多级页面与引导页</h3><ul>
+<li><p>在创建多级页面时，你可能希望为每个虚拟文件夹创建一个<strong>引导页</strong>。 例如，如果你有一个路径为 <code>/foo/bar</code> 的页面，你应该创建一个路径为 <code>/foo</code> 的新页面。这样可以确保在 /foo/bar 页面上点击<code>foo</code>链接时，能够跳转到 <code>/foo</code> 页面。  </p>
+</li>
+<li><p>站点树导航模式中，每个层级的页面标题将从其对应的页面中获取。<br>例如，创建以下页面：</p>
+</li>
+</ul>
+<ol>
+<li>路径为 /universe 的页面，标题为“The Universe”</li>
+<li>路径为 /universe/planets 的页面，标题为“The Planets”</li>
+<li>路径为 /universe/planets/earth 的页面，标题为“The Blue Marble”</li>
+</ol>
+<p>将生成一个站点树，包含以下条目：  </p>
+<ul>
+<li><strong>The Universe</strong><ul>
+<li><strong>The Planets</strong><pre><code>- **The Blue Marble**</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>在“The Blue Marble”页面上，导航将类似于：  </p>
+<p>/ <strong>universe</strong> / <strong>planets</strong> / <strong>earth</strong></p>
+<p>每个链接分别对应上面创建的三个页面。</p>
+<h3 id="标签">7.2.3&emsp;标签</h3><ul>
+<li>标签是分类页面和快速查找相关内容的绝佳方式。它们是使用复杂文件夹系统分类内容的更轻量级替代方案。标签是附加到页面上的简单标签。<br>可以为一个页面添加多个标签。  </li>
+<li>例如，对于关于城市 Montreal 的页面，你可以添加标签 cities、canada、north-america。这些标签随后可以用来快速找到该页面。通过浏览标签 canada 和 cities，页面 Montreal 将出现在结果中，因为这两个标签都存在于该页面上。</li>
+<li>可以随时向页面添加更多标签或从页面中移除标签。</li>
+<li>使用<code>按标签浏览</code>链接（位于搜索栏旁边，或在导航菜单中）查看 Wiki 中所有可用的标签列表。</li>
+<li>选择一个或多个标签，查看符合选择条件的页面列表。</li>
+</ul>
+<h2 id="页面">7.3&emsp;页面</h2><h3 id="创建新页面-1">7.3.1&emsp;创建新页面</h3><p>在 Wiki.js 中，有多种方法可以创建新页面：</p>
+<ul>
+<li>通过“新建页面”按钮：点击页面右上角的“新建页面”按钮。</li>
+<li>通过链接指向不存在的页面：点击一个指向不存在页面的链接，系统会提示你创建该页面。</li>
+<li>手动输入路径：在浏览器地址栏中直接输入页面路径。</li>
+</ul>
+<h3 id="编辑页面">7.3.2&emsp;编辑页面</h3><p>要编辑已存在的页面，可以通过以下方式：</p>
+<ul>
+<li>点击页面右下角的 铅笔图标。</li>
+<li>使用页面右上角的 页面菜单。</li>
+<li>创建页面时选择的编辑器将自动加载。注意：目前一旦页面创建完成，将无法更改编辑器。</li>
+</ul>
+<h3 id="页面路径与文件夹结构">7.3.3&emsp;页面路径与文件夹结构</h3><ul>
+<li>Wiki.js 不依赖传统的文件夹结构来组织页面，而是使用页面路径来实现。  </li>
+<li>例如，在传统的系统中，要创建路径为 universe/planets/earth 的页面，你需要先创建一个名为 universe 的文件夹，然后在该文件夹中创建一个名为 planets 的子文件夹，最后在子文件夹中创建名为 earth 的页面。</li>
+<li>而在 Wiki.js 中，你可以直接创建路径为 universe/planets/earth 的页面。universe 和 planets 文件夹将被自动推断，但它们实际上并不存在于页面路径之外的上下文中。因此，你无需管理文件夹，只需专注于你想要的页面路径即可。</li>
+<li>基于这个原因，Wiki.js 没有提供创建文件夹的选项。只需输入完整的路径，文件夹将在创建时自动推断。</li>
+</ul>
+<h3 id="保留路径和限制">7.3.4&emsp;保留路径和限制</h3><p>以下路径被保留用于系统使用，不能用于内容创建：</p>
+<ul>
+<li><p>单字符路径：用于访问 Wiki 的不同部分，例如：</p>
+<pre><code>a：管理区域
+c：评论
+e：页面编辑器
+f：资源管理器
+h：页面历史
+i：按 ID 浏览页面
+p：用户个人资料
+s：页面源代码
+t：标签
+u：上传端点（API）
+w：个人 Wiki</code></pre></li>
+<li><p>语言标签：用于指定使用的语言区域，例如：</p>
+<pre><code>两位语言代码（如 en、fr）
+国家特定的语言代码（如 en-us、fr-ca）</code></pre></li>
+<li><p>其他系统使用的路径：</p>
+<pre><code>_assets
+favicon [ .ico ]
+graphql
+healthz
+home（保留用于根主页）
+login
+logout
+register
+browserconfig [ .xml ]
+css
+favicon [ .ico ]
+favicons
+fonts
+graphql
+healthz
+home（保留用于根主页）
+img
+js
+login
+logout
+manifest [ .json ]
+register
+svg</code></pre></li>
+</ul>
+<h3 id="路径命名规则">7.3.5&emsp;路径命名规则</h3><p>页面路径不能包含以下字符：</p>
+<ul>
+<li>空格（使用连字符代替）</li>
+<li>句点（保留用于文件扩展名）</li>
+<li>不安全的 URL 字符（如标点符号、引号、数学符号等）</li>
+</ul>
+<h2 id="媒体资源">7.4&emsp;媒体资源</h2><p>在 Wiki.js 中，媒体资源（如图片、文档、压缩文件等）可以通过资源管理器进行管理和插入。以下是详细的操作指南。</p>
+<h3 id="打开资源管理器">7.4.1&emsp;打开资源管理器</h3><p>所有编辑器都提供了一个按钮，用于打开资源管理器对话框。具体操作可以参考每种编辑器的文档。</p>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135231120.png" alt></p>
+<h3 id="创建文件夹">7.4.2&emsp;创建文件夹</h3><ul>
+<li>点击资源管理器对话框顶部的 “New Folder” 按钮。</li>
+<li>输入一个符合以下命名规则的新文件夹名称：<ul>
+<li>禁止使用空格。</li>
+<li>禁止使用大写拉丁字母。</li>
+<li>禁止使用特殊字符，除了连字符<code>-</code>和下划线<code>_</code>。</li>
+<li>文件夹名称至少需要 2 个字符。</li>
+<li>不能仅由拉丁字母（A-Z）组成，且不能符合 ZZ 或 ZZ-ZZ 的模式（这些模式被保留用于语言区域）。</li>
+<li>不能以特殊字符开头或结尾。</li>
+</ul>
+</li>
+</ul>
+<h3 id="上传资源">7.4.3&emsp;上传资源</h3><ul>
+<li>支持的文件类型：资源可以是任何类型的文件，包括图片、文档、ZIP 文件等。</li>
+<li>图片显示：图片文件会自动以图片形式显示，而其他文件类型则会显示为标准链接。</li>
+<li>上传操作：<ul>
+<li>点击 “Browse…” 按钮，或者点击灰色区域，或者直接将文件拖拽到灰色区域。</li>
+<li>准备好后，点击 “Upload” 按钮开始上传所有文件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="插入资源">7.4.4&emsp;插入资源</h3><ul>
+<li>选择你想要插入的资源，然后点击 “Insert” 按钮。</li>
+<li>如果插入的是图片，还可以通过 “Image Alignment” 下拉菜单（位于对话框右侧）设置图片的对齐方式：<ul>
+<li>Left：页面左侧对齐。</li>
+<li>Centered：页面居中对齐。</li>
+<li>Right：页面右侧对齐。</li>
+<li>Absolute Top Right：作为页面右上角的徽标显示。</li>
+</ul>
+</li>
+</ul>
+<h3 id="管理资源">7.4.5&emsp;管理资源</h3><p>对于已上传的资源，你可以执行以下操作：</p>
+<ul>
+<li>重命名、删除 或 编辑 资源。</li>
+<li>点击资源列表项右侧的 … 按钮，会出现一个下拉菜单，列出所有可能的操作。</li>
+</ul>
 
       </div>
 
@@ -786,7 +1076,7 @@ ocCoeff
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2019-12-15-fvschemes-xue-xi/">https://chengpengzhao.com/2019-12-15-fvschemes-xue-xi/</a>
+                    <a href="https://chengpengzhao.com/2025-02-08-guan-yu-tuan-dui-zhi-shi-ku-de-xuan-ze/">https://chengpengzhao.com/2025-02-08-guan-yu-tuan-dui-zhi-shi-ku-de-xuan-ze/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -824,8 +1114,20 @@ ocCoeff
           
           <div class="article-tag">
             
-            <a href="/tags/fvSchemes/">
-              <span class="chip bg-color">fvSchemes</span>
+            <a href="/tags/git/">
+              <span class="chip bg-color">git</span>
+            </a>
+            
+            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+              <span class="chip bg-color">笔记</span>
+            </a>
+            
+            <a href="/tags/docker/">
+              <span class="chip bg-color">docker</span>
+            </a>
+            
+            <a href="/tags/Wiki-js/">
+              <span class="chip bg-color">Wiki.js</span>
             </a>
             
           </div>
@@ -1009,7 +1311,7 @@ ocCoeff
         repo: 'Zcp_blog_comments',
         owner: 'chengpengzhao',
         admin: "chengpengzhao",
-        id: '2019-12-15T00-00-00',
+        id: '2025-02-08T00-00-00',
         distractionFreeMode: false,  // Facebook-like distraction free mode
         proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
     });
@@ -1041,30 +1343,30 @@ ocCoeff
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020-01-08-git-learning/">
+                <a href="/2025-02-08-guan-yu-tuan-dui-zhi-shi-ku-de-xuan-ze/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200108110720.webp" class="responsive-img" alt="Git学习笔记">
-                        -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Git学习笔记</span>
-
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="关于团队知识库的选择">
+                        
+                        <span class="card-title">关于团队知识库的选择</span> -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">关于团队知识库的选择</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;git学习笔记学习自：廖雪峰的官方网站
-1.1&emsp;基础
-千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地
+                            1&emsp;背景与目标随着高性能计算技术在工业仿真领域的快速发展，团队成员面临着日益复杂的技术挑战。为了提高工作效率、促进知识共享、减少重复劳动和提升技术水平，建立一个高效、易用、全面的团队知识库显得尤为重要。该知识库将成为团队知识积累、
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1081,15 +1383,24 @@ ocCoeff
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
-                    </a>
-                    
                     <a href="/tags/git/">
                         <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/Wiki-js/">
+                        <span class="chip bg-color">Wiki.js</span>
                     </a>
                     
                 </div>
@@ -1103,53 +1414,41 @@ ocCoeff
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019-12-11-evaluation-of-parsec-paraterization/">
+                <a href="/2025-02-02-2024-nian-zong-jie-mei-xiang-dao-he-gua-de-biao-ti/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20191211235843.webp" class="responsive-img" alt="Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization">
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="2024年总结--没想到合适的标题">
                         -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Airfoil optimization for Vertical Axis Hydrokinetic Turbine using genetic algorithm(3)---Evaluation of PARSEC parametrization</span>
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">2024年总结--没想到合适的标题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;Evaluation of PARSEC parametrizationThe principles that parametrization technique should satisfy are:
+                            1&emsp;2024年总结依照惯例，看看2024年自己的时间都花在哪了吧：  
 
-Minimize t
+回顾一下我的时间分类：
+
+睡眠，毕竟人类的一生有$\frac{1}{3}$的时间都在睡觉  
+消费时间，指我们每天的日常工作（或学业），为了获取报酬所花的时
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
-                                </a>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    语言
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/CFD/" class="post-category">
-                                    CFD
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/OpenFOAM/" class="post-category">
-                                    OpenFOAM
-                                </a>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E8%A8%80/%E8%8B%B1%E8%AF%AD/" class="post-category">
-                                    英语
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/%E6%9D%82%E6%84%9F/" class="post-category">
+                                    杂感
                                 </a>
                             
                             
@@ -1159,8 +1458,8 @@ Minimize t
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/airfoil-optimization/">
-                        <span class="chip bg-color">airfoil optimization</span>
+                    <a href="/tags/atimelogger/">
+                        <span class="chip bg-color">atimelogger</span>
                     </a>
                     
                 </div>
