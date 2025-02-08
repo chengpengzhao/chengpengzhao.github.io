@@ -920,20 +920,23 @@ volumes:
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135152233.jpeg" alt>  </p>
 <p>这种系统提供了更大的灵活性，并减少了页面之间的依赖性。但这并不意味着你不能使用传统的文件夹系统。文件夹结构在创建和移动页面时仍然可用，唯一的区别是你无需手动管理文件夹，它们会根据页面路径自动推断。<br>每页顶部显示的导航栏也是根据路径自动生成的。</p>
 <h3 id="多级页面与引导页">7.2.2&emsp;多级页面与引导页</h3><ul>
-<li><p>在创建多级页面时，你可能希望为每个虚拟文件夹创建一个<strong>引导页</strong>。 例如，如果你有一个路径为 <code>/foo/bar</code> 的页面，你应该创建一个路径为 <code>/foo</code> 的新页面。这样可以确保在 /foo/bar 页面上点击<code>foo</code>链接时，能够跳转到 <code>/foo</code> 页面。  </p>
+<li><p>在创建多级页面时，你可能希望为每个虚拟文件夹创建一个<strong>引导页</strong>。 例如，如果你有一个路径为 <code>/foo/bar</code> 的页面，你应该创建一个路径为 <code>/foo</code> 的新页面。这样可以确保在 <code>/foo/bar</code> 页面上点击<code>foo</code>链接时，能够跳转到 <code>/foo</code> 页面。  </p>
 </li>
 <li><p>站点树导航模式中，每个层级的页面标题将从其对应的页面中获取。<br>例如，创建以下页面：</p>
 </li>
 </ul>
 <ol>
-<li>路径为 /universe 的页面，标题为“The Universe”</li>
-<li>路径为 /universe/planets 的页面，标题为“The Planets”</li>
-<li>路径为 /universe/planets/earth 的页面，标题为“The Blue Marble”</li>
+<li>路径为 <code>/universe</code> 的页面，标题为“The Universe”</li>
+<li>路径为 <code>/universe/planets</code> 的页面，标题为“The Planets”</li>
+<li>路径为 <code>/universe/planets/earth</code> 的页面，标题为“The Blue Marble”</li>
 </ol>
 <p>将生成一个站点树，包含以下条目：  </p>
 <ul>
 <li><strong>The Universe</strong><ul>
-<li><strong>The Planets</strong><pre><code>- **The Blue Marble**</code></pre></li>
+<li><strong>The Planets</strong><ul>
+<li><strong>The Blue Marble</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -961,8 +964,8 @@ volumes:
 </ul>
 <h3 id="页面路径与文件夹结构">7.3.3&emsp;页面路径与文件夹结构</h3><ul>
 <li>Wiki.js 不依赖传统的文件夹结构来组织页面，而是使用页面路径来实现。  </li>
-<li>例如，在传统的系统中，要创建路径为 universe/planets/earth 的页面，你需要先创建一个名为 universe 的文件夹，然后在该文件夹中创建一个名为 planets 的子文件夹，最后在子文件夹中创建名为 earth 的页面。</li>
-<li>而在 Wiki.js 中，你可以直接创建路径为 universe/planets/earth 的页面。universe 和 planets 文件夹将被自动推断，但它们实际上并不存在于页面路径之外的上下文中。因此，你无需管理文件夹，只需专注于你想要的页面路径即可。</li>
+<li>例如，在传统的系统中，要创建路径为<code>universe/planets/earth</code> 的页面，你需要先创建一个名为 <code>universe</code> 的文件夹，然后在该文件夹中创建一个名为 <code>planets</code> 的子文件夹，最后在子文件夹中创建名为 <code>earth</code> 的页面。</li>
+<li>而在 Wiki.js 中，你可以直接创建路径为 <code>universe/planets/earth</code> 的页面。<code>universe</code> 和 <code>planets</code> 文件夹将被自动推断，但它们实际上并不存在于页面路径之外的上下文中。因此，你无需管理文件夹，只需专注于你想要的页面路径即可。</li>
 <li>基于这个原因，Wiki.js 没有提供创建文件夹的选项。只需输入完整的路径，文件夹将在创建时自动推断。</li>
 </ul>
 <h3 id="保留路径和限制">7.3.4&emsp;保留路径和限制</h3><p>以下路径被保留用于系统使用，不能用于内容创建：</p>
