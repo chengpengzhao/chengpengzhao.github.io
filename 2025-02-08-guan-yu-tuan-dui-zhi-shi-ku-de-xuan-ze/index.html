@@ -501,14 +501,14 @@
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          4.9k
+          5.1k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          17 Min
+          18 Min
         </div>
         
 
@@ -788,7 +788,7 @@
 </ol>
 <pre class="line-numbers language-yml"><code class="language-yml">services:
   db:
-    image: postgres:15-alpine
+    image:  abcfy2/zhparser:15-alpine
     environment:
       POSTGRES_DB: wiki
       POSTGRES_PASSWORD: wikijsrocks
@@ -848,8 +848,29 @@ offline: $(OFFLINE_ACTIVE)<span aria-hidden="true" class="line-numbers-rows"><sp
 </li>
 <li><p>打开网页，进行初始化设置；</p>
 </li>
+<li><p>配置中文全文检索：   </p>
+</li>
 </ol>
-<h1 id="部署注意事项">6&emsp;部署注意事项</h1><p>按照Wiki.js官网给出的docker安装流程(<a href="https://docs.requarks.io/install/docker" target="_blank" rel="noopener">https://docs.requarks.io/install/docker</a>)会出现问题，与上面的配置区别主要体现在offline设置和本地化文件的下载，原配置文件如下：  </p>
+<ul>
+<li>进入<code>db</code>容器的终端，输入<code>psql -U wikijs -d wiki</code>（名字可能不一样）；</li>
+<li>输入如下命令：  </li>
+</ul>
+<pre><code>CREATE EXTENSION pg_trgm;
+CREATE EXTENSION zhparser;
+CREATE TEXT SEARCH CONFIGURATION pg_catalog.chinese_zh (PARSER = zhparser);
+ALTER TEXT SEARCH CONFIGURATION chinese_zh ADD MAPPING FOR n,v,a,i,e,l WITH simple;
+-- 忽略标点影响
+ALTER ROLE wikijs SET zhparser.punctuation_ignore = ON;
+-- 短词复合
+ALTER ROLE wikijs SET zhparser.multi_short = ON;
+-- 测试一下
+select ts_debug(&#39;chinese_zh&#39;, &#39;白垩纪是地球上海陆分布和生物界急剧变化、火山活动频繁的时代&#39;);</code></pre><ol start="7">
+<li><p>wikijs中增加相应中文搜索选项：在<code>/wiki/server/modules/search/postgres/definition.yml</code>中增加<code>- chinese_zh</code>相应行；  </p>
+</li>
+<li><p>重启wikijs容器，打开 <code>wiki.js 管理 | 搜索引擎 | Database - PostgreSQL | Dictionary Language</code> 选 <code>chinese_zh</code>，并重建索引。</p>
+</li>
+</ol>
+<h1 id="部署注意事项">6&emsp;部署注意事项</h1><p>按照Wiki.js官网给出的docker安装流程(<a href="https://docs.requarks.io/install/docker" target="_blank" rel="noopener">https://docs.requarks.io/install/docker</a>)会出现问题，与上面的配置区别主要体现在<strong>offline设置</strong>和<strong>本地化文件的下载</strong>以及<strong>中文全文搜索的支持</strong>(zhparser是PostgreSQL的中文分词插件，安装后可以使PostgreSQL支持中文的全文检索)上，原配置文件如下：  </p>
 <pre class="line-numbers language-yml"><code class="language-yml">version: "3"
 services:
 
@@ -1621,7 +1642,7 @@ svg</code></pre></li>
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">188.7k</span>&nbsp;字
+                class="white-color">188.9k</span>&nbsp;字
             
             <br>
             
