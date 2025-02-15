@@ -493,14 +493,14 @@
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          4.4k
+          4.7k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          21 Min
+          22 Min
         </div>
         
 
@@ -1246,6 +1246,7 @@ DB_DATABASE_NAME=immich<span aria-hidden="true" class="line-numbers-rows"><span>
   <span class="token key atrule">rustdesk-net</span><span class="token punctuation">:</span>
     <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
 
+<span class="token comment" spellcheck="true"># 21114~21119端口记得开放</span>
 <span class="token key atrule">services</span><span class="token punctuation">:</span>
   <span class="token key atrule">hbbs</span><span class="token punctuation">:</span>
     <span class="token key atrule">container_name</span><span class="token punctuation">:</span> hbbs
@@ -1298,7 +1299,67 @@ DB_DATABASE_NAME=immich<span aria-hidden="true" class="line-numbers-rows"><span>
       <span class="token punctuation">-</span> rustdesk<span class="token punctuation">-</span>net
     <span class="token key atrule">ports</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token string">"21114:21114"</span>
-    <span class="token key atrule">restart</span><span class="token punctuation">:</span> unless<span class="token punctuation">-</span>stopped<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> unless<span class="token punctuation">-</span>stopped<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tailscale-derp">3.4&emsp;tailscale-derp</h2><p>建DERP组建私有局域网的简单步骤，该方案为了保持极简未配置域名，直接填IP访问，但要注意不要被别人白嫖了（别人知道地址ip也能用）。</p>
+<pre class="line-numbers language-yml"><code class="language-yml">
+# 记得开放对应端口防火墙
+version: "3.8"
+services:
+services:
+  derper:
+    image: ghcr.io/yangchuansheng/ip_derper:latest
+    container_name: derper
+    restart: always
+    volumes:
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+      - ./data/tailscale/tmp:/var/run/tailscale
+    ports:
+      - "xxxx1:443"           #和后面tailscale admin网页里填的port对应
+      - "xxxx2:3478/udp"
+#    environment:
+#      - DERP_VERIFY_CLIENTS: "true" #使用tailscale客户端鉴权
+    depends_on:
+      - tailscale
+
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    restart: always
+    network_mode: host  #注释本行可使VPS主机不可通过tailscale网络访问
+    environment:
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_USERSPACE: "false"
+    volumes:
+      - /dev/net/tun:/dev/net/tun
+      - ./data/tailscale/state:/var/lib/tailscale
+      - ./data/tailscale/tmp:/tmp
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    cap_add:
+      - net_admin
+      - sys_module
+
+#"derpMap": {
+#        "OmitDefaultRegions": false, // 设置为 true不下发官方derp节点
+#        "Regions": {
+#            "901": {
+#                "RegionID":   901, 
+#                "RegionCode": "derp_self",
+#                "RegionName": "derp_self", 
+#                "Nodes": [
+#                    {
+#                        "Name":             "derp_self",
+#                        "RegionID":         901,
+#                        "HostName":         "0.0.0.0", // 你的公网IP地址
+#                        "IPv4":             "0.0.0.0", // 你的公网IP地址
+#                        "DERPPort":         xxxx1, 
+#                        "InsecureForTests": true, // 客户端不做校验
+#                        "STUNPort":         xxxx2,
+#                    },
+#                ],
+#            },
+#        },
+#    },
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       </div>
 
@@ -1846,7 +1907,7 @@ DB_DATABASE_NAME=immich<span aria-hidden="true" class="line-numbers-rows"><span>
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">188.9k</span>&nbsp;字
+                class="white-color">189.2k</span>&nbsp;字
             
             <br>
             
