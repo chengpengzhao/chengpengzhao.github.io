@@ -501,14 +501,14 @@
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          5.1k
+          5.2k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          18 Min
+          19 Min
         </div>
         
 
@@ -869,9 +869,20 @@ select ts_debug(&#39;chinese_zh&#39;, &#39;白垩纪是地球上海陆分布和�
 </li>
 <li><p>重启wikijs容器，打开 <code>wiki.js 管理 | 搜索引擎 | Database - PostgreSQL | Dictionary Language</code> 选 <code>chinese_zh</code>，并重建索引。</p>
 </li>
+<li><p>关于导航栏中<code>根目录</code>按钮无法正确显示，可在主题中的<code>正文html</code>注入以下代码：  </p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 </ol>
-<h1 id="部署注意事项">6&emsp;部署注意事项</h1><p>按照Wiki.js官网给出的docker安装流程(<a href="https://docs.requarks.io/install/docker" target="_blank" rel="noopener">https://docs.requarks.io/install/docker</a>)会出现问题，与上面的配置区别主要体现在<strong>offline设置</strong>和<strong>本地化文件的下载</strong>以及<strong>中文全文搜索的支持</strong>(zhparser是PostgreSQL的中文分词插件，安装后可以使PostgreSQL支持中文的全文检索)上，原配置文件如下：  </p>
-<pre class="line-numbers language-yml"><code class="language-yml">version: "3"
+<p>const sidebarText = “（根目录）”;</p>
+<p>(() =&gt; {const updateElement = el =&gt; {if(el.innerHTML === ‘/ sidebar.root’ || el.innerHTML === ‘/ (root)’){el.innerHTML = sidebarText; console.log(“Element updated to:”, el.innerHTML);}}; const checkElement = () =&gt; {const targetEl = document.querySelector(“#app &gt; div.v-application–wrap &gt; nav &gt; div.v-navigation-drawer__content &gt; div &gt; div &gt; div &gt; div:nth-child(1) &gt; div.v-list.py-2.v-sheet.theme–dark.v-list–dense.primary &gt; div:nth-child(1) &gt; div.v-list-item__title”); if(targetEl){updateElement(targetEl);} requestAnimationFrame(checkElement);}; if(document.readyState === ‘loading’){document.addEventListener(‘DOMContentLoaded’, () =&gt; requestAnimationFrame(checkElement));} else {requestAnimationFrame(checkElement);})();<br>}</p>
+<pre><code>
+# 部署注意事项
+
+按照Wiki.js官网给出的docker安装流程(&lt;https://docs.requarks.io/install/docker&gt;)会出现问题，与上面的配置区别主要体现在**offline设置**和**本地化文件的下载**以及**中文全文搜索的支持**(zhparser是PostgreSQL的中文分词插件，安装后可以使PostgreSQL支持中文的全文检索)上，原配置文件如下：  
+
+```yml
+version: &quot;3&quot;
 services:
 
   db:
@@ -881,7 +892,7 @@ services:
       POSTGRES_PASSWORD: wikijsrocks
       POSTGRES_USER: wikijs
     logging:
-      driver: "none"
+      driver: &quot;none&quot;
     restart: unless-stopped
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -899,13 +910,12 @@ services:
       DB_NAME: wiki
     restart: unless-stopped
     ports:
-      - "80:3000"
+      - &quot;80:3000&quot;
 
 volumes:
-  db-data:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>关于问题的具体描述，可参考该讨论贴：<a href="https://github.com/requarks/wiki/discussions/5339" target="_blank" rel="noopener">https://github.com/requarks/wiki/discussions/5339</a></p>
-<h1 id="Wiki-js使用说明">7&emsp;Wiki.js使用说明</h1><h2 id="基础">7.1&emsp;基础</h2><p>Wiki.js 是一个现代化的开源知识库系统，用于创建和管理文档、知识库或维基网站。以下是关于 Wiki.js 的界面布局和基本操作的详细介绍。</p>
-<h3 id="界面布局">7.1.1&emsp;界面布局</h3><p>以下是 Wiki.js 界面的主要组成部分：</p>
+  db-data:</code></pre><p>关于问题的具体描述，可参考该讨论贴：<a href="https://github.com/requarks/wiki/discussions/5339" target="_blank" rel="noopener">https://github.com/requarks/wiki/discussions/5339</a></p>
+<h1 id="Wiki-js使用说明">6&emsp;Wiki.js使用说明</h1><h2 id="基础">6.1&emsp;基础</h2><p>Wiki.js 是一个现代化的开源知识库系统，用于创建和管理文档、知识库或维基网站。以下是关于 Wiki.js 的界面布局和基本操作的详细介绍。</p>
+<h3 id="界面布局">6.1.1&emsp;界面布局</h3><p>以下是 Wiki.js 界面的主要组成部分：</p>
 <ul>
 <li>全局导航栏（Global Navigation）：这是一个持续显示在所有页面上的导航菜单，通常包含重要页面或外部链接。</li>
 <li>全局搜索（Global Search）：通过搜索快速找到页面。</li>
@@ -919,7 +929,7 @@ volumes:
 <li>社交链接（Social Links）：用于分享或打印当前页面的链接。</li>
 <li>编辑页面 / 页面操作（Edit Page / Page Actions）：快速访问菜单，用于编辑或对当前页面执行其他操作。</li>
 </ul>
-<h3 id="基本用法">7.1.2&emsp;基本用法</h3><h4 id="创建新页面">7.1.2.1&emsp;创建新页面</h4><p>要创建新页面，请点击页面右上角的 新建页面（New Page） 按钮。会弹出对话框：</p>
+<h3 id="基本用法">6.1.2&emsp;基本用法</h3><h4 id="创建新页面">6.1.2.1&emsp;创建新页面</h4><p>要创建新页面，请点击页面右上角的 新建页面（New Page） 按钮。会弹出对话框：</p>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135035200.png" alt></p>
 <ol>
 <li>选择语言：选择要创建页面的语言（默认选择当前语言）。</li>
@@ -927,20 +937,20 @@ volumes:
 <li>无需手动创建文件夹。只需输入完整的路径，文件夹将自动创建。例如，输入<code>universe/planets/earth</code>，将自动创建 <code>universe</code> 和 <code>planets</code> 子文件夹，<code>earth</code>则作为当前页面的实际文件名（页面的显示名称在后续<code>title</code>中设置）。</li>
 <li>点击“选择”：继续下一步。</li>
 </ol>
-<h4 id="选择编辑器">7.1.2.2&emsp;选择编辑器</h4><p>创建新页面时，会弹出对话框：  </p>
+<h4 id="选择编辑器">6.1.2.2&emsp;选择编辑器</h4><p>创建新页面时，会弹出对话框：  </p>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135102722.png" alt></p>
 <p>Wiki.js 提供多种编辑器，具体取决于你想要编写的内容类型或个人偏好。开发者通常会选择 Markdown 编辑器，而非技术人员可能更喜欢可视化编辑器（Visual Editor）。</p>
-<h4 id="填写页面元数据">7.1.2.3&emsp;填写页面元数据</h4><p>选择编辑器后，会弹出页面元数据对话框：  </p>
+<h4 id="填写页面元数据">6.1.2.3&emsp;填写页面元数据</h4><p>选择编辑器后，会弹出页面元数据对话框：  </p>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135127234.png" alt></p>
 <ol>
 <li>输入页面的 标题、描述 和 标签（路径之前填写过，此处可修改），并点击 “确定” 关闭对话框并开始编写内容。  </li>
 <li>之后可以随时通过点击页面右上角的 “页面” 按钮，返回页面元数据对话框。  </li>
 </ol>
-<h4 id="保存页面">7.1.2.4&emsp;保存页面</h4><p>页面创建完成之前，你需要点击页面右上角的 “创建” 按钮。页面将被保存并渲染，之后你将自动被重定向到最终结果页面。如果需要继续编辑，只需点击编辑按钮即可。</p>
-<h2 id="文件夹与标签">7.2&emsp;文件夹与标签</h2><h3 id="文件夹结构">7.2.1&emsp;文件夹结构</h3><p>Wiki.js 并没有传统意义上的文件夹结构。无需创建文件夹即可创建新页面。相反，你可以直接在你选择的路径上创建页面。<br>例如，要创建路径为 <code>/universe/planets/earth</code> 的页面，你无需事先创建 <code>universe</code> 和 <code>planets</code> 文件夹。这些文件夹会根据页面路径自动推断。  </p>
+<h4 id="保存页面">6.1.2.4&emsp;保存页面</h4><p>页面创建完成之前，你需要点击页面右上角的 “创建” 按钮。页面将被保存并渲染，之后你将自动被重定向到最终结果页面。如果需要继续编辑，只需点击编辑按钮即可。</p>
+<h2 id="文件夹与标签">6.2&emsp;文件夹与标签</h2><h3 id="文件夹结构">6.2.1&emsp;文件夹结构</h3><p>Wiki.js 并没有传统意义上的文件夹结构。无需创建文件夹即可创建新页面。相反，你可以直接在你选择的路径上创建页面。<br>例如，要创建路径为 <code>/universe/planets/earth</code> 的页面，你无需事先创建 <code>universe</code> 和 <code>planets</code> 文件夹。这些文件夹会根据页面路径自动推断。  </p>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135152233.jpeg" alt>  </p>
 <p>这种系统提供了更大的灵活性，并减少了页面之间的依赖性。但这并不意味着你不能使用传统的文件夹系统。文件夹结构在创建和移动页面时仍然可用，唯一的区别是你无需手动管理文件夹，它们会根据页面路径自动推断。<br>每页顶部显示的导航栏也是根据路径自动生成的。</p>
-<h3 id="多级页面与引导页">7.2.2&emsp;多级页面与引导页</h3><ul>
+<h3 id="多级页面与引导页">6.2.2&emsp;多级页面与引导页</h3><ul>
 <li><p>在创建多级页面时，你可能希望为每个虚拟文件夹创建一个<strong>引导页</strong>。 例如，如果你有一个路径为 <code>/foo/bar</code> 的页面，你应该创建一个路径为 <code>/foo</code> 的新页面。这样可以确保在 <code>/foo/bar</code> 页面上点击<code>foo</code>链接时，能够跳转到 <code>/foo</code> 页面。  </p>
 </li>
 <li><p>站点树导航模式中，每个层级的页面标题将从其对应的页面中获取。<br>例如，创建以下页面：</p>
@@ -964,32 +974,32 @@ volumes:
 <p>在“The Blue Marble”页面上，导航将类似于：  </p>
 <p>/ <strong>universe</strong> / <strong>planets</strong> / <strong>earth</strong></p>
 <p>每个链接分别对应上面创建的三个页面。</p>
-<h3 id="标签">7.2.3&emsp;标签</h3><ul>
+<h3 id="标签">6.2.3&emsp;标签</h3><ul>
 <li>标签是分类页面和快速查找相关内容的绝佳方式。它们是使用复杂文件夹系统分类内容的更轻量级替代方案。标签是附加到页面上的简单标签。<br>可以为一个页面添加多个标签。  </li>
 <li>例如，对于关于城市 Montreal 的页面，你可以添加标签 cities、canada、north-america。这些标签随后可以用来快速找到该页面。通过浏览标签 canada 和 cities，页面 Montreal 将出现在结果中，因为这两个标签都存在于该页面上。</li>
 <li>可以随时向页面添加更多标签或从页面中移除标签。</li>
 <li>使用<code>按标签浏览</code>链接（位于搜索栏旁边，或在导航菜单中）查看 Wiki 中所有可用的标签列表。</li>
 <li>选择一个或多个标签，查看符合选择条件的页面列表。</li>
 </ul>
-<h2 id="页面">7.3&emsp;页面</h2><h3 id="创建新页面-1">7.3.1&emsp;创建新页面</h3><p>在 Wiki.js 中，有多种方法可以创建新页面：</p>
+<h2 id="页面">6.3&emsp;页面</h2><h3 id="创建新页面-1">6.3.1&emsp;创建新页面</h3><p>在 Wiki.js 中，有多种方法可以创建新页面：</p>
 <ul>
 <li>通过“新建页面”按钮：点击页面右上角的“新建页面”按钮。</li>
 <li>通过链接指向不存在的页面：点击一个指向不存在页面的链接，系统会提示你创建该页面。</li>
 <li>手动输入路径：在浏览器地址栏中直接输入页面路径。</li>
 </ul>
-<h3 id="编辑页面">7.3.2&emsp;编辑页面</h3><p>要编辑已存在的页面，可以通过以下方式：</p>
+<h3 id="编辑页面">6.3.2&emsp;编辑页面</h3><p>要编辑已存在的页面，可以通过以下方式：</p>
 <ul>
 <li>点击页面右下角的 铅笔图标。</li>
 <li>使用页面右上角的 页面菜单。</li>
 <li>创建页面时选择的编辑器将自动加载。注意：目前一旦页面创建完成，将无法更改编辑器。</li>
 </ul>
-<h3 id="页面路径与文件夹结构">7.3.3&emsp;页面路径与文件夹结构</h3><ul>
+<h3 id="页面路径与文件夹结构">6.3.3&emsp;页面路径与文件夹结构</h3><ul>
 <li>Wiki.js 不依赖传统的文件夹结构来组织页面，而是使用页面路径来实现。  </li>
 <li>例如，在传统的系统中，要创建路径为<code>universe/planets/earth</code> 的页面，你需要先创建一个名为 <code>universe</code> 的文件夹，然后在该文件夹中创建一个名为 <code>planets</code> 的子文件夹，最后在子文件夹中创建名为 <code>earth</code> 的页面。</li>
 <li>而在 Wiki.js 中，你可以直接创建路径为 <code>universe/planets/earth</code> 的页面。<code>universe</code> 和 <code>planets</code> 文件夹将被自动推断，但它们实际上并不存在于页面路径之外的上下文中。因此，你无需管理文件夹，只需专注于你想要的页面路径即可。</li>
 <li>基于这个原因，Wiki.js 没有提供创建文件夹的选项。只需输入完整的路径，文件夹将在创建时自动推断。</li>
 </ul>
-<h3 id="保留路径和限制">7.3.4&emsp;保留路径和限制</h3><p>以下路径被保留用于系统使用，不能用于内容创建：</p>
+<h3 id="保留路径和限制">6.3.4&emsp;保留路径和限制</h3><p>以下路径被保留用于系统使用，不能用于内容创建：</p>
 <ul>
 <li><p>单字符路径：用于访问 Wiki 的不同部分，例如：</p>
 <pre><code>a：管理区域
@@ -1031,16 +1041,16 @@ manifest [ .json ]
 register
 svg</code></pre></li>
 </ul>
-<h3 id="路径命名规则">7.3.5&emsp;路径命名规则</h3><p>页面路径不能包含以下字符：</p>
+<h3 id="路径命名规则">6.3.5&emsp;路径命名规则</h3><p>页面路径不能包含以下字符：</p>
 <ul>
 <li>空格（使用连字符代替）</li>
 <li>句点（保留用于文件扩展名）</li>
 <li>不安全的 URL 字符（如标点符号、引号、数学符号等）</li>
 </ul>
-<h2 id="媒体资源">7.4&emsp;媒体资源</h2><p>在 Wiki.js 中，媒体资源（如图片、文档、压缩文件等）可以通过资源管理器进行管理和插入。以下是详细的操作指南。</p>
-<h3 id="打开资源管理器">7.4.1&emsp;打开资源管理器</h3><p>所有编辑器都提供了一个按钮，用于打开资源管理器对话框。具体操作可以参考每种编辑器的文档。</p>
+<h2 id="媒体资源">6.4&emsp;媒体资源</h2><p>在 Wiki.js 中，媒体资源（如图片、文档、压缩文件等）可以通过资源管理器进行管理和插入。以下是详细的操作指南。</p>
+<h3 id="打开资源管理器">6.4.1&emsp;打开资源管理器</h3><p>所有编辑器都提供了一个按钮，用于打开资源管理器对话框。具体操作可以参考每种编辑器的文档。</p>
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20250208135231120.png" alt></p>
-<h3 id="创建文件夹">7.4.2&emsp;创建文件夹</h3><ul>
+<h3 id="创建文件夹">6.4.2&emsp;创建文件夹</h3><ul>
 <li>点击资源管理器对话框顶部的 “New Folder” 按钮。</li>
 <li>输入一个符合以下命名规则的新文件夹名称：<ul>
 <li>禁止使用空格。</li>
@@ -1052,7 +1062,7 @@ svg</code></pre></li>
 </ul>
 </li>
 </ul>
-<h3 id="上传资源">7.4.3&emsp;上传资源</h3><ul>
+<h3 id="上传资源">6.4.3&emsp;上传资源</h3><ul>
 <li>支持的文件类型：资源可以是任何类型的文件，包括图片、文档、ZIP 文件等。</li>
 <li>图片显示：图片文件会自动以图片形式显示，而其他文件类型则会显示为标准链接。</li>
 <li>上传操作：<ul>
@@ -1061,7 +1071,7 @@ svg</code></pre></li>
 </ul>
 </li>
 </ul>
-<h3 id="插入资源">7.4.4&emsp;插入资源</h3><ul>
+<h3 id="插入资源">6.4.4&emsp;插入资源</h3><ul>
 <li>选择你想要插入的资源，然后点击 “Insert” 按钮。</li>
 <li>如果插入的是图片，还可以通过 “Image Alignment” 下拉菜单（位于对话框右侧）设置图片的对齐方式：<ul>
 <li>Left：页面左侧对齐。</li>
@@ -1071,7 +1081,7 @@ svg</code></pre></li>
 </ul>
 </li>
 </ul>
-<h3 id="管理资源">7.4.5&emsp;管理资源</h3><p>对于已上传的资源，你可以执行以下操作：</p>
+<h3 id="管理资源">6.4.5&emsp;管理资源</h3><p>对于已上传的资源，你可以执行以下操作：</p>
 <ul>
 <li>重命名、删除 或 编辑 资源。</li>
 <li>点击资源列表项右侧的 … 按钮，会出现一个下拉菜单，列出所有可能的操作。</li>
@@ -1642,7 +1652,7 @@ svg</code></pre></li>
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">189.2k</span>&nbsp;字
+                class="white-color">189.3k</span>&nbsp;字
             
             <br>
             
