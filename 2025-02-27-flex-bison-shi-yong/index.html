@@ -1,0 +1,2073 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="flex/bison使用, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;基本介绍
+Flex（词法分析器）像“文本拆分器”，负责将原始文本拆解成有意义的单词（称为 Token）。例如：从代码 price = 100+20 中识别出 price、=、100、+、20。  
+
+Bison（语法分析器）像">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>flex/bison使用 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        flex/bison使用
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+              <span class="chip bg-color">C语言</span>
+            </a>
+            
+            <a href="/tags/flex-bison/">
+              <span class="chip bg-color">flex/bison</span>
+            </a>
+            
+            <a href="/tags/C/">
+              <span class="chip bg-color">C++</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2025-02-27
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2025-02-27
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          3k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          15 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div>
+      <script type="text/javascript" src="/js/timecount.js"></script>
+      </div>
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="基本介绍">1&emsp;基本介绍</h1><ul>
+<li><p><strong>Flex</strong>（词法分析器）<br>像“文本拆分器”，负责将原始文本拆解成有意义的单词（称为 <strong>Token</strong>）。<br>例如：从代码 <code>price = 100+20</code> 中识别出 <code>price</code>、<code>=</code>、<code>100</code>、<code>+</code>、<code>20</code>。  </p>
+</li>
+<li><p><strong>Bison</strong>（语法分析器）<br>像“语法检查器”，负责验证这些单词是否符合预定规则，并构建结构。<br>例如：检查 <code>100+20</code> 是否符合数学表达式规则，并解释其计算逻辑。  </p>
+</li>
+</ul>
+<p><strong>典型应用场景</strong></p>
+<ul>
+<li>写编程语言的编译器/解释器（比如实现一个简易的 Python 或 JSON 解析器）  </li>
+<li>读取配置文件（比如解析 Nginx 的配置规则）  </li>
+<li>开发专用小语言（比如一些脚本指令）  </li>
+</ul>
+<h1 id="安装配置">2&emsp;安装配置</h1><ul>
+<li><p>Linux (Ubuntu)</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> flex bison<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>macOS</p>
+<pre class="line-numbers language-bash"><code class="language-bash">brew <span class="token function">install</span> flex bison<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>Windows</p>
+</li>
+</ul>
+<ol>
+<li>使用Cygwin或WSL环境</li>
+<li>或使用预编译包：<a href="https://winflexbison.sourceforge.net/" target="_blank" rel="noopener">https://winflexbison.sourceforge.net/</a></li>
+</ol>
+<p>验证安装：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">flex --version
+bison --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="编写flex文件">3&emsp;编写flex文件</h1><blockquote>
+<p>以下代码均用C++编写，第一种使用方式为flex/bsion在C语言中的使用风格（在这两节中介绍），第二种为在C++中面向对象的使用风格（在后文中介绍）。</p>
+</blockquote>
+<p>flex文件一般在C语言中后缀用<code>.l</code>，在C++中用<code>.ll</code>。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 禁用旧式yyloop，其他option查手册</span>
+<span class="token operator">%</span>option noyywrap yylineno
+
+<span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// C头文件和声明（会直接复制到输出）</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"parser_tab.h"</span> </span><span class="token comment" spellcheck="true">// Bison生成的头文件，名称可自定义</span>
+
+<span class="token comment" spellcheck="true">// 可定义函数/变量</span>
+<span class="token keyword">void</span> yyerror（<span class="token keyword">char</span> <span class="token operator">*</span>s，<span class="token punctuation">.</span><span class="token punctuation">.</span>）｛ 
+    va_list ap；
+    va_start（ap<span class="token punctuation">,</span>s）；
+    fprintf（<span class="token constant">stderr</span>，<span class="token string">"Error： "</span>）；
+    vfprintf（<span class="token constant">stderr</span><span class="token punctuation">,</span>s<span class="token punctuation">,</span>ap）；
+    fprintf（<span class="token constant">stderr</span>，<span class="token string">"\n"</span>）；
+｝
+<span class="token keyword">int</span> brace_count <span class="token operator">=</span> <span class="token number">0</span>； <span class="token comment" spellcheck="true">// 记录大括号的嵌套层级</span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 状态声明，默认状态为INITIAL，用户可定义不同状态，以及特定状态下的规则</span>
+<span class="token operator">%</span>× COMMENT
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token comment" spellcheck="true">/* 规则段，注意规则会从前往后查找 */</span>
+
+<span class="token string">"VALUE"</span>                       <span class="token punctuation">{</span> <span class="token keyword">return</span> VALUE<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"ARRAY"</span>                       <span class="token punctuation">{</span> <span class="token keyword">return</span> ARRAY<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"SIZE"</span>                        <span class="token punctuation">{</span> <span class="token keyword">return</span> SIZE<span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+<span class="token string">">"</span>  <span class="token punctuation">{</span> yylval<span class="token punctuation">.</span>comptok <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token keyword">return</span> COMPARISON<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">"&lt;"</span>  <span class="token punctuation">{</span> yylval<span class="token punctuation">.</span>comptok <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token keyword">return</span> COMPARISON<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">">="</span> <span class="token punctuation">{</span> yylval<span class="token punctuation">.</span>comptok <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token keyword">return</span> COMPARISON<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">"&lt;="</span> <span class="token punctuation">{</span> yylval<span class="token punctuation">.</span>comptok <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token keyword">return</span> COMPARISON<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">"!="</span> <span class="token punctuation">{</span> yylval<span class="token punctuation">.</span>comptok <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token keyword">return</span> COMPARISON<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">"=="</span> <span class="token punctuation">{</span> yylval<span class="token punctuation">.</span>comptok <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token keyword">return</span> COMPARISON<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+\<span class="token string">"([^"</span>\\<span class="token punctuation">]</span><span class="token operator">|</span>\\<span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token operator">*</span>\"                  <span class="token punctuation">{</span>
+                                    yylval<span class="token punctuation">.</span>str <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> STRING<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>                        <span class="token punctuation">{</span>
+                                    yylval<span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> NUMBER<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+
+
+<span class="token punctuation">[</span>a<span class="token operator">-</span>zA<span class="token operator">-</span>Z0<span class="token operator">-</span>9_<span class="token operator">/</span><span class="token operator">!</span><span class="token punctuation">]</span><span class="token punctuation">[</span>a<span class="token operator">-</span>zA<span class="token operator">-</span>Z0<span class="token operator">-</span>9_<span class="token operator">/</span>\<span class="token operator">-+</span>\<span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token operator">*</span>     <span class="token punctuation">{</span>
+                                    yylval<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> IDENTIFIER<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>      <span class="token punctuation">{</span>
+                                    yylval<span class="token punctuation">.</span>floatval <span class="token operator">=</span> <span class="token function">atof</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> FLOAT<span class="token punctuation">;</span> 
+                                <span class="token punctuation">}</span>
+
+
+<span class="token punctuation">[</span> \t\r\n<span class="token punctuation">]</span><span class="token operator">+</span>                      <span class="token comment" spellcheck="true">/* 忽略空白字符 */</span>
+<span class="token string">"//"</span><span class="token punctuation">.</span><span class="token operator">*</span>\n                        <span class="token comment" spellcheck="true">/* 忽略 C/C++ 风格注释 */</span>
+<span class="token string">"/*"</span>           <span class="token punctuation">{</span> <span class="token function">BEGIN</span><span class="token punctuation">(</span>COMMENT<span class="token punctuation">)</span> <span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span>COMMENT<span class="token operator">></span><span class="token string">"*/"</span>  <span class="token punctuation">{</span> <span class="token function">BEGIN</span><span class="token punctuation">(</span>INITIAL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span>COMMENT<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">^</span><span class="token operator">*</span><span class="token punctuation">]</span><span class="token operator">|</span>\n<span class="token punctuation">)</span><span class="token operator">+</span><span class="token operator">|</span><span class="token punctuation">.</span>
+
+<span class="token punctuation">.</span>               <span class="token punctuation">{</span> <span class="token function">yyerror</span><span class="token punctuation">(</span><span class="token string">"未知字符 '%c'"</span><span class="token punctuation">,</span> <span class="token operator">*</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token operator">%</span><span class="token operator">%</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>%%</code>分割符号</li>
+<li><code>yytext</code>包含匹配的文本</li>
+<li><code>yylval</code>向Bison传递token值</li>
+<li>返回值对应Bison的token类型</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 生成命令，根据.l生成.c</span>
+flex -o xxx_lex.c  xxx_flex.l <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="编写bison文件">4&emsp;编写bison文件</h1><p>bison文件一般在C语言中后缀用<code>.y</code>，在C++中用<code>.yy</code>。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//头文件及全局变量声明段</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> xxx 1000</span>
+
+<span class="token keyword">extern</span> <span class="token keyword">void</span> <span class="token function">yyerror</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> hier_stack_top <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">xxxfunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/*! * * * * * * * * * * * * * * *  * * * * * * * * * * * * * */</span>
+<span class="token comment" spellcheck="true">/* 定义令牌，必须在flex中定义过，这里列出的不需要通过yylval传参 */</span>
+<span class="token operator">%</span>token VALUE ARRAY SIZE
+
+<span class="token comment" spellcheck="true">/* 定义类型(yylval) */</span>
+<span class="token operator">%</span><span class="token keyword">union</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>id<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> num<span class="token punctuation">;</span>
+    <span class="token keyword">double</span> floatval<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> comptok<span class="token punctuation">;</span>
+    Expr<span class="token operator">*</span> expr<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 用户定义结构体</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* 为非终结符指定类型 */</span>
+<span class="token operator">%</span>type <span class="token operator">&lt;</span>expr<span class="token operator">></span> expression<span class="token punctuation">;</span>
+<span class="token operator">%</span>type <span class="token operator">&lt;</span>expr<span class="token operator">></span> expressions<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/* 为令牌指定类型 */</span>
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>id<span class="token operator">></span> IDENTIFIER
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>str<span class="token operator">></span> STRING
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>num<span class="token operator">></span> NUMBER
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>floatval<span class="token operator">></span> FLOAT
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>comptok<span class="token operator">></span> COMPARISON
+
+<span class="token comment" spellcheck="true">/* 定义优先级和结合性（根据需要调整） */</span>
+<span class="token operator">%</span>left  <span class="token string">','</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token comment" spellcheck="true">/*! * * * * * * * * * * * * * * * * * * * * * * * * */</span>
+<span class="token comment" spellcheck="true">/* 语法规则段 */</span>
+
+cfg_file<span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/* 刚读入，可进行一些初始化操作 */</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">|</span> cfg_file check_block
+    <span class="token punctuation">;</span>
+
+
+check_block<span class="token operator">:</span>
+    CHECK <span class="token string">'{'</span> expressions <span class="token string">'}'</span>
+        <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//...</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">|</span> CHECK <span class="token string">'('</span> IDENTIFIER <span class="token string">')'</span> <span class="token string">'{'</span> expressions <span class="token string">'}'</span>
+        <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//...</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>$<span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+expressions<span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">/* 没有键值对 */</span>
+    <span class="token punctuation">{</span> $$ <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> expressions expression
+    <span class="token punctuation">{</span>
+        $<span class="token number">2</span><span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> $<span class="token number">1</span><span class="token punctuation">;</span>
+        $$ <span class="token operator">=</span> $<span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+expression<span class="token operator">:</span>
+    IDENTIFIER  COMPARISON  value <span class="token string">';'</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//用户在其他地方定义了create_expr函数</span>
+        $$<span class="token operator">=</span><span class="token function">create_expr</span><span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">,</span> $<span class="token number">2</span><span class="token punctuation">,</span> $<span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">|</span>
+    IDENTIFIER  COMPARISON  value
+    <span class="token punctuation">{</span>
+        $$<span class="token operator">=</span><span class="token function">create_expr</span><span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">,</span> $<span class="token number">2</span><span class="token punctuation">,</span> $<span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+<span class="token operator">%</span><span class="token operator">%</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>%token</code>定义终结符</li>
+<li><code>%left/%right</code>定义运算符结合性</li>
+<li><code>$$</code>表示当前规则的结果</li>
+<li><code>$1, $2...</code>访问子项的值</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 生成命令，根据.y生成.c和.h</span>
+bison --debug xxx_parser.y -o parser_tab.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="编写主函数执行解析">5&emsp;编写主函数执行解析</h1><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token comment" spellcheck="true">// main.c，如果是C++则使用extern "C"</span>
+
+<span class="token comment" spellcheck="true">// debug only</span>
+yydebug <span class="token operator">=</span> <span class="token number">1</span>；
+
+<span class="token comment" spellcheck="true">//外部声明</span>
+<span class="token keyword">extern</span> <span class="token keyword">int</span> <span class="token function">yyparse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">extern</span> FILE <span class="token operator">*</span>yyin；
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/* 从文件读取输入 */</span>
+    FILE <span class="token operator">*</span>file <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"无法打开文件"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    yyin <span class="token operator">=</span> file<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">/* 解析 CFG 文件 */</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">yyparse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"解析失败\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="面向对象的使用方式">6&emsp;面向对象的使用方式</h1><p>前文介绍的传统flex/bison使用风格较为常见，但在处理一些复杂问题上功能稍弱，尤其是参数传递以及调用的灵活性方面。本部分介绍面向对象的flex/bison使用方式，并给出基本框架。  </p>
+<h2 id="xxx-driver">6.1&emsp;xxx_driver</h2><p>驱动器部分，负责调用分析器进行解析，同时也是传递参数的重要枢纽。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// xxx_driver.hpp，展示的均为通用函数</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fstream></span></span>
+
+<span class="token comment" spellcheck="true">/*! 可有多个Driver，命名空间不同，其他不变 */</span>
+<span class="token keyword">namespace</span> xxx_parse <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">/// Forward declarations of classes</span>
+<span class="token keyword">class</span> <span class="token class-name">Parser</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Scanner</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">location</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Driver</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 可定义用于参数传递的变量/成员函数</span>
+ <span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token comment" spellcheck="true">/// enable debug output in the flex scanner</span>
+  <span class="token keyword">bool</span> trace_scanning<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/// enable debug output in the bison parser</span>
+  <span class="token keyword">bool</span> trace_parsing<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/// stream name (file or input stream) used for error messages.</span>
+  std<span class="token operator">::</span>string streamname<span class="token punctuation">;</span>
+  <span class="token function">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">~</span><span class="token function">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/** Invoke the scanner and parser for a stream.
+   * @param in  input stream
+   * @param sname  stream name for error messages
+   * @return    true if successfully parsed
+   */</span>
+  <span class="token keyword">bool</span> <span class="token function">parse_stream</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream<span class="token operator">&amp;</span> in<span class="token punctuation">,</span>
+                    <span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> sname <span class="token operator">=</span> <span class="token string">"stream input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/** Invoke the scanner and parser on an input string.
+   * @param input  input string
+   * @param sname  stream name for error messages
+   * @return    true if successfully parsed
+   */</span>
+  <span class="token keyword">bool</span> <span class="token function">parse_string</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> input<span class="token punctuation">,</span>
+                    <span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> sname <span class="token operator">=</span> <span class="token string">"string stream"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/** Invoke the scanner and parser on a file. Use parse_stream with a
+   * std::ifstream if detection of file reading errors is required.
+   * @param filename  input file name
+   * @return    true if successfully parsed
+   */</span>
+  <span class="token keyword">bool</span> <span class="token function">parse_file</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// To demonstrate pure handling of parse errors, instead of</span>
+  <span class="token comment" spellcheck="true">// simply dumping them on the standard error output, we will pass</span>
+  <span class="token comment" spellcheck="true">// them to the driver using the following two member functions.</span>
+  <span class="token comment" spellcheck="true">/** Error handling with associated line number. This can be modified to
+   * output the error e.g. to a dialog box. */</span>
+  <span class="token keyword">void</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">class</span> <span class="token class-name">location</span><span class="token operator">&amp;</span> l<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/** General error handling. This can be modified to output the error
+   * e.g. to a dialog box. */</span>
+  <span class="token keyword">void</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">private</span><span class="token operator">:</span>
+  Scanner<span class="token operator">*</span> scanner_<span class="token punctuation">;</span>
+  Parser<span class="token operator">*</span> parser_<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/// Allows Parser and Scanner to access private attributes</span>
+  <span class="token comment" spellcheck="true">/// of the Driver class</span>
+  <span class="token keyword">friend</span> <span class="token keyword">class</span> <span class="token class-name">Parser</span><span class="token punctuation">;</span>
+  <span class="token keyword">friend</span> <span class="token keyword">class</span> <span class="token class-name">Scanner</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// namespace xxx_parse</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// xxx_driver.cpp，展示的均为通用函数</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_driver.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_scanner.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_parser.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+
+<span class="token keyword">namespace</span> xxx_parse <span class="token punctuation">{</span>
+
+Driver<span class="token operator">::</span><span class="token function">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">scanner_</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">Scanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">parser_</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">Parser</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  trace_scanning <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  trace_parsing <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Driver<span class="token operator">::</span><span class="token operator">~</span><span class="token function">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">delete</span> parser_<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> scanner_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> Driver<span class="token operator">::</span><span class="token function">parse_stream</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream<span class="token operator">&amp;</span> in<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> sname<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  streamname <span class="token operator">=</span> sname<span class="token punctuation">;</span>
+  scanner_<span class="token operator">-</span><span class="token operator">></span><span class="token function">switch_streams</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>in<span class="token punctuation">,</span> <span class="token operator">&amp;</span>std<span class="token operator">::</span>cerr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  scanner_<span class="token operator">-</span><span class="token operator">></span><span class="token function">set_debug</span><span class="token punctuation">(</span>trace_scanning<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">if</span> YYDEBUG</span>
+  parser_<span class="token operator">-</span><span class="token operator">></span><span class="token function">set_debug_level</span><span class="token punctuation">(</span>trace_parsing<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>parser_<span class="token operator">-</span><span class="token operator">></span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">bool</span> Driver<span class="token operator">::</span><span class="token function">parse_file</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> filename<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token operator">::</span>ifstream <span class="token function">in</span><span class="token punctuation">(</span>filename<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>in<span class="token punctuation">.</span><span class="token function">good</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">parse_stream</span><span class="token punctuation">(</span>in<span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">bool</span> Driver<span class="token operator">::</span><span class="token function">parse_string</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> input<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> sname<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  std<span class="token operator">::</span>istringstream <span class="token function">iss</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">parse_stream</span><span class="token punctuation">(</span>iss<span class="token punctuation">,</span> sname<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> Driver<span class="token operator">::</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cerr <span class="token operator">&lt;&lt;</span> m <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// namespace xxx_parse</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="xxx-scanner">6.2&emsp;xxx_scanner</h2><p>扫描器部分，主要负责词法分析。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// xxx_scanner.hpp，展示的均为通用函数，注意命名空间的对应（包括继承的父类名称前缀）</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_parser.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">ifndef</span> YY_DECL</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> YY_DECL                                              \
+  xxx_parse::Parser::token_type xxx_parse::Scanner::yylex( \
+      xxx_parse::Parser::semantic_type* yylval, xxx_parse::Driver&amp; driver)</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<span class="token macro property">#<span class="token directive keyword">ifndef</span> __FLEX_LEXER_H</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> yyFlexLexer xxx_parseFlexLexer</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;FlexLexer.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">undef</span> yyFlexLexer</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+
+<span class="token keyword">namespace</span> xxx_parse <span class="token punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name">Scanner</span> <span class="token operator">:</span> <span class="token keyword">public</span> xxx_parseFlexLexer <span class="token punctuation">{</span>
+ <span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Scanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">Scanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> Parser<span class="token operator">::</span>token_type <span class="token function">yylex</span><span class="token punctuation">(</span>Parser<span class="token operator">::</span>semantic_type<span class="token operator">*</span> yylval<span class="token punctuation">,</span>
+                                   Driver<span class="token operator">&amp;</span> driver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">void</span> <span class="token function">set_debug</span><span class="token punctuation">(</span><span class="token keyword">bool</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// namespace xxx_parse</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// xxx_scanner.ll，展示了一个比较丰富的例子，除了规则和状态定义，其他均为通用函数</span>
+<span class="token operator">%</span>option noyywrap
+<span class="token operator">%</span>option debug
+<span class="token operator">%</span>option c<span class="token operator">++</span>
+<span class="token comment" spellcheck="true">/* the manual says "somewhat more optimized"，加上后速度快很多 */</span>
+<span class="token operator">%</span>option batch
+<span class="token operator">%</span>option prefix<span class="token operator">=</span><span class="token string">"xxx_parse"</span>
+<span class="token comment" spellcheck="true">/* enables the use of start condition stacks */</span>
+<span class="token operator">%</span>option stack
+
+<span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_parser.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_scanner.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_driver.hpp"</span></span>
+
+<span class="token keyword">typedef</span> xxx_parse<span class="token operator">::</span>Parser<span class="token operator">::</span>token token<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> xxx_parse<span class="token operator">::</span>Parser<span class="token operator">::</span>token_type token_type<span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> yyterminate() return token::TOK_EOF</span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//状态定义区</span>
+<span class="token operator">%</span>x COMMENT
+<span class="token operator">%</span>x RIGHTSIDE
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+
+<span class="token comment" spellcheck="true">//规则定义区</span>
+<span class="token string">"{"</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>L_BRACE<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"}"</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>R_BRACE<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"["</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>L_BRACKETS<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"]"</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>R_BRACKETS<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"="</span>   <span class="token punctuation">{</span> <span class="token function">yy_push_state</span><span class="token punctuation">(</span>RIGHTSIDE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> token<span class="token operator">::</span>EQUAL<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">";"</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>SEMICOLON<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">"("</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>L_PARENTHESES<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">")"</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>R_PARENTHESES<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token string">","</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> token<span class="token operator">::</span>COMMA<span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+\<span class="token string">"([^"</span>\\<span class="token punctuation">]</span><span class="token operator">|</span>\\<span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token operator">*</span>\"                  <span class="token punctuation">{</span>
+                                    <span class="token keyword">char</span> <span class="token operator">*</span> temp <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>str <span class="token operator">=</span> <span class="token function">unquote</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token function">free</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>STRING<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>                        <span class="token punctuation">{</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>num <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>INT<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+
+
+<span class="token punctuation">[</span>a<span class="token operator">-</span>zA<span class="token operator">-</span>Z_<span class="token punctuation">]</span><span class="token operator">*</span>                         <span class="token punctuation">{</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>id <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>IDENTIFIER<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>      <span class="token punctuation">{</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>floatval <span class="token operator">=</span> <span class="token function">atof</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>FLOAT<span class="token punctuation">;</span> 
+                                <span class="token punctuation">}</span>
+
+<span class="token string">"/*"</span>           <span class="token punctuation">{</span> <span class="token function">yy_push_state</span><span class="token punctuation">(</span>COMMENT<span class="token punctuation">)</span> <span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span> \t\r\n<span class="token punctuation">]</span><span class="token operator">+</span>                      <span class="token operator">/</span><span class="token operator">*</span> 忽略空白字符 <span class="token operator">*</span><span class="token operator">/</span>
+
+<span class="token operator">&lt;</span>RIGHTSIDE<span class="token operator">></span><span class="token punctuation">{</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>                        <span class="token punctuation">{</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>num <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token function">yy_pop_state</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>INT<span class="token punctuation">;</span>
+                                <span class="token punctuation">}</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span> <span class="token operator">|</span>
+<span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token string">"."</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token punctuation">[</span>eE<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-+</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>      <span class="token punctuation">{</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>floatval <span class="token operator">=</span> <span class="token function">atof</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+                                    <span class="token function">yy_pop_state</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>FLOAT<span class="token punctuation">;</span> 
+                                <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span>9a<span class="token operator">-</span>zA<span class="token operator">-</span>Z_<span class="token operator">+</span>\<span class="token operator">-</span><span class="token operator">*</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token punctuation">)</span>\t<span class="token punctuation">]</span><span class="token operator">+</span>               <span class="token punctuation">{</span>
+                                    yylval<span class="token operator">-</span><span class="token operator">></span>expr <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+                                    <span class="token function">yy_pop_state</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token comment" spellcheck="true">/* 表达式中不能有空格 */</span>
+                                    <span class="token keyword">return</span> token<span class="token operator">::</span>EXPR<span class="token punctuation">;</span> 
+                                <span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span> \t\r\n<span class="token punctuation">]</span><span class="token operator">+</span>                      <span class="token comment" spellcheck="true">/* 忽略空白字符 */</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token string">"//"</span><span class="token punctuation">.</span><span class="token operator">*</span>\n                        <span class="token comment" spellcheck="true">/* 忽略 C/C++ 风格注释 */</span>
+
+<span class="token operator">&lt;</span>COMMENT<span class="token operator">></span><span class="token string">"*/"</span>  <span class="token punctuation">{</span> <span class="token function">yy_pop_state</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span>COMMENT<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">^</span><span class="token operator">*</span><span class="token punctuation">]</span><span class="token operator">|</span>\n<span class="token punctuation">)</span><span class="token operator">+</span><span class="token operator">|</span><span class="token punctuation">.</span>
+
+<span class="token punctuation">.</span>               <span class="token punctuation">{</span> <span class="token function">yyerror</span><span class="token punctuation">(</span><span class="token string">"未知字符 '%c'"</span><span class="token punctuation">,</span> <span class="token operator">*</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token comment" spellcheck="true">/*
+
+   CUSTOM C++ CODE
+
+*/</span>
+
+<span class="token keyword">namespace</span> xxx_parse
+<span class="token punctuation">{</span>
+
+    Scanner<span class="token operator">::</span><span class="token function">Scanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token operator">:</span> <span class="token function">xxx_parseFlexLexer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    Scanner<span class="token operator">::</span><span class="token operator">~</span><span class="token function">Scanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> Scanner<span class="token operator">::</span><span class="token function">set_debug</span><span class="token punctuation">(</span><span class="token keyword">bool</span> b<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        yy_flex_debug <span class="token operator">=</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token macro property">#<span class="token directive keyword">ifdef</span> yylex</span>
+<span class="token macro property"># <span class="token directive keyword">undef</span> yylex</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+
+<span class="token keyword">int</span> xxx_parseFlexLexer<span class="token operator">::</span><span class="token function">yylex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  std<span class="token operator">::</span>cerr <span class="token operator">&lt;&lt;</span> <span class="token string">"call parsepitFlexLexer::yylex()!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="xxx-parser">6.3&emsp;xxx_parser</h2><p>解析器，主要负责语法分析。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// xxx_parser.yy，展示的均为通用函数，注意前缀名称的对应</span>
+<span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// 其他头文件</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token comment" spellcheck="true">// 必备头文件</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_parser.hpp"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_scanner.hpp"</span></span>
+
+<span class="token comment" spellcheck="true">/*! 全局变量定义区 */</span>
+
+
+<span class="token macro property">#<span class="token directive keyword">define</span> yylex driver.scanner_->yylex</span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/*! * * * * * * * * * * * * * * *  * * * * * * * * * * * * * */</span>
+<span class="token operator">%</span>code requires
+<span class="token punctuation">{</span>
+  <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+  <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"xxx_driver.hpp"</span></span>
+  <span class="token keyword">using</span> <span class="token keyword">namespace</span> xxx<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">%</span>code provides
+<span class="token punctuation">{</span>
+  <span class="token keyword">namespace</span> xxx_parse
+  <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Forward declaration of the Driver class</span>
+    <span class="token keyword">class</span> <span class="token class-name">Driver</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">yyerror</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    va_list ap<span class="token punctuation">;</span>
+    <span class="token function">va_start</span><span class="token punctuation">(</span>ap<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Error: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">vfprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> ap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 传递参数driver</span>
+<span class="token operator">%</span>require <span class="token string">"3.2"</span>
+<span class="token operator">%</span>language <span class="token string">"C++"</span>
+<span class="token comment" spellcheck="true">/* use newer C++ skeleton file */</span>
+<span class="token operator">%</span>skeleton <span class="token string">"lalr1.cc"</span>
+<span class="token operator">%</span>define api<span class="token punctuation">.</span><span class="token keyword">namespace</span> <span class="token punctuation">{</span>xxx_parse<span class="token punctuation">}</span>
+<span class="token operator">%</span>define api<span class="token punctuation">.</span>parser<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">{</span>Parser<span class="token punctuation">}</span>
+<span class="token operator">%</span>parse<span class="token operator">-</span>param <span class="token punctuation">{</span>Driver <span class="token operator">&amp;</span>driver<span class="token punctuation">}</span>
+<span class="token operator">%</span>lex<span class="token operator">-</span>param <span class="token punctuation">{</span>Driver <span class="token operator">&amp;</span>driver<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/* verbose error messages */</span>
+<span class="token operator">%</span>define parse<span class="token punctuation">.</span>error verbose
+<span class="token operator">%</span>debug
+
+<span class="token comment" spellcheck="true">/* 定义令牌 */</span>
+<span class="token operator">%</span>token TOK_EOF <span class="token number">0</span>
+<span class="token operator">%</span>token L_BRACE R_BRACE L_BRACKETS R_BRACKETS EQUAL SEMICOLON L_PARENTHESES R_PARENTHESES COMMA
+
+<span class="token comment" spellcheck="true">/* 定义类型 */</span>
+<span class="token operator">%</span><span class="token keyword">union</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>id<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">;</span>
+    <span class="token keyword">double</span> floatval<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> num<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span> expr<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/* 为令牌指定类型 */</span>
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>id<span class="token operator">></span> IDENTIFIER
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>str<span class="token operator">></span> STRING
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>num<span class="token operator">></span> INT
+<span class="token operator">%</span>token <span class="token operator">&lt;</span>floatval<span class="token operator">></span> FLOAT
+
+<span class="token comment" spellcheck="true">/* 为非终结符指定类型 */</span>
+
+<span class="token comment" spellcheck="true">/* 定义优先级和结合性（根据需要调整） */</span>
+
+<span class="token operator">%</span>start xxx_file
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token comment" spellcheck="true">/*! * * * * * * * * * * * * * * * * * * * * * * * * */</span>
+<span class="token comment" spellcheck="true">/* 语法规则定义区 */</span>
+
+xxx_file<span class="token operator">:</span>
+    <span class="token operator">|</span> xxx_file quantity_block
+    <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token keyword">namespace</span> xxx_parse
+<span class="token punctuation">{</span>
+    <span class="token keyword">void</span> Parser<span class="token operator">::</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> m<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        driver<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="生成命令">6.4&emsp;生成命令</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+<span class="token function">cd</span> <span class="token variable">${0%/*}</span> <span class="token operator">||</span> <span class="token keyword">exit</span> 1
+
+<span class="token comment" spellcheck="true"># -d --debug </span>
+<span class="token function">rm</span> -f xxx_scanner.c* xxx_parser.c* xxx_parser.h* location.hh
+flex -o xxx_scanner.cpp xxx_scanner.ll
+bison --debug -d xxx_parser.yy -o xxx_parser.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="调用方式">6.5&emsp;调用方式</h2><p>通过driver来调用解析。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>string full_path<span class="token operator">=</span><span class="token string">"xxx"</span><span class="token punctuation">;</span>
+xxx_parse<span class="token operator">::</span>Driver driver<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// driver.trace_scanning = true; </span><span class="token comment" spellcheck="true">/*!&lt; debug */</span>
+driver<span class="token punctuation">.</span><span class="token function">parse_file</span><span class="token punctuation">(</span>full_path<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="高级使用（AST）">7&emsp;高级使用（AST）</h1><blockquote>
+<p>什么是抽象语法树</p>
+</blockquote>
+<p>抽象语法树（AST）是源代码语法结构的一种树形表示。它将源代码分解为树形结构，其中每个节点代表源代码中的一个语法结构，如表达式、语句或声明。与具体的语法树相比，抽象语法树省略了语法上的一些次要信息，如括号和运算符的优先级等，保留主要的语义内容，以一种更简洁、更抽象的形式展示代码的结构。  </p>
+<blockquote>
+<p>为什么要使用抽象语法树</p>
+</blockquote>
+<p>在一些比较复杂的使用场景中，对bison解析的时机（顺序）要求较高，而一般写法是<code>识别-&gt;解析-&gt;执行</code>的流程，解析后立即会执行规则段中的代码，用户无法控制执行的时机。而使用AST的流程则为<code>识别-&gt;解析-&gt;生成AST-&gt;调用AST执行接口-&gt;执行</code>，能够适用更多的场景。</p>
+<blockquote>
+<p>AST示例（基于上面的框架）</p>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> xxx_parse <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// 用来处理各种类型的数（整数、浮点等）</span>
+<span class="token keyword">class</span> <span class="token class-name">ParsedData</span><span class="token punctuation">;</span> 
+<span class="token comment" spellcheck="true">/*! \class ASTNode
+ *  \brief Abstract syntax tree.  ASTNode is abstract base class for all other
+ * nodes.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ASTNode</span> <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  Driver <span class="token operator">*</span>driver_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">ASTNode</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">ASTNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/*! pure abstract */</span>
+  <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">push_back</span><span class="token punctuation">(</span>ASTNode <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*! * * * * * * * * * * * * * * *  * * * * * * * * * * * * * */</span>
+<span class="token comment" spellcheck="true">/*! 数学表达式基类 */</span>
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression</span> <span class="token operator">:</span> <span class="token keyword">public</span> ASTNode <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">ASTNode</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">push_back</span><span class="token punctuation">(</span>ASTNode <span class="token operator">*</span>n<span class="token punctuation">)</span> override <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*! 变量类型 */</span>
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression</span> <span class="token operator">:</span> <span class="token keyword">public</span> ASTNode <span class="token punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_Var</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  std<span class="token operator">::</span>string var_name_<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_Var</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> std<span class="token operator">::</span>string name<span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">var_name_</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_Var</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>std<span class="token operator">::</span>string name<span class="token punctuation">)</span> <span class="token punctuation">{</span> var_name_ <span class="token operator">=</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_Int</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  <span class="token keyword">int</span> value_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_Int</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">value_</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_Int</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">setValue</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span> value_ <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_Float</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  <span class="token keyword">double</span> value_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_Float</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> <span class="token keyword">double</span> i<span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">value_</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_Float</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">setValue</span><span class="token punctuation">(</span><span class="token keyword">double</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span> value_ <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_Bool</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  <span class="token keyword">bool</span> value_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_Bool</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> <span class="token keyword">bool</span> i<span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">value_</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_Bool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">setValue</span><span class="token punctuation">(</span><span class="token keyword">bool</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span> value_ <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_ADD</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  AST_Expression <span class="token operator">*</span>left_<span class="token punctuation">;</span>
+  AST_Expression <span class="token operator">*</span>right_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_ADD</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> AST_Expression <span class="token operator">*</span>left <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+                     AST_Expression <span class="token operator">*</span>right <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">left_</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">right_</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_ADD</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">delete</span> left_<span class="token punctuation">;</span>
+    <span class="token keyword">delete</span> right_<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_SUB</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  AST_Expression <span class="token operator">*</span>left_<span class="token punctuation">;</span>
+  AST_Expression <span class="token operator">*</span>right_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_SUB</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> AST_Expression <span class="token operator">*</span>left <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+                     AST_Expression <span class="token operator">*</span>right <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">left_</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">right_</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_SUB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">delete</span> left_<span class="token punctuation">;</span>
+    <span class="token keyword">delete</span> right_<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_MUL</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  AST_Expression <span class="token operator">*</span>left_<span class="token punctuation">;</span>
+  AST_Expression <span class="token operator">*</span>right_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_MUL</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> AST_Expression <span class="token operator">*</span>left <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+                     AST_Expression <span class="token operator">*</span>right <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">left_</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">right_</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_MUL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">delete</span> left_<span class="token punctuation">;</span>
+    <span class="token keyword">delete</span> right_<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AST_Expression_DIV</span> <span class="token operator">:</span> <span class="token keyword">public</span> AST_Expression <span class="token punctuation">{</span>
+<span class="token keyword">protected</span><span class="token operator">:</span>
+  AST_Expression <span class="token operator">*</span>left_<span class="token punctuation">;</span>
+  AST_Expression <span class="token operator">*</span>right_<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">AST_Expression_DIV</span><span class="token punctuation">(</span>Driver <span class="token operator">*</span>driver<span class="token punctuation">,</span> AST_Expression <span class="token operator">*</span>left <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">,</span>
+                     AST_Expression <span class="token operator">*</span>right <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token function">AST_Expression</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">left_</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">right_</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AST_Expression_DIV</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">delete</span> left_<span class="token punctuation">;</span>
+    <span class="token keyword">delete</span> right_<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">virtual</span> ParsedData <span class="token operator">*</span><span class="token function">eval_expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> override<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>xxx_parse.yy</code>中，则需要在<code>union</code>中增加各AST类型，并在解析语句中构造AST类的实例。</p>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2025-02-27-flex-bison-shi-yong/">https://chengpengzhao.com/2025-02-27-flex-bison-shi-yong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+              <span class="chip bg-color">C语言</span>
+            </a>
+            
+            <a href="/tags/flex-bison/">
+              <span class="chip bg-color">flex/bison</span>
+            </a>
+            
+            <a href="/tags/C/">
+              <span class="chip bg-color">C++</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2025-02-27T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2025-02-27-flex-bison-shi-yong/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="flex/bison使用">
+                        
+                        <span class="card-title">flex/bison使用</span> -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">flex/bison使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;基本介绍
+Flex（词法分析器）像“文本拆分器”，负责将原始文本拆解成有意义的单词（称为 Token）。例如：从代码 price = 100+20 中识别出 price、=、100、+、20。  
+
+Bison（语法分析器）像
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/flex-bison/">
+                        <span class="chip bg-color">flex/bison</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025-02-08-guan-yu-tuan-dui-zhi-shi-ku-de-xuan-ze/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="关于团队知识库的选择">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">关于团队知识库的选择</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;背景与目标随着高性能计算技术在工业仿真领域的快速发展，团队成员面临着日益复杂的技术挑战。为了提高工作效率、促进知识共享、减少重复劳动和提升技术水平，建立一个高效、易用、全面的团队知识库显得尤为重要。该知识库将成为团队知识积累、
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/Wiki-js/">
+                        <span class="chip bg-color">Wiki.js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">192.8k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>
