@@ -1,0 +1,2127 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ubuntu上安装NVIDIA GPU开发环境, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;问题场景在 Linux 系统上进行深度学习相关项目开发时，需要安装 PyTorch(libTorch) 、 CUDA套件 来充分利用 NVIDIA GPU 的计算能力，加速模型训练和推理过程。然而，我在实际安装过程中遇到找不到">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Ubuntu上安装NVIDIA GPU开发环境 | Zcp&#39;s Zone</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">-->
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-9309083999384234" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/rss2.xml" title="Zcp's Zone" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img no-lazy src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zcp's Zone</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Me</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/Useful_Links">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Useful_Links</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Contact</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/hitokoto">
+          
+          <i class="fas fa-comment-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Hitokoto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/gallery">
+          
+          <i class="far fa-images" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Gallery</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Friends</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zcp's Zone</div>
+        <div class="logo-desc">
+            
+            この、くそったれな世界に、精一杯愛をこめて
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  >
+              
+                <li>   
+				
+                  <a href="/about " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Me</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/Useful_Links " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Useful_Links</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/contact " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Contact</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/hitokoto " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-comment-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Hitokoto</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/gallery " style="margin-left:50px";>
+				  
+				   <i class="fa far fa-images" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Gallery</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/friends " style="margin-left:50px";>
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Friends</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Ubuntu上安装NVIDIA GPU开发环境
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+  
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+  <div class="card">
+    <div class="card-content article-info">
+      <div class="row tag-cate">
+        <div class="col s7">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/PyTorch/">
+              <span class="chip bg-color">PyTorch</span>
+            </a>
+            
+            <a href="/tags/gpu/">
+              <span class="chip bg-color">gpu</span>
+            </a>
+            
+            <a href="/tags/C/">
+              <span class="chip bg-color">C++</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="col s5 right-align">
+          
+          <div class="post-cate">
+            <i class="fas fa-bookmark fa-fw icon-category"></i>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+              工作
+            </a>
+            
+            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+              工具
+            </a>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="post-info">
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+          2025-05-28
+        </div>
+        
+
+        
+        <div class="post-date info-break-policy">
+          <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+          2025-05-28
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+          4.5k
+        </div>
+        
+
+        
+        <div class="info-break-policy">
+          <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+          25 Min
+        </div>
+        
+
+        <!--
+        <div id="busuanzi_container_page_pv" class="info-break-policy">
+          <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+          <span id="busuanzi_value_page_pv"></span>
+        </div>
+         -->
+      </div>
+
+    </div>
+    <hr class="clearfix">
+    <div class="card-content article-card-content">
+      <div>
+      <script type="text/javascript" src="/js/timecount.js"></script>
+      </div>
+      <div id="articleContent">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="问题场景">1&emsp;问题场景</h1><p>在 Linux 系统上进行深度学习相关项目开发时，需要安装 PyTorch(libTorch) 、 CUDA套件 来充分利用 NVIDIA GPU 的计算能力，加速模型训练和推理过程。然而，我在实际安装过程中遇到找不到显卡、系统依赖项不满足、CUDA 版本与显卡驱动不兼容、PyTorch运行失败等各种问题，因此需要一个详细的安装指南来确保顺利安装和配置。</p>
+<h1 id="技术方案">2&emsp;技术方案</h1><h2 id="前置条件">2.1&emsp;前置条件</h2><ul>
+<li>英伟达显卡  </li>
+<li>尽可能高版本的python3及pip  </li>
+<li>版本不是很低的gcc编译器（支持c++17往上）  </li>
+<li>其他编译相关基础环境，如cmake等</li>
+</ul>
+<h2 id="版本兼容性问题">2.2&emsp;版本兼容性问题</h2><h3 id="显卡与驱动版本的兼容性问题">2.2.1&emsp;显卡与驱动版本的兼容性问题</h3><p>首先要注意驱动的安装版本，为了避免兼容性问题通常用以下几种方式：  </p>
+<ol>
+<li><p>文件安装，通过<a href="https://www.nvidia.com/en-us/drivers/results/" target="_blank" rel="noopener">英伟达驱动官网</a>，搜索对应显卡型号，找到对应的<code>xxx.run</code>驱动安装文件下载安装；  </p>
+</li>
+<li><p>系统安装，以<code>Ubuntu</code>系统为例，当系统检测到显卡时，通过下面的命令可以列出或安装驱动程序。  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> ubuntu-drivers list --gpgpu
+<span class="token function">sudo</span> ubuntu-drivers <span class="token function">install</span> --gpgpu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<p>个人比较推荐通过文件安装的方式。  </p>
+<h3 id="显卡架构与版本号">2.2.2&emsp;显卡架构与版本号</h3><p>NVIDIA的架构代号有很多，以sm_xx类型为例，各架构兼容性如下表：  </p>
+<table>
+<thead>
+<tr>
+<th>架构名称</th>
+<th>版本号</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>费米 Fermi</td>
+<td>sm_20</td>
+<td>不支持CUDA 10及以后版本</td>
+</tr>
+<tr>
+<td>开普勒 Kepler</td>
+<td>sm_30、sm_35、sm_37</td>
+<td>支持统一内存模型编程，支持动态并行化，增加了一些寄存器，不支持CUDA 11及以后版本</td>
+</tr>
+<tr>
+<td>麦克斯韦 Maxwell</td>
+<td>sm_50、sm_52、sm_53</td>
+<td>不支持CUDA 11及以后版本</td>
+</tr>
+<tr>
+<td>帕斯卡 Pascal</td>
+<td>sm_60、sm_61、sm_62</td>
+<td>支持CUDA 8及以后版本</td>
+</tr>
+<tr>
+<td>伏特 Volta</td>
+<td>sm_70、sm_72</td>
+<td>支持CUDA 9及以后版本</td>
+</tr>
+<tr>
+<td>图灵 Turing</td>
+<td>sm_75</td>
+<td>支持CUDA 10及以后版本</td>
+</tr>
+<tr>
+<td>安培 Ampere</td>
+<td>sm_80、sm_86</td>
+<td>支持CUDA 11及以后版本，从8.0上编译出的二进制文件可以也在8.6上运行，但推荐在fp32类型上使用8.6的编译选项</td>
+</tr>
+<tr>
+<td>哈珀 Hopper</td>
+<td>sm_90</td>
+<td>支持CUDA 12及以后版本（计划中）</td>
+</tr>
+</tbody></table>
+<p>关于如何查找所用显卡对应的<code>sm_xx</code>代号，大概有以下两种方式：  </p>
+<ol>
+<li>通过网址查询：<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-gpus</a>  </li>
+<li>安装cuda编译器后，通过<code>__nvcc_device_query</code>命令查询  </li>
+</ol>
+<h3 id="torch版本与显卡架构兼容性">2.2.3&emsp;torch版本与显卡架构兼容性</h3><p>选择安装pytorch/libtorch时也要注意与显卡架构兼容性的问题，可在<a href="https://github.com/moi90/pytorch_compute_capabilities" target="_blank" rel="noopener">pytorch_compute_capabilities</a>仓库中查询，摘录结果如下：  </p>
+<table>
+<thead>
+<tr>
+<th>package</th>
+<th>architectures</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pytorch-2.5.1-py3.12_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.12_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.12_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.11_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.11_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.11_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.10_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.10_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.10_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.9_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.9_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.1-py3.9_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.12_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.12_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.12_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.11_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.11_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.11_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.10_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.10_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.10_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.9_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.9_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90, sm_90a</td>
+</tr>
+<tr>
+<td>pytorch-2.5.0-py3.9_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.12_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.12_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.12_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.11_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.11_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.11_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.10_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.10_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.10_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.9_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.9_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.1-py3.9_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.12_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.12_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.12_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.11_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.11_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.11_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.10_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.10_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.10_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.9_cuda12.4_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.9_cuda12.1_cudnn9.1.0_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.4.0-py3.9_cuda11.8_cudnn9.1.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.12_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.12_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.1-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.12_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.12_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td></td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td></td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.3.0-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.12_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.12_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.2-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.12_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.12_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.1-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.12_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.12_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_70, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_70, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_70, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.2.0-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.2-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.2-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.2-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.2-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.2-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.2-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.1-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.1-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.1-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.1-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.1-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.1-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.0-py3.11_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.0-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.0-py3.10_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.0-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.0-py3.9_cuda12.1_cudnn8.9.2_0</td>
+<td>sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.1.0-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.0.1-py3.11_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.0.1-py3.11_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-2.0.1-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.0.1-py3.10_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-2.0.1-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.0.1-py3.9_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-2.0.0-py3.10_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.0.0-py3.10_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-2.0.0-py3.9_cuda11.8_cudnn8.7.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86, sm_90</td>
+</tr>
+<tr>
+<td>pytorch-2.0.0-py3.9_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.1-py3.10_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.1-py3.10_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.1-py3.9_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.1-py3.9_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.0-py3.10_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.0-py3.10_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.0-py3.9_cuda11.7_cudnn8.5.0_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.13.0-py3.9_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.1-py3.10_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.1-py3.10_cuda11.3_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.1-py3.10_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.12.1-py3.9_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.1-py3.9_cuda11.3_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.1-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.12.0-py3.10_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.0-py3.10_cuda11.3_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.0-py3.10_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.12.0-py3.9_cuda11.6_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.0-py3.9_cuda11.3_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.12.0-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.10_cuda11.5_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.10_cuda11.3_cudnn8.2.0_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.10_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.10_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.9_cuda11.5_cudnn8.3.2_0</td>
+<td>sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.9_cuda11.3_cudnn8.2.0_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.11.0-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.10.2-py3.9_cuda11.3_cudnn8.2.0_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.10.2-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.10.2-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.10.1-py3.9_cuda11.3_cudnn8.2.0_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.10.1-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.10.1-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.10.0-py3.9_cuda11.3_cudnn8.2.0_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.10.0-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.10.0-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.9.1-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.9.1-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.9.0-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.9.0-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.8.1-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.8.1-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.8.1-py3.9_cuda10.1_cudnn7.6.3_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.8.0-py3.9_cuda11.1_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80, sm_86</td>
+</tr>
+<tr>
+<td>pytorch-1.8.0-py3.9_cuda10.2_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.8.0-py3.9_cuda10.1_cudnn7.6.3_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.7.1-py3.9_cuda11.0.221_cudnn8.0.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75, sm_80</td>
+</tr>
+<tr>
+<td>pytorch-1.7.1-py3.9_cuda10.2.89_cudnn7.6.5_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.7.1-py3.9_cuda10.1.243_cudnn7.6.3_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70, sm_75</td>
+</tr>
+<tr>
+<td>pytorch-1.7.1-py3.9_cuda9.2.148_cudnn7.6.3_0</td>
+<td>sm_35, sm_37, sm_50, sm_60, sm_61, sm_70</td>
+</tr>
+</tbody></table>
+<h1 id="实现路径">3&emsp;实现路径</h1><h2 id="显卡检查">3.1&emsp;显卡检查</h2><ol>
+<li><p>显卡连接主板后，查询系统是否能找到显卡：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash">lspci <span class="token operator">|</span> <span class="token function">grep</span> -i nvidia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>显卡似乎未正常工作时（如<code>nvidia-smi</code>命令返回为空），可用以下命令查询出错信息：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">dmesg</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<p>如显卡供电线未工作时输出如下：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>  301.584104<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: GPU does not have the necessary power cables connected.
+<span class="token punctuation">[</span>  301.584597<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: RmInitAdapter failed<span class="token operator">!</span> <span class="token punctuation">(</span>0x24:0x1c:1512<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>  301.584642<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: rm_init_adapter failed, device minor number 0
+<span class="token punctuation">[</span>  304.095280<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: GPU does not have the necessary power cables connected.
+<span class="token punctuation">[</span>  304.095722<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: RmInitAdapter failed<span class="token operator">!</span> <span class="token punctuation">(</span>0x24:0x1c:1512<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>  304.095765<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: rm_init_adapter failed, device minor number 0
+<span class="token punctuation">[</span>  342.790660<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: GPU does not have the necessary power cables connected.
+<span class="token punctuation">[</span>  342.791129<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: RmInitAdapter failed<span class="token operator">!</span> <span class="token punctuation">(</span>0x24:0x1c:1512<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>  342.791182<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: rm_init_adapter failed, device minor number 0
+<span class="token punctuation">[</span>  343.163675<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: GPU does not have the necessary power cables connected.
+<span class="token punctuation">[</span>  343.164110<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: RmInitAdapter failed<span class="token operator">!</span> <span class="token punctuation">(</span>0x24:0x1c:1512<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>  343.164151<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: rm_init_adapter failed, device minor number 0
+<span class="token punctuation">[</span>  349.650912<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: GPU does not have the necessary power cables connected.
+<span class="token punctuation">[</span>  349.651390<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: RmInitAdapter failed<span class="token operator">!</span> <span class="token punctuation">(</span>0x24:0x1c:1512<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>  349.651445<span class="token punctuation">]</span> NVRM: GPU 0000:02:00.0: rm_init_adapter failed, device minor number 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="显卡驱动安装">3.2&emsp;显卡驱动安装</h2><ol>
+<li>下载正确的<code>.run</code>文件；  </li>
+<li>运行该文件，按提示完成安装；  </li>
+<li>运行<code>nvidia-smi</code>测试安装结果。  </li>
+</ol>
+<p>详见《显卡与驱动版本的兼容性问题》</p>
+<h2 id="cuda套件安装">3.3&emsp;cuda套件安装</h2><p>安装 CUDA Toolkit ：</p>
+<ol>
+<li>安装<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">官网</a>的步骤进行下载安装；  </li>
+<li>将<code>cuda</code>安装路径加入PATH：  <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">export</span> PATH<span class="token operator">=</span>/usr/local/cuda/bin:<span class="token variable">$PATH</span>  
+<span class="token function">export</span> LD_LIBRARY_PATH<span class="token operator">=</span>/usr/local/cuda/lib:<span class="token variable">$LD_LIBRARY_PATH</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><code>nvcc -v</code>测试安装结果。  </li>
+</ol>
+<h2 id="pytorch安装">3.4&emsp;pytorch安装</h2><ol>
+<li>确定与显卡架构兼容的pytorch版本（见技术方案部分），如我们的显卡<code>sm_61</code>支持的最新torch版本为<code>pytorch-2.5.1-py3.12_cuda12.4_cudnn9.1.0_0</code>；  </li>
+<li>前往PyTorch官网<a href="https://pytorch.org/get-started/previous-versions" target="_blank" rel="noopener">https://pytorch.org/get-started/previous-versions</a>，找到对应版本的安装命令：<code>pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1</code>；  </li>
+<li>通过pip安装。  </li>
+</ol>
+<p>需要注意的是，如果系统提示需要创建一个python虚拟环境（如Ubuntu24.04），则前置步骤如下：  </p>
+<ol>
+<li>选定合适的目录，运行<code>python3 -m venv torch_env</code>;  </li>
+<li>将<code>source /path/to/torch_env/bin/activate</code>加入到<code>~/.bashrc</code>中；  </li>
+<li><code>source ~/.bashrc</code>，自动导入虚拟环境，接下来所有python包都会安装在该<code>torch_env</code>目录中。  </li>
+</ol>
+<p>可通过以下小程序测试安装结果：  </p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"PyTorch 版本:"</span><span class="token punctuation">,</span> torch<span class="token punctuation">.</span>__version__<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"CUDA 是否可用:"</span><span class="token punctuation">,</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"CUDA 版本:"</span><span class="token punctuation">,</span> torch<span class="token punctuation">.</span>version<span class="token punctuation">.</span>cuda<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"GPU 数量:"</span><span class="token punctuation">,</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>device_count<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"当前 GPU 名称:"</span><span class="token punctuation">,</span> torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>get_device_name<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>若<code>torch.cuda.is_available()</code>返回<code>True</code>，则说明 PyTorch 已成功配置 GPU 支持。</p>
+<h2 id="pytorch扩展安装">3.5&emsp;pytorch扩展安装</h2><p>安装扩展时，要注意与torch版本的一致性，如torch2.5.1版本扩展安装命令如下：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash">pip <span class="token function">install</span> torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cu124.html
+pip <span class="token function">install</span> pyg-lib -f https://data.pyg.org/whl/torch-2.5.1+cu124.html
+pip <span class="token function">install</span> torch-sparse -f https://data.pyg.org/whl/torch-2.5.1+cu124.html
+pip <span class="token function">install</span> torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cu124.html
+pip <span class="token function">install</span> torch-spline-conv -f https://data.pyg.org/whl/torch-2.5.1+cu124.html
+pip <span class="token function">install</span> torchmetrics -f https://data.pyg.org/whl/torch-2.5.1+cu124.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="libtorch安装">3.6&emsp;libtorch安装</h2><p>如果要在C++环境中使用torch，则需下载libtorch库，<strong>注意torch版本和cuda版本</strong>的兼容性选择，如之前安装了pytorch2.5.1和cuda12.8，则下载命令如下：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">wget</span> https://download.pytorch.org/libtorch/cu128/libtorch-cxx11-abi-shared-with-deps-2.5.1%2Bcu128.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>解压后设置环境变量即可使用：  </p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">export</span> Torch_ROOT<span class="token operator">=</span>/path/to/libtorch
+<span class="token function">export</span> LD_LIBRARY_PATH<span class="token operator">=</span>/path/to/libtorch/lib:<span class="token variable">$LD_LIBRARY_PATH</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="libtorch扩展安装">3.7&emsp;libtorch扩展安装</h2><p>扩展组件一般都需要编译安装，过程如下（以torch-scatter为例）：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/rusty1s/pytorch_scatter.git
+<span class="token function">cd</span> pytorch_scatter
+<span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> build
+cmake <span class="token punctuation">..</span>
+ccmake <span class="token punctuation">..</span> <span class="token comment" spellcheck="true">#修改安装路径等选项</span>
+<span class="token function">make</span> -j8
+<span class="token function">make</span> <span class="token function">install</span>
+<span class="token comment" spellcheck="true">#加入到环境变量~/.bashrc</span>
+<span class="token function">export</span> TorchScatter_DIR<span class="token operator">=</span>/path/to/pytorch_scatter/install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+      </div>
+
+      
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com" rel="external nofollow noreferrer">zcp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chengpengzhao.com/2025-05-28-ubuntu-shang-an-zhuang-nvidia-gpu-kai-fa-huan-jing/">https://chengpengzhao.com/2025-05-28-ubuntu-shang-an-zhuang-nvidia-gpu-kai-fa-huan-jing/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+      <div class="tag_share" style="display: block;">
+        <div class="post-meta__tag-list" style="display: inline-block;">
+          
+          <div class="article-tag">
+            
+            <a href="/tags/PyTorch/">
+              <span class="chip bg-color">PyTorch</span>
+            </a>
+            
+            <a href="/tags/gpu/">
+              <span class="chip bg-color">gpu</span>
+            </a>
+            
+            <a href="/tags/C/">
+              <span class="chip bg-color">C++</span>
+            </a>
+            
+          </div>
+          
+        </div>
+        <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+          <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,qq,wechat,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+        </div>
+      </div>
+      
+      <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9309083999384234"
+     data-ad-slot="1388383579"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+      
+    </div>
+  </div>
+  
+
+  
+  <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" >
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'Ov23li8OiZk3vB79CoQe',
+        clientSecret: 'ed8986fcc3a8e3708630c5bd58ae377a832686ce',
+        repo: 'Zcp_blog_comments',
+        owner: 'chengpengzhao',
+        admin: "chengpengzhao",
+        id: '2025-05-28T00-00-00',
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+        proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2025-05-28-ubuntu-shang-an-zhuang-nvidia-gpu-kai-fa-huan-jing/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="Ubuntu上安装NVIDIA GPU开发环境">
+                        
+                        <span class="card-title">Ubuntu上安装NVIDIA GPU开发环境</span> -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Ubuntu上安装NVIDIA GPU开发环境</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;问题场景在 Linux 系统上进行深度学习相关项目开发时，需要安装 PyTorch(libTorch) 、 CUDA套件 来充分利用 NVIDIA GPU 的计算能力，加速模型训练和推理过程。然而，我在实际安装过程中遇到找不到
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PyTorch/">
+                        <span class="chip bg-color">PyTorch</span>
+                    </a>
+                    
+                    <a href="/tags/gpu/">
+                        <span class="chip bg-color">gpu</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" >
+            <div class="article-badge left-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025-02-27-flex-bison-shi-yong/">
+                    <div class="card-content">
+                    <!--<div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="flex/bison使用">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">flex/bison使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1&emsp;基本介绍
+Flex（词法分析器）像“文本拆分器”，负责将原始文本拆解成有意义的单词（称为 Token）。例如：从代码 price = 100+20 中识别出 price、=、100、+、20。  
+
+Bison（语法分析器）像
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
+                                    工作
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/flex-bison/">
+                        <span class="chip bg-color">flex/bison</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
+
+
+
+    <footer id="bottom" class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;&nbsp;
+            <span id="year">2019</span>&nbsp;
+            <a href="https://chengpengzhao.com" target="_blank">zcp</a>
+            |&nbsp;
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">197.3k</span>&nbsp;字
+            
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "3";
+                    var startDate = "18";
+                    var startHour = "20";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffDays + " 天 " ;
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " ;
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chengpengzhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:chengpeng_zhao@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com/JiyoTomare" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/JiyoTomare" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="https://keybase.io/jiyotomare" class="tooltipped" target="_blank" data-tooltip="关注我的Keybase: https://keybase.io/jiyotomare" data-position="top" data-delay="50">
+        <i class="fab fa-keybase"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="/rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+    <style>
+.bottom-scroll {
+  display: none;
+  position: fixed;
+  right: 76px;
+  bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998;
+}
+.bottom-scroll .btn-floating {
+    background: linear-gradient(to right, #0f9d58 0%, #00BFFF 100%);
+    width: 48px;
+    height: 48px;
+    opacity: 0.45;
+}
+</style>
+<!-- 回到底部按钮 -->
+<div id="backBottom" class="bottom-scroll">
+  <a class="btn-floating btn-large waves-effect waves-light" href="#bottom">
+    <i class="fas fa-arrow-down"></i>
+  </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <!--<script src="/libs/aos/aos.js"></script>-->
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112451-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-153112451-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>
