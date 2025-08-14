@@ -585,32 +585,60 @@
 </ul>
 <h1 id="验证测试">3&emsp;验证测试</h1><h2 id="内存带宽上限测试-cs-roofline-toolkit">3.1&emsp;内存带宽上限测试(cs-roofline-toolkit)</h2><ol>
 <li><code>git clone https://bitbucket.org/berkeleylab/cs-roofline-toolkit.git</code>  </li>
-<li>输入：  <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> cs-roofline-toolkit/Empirical_Roofline_Tool-1.1.0
-<span class="token function">cp</span> Config/config.madonna.lbl.gov.01 Config/myPCTest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>编辑<code>Config/myPCTest</code>，主要是将编译器从intel改为gnu  <pre><code>ERT_RESULTS Results.myPCtest
-</code></pre></li>
+<li>输入：  </li>
 </ol>
-<p>ERT_DRIVER  driver1<br>ERT_KERNEL  kernel1</p>
-<p>ERT_MPI         True<br>ERT_MPI_CFLAGS<br>ERT_MPI_LDFLAGS</p>
-<p>ERT_OPENMP         True<br>ERT_OPENMP_CFLAGS  -fopenmp<br>ERT_OPENMP_LDFLAGS -fopenmp</p>
-<p>ERT_FLOPS   1,2,4,8,16<br>ERT_ALIGN   32</p>
-<p>ERT_CC      mpic++<br>ERT_CFLAGS  -O3 -march=native -msse3</p>
-<p>ERT_LD      mpic++<br>ERT_LDFLAGS<br>ERT_LDLIBS</p>
-<p>ERT_PRECISION FP64</p>
-<p>ERT_RUN     export OMP_NUM_THREADS=ERT_OPENMP_THREADS; mpirun -np ERT_MPI_PROCS<br>ERT_CODE</p>
-<p>ERT_PROCS_THREADS  1-8<br>ERT_MPI_PROCS      1,2,4,8<br>ERT_OPENMP_THREADS 1,2,4,8</p>
-<p>ERT_NUM_EXPERIMENTS 3</p>
-<p>ERT_MEMORY_MAX 1073741824<br>ERT_WORKING_SET_MIN 1</p>
-<p>ERT_TRIALS_MIN 1</p>
-<p>ERT_GNUPLOT gnuplot</p>
-<pre><code>
-4. 绘图若使用较高版本gnuplot，需要修改`Plot`文件夹中所有文件的其中一行：  
-```gnuplot
-# 原命令
-set clabel &#39;%8.3g&#39;
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> cs-roofline-toolkit/Empirical_Roofline_Tool-1.1.0
+<span class="token function">cp</span> Config/config.madonna.lbl.gov.01 Config/myPCTest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>编辑<code>Config/myPCTest</code>，主要是将编译器从intel改为gnu  </li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">ERT_RESULTS Results.myPCtest
+
+ERT_DRIVER  driver1
+ERT_KERNEL  kernel1
+
+ERT_MPI         True
+ERT_MPI_CFLAGS
+ERT_MPI_LDFLAGS
+
+ERT_OPENMP         True
+ERT_OPENMP_CFLAGS  -fopenmp
+ERT_OPENMP_LDFLAGS -fopenmp
+
+ERT_FLOPS   1,2,4,8,16
+ERT_ALIGN   32
+
+ERT_CC      mpic++
+ERT_CFLAGS  -O3 -march<span class="token operator">=</span>native -msse3
+
+ERT_LD      mpic++
+ERT_LDFLAGS
+ERT_LDLIBS
+
+ERT_PRECISION FP64
+
+ERT_RUN     <span class="token function">export</span> OMP_NUM_THREADS<span class="token operator">=</span>ERT_OPENMP_THREADS<span class="token punctuation">;</span> mpirun -np ERT_MPI_PROCS
+ERT_CODE
+
+ERT_PROCS_THREADS  1-8
+ERT_MPI_PROCS      1,2,4,8
+ERT_OPENMP_THREADS 1,2,4,8
+
+ERT_NUM_EXPERIMENTS 3
+
+ERT_MEMORY_MAX 1073741824
+ERT_WORKING_SET_MIN 1
+
+ERT_TRIALS_MIN 1
+
+ERT_GNUPLOT gnuplot<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><p>绘图若使用较高版本gnuplot，需要修改<code>Plot</code>文件夹中所有文件的其中一行：  </p>
+<pre class="line-numbers language-gnuplot"><code class="language-gnuplot"># 原命令
+set clabel '%8.3g'
 # 替换后：
-set cntrlabel format &#39;%8.3g&#39;</code></pre><ol start="5">
+set cntrlabel format '%8.3g'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>运行测试: <code>./ert Config/myPCtest</code></p>
 </li>
 <li><p>查看<code>Results.myPCtest/Run.001/roofline.ps</code> 文件</p>
