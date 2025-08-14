@@ -882,7 +882,7 @@ set cntrlabel format '%8.3g'<span aria-hidden="true" class="line-numbers-rows"><
 |      Vectorization ratio [%] STAT      |   121.3594 |   14.9942 |    15.2373 |   15.1699 |   15.1290 |   15.1848 |   15.2175 |
 +----------------------------------------+------------+-----------+------------+-----------+-----------+-----------+-----------+
 </code></pre><ol start="5">
-<li>示例结果分析： Debug版这浮点计算量，8进程带宽都没迟吃满，并行效率正常。Release版本，4进程到8进程发现浮点计算效率明显降低，带宽提升不够，显然发生了竞争，总带宽已经接近该机器的上限了。 </li>
+<li>示例结果分析： Debug版这浮点计算量，8进程带宽都没吃满，并行效率正常。Release版本，4进程到8进程发现浮点计算效率明显降低，带宽提升不够，显然发生了竞争，总带宽已经接近该机器的上限了。 </li>
 </ol>
 
       </div>
@@ -1271,16 +1271,16 @@ set cntrlabel format '%8.3g'<span aria-hidden="true" class="line-numbers-rows"><
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
                     <a href="/tags/PyTorch/">
                         <span class="chip bg-color">PyTorch</span>
                     </a>
                     
                     <a href="/tags/gpu/">
                         <span class="chip bg-color">gpu</span>
-                    </a>
-                    
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>
