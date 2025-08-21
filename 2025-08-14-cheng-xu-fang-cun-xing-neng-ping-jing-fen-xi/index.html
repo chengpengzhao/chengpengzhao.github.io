@@ -535,7 +535,7 @@
 <li>计算只涉及一个乘法 + 一个加法（2 FLOPs）<br>结果：每20~24 字节数据，只有2FLOPs → AI ≈ 0.1 FLOPs/Byte  </li>
 </ol>
 </li>
-<li><p>最大内存带宽（Max Memory Bandwidth) : CPU可以从内存读取数据或将数据存储到内存中的最大速率 (以GB/s为单为)<br>  如<code>Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz</code>的官方标注最大内存带宽为<code>76.8 GB/s</code></p>
+<li><p>最大内存带宽（Max Memory Bandwidth) : CPU可以从内存读取数据或将数据存储到内存中的最大速率 (以GB/s为单位)<br>  如<code>Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz</code>的官方标注最大内存带宽为<code>76.8 GB/s</code></p>
 </li>
 <li><p><strong>FLOPS</strong>，即每秒浮点运算次数, 是每秒所执行的浮点运算次数（Floating-point operations per second, <strong>FLOPS</strong>）</p>
 <ol>
@@ -1167,60 +1167,37 @@ set cntrlabel format '%8.3g'<span aria-hidden="true" class="line-numbers-rows"><
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2025-08-14-cheng-xu-fang-cun-xing-neng-ping-jing-fen-xi/">
+                <a href="/2025-08-21-frp-openvpn-shi-xian-nei-wang-fang-wen-shi-jian/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
                         
-                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="程序访存性能瓶颈分析">
-                        
-                        <span class="card-title">程序访存性能瓶颈分析</span> -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">程序访存性能瓶颈分析</span>
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="2025-08-21-frp+OpenVPN实现内网访问实践">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">2025-08-21-frp+OpenVPN实现内网访问实践</span>
+
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;问题场景在测试程序的并行效率时，发现Release版本的并行效率很低，而Debug版测出来则符合预期，怀疑程序受内存带宽限制而无法发挥应有的性能。但需要用实际数据来验证这个合理的猜想。  
-
-想象内存带宽就是一根水管，数据是水
+                            
+title:    “frp+OpenVPN实现内网访问实践”date:    2025-08-21updated:    2025-08-21author:    “zcp”img:    “”top:    falsecover:  
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-08-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-08-21
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
-                                    工作
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zcp
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/mpi/">
-                        <span class="chip bg-color">mpi</span>
-                    </a>
-                    
-                    <a href="/tags/likwid/">
-                        <span class="chip bg-color">likwid</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1439,7 +1416,7 @@ set cntrlabel format '%8.3g'<span aria-hidden="true" class="line-numbers-rows"><
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">200.6k</span>&nbsp;字
+                class="white-color">203.1k</span>&nbsp;字
             
             <br>
             
