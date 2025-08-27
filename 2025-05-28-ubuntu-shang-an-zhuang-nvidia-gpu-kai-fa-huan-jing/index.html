@@ -1312,7 +1312,13 @@
 </ol>
 <h2 id="pytorch安装">3.4&emsp;pytorch安装</h2><ol>
 <li>确定与显卡架构兼容的pytorch版本（见技术方案部分），如我们的显卡<code>sm_61</code>支持的最新torch版本为<code>pytorch-2.5.1-py3.12_cuda12.4_cudnn9.1.0_0</code>；  </li>
-<li>前往PyTorch官网<a href="https://pytorch.org/get-started/previous-versions" target="_blank" rel="noopener">https://pytorch.org/get-started/previous-versions</a>，找到对应版本的安装命令：<code>pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1</code>；  </li>
+<li>前往PyTorch官网<a href="https://pytorch.org/get-started/previous-versions" target="_blank" rel="noopener">https://pytorch.org/get-started/previous-versions</a>，找到对应版本的安装命令：  </li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># cpu version</span>
+pip <span class="token function">install</span> torch<span class="token operator">==</span>2.5.1 torchvision<span class="token operator">==</span>0.20.1 torchaudio<span class="token operator">==</span>2.5.1；  
+<span class="token comment" spellcheck="true"># gpu support</span>
+pip <span class="token function">install</span> torch<span class="token operator">==</span>2.5.1 torchvision<span class="token operator">==</span>0.20.1 torchaudio<span class="token operator">==</span>2.5.1 --index-url https://download.pytorch.org/whl/cu124<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
 <li>通过pip安装。  </li>
 </ol>
 <p>需要注意的是，如果系统提示需要创建一个python虚拟环境（如Ubuntu24.04），则前置步骤如下：  </p>
@@ -1911,7 +1917,7 @@ Bison（语法分析器）像
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">203k</span>&nbsp;字
+                class="white-color">203.1k</span>&nbsp;字
             
             <br>
             
