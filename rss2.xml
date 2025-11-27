@@ -15,8 +15,31 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>この、くそったれな世界に、精一杯愛をこめて</description>
-    <pubDate>Thu, 21 Aug 2025 00:00:00 GMT</pubDate>
+    <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>CUDA程序编译的二进制兼容性问题</title>
+      <link>https://chengpengzhao.com/2025-11-27-cuda-cheng-xu-bian-yi-de-er-jin-zhi-jian-rong-xing-wen-ti/</link>
+      <guid>https://chengpengzhao.com/2025-11-27-cuda-cheng-xu-bian-yi-de-er-jin-zhi-jian-rong-xing-wen-ti/</guid>
+      <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;问题场景&quot;&gt;1&amp;emsp;问题场景&lt;/h1&gt;&lt;p&gt;在高性能计算和 
+          
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="问题场景">1&emsp;问题场景</h1><p>在高性能计算和 GPU 加速应用中，程序的可移植性和兼容性是一个关键问题。对于使用 NVIDIA GPU 和 CUDA 技术的应用，开发者通常需要面对不同 GPU 架构（Compute Capability）带来的二进制兼容性挑战，很可能在Nvidia RTX 5090上编译的程序放到Nvidia V100上运行就会出问题。因此有必要了解CUDA 编译器的一些编译细节。</p><h1 id="技术方案">2&emsp;技术方案</h1><h2 id="CUDA-编译器-nvcc-生成的两种形式GPU代码：">2.1&emsp;CUDA 编译器(nvcc)生成的两种形式GPU代码：</h2><ol><li>cubin（二进制代码）：针对特定 GPU 架构的编译结果。</li><li>PTX（中间代码）：可移植、可 JIT（即时编译）生成针对目标 GPU 的二进制代码。</li></ol><p>二进制兼容性问题主要表现为：如果一个 CUDA 程序编译出的二进制文件仅包含针对特定 GPU 架构的 cubin，那么它可能无法在较新或不同架构的 GPU 上运行。反之，如果程序包含 PTX 代码，则可以在不同 GPU 上通过 JIT 编译生成可执行的二进制，从而实现更高的兼容性。</p><p>例如，一个针对 <code>sm_86</code>（Compute Capability 8.6）编译的 cubin 文件，只能保证在 8.x 系列的 GPU 上运行，而不能直接在 7.x 或 9.x GPU 上运行。若应用中包含 PTX targeting compute_70，则该 PTX 可以 JIT 编译在 compute capability 7.0 及以上的 GPU 上，包括 8.x、9.x、10.x 等新架构，从而提供向前兼容性。</p><h2 id="CUDA的host与device部分编译流程">2.2&emsp;CUDA的host与device部分编译流程</h2><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20251127153918478.png" alt></p><p>上图展示了 CUDA 编译流程：NVCC 先把<code>example.cu</code>拆成 host 与 device 两部分，device 代码由 GPU 编译链生成 PTX 中间码，再经 ptxas 汇编为 CUBIN 目标文件；host 代码则交给系统 C/C++ 编译器生成 CPU 二进制；最终 NVCC 把两者打包进同一可执行文件，实现一次源码、双码并行的异构编译。</p><h2 id="编译选项解析">2.3&emsp;编译选项解析</h2><p>使用 <code>nvcc</code> 的 <code>--generate-code</code> 选项可以灵活控制生成 PTX 和/或 cubin。例如：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 仅生成 PTX</span>nvcc simple_add.cu -o simple_add --generate-code <span class="token string">"arch=compute_50,code=[compute_50]"</span><span class="token comment" spellcheck="true"># 同时生成 PTX 和 cubin，推荐✅</span>nvcc simple_add.cu -o simple_add --generate-code <span class="token string">"arch=compute_50,code=[compute_50,sm_50]"</span><span class="token comment" spellcheck="true"># 仅生成 cubin</span>nvcc simple_add.cu -o simple_add --generate-code <span class="token string">"arch=compute_50,code=[sm_50]"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>注意<code>arch=compute_xx</code>选项在哪种情况都是必需的，用于指定虚拟架构版本</p></blockquote><h1 id="实现路径">3&emsp;实现路径</h1><h2 id="分析目标-GPU-架构">3.1&emsp;分析目标 GPU 架构</h2><p>确定程序需要支持的 GPU 架构范围（主要 Compute Capability 版本）。对于企业级部署，可覆盖当前主流架构及可能升级的 GPU。  </p><ul><li>命令<code>nvidia-smi --query-gpu=name,compute_cap --format=csv</code>可直接得到目标GPU的架构号</li></ul><h2 id="选择适当的生成策略">3.2&emsp;选择适当的生成策略</h2><ol><li><p>明确代码生产环境<br> 对于稳定的生产环境，且目标 GPU 架构固定，可生成针对 GPU 的 cubin 以获得最高性能。<br> 对于多架构或未来可能升级的环境，建议生成 PTX 或同时生成 PTX 与 cubin，以保证向前兼容性。</p></li><li><p>利用 PTX 的 JIT 功能<br>将 PTX 代码存储在应用或库中，在程序运行时根据实际 GPU 进行 JIT 编译。这样可以实现跨架构运行，保证新 GPU 可以执行旧版本 PTX 编译的程序。</p></li><li><p>混合生成 cubin 和 PTX<br>在编译阶段同时生成目标 GPU 的 cubin 和 PTX。cubin 可在编译时支持当前 GPU 架构的高性能运行，而 PTX 提供向前兼容性，保证程序在未来 GPU 上也能运行。</p></li></ol><h2 id="调整编译选项">3.3&emsp;调整编译选项</h2><ul><li><p><code>nvcc -arch-ls -code-ls</code>列出当前cuda编译环境支持的所有架构代号</p></li><li><p>根据前述分析结果，设置 <code>--generate-code</code> 参数，合理组合 PTX 与 cubin。例如，生成 PTX 提供跨 GPU 兼容性，生成 cubin 保证特定架构的性能优化。</p></li><li><p>若是使用Cmake的项目，只需在<code>CmakeLists.txt</code>中设置<code>set(CMAKE_CUDA_ARCHITECTURES &quot;61;70&quot;  CACHE STRING &quot;Set CUDA compute capability&quot;)</code>即可生成类似 <code>&quot;--generate-code=arch=compute_61,code=[compute_61,sm_61]&quot; &quot;--generate-code=arch=compute_70,code=[compute_70,sm_70]&quot;</code>的编译选项代码，免去了手动添加选项的过程</p></li></ul><h2 id="验证与测试">3.4&emsp;验证与测试</h2><p>   在不同架构的 GPU 上运行程序，验证 PTX JIT 编译是否正常，并检查性能表现。确保程序在主要目标 GPU 上性能最优，同时在新架构 GPU 上可正常执行。</p><hr><p>通过以上方法，CUDA 程序不仅能够在现有 GPU 上高效运行，也能在未来 GPU 架构上保持兼容，实现二进制和 PTX 的灵活组合，提高软件的可移植性和长期可维护性。</p><hr>]]></content:encoded>
+      
+      <comments>https://chengpengzhao.com/2025-11-27-cuda-cheng-xu-bian-yi-de-er-jin-zhi-jian-rong-xing-wen-ti/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>frp+OpenVPN实现内网访问实践</title>
