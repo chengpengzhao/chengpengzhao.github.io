@@ -4,12 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="正则表达式学习笔记, Zcp&#39;s Zone">
-    <meta name="description" content="之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。大家都推荐这本书：  精通正则表达式 第3版
-1&amp;emsp;特殊作用
-大写往往代表对小写能匹配的字符取补集
+    <meta name="keywords" content="VMWare Horizon 8(2312) 团队配置与使用（下）, Zcp&#39;s Zone">
+    <meta name="description" content="1&amp;emsp;前言
+场景需求：团队共享桌面、远程办公、研发测试、统一环境管理
 
-[_a-zA">
+上篇覆盖范围：ESXi、域控、vCenter的安装与基础配置
+
+下篇覆盖范围：Horizon的安装与配置
+
+整体目标
+
+搭建一套可供团队使用的 VMware 虚">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +23,7 @@
     <meta name="google-site-verification" content="yj9xILu4EMTLFNBaFPbL9geokh867hi89Pi4Rc1pf0U" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>正则表达式学习笔记 | Zcp&#39;s Zone</title>
+    <title>VMWare Horizon 8(2312) 团队配置与使用（下） | Zcp&#39;s Zone</title>
     <link rel="icon" type="image/png" href="/medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -332,7 +337,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        正则表达式学习笔记
+                        VMWare Horizon 8(2312) 团队配置与使用（下）
                     </div>
                 </div>
             </div>
@@ -450,12 +455,24 @@
           
           <div class="article-tag">
             
-            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-              <span class="chip bg-color">使用tips</span>
+            <a href="/tags/ESXi/">
+              <span class="chip bg-color">ESXi</span>
             </a>
             
-            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-              <span class="chip bg-color">正则表达式</span>
+            <a href="/tags/vCenter/">
+              <span class="chip bg-color">vCenter</span>
+            </a>
+            
+            <a href="/tags/Horizon/">
+              <span class="chip bg-color">Horizon</span>
+            </a>
+            
+            <a href="/tags/DNS/">
+              <span class="chip bg-color">DNS</span>
+            </a>
+            
+            <a href="/tags/Windows-Server/">
+              <span class="chip bg-color">Windows Server</span>
             </a>
             
           </div>
@@ -483,28 +500,28 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-          2020-01-11
+          2026-04-03
         </div>
         
 
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2020-01-11
+          2026-04-03
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          801
+          4.6k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          2 Min
+          23 Min
         </div>
         
 
@@ -523,68 +540,436 @@
       <script type="text/javascript" src="/js/timecount.js"></script>
       </div>
       <div id="articleContent">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>之前学过一遍正则表达式，结果好久不用基本上忘了，每次用都得重新打开网页搜索下；由于网上讲的参差不齐，还是自己总结下吧。<br>大家都推荐这本书：  <a href="https://book.douban.com/subject/11589967/" target="_blank" rel="noopener">精通正则表达式 第3版</a></p>
-<h1 id="特殊作用">1&emsp;特殊作用</h1><ul>
-<li><p>大写往往代表对小写能匹配的字符取补集</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前言">1&emsp;前言</h1><ul>
+<li><p>场景需求：团队共享桌面、远程办公、研发测试、统一环境管理</p>
 </li>
-<li><p><code>[_a-zA-z0-9]</code> : 中括号的作用——匹配中括号内任意一种(连字符<code>-</code>只有放在字符组开头时才不表示范围)</p>
+<li><p><a href="https://chengpengzhao.com/2026-04-02-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-1/">上篇</a>覆盖范围：ESXi、域控、vCenter的安装与基础配置</p>
 </li>
-<li><p><code>(\d))</code> : 小括号创建一个捕获分组，也可用来决定竖线的作用范围</p>
+<li><p>下篇覆盖范围：Horizon的安装与配置</p>
 </li>
-<li><p><code>(?:the|The|THE)</code> : 非捕获分组,无法后向引用(效率高)，解决使用小括号的副作用</p>
-</li>
-<li><p><code>(?=pattern)</code> : 非捕获匹配，正向肯定查找；如<code>Windows(?=95|98|NT|2000)</code>能匹配<code>Windows2000</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;=pattern)</code></p>
-</li>
-<li><p><code>(?!pattern)</code> ; 非捕获匹配，正向否定查找；如<code>Windows(?!95|98|NT|2000)</code>能匹配<code>Windows3.1</code>中的<code>Windows</code>；类似方向相反但作用相同的为<code>(?&lt;!pattern)</code></p>
-</li>
-<li><p><code>(?=...)</code> : 这一类表达式都可以看作一个“空位”，它们本身不占用字符</p>
-</li>
-<li><p><code>(\d)\d\1</code> : 其中<code>\1</code>表示引用前面分组中的内容，如该表达式可匹配<code>707</code>; 或者有时用<code>$1</code>这种形式也可</p>
-</li>
-<li><p><code>\</code> : 转义符， 如<code>\(</code>表示匹配左括号本身</p>
-</li>
-<li><p><code>^</code> : 行起始位置(或整个文档的开头);  <code>$</code> : 行结束位置  (锚位符)</p>
-</li>
-<li><p><code>$</code> : 行或字符串的结尾位置；和<code>^</code>一样都不占用字符</p>
-</li>
-<li><p><code>[^\d]</code> : 当<code>^</code>放在中括号里时表示对该中括号里的匹配内容取反(匹配单个未列出的字符)</p>
-</li>
-<li><p><code>|</code> : <strong>并集</strong>，多个选项中选择一个.如<code>(the|The|THE)</code></p>
-</li>
-<li><p><code>[a-z] [^m-r]</code> : <strong>交集</strong>，空格表示“且”，该式表示匹配a到z之间但不包含m到r间的字符</p>
-</li>
-<li><p><code>.*?</code> : 非贪婪匹配的一个组合形式，类似的<code>?</code>字符还可以跟在<code>*,+,?，{n}，{n,}，{n,m}</code>后表示非贪婪匹配</p>
+<li><p>整体目标</p>
+<ul>
+<li>搭建一套可供团队使用的 VMware 虚拟化桌面环境</li>
+<li>实现统一认证、集中管理、远程接入与桌面池分发</li>
+<li>支持后续模板化批量交付和权限管理，以及安全控制（禁止文件拷出）</li>
+</ul>
 </li>
 </ul>
-<h1 id="表示数量">2&emsp;表示数量</h1><ul>
-<li><p><code>\d{3}</code> : 花括号为量词，数字表明出现几次，可以有多个选项如: <code>\d{3,4}</code>，匹配3位或4位数字</p>
-</li>
-<li><p><code>*</code> : 量词，出现次数大于等于0(贪婪)   相当于<code>{0,}</code></p>
-</li>
-<li><p><code>+</code> : 量词，出现次数大于等于1   相当于<code>{1,}</code></p>
-</li>
-<li><p><code>?</code> : 量词，0个或1个(懒惰)   相当于<code>{0,1}</code></p>
-</li>
+<h1 id="Horizon-8-2312-安装与基础配置">2&emsp;Horizon 8 (2312) 安装与基础配置</h1><h2 id="Horizon-Client-Connection-Server-配置">2.1&emsp;Horizon Client(Connection Server)配置</h2><ul>
+<li>虚拟机规格： 我给了 4CPU、10G内存、90存储</li>
+<li>系统安装： windows server 2016安装</li>
+<li>固定 IP 配置： 管理机，设置固定IP</li>
 </ul>
-<h1 id="数字">3&emsp;数字</h1><ul>
-<li><p><code>[0-9]</code> : 匹配单个数字, 相当于<code>\d</code></p>
-</li>
-<li><p><code>[01357]</code> : 匹配列出的数字中的一个</p>
-</li>
-<li><p><code>\D</code> : 匹配一个非数字字符</p>
-</li>
+<ul>
+<li>步骤：</li>
 </ul>
-<h1 id="其他">4&emsp;其他</h1><ul>
-<li><p><code>.</code> : 匹配任意字符，<strong>但好像有的版本没把换行符算进去</strong>，这时可用<code>(.|\n)</code>表示任意字符</p>
-</li>
-<li><p><code>\w</code> : 匹配字母、数字和下划线</p>
-</li>
-<li><p><code>\s</code> : 空白字符，一共四种，相当于<code>[ \t\n\r]</code> ;空格、制表符、换行符、回车符</p>
-</li>
-<li><p><code>\b</code> : 匹配单词边界，不消耗字符(零宽度断言)，如<code>\b\w{7}\b</code></p>
-</li>
+<ol>
+<li>安装虚拟机，加入域中，比如我设定机器名为<code>horizon.simforge.work</code>（后续也通过这个域名访问）  </li>
+<li>传入软件包<code>VMware-Horizon-Connection-Server-x86_64-xxx.exe</code>，开始安装  </li>
+<li>一路默认下一步就行，中途可能需要设一个密码  </li>
+<li>安装好就可以用<code>https://&lt;ConnectionServerDomainName&gt;/admin</code>访问了  </li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403100820808.png" alt></p>
+<p><strong>登录账号密码</strong>即域管理员的账号密码，之前在域控服务器里设置过</p>
+<h2 id="事件数据库配置">2.2&emsp;事件数据库配置</h2><p>事件数据库用于记录Horizon事件，不配置也不影响正常使用，只是没有审计日志和错误信息。(但安装起来还挺麻烦的，主要是安装包的获取)<br>我把数据库配置在了域控机器上。</p>
+<ol>
+<li>SQL Server安装，我选择的是：<code>cn_sql_server_2016_enterprise_x64_dvd_8699450</code>  </li>
+<li>SQL Server Management Studio安装，下载<code>SSMS-Setup-CHS.exe</code>安装包  </li>
+<li>新建一个数据库，如<code>horizon_log</code>  (可以专门建一个数据库用户，记得开启SQL Server验证方式)<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403101907323.png" alt></li>
+<li>在Horizon里链接到数据库即可（使用刚创建的用户）<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403102025247.png" alt></li>
+</ol>
+<h1 id="桌面模板与桌面池配置">3&emsp;桌面模板与桌面池配置</h1><h2 id="制作桌面模板机">3.1&emsp;制作桌面模板机</h2><ol>
+<li>vCenter中创建 Windows/Ubuntu 虚拟机（根据之前下载的镜像）  </li>
+<li>将虚拟机加入域  </li>
+<li>安装 VMware Tools: Windows直接通过vCenter安装，Ubuntu安装<code>open-vm-tools</code>  </li>
+<li>安装 Horizon Agent： <code>VMware-Horizon-Agent-x86_64-2312-xxxx.exe</code>，还有一个<code>VMware-Horizon-Agent-Direct-Connection-x86_64-2312-xxx.exe</code>不知道具体有啥用，想装就装吧（一路默认安装即可）  </li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403103837475.png" alt></p>
+<ol start="5">
+<li>系统优化与基础配置：<ul>
+<li>网络配置（通过交换机设置好DHCP服务器，这里不用手动配置，自动获得ip即可，记得DNS要指向域控服务器）</li>
+<li>安装必要的软件、卸载无用的组件</li>
 </ul>
-<h1 id="正则表达式小工具Reg-Exper-Tester">5&emsp;正则表达式小工具Reg_Exper-Tester</h1><p>自己结合别人的代码揉合的一个正则表达式测试以及可视化的工具，感觉还是挺有用的，比网上80%的正则表达式工具都要好吧，不然就不需要我重新做一个了。<br>Demo: &lt; <a href="https://chengpengzhao.com/Reg_Exper-Tester/">https://chengpengzhao.com/Reg_Exper-Tester/</a> &gt;</p>
+</li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403104007946.png" alt></p>
+<h2 id="创建桌面池">3.2&emsp;创建桌面池</h2><ul>
+<li>测试阶段建议选择<strong>手动池</strong>  </li>
+<li>当模板机配置好了建议选择<strong>自动桌面池中的完整虚拟机</strong>（即时克隆适合临时使用，不适合团队长期使用）  </li>
+<li>桌面池授权： 我这里直接授权<code>simforge_user</code>用户组  </li>
+<li>计算机分配： 待虚拟机创建好后手动进行用户分配  </li>
+<li>使用VMware Horizon Client进行连接测试  </li>
+</ul>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403105241782.png" alt></p>
+<h1 id="Horizon-自定义-amp-amp-安全配置">4&emsp;Horizon 自定义&amp;&amp;安全配置</h1><blockquote>
+<p>这部分配置图文资料比较少，有些官方文档也感觉和实际对不太上，我试了挺久才弄好的</p>
+</blockquote>
+<h2 id="导入配置模板">4.1&emsp;导入配置模板</h2><ol>
+<li><p>参考<a href="https://docs.omnissa.com/zh-CN/bundle/Horizon-Remote-Desktop-FeaturesVmulti/page/AddaHorizon8ADMXTemplateFiletoaGPO.html" target="_blank" rel="noopener">官方说明</a>，将<code>VMware-Horizon-Extras-Bundle-2312-xx.zip</code>导入到域控服务器里（这个文件在Horizon安装包里应该可以找到）  </p>
+</li>
+<li><p>解压缩文件，并将 ADMX 文件复制到 Active Directory 服务器。<br>a. 将<code>.admx</code> 文件复制到 Active Directory 服务器上的<code>%systemroot%\PolicyDefinitions</code> 文件夹。<br>b. 将语言资源 (<code>.adml</code>) 文件夹复制到 Active Directory 服务器上的 <code>%systemroot%\PolicyDefinitions</code>中。<br>c. 在 Active Directory 服务器上，打开组策略管理编辑器并在该编辑器中输入模板文件在安装后所在的路径。 </p>
+</li>
+<li><p>最好新建一个组策略，不要在默认的策略上改，如图：  </p>
+</li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403110321654.png" alt></p>
+<ol start="4">
+<li>为远程桌面启用<a href="https://docs.omnissa.com/zh-CN/bundle/Horizon-Remote-Desktop-FeaturesV2312/page/EnablingLoopbackProcessingforRemoteDesktops.html" target="_blank" rel="noopener">环回处理</a>：<br> a. 在 Active Directory 服务器上，打开组策略管理控制台。<br> b. 展开您的域，右键单击为组策略设置创建的 GPO 并选择编辑。<br> c. 在组策略管理编辑器中，导航到计算机配置 &gt; 策略 &gt; 管理模板: 策略定义 &gt; 系统 &gt; 组策略。<br> d. 在右侧窗格中，双击配置用户组策略环回处理模式。<br> e. 选择已启用，然后从模式下拉菜单中选择一个环回处理模式。<br> f. 我选择的是<strong>合并模式</strong>：即应用的<strong>用户策略设置结合了计算机 GPO 与用户 GPO 中包含的设置。如果发生冲突，则优先选用计算机 GPO。</strong> </li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403111957843.png" alt></p>
+<ol start="5">
+<li>导入完成后应该可以看到各种各样的配置选项了，分计算机设置和用户设置两部分，其中有些重复的（如剪贴板设置在两个里面都有），有些是独有的（如<strong>水印</strong>设置在用户设置里面有）</li>
+</ol>
+<p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403112127214.png" alt></p>
+<h2 id="Horizon其他配置-针对Windows客户机">4.2&emsp;Horizon其他配置(针对Windows客户机)</h2><p>根据需求在组策略里修改配置即可，注意最好计算机和用户策略都改了，免得有时候不生效。  </p>
+<ul>
+<li>关闭USB、扫描仪重定向（处于安全性需求）  </li>
+<li>设置各种超时时间，免得动不动退出登录了（一部分配置是在Horizon Web端的全局配置里修改的）  </li>
+<li>开启用户水印、定义水印样式   </li>
+</ul>
+<h3 id="剪贴板重定向、拖放文件">4.2.1&emsp;剪贴板重定向、拖放文件</h3><ul>
+<li>允许双向剪贴板共享  </li>
+<li>控制剪贴板大小上限（如20KB）  </li>
+<li>设置文件拖放方向（仅从客户端到代理）  </li>
+</ul>
+<p>不过好像拖放文件只对windows系统生效，linux只能通过驱动器重定向拷贝文件进去  </p>
+<h3 id="设置驱动器重定向只读">4.2.2&emsp;设置驱动器重定向只读</h3><p>这个设置找的我好苦啊，<a href="https://docs.omnissa.com/zh-CN/bundle/Horizon-Remote-Desktop-FeaturesV2312/page/EnableStorageDriveRedirection.html" target="_blank" rel="noopener">官方文档</a>说的根本就是错的（针对2312版本）。最后还是在一篇远古<a href="https://arunpc.com/2016/06/24/readonly-usb-and-client-drive-redirection-in-horizon-7/" target="_blank" rel="noopener">博文</a>中找到了对应的设置方法。  </p>
+<p><strong>这个需要在虚拟机上修改注册表，因此最好在模板机就调好，并且控制好用户权限，避免用户可以修改该选项</strong></p>
+<p>(默认没有permissions这个项，手动加上并设置为<code>r</code>，默认应该是<code>rw</code>)<br><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260403115656440.png" alt></p>
+<h2 id="Horizon其他配置-针对Ubuntu客户机">4.3&emsp;Horizon其他配置(针对Ubuntu客户机)</h2><p>参考<a href="https://docs.omnissa.com/zh-CN/bundle/Desktops-and-Applications-in-HorizonV2312/page/EditConfigurationFilesonaLinuxDesktop.html" target="_blank" rel="noopener">官方文档</a>，linux上的配置和Windows有较大区别。  </p>
+<h3 id="配置文件修改">4.3.1&emsp;配置文件修改</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/vmware/config.template /etc/vmware/config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>这个需要在虚拟机上修改文件，因此最好在模板机就调好，并且控制好用户权限，避免用户可以修改该文件</strong></p>
+<p>(这就是为什么我在上篇中配置sudoer权限时写了一大串)</p>
+<pre><code>ubuntu2204% cat /etc/vmware/config         
+
+#Enable/Disable the build to lossless mode. Default is FALSE
+#RemoteDisplay.buildToPNG=TRUE
+
+#Enable/Disable the left-handed mouse support on Ubuntu/SUSE platform and
+#the Mate Desktop of Redhat platform. Default is False.
+#For the other Desktop of Redhat and CentOS platform, user can select
+#left-handed mouse at system UI.
+#mksVNCServer.useUInputButtonMapping=TRUE
+
+#Enable/Disable the audio out. Default is TRUE.
+#RemoteDisplay.allowAudio=FALSE
+
+#Set clipboard redirection. Default is 2. 0 means disable; 1 means both directions; 2 means from client to agent only, 3 means from agent to client only.
+Clipboard.Direction=1
+
+#Set clipboard maximum size which should be specified in KBytes. Default is 1024 KBytes.
+mksvchan.clipboardSize=10
+
+#Enable/Disable the smartcard redirection. Default is TRUE
+#VVC.ScRedir.Enable=FALSE
+
+#Set the max of the reader contexts for the smartcard redirection. Default is 16
+#VVC.ScRedir.MaxReaderContexts=32
+
+#Loglevel for the smartcard redirection. Log level include [ info | debug]. Default is info.
+#VVC.ScRedir.logLevel=debug
+
+#Set the max reader contexts supported by pcscd. Default is determined by pcscd.
+#pcscd.maxReaderContext=32
+
+#Set parsing the message body or not. Default is determined by pcscd.
+#This option only takes effect if pcscd.maxReaderContext is set.
+#pcscd.readBody=TRUE
+
+#Loglevel for pcscd. Log level include [ info | debug]. Default is info.
+#pcscd.logLevel=debug
+
+#Enable/Disable audio in feature. Default is TRUE
+#VVC.RTAV.Enable=FALSE
+
+#Loglevel for rtav process. Log level include [error | info | debug | trace]. Default is info.
+#RTAV.logLevel=debug
+
+# Maximum rate at which frames can be captured from Webcam per second, Minimum = 1 Maximum = 30. No limit is set by default.
+#VVC.RTAV.WebcamMaxFrameRate=15
+
+# Maximum width in pixels of an image frame when capturing from Webcam. Available range of values: 32 - 4096, no limit is set by default.
+#VVC.RTAV.WebcamMaxResWidth=1920
+
+# Maximum height in pixels of an image frame when capturing from Webcam. Available range of values: 32 - 2160, no limit is set by default.
+#VVC.RTAV.WebcamMaxResHeight=1080
+
+# Sets the default image resolution width, this is used if no resolution value is defined by the user.
+# Available range of values: 32 - 4096, no value is set by default.
+#VVC.RTAV.WebcamDefaultResWidth=320
+
+# Sets the default image resolution height, this is used if no resolution value is defined by the user.
+# Available range of values: 32 - 2160, no value is set by default.
+#VVC.RTAV.WebcamDefaultResHeight=240
+
+#Loglevel for vmware-CDRServer.log. log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#cdrserver.logLevel=debug
+
+#To prevent the client from sharing additional folders (that is, folders that are not specified with cdrserver.shareFolders). Default is FALSE.
+#cdrserver.forcedByAdmin=TRUE
+
+#To specify the folders client can share and the permission for each folder.
+#cdrserver.sharedFolders=c:\Users\folder1,R;c:\Users\folder2,R;/home/user,R
+
+#To prevent write access to all folders that are shared with the remote desktop, default value is RW means all shared folders are readable and writable.
+cdrserver.permissions=R
+
+#To enable the write cache from agent towards the client side. Default is TRUE.
+#cdrserver.cacheEnable=FALSE
+
+#Setup customized shared folder path.
+#cdrserver.customizedSharedFolderPath=/mnt/
+
+#Loglevel for vmware-vvcProxy-Node log file. log level include [ fatal | error | warn | info | debug | trace | all ]. Default is info.
+#vvc.logLevel=debug
+
+#Loglevel for vmware-vdpService-Server log file. log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#vdpservice.log.logLevel=debug
+
+#To enable/disable VVC heartbeats. The value can be 0|1, means disable|enable VVC heartbeats, Default is enabled.
+#vvc.VVCHeartbeats=0
+
+#Specifies the maximum bandwidth, in kilobits per second (kbps), for a VMware Blast session. The bandwidth includes all imaging, audio, virtual channel, USB, and VMware Blast control traffic. The default value is 1 Gbps.
+#RemoteDisplay.maxBandwidthKbps=1000000
+
+#Specifies the minimum bandwidth, in kilobits per second (kbps), that is reserved for a VMware Blast session. The default value is 256 kbps.
+#RemoteDisplay.minBandwidthKbps=256
+
+
+#Specifies the maximum rate of screen updates. Use this setting to manage the average bandwidth that users consume. Valid value should be between 3 and 60. The default value is 30 updates per second.
+RemoteDisplay.maxFPS=60
+
+#Enable/Disable the Blast protocol statistics in mks log, such bandwidth, FPS, RTT, ... Default is FALSE
+RemoteDisplay.enableStats=TRUE
+
+#Enable/Disable H.264 Encoding. Default is TRUE
+#RemoteDisplay.allowH264=FALSE
+
+#Max H264 Quantization Parameter (MINIMUM H264 QUALITY for the SW H264 encoder). Default is 36. Accept values from 0 to 51, but the value should be set larger than the value of RemoteDisplay.qpminH264.
+#RemoteDisplay.qpmaxH264=36
+
+#Min H264 Quantization Parameter (MAXIMUM H264 QUALITY for the SW H264 encoder). Default is 10. Accept values from 0 to 51, but the value should be set less than the value of RemoteDisplay.qpmaxH264.
+#RemoteDisplay.qpminH264=10
+
+#Specifies the image quality for the JPEG/PNG encoded desktop display. The low-quality settings are for areas of the screen that change often, for example, when scrolling occurs.
+#The high-quality settings are for areas of the screen that are more static, resulting in a better image quality. You can specify the following settings:
+
+#Available range of values: 1 - 100, default: 25
+#RemoteDisplay.minQualityJPEG=25
+
+#Available range of values: 1 - 100, default: 35
+#RemoteDisplay.midQualityJPEG=35
+
+#Available range of values: 1 - 100, default: 90
+#RemoteDisplay.maxQualityJPEG=90
+
+#Enable/Disable mouse cursor warping support. This enables the remoted desktop/application to change the mouse position without the user moving the mouse. Default is FALSE.
+#RemoteDisplay.enableCursorWarping=TRUE
+
+#Enable/Disable UDP protocol support, Default is TRUE
+#RemoteDisplay.enableUDP=FALSE
+
+#Enable/Disable Network Continuity, Default is TRUE
+#RemoteDisplay.enableNetworkContinuity=FALSE
+
+#Enable/Disable Network Intelligence, Default is TRUE
+#RemoteDisplay.enableNetworkIntelligence=FALSE
+
+#Loglevel for vmware-UsbRedirPlugin. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#UsbRedirPlugin.log.logLevel=debug
+
+#Loglevel for vmware-UsbRedirServer. Log level include [ error | warn | info | debug | trace | verbose]. Default is info. If log level is trace, it will dump all the binary data. If the log level of vmware-UsbRedirServer is debug or trace, &quot;UsbRedirServer.log.throttleBytesPerSec&quot; should be set to &quot;-1&quot;.
+#UsbRedirServer.log.logLevel=debug
+#UsbRedirServer.log.throttleBytesPerSec=-1
+
+#Enable the log file for TrueSSO feature. Log level include [error | warn | info | debug | trace | verbose]. The log file is disabled by default.
+#VMWPkcs11Plugin.log.enable=true
+#VMWPkcs11Plugin.log.logLevel=debug
+
+#PLZ refer to https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/vmware-horizon-view-usb-device-redirection-white-paper.pdf for USB Configuration. The format of USB Config such as:
+#viewusb.IncludeVidPid=m:vid-xxxx_pid-xxxx
+#viewusb.AllowKeyboardMouse=o:true
+
+#Loglevel for collabui. Log level include [ error | info | debug]. Default is info. If log level is debug, it will dump every entrance of collabui functions and the collaborator list&#39;s content.
+#collaboration.logLevel=debug
+
+#Specifies the maximum collaborators. Use this setting to manage how many users can be added to one session. Valid value should not be greater than 20. The default is 5.
+#collaboration.maxCollabors=20
+
+#Enable/Disable the invitation via email, Default is TRUE
+#collaboration.enableEmail=FALSE
+
+#Enable/Disable passing input control to other collaborators, Default is TRUE
+#collaboration.enableControlPassing=FALSE
+
+#Customized server URL to include in the invitation message for Session Collaboration feature.
+#collaboration.serverUrl=&quot;&quot;
+
+#Loglevel for BlastServer process. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#BlastServer.log.logLevel=debug
+
+#Loglevel for BlastProxy process. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#BlastProxy.log.logLevel=debug
+
+#BlastProxy.log.throttleBytesPerSec should be set to &quot;-1&quot; if the log level is set to debug or trace, Default value is 1000.
+#BlastProxy.log.throttleBytesPerSec=-1
+
+#HTTP server thread pool size, default is 10.
+#BlastProxy.NumHttpThreads=10
+
+#Enable/Disable udp forwarding, default is TRUE.
+#BlastProxy.UdpEnabled=FALSE
+
+#Enable/Disable dump udp statistics, default is FALSE.
+#BlastProxy.enableDumpUdpStatistics=TRUE
+
+#Loglevel for desktopDaemon process. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#DesktopDaemon.log.logLevel=debug
+
+#Loglevel for desktopWorker process. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#DesktopWorker.log.logLevel=debug
+
+#TTY number for Xorg of Linux Agent, it is used in physical machine only. This value should greater than 0. Default is 7.
+#DesktopWorker.ttyNum=7
+
+#Loglevel for desktopController process. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#DesktopController.log.logLevel=debug
+
+#Loglevel for rdeSvc process. Log level include [error | warn | info | debug]. Default is info.
+#rdeSvc.logLevel=debug
+
+#Loglevel for appScanner process. Log level include [error | warn | info | debug]. Default is info.
+#appScanner.logLevel=debug
+
+#Semicolon separated application executable path list that could be blocked from launching and creating unity window.
+#rdeSvc.blockedWindows=/usr/libexec/gnome-terminal-server;
+
+#Enable/Disable optimized seamless window resize, default is TRUE.
+#rdeSvc.enableOptimizedResize=FALSE
+
+#Enable/Disable display scaling. This option only works if DPI sync feature is enabled.
+#Display scaling resizes the screen to auto fit the font size when the DPI is a mismatch between client
+#and agent, the default value is FALSE.
+#rdeSvc.allowDisplayScaling=TRUE
+
+#Configure app window&#39;s executable path and the app&#39;s desktopfile name in
+#a xml file, the xml file should be configured like the example below.
+#&lt;WINDOWEXECPATTERNCONFIG&gt;
+#        &lt;WINDOWEXECPATTERN&gt;
+#                &lt;EXECPATTERN&gt;gnome-terminal-server&lt;/EXECPATTERN&gt;
+#                &lt;TARGETPATTERN&gt;org.gnome.Terminal&lt;/TARGETPATTERN&gt;
+#        &lt;/WINDOWEXECPATTERN&gt;
+#&lt;/WINDOWEXECPATTERNCONFIG&gt;
+#The EXECPATTERN should be configured with the basename of the commandline to
+#launch the app and TARGETPATTERN should be configurd with the app&#39;s .desktop
+#file name(remove the suffix &quot;.desktop&quot;)
+#The configured xml file&#39;s path should be set in the line below.
+#
+#rdeSvc.execPatternsConfig=path_to_execpattersiconfig_file
+
+#Enable/Disable printer redirection feature. The default value is TRUE.
+printSvc.enable=FALSE
+
+#Customized printer drivers(PPD) on Agent if user don&#39;t need NPD or UPD. In this option, the name is the client side printer name, PPD
+#path is the absolute ppd file path on Agent. Each item in option must be followed by a semicolon, the entire option must be enclosed
+#in quotation marks.
+#printSvc.customizedPpd=&quot;PinterName1=PPDPath1;PrinterName2=PPDPath2;&quot;
+
+#Update the virtual printer&#39;s ppd file to use PDF as the print format. This option only works for Linux/Mac client. Default is TRUE.
+#printSvc.usePdfFilter=FALSE
+
+#Set print job owner name as local user name or not. TRUE for local user name, otherwise the session logon user name will be used. Default is FALSE.
+#printSvc.jobOwnerAsLocal=TRUE
+
+#Enable/Disable printer watermark feature. Default is FALSE. It needs qpdf to be installed. Please refer to the chapter &quot;Configure VMware Integrated Printing for Linux Desktops&quot; in user guide.
+#printSvc.watermarkEnabled=TRUE
+
+#Loglevel for printSvc process. Log level include [error | warn | info | debug]. Default is info.
+#printSvc.logLevel=&quot;debug&quot;
+
+#Customized papers config file used to filter the papers, papers not listed in the config file will be ignored. The paper information
+#in the config file must follow specific rules, otherwise printSvc will fail to parse it. Each line in the config file follows format
+#&quot;keyword, name, widthMm, heightMm, widthPts, heightPts&quot;. Keyword is a unique string that represents the paper, only allow ASCII
+#characters within the range of decimal 33 to decimal 126 inclusive, name is the paper display name on the print UI, widthMm and heightMm
+#are the 10 times paper size in mm, widthPts and heightPts are paper size in points. This is a global config that will affect all virtual
+#printers. Please note that this option is only valid for Windows client.
+#Below is the content of a sample paper list file:
+#Letter, Letter, 2159, 2794, 612, 792
+#A3, A3, 2970, 4200, 842, 1191
+#A4, A4, 2100, 2970, 595, 842
+#printSvc.paperListFile=path_to_paper_list_file
+
+#This config item provides the ability to set the default print options when applications don&#39;t provide them. All the options are space
+#separated, their default value and range are listed as below(case sensitive):
+#printSvc.defaultPrintOptions=&quot;ColorMode=Color[Mono] Duplex=None[DuplexTumble|DuplexNoTumble] PageSize=9 number-up=1 number-up-layout=None[lrbt|lrbt|rltb|rlbt|tblr|tbrl|btlr|btrl] OutputOrder=Normal[Reverse] page-set=all[even|odd] noCollate[Collate]&quot;
+
+#Printer Filter can be configured to filter the virtual printers not to be added. Printers can be filtered based on the printer name, driver name or driver vendor name. The filter supports logical combination of multiple query conditions using AND, OR, NOT and Bracket. Each query condition in the filter supports Wildcard (asterisk and question mark) and Regular Expression (JavaScript Dialect and substring matching). The value on the right side of = or != should be enclosed with single quotation.
+#printSvc.printerFilter=&quot;(DriverName=&#39;DrName1&#39; OR DriverName=&#39;DrName2&#39;) AND PrinterName!= &#39;PrNa.?e&#39;&quot;
+
+#Enable/Disable watermark feature. The default value is FALSE.
+#rdeSvc.enableWatermark=TRUE
+
+#Opacity: the transparency level of the text. The range is 0-255. The default value is 50.
+#rdeSvc.watermark.opacity=50
+
+#Text Rotation, a specific angle for the watermark text. The default value is 45.
+#rdeSvc.watermark.rotation=45
+
+#Image Layout: the watermark layout on the screen, which is divided into nine squares:
+#0: Tile, watermark is positioned in all 9 squares. This layout is always used for application sessions.
+#1: Center, watermark is positioned in the center square.
+#2: Multiple, watermark is positioned in the center and four corner squares. If the watermark size exceeds the box size, it is scaled to maintain the aspect ratio.
+#The default value is 0.
+#rdeSvc.watermark.fit=0
+
+#The space around the watermark for the Tile layout. If the watermark is scaled, the margin will also be scaled. The default value is 50.
+#rdeSvc.watermark.margin=50
+
+#The watermark font size. The default value is 10.
+#rdeSvc.watermark.fontSize=10
+
+#The watermark font type. The default value is serif.
+#rdeSvc.watermark.font=&quot;serif&quot;
+
+#Enable this setting to configure a watermark to appear on your virtual desktop. Enter information you want to display as the watermark in Text.
+#Options are:
+#$BROKER_USER_NAME
+#$BROKER_DOMAIN_NAME
+#$USER_NAME
+#$USER_DOMAIN
+#$MACHINE_NAME
+#$REMOTE_CLIENT_IP
+#$CLIENT_CONNECT_TIME
+#The character limit is 1024 characters and 4096 characters after expansion. The text will be truncated if it exceeds the maximum length.
+#rdeSvc.watermark.template=&quot;$USER_DOMAIN\$USER_NAME\n$MACHINE_NAME On $CLIENT_CONNECT_TIME\n$REMOTE_CLIENT_IP&quot;
+
+#The minimum number used for X display allocation. Default is 100 and must not be negative.
+#Be careful to set the value in [0,9] which is very likely used by Display Manager.
+#This item should be little than 59535 to avoid XDMCP port being illegal.
+#For VDI mode, the counts from Desktop.displayNumberMin to Desktop.displayNumberMax must not greater than 60.
+#For multi-session, the counts from Desktop.displayNumberMin to Desktop.displayNumberMax must be 60.
+#Desktop.displayNumberMin=100
+
+#The maximum number used for X display allocation. Default is 159 and must not be negative.
+#Be careful to set the value in [0,9] which is very likely used by Display Manager.
+#This item should be little than 59535 to avoid XDMCP port being illegal.
+#For VDI mode, the counts from Desktop.displayNumberMin to Desktop.displayNumberMax must not greater than 60.
+#For multi-session, the counts from Desktop.displayNumberMin to Desktop.displayNumberMax must be 60.
+#Desktop.displayNumberMax=159
+
+#Loglevel for greeter. Log level include [warn | error | info | debug]. Default is info.
+#Greeter.logLevel=debug
+
+#Loglevel for Session Recording library. Log level include [ error | warn | info | debug | trace | verbose]. Default is info.
+#VMBlastRec.log.logLevel=debug</code></pre><h3 id="设置驱动器重定向只读-1">4.3.2&emsp;设置驱动器重定向只读</h3><p>修改上述配置文件中的： </p>
+<pre><code>#To prevent write access to all folders that are shared with the remote desktop, default value is RW means all shared folders are readable and writable.
+cdrserver.permissions=R</code></pre><p>即可</p>
+<h1 id="总结">5&emsp;总结</h1><p>本文分上下两篇，完整记录了一套基于 ESXi、Windows 域控、vCenter 和 Horizon 8(2312) 的团队虚拟桌面环境搭建过程：    </p>
+<ul>
+<li>上篇主要解决底层基础设施问题，包括 ESXi 宿主机安装、管理网络配置、域控与 DNS 部署、客户端加入域，以及 vCenter 的安装和纳管配置；  </li>
+<li>下篇则进一步完成 Horizon Connection Server、事件数据库、桌面模板机、桌面池以及组策略和安全选项的配置。  </li>
+</ul>
+<p>从实际使用角度看，这套方案已经能够满足团队统一认证、集中管理、远程接入和标准化桌面交付的基本需求。通过 vCenter 统一管理底层虚拟化资源，再配合 Horizon 对桌面模板、桌面池和用户权限进行组织，可以较好地支撑团队研发、测试和日常办公场景。<br>同时，文章里也补充了不少实际踩坑后的经验，比如 Windows 和 Ubuntu 加入域的方法差异、Linux 桌面模板的 Agent 配置方式、组策略环回处理、驱动器重定向只读、剪贴板与拖放控制、水印显示等内容。</p>
 
       </div>
 
@@ -609,7 +994,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/">https://chengpengzhao.com/2020-01-11-zheng-ze-biao-da-shi-xue-xi-bi-ji/</a>
+                    <a href="https://chengpengzhao.com/2026-04-03-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-2/">https://chengpengzhao.com/2026-04-03-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -647,12 +1032,24 @@
           
           <div class="article-tag">
             
-            <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-              <span class="chip bg-color">使用tips</span>
+            <a href="/tags/ESXi/">
+              <span class="chip bg-color">ESXi</span>
             </a>
             
-            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-              <span class="chip bg-color">正则表达式</span>
+            <a href="/tags/vCenter/">
+              <span class="chip bg-color">vCenter</span>
+            </a>
+            
+            <a href="/tags/Horizon/">
+              <span class="chip bg-color">Horizon</span>
+            </a>
+            
+            <a href="/tags/DNS/">
+              <span class="chip bg-color">DNS</span>
+            </a>
+            
+            <a href="/tags/Windows-Server/">
+              <span class="chip bg-color">Windows Server</span>
             </a>
             
           </div>
@@ -836,7 +1233,7 @@
         repo: 'Zcp_blog_comments',
         owner: 'chengpengzhao',
         admin: "chengpengzhao",
-        id: '2020-01-11T00-00-00',
+        id: '2026-04-03T00-00-00',
         distractionFreeMode: false,  // Facebook-like distraction free mode
         proxy: "https://gitalk.chengpengzhao.workers.dev/?https://github.com/login/oauth/access_token"
     });
@@ -868,42 +1265,45 @@
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020-01-13-ru-keng-wsl-windows-sub-system-for-linux/">
+                <a href="/2026-04-03-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-2/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200113131126.webp" class="responsive-img" alt="入坑WSL(Windows Subsystem for Linux)">
-                        -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">入坑WSL(Windows Subsystem for Linux)</span>
-
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="VMWare Horizon 8(2312) 团队配置与使用（下）">
+                        
+                        <span class="card-title">VMWare Horizon 8(2312) 团队配置与使用（下）</span> -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">VMWare Horizon 8(2312) 团队配置与使用（下）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在笔记本上装Ubuntu用了几个月之后，由于一些软件只能在windows下运行，来回切换系统也挺麻烦的，故决定安装个WSL(Windows Subsystem for Linux)试试。意外感觉用起来挺舒服的；一是平常需求也不多，就用下Sh
+                            1&emsp;前言
+场景需求：团队共享桌面、远程办公、研发测试、统一环境管理
+
+上篇覆盖范围：ESXi、域控、vCenter的安装与基础配置
+
+下篇覆盖范围：Horizon的安装与配置
+
+整体目标
+
+搭建一套可供团队使用的 VMware 虚
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-04-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
-                                </a>
-                            
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="post-category">
                                     工作
-                                </a>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/linux/" class="post-category">
-                                    linux
                                 </a>
                             
                             <a href="/categories/%E5%B7%A5%E4%BD%9C/%E5%B7%A5%E5%85%B7/" class="post-category">
@@ -914,15 +1314,28 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WSL/">
-                        <span class="chip bg-color">WSL</span>
+                    <a href="/tags/ESXi/">
+                        <span class="chip bg-color">ESXi</span>
                     </a>
                     
-                    <a href="/tags/Vim/">
-                        <span class="chip bg-color">Vim</span>
+                    <a href="/tags/vCenter/">
+                        <span class="chip bg-color">vCenter</span>
+                    </a>
+                    
+                    <a href="/tags/Horizon/">
+                        <span class="chip bg-color">Horizon</span>
+                    </a>
+                    
+                    <a href="/tags/DNS/">
+                        <span class="chip bg-color">DNS</span>
+                    </a>
+                    
+                    <a href="/tags/Windows-Server/">
+                        <span class="chip bg-color">Windows Server</span>
                     </a>
                     
                 </div>
@@ -936,26 +1349,34 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020-01-08-git-learning/">
+                <a href="/2026-04-02-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-1/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/chengpengzhao/pic_store2/img/20200108110720.webp" class="responsive-img" alt="Git学习笔记">
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="VMWare Horizon 8(2312) 团队配置与使用（上）">
                         -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">Git学习笔记</span>
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">VMWare Horizon 8(2312) 团队配置与使用（上）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1&emsp;git学习笔记学习自：廖雪峰的官方网站
-1.1&emsp;基础
-千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地
+                            1&emsp;前言
+场景需求：团队共享桌面、远程办公、研发测试、统一环境管理
+
+上篇覆盖范围：ESXi、域控、vCenter的安装与基础配置
+
+下篇覆盖范围：Horizon的安装与配置
+
+整体目标
+
+搭建一套可供团队使用的 VMware 虚
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-04-02
                             </span>
                         <span class="publish-author">
                             
@@ -976,12 +1397,24 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BD%BF%E7%94%A8tips/">
-                        <span class="chip bg-color">使用tips</span>
+                    <a href="/tags/ESXi/">
+                        <span class="chip bg-color">ESXi</span>
                     </a>
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/vCenter/">
+                        <span class="chip bg-color">vCenter</span>
+                    </a>
+                    
+                    <a href="/tags/Horizon/">
+                        <span class="chip bg-color">Horizon</span>
+                    </a>
+                    
+                    <a href="/tags/DNS/">
+                        <span class="chip bg-color">DNS</span>
+                    </a>
+                    
+                    <a href="/tags/Windows-Server/">
+                        <span class="chip bg-color">Windows Server</span>
                     </a>
                     
                 </div>
@@ -1115,6 +1548,19 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']],
+		  displayMath: [["$$","$$"]],
+		  processEscapes: true,
+		  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+	},
+	TeX: {equationNumbers: { autoNumber: "AMS" } 
+	}
+    });
+</script>
 
 
 

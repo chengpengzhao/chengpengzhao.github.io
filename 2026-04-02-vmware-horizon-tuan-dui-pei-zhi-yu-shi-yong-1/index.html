@@ -507,21 +507,21 @@
         
         <div class="post-date info-break-policy">
           <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-          2026-04-02
+          2026-04-03
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-          2.2k
+          2.3k
         </div>
         
 
         
         <div class="info-break-policy">
           <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-          8 Min
+          9 Min
         </div>
         
 
@@ -685,7 +685,7 @@
 <p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260402181509403.png" alt></p>
 <h1 id="域控（AD-DNS）安装与配置">5&emsp;域控（AD/DNS）安装与配置</h1><p>域控机的作用非常重要，没有它后续无法开展，安装好ESXi之后就可以创建一个虚拟机作为域控（当然有稳定的真实物理机做域控更好）。</p>
 <h2 id="创建域控虚拟机">5.1&emsp;创建域控虚拟机</h2><ul>
-<li>虚拟机规格： 我给了 2CPU、4G内存、100G存储，感觉够用</li>
+<li>虚拟机规格： 我给了 2CPU、4G内存、90存储，感觉够用</li>
 <li>系统安装： windows server 2016安装</li>
 <li>固定 IP 配置： 这些管理机就不要用自动IP了，固定设置一下吧</li>
 </ul>
@@ -756,6 +756,7 @@ Cmnd_Alias DATA_RW = \
 <li>stage1部署完成后的stage2: SSO configuration部分设置登录账号密码（名字改不改无所谓，反正好像除了登录也用不到），该阶段会卡挺长时间的</li>
 </ul>
 <p>其实安装过程没有什么好说的，大部分按照默认选项即可，必须填的填一下就行了。</p>
+<p><strong>注意登录的账号和密码写法：是在SSO 部分设置的，类似<code>administrator@vsphere.local</code> 这种用户名</strong></p>
 <h2 id="登录与配置">6.2&emsp;登录与配置</h2><ul>
 <li>Datacenter 创建</li>
 <li>Cluster 创建</li>
@@ -1062,18 +1063,17 @@ Cmnd_Alias DATA_RW = \
         
         <div class="article col s12 m6" >
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2026-04-02-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-1/">
+                <a href="/2026-04-03-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-2/">
                     <div class="card-content">
                     <!--<div class="card-image">
                         
                         
-                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="VMWare Horizon 8(2312) 团队配置与使用（上）">
-                        
-                        <span class="card-title">VMWare Horizon 8(2312) 团队配置与使用（上）</span> -->
-                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">VMWare Horizon 8(2312) 团队配置与使用（上）</span>
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/1.jpg" class="responsive-img" alt="VMWare Horizon 8(2312) 团队配置与使用（下）">
+                        -->
+                        <span class="card-title" style="padding: 10px;font-size:20px;font-weight:700;height:100px;">VMWare Horizon 8(2312) 团队配置与使用（下）</span>
+
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1092,9 +1092,9 @@ Cmnd_Alias DATA_RW = \
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-04-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1111,7 +1111,6 @@ Cmnd_Alias DATA_RW = \
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1349,7 +1348,7 @@ Cmnd_Alias DATA_RW = \
             |&nbsp;
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">213.3k</span>&nbsp;字
+                class="white-color">217.9k</span>&nbsp;字
             
             <br>
             
