@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>部署nextcloud并实现文件上传审批功能</title>
+      <link href="/2026-04-06-bu-shu-nextcloud-bing-shi-xian-wen-jian-shang-chuan-shen-pi-gong-neng/"/>
+      <url>/2026-04-06-bu-shu-nextcloud-bing-shi-xian-wen-jian-shang-chuan-shen-pi-gong-neng/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="背景">1&emsp;背景</h1><ul><li><p>团队有内部研发环境，需要控制其文件导出能力，故对每次导出操作进行审批，避免关键代码泄漏</p></li><li><p>经过一番调研没有找到特别好用的开源文件导出系统（之前买过的付费的系统也难用的一匹）</p></li><li><p>nextcloud作为生态最完善的网盘之一，拥有庞大的社区和开发者/插件，可以支持各种功能</p></li><li><p>坑爹的Nextcloud All-in-One，<strong>部署难搞的一匹</strong>，各种卡住/某个服务起不起来，弄了几个晚上没解决，写的真是辣鸡</p></li></ul><h1 id="整体方案">2&emsp;整体方案</h1><ul><li><p>手写docker-compose 部署nextcloud</p></li><li><p>approval插件完成核心审批功能（基于标签）</p></li><li><p>files_accesscontrol插件用于文件可访问性的控制</p></li><li><p>files_automatedtagging用于给文件自动大标签</p></li></ul><h1 id="快速部署-Nextcloud">3&emsp;快速部署 Nextcloud</h1><pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>  <span class="token key atrule">nextcloud</span><span class="token punctuation">:</span>    <span class="token key atrule">image</span><span class="token punctuation">:</span> nextcloud    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nextcloud_web    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always    <span class="token key atrule">ports</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> <span class="token datetime number">80:80</span>      <span class="token punctuation">-</span> 443<span class="token punctuation">:</span><span class="token number">443</span>    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> ./nextcloud<span class="token punctuation">:</span>/var/www/html    <span class="token key atrule">links</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> db      <span class="token punctuation">-</span> redis  <span class="token key atrule">db</span><span class="token punctuation">:</span>    <span class="token key atrule">image</span><span class="token punctuation">:</span> mariadb    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nextcloud_mariadb    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always    <span class="token key atrule">ports</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> 3306<span class="token punctuation">:</span><span class="token number">3306</span>    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> ./mysql<span class="token punctuation">:</span>/var/lib/mysql    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>default<span class="token punctuation">-</span>authentication<span class="token punctuation">-</span>plugin=mysql_native_password <span class="token punctuation">-</span><span class="token punctuation">-</span>character<span class="token punctuation">-</span>set<span class="token punctuation">-</span>server=utf8mb4 <span class="token punctuation">-</span><span class="token punctuation">-</span>collation<span class="token punctuation">-</span>server=utf8mb4_unicode_ci <span class="token punctuation">-</span><span class="token punctuation">-</span>max<span class="token punctuation">-</span>allowed<span class="token punctuation">-</span>packet=10G    <span class="token key atrule">environment</span><span class="token punctuation">:</span>      <span class="token key atrule">TZ</span><span class="token punctuation">:</span> Asia/Taipei      <span class="token key atrule">MYSQL_ROOT_PASSWORD</span><span class="token punctuation">:</span> password1234      <span class="token key atrule">MYSQL_DATABASE</span><span class="token punctuation">:</span> nextcloud      <span class="token key atrule">MYSQL_USER</span><span class="token punctuation">:</span> nextcloud      <span class="token key atrule">MYSQL_PASSWORD</span><span class="token punctuation">:</span> password1234  <span class="token key atrule">phpmyadmin</span><span class="token punctuation">:</span>    <span class="token key atrule">image</span><span class="token punctuation">:</span> phpmyadmin    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nextcloud_phpmyadmin    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always    <span class="token key atrule">ports</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> <span class="token string">"8081:80"</span>    <span class="token key atrule">environment</span><span class="token punctuation">:</span>      <span class="token punctuation">-</span> PMA_HOST=db      <span class="token punctuation">-</span> UPLOAD_LIMIT=10G  <span class="token key atrule">redis</span><span class="token punctuation">:</span>    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span>alpine    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> nextcloud_redis    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always    <span class="token key atrule">environment</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> TZ=Asia/Taipei    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> ./redis<span class="token punctuation">:</span>/data    <span class="token key atrule">command</span><span class="token punctuation">:</span> /bin/sh <span class="token punctuation">-</span>c "redis<span class="token punctuation">-</span>server <span class="token punctuation">-</span><span class="token punctuation">-</span>requirepass $$REDIS_HOST_PASSWORD"    <span class="token key atrule">env_file</span><span class="token punctuation">:</span>        <span class="token punctuation">-</span> redis.env<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code># redis.env文件REDIS_HOST_PASSWORD=password1234</code></pre><p>只需要两个文件，pull一下就部署好了，再次提醒<strong>避雷Nextcloud AIO（个人部署体验极差）</strong></p><h1 id="安装插件、修改配置">4&emsp;安装插件、修改配置</h1><ol><li><p>官网下载插件，压缩包解压到<code>nextcloud/apps</code>文件中  </p></li><li><p>设置<code>trusted_domains</code>，路径为<code>config/config.php</code>  </p></li><li><p><code>sudo docker compose down &amp;&amp; sudo docker compose up -d</code>重启即可</p></li></ol><h1 id="定义（审批）流程">5&emsp;定义（审批）流程</h1><ul><li>核心是通过几个标签：如<code>通过</code>、<code>审批</code>、<code>拒绝</code>等来控制审批状态</li></ul><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260406114859465.png" alt></p><ul><li>然后通过插件完成配套的权限控制</li></ul><p><img src="/medias/loading.gif" data-original="https://raw.githubusercontent.com/chengpengzhao/pic_store2/master/img/20260406114817114.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nextcloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VMWare Horizon 8(2312) 团队配置与使用（下）</title>
       <link href="/2026-04-03-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-2/"/>
       <url>/2026-04-03-vmware-horizon-tuan-dui-pei-zhi-yu-shi-yong-2/</url>
@@ -203,9 +230,9 @@
           
           <category> 生活 </category>
           
-          <category> VPS/NAS </category>
-          
           <category> 记录 </category>
+          
+          <category> VPS/NAS </category>
           
       </categories>
       
@@ -418,9 +445,9 @@
           
           <category> 生活 </category>
           
-          <category> VPS/NAS </category>
-          
           <category> 记录 </category>
+          
+          <category> VPS/NAS </category>
           
       </categories>
       
